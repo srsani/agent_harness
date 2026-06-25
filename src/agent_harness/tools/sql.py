@@ -146,19 +146,19 @@ def get_schema_context() -> dict[str, Any]:
 
 
 def execute_sql(query: str, limit: int = 100) -> dict[str, Any]:
-    """Execute a read-only SELECT statement and return columns + rows.
+    """Execute a read-only SELECT statement (or CTE) and return columns + rows.
 
-    Only SELECT statements are allowed. Results are capped at *limit* rows
-    (default 100) to prevent huge outputs.
+    Only SELECT statements and WITH … SELECT (CTEs) are allowed.
+    Results are capped at *limit* rows (default 100) to prevent huge outputs.
 
     Args:
-        query: A valid SQLite SELECT statement.
+        query: A valid SQLite SELECT or WITH … SELECT (CTE) statement.
         limit: Row cap applied if no LIMIT clause is present (default 100).
     """
     q = query.strip()
     lower = q.lower()
 
-    if not lower.startswith("select"):
+    if not (lower.startswith("select") or lower.startswith("with")):
         raise SQLError("Only SELECT statements are allowed.")
     for blocked in _BLOCKED:
         if f" {blocked} " in f" {lower} ":

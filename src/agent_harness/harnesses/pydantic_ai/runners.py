@@ -1,5 +1,7 @@
 from __future__ import annotations
 
+import asyncio
+import concurrent.futures
 import time
 from collections.abc import Callable
 
@@ -260,8 +262,21 @@ class PydanticAIRunner(AgentRunner):
         try:
             _optional_logfire()
             agent = self._build_agent()
-            response = agent.run_sync(prompt)
-            result.output = str(response.output)
+            # Run in a dedicated thread so we always get a fresh event loop.
+            # This avoids the Python 3.12 "cannot enter context" error that
+            # occurs when agent.run_sync() is called from inside Jupyter's
+            # already-running event loop (even with nest_asyncio patched).
+            def _run() -> str:
+                return str(agent.run_sync(prompt).output)
+
+            try:
+                asyncio.get_running_loop()
+                # We're inside a running loop (e.g. Jupyter) — spin a thread.
+                with concurrent.futures.ThreadPoolExecutor(max_workers=1) as pool:
+                    result.output = pool.submit(_run).result()
+            except RuntimeError:
+                # No running loop — safe to call directly.
+                result.output = _run()
         except Exception as exc:  # noqa: BLE001 — surface harness errors in bench output
             result.error = f"{type(exc).__name__}: {exc}"
         result.elapsed_seconds = time.perf_counter() - started
