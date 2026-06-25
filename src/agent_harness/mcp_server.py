@@ -1,4 +1,4 @@
-"""FastMCP server that exposes all e-commerce tools over the MCP protocol.
+"""FastMCP server that exposes all enterprise Decision Intelligence tools over the MCP protocol.
 
 Run standalone:
     uv run python -m agent_harness.mcp_server
@@ -12,13 +12,15 @@ from __future__ import annotations
 
 from mcp.server.fastmcp import FastMCP
 
-from agent_harness.tools import ecommerce as ec
-from agent_harness.tools.sql import describe_table, execute_sql, list_tables
+from agent_harness.tools import enterprise as ec
+from agent_harness.tools.sql import describe_table, execute_sql, get_schema_context, list_tables
 
 mcp = FastMCP(
-    name="ecommerce-bench",
+    name="enterprise-decision-intel",
     instructions=(
-        "E-commerce database tools for testing agent performance. "
+        "Enterprise Decision Intelligence tools for testing agent performance. "
+        "The database covers analytics modules, business users, subscriptions, and ratings "
+        "across Finance, Supply Chain, Sales & Marketing, R&D, and HR & People. "
         "Use list_tables / describe_table to explore the schema, then "
         "execute_sql for ad-hoc queries or the typed tools for common lookups."
     ),
@@ -27,8 +29,19 @@ mcp = FastMCP(
 # ── schema exploration ────────────────────────────────────────────────────────
 
 @mcp.tool()
+def tool_get_schema_context() -> dict:
+    """Return the full semantic layer: table meanings, column descriptions, FK relationships,
+    common business metric SQL patterns, and query tips.
+
+    Call this first when building complex queries or when you need to understand the data
+    model before choosing between semantic tools and raw SQL.
+    """
+    return get_schema_context()
+
+
+@mcp.tool()
 def tool_list_tables() -> list[dict]:
-    """List all database tables and their column signatures."""
+    """List all tables with their semantic name, description, and column signatures."""
     return list_tables()
 
 
@@ -53,11 +66,11 @@ def tool_execute_sql(query: str, limit: int = 100) -> dict:
     return execute_sql(query, limit=limit)
 
 
-# ── catalogue ─────────────────────────────────────────────────────────────────
+# ── catalogue (analytics modules by business function) ───────────────────────
 
 @mcp.tool()
 def tool_list_categories() -> list[dict]:
-    """Return all product categories."""
+    """Return all business function categories (Finance, Supply Chain, Sales & Marketing, etc.)."""
     return ec.list_categories()
 
 
@@ -69,13 +82,13 @@ def tool_search_products(
     in_stock_only: bool = False,
     limit: int = 20,
 ) -> list[dict]:
-    """Search products by keyword, category, and price.
+    """Search analytics modules by keyword, business function, and annual license cost.
 
     Args:
-        query: Text to match against product name and description.
-        category: Filter by category name (partial match).
-        max_price: Upper price bound; 0 means no limit.
-        in_stock_only: Only return products currently in stock.
+        query: Text to match against module name and description.
+        category: Filter by business function (partial match).
+        max_price: Upper annual license cost bound in USD; 0 means no limit.
+        in_stock_only: Only return modules with active deployments.
         limit: Maximum results (default 20).
     """
     return ec.search_products(
@@ -89,20 +102,20 @@ def tool_search_products(
 
 @mcp.tool()
 def tool_get_product(product_id: int) -> dict | None:
-    """Get full details for a product including average rating.
+    """Get full details for an analytics module including average user satisfaction rating.
 
     Args:
-        product_id: The product's integer ID.
+        product_id: The analytics module's integer ID.
     """
     return ec.get_product(product_id)
 
 
 @mcp.tool()
 def tool_get_product_reviews(product_id: int, limit: int = 10) -> list[dict]:
-    """Return recent reviews for a product.
+    """Return recent user satisfaction ratings for an analytics module.
 
     Args:
-        product_id: The product's integer ID.
+        product_id: The analytics module's integer ID.
         limit: Maximum reviews to return (default 10).
     """
     return ec.get_product_reviews(product_id, limit=limit)
@@ -110,10 +123,10 @@ def tool_get_product_reviews(product_id: int, limit: int = 10) -> list[dict]:
 
 @mcp.tool()
 def tool_get_top_selling_products(limit: int = 10, days: int = 90) -> list[dict]:
-    """Return top-selling products by units sold in the last N days.
+    """Return the most-subscribed analytics modules by activation count in the last N days.
 
     Args:
-        limit: How many products to return (default 10).
+        limit: How many modules to return (default 10).
         days: Look-back window in days (default 90).
     """
     return ec.get_top_selling_products(limit=limit, days=days)
@@ -121,22 +134,22 @@ def tool_get_top_selling_products(limit: int = 10, days: int = 90) -> list[dict]
 
 @mcp.tool()
 def tool_get_low_stock_products(threshold: int = 30) -> list[dict]:
-    """Return products with stock at or below the threshold.
+    """Return analytics modules with deployments at or below the threshold (low adoption alert).
 
     Args:
-        threshold: Stock warning level (default 30).
+        threshold: Deployment count warning level (default 30).
     """
     return ec.get_low_stock_products(threshold=threshold)
 
 
-# ── customers ─────────────────────────────────────────────────────────────────
+# ── users (enterprise business users and decision-makers) ────────────────────
 
 @mcp.tool()
 def tool_get_customer(customer_id: int) -> dict | None:
-    """Get a customer's profile and lifetime order stats.
+    """Get a business user's profile and lifetime subscription stats.
 
     Args:
-        customer_id: The customer's integer ID.
+        customer_id: The business user's integer ID.
     """
     return ec.get_customer(customer_id)
 
@@ -149,12 +162,12 @@ def tool_search_customers(
     city: str = "",
     limit: int = 20,
 ) -> list[dict]:
-    """Search customers by name, email, tier, or city.
+    """Search enterprise users by name, email, engagement tier, or location.
 
     Args:
         name: Partial name match.
         email: Partial email match.
-        tier: Exact tier ('standard', 'silver', 'gold').
+        tier: Exact engagement tier ('standard', 'silver', 'gold').
         city: Partial city match.
         limit: Maximum results (default 20).
     """
@@ -163,33 +176,33 @@ def tool_search_customers(
 
 @mcp.tool()
 def tool_get_customer_orders(customer_id: int, limit: int = 20) -> list[dict]:
-    """Return a customer's order history (most recent first).
+    """Return a business user's subscription history (most recent first).
 
     Args:
-        customer_id: The customer's integer ID.
-        limit: Maximum orders to return (default 20).
+        customer_id: The business user's integer ID.
+        limit: Maximum subscriptions to return (default 20).
     """
     return ec.get_customer_orders(customer_id, limit=limit)
 
 
 @mcp.tool()
 def tool_get_customer_lifetime_value(customer_id: int) -> dict | None:
-    """Return total spend, delivered order count, and favourite category for a customer.
+    """Return total spend, active subscription count, and top business function for a user.
 
     Args:
-        customer_id: The customer's integer ID.
+        customer_id: The business user's integer ID.
     """
     return ec.get_customer_lifetime_value(customer_id)
 
 
-# ── orders ─────────────────────────────────────────────────────────────────────
+# ── subscriptions ─────────────────────────────────────────────────────────────
 
 @mcp.tool()
 def tool_get_order(order_id: int) -> dict | None:
-    """Return full order details including all line items.
+    """Return full subscription details including all analytics modules.
 
     Args:
-        order_id: The order's integer ID.
+        order_id: The subscription's integer ID.
     """
     return ec.get_order(order_id)
 
@@ -198,7 +211,7 @@ def tool_get_order(order_id: int) -> dict | None:
 
 @mcp.tool()
 def tool_get_sales_summary(start_date: str, end_date: str) -> dict:
-    """Aggregate sales metrics between two ISO dates.
+    """Aggregate subscription revenue metrics between two ISO dates.
 
     Args:
         start_date: Period start, e.g. '2024-01-01'.
@@ -209,7 +222,7 @@ def tool_get_sales_summary(start_date: str, end_date: str) -> dict:
 
 @mcp.tool()
 def tool_get_revenue_by_month(year: int) -> list[dict]:
-    """Monthly revenue and order counts for a calendar year.
+    """Monthly subscription revenue and activation counts for a calendar year.
 
     Args:
         year: Four-digit year, e.g. 2024.

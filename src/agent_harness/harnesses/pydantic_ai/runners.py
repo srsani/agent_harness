@@ -1,26 +1,32 @@
 from __future__ import annotations
 
 import time
-from typing import Callable
+from collections.abc import Callable
 
 from agent_harness.config import settings
 from agent_harness.runners.base import AgentRunner, RunResult
 
 HN_MCP_URL = "https://hn.caseyjhand.com/mcp"
 
-ECOMMERCE_SYSTEM_PROMPT = (
-    "You are a helpful e-commerce data analyst. "
-    "Use the available tools to answer questions about products, customers, orders, and sales. "
-    "Be concise and precise; always cite the data you found."
+ENTERPRISE_SYSTEM_PROMPT = (
+    "You are an AI Decision Intelligence analyst for an enterprise platform. "
+    "Your role is to connect siloed data across business functions — finance, supply chain, sales, "
+    "R&D, HR, and operations — to deliver instant, actionable insights and recommendations. "
+    "Use the available tools to answer questions about performance metrics, forecasts, resource "
+    "allocation, and cross-functional KPIs. Surface patterns, flag risks, and recommend decisions "
+    "with supporting evidence. Be concise and always cite the data behind every insight."
 )
 
-ECOMMERCE_SQL_SYSTEM_PROMPT = (
-    "You are an expert e-commerce data analyst with direct access to a SQLite database. "
+ENTERPRISE_SQL_SYSTEM_PROMPT = (
+    "You are an expert AI Decision Intelligence analyst with direct access to "
+    "an enterprise SQLite database. "
+    "The database spans business functions: finance, supply chain, sales, R&D, HR, and operations. "
     "You have three tools: list_tables (discover what tables exist), "
     "describe_table (get column names and types for a table), "
     "and execute_sql (run any read-only SELECT query). "
     "Always start by exploring the schema if you are unsure of the structure. "
-    "Write precise SQL to answer the question. Be concise and always cite the numbers you found."
+    "Write precise SQL to answer the question, then translate the numbers into "
+    "a clear, actionable insight. Be concise and always cite the figures you found."
 )
 
 
@@ -33,9 +39,9 @@ def _optional_logfire() -> None:
     logfire.instrument_pydantic_ai()
 
 
-def _ecommerce_tools():
-    """Return all typed e-commerce tool functions for direct registration."""
-    from agent_harness.tools.ecommerce import (
+def _enterprise_tools():
+    """Return all typed enterprise Decision Intelligence tool functions for direct registration."""
+    from agent_harness.tools.enterprise import (
         get_customer,
         get_customer_lifetime_value,
         get_customer_orders,
@@ -50,9 +56,15 @@ def _ecommerce_tools():
         search_customers,
         search_products,
     )
-    from agent_harness.tools.sql import describe_table, execute_sql, list_tables
+    from agent_harness.tools.sql import (
+        describe_table,
+        execute_sql,
+        get_schema_context,
+        list_tables,
+    )
 
     return [
+        get_schema_context,
         list_categories,
         search_products,
         get_product,
@@ -107,61 +119,65 @@ def _build_codemode_mcp_search_agent():
     )
 
 
-def _build_ecommerce_react_agent():
+def _build_enterprise_react_agent():
     """ReAct-style: typed tools registered directly, no CodeMode batching."""
     from pydantic_ai import Agent
 
-    agent = Agent(_model(), system_prompt=ECOMMERCE_SYSTEM_PROMPT)
-    for fn in _ecommerce_tools():
+    agent = Agent(_model(), system_prompt=ENTERPRISE_SYSTEM_PROMPT)
+    for fn in _enterprise_tools():
         agent.tool_plain(fn)
     return agent
 
 
-def _build_ecommerce_codemode_agent():
+def _build_enterprise_codemode_agent():
     """Harness-style: same tools but wrapped in CodeMode — one round-trip per N calls."""
     from pydantic_ai import Agent
     from pydantic_ai_harness import CodeMode
 
-    agent = Agent(_model(), system_prompt=ECOMMERCE_SYSTEM_PROMPT, capabilities=[CodeMode()])
-    for fn in _ecommerce_tools():
+    agent = Agent(_model(), system_prompt=ENTERPRISE_SYSTEM_PROMPT, capabilities=[CodeMode()])
+    for fn in _enterprise_tools():
         agent.tool_plain(fn)
     return agent
 
 
-def _build_ecommerce_mcp_react_agent():
+def _build_enterprise_mcp_react_agent():
     """ReAct via MCP: tools served over the local FastMCP server, no CodeMode."""
     from pydantic_ai import Agent
     from pydantic_ai.capabilities import MCP
 
     from agent_harness.mcp_server import mcp
 
-    return Agent(_model(), system_prompt=ECOMMERCE_SYSTEM_PROMPT, capabilities=[MCP(mcp, native=False)])
+    return Agent(
+        _model(), system_prompt=ENTERPRISE_SYSTEM_PROMPT, capabilities=[MCP(mcp, native=False)]
+    )
 
 
-def _build_ecommerce_sql_react_agent():
+def _build_enterprise_sql_react_agent():
     """SQL-only ReAct: model must discover the schema and write all queries itself."""
     from pydantic_ai import Agent
+
     from agent_harness.tools.sql import describe_table, execute_sql, list_tables
 
-    agent = Agent(_model(), system_prompt=ECOMMERCE_SQL_SYSTEM_PROMPT)
+    agent = Agent(_model(), system_prompt=ENTERPRISE_SQL_SYSTEM_PROMPT)
     for fn in [list_tables, describe_table, execute_sql]:
         agent.tool_plain(fn)
     return agent
 
 
-def _build_ecommerce_sql_codemode_agent():
+def _build_enterprise_sql_codemode_agent():
     """SQL-only CodeMode: schema discovery + SQL generation, all batched in one sandbox run."""
     from pydantic_ai import Agent
     from pydantic_ai_harness import CodeMode
+
     from agent_harness.tools.sql import describe_table, execute_sql, list_tables
 
-    agent = Agent(_model(), system_prompt=ECOMMERCE_SQL_SYSTEM_PROMPT, capabilities=[CodeMode()])
+    agent = Agent(_model(), system_prompt=ENTERPRISE_SQL_SYSTEM_PROMPT, capabilities=[CodeMode()])
     for fn in [list_tables, describe_table, execute_sql]:
         agent.tool_plain(fn)
     return agent
 
 
-def _build_ecommerce_mcp_codemode_agent():
+def _build_enterprise_mcp_codemode_agent():
     """Harness-style via MCP: FastMCP server tools wrapped in CodeMode."""
     from pydantic_ai import Agent
     from pydantic_ai.capabilities import MCP
@@ -171,7 +187,7 @@ def _build_ecommerce_mcp_codemode_agent():
 
     return Agent(
         _model(),
-        system_prompt=ECOMMERCE_SYSTEM_PROMPT,
+        system_prompt=ENTERPRISE_SYSTEM_PROMPT,
         capabilities=[CodeMode(), MCP(mcp, native=False)],
     )
 
@@ -190,30 +206,30 @@ ARCHITECTURE_BUILDERS: dict[str, tuple[str, Callable[[], object]]] = {
         "CodeMode + Hacker News MCP + DuckDuckGo web search (native=False).",
         _build_codemode_mcp_search_agent,
     ),
-    # ── e-commerce benchmark architectures ────────────────────────────────────
-    "ecommerce-react": (
-        "ReAct: 16 typed tools, one call per model turn.",
-        _build_ecommerce_react_agent,
+    # ── enterprise Decision Intelligence benchmark architectures ──────────────
+    "enterprise-react": (
+        "ReAct: 17 typed tools (incl. get_schema_context), one call per model turn.",
+        _build_enterprise_react_agent,
     ),
-    "ecommerce-codemode": (
-        "Harness/CodeMode: 16 typed tools batched inside a Monty sandbox.",
-        _build_ecommerce_codemode_agent,
+    "enterprise-codemode": (
+        "Harness/CodeMode: 17 typed tools batched inside a Monty sandbox.",
+        _build_enterprise_codemode_agent,
     ),
-    "ecommerce-mcp-react": (
+    "enterprise-mcp-react": (
         "ReAct via MCP: tools served by the local FastMCP server, no batching.",
-        _build_ecommerce_mcp_react_agent,
+        _build_enterprise_mcp_react_agent,
     ),
-    "ecommerce-mcp-codemode": (
+    "enterprise-mcp-codemode": (
         "Harness via MCP: FastMCP tools wrapped in CodeMode for batched execution.",
-        _build_ecommerce_mcp_codemode_agent,
+        _build_enterprise_mcp_codemode_agent,
     ),
-    "ecommerce-sql-react": (
+    "enterprise-sql-react": (
         "SQL-only ReAct: list_tables + describe_table + execute_sql. Model writes all queries.",
-        _build_ecommerce_sql_react_agent,
+        _build_enterprise_sql_react_agent,
     ),
-    "ecommerce-sql-codemode": (
+    "enterprise-sql-codemode": (
         "SQL-only CodeMode: same 3 SQL tools but schema discovery + queries run in one sandbox.",
-        _build_ecommerce_sql_codemode_agent,
+        _build_enterprise_sql_codemode_agent,
     ),
 }
 

@@ -1,4 +1,4 @@
-"""Seed the e-commerce database with realistic simulated data."""
+"""Seed the enterprise Decision Intelligence benchmark database with realistic simulated data."""
 
 from __future__ import annotations
 
@@ -15,73 +15,74 @@ RNG = random.Random(42)
 # ── reference data ────────────────────────────────────────────────────────────
 
 CATEGORIES = [
-    ("Electronics",   "Gadgets, devices, and accessories"),
-    ("Books",         "Fiction, non-fiction, and technical titles"),
-    ("Home & Garden", "Furniture, decor, and outdoor gear"),
-    ("Clothing",      "Apparel for all ages and occasions"),
-    ("Sports",        "Equipment and gear for active lifestyles"),
+    ("Finance",               "Financial planning, forecasting, and capital allocation analytics"),
+    ("Supply Chain",          "Inventory, logistics, demand forecasting, and procurement intelligence"),
+    ("Sales & Marketing",     "Revenue performance, pipeline analytics, and go-to-market optimisation"),
+    ("Research & Development","Portfolio prioritisation, trial analytics, and time-to-market tracking"),
+    ("HR & People",           "Workforce planning, talent retention, and performance management analytics"),
 ]
 
+# (name, description, annual_license_usd, active_deployments)
 PRODUCTS: dict[str, list[tuple[str, str, float, int]]] = {
-    "Electronics": [
-        ("Wireless Noise-Cancelling Headphones", "Over-ear Bluetooth 5.3 with 30 h battery",  249.99, 120),
-        ("Mechanical Keyboard 75%",              "Hot-swap RGB with PBT keycaps",              129.99,  85),
-        ("4K Webcam",                            "2160p/30fps with built-in ring light",        89.99,  60),
-        ("USB-C Hub 10-in-1",                    "Docking station with 4K HDMI and 100W PD",    49.99, 200),
-        ("Smart Watch Gen 4",                    "AMOLED, GPS, blood oxygen sensor",           299.99,  40),
-        ("Portable SSD 1TB",                     "USB 3.2 Gen2, 1050 MB/s read",               99.99, 175),
-        ("Gaming Mouse",                         "16000 DPI optical sensor, 7 buttons",         59.99, 150),
-        ("27-inch Monitor",                      "IPS, 165Hz, 1ms, G-Sync compatible",         399.99,  25),
-        ("Bluetooth Speaker",                    "360° sound, IP67 waterproof, 24 h battery",   79.99,  90),
-        ("Laptop Stand Adjustable",              "Aluminium, foldable, supports up to 20 kg",   39.99, 300),
+    "Finance": [
+        ("Revenue Forecast Model",       "AI-driven quarterly and annual revenue prediction with scenario analysis",      12000.0,  87),
+        ("Budget Variance Dashboard",    "Real-time spend vs. plan tracking with drill-down by cost centre",               8500.0, 120),
+        ("Cash Flow Predictor",          "13-week rolling cash flow forecast with liquidity risk signals",                  9500.0,  64),
+        ("P&L Scenario Simulator",       "Multi-variable what-if modelling for profit and loss projections",              11000.0,  45),
+        ("Working Capital Optimizer",    "Inventory-to-cash cycle analysis with optimisation recommendations",              7500.0,  38),
+        ("CapEx ROI Tracker",            "Capital investment return modelling with payback period analysis",                6500.0,  55),
+        ("Cost Allocation Engine",       "Activity-based cost distribution across departments and products",                8000.0,  72),
+        ("FX Exposure Monitor",          "Currency risk dashboard with hedging strategy recommendations",                   5500.0,  29),
+        ("Earnings Risk Analyzer",       "Volatility and downside scenario analysis for quarterly earnings",                9000.0,  33),
+        ("Shareholder Value Scorecard",  "Long-term value creation KPIs aligned with investor expectations",              10500.0,  18),
     ],
-    "Books": [
-        ("Clean Code",                   "R. Martin — timeless software craftsmanship",    34.99, 500),
-        ("Designing Data-Intensive Apps", "M. Kleppmann — distributed systems bible",      49.99, 350),
-        ("The Pragmatic Programmer",     "Hunt & Thomas — 20th anniversary edition",       39.99, 280),
-        ("Python Cookbook",              "Beazley & Jones — recipes for modern Python",    44.99, 210),
-        ("Atomic Habits",                "J. Clear — tiny changes, remarkable results",    16.99, 600),
-        ("Deep Work",                    "Cal Newport — rules for focused success",        15.99, 450),
-        ("The Go Programming Language",  "Donovan & Kernighan — authoritative Go guide",  44.99, 190),
-        ("Staff Engineer",               "W. Larson — leadership beyond the management",   29.99, 160),
-        ("Thinking, Fast and Slow",      "Daniel Kahneman — two-system theory of mind",   17.99, 520),
-        ("Zero to One",                  "Peter Thiel — notes on startups and the future",14.99, 400),
+    "Supply Chain": [
+        ("Demand Forecast Engine",          "ML-powered demand prediction at SKU level with seasonal adjustment",         14000.0,  95),
+        ("Inventory Optimization Suite",    "Min/max stock level recommendations with carrying cost analysis",            11500.0,  78),
+        ("Supplier Performance Tracker",    "On-time delivery, quality scores, and risk ratings by supplier",              7000.0, 110),
+        ("Logistics Cost Analyzer",         "Freight spend breakdown with lane-level optimisation opportunities",           8500.0,  65),
+        ("Lead Time Predictor",             "Predictive supply lead times with disruption early-warning signals",           9500.0,  52),
+        ("Stockout Risk Monitor",           "Probabilistic out-of-stock alerts 30–60 days ahead of occurrence",            6500.0,  88),
+        ("Warehouse Utilisation Dashboard", "Capacity utilisation, pick efficiency, and slotting optimisation",             7500.0,  43),
+        ("Transportation Network Optimizer","Carrier mix and routing recommendations to reduce freight cost",              12500.0,  31),
+        ("Order Fulfilment Tracker",        "End-to-end order status with SLA breach prediction",                          5500.0, 140),
+        ("Procurement Savings Analyzer",    "Contract compliance, maverick spend, and negotiation opportunity finder",    10000.0,  57),
     ],
-    "Home & Garden": [
-        ("Standing Desk 140cm",       "Electric height-adjustable, memory presets",       499.99,  15),
-        ("Ergonomic Office Chair",    "Lumbar support, 4D armrests, mesh back",           349.99,  20),
-        ("Air Purifier HEPA H13",     "360° intake, 5-stage filtration, whisper-quiet",   179.99,  55),
-        ("Grow Light Full Spectrum",  "Samsung LM301H LEDs, dimmable timer",              89.99,  80),
-        ("French Press 1L",           "Double-wall stainless, stays hot 4 h",             29.99, 220),
-        ("Cast Iron Skillet 10in",    "Pre-seasoned, oven-safe to 500°F",                 44.99, 300),
-        ("Robot Vacuum Gen 3",        "LiDAR mapping, self-emptying base",               399.99,  18),
-        ("Bamboo Cutting Board Set",  "3-piece, juice groove, dishwasher-safe",           24.99, 400),
-        ("Indoor Herb Garden Kit",    "Self-watering planter, LED grow light, seeds",     54.99, 130),
-        ("Smart Thermostat",          "Learns your schedule, works with Alexa & Google", 149.99,  45),
+    "Sales & Marketing": [
+        ("Revenue Performance Dashboard",   "Real-time revenue vs. target with team and regional drill-down",             10000.0, 130),
+        ("Sales Pipeline Analyzer",         "Pipeline coverage, stage conversion rates, and deal risk scoring",            9000.0,  98),
+        ("Campaign ROI Optimizer",          "Marketing spend attribution with channel mix optimisation",                   8500.0,  75),
+        ("Customer Acquisition Cost Tracker","CAC by channel, segment, and cohort with payback period modelling",          7000.0,  60),
+        ("Market Share Monitor",            "Competitive position tracking using external market signals",                 11000.0,  42),
+        ("Channel Mix Optimizer",           "AI-recommended budget allocation across digital and physical channels",        9500.0,  55),
+        ("Price Elasticity Model",          "Demand sensitivity analysis enabling data-driven pricing decisions",          12000.0,  37),
+        ("Quota Attainment Tracker",        "Individual and team quota progress with attainment probability forecast",      6000.0, 115),
+        ("GTM Readiness Planner",           "Go-to-market readiness scoring for new products and market entries",          8000.0,  28),
+        ("Territory Performance Analyzer",  "Geographic revenue analysis with whitespace opportunity identification",       7500.0,  49),
     ],
-    "Clothing": [
-        ("Merino Wool Base Layer",   "Odour-resistant, moisture-wicking, 190 gsm",  79.99, 200),
-        ("Slim-Fit Chinos",          "Stretch cotton, 5-pocket, 12 colours",         59.99, 350),
-        ("Waterproof Rain Jacket",   "20k/20k Gore-Tex, packable, pit-zip vents",   149.99, 110),
-        ("Running Shoes GT-2200",    "Gel cushioning, AHAR+ outsole, wide fit",     129.99, 180),
-        ("Crew-Neck Sweatshirt",     "300 gsm French terry, pre-washed, unisex",     44.99, 500),
-        ("Wool Beanie",              "100% Shetland wool, ribbed, one size",          19.99, 600),
-        ("Compression Socks 3-pack", "Graduated 15-20 mmHg, OTC medical grade",      29.99, 450),
-        ("Leather Belt 35mm",        "Full-grain vegetable-tanned, nickel buckle",    49.99, 250),
-        ("Linen Shirt Long Sleeve",  "120s linen, mother-of-pearl buttons, relaxed",  69.99, 175),
-        ("Packable Down Vest",       "800-fill power, 20D ripstop, weighs 180 g",    89.99, 140),
+    "Research & Development": [
+        ("Clinical Trial Optimizer",         "Trial site selection, patient recruitment, and timeline risk modelling",    18000.0,  22),
+        ("Portfolio Prioritisation Engine",  "R&D investment scoring by expected value, risk, and strategic fit",         15000.0,  35),
+        ("Time-to-Market Predictor",         "Development stage gating with launch timeline probability distributions",   13000.0,  41),
+        ("R&D Spend Analyzer",               "Cost-per-programme tracking with benchmark comparisons",                     9000.0,  58),
+        ("Innovation Pipeline Dashboard",    "Active project status, resource allocation, and milestone tracking",         8000.0,  67),
+        ("Trial Success Probability Model",  "Bayesian phase transition probability with historical calibration",          16000.0,  19),
+        ("Regulatory Timeline Tracker",      "Submission-to-approval cycle modelling with bottleneck identification",     12000.0,  30),
+        ("IP Portfolio Analyzer",            "Patent strength, expiry risk, and competitive exposure scoring",            10000.0,  25),
+        ("Resource Allocation Optimizer",    "Cross-portfolio scientist and lab capacity planning recommendations",        11000.0,  44),
+        ("Competitive Intelligence Monitor", "Competitor pipeline tracking and differentiation analysis",                  7500.0,  72),
     ],
-    "Sports": [
-        ("Yoga Mat 6mm",              "Non-slip natural rubber, alignment lines",       49.99, 320),
-        ("Adjustable Dumbbell Set",   "5-50 lb selector, compact footprint",           399.99,  22),
-        ("Pull-Up Bar Doorframe",     "No-screws, 100 kg capacity, foam grips",         34.99, 280),
-        ("Resistance Bands 5-pack",  "11–60 lb latex loop bands, door anchor kit",     24.99, 450),
-        ("Foam Roller Deep Tissue",   "High-density EVA, textured surface, 33cm",       19.99, 500),
-        ("Hydration Backpack 15L",    "2 L bladder, chest/hip straps, rain cover",      79.99, 100),
-        ("Cycling Computer GPS",      "Colour touchscreen, ANT+/BLE, 40 h battery",   249.99,  35),
-        ("Jump Rope Speed",           "Ball-bearing handles, 3m adjustable cable",      14.99, 600),
-        ("Kettlebell 16kg",           "Cast iron, powder-coated, flat base",            59.99, 150),
-        ("Swimming Goggles Anti-Fog", "UV400, mirrored lens, tri-fold case",            22.99, 380),
+    "HR & People": [
+        ("Workforce Planning Dashboard",    "Headcount forecasting by function with attrition and hiring scenarios",       9500.0,  80),
+        ("Talent Retention Predictor",      "Flight-risk scoring with personalised intervention recommendations",          11000.0,  65),
+        ("Diversity & Inclusion Scorecard", "Representation metrics, pay equity analysis, and gap closure tracking",       7000.0,  90),
+        ("Performance Management Analyzer", "Rating distribution analysis, calibration support, and bias detection",       8500.0,  55),
+        ("Compensation Benchmarking Tool",  "Market pay positioning with range penetration and equity risk alerts",         9000.0,  48),
+        ("Employee Engagement Monitor",     "Pulse survey analytics with drivers of engagement and churn signals",          6500.0, 105),
+        ("Succession Planning Engine",      "Critical role coverage, bench strength scoring, and readiness timelines",    10000.0,  38),
+        ("Hiring Funnel Optimizer",         "Recruitment pipeline conversion rates with source quality analysis",           7500.0,  72),
+        ("Training ROI Analyzer",           "Learning investment returns linked to performance and retention outcomes",      5500.0,  88),
+        ("Absenteeism Risk Tracker",        "Absence pattern analysis with productivity impact and early warning flags",    6000.0,  61),
     ],
 }
 
@@ -109,41 +110,44 @@ CITIES = [
 TIERS = ["standard", "standard", "standard", "silver", "silver", "gold"]
 
 REVIEW_TITLES_GOOD = [
-    "Absolutely love it!", "Exceeded expectations", "Great quality",
-    "Would buy again", "Highly recommended", "Brilliant product",
-    "Five stars — no hesitation", "Impressed by the build quality",
+    "Transformed our decision-making", "Cut our analysis time by 80%",
+    "Exactly the insights we needed", "Exceeded our accuracy targets",
+    "Finally, data-driven forecasting", "Impressive predictive power",
+    "Saved weeks of manual work", "Our leadership team relies on this daily",
 ]
 REVIEW_TITLES_MID = [
-    "Decent for the price", "Does the job", "Good but not perfect",
-    "Solid enough", "Worth the money", "Meets expectations",
+    "Good starting point", "Useful but needs calibration",
+    "Solid analytics, some data gaps", "Meets our core needs",
+    "Promising, room to improve", "Covers most of our use cases",
 ]
 REVIEW_TITLES_BAD = [
-    "Disappointed", "Not as described", "Had issues from day one",
-    "Returned after a week", "Expected better quality",
+    "Data freshness issues", "Model needs more training data",
+    "Results don't match our expectations", "Too many false positives",
+    "Needs better integration with our data sources",
 ]
 REVIEW_BODIES = {
     5: [
-        "This is exactly what I needed. Build quality is excellent and it arrived quickly.",
-        "Superb. I've been using it daily for weeks and it still feels brand new.",
-        "Perfect product. My whole team has ordered one now.",
+        "This module immediately surfaced insights we'd been missing for quarters. ROI was clear within the first month.",
+        "The predictive accuracy is remarkable. We've integrated it into our weekly leadership reviews.",
+        "Exactly what we needed to move from gut-feel to data-driven decisions. Our whole team uses it daily.",
     ],
     4: [
-        "Really solid. Minor gripe with the packaging but the product itself is great.",
-        "Works very well. Setup was easy and performance is impressive.",
-        "Good value. A couple of small improvements would make it perfect.",
+        "Very strong analytics with actionable recommendations. Minor gap in historical data depth but otherwise excellent.",
+        "Works well for our use case. Onboarding was smooth and the insights are genuinely useful.",
+        "Good value. A few more customisation options would make it perfect for our workflow.",
     ],
     3: [
-        "It's fine. Does what it says, nothing more. Shipping was slow.",
-        "Average product. Not bad, but I've seen better at this price point.",
-        "Decent but could be better. Customer service was helpful when I had a question.",
+        "It covers the basics well. We'd love deeper drill-down capability and faster data refresh.",
+        "Adequate for standard reporting. Advanced scenarios still require SQL workarounds.",
+        "Decent output. The customer success team was helpful when we needed guidance on interpretation.",
     ],
     2: [
-        "Doesn't quite live up to the marketing. Had to contact support twice.",
-        "Below average. A few features don't work as described.",
+        "The model's baseline assumptions don't align well with our industry. Required significant reconfiguration.",
+        "Below our expectations. Several key metrics we rely on are missing from the current version.",
     ],
     1: [
-        "Stopped working after two weeks. Returning it.",
-        "Very disappointing. Nothing like the photos online.",
+        "Persistent data latency issues made this unusable for real-time decision-making.",
+        "Very disappointing. The predictions were consistently off and support response was slow.",
     ],
 }
 
@@ -182,12 +186,13 @@ def seed(conn: sqlite3.Connection, *, n_customers: int = 200, n_orders: int = 60
 
     # --- products ---
     product_ids: list[int] = []
-    product_prices: dict[int, float] = {}
+    product_prices: dict[int, float] = {}  # product_id → annual_license_usd
     for cat_name, items in PRODUCTS.items():
         cat_id = cat_ids[cat_name]
         for pname, pdesc, price, stock in items:
             cur = conn.execute(
-                "INSERT OR IGNORE INTO products(category_id,name,description,price,stock_quantity,created_at)"
+                "INSERT OR IGNORE INTO products"
+                "(category_id,name,description,annual_license_usd,active_deployments,created_at)"
                 " VALUES (?,?,?,?,?,?)",
                 (cat_id, pname, pdesc, price, stock, _random_dt(three_years_ago, now - timedelta(days=365))),
             )
@@ -197,7 +202,7 @@ def seed(conn: sqlite3.Connection, *, n_customers: int = 200, n_orders: int = 60
                 row = conn.execute("SELECT id FROM products WHERE name=?", (pname,)).fetchone()
                 pid = row[0]
             product_ids.append(pid)
-            product_prices[pid] = price
+            product_prices[pid] = price  # annual_license_usd per seat
 
     # --- customers ---
     customer_ids: list[int] = []
@@ -249,10 +254,10 @@ def seed(conn: sqlite3.Connection, *, n_customers: int = 200, n_orders: int = 60
         total = 0.0
         line_items = []
         for pid in chosen:
-            qty = RNG.randint(1, 3)
+            seats = RNG.randint(1, 3)
             price = product_prices[pid]
-            total += qty * price
-            line_items.append((pid, qty, price))
+            total += seats * price
+            line_items.append((pid, seats, price))
 
         cur = conn.execute(
             "INSERT INTO orders(customer_id,status,total_amount,created_at,shipped_at)"
@@ -261,11 +266,11 @@ def seed(conn: sqlite3.Connection, *, n_customers: int = 200, n_orders: int = 60
         )
         oid = cur.lastrowid
         order_ids.append(oid)
-        for pid, qty, price in line_items:
+        for pid, seats, price in line_items:
             conn.execute(
-                "INSERT INTO order_items(order_id,product_id,quantity,unit_price)"
+                "INSERT INTO order_items(order_id,product_id,seats,unit_price)"
                 " VALUES (?,?,?,?)",
-                (oid, pid, qty, price),
+                (oid, pid, seats, price),
             )
 
     # --- reviews (≈25% of order-items, for delivered orders only) ---

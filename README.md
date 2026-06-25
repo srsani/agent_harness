@@ -1,6 +1,6 @@
 # Agent Harness Bench
 
-Compare **agent harnesses** (capability libraries) against **agentic architectures** (orchestration patterns) using shared tasks and a realistic test database.
+Compare **agent harnesses** (capability libraries) against **agentic architectures** (orchestration patterns) using shared tasks and a realistic enterprise Decision Intelligence database.
 
 Current harness: [pydantic-ai-harness](https://github.com/pydantic/pydantic-ai-harness) on top of [Pydantic AI](https://ai.pydantic.dev/).
 
@@ -62,7 +62,7 @@ The `local:` prefix tells the runner to create an `OpenAIChatModel` pointed at y
 |---|---|
 | 1 · Plain chat | Talk to the model with no tools |
 | 2 · Multi-turn | Continue a conversation using `message_history` |
-| 3 · E-commerce agent | Agent with all 16 database tools wired up |
+| 3 · Enterprise agent | Agent with all 16 database tools wired up |
 | 4 · Inspect tool calls | See exactly which tools fired and what they returned |
 | 5 · Raw SQL | Write SQLite queries; results rendered as a pandas DataFrame + chart |
 | 6 · Quick benchmark | Run the same question through ReAct vs CodeMode and compare elapsed time |
@@ -78,11 +78,11 @@ uv run agent-bench list
 # Run one combination
 uv run agent-bench run \
   --harness pydantic-ai \
-  --architecture ecommerce-react \
-  --task ec-category-analysis
+  --architecture enterprise-react \
+  --task adi-function-analysis
 
 # Run every architecture against one task
-uv run agent-bench run-all --harness pydantic-ai --task ec-top-products
+uv run agent-bench run-all --harness pydantic-ai --task adi-top-modules
 ```
 
 ---
@@ -97,16 +97,18 @@ uv run agent-bench run-all --harness pydantic-ai --task ec-top-products
 | `codemode` | CodeMode — wraps tools in a Monty-sandboxed `run_code` call |
 | `codemode-mcp-search` | CodeMode + Hacker News MCP + DuckDuckGo web search |
 
-### E-commerce benchmark
+### Enterprise Decision Intelligence benchmark
 
-These four architectures all answer the same tasks against the same SQLite database, making them directly comparable.
+These six architectures all answer the same tasks against the same SQLite database, making them directly comparable.
 
 | Name | Tools registered via | CodeMode batching |
 |---|---|---|
-| `ecommerce-react` | Direct function registration | No — classic ReAct |
-| `ecommerce-codemode` | Direct function registration | Yes — harness style |
-| `ecommerce-mcp-react` | Local FastMCP server | No — classic ReAct |
-| `ecommerce-mcp-codemode` | Local FastMCP server | Yes — harness style |
+| `enterprise-react` | Direct function registration | No — classic ReAct |
+| `enterprise-codemode` | Direct function registration | Yes — harness style |
+| `enterprise-mcp-react` | Local FastMCP server | No — classic ReAct |
+| `enterprise-mcp-codemode` | Local FastMCP server | Yes — harness style |
+| `enterprise-sql-react` | SQL tools only | No — model writes all queries |
+| `enterprise-sql-codemode` | SQL tools only | Yes — schema discovery + queries in one sandbox |
 
 **What you can measure across them:**
 - Number of LLM round-trips for the same task
@@ -117,16 +119,16 @@ These four architectures all answer the same tasks against the same SQLite datab
 
 ## Test database
 
-A SQLite e-commerce database lives at `data/ecommerce.db` after seeding.
+A SQLite enterprise Decision Intelligence database lives at `data/enterprise.db` after seeding.
 
 | Table | Rows | Description |
 |---|---|---|
-| `categories` | 5 | Product categories |
-| `products` | 50 | Items across all categories |
-| `customers` | 200 | Customers with tiers (standard / silver / gold) |
-| `orders` | 600 | Orders spanning the last year |
-| `order_items` | ~1 500 | Line items linking orders to products |
-| `reviews` | ~170 | Customer reviews with 1–5 star ratings |
+| `categories` | 5 | Business functions: Finance, Supply Chain, Sales & Marketing, R&D, HR & People |
+| `products` | 50 | Analytics modules across all business functions |
+| `customers` | 200 | Enterprise users with engagement tiers (standard / silver / gold) |
+| `orders` | 600 | Subscriptions spanning the last year |
+| `order_items` | ~1 500 | Line items linking subscriptions to analytics modules |
+| `reviews` | ~170 | User satisfaction ratings with 1–5 star scores |
 
 ```bash
 # Re-seed from scratch at any time
@@ -135,23 +137,23 @@ uv run python scripts/seed_db.py --reset
 
 ### Tools
 
-**Semantic tools** (`src/agent_harness/tools/ecommerce.py`) — typed functions a harness agent uses:
+**Semantic tools** (`src/agent_harness/tools/enterprise.py`) — typed functions a harness agent uses:
 
 | Function | What it does |
 |---|---|
-| `list_categories()` | All product categories |
-| `search_products(query, category, max_price, in_stock_only)` | Filtered product search |
-| `get_product(product_id)` | Product detail with average rating |
-| `get_product_reviews(product_id)` | Recent reviews |
-| `get_top_selling_products(limit, days)` | Best sellers by units sold |
-| `get_low_stock_products(threshold)` | Inventory alert |
-| `get_customer(customer_id)` | Profile + lifetime order stats |
-| `search_customers(name, email, tier, city)` | Customer search |
-| `get_customer_orders(customer_id)` | Order history |
-| `get_customer_lifetime_value(customer_id)` | Spend, order count, favourite category |
-| `get_order(order_id)` | Order header + line items |
-| `get_sales_summary(start_date, end_date)` | Revenue, orders, AOV for a date range |
-| `get_revenue_by_month(year)` | Monthly revenue breakdown |
+| `list_categories()` | All business function categories |
+| `search_products(query, category, max_price, in_stock_only)` | Filtered analytics module search |
+| `get_product(product_id)` | Module detail with average user rating |
+| `get_product_reviews(product_id)` | Recent user satisfaction ratings |
+| `get_top_selling_products(limit, days)` | Most-subscribed modules by activation count |
+| `get_low_stock_products(threshold)` | Low adoption alert |
+| `get_customer(customer_id)` | Business user profile + lifetime subscription stats |
+| `search_customers(name, email, tier, city)` | Enterprise user search |
+| `get_customer_orders(customer_id)` | Subscription history |
+| `get_customer_lifetime_value(customer_id)` | Spend, subscription count, top business function |
+| `get_order(order_id)` | Subscription header + analytics modules |
+| `get_sales_summary(start_date, end_date)` | Revenue, activations, AOV for a date range |
+| `get_revenue_by_month(year)` | Monthly subscription revenue breakdown |
 
 **SQL tools** (`src/agent_harness/tools/sql.py`) — the raw escape hatch a ReAct agent tends to reach for:
 
@@ -192,29 +194,29 @@ Tasks are shared prompts used across all harnesses and architectures.
 | `reasoning` | Multi-step logical deduction |
 | `hn-research` | Web search + summarisation |
 
-### E-commerce — single lookup
+### Enterprise Decision Intelligence — single lookup
 
 | Name | Tests |
 |---|---|
-| `ec-top-products` | Single `get_top_selling_products` call |
-| `ec-low-stock` | Single `get_low_stock_products` call |
-| `ec-customer-lookup` | `get_customer` + `get_customer_orders` |
+| `adi-top-modules` | Single `get_top_selling_products` call |
+| `adi-low-adoption` | Single `get_low_stock_products` call |
+| `adi-user-lookup` | `get_customer` + `get_customer_orders` |
 
-### E-commerce — multi-step join reasoning
-
-| Name | Tests |
-|---|---|
-| `ec-category-analysis` | Revenue + unique buyers + best product per category |
-| `ec-gold-customers` | Gold tier profile + best order + city aggregation |
-| `ec-review-insights` | Best and worst reviewed products with sample reviews |
-| `ec-monthly-trend` | Monthly revenue trend + MoM growth calculation |
-
-### E-commerce — complex analytical
+### Enterprise Decision Intelligence — multi-step join reasoning
 
 | Name | Tests |
 |---|---|
-| `ec-churn-risk` | Multi-condition filter: active then gone quiet |
-| `ec-basket-size` | Aggregation grouped by customer tier |
+| `adi-function-analysis` | Revenue + unique users + best module per business function |
+| `adi-executive-users` | Gold tier profile + best subscription + city aggregation |
+| `adi-module-ratings` | Best and worst rated modules with sample review |
+| `adi-monthly-trend` | Monthly revenue trend + MoM growth calculation |
+
+### Enterprise Decision Intelligence — complex analytical
+
+| Name | Tests |
+|---|---|
+| `adi-disengagement-risk` | Multi-condition filter: active then gone quiet |
+| `adi-portfolio-depth` | Aggregation grouped by user engagement tier |
 
 ---
 
@@ -224,14 +226,14 @@ Tasks are shared prompts used across all harnesses and architectures.
 src/agent_harness/
   config.py               # Settings from .env; build_pydantic_ai_model()
   registry.py             # Harness / architecture / task registry
-  mcp_server.py           # FastMCP server exposing all e-commerce tools
+  mcp_server.py           # FastMCP server exposing all enterprise Decision Intelligence tools
   runners/
     base.py               # AgentRunner ABC + RunResult dataclass
   harnesses/
     pydantic_ai/
       runners.py          # All architecture builders + PydanticAIRunner
   tools/
-    ecommerce.py          # 13 semantic tool functions
+    enterprise.py         # 13 semantic tool functions
     sql.py                # list_tables, describe_table, execute_sql
   tasks/
     builtins.py           # All benchmark prompts
@@ -246,7 +248,7 @@ scripts/
   seed_db.py              # CLI: seed or reset the database
 
 data/
-  ecommerce.db            # Generated — not committed to git
+  enterprise.db           # Generated — not committed to git
 
 examples/
   pydantic_ai_quickstart.py

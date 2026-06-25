@@ -24,7 +24,7 @@ dev = [
 
 [project.scripts]
 agent-bench = "agent_harness.cli:app"
-ecommerce-mcp = "agent_harness.mcp_server:mcp.run"
+enterprise-mcp = "agent_harness.mcp_server:mcp.run"
 
 [build-system]
 requires = ["hatchling"]

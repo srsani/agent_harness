@@ -1,4 +1,4 @@
-"""Seed the e-commerce test database.
+"""Seed the enterprise Decision Intelligence benchmark database.
 
 Usage:
     uv run python scripts/seed_db.py
@@ -15,7 +15,7 @@ from agent_harness.db.seed import seed_db
 
 
 def main() -> None:
-    parser = argparse.ArgumentParser(description="Seed the e-commerce benchmark database.")
+    parser = argparse.ArgumentParser(description="Seed the enterprise Decision Intelligence benchmark database.")
     parser.add_argument("--reset", action="store_true", help="Delete existing data before seeding.")
     parser.add_argument("--db", default=None, help="Custom path to the SQLite database file.")
     args = parser.parse_args()

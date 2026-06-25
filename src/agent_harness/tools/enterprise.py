@@ -1,6 +1,7 @@
-"""Typed, semantic tools that wrap the e-commerce database.
+"""Typed, semantic tools that wrap the enterprise Decision Intelligence database.
 
-These are the "rich" tools a harness-based agent would get.
+These are the "rich" tools a harness-based agent would get — covering analytics modules
+(products), business users (customers), subscriptions (orders), and satisfaction ratings (reviews).
 Each function returns plain Python dicts/lists so they work as
 pydantic-ai tools, MCP tools, or standalone callables.
 """
@@ -24,10 +25,10 @@ def _row(sql: str, *params) -> dict[str, Any] | None:
         return dict(row) if row else None
 
 
-# ── catalogue ─────────────────────────────────────────────────────────────────
+# ── catalogue (analytics modules by business function) ───────────────────────
 
 def list_categories() -> list[dict[str, Any]]:
-    """Return all product categories."""
+    """Return all business function categories (Finance, Supply Chain, Sales & Marketing, etc.)."""
     return _rows("SELECT id, name, description FROM categories ORDER BY name")
 
 
@@ -38,13 +39,13 @@ def search_products(
     in_stock_only: bool = False,
     limit: int = 20,
 ) -> list[dict[str, Any]]:
-    """Search products by keyword, optional category name filter, and optional max price.
+    """Search analytics modules by keyword, business function, and optional max annual license cost.
 
     Args:
-        query: Free-text search against product name and description.
-        category: Filter by category name (partial match, case-insensitive).
-        max_price: Upper price bound. 0 means no limit.
-        in_stock_only: If True, only return products with stock_quantity > 0.
+        query: Free-text search against module name and description.
+        category: Filter by business function (partial match, case-insensitive).
+        max_price: Upper annual license cost bound in USD. 0 means no limit.
+        in_stock_only: If True, only return modules with active_deployments > 0.
         limit: Maximum number of results to return (default 20).
     """
     conditions = ["1=1"]
@@ -57,17 +58,17 @@ def search_products(
         conditions.append("c.name LIKE ?")
         params.append(f"%{category}%")
     if max_price > 0:
-        conditions.append("p.price <= ?")
+        conditions.append("p.annual_license_usd <= ?")
         params.append(max_price)
     if in_stock_only:
-        conditions.append("p.stock_quantity > 0")
+        conditions.append("p.active_deployments > 0")
 
     params.append(limit)
     where = " AND ".join(conditions)
     return _rows(
         f"""
-        SELECT p.id, p.name, p.description, p.price, p.stock_quantity,
-               c.name AS category
+        SELECT p.id, p.name, p.description, p.annual_license_usd, p.active_deployments,
+               c.name AS business_function
         FROM products p
         JOIN categories c ON c.id = p.category_id
         WHERE {where}
@@ -79,11 +80,11 @@ def search_products(
 
 
 def get_product(product_id: int) -> dict[str, Any] | None:
-    """Get full details for a single product, including its category and average rating."""
+    """Get full details for a single analytics module: business function, price, and avg rating."""
     return _row(
         """
-        SELECT p.id, p.name, p.description, p.price, p.stock_quantity,
-               c.name AS category,
+        SELECT p.id, p.name, p.description, p.annual_license_usd, p.active_deployments,
+               c.name AS business_function,
                ROUND(AVG(r.rating), 2) AS avg_rating,
                COUNT(r.id) AS review_count
         FROM products p
@@ -97,10 +98,10 @@ def get_product(product_id: int) -> dict[str, Any] | None:
 
 
 def get_product_reviews(product_id: int, limit: int = 10) -> list[dict[str, Any]]:
-    """Return the most recent reviews for a product.
+    """Return the most recent user satisfaction ratings for an analytics module.
 
     Args:
-        product_id: Product to fetch reviews for.
+        product_id: Analytics module ID to fetch ratings for.
         limit: Maximum number of reviews (default 10).
     """
     return _rows(
@@ -119,18 +120,18 @@ def get_product_reviews(product_id: int, limit: int = 10) -> list[dict[str, Any]
 
 
 def get_top_selling_products(limit: int = 10, days: int = 90) -> list[dict[str, Any]]:
-    """Return best-selling products by units sold in the last N days.
+    """Return the most-subscribed analytics modules by activation count in the last N days.
 
     Args:
-        limit: How many products to return (default 10).
+        limit: How many modules to return (default 10).
         days: Look-back window in days (default 90).
     """
     return _rows(
         """
-        SELECT p.id, p.name, p.price,
-               c.name AS category,
-               SUM(oi.quantity) AS units_sold,
-               SUM(oi.quantity * oi.unit_price) AS revenue
+        SELECT p.id, p.name, p.annual_license_usd,
+               c.name AS business_function,
+               SUM(oi.seats) AS total_seats_activated,
+               SUM(oi.seats * oi.unit_price) AS subscription_revenue
         FROM order_items oi
         JOIN orders o   ON o.id  = oi.order_id
         JOIN products p ON p.id  = oi.product_id
@@ -138,7 +139,7 @@ def get_top_selling_products(limit: int = 10, days: int = 90) -> list[dict[str, 
         WHERE o.created_at >= datetime('now', ? || ' days')
           AND o.status != 'cancelled'
         GROUP BY p.id
-        ORDER BY units_sold DESC
+        ORDER BY total_seats_activated DESC
         LIMIT ?
         """,
         f"-{days}",
@@ -147,33 +148,33 @@ def get_top_selling_products(limit: int = 10, days: int = 90) -> list[dict[str, 
 
 
 def get_low_stock_products(threshold: int = 30) -> list[dict[str, Any]]:
-    """Return products whose stock_quantity is at or below the threshold.
+    """Return analytics modules with deployments at or below the threshold (low adoption alert).
 
     Args:
-        threshold: Stock quantity warning level (default 30).
+        threshold: Deployment count warning level (default 30).
     """
     return _rows(
         """
-        SELECT p.id, p.name, p.price, p.stock_quantity,
-               c.name AS category
+        SELECT p.id, p.name, p.annual_license_usd, p.active_deployments,
+               c.name AS business_function
         FROM products p
         JOIN categories c ON c.id = p.category_id
-        WHERE p.stock_quantity <= ?
-        ORDER BY p.stock_quantity ASC
+        WHERE p.active_deployments <= ?
+        ORDER BY p.active_deployments ASC
         """,
         threshold,
     )
 
 
-# ── customers ─────────────────────────────────────────────────────────────────
+# ── users (enterprise business users and decision-makers) ────────────────────
 
 def get_customer(customer_id: int) -> dict[str, Any] | None:
-    """Get a customer's profile including lifetime order stats."""
+    """Get a business user's profile including lifetime subscription stats."""
     return _row(
         """
         SELECT c.id, c.full_name, c.email, c.city, c.country, c.tier, c.created_at,
-               COUNT(o.id)          AS total_orders,
-               ROUND(SUM(o.total_amount), 2) AS lifetime_value
+               COUNT(o.id)                    AS total_subscriptions,
+               ROUND(SUM(o.total_amount), 2)  AS lifetime_value
         FROM customers c
         LEFT JOIN orders o ON o.customer_id = c.id AND o.status != 'cancelled'
         WHERE c.id = ?
@@ -190,12 +191,12 @@ def search_customers(
     city: str = "",
     limit: int = 20,
 ) -> list[dict[str, Any]]:
-    """Search customers by name, email, tier, or city.
+    """Search enterprise users by name, email, engagement tier, or location.
 
     Args:
         name: Partial name match (case-insensitive).
         email: Partial email match.
-        tier: Exact tier match ('standard', 'silver', or 'gold').
+        tier: Exact engagement tier ('standard', 'silver', or 'gold').
         city: Partial city match.
         limit: Maximum results (default 20).
     """
@@ -223,16 +224,16 @@ def search_customers(
 
 
 def get_customer_orders(customer_id: int, limit: int = 20) -> list[dict[str, Any]]:
-    """Return a customer's order history (most recent first).
+    """Return a business user's subscription history (most recent first).
 
     Args:
-        customer_id: Customer to look up.
-        limit: Maximum number of orders to return (default 20).
+        customer_id: Business user to look up.
+        limit: Maximum number of subscriptions to return (default 20).
     """
     return _rows(
         """
         SELECT o.id, o.status, o.total_amount, o.created_at, o.shipped_at,
-               COUNT(oi.id) AS item_count
+               COUNT(oi.id) AS module_count
         FROM orders o
         JOIN order_items oi ON oi.order_id = o.id
         WHERE o.customer_id = ?
@@ -246,12 +247,12 @@ def get_customer_orders(customer_id: int, limit: int = 20) -> list[dict[str, Any
 
 
 def get_customer_lifetime_value(customer_id: int) -> dict[str, Any] | None:
-    """Detailed lifetime-value breakdown for a customer: orders, spend, and top category."""
+    """Lifetime-value breakdown for a business user: subscriptions, total spend, top function."""
     return _row(
         """
         SELECT c.id, c.full_name, c.tier,
-               COUNT(DISTINCT o.id)           AS delivered_orders,
-               ROUND(SUM(oi.quantity * oi.unit_price), 2) AS total_spend,
+               COUNT(DISTINCT o.id)                          AS delivered_subscriptions,
+               ROUND(SUM(oi.seats * oi.unit_price), 2)       AS total_spend,
                (
                    SELECT cat.name
                    FROM order_items oi2
@@ -260,12 +261,12 @@ def get_customer_lifetime_value(customer_id: int) -> dict[str, Any] | None:
                    JOIN categories cat ON cat.id = p2.category_id
                    WHERE o2.customer_id = c.id AND o2.status = 'delivered'
                    GROUP BY cat.id
-                   ORDER BY SUM(oi2.quantity * oi2.unit_price) DESC
+                   ORDER BY SUM(oi2.seats * oi2.unit_price) DESC
                    LIMIT 1
-               ) AS favourite_category
+               ) AS top_business_function
         FROM customers c
-        JOIN orders o    ON o.customer_id   = c.id
-        JOIN order_items oi ON oi.order_id  = o.id
+        JOIN orders o      ON o.customer_id  = c.id
+        JOIN order_items oi ON oi.order_id   = o.id
         WHERE c.id = ? AND o.status = 'delivered'
         GROUP BY c.id
         """,
@@ -273,10 +274,10 @@ def get_customer_lifetime_value(customer_id: int) -> dict[str, Any] | None:
     )
 
 
-# ── orders ─────────────────────────────────────────────────────────────────────
+# ── subscriptions ─────────────────────────────────────────────────────────────
 
 def get_order(order_id: int) -> dict[str, Any] | None:
-    """Get order header (status, total, dates) plus its line items."""
+    """Get subscription header (status, total annual value, dates) plus its analytics modules."""
     header = _row(
         """
         SELECT o.id, o.status, o.total_amount, o.created_at, o.shipped_at,
@@ -291,9 +292,9 @@ def get_order(order_id: int) -> dict[str, Any] | None:
         return None
     items = _rows(
         """
-        SELECT p.id AS product_id, p.name AS product_name,
-               oi.quantity, oi.unit_price,
-               ROUND(oi.quantity * oi.unit_price, 2) AS line_total
+        SELECT p.id AS product_id, p.name AS module_name,
+               oi.seats, oi.unit_price,
+               ROUND(oi.seats * oi.unit_price, 2) AS line_total
         FROM order_items oi
         JOIN products p ON p.id = oi.product_id
         WHERE oi.order_id = ?
@@ -307,7 +308,7 @@ def get_order(order_id: int) -> dict[str, Any] | None:
 # ── analytics ─────────────────────────────────────────────────────────────────
 
 def get_sales_summary(start_date: str, end_date: str) -> dict[str, Any]:
-    """Aggregate sales metrics between two ISO-8601 dates (inclusive).
+    """Aggregate subscription revenue metrics between two ISO-8601 dates (inclusive).
 
     Args:
         start_date: Start of the period, e.g. '2024-01-01'.
@@ -315,11 +316,11 @@ def get_sales_summary(start_date: str, end_date: str) -> dict[str, Any]:
     """
     row = _row(
         """
-        SELECT COUNT(DISTINCT o.id)                             AS total_orders,
-               COUNT(DISTINCT o.customer_id)                    AS unique_customers,
-               ROUND(SUM(o.total_amount), 2)                   AS total_revenue,
-               ROUND(AVG(o.total_amount), 2)                   AS avg_order_value,
-               SUM(oi.quantity)                                 AS units_sold
+        SELECT COUNT(DISTINCT o.id)                             AS total_subscriptions,
+               COUNT(DISTINCT o.customer_id)                    AS unique_users,
+               ROUND(SUM(o.total_amount), 2)                    AS total_revenue,
+               ROUND(AVG(o.total_amount), 2)                    AS avg_subscription_value,
+               SUM(oi.seats)                                    AS total_seats_activated
         FROM orders o
         JOIN order_items oi ON oi.order_id = o.id
         WHERE o.created_at BETWEEN ? AND ?
@@ -330,9 +331,9 @@ def get_sales_summary(start_date: str, end_date: str) -> dict[str, Any]:
     )
     by_category = _rows(
         """
-        SELECT c.name AS category,
-               SUM(oi.quantity * oi.unit_price) AS revenue,
-               SUM(oi.quantity) AS units
+        SELECT c.name AS business_function,
+               SUM(oi.seats * oi.unit_price) AS revenue,
+               SUM(oi.seats) AS seats_activated
         FROM order_items oi
         JOIN orders o ON o.id = oi.order_id
         JOIN products p ON p.id = oi.product_id
@@ -349,7 +350,7 @@ def get_sales_summary(start_date: str, end_date: str) -> dict[str, Any]:
 
 
 def get_revenue_by_month(year: int) -> list[dict[str, Any]]:
-    """Return monthly revenue and order counts for a given calendar year.
+    """Return monthly subscription revenue and activation counts for a given calendar year.
 
     Args:
         year: Four-digit year, e.g. 2024.
@@ -357,7 +358,7 @@ def get_revenue_by_month(year: int) -> list[dict[str, Any]]:
     return _rows(
         """
         SELECT strftime('%Y-%m', created_at) AS month,
-               COUNT(id)                      AS orders,
+               COUNT(id)                     AS subscriptions,
                ROUND(SUM(total_amount), 2)   AS revenue
         FROM orders
         WHERE strftime('%Y', created_at) = ?
