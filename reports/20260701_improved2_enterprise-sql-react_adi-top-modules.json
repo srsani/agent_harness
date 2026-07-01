@@ -1,0 +1,18 @@
+{
+  "session_id": "agent-bench:run:pydantic-ai:adi-top-modules:20260701T183053Z:db1967a6",
+  "harness": "pydantic-ai",
+  "architecture": "enterprise-sql-react",
+  "task": "adi-top-modules",
+  "prompt": "What are the top 5 most-activated analytics modules in the last 90 days? List each module's name, business function, activation count, and subscription revenue.",
+  "output": "\n\nBased on my analysis of the database, here are the top 5 most-activated analytics modules in the last 90 days:\n\n| module_name | business_function | activation_count | subscription_revenue |\n|-------------|-------------------|------------------|---------------------|\n| Territory Performance Analyzer | Sales & Marketing | 13 | 217500.0 |\n| Talent Retention Predictor | HR & People | 12 | 297000.0 |\n| Order Fulfilment Tracker | Supply Chain | 11 | 126500.0 |\n| IP Portfolio Analyzer | Research & Development | 10 | 250000.0 |\n| Trial Success Probability Model | Research & Development | 9 | 368000.0 |\n\n**Summary:**\n- **Territory Performance Analyzer** leads with 13 activations (Sales & Marketing).\n- **Talent Retention Predictor** follows with 12 activations (HR & People), generating the highest revenue among top performers at $297,000.\n- **Order Fulfilment Tracker** has 11 activations (Supply Chain).\n- Two Research & Development modules round out the top five: **IP Portfolio Analyzer** (10 activations, $250,000) and **Trial Success Probability Model** (9 activations, $368,000).",
+  "started_at": "2026-07-01T18:30:53.514439+00:00",
+  "elapsed_seconds": 28.554162500004168,
+  "metadata": {
+    "langfuse_session_id": "agent-bench:run:pydantic-ai:adi-top-modules:20260701T183053Z:db1967a6",
+    "langfuse_trace_id": "2673c35ff1d0888220599f7ee3bc393a",
+    "langfuse_observation_id": "306707052fc6119e",
+    "langfuse_trace_url": "https://cloud.langfuse.com/project/cmr1ywsf000d5ad0cex3dm2ha/traces/2673c35ff1d0888220599f7ee3bc393a"
+  },
+  "error": null,
+  "ok": true
+}

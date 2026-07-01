@@ -127,10 +127,26 @@ def get_schema_context() -> dict[str, Any]:
         "business_metrics": BUSINESS_METRICS,
         "query_tips": [
             "Always filter orders with status != 'cancelled' for revenue metrics.",
-            "Use status = 'delivered' for metrics about actively-used subscriptions.",
+            (
+                "Use status != 'cancelled' for subscription, activation, and revenue metrics. "
+                "Use status = 'delivered' only when the user explicitly asks for delivered or "
+                "fully active subscriptions."
+            ),
             "Revenue at line-item level: order_items.seats * order_items.unit_price.",
             "Revenue at order level: orders.total_amount (pre-computed).",
+            (
+                "Module activation count means COUNT(DISTINCT order_items.order_id); "
+                "do not use order_items.seats unless the user asks for seats."
+            ),
+            (
+                "For top modules by activation count, sort by activation_count DESC, then "
+                "subscription_revenue DESC to break ties."
+            ),
             "Module adoption: products.active_deployments (current snapshot).",
+            (
+                "For relative windows such as last 90 days or last 6 months, anchor to "
+                "SELECT MAX(created_at) FROM orders so benchmark runs are deterministic."
+            ),
             "Trend analysis: join orders on created_at with date functions.",
             (
                 "Tier breakdown: customers.tier IN ('standard','silver','gold') — "

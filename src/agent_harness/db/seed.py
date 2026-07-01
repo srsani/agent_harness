@@ -178,7 +178,7 @@ def seed(conn: sqlite3.Connection, *, n_customers: int = 200, n_orders: int = 60
         cur = conn.execute(
             "INSERT OR IGNORE INTO categories(name, description) VALUES (?,?)", (name, desc)
         )
-        if cur.lastrowid:
+        if cur.rowcount:
             cat_ids[name] = cur.lastrowid
         else:
             row = conn.execute("SELECT id FROM categories WHERE name=?", (name,)).fetchone()
@@ -196,7 +196,7 @@ def seed(conn: sqlite3.Connection, *, n_customers: int = 200, n_orders: int = 60
                 " VALUES (?,?,?,?,?,?)",
                 (cat_id, pname, pdesc, price, stock, _random_dt(three_years_ago, now - timedelta(days=365))),
             )
-            if cur.lastrowid:
+            if cur.rowcount:
                 pid = cur.lastrowid
             else:
                 row = conn.execute("SELECT id FROM products WHERE name=?", (pname,)).fetchone()
@@ -222,7 +222,7 @@ def seed(conn: sqlite3.Connection, *, n_customers: int = 200, n_orders: int = 60
             " VALUES (?,?,?,?,?,?)",
             (email, f"{first} {last}", city, country, tier, created),
         )
-        if cur.lastrowid:
+        if cur.rowcount:
             customer_ids.append(cur.lastrowid)
         else:
             # Already exists — fetch existing

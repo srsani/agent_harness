@@ -30,5 +30,5 @@ class AgentRunner(ABC):
     architecture_name: str
 
     @abstractmethod
-    def run(self, prompt: str) -> RunResult:
+    def run(self, prompt: str, *, session_id: str | None = None) -> RunResult:
         """Execute the agent with the given user prompt."""

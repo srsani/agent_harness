@@ -269,6 +269,10 @@ BUSINESS_METRICS = {
         "COUNT(DISTINCT o.customer_id) FROM orders o "
         "WHERE o.created_at >= <start> AND o.status != 'cancelled'"
     ),
+    "module_activation_count": (
+        "COUNT(DISTINCT oi.order_id) FROM order_items oi "
+        "JOIN orders o ON o.id = oi.order_id WHERE o.status != 'cancelled'"
+    ),
     "portfolio_depth": (
         "AVG(item_count) WHERE item_count = "
         "COUNT(oi.id) per order FROM order_items oi GROUP BY oi.order_id"

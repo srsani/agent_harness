@@ -1,0 +1,697 @@
+{
+  "generated_at": "2026-07-01T18:30:53.286234+00:00",
+  "db_path": "/Users/srs/Projects/aily/data/enterprise.db",
+  "max_order_created_at": "2026-06-30T18:00:11",
+  "notes": [
+    "Ground truth is deterministic for seeded SQLite data.",
+    "Metric scoring can compare model outputs against expected fields/rows per task.",
+    "hn-research is external-dynamic and excluded from strict deterministic scoring."
+  ],
+  "tasks": {
+    "hello": {
+      "type": "deterministic-static",
+      "prompt": "Reply in one short sentence: what is 17 + 25? Do not use any tools.",
+      "expected": {
+        "final_answer": "42"
+      }
+    },
+    "reasoning": {
+      "type": "deterministic-static",
+      "prompt": "A bat and a ball cost $1.10 in total. The bat costs $1.00 more than the ball. How much does the ball cost? Show your reasoning, then give the final answer.",
+      "expected": {
+        "final_answer": "0.05"
+      }
+    },
+    "hn-research": {
+      "type": "external-dynamic",
+      "prompt": "Across the top Hacker News feed, find the highest-scored story with at least 50 points. Summarize its title, score, and the main theme in 2-3 sentences.",
+      "expected": null,
+      "notes": "No stable ground truth: depends on live Hacker News + web state."
+    },
+    "adi-top-modules": {
+      "type": "deterministic-sql",
+      "prompt": "What are the top 5 most-activated analytics modules in the last 90 days? List each module's name, business function, activation count, and subscription revenue.",
+      "sql": "\n                SELECT\n                  p.name AS module_name,\n                  c.name AS business_function,\n                  COUNT(DISTINCT oi.order_id) AS activation_count,\n                  ROUND(SUM(oi.seats * oi.unit_price), 2) AS subscription_revenue\n                FROM order_items oi\n                JOIN orders o ON o.id = oi.order_id\n                JOIN products p ON p.id = oi.product_id\n                JOIN categories c ON c.id = p.category_id\n                WHERE o.status != 'cancelled'\n                  AND o.created_at >= datetime(?, '-90 day')\n                GROUP BY p.name, c.name\n                ORDER BY activation_count DESC, subscription_revenue DESC\n                LIMIT 5\n            ",
+      "expected": [
+        {
+          "module_name": "Territory Performance Analyzer",
+          "business_function": "Sales & Marketing",
+          "activation_count": 13,
+          "subscription_revenue": 217500.0
+        },
+        {
+          "module_name": "Talent Retention Predictor",
+          "business_function": "HR & People",
+          "activation_count": 12,
+          "subscription_revenue": 297000.0
+        },
+        {
+          "module_name": "Order Fulfilment Tracker",
+          "business_function": "Supply Chain",
+          "activation_count": 11,
+          "subscription_revenue": 126500.0
+        },
+        {
+          "module_name": "IP Portfolio Analyzer",
+          "business_function": "Research & Development",
+          "activation_count": 10,
+          "subscription_revenue": 250000.0
+        },
+        {
+          "module_name": "Trial Success Probability Model",
+          "business_function": "Research & Development",
+          "activation_count": 9,
+          "subscription_revenue": 368000.0
+        }
+      ]
+    },
+    "adi-low-adoption": {
+      "type": "deterministic-sql",
+      "prompt": "Which analytics modules have 25 or fewer active deployments (low adoption alert)? List their names, business functions, and current deployment counts.",
+      "sql": "\n                SELECT\n                  p.name AS module_name,\n                  c.name AS business_function,\n                  MIN(p.active_deployments) AS active_deployments\n                FROM products p\n                JOIN categories c ON c.id = p.category_id\n                WHERE p.active_deployments <= 25\n                GROUP BY p.name, c.name\n                ORDER BY active_deployments ASC, p.name ASC\n            ",
+      "expected": [
+        {
+          "module_name": "Shareholder Value Scorecard",
+          "business_function": "Finance",
+          "active_deployments": 18
+        },
+        {
+          "module_name": "Trial Success Probability Model",
+          "business_function": "Research & Development",
+          "active_deployments": 19
+        },
+        {
+          "module_name": "Clinical Trial Optimizer",
+          "business_function": "Research & Development",
+          "active_deployments": 22
+        },
+        {
+          "module_name": "IP Portfolio Analyzer",
+          "business_function": "Research & Development",
+          "active_deployments": 25
+        }
+      ]
+    },
+    "adi-user-lookup": {
+      "type": "deterministic-sql",
+      "prompt": "Look up business user with ID 42. Show their full profile, total lifetime spend, and their last 5 subscriptions with status and total value.",
+      "parameters": {
+        "customer_id": 42
+      },
+      "expected": {
+        "profile_and_lifetime": {
+          "id": 42,
+          "full_name": "Wendy Taylor",
+          "email": "wendy.taylor41@yahoo.com",
+          "city": "Paris",
+          "country": "FR",
+          "tier": "standard",
+          "created_at": "2023-12-17T17:58:17",
+          "total_lifetime_spend": 100000.0
+        },
+        "last_5_subscriptions": [
+          {
+            "order_id": 401,
+            "status": "shipped",
+            "total_amount": 36000.0,
+            "created_at": "2026-02-16T12:44:11"
+          },
+          {
+            "order_id": 534,
+            "status": "shipped",
+            "total_amount": 64000.0,
+            "created_at": "2025-09-05T00:50:06"
+          }
+        ]
+      }
+    },
+    "adi-function-analysis": {
+      "type": "deterministic-sql",
+      "prompt": "For each business function, calculate: total subscription revenue in the last 6 months, number of unique users who subscribed to at least one module from that function, and the single highest-revenue module. Present the results sorted by revenue descending.",
+      "expected": [
+        {
+          "business_function": "Research & Development",
+          "revenue_6m": 3248000.0,
+          "unique_users_6m": 82,
+          "highest_revenue_module": "Trial Success Probability Model",
+          "highest_module_revenue_6m": 496000.0
+        },
+        {
+          "business_function": "Supply Chain",
+          "revenue_6m": 2467000.0,
+          "unique_users_6m": 88,
+          "highest_revenue_module": "Inventory Optimization Suite",
+          "highest_module_revenue_6m": 356500.0
+        },
+        {
+          "business_function": "Sales & Marketing",
+          "revenue_6m": 2411500.0,
+          "unique_users_6m": 78,
+          "highest_revenue_module": "Market Share Monitor",
+          "highest_module_revenue_6m": 451000.0
+        },
+        {
+          "business_function": "HR & People",
+          "revenue_6m": 2251000.0,
+          "unique_users_6m": 83,
+          "highest_revenue_module": "Talent Retention Predictor",
+          "highest_module_revenue_6m": 374000.0
+        },
+        {
+          "business_function": "Finance",
+          "revenue_6m": 2073500.0,
+          "unique_users_6m": 80,
+          "highest_revenue_module": "Revenue Forecast Model",
+          "highest_module_revenue_6m": 324000.0
+        }
+      ]
+    },
+    "adi-executive-users": {
+      "type": "deterministic-sql",
+      "prompt": "Find all gold-tier users. For each one, show their name, city, lifetime subscription value, and their single highest-value subscription (ID + amount). Which city has the most gold-tier users?",
+      "expected": {
+        "gold_users": [
+          {
+            "customer_id": 11,
+            "full_name": "Alice Wilson",
+            "city": "Berlin",
+            "lifetime_value": 98000.0,
+            "best_subscription_id": 393,
+            "best_subscription_amount": 59000.0
+          },
+          {
+            "customer_id": 174,
+            "full_name": "Bob Lewis",
+            "city": "Bristol",
+            "lifetime_value": 165500.0,
+            "best_subscription_id": 127,
+            "best_subscription_amount": 80000.0
+          },
+          {
+            "customer_id": 86,
+            "full_name": "Bob Turner",
+            "city": "Lyon",
+            "lifetime_value": 0.0,
+            "best_subscription_id": null,
+            "best_subscription_amount": null
+          },
+          {
+            "customer_id": 131,
+            "full_name": "Claire Edwards",
+            "city": "Toronto",
+            "lifetime_value": 28000.0,
+            "best_subscription_id": 224,
+            "best_subscription_amount": 28000.0
+          },
+          {
+            "customer_id": 100,
+            "full_name": "Dan Roberts",
+            "city": "Manchester",
+            "lifetime_value": 0.0,
+            "best_subscription_id": null,
+            "best_subscription_amount": null
+          },
+          {
+            "customer_id": 150,
+            "full_name": "Dan Smith",
+            "city": "Toronto",
+            "lifetime_value": 155500.0,
+            "best_subscription_id": 469,
+            "best_subscription_amount": 64500.0
+          },
+          {
+            "customer_id": 26,
+            "full_name": "David Evans",
+            "city": "Lyon",
+            "lifetime_value": 22500.0,
+            "best_subscription_id": 271,
+            "best_subscription_amount": 22500.0
+          },
+          {
+            "customer_id": 179,
+            "full_name": "Felix Anderson",
+            "city": "Los Angeles",
+            "lifetime_value": 0.0,
+            "best_subscription_id": null,
+            "best_subscription_amount": null
+          },
+          {
+            "customer_id": 199,
+            "full_name": "Frank Davies",
+            "city": "Austin",
+            "lifetime_value": 162500.0,
+            "best_subscription_id": 134,
+            "best_subscription_amount": 59000.0
+          },
+          {
+            "customer_id": 144,
+            "full_name": "Gina Edwards",
+            "city": "Hamburg",
+            "lifetime_value": 67000.0,
+            "best_subscription_id": 353,
+            "best_subscription_amount": 54000.0
+          },
+          {
+            "customer_id": 133,
+            "full_name": "Grace Johnson",
+            "city": "Toronto",
+            "lifetime_value": 58000.0,
+            "best_subscription_id": 402,
+            "best_subscription_amount": 30000.0
+          },
+          {
+            "customer_id": 135,
+            "full_name": "Hank Martin",
+            "city": "New York",
+            "lifetime_value": 93000.0,
+            "best_subscription_id": 250,
+            "best_subscription_amount": 33000.0
+          },
+          {
+            "customer_id": 182,
+            "full_name": "Hank Martinez",
+            "city": "Edinburgh",
+            "lifetime_value": 70000.0,
+            "best_subscription_id": 166,
+            "best_subscription_amount": 36000.0
+          },
+          {
+            "customer_id": 200,
+            "full_name": "Iris Brown",
+            "city": "Munich",
+            "lifetime_value": 267000.0,
+            "best_subscription_id": 284,
+            "best_subscription_amount": 84000.0
+          },
+          {
+            "customer_id": 91,
+            "full_name": "Ivy Brown",
+            "city": "Bristol",
+            "lifetime_value": 60000.0,
+            "best_subscription_id": 145,
+            "best_subscription_amount": 60000.0
+          },
+          {
+            "customer_id": 141,
+            "full_name": "Jack Nguyen",
+            "city": "Melbourne",
+            "lifetime_value": 136000.0,
+            "best_subscription_id": 350,
+            "best_subscription_amount": 46500.0
+          },
+          {
+            "customer_id": 49,
+            "full_name": "Jake Smith",
+            "city": "Chicago",
+            "lifetime_value": 143000.0,
+            "best_subscription_id": 80,
+            "best_subscription_amount": 88500.0
+          },
+          {
+            "customer_id": 62,
+            "full_name": "Kim Wright",
+            "city": "Los Angeles",
+            "lifetime_value": 72000.0,
+            "best_subscription_id": 337,
+            "best_subscription_amount": 54000.0
+          },
+          {
+            "customer_id": 38,
+            "full_name": "Leo Lewis",
+            "city": "Edinburgh",
+            "lifetime_value": 10500.0,
+            "best_subscription_id": 538,
+            "best_subscription_amount": 10500.0
+          },
+          {
+            "customer_id": 19,
+            "full_name": "Maya Jackson",
+            "city": "Edinburgh",
+            "lifetime_value": 18000.0,
+            "best_subscription_id": 259,
+            "best_subscription_amount": 18000.0
+          },
+          {
+            "customer_id": 195,
+            "full_name": "Maya Jackson",
+            "city": "Austin",
+            "lifetime_value": 71000.0,
+            "best_subscription_id": 309,
+            "best_subscription_amount": 27000.0
+          },
+          {
+            "customer_id": 70,
+            "full_name": "Nate Harris",
+            "city": "Bristol",
+            "lifetime_value": 30000.0,
+            "best_subscription_id": 223,
+            "best_subscription_amount": 30000.0
+          },
+          {
+            "customer_id": 72,
+            "full_name": "Nate Taylor",
+            "city": "Toronto",
+            "lifetime_value": 0.0,
+            "best_subscription_id": null,
+            "best_subscription_amount": null
+          },
+          {
+            "customer_id": 78,
+            "full_name": "Pete Edwards",
+            "city": "Sydney",
+            "lifetime_value": 177000.0,
+            "best_subscription_id": 126,
+            "best_subscription_amount": 126500.0
+          },
+          {
+            "customer_id": 39,
+            "full_name": "Pete Hughes",
+            "city": "London",
+            "lifetime_value": 24000.0,
+            "best_subscription_id": 283,
+            "best_subscription_amount": 24000.0
+          },
+          {
+            "customer_id": 173,
+            "full_name": "Quinn Turner",
+            "city": "Austin",
+            "lifetime_value": 77000.0,
+            "best_subscription_id": 9,
+            "best_subscription_amount": 77000.0
+          },
+          {
+            "customer_id": 13,
+            "full_name": "Quinn Walker",
+            "city": "Austin",
+            "lifetime_value": 11000.0,
+            "best_subscription_id": 326,
+            "best_subscription_amount": 11000.0
+          },
+          {
+            "customer_id": 58,
+            "full_name": "Rosa Clarke",
+            "city": "Lyon",
+            "lifetime_value": 65500.0,
+            "best_subscription_id": 33,
+            "best_subscription_amount": 39000.0
+          },
+          {
+            "customer_id": 101,
+            "full_name": "Rosa Moore",
+            "city": "Toronto",
+            "lifetime_value": 7000.0,
+            "best_subscription_id": 272,
+            "best_subscription_amount": 7000.0
+          },
+          {
+            "customer_id": 163,
+            "full_name": "Wendy Green",
+            "city": "New York",
+            "lifetime_value": 271000.0,
+            "best_subscription_id": 306,
+            "best_subscription_amount": 81000.0
+          },
+          {
+            "customer_id": 1,
+            "full_name": "Xander Clarke",
+            "city": "Berlin",
+            "lifetime_value": 104000.0,
+            "best_subscription_id": 340,
+            "best_subscription_amount": 104000.0
+          },
+          {
+            "customer_id": 192,
+            "full_name": "Zach Jackson",
+            "city": "Sydney",
+            "lifetime_value": 176500.0,
+            "best_subscription_id": 196,
+            "best_subscription_amount": 109000.0
+          }
+        ],
+        "city_counts": [
+          {
+            "city": "Toronto",
+            "gold_user_count": 5
+          },
+          {
+            "city": "Austin",
+            "gold_user_count": 4
+          },
+          {
+            "city": "Bristol",
+            "gold_user_count": 3
+          },
+          {
+            "city": "Edinburgh",
+            "gold_user_count": 3
+          },
+          {
+            "city": "Lyon",
+            "gold_user_count": 3
+          },
+          {
+            "city": "Berlin",
+            "gold_user_count": 2
+          },
+          {
+            "city": "Los Angeles",
+            "gold_user_count": 2
+          },
+          {
+            "city": "New York",
+            "gold_user_count": 2
+          },
+          {
+            "city": "Sydney",
+            "gold_user_count": 2
+          },
+          {
+            "city": "Chicago",
+            "gold_user_count": 1
+          },
+          {
+            "city": "Hamburg",
+            "gold_user_count": 1
+          },
+          {
+            "city": "London",
+            "gold_user_count": 1
+          },
+          {
+            "city": "Manchester",
+            "gold_user_count": 1
+          },
+          {
+            "city": "Melbourne",
+            "gold_user_count": 1
+          },
+          {
+            "city": "Munich",
+            "gold_user_count": 1
+          }
+        ],
+        "top_city": {
+          "city": "Toronto",
+          "gold_user_count": 5
+        }
+      }
+    },
+    "adi-module-ratings": {
+      "type": "deterministic-sql",
+      "prompt": "Which 3 analytics modules have the highest average user rating (with at least 5 ratings)? And which 3 modules have the lowest average rating (with at least 3 ratings)? For each, show the module name, average rating, and a sample review title.",
+      "expected": {
+        "highest_3": [
+          {
+            "module_name": "Talent Retention Predictor",
+            "avg_rating": 5.0,
+            "review_count": 5,
+            "sample_review_title": "Transformed our decision-making"
+          },
+          {
+            "module_name": "Order Fulfilment Tracker",
+            "avg_rating": 4.667,
+            "review_count": 6,
+            "sample_review_title": "Exceeded our accuracy targets"
+          },
+          {
+            "module_name": "Cash Flow Predictor",
+            "avg_rating": 4.6,
+            "review_count": 5,
+            "sample_review_title": "Cut our analysis time by 80%"
+          }
+        ],
+        "lowest_3": [
+          {
+            "module_name": "Transportation Network Optimizer",
+            "avg_rating": 3.0,
+            "review_count": 3,
+            "sample_review_title": "Our leadership team relies on this daily"
+          },
+          {
+            "module_name": "GTM Readiness Planner",
+            "avg_rating": 3.2,
+            "review_count": 5,
+            "sample_review_title": "Cut our analysis time by 80%"
+          },
+          {
+            "module_name": "Innovation Pipeline Dashboard",
+            "avg_rating": 3.333,
+            "review_count": 3,
+            "sample_review_title": "Saved weeks of manual work"
+          }
+        ]
+      }
+    },
+    "adi-monthly-trend": {
+      "type": "deterministic-sql",
+      "prompt": "Show monthly subscription revenue and activation count for the last calendar year in the database. In which month was revenue highest? What was the month-over-month growth from the lowest to the highest month?",
+      "expected": {
+        "year": 2025,
+        "monthly": [
+          {
+            "month": "2025-07",
+            "activation_count": 41,
+            "revenue": 1644500.0
+          },
+          {
+            "month": "2025-08",
+            "activation_count": 47,
+            "revenue": 2202000.0
+          },
+          {
+            "month": "2025-09",
+            "activation_count": 39,
+            "revenue": 1869500.0
+          },
+          {
+            "month": "2025-10",
+            "activation_count": 42,
+            "revenue": 1883500.0
+          },
+          {
+            "month": "2025-11",
+            "activation_count": 38,
+            "revenue": 1817500.0
+          },
+          {
+            "month": "2025-12",
+            "activation_count": 40,
+            "revenue": 2166500.0
+          }
+        ],
+        "highest_revenue_month": {
+          "month": "2025-08",
+          "activation_count": 47,
+          "revenue": 2202000.0
+        },
+        "lowest_revenue_month": {
+          "month": "2025-07",
+          "activation_count": 41,
+          "revenue": 1644500.0
+        },
+        "growth_from_lowest_to_highest_pct": 33.9
+      }
+    },
+    "adi-disengagement-risk": {
+      "type": "deterministic-sql",
+      "prompt": "Identify users who activated at least 2 subscriptions but have had NO new subscription in the last 180 days. List up to 10 such users with their name, engagement tier, last subscription date, and total lifetime value, sorted by lifetime value descending.",
+      "expected": [
+        {
+          "customer_id": 49,
+          "full_name": "Jake Smith",
+          "tier": "gold",
+          "last_subscription_date": "2025-12-30T14:46:06",
+          "lifetime_value": 143000.0
+        },
+        {
+          "customer_id": 157,
+          "full_name": "Hugo Anderson",
+          "tier": "standard",
+          "last_subscription_date": "2025-11-16T23:11:13",
+          "lifetime_value": 135000.0
+        },
+        {
+          "customer_id": 73,
+          "full_name": "Yara Nguyen",
+          "tier": "standard",
+          "last_subscription_date": "2025-11-19T20:16:39",
+          "lifetime_value": 132000.0
+        },
+        {
+          "customer_id": 142,
+          "full_name": "Elena Moore",
+          "tier": "silver",
+          "last_subscription_date": "2025-12-24T20:22:47",
+          "lifetime_value": 126500.0
+        },
+        {
+          "customer_id": 79,
+          "full_name": "Claire Taylor",
+          "tier": "standard",
+          "last_subscription_date": "2025-10-06T11:25:54",
+          "lifetime_value": 126000.0
+        },
+        {
+          "customer_id": 23,
+          "full_name": "Emma White",
+          "tier": "standard",
+          "last_subscription_date": "2025-12-06T01:20:34",
+          "lifetime_value": 123500.0
+        },
+        {
+          "customer_id": 136,
+          "full_name": "Dan Anderson",
+          "tier": "silver",
+          "last_subscription_date": "2025-11-16T01:25:31",
+          "lifetime_value": 122000.0
+        },
+        {
+          "customer_id": 138,
+          "full_name": "Sam Garcia",
+          "tier": "standard",
+          "last_subscription_date": "2025-12-17T13:12:00",
+          "lifetime_value": 110500.0
+        },
+        {
+          "customer_id": 93,
+          "full_name": "Pete Thomas",
+          "tier": "silver",
+          "last_subscription_date": "2025-12-20T04:18:31",
+          "lifetime_value": 107000.0
+        },
+        {
+          "customer_id": 60,
+          "full_name": "Quinn Williams",
+          "tier": "standard",
+          "last_subscription_date": "2025-11-05T04:38:02",
+          "lifetime_value": 104500.0
+        }
+      ]
+    },
+    "adi-portfolio-depth": {
+      "type": "deterministic-sql",
+      "prompt": "What is the average number of modules per subscription and average subscription value, broken down by engagement tier (standard, silver, gold)? Which tier has the deepest average analytics portfolio?",
+      "expected": {
+        "by_tier": [
+          {
+            "tier": "gold",
+            "avg_modules_per_subscription": 2.154,
+            "avg_subscription_value": 40623.08
+          },
+          {
+            "tier": "silver",
+            "avg_modules_per_subscription": 2.517,
+            "avg_subscription_value": 48591.67
+          },
+          {
+            "tier": "standard",
+            "avg_modules_per_subscription": 2.563,
+            "avg_subscription_value": 49160.71
+          }
+        ],
+        "deepest_tier": "standard",
+        "deepest_avg_modules_per_subscription": 2.563
+      }
+    }
+  }
+}

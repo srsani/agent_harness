@@ -27,6 +27,84 @@ uv run jupyter lab notebooks/explore.ipynb
 
 ---
 
+## Benchmark Script
+
+Use the helper script to run setup + benchmark commands in one place:
+
+```bash
+# show script usage
+./scripts/run_benchmark.sh --help
+
+# list harnesses / architectures / tasks
+./scripts/run_benchmark.sh list
+
+# run one benchmark combination
+./scripts/run_benchmark.sh run \
+  --harness pydantic-ai \
+  --architecture enterprise-react \
+  --task adi-function-analysis
+
+# run all architectures for one task
+./scripts/run_benchmark.sh run-all \
+  --harness pydantic-ai \
+  --task adi-top-modules
+
+# custom JSON report path
+./scripts/run_benchmark.sh run-all \
+  --harness pydantic-ai \
+  --task adi-top-modules \
+  --output reports/my-report.json
+```
+
+Useful flags:
+
+- `--skip-setup` skips dependency install and `.env` creation checks.
+- `--skip-seed` skips database seeding.
+- `--output` sets JSON report path (otherwise a timestamped file is created in `reports/`).
+- `--ground-truth` sets ground-truth JSON path used for scoring.
+- `--score-output` sets scored JSON output path.
+- `--skip-score` skips scoring (default behavior is to score).
+
+By default, the script now produces:
+- a raw benchmark report JSON (`--output`),
+- a ground-truth JSON (`--ground-truth`),
+- a scored report JSON (`--score-output` or `<report>_scored.json`).
+
+---
+
+## Ground Truth Dataset
+
+Generate deterministic task ground truth from the seeded SQLite data:
+
+```bash
+uv run python scripts/generate_ground_truth.py
+# writes: reports/ground-truth.json
+```
+
+Custom output path:
+
+```bash
+uv run python scripts/generate_ground_truth.py --output reports/ground-truth-v1.json
+```
+
+The JSON includes expected answers for each benchmark task so you can compute:
+- correctness (match against expected fields/rows),
+- groundedness (claims traceable to DB-backed expected facts),
+- hallucination rate (claims not supported by expected facts).
+
+`hn-research` is marked external-dynamic and excluded from strict deterministic scoring.
+
+Score any benchmark report against ground truth:
+
+```bash
+uv run python scripts/score_report.py \
+  --report reports/run-all.json \
+  --ground-truth reports/ground-truth.json \
+  --output reports/run-all_scored.json
+```
+
+---
+
 ## Model providers
 
 Edit `.env` to pick one:
@@ -42,6 +120,21 @@ AGENT_BENCH_MODEL=anthropic:claude-sonnet-4-6
 OPENAI_API_KEY=sk-...
 AGENT_BENCH_MODEL=openai:gpt-4o
 ```
+
+### Langfuse (required observability)
+```ini
+LANGFUSE_PUBLIC_KEY=pk-lf-...
+LANGFUSE_SECRET_KEY=sk-lf-...
+# Either name is accepted:
+# LANGFUSE_BASE_URL=https://cloud.langfuse.com
+LANGFUSE_HOST=https://cloud.langfuse.com
+LANGFUSE_DETAILED_TRACING=true
+LANGFUSE_FLUSH_EACH_RUN=false
+LANGFUSE_TRACE_SAMPLE_RATE=1.0
+```
+
+Benchmark runs require Langfuse. Configure `LANGFUSE_PUBLIC_KEY` and `LANGFUSE_SECRET_KEY`; each run is traced with harness + architecture metadata.
+If response time matters, set `LANGFUSE_DETAILED_TRACING=false` and keep `LANGFUSE_FLUSH_EACH_RUN=false`.
 
 ### Local — LM Studio (or any OpenAI-compatible server)
 ```ini
@@ -79,10 +172,14 @@ uv run agent-bench list
 uv run agent-bench run \
   --harness pydantic-ai \
   --architecture enterprise-react \
-  --task adi-function-analysis
+  --task adi-function-analysis \
+  --output reports/single-run.json
 
 # Run every architecture against one task
-uv run agent-bench run-all --harness pydantic-ai --task adi-top-modules
+uv run agent-bench run-all \
+  --harness pydantic-ai \
+  --task adi-top-modules \
+  --output reports/run-all.json
 ```
 
 ---

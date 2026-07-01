@@ -123,7 +123,9 @@ def tool_get_product_reviews(product_id: int, limit: int = 10) -> list[dict]:
 
 @mcp.tool()
 def tool_get_top_selling_products(limit: int = 10, days: int = 90) -> list[dict]:
-    """Return the most-subscribed analytics modules by activation count in the last N days.
+    """Return analytics modules with the most subscription activations in the last N days.
+
+    Activation count is distinct non-cancelled subscriptions/orders, not purchased seats.
 
     Args:
         limit: How many modules to return (default 10).

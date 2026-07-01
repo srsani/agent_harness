@@ -1,0 +1,35 @@
+{
+  "harness": "pydantic-ai",
+  "architecture": "enterprise-sql-react",
+  "task": "adi-top-modules",
+  "prompt": "What are the top 5 most-activated analytics modules in the last 90 days? List each module's name, business function, activation count, and subscription revenue.",
+  "output": "\n\n## Top 5 Most-Activated Analytics Modules (Last 90 Days)\n\n| Module Name | Business Function | Activations | Subscription Revenue |\n|-------------|-------------------|-------------|----------------------|\n| Territory Performance Analyzer | Sales & Marketing | 43 | $712,500 |\n| Talent Retention Predictor | HR & People | 32 | $704,000 |\n| Compensation Benchmarking Tool | HR & People | 28 | $432,000 |\n| CapEx ROI Tracker | Finance | 24 | $234,000 |\n| IP Portfolio Analyzer | R&D | 24 | $560,000 |\n\n---\n\n### Key Insights:\n\n1. **Sales & Marketing dominates** - The top module is a Sales tool, suggesting strong investment in revenue acceleration capabilities. Territory Performance Analyzer at 43 activations represents the highest adoption rate.\n\n2. **HR & People is a growth engine** - Two HR modules rank in the top 3, indicating significant focus on workforce analytics and retention initiatives. Talent Retention Predictor ($704K revenue) rivals the #1 module in revenue despite fewer activations.\n\n3. **Revenue efficiency varies widely** - IP Portfolio Analyzer achieves $560K revenue with only 24 activations (~$23,300/activation), while CapEx ROI Tracker only generates $234K despite the same activation count (~$9,750/activation). This suggests IP Portfolio Analyzer has higher-priced, enterprise-level subscriptions.\n\n4. **Cross-functional spread** - Modules span 4 of the 5 business functions, with no Representations from Supply Chain. This may indicate an opportunity to expand analytics capabilities in that function.",
+  "started_at": "2026-07-01T17:53:22.720912+00:00",
+  "elapsed_seconds": 34.79326012500678,
+  "metadata": {
+    "langfuse_trace_id": "35f851df22285ae3e7cbe5d6aa40e6b3",
+    "langfuse_observation_id": "620c19095312b4a0",
+    "langfuse_trace_url": "https://cloud.langfuse.com/project/cmr1ywsf000d5ad0cex3dm2ha/traces/35f851df22285ae3e7cbe5d6aa40e6b3"
+  },
+  "error": null,
+  "ok": true,
+  "scores": {
+    "scorable": true,
+    "correctness": 0.3,
+    "groundedness": 0.0,
+    "hallucination_rate": 1.0,
+    "overall_score": 0.0,
+    "details": {
+      "refused_or_no_data": false,
+      "empty_output": false,
+      "expected_text_facts": 10,
+      "matched_text_facts": 6,
+      "expected_numeric_facts": 10,
+      "matched_numeric_facts": 0,
+      "claimed_numeric_values": 20,
+      "unsupported_numeric_values": 20
+    }
+  },
+  "scored_at": "2026-07-01T17:53:58.520179+00:00",
+  "ground_truth_generated_at": "2026-07-01T17:53:22.505548+00:00"
+}

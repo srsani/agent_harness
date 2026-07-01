@@ -1,0 +1,37 @@
+{
+  "session_id": "agent-bench:run:pydantic-ai:adi-top-modules:20260701T183005Z:b673fbac",
+  "harness": "pydantic-ai",
+  "architecture": "enterprise-sql-react",
+  "task": "adi-top-modules",
+  "prompt": "What are the top 5 most-activated analytics modules in the last 90 days? List each module's name, business function, activation count, and subscription revenue.",
+  "output": "\n\nThe query has returned the top 5 most-activated analytics modules in the last 90 days:\n\n| module_name | business_function | activation_count | subscription_revenue |\n|-------------|-------------------|------------------|----------------------|\n| Territory Performance Analyzer | Sales & Marketing | 13 | 217500.0 |\n| Talent Retention Predictor | HR & People | 12 | 297000.0 |\n| Order Fulfilment Tracker | Supply Chain | 11 | 126500.0 |\n| IP Portfolio Analyzer | Research & Development | 10 | 250000.0 |\n| Cash Flow Predictor | Finance | 9 | 161500.0 |\n\nThese figures represent activation counts (DISTINCT subscription/order IDs from non-cancelled orders in the last 90 days) and total subscription revenue (seats \u00d7 unit_price) for each module.",
+  "started_at": "2026-07-01T18:30:05.479256+00:00",
+  "elapsed_seconds": 19.673649707998266,
+  "metadata": {
+    "langfuse_session_id": "agent-bench:run:pydantic-ai:adi-top-modules:20260701T183005Z:b673fbac",
+    "langfuse_trace_id": "27ac05281090e874c90095e764cacc6b",
+    "langfuse_observation_id": "371edc59d0dd2f49",
+    "langfuse_trace_url": "https://cloud.langfuse.com/project/cmr1ywsf000d5ad0cex3dm2ha/traces/27ac05281090e874c90095e764cacc6b"
+  },
+  "error": null,
+  "ok": true,
+  "scores": {
+    "scorable": true,
+    "correctness": 0.9,
+    "groundedness": 0.75,
+    "hallucination_rate": 0.25,
+    "overall_score": 0.8182,
+    "details": {
+      "refused_or_no_data": false,
+      "empty_output": false,
+      "expected_text_facts": 10,
+      "matched_text_facts": 9,
+      "expected_numeric_facts": 10,
+      "matched_numeric_facts": 9,
+      "claimed_numeric_values": 12,
+      "unsupported_numeric_values": 3
+    }
+  },
+  "scored_at": "2026-07-01T18:30:26.084418+00:00",
+  "ground_truth_generated_at": "2026-07-01T18:30:05.256032+00:00"
+}

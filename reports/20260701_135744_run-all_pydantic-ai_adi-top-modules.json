@@ -1,0 +1,143 @@
+{
+  "mode": "run-all",
+  "harness": "pydantic-ai",
+  "task": "adi-top-modules",
+  "results": [
+    {
+      "harness": "pydantic-ai",
+      "architecture": "minimal",
+      "task": "adi-top-modules",
+      "prompt": "What are the top 5 most-activated analytics modules in the last 90 days? List each module's name, business function, activation count, and subscription revenue.",
+      "output": "\n\nI don't have access to your database or analytics platform data, so I cannot retrieve the actual top 5 most-activated analytics modules.\n\nTo get this information, you'll need to:\n\n1. **Query your database** using a SQL query like:\n```sql\nSELECT \n    module_name,\n    business_function,\n    COUNT(DISTINCT user_id) as activation_count,\n    SUM(subscription_revenue) as revenue\nFROM analytics_modules_modernized\nWHERE activated_at >= DATE_TRUNC('month', CURRENT_DATE - INTERVAL '90 days')\nGROUP BY module_name, business_function\nORDER BY activation_count DESC\nLIMIT 5;\n```\n\n2. **Check your analytics dashboard** if you're using tools like:\n   - Amplitude\n   - Mixpanel\n   - Google Analytics 4\n   - Adobe Analytics\n\n3. **Contact your data team** if the analytics module data is stored in a separate reporting system\n\nIf you can provide me with sample data or export the relevant tables, I'd be happy to help analyze it and format the results properly.",
+      "started_at": "2026-07-01T17:57:44.847197+00:00",
+      "elapsed_seconds": 9.823247208012617,
+      "metadata": {
+        "langfuse_trace_id": "8a85a2c11f0bdc79e38143335a4322e4",
+        "langfuse_observation_id": "45bcce2104eccc4c",
+        "langfuse_trace_url": "https://cloud.langfuse.com/project/cmr1ywsf000d5ad0cex3dm2ha/traces/8a85a2c11f0bdc79e38143335a4322e4"
+      },
+      "error": null,
+      "ok": true
+    },
+    {
+      "harness": "pydantic-ai",
+      "architecture": "codemode",
+      "task": "adi-top-modules",
+      "prompt": "What are the top 5 most-activated analytics modules in the last 90 days? List each module's name, business function, activation count, and subscription revenue.",
+      "output": "",
+      "started_at": "2026-07-01T17:57:54.671739+00:00",
+      "elapsed_seconds": 28.074206709003192,
+      "metadata": {},
+      "error": "UnexpectedModelBehavior: Tool 'run_code' exceeded max retries count of 3",
+      "ok": false
+    },
+    {
+      "harness": "pydantic-ai",
+      "architecture": "codemode-mcp-search",
+      "task": "adi-top-modules",
+      "prompt": "What are the top 5 most-activated analytics modules in the last 90 days? List each module's name, business function, activation count, and subscription revenue.",
+      "output": "",
+      "started_at": "2026-07-01T17:58:22.747011+00:00",
+      "elapsed_seconds": 0.0068646659929072484,
+      "metadata": {},
+      "error": "UserError: WebSearch(native=False) requires an explicit local tool \u2014 pass `local=...` (e.g. a strategy string, `True`, a callable, or a `Tool`/`AbstractToolset`).",
+      "ok": false
+    },
+    {
+      "harness": "pydantic-ai",
+      "architecture": "enterprise-react",
+      "task": "adi-top-modules",
+      "prompt": "What are the top 5 most-activated analytics modules in the last 90 days? List each module's name, business function, activation count, and subscription revenue.",
+      "output": "\n\n## Top 5 Most-Activated Analytics Modules (Last 90 Days)\n\n| Rank | Module Name | Business Function | Activations | Subscription Revenue |\n|------|-------------|-------------------|-------------|---------------------|\n| 1 | Territory Performance Analyzer | Sales & Marketing | **29** | $217,500 |\n| 2 | Talent Retention Predictor | HR & People | **27** | $297,000 |\n| 3 | IP Portfolio Analyzer | Research & Development | **25** | $250,000 |\n| 4 | Trial Success Probability Model | Research & Development | **23** | $368,000 |\n| 5 | Order Fulfilment Tracker | Supply Chain | **23** | $126,500 |\n\n### Key Insights:\n- **Sales & Marketing** leads in activations (29), indicating strong demand for sales performance analytics\n- **R&D modules** dominate revenue despite lower activation counts, particularly the Trial Success Probability Model at $368K\n- **HR & People** shows high value per activation ($11,000/license)\n- **Supply Chain** has the lowest revenue-per-module ($126,500) despite solid activation numbers\n\nAll data sourced from the top 90-day activation metrics.",
+      "started_at": "2026-07-01T17:58:22.755057+00:00",
+      "elapsed_seconds": 10.542193707995466,
+      "metadata": {
+        "langfuse_trace_id": "658d584e2f4073bd35990d8eb6112d58",
+        "langfuse_observation_id": "41c8de016d378e1a",
+        "langfuse_trace_url": "https://cloud.langfuse.com/project/cmr1ywsf000d5ad0cex3dm2ha/traces/658d584e2f4073bd35990d8eb6112d58"
+      },
+      "error": null,
+      "ok": true
+    },
+    {
+      "harness": "pydantic-ai",
+      "architecture": "enterprise-codemode",
+      "task": "adi-top-modules",
+      "prompt": "What are the top 5 most-activated analytics modules in the last 90 days? List each module's name, business function, activation count, and subscription revenue.",
+      "output": "\n\nHere are the **top 5 most-activated analytics modules in the last 90 days**:\n\n| Rank | Module Name | Business Function | Activations | Subscription Revenue |\n|------|-------------|-------------------|-------------|---------------------|\n| 1 | **Territory Performance Analyzer** | Sales & Marketing | 29 | $217,500 |\n| 2 | **Talent Retention Predictor** | HR & People | 27 | $297,000 |\n| 3 | **IP Portfolio Analyzer** | Research & Development | 25 | $250,000 |\n| 4 | **Trial Success Probability Model** | Research & Development | 23 | $368,000 |\n| 5 | **Order Fulfilment Tracker** | Supply Chain | 23 | $126,500 |\n\n### Key Insights:\n- **R&D dominates**: Two of the top 5 modules are from Research & Development, with the *Trial Success Probability Model* generating the highest revenue ($368K) despite having fewer activations than the top 4.\n- **Sales & Marketing leads in adoption**: The *Territory Performance Analyzer* has the highest activation count (29 seats).\n- **Revenue vs. Activations**: The *Trial Success Probability Model* has a lower activation count (23) but the highest revenue due to its premium $16,000 annual license price.",
+      "started_at": "2026-07-01T17:58:33.300265+00:00",
+      "elapsed_seconds": 14.760592000006,
+      "metadata": {
+        "langfuse_trace_id": "aa76b174f8cbfd9ce0405cc88ee88c6e",
+        "langfuse_observation_id": "b7194fc399c7bf2d",
+        "langfuse_trace_url": "https://cloud.langfuse.com/project/cmr1ywsf000d5ad0cex3dm2ha/traces/aa76b174f8cbfd9ce0405cc88ee88c6e"
+      },
+      "error": null,
+      "ok": true
+    },
+    {
+      "harness": "pydantic-ai",
+      "architecture": "enterprise-mcp-react",
+      "task": "adi-top-modules",
+      "prompt": "What are the top 5 most-activated analytics modules in the last 90 days? List each module's name, business function, activation count, and subscription revenue.",
+      "output": "\n\nHere are the **top 5 most-activated analytics modules in the last 90 days**:\n\n| Rank | Module Name | Business Function | Activations | Subscription Revenue |\n|------|-------------|-------------------|-------------|---------------------|\n| 1 | Territory Performance Analyzer | Sales & Marketing | 29 | $217,500 |\n| 2 | Talent Retention Predictor | HR & People | 27 | $297,000 |\n| 3 | IP Portfolio Analyzer | Research & Development | 25 | $250,000 |\n| 4 | Trial Success Probability Model | Research & Development | 23 | $368,000 |\n| 5 | Order Fulfilment Tracker | Supply Chain | 23 | $126,500 |\n\n**Key Insights:**\n- **Research & Development leads with 2 modules** in the top 5, indicating strong demand for R&D analytics capabilities\n- **Trial Success Probability Model** generates the highest revenue ($368K) despite being ranked 4th by activations, suggesting it's a premium product\n- **Sales & Marketing** dominates with the highest activation count (29 seats), reflecting continued focus on sales productivity tools\n- Revenue ranges from $126.5K to $368K, with a combined total of **$1.26M** across these top performers",
+      "started_at": "2026-07-01T17:58:48.063311+00:00",
+      "elapsed_seconds": 12.561569041994517,
+      "metadata": {
+        "langfuse_trace_id": "6fece24175d23db0d454c38d08e4bee4",
+        "langfuse_observation_id": "588e53621e77785a",
+        "langfuse_trace_url": "https://cloud.langfuse.com/project/cmr1ywsf000d5ad0cex3dm2ha/traces/6fece24175d23db0d454c38d08e4bee4"
+      },
+      "error": null,
+      "ok": true
+    },
+    {
+      "harness": "pydantic-ai",
+      "architecture": "enterprise-mcp-codemode",
+      "task": "adi-top-modules",
+      "prompt": "What are the top 5 most-activated analytics modules in the last 90 days? List each module's name, business function, activation count, and subscription revenue.",
+      "output": "\n\nHere are the **top 5 most-activated analytics modules** in the last 90 days:\n\n| Rank | Module Name | Business Function | Activation Count | Subscription Revenue |\n|------|-------------|-------------------|------------------|---------------------|\n| 1 | Territory Performance Analyzer | Sales & Marketing | 29 | $217,500 |\n| 2 | Talent Retention Predictor | HR & People | 27 | $297,000 |\n| 3 | IP Portfolio Analyzer | Research & Development | 25 | $250,000 |\n| 4 | Trial Success Probability Model | Research & Development | 23 | $368,000 |\n| 5 | Order Fulfilment Tracker | Supply Chain | 23 | $126,500 |\n\n**Key Insights:**\n- **R&D dominates adoption** with 2 modules in the top 5, collectively generating $618K in subscription revenue despite having fewer activations than #1\n- **Sales & Marketing leads in seat activations** (29 seats) but has the lowest revenue per module\n- **Highest revenue generator**: Trial Success Probability Model at $368K (driven by its high license price of $16,000)\n- **HR & People** shows strong ROI with Talent Retention Predictor delivering $11,000/seat in revenue\n\nThe data reflects a 90-day lookback period and includes both subscription revenue ($$$) and total seats activated.",
+      "started_at": "2026-07-01T17:59:00.626571+00:00",
+      "elapsed_seconds": 13.109112375008408,
+      "metadata": {
+        "langfuse_trace_id": "ac83c4fb723aee6f41376c984a11bab3",
+        "langfuse_observation_id": "0a3ea4fa238c620f",
+        "langfuse_trace_url": "https://cloud.langfuse.com/project/cmr1ywsf000d5ad0cex3dm2ha/traces/ac83c4fb723aee6f41376c984a11bab3"
+      },
+      "error": null,
+      "ok": true
+    },
+    {
+      "harness": "pydantic-ai",
+      "architecture": "enterprise-sql-react",
+      "task": "adi-top-modules",
+      "prompt": "What are the top 5 most-activated analytics modules in the last 90 days? List each module's name, business function, activation count, and subscription revenue.",
+      "output": "\n\n",
+      "started_at": "2026-07-01T17:59:13.737515+00:00",
+      "elapsed_seconds": 1.938007667005877,
+      "metadata": {
+        "langfuse_trace_id": "9154f242a7d695fea7134afb644eb81b",
+        "langfuse_observation_id": "f792e2f509765a98",
+        "langfuse_trace_url": "https://cloud.langfuse.com/project/cmr1ywsf000d5ad0cex3dm2ha/traces/9154f242a7d695fea7134afb644eb81b"
+      },
+      "error": null,
+      "ok": true
+    },
+    {
+      "harness": "pydantic-ai",
+      "architecture": "enterprise-sql-codemode",
+      "task": "adi-top-modules",
+      "prompt": "What are the top 5 most-activated analytics modules in the last 90 days? List each module's name, business function, activation count, and subscription revenue.",
+      "output": "\n\nBased on my analysis of the subscription data from the last 90 days, here are the **top 5 most-activated analytics modules**:\n\n| Rank | Module Name | Business Function | Activations | Subscription Revenue |\n|------|-------------|-------------------|-------------|---------------------|\n| 1 | Territory Performance Analyzer | Sales & Marketing | **11** | $180,000 |\n| 2 | IP Portfolio Analyzer | Research & Development | **10** | $250,000 |\n| 3 | Talent Retention Predictor | HR & People | **9** | $209,000 |\n| 4 | Resource Allocation Optimizer | Research & Development | **8** | $220,000 |\n| 5 | Compensation Benchmarking Tool | HR & People | **8** | $126,000 |\n\n## Key Insights:\n\n- **Sales & Marketing leads** with the highest activation volume (11 activations), showing strong demand for sales intelligence tools.\n\n- **Research & Development dominates revenue** despite fewer activations - the IP Portfolio Analyzer generated the most revenue at $250,000.\n\n- **HR & People is gaining momentum** with 2 modules in the top 5, reflecting growing enterprise focus on workforce analytics.\n\n- **Average revenue per activation**: ~$197,000 across these top modules.",
+      "started_at": "2026-07-01T17:59:15.675977+00:00",
+      "elapsed_seconds": 34.17833329200221,
+      "metadata": {
+        "langfuse_trace_id": "f4188de75f397b229bd62f6ea2b6a3f5",
+        "langfuse_observation_id": "3b46f21e5a7280bb",
+        "langfuse_trace_url": "https://cloud.langfuse.com/project/cmr1ywsf000d5ad0cex3dm2ha/traces/f4188de75f397b229bd62f6ea2b6a3f5"
+      },
+      "error": null,
+      "ok": true
+    }
+  ]
+}

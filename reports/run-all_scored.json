@@ -1,0 +1,308 @@
+{
+  "mode": "run-all",
+  "harness": "pydantic-ai",
+  "task": "adi-top-modules",
+  "results": [
+    {
+      "harness": "pydantic-ai",
+      "architecture": "minimal",
+      "task": "adi-top-modules",
+      "prompt": "What are the top 5 most-activated analytics modules in the last 90 days? List each module's name, business function, activation count, and subscription revenue.",
+      "output": "\n\n# Analysis: Top 5 Most-Activated Analytics Modules\n\n## Problem Understanding\n\nI need to identify the **top 5 most-activated analytics modules** within a **90-day window**, with the following output columns:\n1. Module name\n2. Business function (category)\n3. Activation count (how many times it was activated)\n4. Subscription revenue associated with the module\n\n## Data Schema Assumptions\n\nBased on typical SaaS analytics systems, I'll assume the following structure:\n\n```sql\n-- Analytics modules table\nanalytics_modules (\n  module_id,           -- Primary key\n  name,                -- Module display name\n  business_function,   -- e.g., \"Reporting\", \"Marketing\", \"Sales\"\n  subscription_revenue -- Associated revenue (may be NULL)\n)\n\n-- Module activation logs\nmodule_activations (\n  activation_id,       -- Primary key\n  module_id,           -- Foreign key to analytics_modules\n  activated_at         -- Timestamp of activation\n)\n\n-- Subscription table (if revenue is tracked separately)\nsubscriptions (\n  subscription_id,     -- Primary key\n  module_id,           -- Foreign key to analytics_modules\n  revenue_amount,      -- Monthly/annual revenue\n  status               -- Active/inactive\n)\n```\n\n## SQL Query Solution\n\n```sql\nWITH module_activations_cte AS (\n    -- Filter activations from the last 90 days only\n    SELECT \n        ma.module_id,\n        COUNT(ma.activation_id) AS activation_count\n    FROM module_activations ma\n    WHERE \n        ma.activated_at >= CURRENT_DATE - INTERVAL '90 days'\n        AND ma.activated_at < CURRENT_DATE + INTERVAL '1 day'  -- Inclusive of today\n    GROUP BY ma.module_id\n),\n\nranked_modules AS (\n    -- Rank modules by activation count and take top 5\n    SELECT \n        mol.module_id,\n        mol.name AS module_name,\n        mol.business_function,\n        COALESCE(sum.revenue_sum, 0) AS subscription_revenue,\n        ma.activation_count,\n        ROW_NUMBER() OVER (ORDER BY ma.activation_count DESC) AS rank_num\n    FROM module_activations_cte ma\n    JOIN analytics_modules mol ON mol.module_id = ma.module_id\n    LEFT JOIN (\n        SELECT module_id, SUM(revenue_amount) AS revenue_sum\n        FROM subscriptions\n        WHERE status = 'active'\n          AND subscription_start_date <= CURRENT_DATE - INTERVAL '90 days'\n          AND (subscription_end_date IS NULL OR subscription_end_date >= CURRENT_DATE)\n        GROUP BY module_id\n    ) sum ON mol.module_id = sum.module_id\n    WHERE ma.activation_count > 0  -- Ensure at least one activation\n)\n\nSELECT \n    module_name,\n    business_function,\n    activation_count,\n    ROUND(subscription_revenue::numeric, 2) AS subscription_revenue\nFROM ranked_modules\nWHERE rank_num <= 5\nORDER BY activation_count DESC;\n```\n\n## Expected Output Format\n\n| Module Name | Business Function | Activation Count | Subscription Revenue |\n|-------------|-------------------|------------------|----------------------|\n| [Name]      | [Function]        | [Count]          | $[Amount]           |\n| ...         | ...               | ...              | ...                 |\n\n## Key Considerations Addressed\n\n1. **90-day filtering**: Uses date arithmetic to ensure only recent activations are counted\n2. **NULL handling**: COALESCE ensures revenue displays correctly even if no subscription exists\n3. **Tie-breaking**: ROW_NUMBER() provides deterministic ordering for equal activation counts\n4. **Data integrity**: Subquery ensures subscriptions were active during the analysis period\n\n---\n\n**Note:** Since I don't have access to your actual database, please provide the schema or sample data if you need a query tailored precisely to your environment.",
+      "started_at": "2026-07-01T16:14:28.077274+00:00",
+      "elapsed_seconds": 15.547168582997983,
+      "metadata": {
+        "langfuse_trace_id": "75a827c370238bfc09aab08149331edd",
+        "langfuse_observation_id": "c66de85260ade34d",
+        "langfuse_trace_url": "https://cloud.langfuse.com/project/cmr1ywsf000d5ad0cex3dm2ha/traces/75a827c370238bfc09aab08149331edd"
+      },
+      "error": null,
+      "ok": true,
+      "scores": {
+        "scorable": true,
+        "correctness": 0.0,
+        "groundedness": 0.0,
+        "hallucination_rate": 1.0,
+        "overall_score": 0.0,
+        "details": {
+          "refused_or_no_data": true,
+          "empty_output": false,
+          "expected_text_facts": 10,
+          "matched_text_facts": 0,
+          "expected_numeric_facts": 10,
+          "matched_numeric_facts": 0,
+          "claimed_numeric_values": 7,
+          "unsupported_numeric_values": 7
+        }
+      }
+    },
+    {
+      "harness": "pydantic-ai",
+      "architecture": "codemode",
+      "task": "adi-top-modules",
+      "prompt": "What are the top 5 most-activated analytics modules in the last 90 days? List each module's name, business function, activation count, and subscription revenue.",
+      "output": "\n\nI don't have access to a database containing analytics module activation data in this environment. To answer your question about the top 5 most-activated analytics modules, I would need access to:\n\n1. **An analytics platform database** containing activation logs (e.g., from tools like Tableau, Power BI, Google Analytics 360, etc.)\n2. **A billing/subscriptions system** with revenue data per module\n\nCould you please:\n\n1. **Connect to the relevant database/system** - Is there a specific data source you're working with (e.g., PostgreSQL, MySQL, Snowflake, MongoDB)?\n\n2. **Or provide sample data** - If you can share a table schema or sample records showing:\n   - Module names\n   - Business functions (e.g., Marketing, Sales, Operations, Finance)\n   - Activation timestamps\n   - Revenue amounts\n\n3. **Or describe the data source** - What system stores this analytics module data? (e.g., \"Our CRM has a `analytics_usage` table\" or \"Data lives in our data warehouse\")\n\nOnce I have access to the actual data source, I can write a query to:\n- Filter activations from the last 90 days\n- Group by module and calculate counts + revenue\n- Return the top 5 results\n\nWould you like to connect a database or share what system contains this information?",
+      "started_at": "2026-07-01T16:14:43.628638+00:00",
+      "elapsed_seconds": 7.648803541000234,
+      "metadata": {
+        "langfuse_trace_id": "d08fcdc8ac9be36a3849564d62e5ab73",
+        "langfuse_observation_id": "97da8e4acdaf13f3",
+        "langfuse_trace_url": "https://cloud.langfuse.com/project/cmr1ywsf000d5ad0cex3dm2ha/traces/d08fcdc8ac9be36a3849564d62e5ab73"
+      },
+      "error": null,
+      "ok": true,
+      "scores": {
+        "scorable": true,
+        "correctness": 0.0,
+        "groundedness": 0.0,
+        "hallucination_rate": 1.0,
+        "overall_score": 0.0,
+        "details": {
+          "refused_or_no_data": true,
+          "empty_output": false,
+          "expected_text_facts": 10,
+          "matched_text_facts": 0,
+          "expected_numeric_facts": 10,
+          "matched_numeric_facts": 0,
+          "claimed_numeric_values": 6,
+          "unsupported_numeric_values": 6
+        }
+      }
+    },
+    {
+      "harness": "pydantic-ai",
+      "architecture": "codemode-mcp-search",
+      "task": "adi-top-modules",
+      "prompt": "What are the top 5 most-activated analytics modules in the last 90 days? List each module's name, business function, activation count, and subscription revenue.",
+      "output": "",
+      "started_at": "2026-07-01T16:14:51.280591+00:00",
+      "elapsed_seconds": 0.009267417000955902,
+      "metadata": {},
+      "error": "UserError: WebSearch(native=False) requires an explicit local tool \u2014 pass `local=...` (e.g. a strategy string, `True`, a callable, or a `Tool`/`AbstractToolset`).",
+      "ok": false,
+      "scores": {
+        "scorable": true,
+        "correctness": 0.0,
+        "groundedness": 0.0,
+        "hallucination_rate": 1.0,
+        "overall_score": 0.0,
+        "details": {
+          "refused_or_no_data": true,
+          "empty_output": true,
+          "expected_text_facts": 10,
+          "matched_text_facts": 0,
+          "expected_numeric_facts": 10,
+          "matched_numeric_facts": 0,
+          "claimed_numeric_values": 0,
+          "unsupported_numeric_values": 0
+        }
+      }
+    },
+    {
+      "harness": "pydantic-ai",
+      "architecture": "enterprise-react",
+      "task": "adi-top-modules",
+      "prompt": "What are the top 5 most-activated analytics modules in the last 90 days? List each module's name, business function, activation count, and subscription revenue.",
+      "output": "\n\n",
+      "started_at": "2026-07-01T16:14:51.291359+00:00",
+      "elapsed_seconds": 4.8093967079912545,
+      "metadata": {
+        "langfuse_trace_id": "c438482e5ed64cc01436415bd428d349",
+        "langfuse_observation_id": "9f8e7b1974b376d0",
+        "langfuse_trace_url": "https://cloud.langfuse.com/project/cmr1ywsf000d5ad0cex3dm2ha/traces/c438482e5ed64cc01436415bd428d349"
+      },
+      "error": null,
+      "ok": true,
+      "scores": {
+        "scorable": true,
+        "correctness": 0.0,
+        "groundedness": 0.0,
+        "hallucination_rate": 1.0,
+        "overall_score": 0.0,
+        "details": {
+          "refused_or_no_data": true,
+          "empty_output": true,
+          "expected_text_facts": 10,
+          "matched_text_facts": 0,
+          "expected_numeric_facts": 10,
+          "matched_numeric_facts": 0,
+          "claimed_numeric_values": 0,
+          "unsupported_numeric_values": 0
+        }
+      }
+    },
+    {
+      "harness": "pydantic-ai",
+      "architecture": "enterprise-codemode",
+      "task": "adi-top-modules",
+      "prompt": "What are the top 5 most-activated analytics modules in the last 90 days? List each module's name, business function, activation count, and subscription revenue.",
+      "output": "\n\n**Top 5 Most-Activated Analytics Modules (Last 90 Days)**\n\n| Module Name | Business Function | Activation Count | Subscription Revenue |\n|-------------|-------------------|------------------|---------------------|\n| Territory Performance Analyzer | Sales & Marketing | 29 | $217,500 |\n| Territory Performance Analyzer | Sales & Marketing | 28 | $210,000 |\n| Talent Retention Predictor | HR & People | 27 | $297,000 |\n| Talent Retention Predictor | HR & People | 27 | $297,000 |\n| IP Portfolio Analyzer | Research & Development | 25 | $250,000 |\n\n**Key Insights:**\n- **Sales & Marketing** modules lead in activation volume, with Territory Performance Analyzer appearing twice at the top\n- **HR & People** modules generate the highest revenue per activation ($11,000/seat) despite fewer total activations\n- **Research & Development** shows strong performance with IP Portfolio Analyzer rounding out the top 5\n\n*Note: Duplicate entries represent different deployment instances of the same module product.*",
+      "started_at": "2026-07-01T16:14:56.101688+00:00",
+      "elapsed_seconds": 33.67266150000796,
+      "metadata": {
+        "langfuse_trace_id": "281f5cd40d4a17b607e7e96ef3747392",
+        "langfuse_observation_id": "c5457bd5d9198f65",
+        "langfuse_trace_url": "https://cloud.langfuse.com/project/cmr1ywsf000d5ad0cex3dm2ha/traces/281f5cd40d4a17b607e7e96ef3747392"
+      },
+      "error": null,
+      "ok": true,
+      "scores": {
+        "scorable": true,
+        "correctness": 0.35,
+        "groundedness": 0.0,
+        "hallucination_rate": 1.0,
+        "overall_score": 0.0,
+        "details": {
+          "refused_or_no_data": false,
+          "empty_output": false,
+          "expected_text_facts": 10,
+          "matched_text_facts": 7,
+          "expected_numeric_facts": 10,
+          "matched_numeric_facts": 0,
+          "claimed_numeric_values": 11,
+          "unsupported_numeric_values": 11
+        }
+      }
+    },
+    {
+      "harness": "pydantic-ai",
+      "architecture": "enterprise-mcp-react",
+      "task": "adi-top-modules",
+      "prompt": "What are the top 5 most-activated analytics modules in the last 90 days? List each module's name, business function, activation count, and subscription revenue.",
+      "output": "\n\nBased on the top-selling products data from the last 90 days, here are the **top 5 most-activated analytics modules**:\n\n| Rank | Module Name | Business Function | Activations | Subscription Revenue |\n|------|-------------|-------------------|-------------|---------------------|\n| 1 | Territory Performance Analyzer (ID: 80) | Sales & Marketing | 29 | $217,500 |\n| 2 | Territory Performance Analyzer (ID: 30) | Sales & Marketing | 28 | $210,000 |\n| 3 | Talent Retention Predictor (ID: 92) | HR & People | 27 | $297,000 |\n| 4 | Talent Retention Predictor (ID: 42) | HR & People | 27 | $297,000 |\n| 5 | IP Portfolio Analyzer (ID: 88) | Research & Development | 25 | $250,000 |\n\n**Key Insights:**\n- **Sales & Marketing** dominates the top activations with 2 Territory Performance Analyzer instances leading\n- **HR & People** modules show highest revenue per activation ($11,000/license vs $7,500 for Sales)\n- **Research & Development** has the lowest activation count among top 5 but strong revenue ($10,000/license)\n- Combined total: **136 activations** generating **$1,271,500** in subscription revenue",
+      "started_at": "2026-07-01T16:15:29.776604+00:00",
+      "elapsed_seconds": 12.792786000005435,
+      "metadata": {
+        "langfuse_trace_id": "91bc75af7caaab2707bbe9237129c586",
+        "langfuse_observation_id": "95a6ef1ecc190f1f",
+        "langfuse_trace_url": "https://cloud.langfuse.com/project/cmr1ywsf000d5ad0cex3dm2ha/traces/91bc75af7caaab2707bbe9237129c586"
+      },
+      "error": null,
+      "ok": true,
+      "scores": {
+        "scorable": true,
+        "correctness": 0.35,
+        "groundedness": 0.0,
+        "hallucination_rate": 1.0,
+        "overall_score": 0.0,
+        "details": {
+          "refused_or_no_data": false,
+          "empty_output": false,
+          "expected_text_facts": 10,
+          "matched_text_facts": 7,
+          "expected_numeric_facts": 10,
+          "matched_numeric_facts": 0,
+          "claimed_numeric_values": 24,
+          "unsupported_numeric_values": 24
+        }
+      }
+    },
+    {
+      "harness": "pydantic-ai",
+      "architecture": "enterprise-mcp-codemode",
+      "task": "adi-top-modules",
+      "prompt": "What are the top 5 most-activated analytics modules in the last 90 days? List each module's name, business function, activation count, and subscription revenue.",
+      "output": "\n\nHere are the **top 5 most-activated analytics modules in the last 90 days**:\n\n| Rank | Module Name | Business Function | Activations | Subscription Revenue |\n|------|-------------|-------------------|-------------|---------------------|\n| 1 | Territory Performance Analyzer (ID: 80) | Sales & Marketing | **29** | $217,500 |\n| 2 | Territory Performance Analyzer (ID: 30) | Sales & Marketing | **28** | $210,000 |\n| 3 | Talent Retention Predictor (ID: 92) | HR & People | **27** | $297,000 |\n| 4 | Talent Retention Predictor (ID: 42) | HR & People | **27** | $297,000 |\n| 5 | IP Portfolio Analyzer (ID: 88) | Research & Development | **25** | $250,000 |\n\n### Key Insights:\n- **Sales & Marketing** dominates with 2 of the top 5 spots, showing strong adoption in revenue optimization tools\n- **HR & People** module (Talent Retention Predictor) generates the highest subscription revenue ($297,000 each) despite fewer activations\n- **Research & Development** is represented by IP Portfolio Analyzer with 25 activations\n- Combined total: **136 activations** generating **$1,271,500** in subscription revenue\n\n### Note:\nProducts IDs 80/30 and 92/42 represent the same module names with identical specifications. This appears to be duplicate entries in the database\u2014these may represent different deployment instances or data artifacts.",
+      "started_at": "2026-07-01T16:15:42.572069+00:00",
+      "elapsed_seconds": 22.41354212501028,
+      "metadata": {
+        "langfuse_trace_id": "4f16a32a599f86aeeb56dfc8317e90a6",
+        "langfuse_observation_id": "25af2ef0742509de",
+        "langfuse_trace_url": "https://cloud.langfuse.com/project/cmr1ywsf000d5ad0cex3dm2ha/traces/4f16a32a599f86aeeb56dfc8317e90a6"
+      },
+      "error": null,
+      "ok": true,
+      "scores": {
+        "scorable": true,
+        "correctness": 0.35,
+        "groundedness": 0.0,
+        "hallucination_rate": 1.0,
+        "overall_score": 0.0,
+        "details": {
+          "refused_or_no_data": false,
+          "empty_output": false,
+          "expected_text_facts": 10,
+          "matched_text_facts": 7,
+          "expected_numeric_facts": 10,
+          "matched_numeric_facts": 0,
+          "claimed_numeric_values": 21,
+          "unsupported_numeric_values": 21
+        }
+      }
+    },
+    {
+      "harness": "pydantic-ai",
+      "architecture": "enterprise-sql-react",
+      "task": "adi-top-modules",
+      "prompt": "What are the top 5 most-activated analytics modules in the last 90 days? List each module's name, business function, activation count, and subscription revenue.",
+      "output": "",
+      "started_at": "2026-07-01T16:16:04.989390+00:00",
+      "elapsed_seconds": 20.74386445900018,
+      "metadata": {},
+      "error": "SQLError: You can only execute one statement at a time.",
+      "ok": false,
+      "scores": {
+        "scorable": true,
+        "correctness": 0.0,
+        "groundedness": 0.0,
+        "hallucination_rate": 1.0,
+        "overall_score": 0.0,
+        "details": {
+          "refused_or_no_data": true,
+          "empty_output": true,
+          "expected_text_facts": 10,
+          "matched_text_facts": 0,
+          "expected_numeric_facts": 10,
+          "matched_numeric_facts": 0,
+          "claimed_numeric_values": 0,
+          "unsupported_numeric_values": 0
+        }
+      }
+    },
+    {
+      "harness": "pydantic-ai",
+      "architecture": "enterprise-sql-codemode",
+      "task": "adi-top-modules",
+      "prompt": "What are the top 5 most-activated analytics modules in the last 90 days? List each module's name, business function, activation count, and subscription revenue.",
+      "output": "\n\n## Top 5 Most-Activated Analytics Modules (Last 90 Days)\n\nBased on **delivered subscriptions** over the last 90 days, here are the top-performing analytics modules:\n\n| Rank | Module Name | Business Function | Activations | Subscription Revenue |\n|------|-------------|-------------------|-------------|---------------------|\n| 1 | **Territory Performance Analyzer** | Sales & Marketing | 21 | $352,500 |\n| 2 | **Talent Retention Predictor** | HR & People | 16 | $352,000 |\n| 3 | **Compensation Benchmarking Tool** | HR & People | 14 | $216,000 |\n| 4 | **IP Portfolio Analyzer** | Research & Development | 12 | $280,000 |\n| 5 | **Market Share Monitor** | Sales & Marketing | 12 | $242,000 |\n\n### Key Insights:\n\n- **Sales & Marketing dominates activation volume** with 2 of the top 5 modules, generating $594,500 combined revenue\n- **HR & People shows strong performance** with 2 modules in the top 3, led by Talent Retention Predictor\n- **IP Portfolio Analyzer** has a notably high revenue-per-activation ($23,333/activation) \u2014 the highest among all modules\n- All 5 modules are in their **delivered** (fully active) state, indicating customers have successfully deployed and adopted them\n\nThese findings suggest strong enterprise demand for sales analytics (territory optimization, market intelligence) and people analytics (retention forecasting, compensation benchmarking). The R&D module's high revenue per activation could indicate premium pricing or larger enterprise deployments.",
+      "started_at": "2026-07-01T16:16:25.734672+00:00",
+      "elapsed_seconds": 41.890119582996704,
+      "metadata": {
+        "langfuse_trace_id": "5b419e164afb0dcde9519d3ddcf93489",
+        "langfuse_observation_id": "b18f54b4f03c14a1",
+        "langfuse_trace_url": "https://cloud.langfuse.com/project/cmr1ywsf000d5ad0cex3dm2ha/traces/5b419e164afb0dcde9519d3ddcf93489"
+      },
+      "error": null,
+      "ok": true,
+      "scores": {
+        "scorable": true,
+        "correctness": 0.35,
+        "groundedness": 0.0,
+        "hallucination_rate": 1.0,
+        "overall_score": 0.0,
+        "details": {
+          "refused_or_no_data": false,
+          "empty_output": false,
+          "expected_text_facts": 10,
+          "matched_text_facts": 7,
+          "expected_numeric_facts": 10,
+          "matched_numeric_facts": 0,
+          "claimed_numeric_values": 17,
+          "unsupported_numeric_values": 17
+        }
+      }
+    }
+  ],
+  "scored_at": "2026-07-01T17:54:42.983847+00:00",
+  "ground_truth_generated_at": "2026-07-01T17:53:22.505548+00:00",
+  "score_summary": {
+    "scored_results": 9,
+    "overall_score_formula": "harmonic_mean(correctness, groundedness)",
+    "avg_overall_score": 0.0,
+    "best_architecture": null,
+    "best_overall_score": 0.0,
+    "avg_correctness": 0.1556,
+    "avg_groundedness": 0.0,
+    "avg_hallucination_rate": 1.0
+  }
+}

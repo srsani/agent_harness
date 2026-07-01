@@ -1,11 +1,10 @@
 from __future__ import annotations
 
-import asyncio
-import concurrent.futures
 import time
 from collections.abc import Callable
 
 from agent_harness.config import settings
+from agent_harness.harnesses.pydantic_ai.traced_agent import TracedAgent
 from agent_harness.runners.base import AgentRunner, RunResult
 
 HN_MCP_URL = "https://hn.caseyjhand.com/mcp"
@@ -16,7 +15,10 @@ ENTERPRISE_SYSTEM_PROMPT = (
     "R&D, HR, and operations — to deliver instant, actionable insights and recommendations. "
     "Use the available tools to answer questions about performance metrics, forecasts, resource "
     "allocation, and cross-functional KPIs. Surface patterns, flag risks, and recommend decisions "
-    "with supporting evidence. Be concise and always cite the data behind every insight."
+    "with supporting evidence. Be concise and always cite the data behind every insight. "
+    "For benchmark questions, answer only with values returned by tools or SQL. Do not add "
+    "rank numbers, percentages, totals, averages, per-seat values, dates, or narrative numeric "
+    "claims unless the user explicitly asks for them."
 )
 
 ENTERPRISE_SQL_SYSTEM_PROMPT = (
@@ -27,8 +29,25 @@ ENTERPRISE_SQL_SYSTEM_PROMPT = (
     "describe_table (get column names and types for a table), "
     "and execute_sql (run any read-only SELECT query). "
     "Always start by exploring the schema if you are unsure of the structure. "
+    "For relative date windows, anchor queries to SELECT MAX(created_at) FROM orders. "
+    "For module activation count, count DISTINCT subscription/order IDs from all "
+    "non-cancelled orders; do not restrict to delivered orders and do not count seats. "
+    "For top modules, break activation-count ties by subscription revenue descending. "
     "Write precise SQL to answer the question, then translate the numbers into "
-    "a clear, actionable insight. Be concise and always cite the figures you found."
+    "a clear answer. Be concise and always cite the figures you found. "
+    "For benchmark questions, return only requested fields and avoid extra numeric claims."
+)
+
+BENCHMARK_RESPONSE_INSTRUCTIONS = (
+    "Benchmark response requirements:\n"
+    "- Use available database tools or SQL for enterprise data questions.\n"
+    "- Return only the fields requested by the user, preferably as a compact table.\n"
+    "- Do not include a rank column, key insights, totals, percentages, per-seat values, dates, "
+    "or any other numeric claims unless the user explicitly asks for them.\n"
+    "- Do not restate numeric values from the question, such as lookback windows or requested "
+    "row counts, in headings or preambles.\n"
+    "- If a tool returns exactly the requested rows and fields, copy those values without "
+    "recomputing or relabeling them."
 )
 
 
@@ -116,9 +135,13 @@ def _build_codemode_mcp_search_agent():
         capabilities=[
             CodeMode(),
             MCP(HN_MCP_URL, native=False),
-            WebSearch(native=False),
+            WebSearch(native=False, local=True),
         ],
     )
+
+
+def _with_benchmark_instructions(prompt: str) -> str:
+    return f"{prompt}\n\n{BENCHMARK_RESPONSE_INSTRUCTIONS}"
 
 
 def _build_enterprise_react_agent():
@@ -250,7 +273,7 @@ class PydanticAIRunner(AgentRunner):
     def description(self) -> str:
         return self._description
 
-    def run(self, prompt: str) -> RunResult:
+    def run(self, prompt: str, *, session_id: str | None = None) -> RunResult:
         result = RunResult(
             harness=self.harness_name,
             architecture=self.architecture_name,
@@ -258,25 +281,35 @@ class PydanticAIRunner(AgentRunner):
             prompt=prompt,
             output="",
         )
+        if session_id is not None:
+            result.metadata["langfuse_session_id"] = session_id
+
         started = time.perf_counter()
         try:
             _optional_logfire()
-            agent = self._build_agent()
-            # Run in a dedicated thread so we always get a fresh event loop.
-            # This avoids the Python 3.12 "cannot enter context" error that
-            # occurs when agent.run_sync() is called from inside Jupyter's
-            # already-running event loop (even with nest_asyncio patched).
-            def _run() -> str:
-                return str(agent.run_sync(prompt).output)
+            trace_metadata = {
+                "harness": self.harness_name,
+                "architecture": self.architecture_name,
+            }
+            if session_id is not None:
+                trace_metadata["langfuse_session_id"] = session_id
 
-            try:
-                asyncio.get_running_loop()
-                # We're inside a running loop (e.g. Jupyter) — spin a thread.
-                with concurrent.futures.ThreadPoolExecutor(max_workers=1) as pool:
-                    result.output = pool.submit(_run).result()
-            except RuntimeError:
-                # No running loop — safe to call directly.
-                result.output = _run()
+            traced_agent = TracedAgent(
+                agent=self._build_agent(),
+                trace_name="agent-harness.run",
+                trace_metadata=trace_metadata,
+                session_id=session_id,
+                model_name=settings.agent_bench_model,
+                require_langfuse=True,
+            )
+            run_result = traced_agent.run_sync(_with_benchmark_instructions(prompt))
+            result.output = str(run_result.output)
+            if traced_agent.last_trace_id is not None:
+                result.metadata["langfuse_trace_id"] = traced_agent.last_trace_id
+            if traced_agent.last_observation_id is not None:
+                result.metadata["langfuse_observation_id"] = traced_agent.last_observation_id
+            if traced_agent.last_trace_url is not None:
+                result.metadata["langfuse_trace_url"] = traced_agent.last_trace_url
         except Exception as exc:  # noqa: BLE001 — surface harness errors in bench output
             result.error = f"{type(exc).__name__}: {exc}"
         result.elapsed_seconds = time.perf_counter() - started

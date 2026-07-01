@@ -120,7 +120,10 @@ def get_product_reviews(product_id: int, limit: int = 10) -> list[dict[str, Any]
 
 
 def get_top_selling_products(limit: int = 10, days: int = 90) -> list[dict[str, Any]]:
-    """Return the most-subscribed analytics modules by activation count in the last N days.
+    """Return the most-activated analytics modules in the last N days.
+
+    An activation is one non-cancelled subscription/order containing the module. Seat count is
+    intentionally not used for this metric; seats are only used to calculate subscription revenue.
 
     Args:
         limit: How many modules to return (default 10).
@@ -128,18 +131,22 @@ def get_top_selling_products(limit: int = 10, days: int = 90) -> list[dict[str, 
     """
     return _rows(
         """
-        SELECT p.id, p.name, p.annual_license_usd,
+        WITH latest AS (
+            SELECT MAX(created_at) AS max_created_at FROM orders
+        )
+        SELECT p.name AS module_name,
                c.name AS business_function,
-               SUM(oi.seats) AS total_seats_activated,
-               SUM(oi.seats * oi.unit_price) AS subscription_revenue
+               COUNT(DISTINCT oi.order_id) AS activation_count,
+               ROUND(SUM(oi.seats * oi.unit_price), 2) AS subscription_revenue
         FROM order_items oi
         JOIN orders o   ON o.id  = oi.order_id
         JOIN products p ON p.id  = oi.product_id
         JOIN categories c ON c.id = p.category_id
-        WHERE o.created_at >= datetime('now', ? || ' days')
+        CROSS JOIN latest l
+        WHERE o.created_at >= datetime(l.max_created_at, ? || ' days')
           AND o.status != 'cancelled'
-        GROUP BY p.id
-        ORDER BY total_seats_activated DESC
+        GROUP BY p.name, c.name
+        ORDER BY activation_count DESC, subscription_revenue DESC
         LIMIT ?
         """,
         f"-{days}",

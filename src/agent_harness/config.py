@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+from pydantic import AliasChoices, Field
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
 
@@ -9,6 +10,15 @@ class Settings(BaseSettings):
     anthropic_api_key: str | None = None
     openai_api_key: str | None = None
     logfire_token: str | None = None
+    langfuse_public_key: str | None = None
+    langfuse_secret_key: str | None = None
+    langfuse_host: str = Field(
+        default="https://cloud.langfuse.com",
+        validation_alias=AliasChoices("LANGFUSE_HOST", "LANGFUSE_BASE_URL"),
+    )
+    langfuse_detailed_tracing: bool = True
+    langfuse_flush_each_run: bool = False
+    langfuse_trace_sample_rate: float = Field(default=1.0, ge=0.0, le=1.0)
 
     # Set to e.g. "anthropic:claude-sonnet-4-6", "openai:gpt-4o", or "local:model-name"
     agent_bench_model: str = "anthropic:claude-sonnet-4-6"
@@ -40,6 +50,5 @@ class Settings(BaseSettings):
 
         # Cloud providers — pydantic-ai resolves "anthropic:…" / "openai:…" natively
         return self.agent_bench_model
-
 
 settings = Settings()
