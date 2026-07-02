@@ -218,6 +218,79 @@ def build_ground_truth() -> dict[str, Any]:
             ),
         }
 
+        tasks["adi-function-opportunity"] = {
+            "type": "deterministic-sql",
+            "prompt": TASKS["adi-function-opportunity"],
+            "expected": _rows(
+                conn,
+                """
+                WITH function_revenue AS (
+                  SELECT
+                    c.id AS category_id,
+                    c.name AS business_function,
+                    ROUND(SUM(oi.seats * oi.unit_price), 2) AS revenue_6m,
+                    COUNT(DISTINCT o.customer_id) AS unique_users_6m
+                  FROM categories c
+                  JOIN products p ON p.category_id = c.id
+                  JOIN order_items oi ON oi.product_id = p.id
+                  JOIN orders o ON o.id = oi.order_id
+                  WHERE o.status != 'cancelled'
+                    AND o.created_at >= datetime(?, '-6 months')
+                  GROUP BY c.id, c.name
+                ),
+                module_revenue AS (
+                  SELECT
+                    c.id AS category_id,
+                    p.name AS module_name,
+                    ROUND(SUM(oi.seats * oi.unit_price), 2) AS module_revenue_6m,
+                    ROW_NUMBER() OVER (
+                      PARTITION BY c.id
+                      ORDER BY SUM(oi.seats * oi.unit_price) DESC, p.name ASC
+                    ) AS rn
+                  FROM categories c
+                  JOIN products p ON p.category_id = c.id
+                  JOIN order_items oi ON oi.product_id = p.id
+                  JOIN orders o ON o.id = oi.order_id
+                  WHERE o.status != 'cancelled'
+                    AND o.created_at >= datetime(?, '-6 months')
+                  GROUP BY c.id, p.name
+                ),
+                function_ratings AS (
+                  SELECT
+                    c.id AS category_id,
+                    ROUND(AVG(r.rating), 3) AS avg_module_rating
+                  FROM categories c
+                  JOIN products p ON p.category_id = c.id
+                  JOIN reviews r ON r.product_id = p.id
+                  GROUP BY c.id
+                ),
+                low_adoption AS (
+                  SELECT
+                    c.id AS category_id,
+                    COUNT(*) AS low_adoption_modules
+                  FROM categories c
+                  JOIN products p ON p.category_id = c.id
+                  WHERE p.active_deployments <= 25
+                  GROUP BY c.id
+                )
+                SELECT
+                  fr.business_function,
+                  fr.revenue_6m,
+                  fr.unique_users_6m,
+                  mr.module_name AS highest_revenue_module,
+                  COALESCE(r.avg_module_rating, 0) AS avg_module_rating,
+                  COALESCE(la.low_adoption_modules, 0) AS low_adoption_modules
+                FROM function_revenue fr
+                LEFT JOIN module_revenue mr ON mr.category_id = fr.category_id AND mr.rn = 1
+                LEFT JOIN function_ratings r ON r.category_id = fr.category_id
+                LEFT JOIN low_adoption la ON la.category_id = fr.category_id
+                ORDER BY fr.revenue_6m DESC, fr.business_function ASC
+                LIMIT 3
+                """,
+                (max_created_at, max_created_at),
+            ),
+        }
+
         exec_users = _rows(
             conn,
             """

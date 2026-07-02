@@ -1,0 +1,37 @@
+{
+  "session_id": "agent-bench:run:pydantic-ai:adi-function-opportunity:20260702T123024Z:8ed5c191",
+  "harness": "pydantic-ai",
+  "architecture": "enterprise-react",
+  "task": "adi-function-opportunity",
+  "prompt": "For each business function, calculate total subscription revenue in the last 6 months, unique users in the last 6 months, highest-revenue module, average module rating across reviewed modules, and number of low-adoption modules with 25 or fewer active deployments. Return only the top 3 business functions by revenue, sorted by revenue descending, with columns: business_function, revenue_6m, unique_users_6m, highest_revenue_module, avg_module_rating, low_adoption_modules.",
+  "output": "\n\n",
+  "started_at": "2026-07-02T12:30:24.334544+00:00",
+  "elapsed_seconds": 5.545457292028004,
+  "metadata": {
+    "langfuse_session_id": "agent-bench:run:pydantic-ai:adi-function-opportunity:20260702T123024Z:8ed5c191",
+    "langfuse_trace_id": "183c20a4619ef3b6742c649335a49c1e",
+    "langfuse_observation_id": "04c0403509b873a0",
+    "langfuse_trace_url": "https://cloud.langfuse.com/project/cmr1ywsf000d5ad0cex3dm2ha/traces/183c20a4619ef3b6742c649335a49c1e"
+  },
+  "error": null,
+  "ok": true,
+  "scores": {
+    "scorable": true,
+    "correctness": 0.0,
+    "groundedness": 0.0,
+    "hallucination_rate": 1.0,
+    "overall_score": 0.0,
+    "details": {
+      "refused_or_no_data": true,
+      "empty_output": true,
+      "expected_text_facts": 6,
+      "matched_text_facts": 0,
+      "expected_numeric_facts": 12,
+      "matched_numeric_facts": 0,
+      "claimed_numeric_values": 0,
+      "unsupported_numeric_values": 0
+    }
+  },
+  "scored_at": "2026-07-02T12:30:30.682048+00:00",
+  "ground_truth_generated_at": "2026-07-02T12:30:24.102029+00:00"
+}

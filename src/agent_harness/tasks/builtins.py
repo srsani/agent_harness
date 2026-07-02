@@ -40,6 +40,14 @@ TASKS: dict[str, str] = {
         "number of unique users who subscribed to at least one module from that function, and the "
         "single highest-revenue module. Present the results sorted by revenue descending."
     ),
+    "adi-function-opportunity": (
+        "For each business function, calculate total subscription revenue in the last 6 months, "
+        "unique users in the last 6 months, highest-revenue module, average module rating across "
+        "reviewed modules, and number of low-adoption modules with 25 or fewer active deployments. "
+        "Return only the top 3 business functions by revenue, sorted by revenue descending, with "
+        "columns: business_function, revenue_6m, unique_users_6m, highest_revenue_module, "
+        "avg_module_rating, low_adoption_modules."
+    ),
     "adi-executive-users": (
         "Find all gold-tier users. For each one, show their name, city, "
         "lifetime subscription value, and their single highest-value subscription (ID + amount). "

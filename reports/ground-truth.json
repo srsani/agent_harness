@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-01T18:30:53.286234+00:00",
+  "generated_at": "2026-07-02T12:32:07.915623+00:00",
   "db_path": "/Users/srs/Projects/aily/data/enterprise.db",
   "max_order_created_at": "2026-06-30T18:00:11",
   "notes": [
@@ -163,6 +163,36 @@
           "unique_users_6m": 80,
           "highest_revenue_module": "Revenue Forecast Model",
           "highest_module_revenue_6m": 324000.0
+        }
+      ]
+    },
+    "adi-function-opportunity": {
+      "type": "deterministic-sql",
+      "prompt": "For each business function, calculate total subscription revenue in the last 6 months, unique users in the last 6 months, highest-revenue module, average module rating across reviewed modules, and number of low-adoption modules with 25 or fewer active deployments. Return only the top 3 business functions by revenue, sorted by revenue descending, with columns: business_function, revenue_6m, unique_users_6m, highest_revenue_module, avg_module_rating, low_adoption_modules.",
+      "expected": [
+        {
+          "business_function": "Research & Development",
+          "revenue_6m": 3248000.0,
+          "unique_users_6m": 82,
+          "highest_revenue_module": "Trial Success Probability Model",
+          "avg_module_rating": 3.75,
+          "low_adoption_modules": 3
+        },
+        {
+          "business_function": "Supply Chain",
+          "revenue_6m": 2467000.0,
+          "unique_users_6m": 88,
+          "highest_revenue_module": "Inventory Optimization Suite",
+          "avg_module_rating": 4.059,
+          "low_adoption_modules": 0
+        },
+        {
+          "business_function": "Sales & Marketing",
+          "revenue_6m": 2411500.0,
+          "unique_users_6m": 78,
+          "highest_revenue_module": "Market Share Monitor",
+          "avg_module_rating": 4.0,
+          "low_adoption_modules": 0
         }
       ]
     },

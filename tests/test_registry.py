@@ -15,3 +15,5 @@ def test_pydantic_ai_architectures():
 def test_tasks():
     assert "hello" in list_tasks()
     assert "17 + 25" in get_task("hello")
+    assert "adi-function-opportunity" in list_tasks()
+    assert "low-adoption modules" in get_task("adi-function-opportunity")

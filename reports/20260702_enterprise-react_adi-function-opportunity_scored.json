@@ -1,0 +1,34 @@
+{
+  "session_id": "agent-bench:run:pydantic-ai:adi-function-opportunity:20260702T122721Z:9f5a6dbd",
+  "harness": "pydantic-ai",
+  "architecture": "enterprise-react",
+  "task": "adi-function-opportunity",
+  "prompt": "For each business function, calculate total subscription revenue in the last 6 months, unique users in the last 6 months, highest-revenue module, average module rating across reviewed modules, and number of low-adoption modules with 25 or fewer active deployments. Return only the top 3 business functions by revenue, sorted by revenue descending.",
+  "output": "",
+  "started_at": "2026-07-02T12:27:21.147897+00:00",
+  "elapsed_seconds": 30.75114208398736,
+  "metadata": {
+    "langfuse_session_id": "agent-bench:run:pydantic-ai:adi-function-opportunity:20260702T122721Z:9f5a6dbd"
+  },
+  "error": "SQLError: no such column: c.name",
+  "ok": false,
+  "scores": {
+    "scorable": true,
+    "correctness": 0.0,
+    "groundedness": 0.0,
+    "hallucination_rate": 1.0,
+    "overall_score": 0.0,
+    "details": {
+      "refused_or_no_data": true,
+      "empty_output": true,
+      "expected_text_facts": 6,
+      "matched_text_facts": 0,
+      "expected_numeric_facts": 12,
+      "matched_numeric_facts": 0,
+      "claimed_numeric_values": 0,
+      "unsupported_numeric_values": 0
+    }
+  },
+  "scored_at": "2026-07-02T12:29:52.025582+00:00",
+  "ground_truth_generated_at": "2026-07-02T12:29:51.977592+00:00"
+}

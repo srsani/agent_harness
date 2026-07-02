@@ -1,0 +1,34 @@
+{
+  "session_id": "agent-bench:run:pydantic-ai:adi-function-opportunity:20260702T123037Z:dff5f198",
+  "harness": "pydantic-ai",
+  "architecture": "enterprise-codemode",
+  "task": "adi-function-opportunity",
+  "prompt": "For each business function, calculate total subscription revenue in the last 6 months, unique users in the last 6 months, highest-revenue module, average module rating across reviewed modules, and number of low-adoption modules with 25 or fewer active deployments. Return only the top 3 business functions by revenue, sorted by revenue descending, with columns: business_function, revenue_6m, unique_users_6m, highest_revenue_module, avg_module_rating, low_adoption_modules.",
+  "output": "",
+  "started_at": "2026-07-02T12:30:37.510605+00:00",
+  "elapsed_seconds": 61.23794133399497,
+  "metadata": {
+    "langfuse_session_id": "agent-bench:run:pydantic-ai:adi-function-opportunity:20260702T123037Z:dff5f198"
+  },
+  "error": "UnexpectedModelBehavior: Tool 'run_code' exceeded max retries count of 3",
+  "ok": false,
+  "scores": {
+    "scorable": true,
+    "correctness": 0.0,
+    "groundedness": 0.0,
+    "hallucination_rate": 1.0,
+    "overall_score": 0.0,
+    "details": {
+      "refused_or_no_data": true,
+      "empty_output": true,
+      "expected_text_facts": 6,
+      "matched_text_facts": 0,
+      "expected_numeric_facts": 12,
+      "matched_numeric_facts": 0,
+      "claimed_numeric_values": 0,
+      "unsupported_numeric_values": 0
+    }
+  },
+  "scored_at": "2026-07-02T12:31:54.475650+00:00",
+  "ground_truth_generated_at": "2026-07-02T12:30:37.270853+00:00"
+}
