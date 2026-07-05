@@ -169,7 +169,7 @@ def _score_single_result(
             },
         }
 
-    deterministic = task_gt.get("type") != "external-dynamic"
+    deterministic = task_gt.get("type") not in ("external-dynamic", "conversational")
     expected = task_gt.get("expected")
     scored = _score_output(result.get("output", ""), expected, deterministic)
     return {**result, "scores": scored}
@@ -187,14 +187,10 @@ def score_report(report: dict[str, Any], ground_truth: dict[str, Any]) -> dict[s
         ]
         scorable = [r for r in scored_results if r["scores"]["scorable"]]
         correctness_vals = [
-            r["scores"]["correctness"]
-            for r in scorable
-            if r["scores"]["correctness"] is not None
+            r["scores"]["correctness"] for r in scorable if r["scores"]["correctness"] is not None
         ]
         grounded_vals = [
-            r["scores"]["groundedness"]
-            for r in scorable
-            if r["scores"]["groundedness"] is not None
+            r["scores"]["groundedness"] for r in scorable if r["scores"]["groundedness"] is not None
         ]
         halluc_vals = [
             r["scores"]["hallucination_rate"]

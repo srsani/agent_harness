@@ -256,13 +256,17 @@ uv run python scripts/seed_db.py --reset
 
 | Function | What it does |
 |---|---|
+| `get_schema_context()` | Full semantic layer: table meanings, relationships, metric patterns, and query tips |
 | `list_tables()` | All tables with column signatures |
 | `describe_table(table_name)` | Full column definitions |
 | `execute_sql(query, limit)` | Read-only SELECT, results capped at `limit` rows |
 
+The full enterprise architectures get all 17 tools. The SQL-only architectures intentionally expose
+only `list_tables`, `describe_table`, and `execute_sql`.
+
 ### MCP server
 
-All 16 tools are also exposed over the [MCP protocol](https://modelcontextprotocol.io/) via FastMCP:
+All 17 tools are also exposed over the [MCP protocol](https://modelcontextprotocol.io/) via FastMCP:
 
 ```bash
 # Run the server standalone (stdio transport)
@@ -315,6 +319,34 @@ Tasks are shared prompts used across all harnesses and architectures.
 | `adi-disengagement-risk` | Multi-condition filter: active then gone quiet |
 | `adi-portfolio-depth` | Aggregation grouped by user engagement tier |
 
+### Enterprise architecture routing
+
+`src/agent_harness/tasks/routing_benchmark.py` defines a diagnostic routing benchmark for
+choosing among all seven `pydantic-ai` architectures (`minimal` plus the six enterprise
+architectures). It includes 12-15 labeled questions per architecture, ground-truth routing
+explanations, alternatives, observable routing signals, and an analysis section with
+decision-boundary rules for:
+
+- `minimal` (no tools) vs any of the six data-tool architectures
+- `enterprise-react` vs `enterprise-codemode`
+- `enterprise-mcp-react` vs `enterprise-mcp-codemode`
+- `enterprise-sql-react` vs `enterprise-sql-codemode`
+- direct typed tools vs local FastMCP tools
+- full enterprise tools vs SQL-only tools
+
+The `minimal-*` tasks are fully self-contained (arithmetic, text transformation, logic puzzles,
+plus a few greeting/FAQ-style conversational prompts) so a plain, tool-less agent answers them in
+one turn with no wasted tool-selection reasoning — none of the six enterprise architectures has
+any advantage on these, since the question never touches the database. The three conversational
+tasks (`minimal-greeting-*`, `minimal-faq-capabilities`) use `type: "conversational"` in ground
+truth: there's no single correct reply to a greeting, so — like `hn-research`'s
+`external-dynamic` type — they're intentionally excluded from strict deterministic scoring in
+`scripts/score_report.py`.
+
+Use `ROUTING_BENCHMARK` when building an automatic router; it is intentionally separate from the
+deterministic answer ground truth because the target label is the architecture choice, not the
+final numeric answer.
+
 ---
 
 ## Project layout
@@ -331,9 +363,10 @@ src/agent_harness/
       runners.py          # All architecture builders + PydanticAIRunner
   tools/
     enterprise.py         # 13 semantic tool functions
-    sql.py                # list_tables, describe_table, execute_sql
+    sql.py                # list_tables, describe_table, execute_sql, get_schema_context
   tasks/
     builtins.py           # All benchmark prompts
+    routing_benchmark.py  # Architecture routing benchmark + decision-boundary analysis
   db/
     schema.py             # SQLite DDL + get_connection() + init_db()
     seed.py               # Deterministic fake-data generator
