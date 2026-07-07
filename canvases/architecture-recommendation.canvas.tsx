@@ -142,11 +142,11 @@ const MATRIX: Record<string, Record<string, Cell>> = {
 };
 
 const SUMMARY = [
-  { arch: "enterprise-react", adjScore: 0.76, rawScore: 0.844, okRate: 9, avgElapsed: 34.0, medElapsed: 31.6, wins: 5 },
-  { arch: "enterprise-mcp-react", adjScore: 0.624, rawScore: 0.78, okRate: 8, avgElapsed: 36.4, medElapsed: 33.4, wins: 3 },
-  { arch: "enterprise-sql-codemode", adjScore: 0.633, rawScore: 0.633, okRate: 10, avgElapsed: 35.8, medElapsed: 27.2, wins: 0 },
-  { arch: "enterprise-sql-react", adjScore: 0.559, rawScore: 0.698, okRate: 8, avgElapsed: 28.2, medElapsed: 26.2, wins: 0 },
-  { arch: "enterprise-mcp-codemode", adjScore: 0.513, rawScore: 0.734, okRate: 7, avgElapsed: 36.2, medElapsed: 22.5, wins: 1 },
+  { arch: "enterprise-react", adjScore: 0.76, rawScore: 0.844, okRate: 9, avgElapsed: 34.0, medElapsed: 29.0, wins: 5 },
+  { arch: "enterprise-sql-codemode", adjScore: 0.633, rawScore: 0.633, okRate: 10, avgElapsed: 35.8, medElapsed: 24.4, wins: 0 },
+  { arch: "enterprise-mcp-react", adjScore: 0.624, rawScore: 0.78, okRate: 8, avgElapsed: 36.4, medElapsed: 22.3, wins: 3 },
+  { arch: "enterprise-sql-react", adjScore: 0.559, rawScore: 0.698, okRate: 8, avgElapsed: 28.2, medElapsed: 28.9, wins: 0 },
+  { arch: "enterprise-mcp-codemode", adjScore: 0.513, rawScore: 0.734, okRate: 7, avgElapsed: 36.2, medElapsed: 27.1, wins: 1 },
   { arch: "enterprise-codemode", adjScore: 0.467, rawScore: 0.667, okRate: 7, avgElapsed: 40.2, medElapsed: 32.7, wins: 1 },
 ];
 
@@ -205,7 +205,7 @@ export default function ArchitectureRecommendation() {
       <Grid columns={4} gap={16}>
         <Stat value="enterprise-react" label="Best overall (this model)" tone="success" />
         <Stat value="enterprise-sql-codemode" label="Most reliable (10/10 ok)" />
-        <Stat value="22–34s" label="Median elapsed, top 3 fastest archs" />
+        <Stat value="22–27s" label="Median elapsed, top 3 fastest archs" />
         <Stat value="70 / 70" label="Task × architecture combos run today" tone="success" />
       </Grid>
 
@@ -446,7 +446,7 @@ export default function ArchitectureRecommendation() {
                     <Text size="small" tone="secondary">Why:</Text>
                     <Text size="small">· Highest reliability-adjusted score today (0.76), wins 5/10 tasks</Text>
                     <Text size="small">· Works identically well with weak and strong models — direct tool calls need no code-writing indirection</Text>
-                    <Text size="small">· Fast: ~32s median, under 10s on single-lookup tasks</Text>
+                    <Text size="small">· Fast: ~29s median, under 10s on single-lookup tasks</Text>
                   </Stack>
                   <Divider />
                   <Stack gap={4}>
