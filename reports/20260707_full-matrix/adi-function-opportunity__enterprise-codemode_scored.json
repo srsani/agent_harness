@@ -1,0 +1,37 @@
+{
+  "session_id": "agent-bench:run:pydantic-ai:adi-function-opportunity:20260707T204548Z:5ca0ab1c",
+  "harness": "pydantic-ai",
+  "architecture": "enterprise-codemode",
+  "task": "adi-function-opportunity",
+  "prompt": "For each business function, calculate total subscription revenue in the last 6 months, unique users in the last 6 months, highest-revenue module, average module rating across reviewed modules, and number of low-adoption modules with 25 or fewer active deployments. Return only the top 3 business functions by revenue, sorted by revenue descending, with columns: business_function, revenue_6m, unique_users_6m, highest_revenue_module, avg_module_rating, low_adoption_modules.",
+  "output": "\n\n```\nbusiness_function,revenue_6m,unique_users_6m,highest_revenue_module,avg_module_rating,low_adoption_modules\nResearch & Development,3179000.0,80,Trial Success Probability Model,3.75,3\nSupply Chain,2412500.0,87,Demand Forecast Engine,4.0588235294117645,0\nSales & Marketing,2378500.0,77,Market Share Monitor,4.0,0\n```",
+  "started_at": "2026-07-07T20:45:48.369434+00:00",
+  "elapsed_seconds": 66.51595416599594,
+  "metadata": {
+    "langfuse_session_id": "agent-bench:run:pydantic-ai:adi-function-opportunity:20260707T204548Z:5ca0ab1c",
+    "langfuse_trace_id": "6aad439e7a7f7c1dac4bd15b24229b34",
+    "langfuse_observation_id": "dc666bd2232a0a16",
+    "langfuse_trace_url": "https://cloud.langfuse.com/project/cmr1ywsf000d5ad0cex3dm2ha/traces/6aad439e7a7f7c1dac4bd15b24229b34"
+  },
+  "error": null,
+  "ok": true,
+  "scores": {
+    "scorable": true,
+    "correctness": 1.0,
+    "groundedness": 0.9167,
+    "hallucination_rate": 0.0833,
+    "overall_score": 0.9565,
+    "details": {
+      "refused_or_no_data": false,
+      "empty_output": false,
+      "expected_text_facts": 6,
+      "matched_text_facts": 6,
+      "expected_numeric_facts": 12,
+      "matched_numeric_facts": 12,
+      "claimed_numeric_values": 12,
+      "unsupported_numeric_values": 1
+    }
+  },
+  "scored_at": "2026-07-07T20:52:26.136143+00:00",
+  "ground_truth_generated_at": "2026-07-07T19:14:38.214588+00:00"
+}

@@ -1,0 +1,18 @@
+{
+  "session_id": "agent-bench:run:pydantic-ai:adi-disengagement-risk:20260707T203638Z:00754ece",
+  "harness": "pydantic-ai",
+  "architecture": "enterprise-codemode",
+  "task": "adi-disengagement-risk",
+  "prompt": "Identify users who activated at least 2 subscriptions but have had NO new subscription in the last 180 days. List up to 10 such users with their name, engagement tier, last subscription date, and total lifetime value, sorted by lifetime value descending.",
+  "output": "\n\nBased on the database query, here are the users who activated at least 2 subscriptions with no new subscription in the last 180 days:\n\n| name | tier | last_subscription_date | lifetime_value |\n|------|------|------------------------|----------------|\n| Dan Anderson | silver | 2025-11-22T02:42:11 | 155000.0 |\n| Vince Lewis | silver | 2025-11-28T03:17:55 | 151000.0 |\n| Hugo Anderson | standard | 2025-11-23T00:27:54 | 135000.0 |\n| Yara Nguyen | standard | 2025-11-25T21:33:19 | 132000.0 |\n| Quinn Williams | standard | 2025-11-11T05:54:42 | 122500.0 |\n| Carol Jackson | standard | 2025-11-08T21:20:29 | 103000.0 |\n| Ivy Harris | standard | 2025-10-25T11:26:56 | 99500.0 |",
+  "started_at": "2026-07-07T20:36:38.964750+00:00",
+  "elapsed_seconds": 35.82833529200434,
+  "metadata": {
+    "langfuse_session_id": "agent-bench:run:pydantic-ai:adi-disengagement-risk:20260707T203638Z:00754ece",
+    "langfuse_trace_id": "410e62ea59bedd675f60ff72fe0be894",
+    "langfuse_observation_id": "fba042c0eb2d5599",
+    "langfuse_trace_url": "https://cloud.langfuse.com/project/cmr1ywsf000d5ad0cex3dm2ha/traces/410e62ea59bedd675f60ff72fe0be894"
+  },
+  "error": null,
+  "ok": true
+}

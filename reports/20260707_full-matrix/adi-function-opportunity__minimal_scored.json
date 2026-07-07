@@ -1,0 +1,37 @@
+{
+  "session_id": "agent-bench:run:pydantic-ai:adi-function-opportunity:20260707T204340Z:3faed33c",
+  "harness": "pydantic-ai",
+  "architecture": "minimal",
+  "task": "adi-function-opportunity",
+  "prompt": "For each business function, calculate total subscription revenue in the last 6 months, unique users in the last 6 months, highest-revenue module, average module rating across reviewed modules, and number of low-adoption modules with 25 or fewer active deployments. Return only the top 3 business functions by revenue, sorted by revenue descending, with columns: business_function, revenue_6m, unique_users_6m, highest_revenue_module, avg_module_rating, low_adoption_modules.",
+  "output": "\n\n```sql\nWITH metrics AS (\n  SELECT \n    bf.business_function,\n    SUM(CASE WHEN s.subscription_date >= DATE_SUB(CURRENT_DATE, INTERVAL 6 MONTH) THEN s.revenue ELSE 0 END) AS revenue_6m,\n    COUNT(DISTINCT CASE WHEN s.subscription_date >= DATE_SUB(CURRENT_DATE, INTERVAL 6 MONTH) THEN s.user_id END) AS unique_users_6m,\n    MAX(m.module_name) FILTER (WHERE s.revenue = (SELECT MAX(sub.revenue) FROM subscriptions sub JOIN business_functions bf2 ON sub.business_function_id = bf2.id WHERE bf2.business_function = bf.business_function AND sub.subscription_date >= DATE_SUB(CURRENT_DATE, INTERVAL 6 MONTH))) AS highest_revenue_module,\n    AVG(CASE WHEN m.is_reviewed = 1 THEN m.rating END) AS avg_module_rating,\n    COUNT(CASE WHEN m.active_deployments <= 25 THEN 1 END) AS low_adoption_modules\n  FROM business_functions bf\n  JOIN subscriptions s ON bf.id = s.business_function_id\n  JOIN modules m ON s.module_id = m.id\n  GROUP BY bf.business_function\n)\nSELECT business_function, revenue_6m, unique_users_6m, highest_revenue_module, avg_module_rating, low_adoption_modules\nFROM metrics\nORDER BY revenue_6m DESC\nLIMIT 3;\n```",
+  "started_at": "2026-07-07T20:43:40.570798+00:00",
+  "elapsed_seconds": 42.76064029099507,
+  "metadata": {
+    "langfuse_session_id": "agent-bench:run:pydantic-ai:adi-function-opportunity:20260707T204340Z:3faed33c",
+    "langfuse_trace_id": "0ed733033c69d2df43a5f655cc057aac",
+    "langfuse_observation_id": "85b3b5bbe7b0af50",
+    "langfuse_trace_url": "https://cloud.langfuse.com/project/cmr1ywsf000d5ad0cex3dm2ha/traces/0ed733033c69d2df43a5f655cc057aac"
+  },
+  "error": null,
+  "ok": true,
+  "scores": {
+    "scorable": true,
+    "correctness": 0.1667,
+    "groundedness": 0.3333,
+    "hallucination_rate": 0.6667,
+    "overall_score": 0.2222,
+    "details": {
+      "refused_or_no_data": false,
+      "empty_output": false,
+      "expected_text_facts": 6,
+      "matched_text_facts": 0,
+      "expected_numeric_facts": 12,
+      "matched_numeric_facts": 3,
+      "claimed_numeric_values": 6,
+      "unsupported_numeric_values": 4
+    }
+  },
+  "scored_at": "2026-07-07T20:52:26.429465+00:00",
+  "ground_truth_generated_at": "2026-07-07T19:14:38.214588+00:00"
+}

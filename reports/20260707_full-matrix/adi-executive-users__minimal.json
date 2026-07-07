@@ -1,0 +1,18 @@
+{
+  "session_id": "agent-bench:run:pydantic-ai:adi-executive-users:20260707T201741Z:aca24865",
+  "harness": "pydantic-ai",
+  "architecture": "minimal",
+  "task": "adi-executive-users",
+  "prompt": "Find all gold-tier users. For each one, show their name, city, lifetime subscription value, and their single highest-value subscription (ID + amount). Which city has the most gold-tier users?",
+  "output": "\n\n```sql\nWITH gold_users AS (\n  SELECT id, name, city FROM users WHERE tier = 'gold'\n),\nuser_lifetime AS (\n  SELECT gu.id, gu.name, gu.city, SUM(s.amount) AS lifetime_subscription_value\n  FROM gold_users gu\n  JOIN subscriptions s ON s.user_id = gu.id\n  GROUP BY gu.id, gu.name, gu.city\n),\nuser_highest AS (\n  SELECT s.user_id, s.id AS highest_subscription_id, s.amount AS highest_subscription_amount\n  FROM subscriptions s\n  JOIN gold_users gu ON gu.id = s.user_id\n  WHERE s.amount = (SELECT MAX(amount) FROM subscriptions WHERE user_id = s.user_id)\n)\nSELECT ul.name, ul.city, ul.lifetime_subscription_value, uh.highest_subscription_id, uh.highest_subscription_amount\nFROM user_lifetime ul\nJOIN user_highest uh ON uh.user_id = ul.id;\n```\n\n| Name | City | Lifetime Subscription Value | Highest Subscription ID | Highest Subscription Amount |\n|---|---|---|---|---|\n| [Data] | [Data] | [Data] | [Data] | [Data] |\n\nCity with most gold-tier users: [City]",
+  "started_at": "2026-07-07T20:17:41.446486+00:00",
+  "elapsed_seconds": 32.38374779199512,
+  "metadata": {
+    "langfuse_session_id": "agent-bench:run:pydantic-ai:adi-executive-users:20260707T201741Z:aca24865",
+    "langfuse_trace_id": "bd98e28ecbca83e968be1460b912ea3b",
+    "langfuse_observation_id": "993f9d7b59aed17c",
+    "langfuse_trace_url": "https://cloud.langfuse.com/project/cmr1ywsf000d5ad0cex3dm2ha/traces/bd98e28ecbca83e968be1460b912ea3b"
+  },
+  "error": null,
+  "ok": true
+}

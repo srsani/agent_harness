@@ -1,0 +1,37 @@
+{
+  "session_id": "agent-bench:run:pydantic-ai:adi-function-analysis:20260707T201711Z:591ebc22",
+  "harness": "pydantic-ai",
+  "architecture": "enterprise-sql-codemode",
+  "task": "adi-function-analysis",
+  "prompt": "For each business function, calculate: total subscription revenue in the last 6 months, number of unique users who subscribed to at least one module from that function, and the single highest-revenue module. Present the results sorted by revenue descending.",
+  "output": "\n\n| business_function | total_revenue | unique_users | highest_revenue_module |\n|---|---|---|---|\n| Research & Development | 3718500.0 | 85 | Clinical Trial Optimizer |\n| HR & People | 2992500.0 | 104 | Talent Retention Predictor |\n| Supply Chain | 2891500.0 | 98 | Demand Forecast Engine |\n| Sales & Marketing | 2878500.0 | 91 | Price Elasticity Model |\n| Finance | 2529500.0 | 93 | Cash Flow Predictor |",
+  "started_at": "2026-07-07T20:17:11.308628+00:00",
+  "elapsed_seconds": 29.388987459002237,
+  "metadata": {
+    "langfuse_session_id": "agent-bench:run:pydantic-ai:adi-function-analysis:20260707T201711Z:591ebc22",
+    "langfuse_trace_id": "e6ad693e0b90407dccfbab76a79324b3",
+    "langfuse_observation_id": "4502a3ebfa01a46f",
+    "langfuse_trace_url": "https://cloud.langfuse.com/project/cmr1ywsf000d5ad0cex3dm2ha/traces/e6ad693e0b90407dccfbab76a79324b3"
+  },
+  "error": null,
+  "ok": true,
+  "scores": {
+    "scorable": true,
+    "correctness": 0.28,
+    "groundedness": 0.0,
+    "hallucination_rate": 1.0,
+    "overall_score": 0.0,
+    "details": {
+      "refused_or_no_data": false,
+      "empty_output": false,
+      "expected_text_facts": 10,
+      "matched_text_facts": 7,
+      "expected_numeric_facts": 15,
+      "matched_numeric_facts": 0,
+      "claimed_numeric_values": 10,
+      "unsupported_numeric_values": 10
+    }
+  },
+  "scored_at": "2026-07-07T20:52:25.989392+00:00",
+  "ground_truth_generated_at": "2026-07-07T19:14:38.214588+00:00"
+}

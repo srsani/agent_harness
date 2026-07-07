@@ -1,0 +1,18 @@
+{
+  "session_id": "agent-bench:run:pydantic-ai:adi-function-analysis:20260707T201134Z:6e9265bd",
+  "harness": "pydantic-ai",
+  "architecture": "minimal",
+  "task": "adi-function-analysis",
+  "prompt": "For each business function, calculate: total subscription revenue in the last 6 months, number of unique users who subscribed to at least one module from that function, and the single highest-revenue module. Present the results sorted by revenue descending.",
+  "output": "\n\n```sql\nSELECT\n  bf.business_function,\n  SUM(s.revenue) AS total_subscription_revenue,\n  COUNT(DISTINCT s.user_id) AS unique_subscribers,\n  tm.highest_revenue_module\nFROM subscriptions s\nJOIN modules m ON s.module_id = m.module_id\nJOIN business_functions bf ON m.business_function_id = bf.business_function_id\nWHERE s.subscription_date >= CURRENT_DATE - INTERVAL '6 months'\nGROUP BY bf.business_function\nORDER BY total_subscription_revenue DESC;\n```",
+  "started_at": "2026-07-07T20:11:34.400995+00:00",
+  "elapsed_seconds": 40.26891745800094,
+  "metadata": {
+    "langfuse_session_id": "agent-bench:run:pydantic-ai:adi-function-analysis:20260707T201134Z:6e9265bd",
+    "langfuse_trace_id": "c902647bc526d6576032f1e98e2cc53e",
+    "langfuse_observation_id": "96d3bac576eb1362",
+    "langfuse_trace_url": "https://cloud.langfuse.com/project/cmr1ywsf000d5ad0cex3dm2ha/traces/c902647bc526d6576032f1e98e2cc53e"
+  },
+  "error": null,
+  "ok": true
+}

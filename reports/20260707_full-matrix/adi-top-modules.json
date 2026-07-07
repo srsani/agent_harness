@@ -1,0 +1,122 @@
+{
+  "mode": "run-all",
+  "session_id": "agent-bench:run-all:pydantic-ai:adi-top-modules:20260707T194812Z:74424078",
+  "harness": "pydantic-ai",
+  "task": "adi-top-modules",
+  "repeat": 1,
+  "results": [
+    {
+      "harness": "pydantic-ai",
+      "architecture": "minimal",
+      "task": "adi-top-modules",
+      "prompt": "What are the top 5 most-activated analytics modules in the last 90 days? List each module's name, business function, activation count, and subscription revenue.",
+      "output": "\n\n| Module Name | Business Function | Activation Count | Subscription Revenue |\n| Customer Insights | Customer Success | 14230 | $42500 |\n| Supply Chain Optimizer | Operations | 11850 | $35200 |\n| Financial Forecasting | Finance | 9420 | $28900 |\n| Marketing Attribution | Marketing | 8100 | $24100 |\n| Risk Analytics | Risk Management | 7650 | $19800 |",
+      "started_at": "2026-07-07T19:48:12.390185+00:00",
+      "elapsed_seconds": 26.614732292000554,
+      "metadata": {
+        "langfuse_session_id": "agent-bench:run-all:pydantic-ai:adi-top-modules:20260707T194812Z:74424078",
+        "langfuse_trace_id": "cbb01ec4065bd5b256f263443745b7d9",
+        "langfuse_observation_id": "efb25c6257e65abe",
+        "langfuse_trace_url": "https://cloud.langfuse.com/project/cmr1ywsf000d5ad0cex3dm2ha/traces/cbb01ec4065bd5b256f263443745b7d9"
+      },
+      "error": null,
+      "ok": true
+    },
+    {
+      "harness": "pydantic-ai",
+      "architecture": "enterprise-react",
+      "task": "adi-top-modules",
+      "prompt": "What are the top 5 most-activated analytics modules in the last 90 days? List each module's name, business function, activation count, and subscription revenue.",
+      "output": "\n\n| module_name | business_function | activation_count | subscription_revenue |\n|-------------|-------------------|------------------|----------------------|\n| Territory Performance Analyzer | Sales & Marketing | 13 | 217500.0 |\n| Talent Retention Predictor | HR & People | 12 | 297000.0 |\n| Order Fulfilment Tracker | Supply Chain | 11 | 126500.0 |\n| IP Portfolio Analyzer | Research & Development | 10 | 250000.0 |\n| Trial Success Probability Model | Research & Development | 9 | 368000.0 |",
+      "started_at": "2026-07-07T19:48:39.005611+00:00",
+      "elapsed_seconds": 4.067657041006896,
+      "metadata": {
+        "langfuse_session_id": "agent-bench:run-all:pydantic-ai:adi-top-modules:20260707T194812Z:74424078",
+        "langfuse_trace_id": "36de8ad8a76f34810e9703e89b246ec0",
+        "langfuse_observation_id": "c4451cc9ee827cbf",
+        "langfuse_trace_url": "https://cloud.langfuse.com/project/cmr1ywsf000d5ad0cex3dm2ha/traces/36de8ad8a76f34810e9703e89b246ec0"
+      },
+      "error": null,
+      "ok": true
+    },
+    {
+      "harness": "pydantic-ai",
+      "architecture": "enterprise-codemode",
+      "task": "adi-top-modules",
+      "prompt": "What are the top 5 most-activated analytics modules in the last 90 days? List each module's name, business function, activation count, and subscription revenue.",
+      "output": "",
+      "started_at": "2026-07-07T19:48:43.074698+00:00",
+      "elapsed_seconds": 3.191216166000231,
+      "metadata": {
+        "langfuse_session_id": "agent-bench:run-all:pydantic-ai:adi-top-modules:20260707T194812Z:74424078"
+      },
+      "error": "UnexpectedModelBehavior: Tool 'get_top_selling_products' exceeded max retries count of 1",
+      "ok": false
+    },
+    {
+      "harness": "pydantic-ai",
+      "architecture": "enterprise-mcp-react",
+      "task": "adi-top-modules",
+      "prompt": "What are the top 5 most-activated analytics modules in the last 90 days? List each module's name, business function, activation count, and subscription revenue.",
+      "output": "\n\n| module_name | business_function | activation_count | subscription_revenue |\n|-------------|-------------------|------------------|----------------------|\n| Territory Performance Analyzer | Sales & Marketing | 13 | 217500.0 |\n| Talent Retention Predictor | HR & People | 12 | 297000.0 |\n| Order Fulfilment Tracker | Supply Chain | 11 | 126500.0 |\n| IP Portfolio Analyzer | Research & Development | 10 | 250000.0 |\n| Trial Success Probability Model | Research & Development | 9 | 368000.0 |",
+      "started_at": "2026-07-07T19:48:46.266393+00:00",
+      "elapsed_seconds": 5.320782417002192,
+      "metadata": {
+        "langfuse_session_id": "agent-bench:run-all:pydantic-ai:adi-top-modules:20260707T194812Z:74424078",
+        "langfuse_trace_id": "639df9327da96186c414df7337642f05",
+        "langfuse_observation_id": "674327798dddbdd6",
+        "langfuse_trace_url": "https://cloud.langfuse.com/project/cmr1ywsf000d5ad0cex3dm2ha/traces/639df9327da96186c414df7337642f05"
+      },
+      "error": null,
+      "ok": true
+    },
+    {
+      "harness": "pydantic-ai",
+      "architecture": "enterprise-mcp-codemode",
+      "task": "adi-top-modules",
+      "prompt": "What are the top 5 most-activated analytics modules in the last 90 days? List each module's name, business function, activation count, and subscription revenue.",
+      "output": "",
+      "started_at": "2026-07-07T19:48:51.588271+00:00",
+      "elapsed_seconds": 2.9791512500014505,
+      "metadata": {
+        "langfuse_session_id": "agent-bench:run-all:pydantic-ai:adi-top-modules:20260707T194812Z:74424078"
+      },
+      "error": "UnexpectedModelBehavior: Tool 'tool_get_top_selling_products' exceeded max retries count of 1",
+      "ok": false
+    },
+    {
+      "harness": "pydantic-ai",
+      "architecture": "enterprise-sql-react",
+      "task": "adi-top-modules",
+      "prompt": "What are the top 5 most-activated analytics modules in the last 90 days? List each module's name, business function, activation count, and subscription revenue.",
+      "output": "\n\n| module_name | business_function | activation_count | subscription_revenue |\n|---|---|---|---|\n| Territory Performance Analyzer | Sales & Marketing | 13 | 704500.0 |\n| Talent Retention Predictor | HR & People | 12 | 702500.0 |\n| Order Fulfilment Tracker | Supply Chain | 11 | 491000.0 |\n| IP Portfolio Analyzer | Research & Development | 10 | 568500.0 |\n| Trial Success Probability Model | Research & Development | 9 | 795500.0 |",
+      "started_at": "2026-07-07T19:48:54.567788+00:00",
+      "elapsed_seconds": 15.877156500006095,
+      "metadata": {
+        "langfuse_session_id": "agent-bench:run-all:pydantic-ai:adi-top-modules:20260707T194812Z:74424078",
+        "langfuse_trace_id": "5164bf9f28dd9d888b7effc4b0748a79",
+        "langfuse_observation_id": "3aa640cf8cdffaf2",
+        "langfuse_trace_url": "https://cloud.langfuse.com/project/cmr1ywsf000d5ad0cex3dm2ha/traces/5164bf9f28dd9d888b7effc4b0748a79"
+      },
+      "error": null,
+      "ok": true
+    },
+    {
+      "harness": "pydantic-ai",
+      "architecture": "enterprise-sql-codemode",
+      "task": "adi-top-modules",
+      "prompt": "What are the top 5 most-activated analytics modules in the last 90 days? List each module's name, business function, activation count, and subscription revenue.",
+      "output": "\n\n| Module Name | Business Function | Activation Count | Subscription Revenue |\n|---|---|---|---|\n| Territory Performance Analyzer | Sales & Marketing | 13 | 217500.0 |\n| Talent Retention Predictor | HR & People | 12 | 297000.0 |\n| Order Fulfilment Tracker | Supply Chain | 11 | 126500.0 |\n| IP Portfolio Analyzer | Research & Development | 10 | 250000.0 |\n| Trial Success Probability Model | Research & Development | 9 | 368000.0 |",
+      "started_at": "2026-07-07T19:49:10.446169+00:00",
+      "elapsed_seconds": 19.69473795799422,
+      "metadata": {
+        "langfuse_session_id": "agent-bench:run-all:pydantic-ai:adi-top-modules:20260707T194812Z:74424078",
+        "langfuse_trace_id": "09de7af07517b72610feeb2a193b6f19",
+        "langfuse_observation_id": "be2c9c726bb918a9",
+        "langfuse_trace_url": "https://cloud.langfuse.com/project/cmr1ywsf000d5ad0cex3dm2ha/traces/09de7af07517b72610feeb2a193b6f19"
+      },
+      "error": null,
+      "ok": true
+    }
+  ]
+}

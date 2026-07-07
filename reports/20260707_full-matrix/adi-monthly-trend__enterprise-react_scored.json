@@ -1,0 +1,34 @@
+{
+  "session_id": "agent-bench:run:pydantic-ai:adi-monthly-trend:20260707T203034Z:55274b2e",
+  "harness": "pydantic-ai",
+  "architecture": "enterprise-react",
+  "task": "adi-monthly-trend",
+  "prompt": "Show monthly subscription revenue and activation count for the last calendar year in the database. In which month was revenue highest? What was the month-over-month growth from the lowest to the highest month?",
+  "output": "",
+  "started_at": "2026-07-07T20:30:34.322056+00:00",
+  "elapsed_seconds": 32.58951020800305,
+  "metadata": {
+    "langfuse_session_id": "agent-bench:run:pydantic-ai:adi-monthly-trend:20260707T203034Z:55274b2e"
+  },
+  "error": "UsageLimitExceeded: The next request would exceed the request_limit of 50",
+  "ok": false,
+  "scores": {
+    "scorable": true,
+    "correctness": 0.0,
+    "groundedness": 0.0,
+    "hallucination_rate": 1.0,
+    "overall_score": 0.0,
+    "details": {
+      "refused_or_no_data": true,
+      "empty_output": true,
+      "expected_text_facts": 8,
+      "matched_text_facts": 0,
+      "expected_numeric_facts": 18,
+      "matched_numeric_facts": 0,
+      "claimed_numeric_values": 0,
+      "unsupported_numeric_values": 0
+    }
+  },
+  "scored_at": "2026-07-07T20:52:26.968923+00:00",
+  "ground_truth_generated_at": "2026-07-07T19:14:38.214588+00:00"
+}

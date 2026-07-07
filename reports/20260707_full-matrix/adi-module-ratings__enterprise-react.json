@@ -1,0 +1,18 @@
+{
+  "session_id": "agent-bench:run:pydantic-ai:adi-module-ratings:20260707T202636Z:9156111b",
+  "harness": "pydantic-ai",
+  "architecture": "enterprise-react",
+  "task": "adi-module-ratings",
+  "prompt": "Which 3 analytics modules have the highest average user rating (with at least 5 ratings)? And which 3 modules have the lowest average rating (with at least 3 ratings)? For each, show the module name, average rating, and a sample review title.",
+  "output": "\n\n| name | avg_rating | title |\n|------|------------|-------|\n| Talent Retention Predictor | 5.0 | Finally, data-driven forecasting |\n| Order Fulfilment Tracker | 4.666666666666667 | Exceeded our accuracy targets |\n| Cash Flow Predictor | 4.6 | Cut our analysis time by 80% |\n| Transportation Network Optimizer | 3.0 | Model needs more training data |\n| GTM Readiness Planner | 3.2 | Data freshness issues |\n| Innovation Pipeline Dashboard | 3.3333333333333335 | Useful but needs calibration |",
+  "started_at": "2026-07-07T20:26:36.261163+00:00",
+  "elapsed_seconds": 26.98542612500023,
+  "metadata": {
+    "langfuse_session_id": "agent-bench:run:pydantic-ai:adi-module-ratings:20260707T202636Z:9156111b",
+    "langfuse_trace_id": "99bc7c6296ac8615e8d47862b3288d54",
+    "langfuse_observation_id": "6c1a4fa25050ae50",
+    "langfuse_trace_url": "https://cloud.langfuse.com/project/cmr1ywsf000d5ad0cex3dm2ha/traces/99bc7c6296ac8615e8d47862b3288d54"
+  },
+  "error": null,
+  "ok": true
+}

@@ -1,0 +1,18 @@
+{
+  "session_id": "agent-bench:run:pydantic-ai:adi-function-opportunity:20260707T204955Z:13cd53bc",
+  "harness": "pydantic-ai",
+  "architecture": "enterprise-mcp-codemode",
+  "task": "adi-function-opportunity",
+  "prompt": "For each business function, calculate total subscription revenue in the last 6 months, unique users in the last 6 months, highest-revenue module, average module rating across reviewed modules, and number of low-adoption modules with 25 or fewer active deployments. Return only the top 3 business functions by revenue, sorted by revenue descending, with columns: business_function, revenue_6m, unique_users_6m, highest_revenue_module, avg_module_rating, low_adoption_modules.",
+  "output": "\n\n| business_function | revenue_6m | unique_users_6m | highest_revenue_module | avg_module_rating | low_adoption_modules |\n|---|---|---|---|---|---|\n| Research & Development | 3718500.0 | 85 | Clinical Trial Optimizer | 3.75 | 3 |\n| HR & People | 2992500.0 | 104 | Talent Retention Predictor | 4.441860465116279 | 0 |\n| Supply Chain | 2891500.0 | 98 | Demand Forecast Engine | 4.0588235294117645 | 0 |",
+  "started_at": "2026-07-07T20:49:55.764012+00:00",
+  "elapsed_seconds": 56.125919707999856,
+  "metadata": {
+    "langfuse_session_id": "agent-bench:run:pydantic-ai:adi-function-opportunity:20260707T204955Z:13cd53bc",
+    "langfuse_trace_id": "cfc60a003a84c857e5d781898fdb2f6b",
+    "langfuse_observation_id": "2831c7696bddc12f",
+    "langfuse_trace_url": "https://cloud.langfuse.com/project/cmr1ywsf000d5ad0cex3dm2ha/traces/cfc60a003a84c857e5d781898fdb2f6b"
+  },
+  "error": null,
+  "ok": true
+}

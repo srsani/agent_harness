@@ -1,0 +1,37 @@
+{
+  "session_id": "agent-bench:run:pydantic-ai:adi-executive-users:20260707T201814Z:d9c93ec9",
+  "harness": "pydantic-ai",
+  "architecture": "enterprise-react",
+  "task": "adi-executive-users",
+  "prompt": "Find all gold-tier users. For each one, show their name, city, lifetime subscription value, and their single highest-value subscription (ID + amount). Which city has the most gold-tier users?",
+  "output": "\n\n| full_name | city | total_spend | order_id | total_amount |\n|-----------|------|-------------|----------|--------------|\n| Frank Davies | Austin | 162500.0 | 134 | 59000.0 |\n| Maya Jackson | Austin | 71000.0 | 309 | 27000.0 |\n| Quinn Turner | Austin | 77000.0 | 9 | 77000.0 |\n| Quinn Walker | Austin | 11000.0 | 326 | 11000.0 |\n| Alice Wilson | Berlin | 98000.0 | 393 | 59000.0 |\n| Xander Clarke | Berlin | 104000.0 | 340 | 104000.0 |\n| Bob Lewis | Bristol | 165500.0 | 127 | 80000.0 |\n| Ivy Brown | Bristol | 60000.0 | 145 | 60000.0 |\n| Nate Harris | Bristol | 30000.0 | 223 | 30000.0 |\n| Jake Smith | Chicago | 143000.0 | 80 | 88500.0 |\n| Hank Martinez | Edinburgh | 70000.0 | 166 | 36000.0 |\n| Leo Lewis | Edinburgh | 10500.0 | 538 | 10500.0 |\n| Maya Jackson | Edinburgh | 18000.0 | 259 | 18000.0 |\n| Gina Edwards | Hamburg | 67000.0 | 353 | 54000.0 |\n| Pete Hughes | London | 24000.0 | 283 | 24000.0 |\n| Felix Anderson | Los Angeles | 0 | null | null |\n| Kim Wright | Los Angeles | 72000.0 | 337 | 54000.0 |\n| Bob Turner | Lyon | 0 | null | null |\n| David Evans | Lyon | 22500.0 | 271 | 22500.0 |\n| Rosa Clarke | Lyon | 65500.0 | 33 | 39000.0 |\n| Dan Roberts | Manchester | 0 | null | null |\n| Jack Nguyen | Melbourne | 136000.0 | 350 | 46500.0 |\n| Iris Brown | Munich | 267000.0 | 284 | 84000.0 |\n| Hank Martin | New York | 93000.0 | 250 | 33000.0 |\n| Wendy Green | New York | 271000.0 | 306 | 81000.0 |\n| Pete Edwards | Sydney | 177000.0 | 126 | 126500.0 |\n| Zach Jackson | Sydney | 176500.0 | 196 | 109000.0 |\n| Claire Edwards | Toronto | 28000.0 | 224 | 28000.0 |\n| Dan Smith | Toronto | 155500.0 | 469 | 64500.0 |\n| Grace Johnson | Toronto | 58000.0 | 402 | 30000.0 |\n| Nate Taylor | Toronto | 0 | null | null |\n| Rosa Moore | Toronto | 7000.0 | 272 | 7000.0 |\n\nToronto has the most gold-tier users (5).",
+  "started_at": "2026-07-07T20:18:14.504261+00:00",
+  "elapsed_seconds": 83.9730383749993,
+  "metadata": {
+    "langfuse_session_id": "agent-bench:run:pydantic-ai:adi-executive-users:20260707T201814Z:d9c93ec9",
+    "langfuse_trace_id": "e1f00ddd8db91ca4e21cee68e7a8ad3e",
+    "langfuse_observation_id": "7c7cf546a7e618b4",
+    "langfuse_trace_url": "https://cloud.langfuse.com/project/cmr1ywsf000d5ad0cex3dm2ha/traces/e1f00ddd8db91ca4e21cee68e7a8ad3e"
+  },
+  "error": null,
+  "ok": true,
+  "scores": {
+    "scorable": true,
+    "correctness": 0.8056,
+    "groundedness": 1.0,
+    "hallucination_rate": 0.0,
+    "overall_score": 0.8923,
+    "details": {
+      "refused_or_no_data": false,
+      "empty_output": false,
+      "expected_text_facts": 80,
+      "matched_text_facts": 80,
+      "expected_numeric_facts": 136,
+      "matched_numeric_facts": 94,
+      "claimed_numeric_values": 72,
+      "unsupported_numeric_values": 0
+    }
+  },
+  "scored_at": "2026-07-07T20:52:25.597936+00:00",
+  "ground_truth_generated_at": "2026-07-07T19:14:38.214588+00:00"
+}

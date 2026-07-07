@@ -1,0 +1,15 @@
+{
+  "session_id": "agent-bench:run:pydantic-ai:adi-portfolio-depth:20260707T204201Z:8792d9ab",
+  "harness": "pydantic-ai",
+  "architecture": "enterprise-sql-react",
+  "task": "adi-portfolio-depth",
+  "prompt": "What is the average number of modules per subscription and average subscription value, broken down by engagement tier (standard, silver, gold)? Which tier has the deepest average analytics portfolio?",
+  "output": "",
+  "started_at": "2026-07-07T20:42:01.190098+00:00",
+  "elapsed_seconds": 13.080137500001001,
+  "metadata": {
+    "langfuse_session_id": "agent-bench:run:pydantic-ai:adi-portfolio-depth:20260707T204201Z:8792d9ab"
+  },
+  "error": "SQLError: You can only execute one statement at a time.",
+  "ok": false
+}

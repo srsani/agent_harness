@@ -1,0 +1,15 @@
+{
+  "session_id": "agent-bench:run:pydantic-ai:adi-monthly-trend:20260707T203430Z:67c2e50b",
+  "harness": "pydantic-ai",
+  "architecture": "enterprise-mcp-codemode",
+  "task": "adi-monthly-trend",
+  "prompt": "Show monthly subscription revenue and activation count for the last calendar year in the database. In which month was revenue highest? What was the month-over-month growth from the lowest to the highest month?",
+  "output": "",
+  "started_at": "2026-07-07T20:34:30.691271+00:00",
+  "elapsed_seconds": 4.558835709001869,
+  "metadata": {
+    "langfuse_session_id": "agent-bench:run:pydantic-ai:adi-monthly-trend:20260707T203430Z:67c2e50b"
+  },
+  "error": "UnexpectedModelBehavior: Tool 'tool_list_tables' exceeded max retries count of 1",
+  "ok": false
+}

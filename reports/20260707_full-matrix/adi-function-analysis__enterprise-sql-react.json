@@ -1,0 +1,18 @@
+{
+  "session_id": "agent-bench:run:pydantic-ai:adi-function-analysis:20260707T201638Z:75334758",
+  "harness": "pydantic-ai",
+  "architecture": "enterprise-sql-react",
+  "task": "adi-function-analysis",
+  "prompt": "For each business function, calculate: total subscription revenue in the last 6 months, number of unique users who subscribed to at least one module from that function, and the single highest-revenue module. Present the results sorted by revenue descending.",
+  "output": "\n\n| business_function | total_revenue | unique_users | highest_revenue_module |\n|---|---|---|---|\n| Research & Development | 3179000.0 | 80 | Trial Success Probability Model |\n| Supply Chain | 2412500.0 | 87 | Demand Forecast Engine |\n| Sales & Marketing | 2378500.0 | 77 | Market Share Monitor |\n| HR & People | 2251000.0 | 83 | Talent Retention Predictor |\n| Finance | 2041000.0 | 78 | Revenue Forecast Model |",
+  "started_at": "2026-07-07T20:16:38.748947+00:00",
+  "elapsed_seconds": 31.701391624999815,
+  "metadata": {
+    "langfuse_session_id": "agent-bench:run:pydantic-ai:adi-function-analysis:20260707T201638Z:75334758",
+    "langfuse_trace_id": "fe7d3cf7aabd8ebc845d942f7e8bbc73",
+    "langfuse_observation_id": "f986cf81d8420e31",
+    "langfuse_trace_url": "https://cloud.langfuse.com/project/cmr1ywsf000d5ad0cex3dm2ha/traces/fe7d3cf7aabd8ebc845d942f7e8bbc73"
+  },
+  "error": null,
+  "ok": true
+}

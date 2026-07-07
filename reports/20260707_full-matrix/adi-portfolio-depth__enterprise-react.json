@@ -1,0 +1,18 @@
+{
+  "session_id": "agent-bench:run:pydantic-ai:adi-portfolio-depth:20260707T204032Z:f1de9195",
+  "harness": "pydantic-ai",
+  "architecture": "enterprise-react",
+  "task": "adi-portfolio-depth",
+  "prompt": "What is the average number of modules per subscription and average subscription value, broken down by engagement tier (standard, silver, gold)? Which tier has the deepest average analytics portfolio?",
+  "output": "\n\n| tier | avg_modules_per_subscription | avg_subscription_value |\n|------|------------------------------|------------------------|\n| gold | 2.1538461538461537 | 40623.07692307692 |\n| silver | 2.5166666666666666 | 48591.666666666664 |\n| standard | 2.5634920634920637 | 49160.71428571428 |\n\nThe standard tier has the deepest average analytics portfolio (2.5634920634920637 modules per subscription).",
+  "started_at": "2026-07-07T20:40:32.931876+00:00",
+  "elapsed_seconds": 33.82330799999909,
+  "metadata": {
+    "langfuse_session_id": "agent-bench:run:pydantic-ai:adi-portfolio-depth:20260707T204032Z:f1de9195",
+    "langfuse_trace_id": "0f9cbf3778f323fd2bcc8edd524cf284",
+    "langfuse_observation_id": "787ca1fa4263fcca",
+    "langfuse_trace_url": "https://cloud.langfuse.com/project/cmr1ywsf000d5ad0cex3dm2ha/traces/0f9cbf3778f323fd2bcc8edd524cf284"
+  },
+  "error": null,
+  "ok": true
+}

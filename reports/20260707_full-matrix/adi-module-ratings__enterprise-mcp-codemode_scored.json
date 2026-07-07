@@ -1,0 +1,37 @@
+{
+  "session_id": "agent-bench:run:pydantic-ai:adi-module-ratings:20260707T202856Z:f3bdaf11",
+  "harness": "pydantic-ai",
+  "architecture": "enterprise-mcp-codemode",
+  "task": "adi-module-ratings",
+  "prompt": "Which 3 analytics modules have the highest average user rating (with at least 5 ratings)? And which 3 modules have the lowest average rating (with at least 3 ratings)? For each, show the module name, average rating, and a sample review title.",
+  "output": "\n\n| Module Name | Average Rating | Sample Review Title |\n|-------------|----------------|---------------------|\n| **Highest Rated (\u2265 5 ratings)** | | |\n| Talent Retention Predictor | 5.0 | Finally, data-driven forecasting |\n| Order Fulfilment Tracker | 4.666666666666667 | Exceeded our accuracy targets |\n| Compensation Benchmarking Tool | 4.6 | Exceeded our accuracy targets |\n| **Lowest Rated (\u2265 3 ratings)** | | |\n| Transportation Network Optimizer | 3.0 | Model needs more training data |\n| GTM Readiness Planner | 3.2 | Data freshness issues |\n| Innovation Pipeline Dashboard | 3.3333333333333335 | Useful but needs calibration |",
+  "started_at": "2026-07-07T20:28:56.204337+00:00",
+  "elapsed_seconds": 22.47747970799537,
+  "metadata": {
+    "langfuse_session_id": "agent-bench:run:pydantic-ai:adi-module-ratings:20260707T202856Z:f3bdaf11",
+    "langfuse_trace_id": "7a39b70c715c1de844a8e9708cc0b5c4",
+    "langfuse_observation_id": "9a9217588365707f",
+    "langfuse_trace_url": "https://cloud.langfuse.com/project/cmr1ywsf000d5ad0cex3dm2ha/traces/7a39b70c715c1de844a8e9708cc0b5c4"
+  },
+  "error": null,
+  "ok": true,
+  "scores": {
+    "scorable": true,
+    "correctness": 0.7083,
+    "groundedness": 1.0,
+    "hallucination_rate": 0.0,
+    "overall_score": 0.8292,
+    "details": {
+      "refused_or_no_data": false,
+      "empty_output": false,
+      "expected_text_facts": 12,
+      "matched_text_facts": 6,
+      "expected_numeric_facts": 12,
+      "matched_numeric_facts": 11,
+      "claimed_numeric_values": 6,
+      "unsupported_numeric_values": 0
+    }
+  },
+  "scored_at": "2026-07-07T20:52:26.527048+00:00",
+  "ground_truth_generated_at": "2026-07-07T19:14:38.214588+00:00"
+}

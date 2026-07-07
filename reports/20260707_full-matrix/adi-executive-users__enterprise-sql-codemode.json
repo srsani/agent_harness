@@ -1,0 +1,18 @@
+{
+  "session_id": "agent-bench:run:pydantic-ai:adi-executive-users:20260707T202519Z:18234f04",
+  "harness": "pydantic-ai",
+  "architecture": "enterprise-sql-codemode",
+  "task": "adi-executive-users",
+  "prompt": "Find all gold-tier users. For each one, show their name, city, lifetime subscription value, and their single highest-value subscription (ID + amount). Which city has the most gold-tier users?",
+  "output": "\n\nBased on the database query, here are all gold-tier users with their requested details:\n\n| full_name | city | lifetime_subscription_value | order_id | highest_amount |\n|-----------|------|----------------------------|----------|----------------|\n| Frank Davies | Austin | 162500.0 | 134 | 59000.0 |\n| Maya Jackson | Austin | 114000.0 | 234 | 43000.0 |\n| Quinn Turner | Austin | 150500.0 | 9 | 77000.0 |\n| Quinn Walker | Austin | 11000.0 | 326 | 11000.0 |\n| Alice Wilson | Berlin | 139000.0 | 393 | 59000.0 |\n| Xander Clarke | Berlin | 104000.0 | 340 | 104000.0 |\n| Bob Lewis | Bristol | 199500.0 | 127 | 80000.0 |\n| Ivy Brown | Bristol | 205000.0 | 1 | 80500.0 |\n| Nate Harris | Bristol | 30000.0 | 223 | 30000.0 |\n| Jake Smith | Chicago | 143000.0 | 80 | 88500.0 |\n| Hank Martinez | Edinburgh | 70000.0 | 166 | 36000.0 |\n| Leo Lewis | Edinburgh | 10500.0 | 538 | 10500.0 |\n| Maya Jackson | Edinburgh | 18000.0 | 259 | 18000.0 |\n| Gina Edwards | Hamburg | 67000.0 | 353 | 54000.0 |\n| Pete Hughes | London | 24000.0 | 283 | 24000.0 |\n| Felix Anderson | Los Angeles | None | None | None |\n| Kim Wright | Los Angeles | 126000.0 | 337 | 54000.0 |\n| Bob Turner | Lyon | 53000.0 | 308 | 53000.0 |\n| David Evans | Lyon | 76500.0 | 135 | 54000.0 |\n| Rosa Clarke | Lyon | 65500.0 | 33 | 39000.0 |\n| Dan Roberts | Manchester | None | None | None |\n| Jack Nguyen | Melbourne | 136000.0 | 350 | 46500.0 |\n| Iris Brown | Munich | 267000.0 | 284 | 84000.0 |\n| Hank Martin | New York | 141000.0 | 333 | 48000.0 |\n| Wendy Green | New York | 287000.0 | 306 | 81000.0 |\n| Pete Edwards | Sydney | 273500.0 | 126 | 126500.0 |\n| Zach Jackson | Sydney | 296000.0 | 196 | 109000.0 |\n| Claire Edwards | Toronto | 102500.0 | 321 | 44500.0 |\n| Dan Smith | Toronto | 261500.0 | 469 | 64500.0 |\n| Grace Johnson | Toronto | 58000.0 | 402 | 30000.0 |\n| Nate Taylor | Toronto | None | None | None |\n| Rosa Moore | Toronto | 7000.0 | 272 | 7000.0 |\n\n**Toronto** has the most gold-tier users (5 users).",
+  "started_at": "2026-07-07T20:25:19.560022+00:00",
+  "elapsed_seconds": 51.67031770799804,
+  "metadata": {
+    "langfuse_session_id": "agent-bench:run:pydantic-ai:adi-executive-users:20260707T202519Z:18234f04",
+    "langfuse_trace_id": "8e539fa05914a31aac9dcb108d80b706",
+    "langfuse_observation_id": "788ebbccb7dabaea",
+    "langfuse_trace_url": "https://cloud.langfuse.com/project/cmr1ywsf000d5ad0cex3dm2ha/traces/8e539fa05914a31aac9dcb108d80b706"
+  },
+  "error": null,
+  "ok": true
+}

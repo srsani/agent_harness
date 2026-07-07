@@ -1,0 +1,122 @@
+{
+  "mode": "run-all",
+  "session_id": "agent-bench:run-all:pydantic-ai:adi-low-adoption:20260707T194931Z:15436ca4",
+  "harness": "pydantic-ai",
+  "task": "adi-low-adoption",
+  "repeat": 1,
+  "results": [
+    {
+      "harness": "pydantic-ai",
+      "architecture": "minimal",
+      "task": "adi-low-adoption",
+      "prompt": "Which analytics modules have 25 or fewer active deployments (low adoption alert)? List their names, business functions, and current deployment counts.",
+      "output": "\n\n| Module Name | Business Function | Current Deployment Count |\n|-------------|-------------------|--------------------------|\n| Predictive Analytics | Sales Forecasting | 12 |\n| Customer Segmentation | Marketing | 18 |\n| Inventory Optimization | Supply Chain | 24 |\n| Churn Prediction | Customer Success | 8 |",
+      "started_at": "2026-07-07T19:49:31.065204+00:00",
+      "elapsed_seconds": 38.43555654200463,
+      "metadata": {
+        "langfuse_session_id": "agent-bench:run-all:pydantic-ai:adi-low-adoption:20260707T194931Z:15436ca4",
+        "langfuse_trace_id": "80cc63d945e6d096a469d8ed23507d48",
+        "langfuse_observation_id": "bfac3cad9281ff02",
+        "langfuse_trace_url": "https://cloud.langfuse.com/project/cmr1ywsf000d5ad0cex3dm2ha/traces/80cc63d945e6d096a469d8ed23507d48"
+      },
+      "error": null,
+      "ok": true
+    },
+    {
+      "harness": "pydantic-ai",
+      "architecture": "enterprise-react",
+      "task": "adi-low-adoption",
+      "prompt": "Which analytics modules have 25 or fewer active deployments (low adoption alert)? List their names, business functions, and current deployment counts.",
+      "output": "\n\n| name | business_function | active_deployments |\n|------|-------------------|-------------------|\n| Shareholder Value Scorecard | Finance | 18 |\n| Trial Success Probability Model | Research & Development | 19 |\n| Clinical Trial Optimizer | Research & Development | 22 |\n| IP Portfolio Analyzer | Research & Development | 25 |",
+      "started_at": "2026-07-07T19:50:09.508789+00:00",
+      "elapsed_seconds": 3.5859742499960703,
+      "metadata": {
+        "langfuse_session_id": "agent-bench:run-all:pydantic-ai:adi-low-adoption:20260707T194931Z:15436ca4",
+        "langfuse_trace_id": "6cefcd52b8777b05269e31003d4e294c",
+        "langfuse_observation_id": "eaa970fafbf37e61",
+        "langfuse_trace_url": "https://cloud.langfuse.com/project/cmr1ywsf000d5ad0cex3dm2ha/traces/6cefcd52b8777b05269e31003d4e294c"
+      },
+      "error": null,
+      "ok": true
+    },
+    {
+      "harness": "pydantic-ai",
+      "architecture": "enterprise-codemode",
+      "task": "adi-low-adoption",
+      "prompt": "Which analytics modules have 25 or fewer active deployments (low adoption alert)? List their names, business functions, and current deployment counts.",
+      "output": "",
+      "started_at": "2026-07-07T19:50:13.096812+00:00",
+      "elapsed_seconds": 3.47261295899807,
+      "metadata": {
+        "langfuse_session_id": "agent-bench:run-all:pydantic-ai:adi-low-adoption:20260707T194931Z:15436ca4"
+      },
+      "error": "UnexpectedModelBehavior: Tool 'get_low_stock_products' exceeded max retries count of 1",
+      "ok": false
+    },
+    {
+      "harness": "pydantic-ai",
+      "architecture": "enterprise-mcp-react",
+      "task": "adi-low-adoption",
+      "prompt": "Which analytics modules have 25 or fewer active deployments (low adoption alert)? List their names, business functions, and current deployment counts.",
+      "output": "\n\n| name | business_function | active_deployments |\n|------|-------------------|-------------------|\n| Shareholder Value Scorecard | Finance | 18 |\n| Trial Success Probability Model | Research & Development | 19 |\n| Clinical Trial Optimizer | Research & Development | 22 |\n| IP Portfolio Analyzer | Research & Development | 25 |",
+      "started_at": "2026-07-07T19:50:16.570822+00:00",
+      "elapsed_seconds": 4.271872124998481,
+      "metadata": {
+        "langfuse_session_id": "agent-bench:run-all:pydantic-ai:adi-low-adoption:20260707T194931Z:15436ca4",
+        "langfuse_trace_id": "a219464251e4bdb2a8ac82280f6116c9",
+        "langfuse_observation_id": "77d5c8b595631195",
+        "langfuse_trace_url": "https://cloud.langfuse.com/project/cmr1ywsf000d5ad0cex3dm2ha/traces/a219464251e4bdb2a8ac82280f6116c9"
+      },
+      "error": null,
+      "ok": true
+    },
+    {
+      "harness": "pydantic-ai",
+      "architecture": "enterprise-mcp-codemode",
+      "task": "adi-low-adoption",
+      "prompt": "Which analytics modules have 25 or fewer active deployments (low adoption alert)? List their names, business functions, and current deployment counts.",
+      "output": "",
+      "started_at": "2026-07-07T19:50:20.845280+00:00",
+      "elapsed_seconds": 2.445893165997404,
+      "metadata": {
+        "langfuse_session_id": "agent-bench:run-all:pydantic-ai:adi-low-adoption:20260707T194931Z:15436ca4"
+      },
+      "error": "UnexpectedModelBehavior: Tool 'tool_get_low_stock_products' exceeded max retries count of 1",
+      "ok": false
+    },
+    {
+      "harness": "pydantic-ai",
+      "architecture": "enterprise-sql-react",
+      "task": "adi-low-adoption",
+      "prompt": "Which analytics modules have 25 or fewer active deployments (low adoption alert)? List their names, business functions, and current deployment counts.",
+      "output": "\n\n| name | business_function | active_deployments |\n|---|---|---|\n| Shareholder Value Scorecard | Finance | 18 |\n| Trial Success Probability Model | Research & Development | 19 |\n| Clinical Trial Optimizer | Research & Development | 22 |\n| IP Portfolio Analyzer | Research & Development | 25 |",
+      "started_at": "2026-07-07T19:50:23.292172+00:00",
+      "elapsed_seconds": 6.941740916001436,
+      "metadata": {
+        "langfuse_session_id": "agent-bench:run-all:pydantic-ai:adi-low-adoption:20260707T194931Z:15436ca4",
+        "langfuse_trace_id": "23477c937497456e408667f5201408d2",
+        "langfuse_observation_id": "6b31b859a479584f",
+        "langfuse_trace_url": "https://cloud.langfuse.com/project/cmr1ywsf000d5ad0cex3dm2ha/traces/23477c937497456e408667f5201408d2"
+      },
+      "error": null,
+      "ok": true
+    },
+    {
+      "harness": "pydantic-ai",
+      "architecture": "enterprise-sql-codemode",
+      "task": "adi-low-adoption",
+      "prompt": "Which analytics modules have 25 or fewer active deployments (low adoption alert)? List their names, business functions, and current deployment counts.",
+      "output": "\n\n| Module Name | Business Function | Active Deployments |\n|-------------|-------------------|-------------------|\n| Shareholder Value Scorecard | Finance | 18 |\n| Trial Success Probability Model | Research & Development | 19 |\n| Clinical Trial Optimizer | Research & Development | 22 |\n| IP Portfolio Analyzer | Research & Development | 25 |",
+      "started_at": "2026-07-07T19:50:30.235421+00:00",
+      "elapsed_seconds": 10.5748228750017,
+      "metadata": {
+        "langfuse_session_id": "agent-bench:run-all:pydantic-ai:adi-low-adoption:20260707T194931Z:15436ca4",
+        "langfuse_trace_id": "3431db05a872643a19003460c28bac41",
+        "langfuse_observation_id": "ff681c10565e4fac",
+        "langfuse_trace_url": "https://cloud.langfuse.com/project/cmr1ywsf000d5ad0cex3dm2ha/traces/3431db05a872643a19003460c28bac41"
+      },
+      "error": null,
+      "ok": true
+    }
+  ]
+}
