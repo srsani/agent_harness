@@ -1,0 +1,64 @@
+{
+  "mode": "repeat",
+  "session_id": "agent-bench:run:pydantic-ai:adi-function-opportunity:20260705T164041Z:a1a5bba9",
+  "harness": "pydantic-ai",
+  "architecture": "enterprise-codemode",
+  "task": "adi-function-opportunity",
+  "repeat": 3,
+  "results": [
+    {
+      "harness": "pydantic-ai",
+      "architecture": "enterprise-codemode",
+      "task": "adi-function-opportunity",
+      "prompt": "For each business function, calculate total subscription revenue in the last 6 months, unique users in the last 6 months, highest-revenue module, average module rating across reviewed modules, and number of low-adoption modules with 25 or fewer active deployments. Return only the top 3 business functions by revenue, sorted by revenue descending, with columns: business_function, revenue_6m, unique_users_6m, highest_revenue_module, avg_module_rating, low_adoption_modules.",
+      "output": "\n\nBased on my analysis, here are the top 3 business functions by subscription revenue in the last 6 months:\n\n| business_function | revenue_6m | unique_users_6m | highest_revenue_module | avg_module_rating | low_adoption_modules |\n|-------------------|------------|-----------------|------------------------|-------------------|----------------------|\n| Research & Development | 23951500.0 | 80 | Trial Success Probability Model | 3.8514851485148514 | 9 |\n| Supply Chain | 21819000.0 | 87 | Demand Forecast Engine | 4.09 | 0 |\n| HR & People | 21677500.0 | 83 | Talent Retention Predictor | 4.2875 | 0 |\n\n**Data sources:**\n- Revenue and unique users: Calculated from `orders` joined with `order_items`, `products`, and `categories` for subscriptions created on or after 2026-01-04 with status != 'cancelled'\n- Highest-revenue module: Identified by finding the product with maximum line-item revenue (seats \u00d7 unit_price) within each business function\n- Average module rating: Computed from `reviews` table, averaging all ratings for products in each category\n- Low-adoption modules: Counted from `products` table where `active_deployments <= 25`",
+      "started_at": "2026-07-05T16:40:41.856106+00:00",
+      "elapsed_seconds": 127.00129562499933,
+      "metadata": {
+        "langfuse_session_id": "agent-bench:run:pydantic-ai:adi-function-opportunity:20260705T164041Z:a1a5bba9:rep1",
+        "langfuse_trace_id": "39daa1b4d1c1714d41abebc83864847a",
+        "langfuse_observation_id": "d6abdcea79204e02",
+        "langfuse_trace_url": "https://cloud.langfuse.com/project/cmr1ywsf000d5ad0cex3dm2ha/traces/39daa1b4d1c1714d41abebc83864847a",
+        "repeat_index": 1
+      },
+      "error": null,
+      "ok": true
+    },
+    {
+      "harness": "pydantic-ai",
+      "architecture": "enterprise-codemode",
+      "task": "adi-function-opportunity",
+      "prompt": "For each business function, calculate total subscription revenue in the last 6 months, unique users in the last 6 months, highest-revenue module, average module rating across reviewed modules, and number of low-adoption modules with 25 or fewer active deployments. Return only the top 3 business functions by revenue, sorted by revenue descending, with columns: business_function, revenue_6m, unique_users_6m, highest_revenue_module, avg_module_rating, low_adoption_modules.",
+      "output": "\n\nBased on my analysis, here are the top 3 business functions by subscription revenue in the last 6 months:\n\n| business_function | revenue_6m | unique_users_6m | highest_revenue_module | avg_module_rating | low_adoption_modules |\n|-------------------|------------|-----------------|------------------------|-------------------|----------------------|\n| Research & Development | 23951500.0 | 80 | Trial Success Probability Model | 3.8514851485148514 | 9 |\n| Supply Chain | 21819000.0 | 87 | Demand Forecast Engine | 4.09 | 0 |\n| HR & People | 21677500.0 | 83 | Talent Retention Predictor | 4.2875 | 0 |\n\n**Data sources:**\n- Revenue and unique users: Calculated from `orders` joined with `order_items`, `products`, and `categories` for subscriptions created on or after 2026-01-04 with status != 'cancelled'\n- Highest-revenue module: Identified by finding the product with maximum line-item revenue (seats \u00d7 unit_price) within each business function\n- Average module rating: Computed from `reviews` table, averaging all ratings for products in each category\n- Low-adoption modules: Counted from `products` table where `active_deployments <= 25`",
+      "started_at": "2026-07-05T16:42:48.857796+00:00",
+      "elapsed_seconds": 121.32198633399821,
+      "metadata": {
+        "langfuse_session_id": "agent-bench:run:pydantic-ai:adi-function-opportunity:20260705T164041Z:a1a5bba9:rep2",
+        "langfuse_trace_id": "fc7a430269bd0f68cffa38dbad335609",
+        "langfuse_observation_id": "f0616988db2ff21e",
+        "langfuse_trace_url": "https://cloud.langfuse.com/project/cmr1ywsf000d5ad0cex3dm2ha/traces/fc7a430269bd0f68cffa38dbad335609",
+        "repeat_index": 2
+      },
+      "error": null,
+      "ok": true
+    },
+    {
+      "harness": "pydantic-ai",
+      "architecture": "enterprise-codemode",
+      "task": "adi-function-opportunity",
+      "prompt": "For each business function, calculate total subscription revenue in the last 6 months, unique users in the last 6 months, highest-revenue module, average module rating across reviewed modules, and number of low-adoption modules with 25 or fewer active deployments. Return only the top 3 business functions by revenue, sorted by revenue descending, with columns: business_function, revenue_6m, unique_users_6m, highest_revenue_module, avg_module_rating, low_adoption_modules.",
+      "output": "\n\nBased on my analysis, here are the top 3 business functions by subscription revenue in the last 6 months:\n\n| business_function | revenue_6m | unique_users_6m | highest_revenue_module | avg_module_rating | low_adoption_modules |\n|-------------------|------------|-----------------|------------------------|-------------------|----------------------|\n| Research & Development | 23951500.0 | 80 | Trial Success Probability Model | 3.8514851485148514 | 9 |\n| Supply Chain | 21819000.0 | 87 | Demand Forecast Engine | 4.09 | 0 |\n| HR & People | 21677500.0 | 83 | Talent Retention Predictor | 4.2875 | 0 |\n\n**Data sources:**\n- Revenue and unique users: Calculated from `orders` joined with `order_items`, `products`, and `categories` for subscriptions created on or after 2026-01-04 with status != 'cancelled'\n- Highest-revenue module: Identified by finding the product with maximum line-item revenue (seats \u00d7 unit_price) within each business function\n- Average module rating: Computed from `reviews` table, averaging all ratings for products in each category\n- Low-adoption modules: Counted from `products` table where `active_deployments <= 25`",
+      "started_at": "2026-07-05T16:44:50.180395+00:00",
+      "elapsed_seconds": 121.35435779199906,
+      "metadata": {
+        "langfuse_session_id": "agent-bench:run:pydantic-ai:adi-function-opportunity:20260705T164041Z:a1a5bba9:rep3",
+        "langfuse_trace_id": "6802f2c7e960235899fa1f290da0e069",
+        "langfuse_observation_id": "3f2891129760fe6c",
+        "langfuse_trace_url": "https://cloud.langfuse.com/project/cmr1ywsf000d5ad0cex3dm2ha/traces/6802f2c7e960235899fa1f290da0e069",
+        "repeat_index": 3
+      },
+      "error": null,
+      "ok": true
+    }
+  ]
+}

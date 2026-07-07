@@ -1,11 +1,12 @@
 {
-  "generated_at": "2026-07-02T12:32:07.915623+00:00",
+  "generated_at": "2026-07-05T16:10:55.009475+00:00",
   "db_path": "/Users/srs/Projects/aily/data/enterprise.db",
-  "max_order_created_at": "2026-06-30T18:00:11",
+  "max_order_created_at": "2026-07-04T16:10:29",
   "notes": [
     "Ground truth is deterministic for seeded SQLite data.",
     "Metric scoring can compare model outputs against expected fields/rows per task.",
-    "hn-research is external-dynamic and excluded from strict deterministic scoring."
+    "hn-research is external-dynamic and excluded from strict deterministic scoring.",
+    "minimal-greeting-*/minimal-faq-* are conversational and excluded from strict deterministic scoring \u2014 there is no single correct reply to a greeting."
   ],
   "tasks": {
     "hello": {
@@ -36,32 +37,32 @@
         {
           "module_name": "Territory Performance Analyzer",
           "business_function": "Sales & Marketing",
-          "activation_count": 13,
-          "subscription_revenue": 217500.0
+          "activation_count": 39,
+          "subscription_revenue": 652500.0
         },
         {
           "module_name": "Talent Retention Predictor",
           "business_function": "HR & People",
-          "activation_count": 12,
-          "subscription_revenue": 297000.0
+          "activation_count": 36,
+          "subscription_revenue": 891000.0
         },
         {
           "module_name": "Order Fulfilment Tracker",
           "business_function": "Supply Chain",
-          "activation_count": 11,
-          "subscription_revenue": 126500.0
+          "activation_count": 33,
+          "subscription_revenue": 379500.0
         },
         {
           "module_name": "IP Portfolio Analyzer",
           "business_function": "Research & Development",
-          "activation_count": 10,
-          "subscription_revenue": 250000.0
+          "activation_count": 30,
+          "subscription_revenue": 750000.0
         },
         {
           "module_name": "Trial Success Probability Model",
           "business_function": "Research & Development",
-          "activation_count": 9,
-          "subscription_revenue": 368000.0
+          "activation_count": 27,
+          "subscription_revenue": 1104000.0
         }
       ]
     },
@@ -107,9 +108,21 @@
           "country": "FR",
           "tier": "standard",
           "created_at": "2023-12-17T17:58:17",
-          "total_lifetime_spend": 100000.0
+          "total_lifetime_spend": 300000.0
         },
         "last_5_subscriptions": [
+          {
+            "order_id": 1601,
+            "status": "shipped",
+            "total_amount": 36000.0,
+            "created_at": "2026-02-20T10:54:29"
+          },
+          {
+            "order_id": 1001,
+            "status": "shipped",
+            "total_amount": 36000.0,
+            "created_at": "2026-02-19T07:21:23"
+          },
           {
             "order_id": 401,
             "status": "shipped",
@@ -117,10 +130,16 @@
             "created_at": "2026-02-16T12:44:11"
           },
           {
-            "order_id": 534,
+            "order_id": 1734,
             "status": "shipped",
             "total_amount": 64000.0,
-            "created_at": "2025-09-05T00:50:06"
+            "created_at": "2025-09-08T23:00:25"
+          },
+          {
+            "order_id": 1134,
+            "status": "shipped",
+            "total_amount": 64000.0,
+            "created_at": "2025-09-07T19:27:18"
           }
         ]
       }
@@ -131,38 +150,38 @@
       "expected": [
         {
           "business_function": "Research & Development",
-          "revenue_6m": 3248000.0,
-          "unique_users_6m": 82,
+          "revenue_6m": 9496000.0,
+          "unique_users_6m": 80,
           "highest_revenue_module": "Trial Success Probability Model",
-          "highest_module_revenue_6m": 496000.0
+          "highest_module_revenue_6m": 1488000.0
         },
         {
           "business_function": "Supply Chain",
-          "revenue_6m": 2467000.0,
-          "unique_users_6m": 88,
-          "highest_revenue_module": "Inventory Optimization Suite",
-          "highest_module_revenue_6m": 356500.0
+          "revenue_6m": 7195500.0,
+          "unique_users_6m": 87,
+          "highest_revenue_module": "Demand Forecast Engine",
+          "highest_module_revenue_6m": 1050000.0
         },
         {
           "business_function": "Sales & Marketing",
-          "revenue_6m": 2411500.0,
-          "unique_users_6m": 78,
+          "revenue_6m": 7108500.0,
+          "unique_users_6m": 77,
           "highest_revenue_module": "Market Share Monitor",
-          "highest_module_revenue_6m": 451000.0
+          "highest_module_revenue_6m": 1254000.0
         },
         {
           "business_function": "HR & People",
-          "revenue_6m": 2251000.0,
+          "revenue_6m": 6700000.0,
           "unique_users_6m": 83,
           "highest_revenue_module": "Talent Retention Predictor",
-          "highest_module_revenue_6m": 374000.0
+          "highest_module_revenue_6m": 1122000.0
         },
         {
           "business_function": "Finance",
-          "revenue_6m": 2073500.0,
-          "unique_users_6m": 80,
-          "highest_revenue_module": "Revenue Forecast Model",
-          "highest_module_revenue_6m": 324000.0
+          "revenue_6m": 5982500.0,
+          "unique_users_6m": 78,
+          "highest_revenue_module": "Cash Flow Predictor",
+          "highest_module_revenue_6m": 940500.0
         }
       ]
     },
@@ -172,26 +191,26 @@
       "expected": [
         {
           "business_function": "Research & Development",
-          "revenue_6m": 3248000.0,
-          "unique_users_6m": 82,
+          "revenue_6m": 9496000.0,
+          "unique_users_6m": 80,
           "highest_revenue_module": "Trial Success Probability Model",
-          "avg_module_rating": 3.75,
-          "low_adoption_modules": 3
+          "avg_module_rating": 3.851,
+          "low_adoption_modules": 9
         },
         {
           "business_function": "Supply Chain",
-          "revenue_6m": 2467000.0,
-          "unique_users_6m": 88,
-          "highest_revenue_module": "Inventory Optimization Suite",
-          "avg_module_rating": 4.059,
+          "revenue_6m": 7195500.0,
+          "unique_users_6m": 87,
+          "highest_revenue_module": "Demand Forecast Engine",
+          "avg_module_rating": 4.09,
           "low_adoption_modules": 0
         },
         {
           "business_function": "Sales & Marketing",
-          "revenue_6m": 2411500.0,
-          "unique_users_6m": 78,
+          "revenue_6m": 7108500.0,
+          "unique_users_6m": 77,
           "highest_revenue_module": "Market Share Monitor",
-          "avg_module_rating": 4.0,
+          "avg_module_rating": 4.034,
           "low_adoption_modules": 0
         }
       ]
@@ -205,7 +224,7 @@
             "customer_id": 11,
             "full_name": "Alice Wilson",
             "city": "Berlin",
-            "lifetime_value": 98000.0,
+            "lifetime_value": 294000.0,
             "best_subscription_id": 393,
             "best_subscription_amount": 59000.0
           },
@@ -213,7 +232,7 @@
             "customer_id": 174,
             "full_name": "Bob Lewis",
             "city": "Bristol",
-            "lifetime_value": 165500.0,
+            "lifetime_value": 496500.0,
             "best_subscription_id": 127,
             "best_subscription_amount": 80000.0
           },
@@ -229,7 +248,7 @@
             "customer_id": 131,
             "full_name": "Claire Edwards",
             "city": "Toronto",
-            "lifetime_value": 28000.0,
+            "lifetime_value": 84000.0,
             "best_subscription_id": 224,
             "best_subscription_amount": 28000.0
           },
@@ -245,7 +264,7 @@
             "customer_id": 150,
             "full_name": "Dan Smith",
             "city": "Toronto",
-            "lifetime_value": 155500.0,
+            "lifetime_value": 466500.0,
             "best_subscription_id": 469,
             "best_subscription_amount": 64500.0
           },
@@ -253,7 +272,7 @@
             "customer_id": 26,
             "full_name": "David Evans",
             "city": "Lyon",
-            "lifetime_value": 22500.0,
+            "lifetime_value": 67500.0,
             "best_subscription_id": 271,
             "best_subscription_amount": 22500.0
           },
@@ -269,7 +288,7 @@
             "customer_id": 199,
             "full_name": "Frank Davies",
             "city": "Austin",
-            "lifetime_value": 162500.0,
+            "lifetime_value": 487500.0,
             "best_subscription_id": 134,
             "best_subscription_amount": 59000.0
           },
@@ -277,7 +296,7 @@
             "customer_id": 144,
             "full_name": "Gina Edwards",
             "city": "Hamburg",
-            "lifetime_value": 67000.0,
+            "lifetime_value": 201000.0,
             "best_subscription_id": 353,
             "best_subscription_amount": 54000.0
           },
@@ -285,7 +304,7 @@
             "customer_id": 133,
             "full_name": "Grace Johnson",
             "city": "Toronto",
-            "lifetime_value": 58000.0,
+            "lifetime_value": 174000.0,
             "best_subscription_id": 402,
             "best_subscription_amount": 30000.0
           },
@@ -293,7 +312,7 @@
             "customer_id": 135,
             "full_name": "Hank Martin",
             "city": "New York",
-            "lifetime_value": 93000.0,
+            "lifetime_value": 279000.0,
             "best_subscription_id": 250,
             "best_subscription_amount": 33000.0
           },
@@ -301,7 +320,7 @@
             "customer_id": 182,
             "full_name": "Hank Martinez",
             "city": "Edinburgh",
-            "lifetime_value": 70000.0,
+            "lifetime_value": 210000.0,
             "best_subscription_id": 166,
             "best_subscription_amount": 36000.0
           },
@@ -309,7 +328,7 @@
             "customer_id": 200,
             "full_name": "Iris Brown",
             "city": "Munich",
-            "lifetime_value": 267000.0,
+            "lifetime_value": 801000.0,
             "best_subscription_id": 284,
             "best_subscription_amount": 84000.0
           },
@@ -317,7 +336,7 @@
             "customer_id": 91,
             "full_name": "Ivy Brown",
             "city": "Bristol",
-            "lifetime_value": 60000.0,
+            "lifetime_value": 180000.0,
             "best_subscription_id": 145,
             "best_subscription_amount": 60000.0
           },
@@ -325,7 +344,7 @@
             "customer_id": 141,
             "full_name": "Jack Nguyen",
             "city": "Melbourne",
-            "lifetime_value": 136000.0,
+            "lifetime_value": 408000.0,
             "best_subscription_id": 350,
             "best_subscription_amount": 46500.0
           },
@@ -333,7 +352,7 @@
             "customer_id": 49,
             "full_name": "Jake Smith",
             "city": "Chicago",
-            "lifetime_value": 143000.0,
+            "lifetime_value": 429000.0,
             "best_subscription_id": 80,
             "best_subscription_amount": 88500.0
           },
@@ -341,7 +360,7 @@
             "customer_id": 62,
             "full_name": "Kim Wright",
             "city": "Los Angeles",
-            "lifetime_value": 72000.0,
+            "lifetime_value": 216000.0,
             "best_subscription_id": 337,
             "best_subscription_amount": 54000.0
           },
@@ -349,7 +368,7 @@
             "customer_id": 38,
             "full_name": "Leo Lewis",
             "city": "Edinburgh",
-            "lifetime_value": 10500.0,
+            "lifetime_value": 31500.0,
             "best_subscription_id": 538,
             "best_subscription_amount": 10500.0
           },
@@ -357,7 +376,7 @@
             "customer_id": 19,
             "full_name": "Maya Jackson",
             "city": "Edinburgh",
-            "lifetime_value": 18000.0,
+            "lifetime_value": 54000.0,
             "best_subscription_id": 259,
             "best_subscription_amount": 18000.0
           },
@@ -365,7 +384,7 @@
             "customer_id": 195,
             "full_name": "Maya Jackson",
             "city": "Austin",
-            "lifetime_value": 71000.0,
+            "lifetime_value": 213000.0,
             "best_subscription_id": 309,
             "best_subscription_amount": 27000.0
           },
@@ -373,7 +392,7 @@
             "customer_id": 70,
             "full_name": "Nate Harris",
             "city": "Bristol",
-            "lifetime_value": 30000.0,
+            "lifetime_value": 90000.0,
             "best_subscription_id": 223,
             "best_subscription_amount": 30000.0
           },
@@ -389,7 +408,7 @@
             "customer_id": 78,
             "full_name": "Pete Edwards",
             "city": "Sydney",
-            "lifetime_value": 177000.0,
+            "lifetime_value": 531000.0,
             "best_subscription_id": 126,
             "best_subscription_amount": 126500.0
           },
@@ -397,7 +416,7 @@
             "customer_id": 39,
             "full_name": "Pete Hughes",
             "city": "London",
-            "lifetime_value": 24000.0,
+            "lifetime_value": 72000.0,
             "best_subscription_id": 283,
             "best_subscription_amount": 24000.0
           },
@@ -405,7 +424,7 @@
             "customer_id": 173,
             "full_name": "Quinn Turner",
             "city": "Austin",
-            "lifetime_value": 77000.0,
+            "lifetime_value": 231000.0,
             "best_subscription_id": 9,
             "best_subscription_amount": 77000.0
           },
@@ -413,7 +432,7 @@
             "customer_id": 13,
             "full_name": "Quinn Walker",
             "city": "Austin",
-            "lifetime_value": 11000.0,
+            "lifetime_value": 33000.0,
             "best_subscription_id": 326,
             "best_subscription_amount": 11000.0
           },
@@ -421,7 +440,7 @@
             "customer_id": 58,
             "full_name": "Rosa Clarke",
             "city": "Lyon",
-            "lifetime_value": 65500.0,
+            "lifetime_value": 196500.0,
             "best_subscription_id": 33,
             "best_subscription_amount": 39000.0
           },
@@ -429,7 +448,7 @@
             "customer_id": 101,
             "full_name": "Rosa Moore",
             "city": "Toronto",
-            "lifetime_value": 7000.0,
+            "lifetime_value": 21000.0,
             "best_subscription_id": 272,
             "best_subscription_amount": 7000.0
           },
@@ -437,7 +456,7 @@
             "customer_id": 163,
             "full_name": "Wendy Green",
             "city": "New York",
-            "lifetime_value": 271000.0,
+            "lifetime_value": 813000.0,
             "best_subscription_id": 306,
             "best_subscription_amount": 81000.0
           },
@@ -445,7 +464,7 @@
             "customer_id": 1,
             "full_name": "Xander Clarke",
             "city": "Berlin",
-            "lifetime_value": 104000.0,
+            "lifetime_value": 312000.0,
             "best_subscription_id": 340,
             "best_subscription_amount": 104000.0
           },
@@ -453,7 +472,7 @@
             "customer_id": 192,
             "full_name": "Zach Jackson",
             "city": "Sydney",
-            "lifetime_value": 176500.0,
+            "lifetime_value": 529500.0,
             "best_subscription_id": 196,
             "best_subscription_amount": 109000.0
           }
@@ -532,42 +551,42 @@
       "expected": {
         "highest_3": [
           {
-            "module_name": "Talent Retention Predictor",
-            "avg_rating": 5.0,
-            "review_count": 5,
-            "sample_review_title": "Transformed our decision-making"
-          },
-          {
-            "module_name": "Order Fulfilment Tracker",
-            "avg_rating": 4.667,
-            "review_count": 6,
+            "module_name": "P&L Scenario Simulator",
+            "avg_rating": 4.727,
+            "review_count": 22,
             "sample_review_title": "Exceeded our accuracy targets"
           },
           {
-            "module_name": "Cash Flow Predictor",
-            "avg_rating": 4.6,
-            "review_count": 5,
-            "sample_review_title": "Cut our analysis time by 80%"
+            "module_name": "Employee Engagement Monitor",
+            "avg_rating": 4.538,
+            "review_count": 13,
+            "sample_review_title": "Exactly the insights we needed"
+          },
+          {
+            "module_name": "Revenue Performance Dashboard",
+            "avg_rating": 4.522,
+            "review_count": 23,
+            "sample_review_title": "Finally, data-driven forecasting"
           }
         ],
         "lowest_3": [
           {
-            "module_name": "Transportation Network Optimizer",
+            "module_name": "Earnings Risk Analyzer",
             "avg_rating": 3.0,
-            "review_count": 3,
-            "sample_review_title": "Our leadership team relies on this daily"
+            "review_count": 8,
+            "sample_review_title": "Impressive predictive power"
           },
           {
-            "module_name": "GTM Readiness Planner",
-            "avg_rating": 3.2,
-            "review_count": 5,
-            "sample_review_title": "Cut our analysis time by 80%"
+            "module_name": "FX Exposure Monitor",
+            "avg_rating": 3.091,
+            "review_count": 11,
+            "sample_review_title": "Transformed our decision-making"
           },
           {
-            "module_name": "Innovation Pipeline Dashboard",
-            "avg_rating": 3.333,
-            "review_count": 3,
-            "sample_review_title": "Saved weeks of manual work"
+            "module_name": "Channel Mix Optimizer",
+            "avg_rating": 3.471,
+            "review_count": 17,
+            "sample_review_title": "Finally, data-driven forecasting"
           }
         ]
       }
@@ -580,46 +599,46 @@
         "monthly": [
           {
             "month": "2025-07",
-            "activation_count": 41,
-            "revenue": 1644500.0
+            "activation_count": 118,
+            "revenue": 4764000.0
           },
           {
             "month": "2025-08",
-            "activation_count": 47,
-            "revenue": 2202000.0
+            "activation_count": 136,
+            "revenue": 6334500.0
           },
           {
             "month": "2025-09",
-            "activation_count": 39,
-            "revenue": 1869500.0
+            "activation_count": 118,
+            "revenue": 5638500.0
           },
           {
             "month": "2025-10",
-            "activation_count": 42,
-            "revenue": 1883500.0
+            "activation_count": 129,
+            "revenue": 5728500.0
           },
           {
             "month": "2025-11",
-            "activation_count": 38,
-            "revenue": 1817500.0
+            "activation_count": 110,
+            "revenue": 5452500.0
           },
           {
             "month": "2025-12",
-            "activation_count": 40,
-            "revenue": 2166500.0
+            "activation_count": 123,
+            "revenue": 6235500.0
           }
         ],
         "highest_revenue_month": {
           "month": "2025-08",
-          "activation_count": 47,
-          "revenue": 2202000.0
+          "activation_count": 136,
+          "revenue": 6334500.0
         },
         "lowest_revenue_month": {
           "month": "2025-07",
-          "activation_count": 41,
-          "revenue": 1644500.0
+          "activation_count": 118,
+          "revenue": 4764000.0
         },
-        "growth_from_lowest_to_highest_pct": 33.9
+        "growth_from_lowest_to_highest_pct": 32.97
       }
     },
     "adi-disengagement-risk": {
@@ -630,71 +649,71 @@
           "customer_id": 49,
           "full_name": "Jake Smith",
           "tier": "gold",
-          "last_subscription_date": "2025-12-30T14:46:06",
-          "lifetime_value": 143000.0
+          "last_subscription_date": "2026-01-03T12:56:25",
+          "lifetime_value": 429000.0
         },
         {
           "customer_id": 157,
           "full_name": "Hugo Anderson",
           "tier": "standard",
-          "last_subscription_date": "2025-11-16T23:11:13",
-          "lifetime_value": 135000.0
+          "last_subscription_date": "2025-11-20T21:21:32",
+          "lifetime_value": 405000.0
         },
         {
           "customer_id": 73,
           "full_name": "Yara Nguyen",
           "tier": "standard",
-          "last_subscription_date": "2025-11-19T20:16:39",
-          "lifetime_value": 132000.0
+          "last_subscription_date": "2025-11-23T18:26:57",
+          "lifetime_value": 396000.0
         },
         {
           "customer_id": 142,
           "full_name": "Elena Moore",
           "tier": "silver",
-          "last_subscription_date": "2025-12-24T20:22:47",
-          "lifetime_value": 126500.0
+          "last_subscription_date": "2025-12-28T18:33:06",
+          "lifetime_value": 379500.0
         },
         {
           "customer_id": 79,
           "full_name": "Claire Taylor",
           "tier": "standard",
-          "last_subscription_date": "2025-10-06T11:25:54",
-          "lifetime_value": 126000.0
+          "last_subscription_date": "2025-10-10T09:36:12",
+          "lifetime_value": 378000.0
         },
         {
           "customer_id": 23,
           "full_name": "Emma White",
           "tier": "standard",
-          "last_subscription_date": "2025-12-06T01:20:34",
-          "lifetime_value": 123500.0
+          "last_subscription_date": "2025-12-09T23:30:52",
+          "lifetime_value": 370500.0
         },
         {
           "customer_id": 136,
           "full_name": "Dan Anderson",
           "tier": "silver",
-          "last_subscription_date": "2025-11-16T01:25:31",
-          "lifetime_value": 122000.0
+          "last_subscription_date": "2025-11-19T23:35:49",
+          "lifetime_value": 366000.0
+        },
+        {
+          "customer_id": 165,
+          "full_name": "Olivia Clarke",
+          "tier": "silver",
+          "last_subscription_date": "2025-10-10T06:31:11",
+          "lifetime_value": 339000.0
         },
         {
           "customer_id": 138,
           "full_name": "Sam Garcia",
           "tier": "standard",
-          "last_subscription_date": "2025-12-17T13:12:00",
-          "lifetime_value": 110500.0
+          "last_subscription_date": "2025-12-21T11:22:19",
+          "lifetime_value": 331500.0
         },
         {
           "customer_id": 93,
           "full_name": "Pete Thomas",
           "tier": "silver",
-          "last_subscription_date": "2025-12-20T04:18:31",
-          "lifetime_value": 107000.0
-        },
-        {
-          "customer_id": 60,
-          "full_name": "Quinn Williams",
-          "tier": "standard",
-          "last_subscription_date": "2025-11-05T04:38:02",
-          "lifetime_value": 104500.0
+          "last_subscription_date": "2025-12-24T02:28:49",
+          "lifetime_value": 321000.0
         }
       ]
     },
@@ -722,6 +741,3194 @@
         "deepest_tier": "standard",
         "deepest_avg_modules_per_subscription": 2.563
       }
+    },
+    "react-customer-profile-77": {
+      "type": "deterministic-sql",
+      "prompt": "Look up business user with ID 77. Show their full name, city, tier, and lifetime subscription value.",
+      "expected": {
+        "id": 77,
+        "full_name": "Jake Garcia",
+        "city": "Sydney",
+        "tier": "silver",
+        "lifetime_subscription_value": 1131000.0
+      }
+    },
+    "react-product-detail-15": {
+      "type": "deterministic-sql",
+      "prompt": "Get full details for analytics module ID 15, including its business function, annual license cost, and average user rating.",
+      "expected": {
+        "id": 15,
+        "name": "Lead Time Predictor",
+        "business_function": "Supply Chain",
+        "annual_license_usd": 9500.0,
+        "active_deployments": 52,
+        "avg_rating": 5.0,
+        "review_count": 6
+      }
+    },
+    "react-low-adoption-threshold-20": {
+      "type": "deterministic-sql",
+      "prompt": "Which analytics modules have 20 or fewer active deployments? List their names and current deployment counts.",
+      "expected": [
+        {
+          "module_name": "Shareholder Value Scorecard",
+          "active_deployments": 18
+        },
+        {
+          "module_name": "Shareholder Value Scorecard",
+          "active_deployments": 18
+        },
+        {
+          "module_name": "Shareholder Value Scorecard",
+          "active_deployments": 18
+        },
+        {
+          "module_name": "Trial Success Probability Model",
+          "active_deployments": 19
+        },
+        {
+          "module_name": "Trial Success Probability Model",
+          "active_deployments": 19
+        },
+        {
+          "module_name": "Trial Success Probability Model",
+          "active_deployments": 19
+        }
+      ]
+    },
+    "react-top-modules-30days": {
+      "type": "deterministic-sql",
+      "prompt": "What are the top 5 most-activated analytics modules in the last 30 days? List each module's name and activation count.",
+      "expected": [
+        {
+          "module_name": "Hiring Funnel Optimizer",
+          "activation_count": 5
+        },
+        {
+          "module_name": "Hiring Funnel Optimizer",
+          "activation_count": 5
+        },
+        {
+          "module_name": "Hiring Funnel Optimizer",
+          "activation_count": 5
+        },
+        {
+          "module_name": "IP Portfolio Analyzer",
+          "activation_count": 5
+        },
+        {
+          "module_name": "IP Portfolio Analyzer",
+          "activation_count": 5
+        }
+      ]
+    },
+    "react-recent-reviews-module-8": {
+      "type": "deterministic-sql",
+      "prompt": "Show the 5 most recent user satisfaction ratings for analytics module ID 8, including rating, title, and reviewer name.",
+      "expected": [
+        {
+          "rating": 4,
+          "title": "Transformed our decision-making",
+          "reviewer": "Ivy Thomas",
+          "created_at": "2026-07-22T19:09:58"
+        },
+        {
+          "rating": 4,
+          "title": "Transformed our decision-making",
+          "reviewer": "Ivy Thomas",
+          "created_at": "2026-07-22T19:09:58"
+        },
+        {
+          "rating": 4,
+          "title": "Transformed our decision-making",
+          "reviewer": "Ivy Thomas",
+          "created_at": "2026-07-22T19:09:58"
+        },
+        {
+          "rating": 2,
+          "title": "Needs better integration with our data sources",
+          "reviewer": "Wendy Green",
+          "created_at": "2026-03-01T08:41:37"
+        },
+        {
+          "rating": 2,
+          "title": "Needs better integration with our data sources",
+          "reviewer": "Wendy Green",
+          "created_at": "2026-03-01T08:41:37"
+        }
+      ]
+    },
+    "react-sales-summary-60d": {
+      "type": "deterministic-sql",
+      "prompt": "Summarize subscription activity for the most recent 60 days of data: total subscriptions, unique users, and total revenue.",
+      "expected": {
+        "total_subscriptions": 221,
+        "unique_users": 65,
+        "total_revenue": 11466000.0
+      }
+    },
+    "react-category-catalogue": {
+      "type": "deterministic-sql",
+      "prompt": "List every business function category along with its description.",
+      "expected": [
+        {
+          "name": "Finance",
+          "description": "Financial planning, forecasting, and capital allocation analytics"
+        },
+        {
+          "name": "HR & People",
+          "description": "Workforce planning, talent retention, and performance management analytics"
+        },
+        {
+          "name": "Research & Development",
+          "description": "Portfolio prioritisation, trial analytics, and time-to-market tracking"
+        },
+        {
+          "name": "Sales & Marketing",
+          "description": "Revenue performance, pipeline analytics, and go-to-market optimisation"
+        },
+        {
+          "name": "Supply Chain",
+          "description": "Inventory, logistics, demand forecasting, and procurement intelligence"
+        }
+      ]
+    },
+    "react-search-products-supplychain": {
+      "type": "deterministic-sql",
+      "prompt": "Find analytics modules in the Supply Chain business function with an annual license cost of $9,000 or less. List their names and annual license costs.",
+      "expected": [
+        {
+          "module_name": "Logistics Cost Analyzer",
+          "annual_license_usd": 8500.0
+        },
+        {
+          "module_name": "Logistics Cost Analyzer",
+          "annual_license_usd": 8500.0
+        },
+        {
+          "module_name": "Logistics Cost Analyzer",
+          "annual_license_usd": 8500.0
+        },
+        {
+          "module_name": "Order Fulfilment Tracker",
+          "annual_license_usd": 5500.0
+        },
+        {
+          "module_name": "Order Fulfilment Tracker",
+          "annual_license_usd": 5500.0
+        },
+        {
+          "module_name": "Order Fulfilment Tracker",
+          "annual_license_usd": 5500.0
+        },
+        {
+          "module_name": "Stockout Risk Monitor",
+          "annual_license_usd": 6500.0
+        },
+        {
+          "module_name": "Stockout Risk Monitor",
+          "annual_license_usd": 6500.0
+        },
+        {
+          "module_name": "Stockout Risk Monitor",
+          "annual_license_usd": 6500.0
+        },
+        {
+          "module_name": "Supplier Performance Tracker",
+          "annual_license_usd": 7000.0
+        },
+        {
+          "module_name": "Supplier Performance Tracker",
+          "annual_license_usd": 7000.0
+        },
+        {
+          "module_name": "Supplier Performance Tracker",
+          "annual_license_usd": 7000.0
+        },
+        {
+          "module_name": "Warehouse Utilisation Dashboard",
+          "annual_license_usd": 7500.0
+        },
+        {
+          "module_name": "Warehouse Utilisation Dashboard",
+          "annual_license_usd": 7500.0
+        },
+        {
+          "module_name": "Warehouse Utilisation Dashboard",
+          "annual_license_usd": 7500.0
+        }
+      ]
+    },
+    "react-search-customers-gold-london": {
+      "type": "deterministic-sql",
+      "prompt": "Find all gold-tier business users based in London. List their names and email addresses.",
+      "expected": [
+        {
+          "full_name": "Pete Hughes",
+          "email": "pete.hughes38@proton.me"
+        }
+      ]
+    },
+    "react-customer-orders-history-130": {
+      "type": "deterministic-sql",
+      "prompt": "Show the subscription history for business user ID 130: list each subscription's status, total amount, and creation date, most recent first.",
+      "expected": [
+        {
+          "order_id": 1314,
+          "status": "shipped",
+          "total_amount": 51500.0,
+          "created_at": "2026-01-30T17:00:02"
+        },
+        {
+          "order_id": 714,
+          "status": "shipped",
+          "total_amount": 51500.0,
+          "created_at": "2026-01-29T13:26:56"
+        },
+        {
+          "order_id": 114,
+          "status": "shipped",
+          "total_amount": 51500.0,
+          "created_at": "2026-01-26T18:49:44"
+        },
+        {
+          "order_id": 1223,
+          "status": "delivered",
+          "total_amount": 24000.0,
+          "created_at": "2025-12-21T13:29:17"
+        },
+        {
+          "order_id": 623,
+          "status": "delivered",
+          "total_amount": 24000.0,
+          "created_at": "2025-12-20T09:56:11"
+        },
+        {
+          "order_id": 23,
+          "status": "delivered",
+          "total_amount": 24000.0,
+          "created_at": "2025-12-17T15:18:59"
+        },
+        {
+          "order_id": 1606,
+          "status": "cancelled",
+          "total_amount": 27000.0,
+          "created_at": "2025-12-05T21:32:18"
+        },
+        {
+          "order_id": 1006,
+          "status": "cancelled",
+          "total_amount": 27000.0,
+          "created_at": "2025-12-04T17:59:11"
+        },
+        {
+          "order_id": 406,
+          "status": "cancelled",
+          "total_amount": 27000.0,
+          "created_at": "2025-12-01T23:22:00"
+        },
+        {
+          "order_id": 1749,
+          "status": "delivered",
+          "total_amount": 65500.0,
+          "created_at": "2025-10-31T21:42:25"
+        },
+        {
+          "order_id": 1149,
+          "status": "delivered",
+          "total_amount": 65500.0,
+          "created_at": "2025-10-30T18:09:18"
+        },
+        {
+          "order_id": 549,
+          "status": "delivered",
+          "total_amount": 65500.0,
+          "created_at": "2025-10-27T23:32:06"
+        },
+        {
+          "order_id": 1202,
+          "status": "shipped",
+          "total_amount": 25500.0,
+          "created_at": "2025-08-31T03:34:13"
+        },
+        {
+          "order_id": 602,
+          "status": "shipped",
+          "total_amount": 25500.0,
+          "created_at": "2025-08-30T00:01:07"
+        },
+        {
+          "order_id": 2,
+          "status": "shipped",
+          "total_amount": 25500.0,
+          "created_at": "2025-08-27T05:23:55"
+        }
+      ]
+    },
+    "react-order-detail-500": {
+      "type": "deterministic-sql",
+      "prompt": "Get full subscription details for order ID 500, including status, total amount, and every analytics module line item with seats and unit price.",
+      "expected": {
+        "header": {
+          "id": 500,
+          "status": "pending",
+          "total_amount": 72500.0,
+          "created_at": "2025-10-06T22:22:28",
+          "customer_name": "Hugo Wright"
+        },
+        "items": [
+          {
+            "module_name": "CapEx ROI Tracker",
+            "seats": 2,
+            "unit_price": 6500.0,
+            "line_total": 13000.0
+          },
+          {
+            "module_name": "Performance Management Analyzer",
+            "seats": 3,
+            "unit_price": 8500.0,
+            "line_total": 25500.0
+          },
+          {
+            "module_name": "Regulatory Timeline Tracker",
+            "seats": 2,
+            "unit_price": 12000.0,
+            "line_total": 24000.0
+          },
+          {
+            "module_name": "Revenue Performance Dashboard",
+            "seats": 1,
+            "unit_price": 10000.0,
+            "line_total": 10000.0
+          }
+        ]
+      }
+    },
+    "react-customer-lifetime-value-17": {
+      "type": "deterministic-sql",
+      "prompt": "What is the total lifetime spend and top business function for business user ID 17, based on their delivered subscriptions only?",
+      "expected": {
+        "id": 17,
+        "full_name": "Frank Davies",
+        "total_spend": 60000.0,
+        "top_business_function": "HR & People"
+      }
+    },
+    "codemode-gold-lifetime-scan": {
+      "type": "deterministic-sql",
+      "prompt": "For every gold-tier business user, compute lifetime subscription value (sum of non-cancelled subscription totals) and the date of their most recent subscription. Return the 10 with the highest lifetime value: name, city, lifetime value, and most recent subscription date.",
+      "expected": [
+        {
+          "full_name": "Wendy Green",
+          "city": "New York",
+          "lifetime_value": 813000.0,
+          "most_recent_subscription_date": "2026-06-23T21:44:19"
+        },
+        {
+          "full_name": "Iris Brown",
+          "city": "Munich",
+          "lifetime_value": 801000.0,
+          "most_recent_subscription_date": "2026-05-17T16:31:37"
+        },
+        {
+          "full_name": "Pete Edwards",
+          "city": "Sydney",
+          "lifetime_value": 531000.0,
+          "most_recent_subscription_date": "2026-06-30T10:49:38"
+        },
+        {
+          "full_name": "Zach Jackson",
+          "city": "Sydney",
+          "lifetime_value": 529500.0,
+          "most_recent_subscription_date": "2026-03-30T04:39:07"
+        },
+        {
+          "full_name": "Bob Lewis",
+          "city": "Bristol",
+          "lifetime_value": 496500.0,
+          "most_recent_subscription_date": "2026-06-05T22:12:30"
+        },
+        {
+          "full_name": "Frank Davies",
+          "city": "Austin",
+          "lifetime_value": 487500.0,
+          "most_recent_subscription_date": "2026-02-08T07:03:15"
+        },
+        {
+          "full_name": "Dan Smith",
+          "city": "Toronto",
+          "lifetime_value": 466500.0,
+          "most_recent_subscription_date": "2026-06-08T01:37:22"
+        },
+        {
+          "full_name": "Jake Smith",
+          "city": "Chicago",
+          "lifetime_value": 429000.0,
+          "most_recent_subscription_date": "2026-01-03T12:56:25"
+        },
+        {
+          "full_name": "Jack Nguyen",
+          "city": "Melbourne",
+          "lifetime_value": 408000.0,
+          "most_recent_subscription_date": "2026-03-22T12:09:12"
+        },
+        {
+          "full_name": "Xander Clarke",
+          "city": "Berlin",
+          "lifetime_value": 312000.0,
+          "most_recent_subscription_date": "2026-04-20T16:09:20"
+        }
+      ]
+    },
+    "codemode-customer-batch-lookup": {
+      "type": "deterministic-sql",
+      "prompt": "Look up business users with IDs 3, 17, 24, 38, 45, 52, 61, 74, 88, 93, 101, 115, 122, 136, 149, 158, 163, 171, 184, 197. For each, report their tier and lifetime subscription value. Return only the gold-tier ones, sorted by lifetime value descending.",
+      "expected": [
+        {
+          "full_name": "Wendy Green",
+          "tier": "gold",
+          "lifetime_value": 813000.0
+        },
+        {
+          "full_name": "Leo Lewis",
+          "tier": "gold",
+          "lifetime_value": 31500.0
+        },
+        {
+          "full_name": "Rosa Moore",
+          "tier": "gold",
+          "lifetime_value": 21000.0
+        }
+      ]
+    },
+    "codemode-module-review-gap-scan": {
+      "type": "deterministic-sql",
+      "prompt": "Check analytics modules with IDs 2, 5, 9, 12, 18, 22, 27, 31, 34, 39, 43, 47, 52, 56, 61, 65, 70, 74, 79, 83, 88, 92, 97, 100 for user satisfaction ratings. List the ones that currently have zero ratings, along with their business function and active deployment count.",
+      "expected": []
+    },
+    "codemode-order-batch-audit": {
+      "type": "deterministic-sql",
+      "prompt": "Look up subscriptions (orders) with IDs 5, 40, 85, 120, 200, 260, 310, 375, 430, 500, 560, 610, 670, 740, 800, 860, 920, 980, 1040, 1100. Compute the combined total_amount of only the ones with status 'delivered', and list every distinct analytics module name that appears across all 20 subscriptions.",
+      "expected": {
+        "delivered_total_amount": 97500.0,
+        "distinct_modules": [
+          "CapEx ROI Tracker",
+          "Cash Flow Predictor",
+          "Clinical Trial Optimizer",
+          "Compensation Benchmarking Tool",
+          "Competitive Intelligence Monitor",
+          "Customer Acquisition Cost Tracker",
+          "Diversity & Inclusion Scorecard",
+          "Employee Engagement Monitor",
+          "FX Exposure Monitor",
+          "GTM Readiness Planner",
+          "Lead Time Predictor",
+          "Logistics Cost Analyzer",
+          "Market Share Monitor",
+          "Performance Management Analyzer",
+          "Portfolio Prioritisation Engine",
+          "Price Elasticity Model",
+          "Procurement Savings Analyzer",
+          "Quota Attainment Tracker",
+          "R&D Spend Analyzer",
+          "Regulatory Timeline Tracker",
+          "Resource Allocation Optimizer",
+          "Revenue Forecast Model",
+          "Revenue Performance Dashboard",
+          "Sales Pipeline Analyzer",
+          "Stockout Risk Monitor",
+          "Succession Planning Engine",
+          "Talent Retention Predictor",
+          "Territory Performance Analyzer",
+          "Time-to-Market Predictor",
+          "Trial Success Probability Model",
+          "Workforce Planning Dashboard"
+        ]
+      }
+    },
+    "codemode-top-module-review-quality": {
+      "type": "deterministic-sql",
+      "prompt": "Find the top 10 most-activated analytics modules in the last 90 days. For each, compute the percentage of their user satisfaction ratings that are 4 or 5 stars. Return all 10 ranked by that percentage descending, with module name, activation count, and the 4-5 star percentage.",
+      "expected": [
+        {
+          "module_name": "Talent Retention Predictor",
+          "activation_count": 12,
+          "pct_4_5_star": 100.0
+        },
+        {
+          "module_name": "Order Fulfilment Tracker",
+          "activation_count": 11,
+          "pct_4_5_star": 100.0
+        },
+        {
+          "module_name": "IP Portfolio Analyzer",
+          "activation_count": 10,
+          "pct_4_5_star": 100.0
+        },
+        {
+          "module_name": "Territory Performance Analyzer",
+          "activation_count": 13,
+          "pct_4_5_star": 83.33
+        },
+        {
+          "module_name": "Territory Performance Analyzer",
+          "activation_count": 13,
+          "pct_4_5_star": 80.0
+        },
+        {
+          "module_name": "Talent Retention Predictor",
+          "activation_count": 12,
+          "pct_4_5_star": 80.0
+        },
+        {
+          "module_name": "Territory Performance Analyzer",
+          "activation_count": 13,
+          "pct_4_5_star": 71.43
+        },
+        {
+          "module_name": "Order Fulfilment Tracker",
+          "activation_count": 11,
+          "pct_4_5_star": 66.67
+        },
+        {
+          "module_name": "Talent Retention Predictor",
+          "activation_count": 12,
+          "pct_4_5_star": 50.0
+        },
+        {
+          "module_name": "Order Fulfilment Tracker",
+          "activation_count": 11,
+          "pct_4_5_star": 33.33
+        }
+      ]
+    },
+    "codemode-gold-churn-scan": {
+      "type": "deterministic-sql",
+      "prompt": "Among all gold-tier business users, identify every one who has had no subscription of any status in the last 120 days. List their name, city, and the date of their most recent subscription (or 'never subscribed' if they have none).",
+      "expected": [
+        {
+          "full_name": "Claire Edwards",
+          "city": "Toronto",
+          "most_recent_subscription_date": "2026-02-16T03:10:05"
+        },
+        {
+          "full_name": "Dan Roberts",
+          "city": "Manchester",
+          "most_recent_subscription_date": null
+        },
+        {
+          "full_name": "David Evans",
+          "city": "Lyon",
+          "most_recent_subscription_date": "2025-12-24T00:52:12"
+        },
+        {
+          "full_name": "Felix Anderson",
+          "city": "Los Angeles",
+          "most_recent_subscription_date": null
+        },
+        {
+          "full_name": "Frank Davies",
+          "city": "Austin",
+          "most_recent_subscription_date": "2026-02-08T07:03:15"
+        },
+        {
+          "full_name": "Gina Edwards",
+          "city": "Hamburg",
+          "most_recent_subscription_date": "2026-02-03T09:31:01"
+        },
+        {
+          "full_name": "Jake Smith",
+          "city": "Chicago",
+          "most_recent_subscription_date": "2026-01-03T12:56:25"
+        },
+        {
+          "full_name": "Leo Lewis",
+          "city": "Edinburgh",
+          "most_recent_subscription_date": "2026-03-01T02:50:22"
+        },
+        {
+          "full_name": "Maya Jackson",
+          "city": "Austin",
+          "most_recent_subscription_date": "2026-02-01T00:20:14"
+        },
+        {
+          "full_name": "Nate Harris",
+          "city": "Bristol",
+          "most_recent_subscription_date": "2025-07-28T23:39:10"
+        },
+        {
+          "full_name": "Nate Taylor",
+          "city": "Toronto",
+          "most_recent_subscription_date": null
+        },
+        {
+          "full_name": "Pete Hughes",
+          "city": "London",
+          "most_recent_subscription_date": "2026-01-28T11:29:49"
+        },
+        {
+          "full_name": "Quinn Turner",
+          "city": "Austin",
+          "most_recent_subscription_date": "2026-01-24T21:10:27"
+        },
+        {
+          "full_name": "Rosa Moore",
+          "city": "Toronto",
+          "most_recent_subscription_date": "2026-01-22T07:10:43"
+        }
+      ]
+    },
+    "codemode-lowstock-unreviewed": {
+      "type": "deterministic-sql",
+      "prompt": "Find every analytics module with 25 or fewer active deployments. For each, check whether it has any user satisfaction ratings, and list the ones with zero ratings along with business function and deployment count.",
+      "expected": []
+    },
+    "codemode-category-price-spread": {
+      "type": "deterministic-sql",
+      "prompt": "For each of the 5 business functions, find the minimum, maximum, and average annual license cost among its analytics modules. Return one row per business function.",
+      "expected": [
+        {
+          "business_function": "Finance",
+          "min_price": 5500.0,
+          "max_price": 12000.0,
+          "avg_price": 8800.0
+        },
+        {
+          "business_function": "HR & People",
+          "min_price": 5500.0,
+          "max_price": 11000.0,
+          "avg_price": 8050.0
+        },
+        {
+          "business_function": "Research & Development",
+          "min_price": 7500.0,
+          "max_price": 18000.0,
+          "avg_price": 11950.0
+        },
+        {
+          "business_function": "Sales & Marketing",
+          "min_price": 6000.0,
+          "max_price": 12000.0,
+          "avg_price": 8850.0
+        },
+        {
+          "business_function": "Supply Chain",
+          "min_price": 5500.0,
+          "max_price": 14000.0,
+          "avg_price": 9250.0
+        }
+      ]
+    },
+    "codemode-recent-multi-subscribers": {
+      "type": "deterministic-sql",
+      "prompt": "Look up business users with IDs 150 through 170. For each, find how many subscriptions (of any status) they placed in the last 90 days and their total spend on those. List only the ones with 2 or more recent subscriptions.",
+      "expected": [
+        {
+          "full_name": "Wendy Green",
+          "recent_subscription_count": 9,
+          "recent_total_spend": 457500.0
+        },
+        {
+          "full_name": "Alice Martinez",
+          "recent_subscription_count": 6,
+          "recent_total_spend": 307500.0
+        },
+        {
+          "full_name": "Emma Moore",
+          "recent_subscription_count": 6,
+          "recent_total_spend": 144000.0
+        },
+        {
+          "full_name": "Felix Williams",
+          "recent_subscription_count": 6,
+          "recent_total_spend": 498000.0
+        },
+        {
+          "full_name": "Grace Garcia",
+          "recent_subscription_count": 6,
+          "recent_total_spend": 202500.0
+        },
+        {
+          "full_name": "Mia Turner",
+          "recent_subscription_count": 6,
+          "recent_total_spend": 340500.0
+        },
+        {
+          "full_name": "Liam Wright",
+          "recent_subscription_count": 5,
+          "recent_total_spend": 375500.0
+        },
+        {
+          "full_name": "Dan Smith",
+          "recent_subscription_count": 3,
+          "recent_total_spend": 117000.0
+        },
+        {
+          "full_name": "Iris Evans",
+          "recent_subscription_count": 3,
+          "recent_total_spend": 105000.0
+        },
+        {
+          "full_name": "Jack Thompson",
+          "recent_subscription_count": 3,
+          "recent_total_spend": 150000.0
+        },
+        {
+          "full_name": "Rosa Johnson",
+          "recent_subscription_count": 3,
+          "recent_total_spend": 54000.0
+        },
+        {
+          "full_name": "Vince Wilson",
+          "recent_subscription_count": 3,
+          "recent_total_spend": 325500.0
+        },
+        {
+          "full_name": "Wendy Hall",
+          "recent_subscription_count": 3,
+          "recent_total_spend": 250500.0
+        }
+      ]
+    },
+    "codemode-bundle-scan": {
+      "type": "deterministic-sql",
+      "prompt": "Look up subscriptions (orders) with IDs 10, 55, 100, 150, 210, 260, 320, 370, 430, 480, 540, 590, 650, 700, 760, 810, 870, 920, 980, 1030. Identify which ones include 3 or more distinct analytics modules, and for each, list the customer name, order status, and included module names.",
+      "expected": [
+        {
+          "order_id": 10,
+          "customer_name": "Quinn Turner",
+          "status": "delivered",
+          "modules": [
+            "Cash Flow Predictor",
+            "Diversity & Inclusion Scorecard",
+            "Procurement Savings Analyzer",
+            "R&D Spend Analyzer"
+          ]
+        },
+        {
+          "order_id": 55,
+          "customer_name": "Grace Wright",
+          "status": "delivered",
+          "modules": [
+            "CapEx ROI Tracker",
+            "Customer Acquisition Cost Tracker",
+            "R&D Spend Analyzer",
+            "Transportation Network Optimizer"
+          ]
+        },
+        {
+          "order_id": 150,
+          "customer_name": "Ava Davies",
+          "status": "delivered",
+          "modules": [
+            "Budget Variance Dashboard",
+            "IP Portfolio Analyzer",
+            "Logistics Cost Analyzer"
+          ]
+        },
+        {
+          "order_id": 210,
+          "customer_name": "Emma Moore",
+          "status": "cancelled",
+          "modules": [
+            "Earnings Risk Analyzer",
+            "Revenue Performance Dashboard",
+            "Stockout Risk Monitor",
+            "Transportation Network Optimizer"
+          ]
+        },
+        {
+          "order_id": 260,
+          "customer_name": "Leo Jones",
+          "status": "shipped",
+          "modules": [
+            "Portfolio Prioritisation Engine",
+            "Revenue Performance Dashboard",
+            "Talent Retention Predictor",
+            "Workforce Planning Dashboard"
+          ]
+        },
+        {
+          "order_id": 320,
+          "customer_name": "Vince Wilson",
+          "status": "pending",
+          "modules": [
+            "Compensation Benchmarking Tool",
+            "Competitive Intelligence Monitor",
+            "Resource Allocation Optimizer"
+          ]
+        },
+        {
+          "order_id": 480,
+          "customer_name": "Hank Martin",
+          "status": "delivered",
+          "modules": [
+            "Employee Engagement Monitor",
+            "Lead Time Predictor",
+            "Resource Allocation Optimizer"
+          ]
+        },
+        {
+          "order_id": 590,
+          "customer_name": "Maya White",
+          "status": "delivered",
+          "modules": [
+            "Absenteeism Risk Tracker",
+            "Innovation Pipeline Dashboard",
+            "Revenue Forecast Model"
+          ]
+        },
+        {
+          "order_id": 650,
+          "customer_name": "Hugo Wilson",
+          "status": "delivered",
+          "modules": [
+            "Absenteeism Risk Tracker",
+            "Inventory Optimization Suite",
+            "Talent Retention Predictor"
+          ]
+        },
+        {
+          "order_id": 760,
+          "customer_name": "Tara Green",
+          "status": "shipped",
+          "modules": [
+            "Clinical Trial Optimizer",
+            "Customer Acquisition Cost Tracker",
+            "Procurement Savings Analyzer",
+            "Working Capital Optimizer"
+          ]
+        },
+        {
+          "order_id": 810,
+          "customer_name": "Emma Moore",
+          "status": "cancelled",
+          "modules": [
+            "Earnings Risk Analyzer",
+            "Revenue Performance Dashboard",
+            "Stockout Risk Monitor",
+            "Transportation Network Optimizer"
+          ]
+        },
+        {
+          "order_id": 920,
+          "customer_name": "Vince Wilson",
+          "status": "pending",
+          "modules": [
+            "Compensation Benchmarking Tool",
+            "Competitive Intelligence Monitor",
+            "Resource Allocation Optimizer"
+          ]
+        },
+        {
+          "order_id": 980,
+          "customer_name": "Zach Jackson",
+          "status": "cancelled",
+          "modules": [
+            "Logistics Cost Analyzer",
+            "Price Elasticity Model",
+            "Talent Retention Predictor"
+          ]
+        }
+      ]
+    },
+    "codemode-most-reviewed-deepdive": {
+      "type": "deterministic-sql",
+      "prompt": "Find the 10 analytics modules with the most user satisfaction ratings overall. For each, report the average rating and the title of its single most recent review. Sort all 10 by review count descending.",
+      "expected": [
+        {
+          "module_name": "Performance Management Analyzer",
+          "review_count": 24,
+          "avg_rating": 4.5,
+          "most_recent_review_title": "Impressive predictive power"
+        },
+        {
+          "module_name": "Territory Performance Analyzer",
+          "review_count": 24,
+          "avg_rating": 4.33,
+          "most_recent_review_title": "Saved weeks of manual work"
+        },
+        {
+          "module_name": "Stockout Risk Monitor",
+          "review_count": 21,
+          "avg_rating": 3.86,
+          "most_recent_review_title": "Model needs more training data"
+        },
+        {
+          "module_name": "Workforce Planning Dashboard",
+          "review_count": 21,
+          "avg_rating": 4.14,
+          "most_recent_review_title": "Finally, data-driven forecasting"
+        },
+        {
+          "module_name": "Order Fulfilment Tracker",
+          "review_count": 18,
+          "avg_rating": 4.67,
+          "most_recent_review_title": "Exceeded our accuracy targets"
+        },
+        {
+          "module_name": "Revenue Forecast Model",
+          "review_count": 18,
+          "avg_rating": 4.17,
+          "most_recent_review_title": "Solid analytics, some data gaps"
+        },
+        {
+          "module_name": "Revenue Forecast Model",
+          "review_count": 18,
+          "avg_rating": 3.44,
+          "most_recent_review_title": "Needs better integration with our data sources"
+        },
+        {
+          "module_name": "Cash Flow Predictor",
+          "review_count": 15,
+          "avg_rating": 4.6,
+          "most_recent_review_title": "Cut our analysis time by 80%"
+        },
+        {
+          "module_name": "Compensation Benchmarking Tool",
+          "review_count": 15,
+          "avg_rating": 4.6,
+          "most_recent_review_title": "Impressive predictive power"
+        },
+        {
+          "module_name": "GTM Readiness Planner",
+          "review_count": 15,
+          "avg_rating": 3.2,
+          "most_recent_review_title": "Cut our analysis time by 80%"
+        }
+      ]
+    },
+    "codemode-early-cohort-value": {
+      "type": "deterministic-sql",
+      "prompt": "Among business users who created their account within the first 90 days of the earliest account creation date in the system, compute each one's lifetime subscription value. Return the 10 with the highest lifetime value, including name and account creation date.",
+      "expected": [
+        {
+          "full_name": "Dan Clarke",
+          "created_at": "2023-07-27T22:49:31",
+          "lifetime_value": 712500.0
+        },
+        {
+          "full_name": "Leo Jones",
+          "created_at": "2023-07-09T00:39:58",
+          "lifetime_value": 633000.0
+        },
+        {
+          "full_name": "Iris Evans",
+          "created_at": "2023-08-07T06:45:35",
+          "lifetime_value": 598500.0
+        },
+        {
+          "full_name": "Grace Garcia",
+          "created_at": "2023-08-20T17:29:29",
+          "lifetime_value": 561000.0
+        },
+        {
+          "full_name": "Maya White",
+          "created_at": "2023-07-17T07:28:54",
+          "lifetime_value": 505500.0
+        },
+        {
+          "full_name": "Bob Lewis",
+          "created_at": "2023-09-08T01:47:23",
+          "lifetime_value": 496500.0
+        },
+        {
+          "full_name": "Elena Wilson",
+          "created_at": "2023-09-19T15:30:09",
+          "lifetime_value": 310500.0
+        },
+        {
+          "full_name": "Zach Edwards",
+          "created_at": "2023-09-26T10:03:22",
+          "lifetime_value": 306000.0
+        },
+        {
+          "full_name": "Karen White",
+          "created_at": "2023-07-05T14:21:13",
+          "lifetime_value": 297000.0
+        },
+        {
+          "full_name": "Hugo Smith",
+          "created_at": "2023-07-23T11:47:16",
+          "lifetime_value": 253500.0
+        }
+      ]
+    },
+    "mcpreact-customer-profile-155": {
+      "type": "deterministic-sql",
+      "prompt": "Look up business user with ID 155. Show their profile: full name, email, city, tier, and lifetime subscription value.",
+      "expected": {
+        "full_name": "Grace Garcia",
+        "email": "grace.garcia154@yahoo.com",
+        "city": "Hamburg",
+        "tier": "standard",
+        "lifetime_subscription_value": 561000.0
+      }
+    },
+    "mcpreact-product-detail-40": {
+      "type": "deterministic-sql",
+      "prompt": "Get full details for analytics module ID 40, including annual license cost, active deployments, and average rating.",
+      "expected": {
+        "name": "Competitive Intelligence Monitor",
+        "annual_license_usd": 7500.0,
+        "active_deployments": 72,
+        "avg_rating": 4.0
+      }
+    },
+    "mcpreact-low-adoption-threshold-15": {
+      "type": "deterministic-sql",
+      "prompt": "Which analytics modules have 15 or fewer active deployments? List their names and deployment counts.",
+      "expected": []
+    },
+    "mcpreact-top-modules-45days": {
+      "type": "deterministic-sql",
+      "prompt": "What are the top 5 most-activated analytics modules in the last 45 days? List module name and activation count.",
+      "expected": [
+        {
+          "module_name": "Talent Retention Predictor",
+          "activation_count": 7
+        },
+        {
+          "module_name": "Talent Retention Predictor",
+          "activation_count": 7
+        },
+        {
+          "module_name": "Talent Retention Predictor",
+          "activation_count": 7
+        },
+        {
+          "module_name": "Hiring Funnel Optimizer",
+          "activation_count": 6
+        },
+        {
+          "module_name": "Hiring Funnel Optimizer",
+          "activation_count": 6
+        }
+      ]
+    },
+    "mcpreact-recent-reviews-module-60": {
+      "type": "deterministic-sql",
+      "prompt": "Show the 3 most recent user satisfaction ratings for analytics module ID 60, including rating and title.",
+      "expected": [
+        {
+          "rating": 5,
+          "title": "Our leadership team relies on this daily"
+        },
+        {
+          "rating": 5,
+          "title": "Our leadership team relies on this daily"
+        },
+        {
+          "rating": 4,
+          "title": "Exactly the insights we needed"
+        }
+      ]
+    },
+    "mcpreact-sales-summary-30d": {
+      "type": "deterministic-sql",
+      "prompt": "Summarize subscription activity for the most recent 30 days of data: total subscriptions, unique users, and total revenue.",
+      "expected": {
+        "total_subscriptions": 111,
+        "unique_users": 38,
+        "total_revenue": 6225500.0
+      }
+    },
+    "mcpreact-search-products-finance": {
+      "type": "deterministic-sql",
+      "prompt": "Find analytics modules in the Finance business function priced at $8,000 or less. List their names and annual license costs.",
+      "expected": [
+        {
+          "module_name": "CapEx ROI Tracker",
+          "annual_license_usd": 6500.0
+        },
+        {
+          "module_name": "CapEx ROI Tracker",
+          "annual_license_usd": 6500.0
+        },
+        {
+          "module_name": "CapEx ROI Tracker",
+          "annual_license_usd": 6500.0
+        },
+        {
+          "module_name": "Cost Allocation Engine",
+          "annual_license_usd": 8000.0
+        },
+        {
+          "module_name": "Cost Allocation Engine",
+          "annual_license_usd": 8000.0
+        },
+        {
+          "module_name": "Cost Allocation Engine",
+          "annual_license_usd": 8000.0
+        },
+        {
+          "module_name": "FX Exposure Monitor",
+          "annual_license_usd": 5500.0
+        },
+        {
+          "module_name": "FX Exposure Monitor",
+          "annual_license_usd": 5500.0
+        },
+        {
+          "module_name": "FX Exposure Monitor",
+          "annual_license_usd": 5500.0
+        },
+        {
+          "module_name": "Working Capital Optimizer",
+          "annual_license_usd": 7500.0
+        },
+        {
+          "module_name": "Working Capital Optimizer",
+          "annual_license_usd": 7500.0
+        },
+        {
+          "module_name": "Working Capital Optimizer",
+          "annual_license_usd": 7500.0
+        }
+      ]
+    },
+    "mcpreact-search-customers-silver-berlin": {
+      "type": "deterministic-sql",
+      "prompt": "Find all silver-tier business users based in Berlin. List their names and email addresses.",
+      "expected": [
+        {
+          "full_name": "Jack Thompson",
+          "email": "jack.thompson158@proton.me"
+        },
+        {
+          "full_name": "Mia Thomas",
+          "email": "mia.thomas142@gmail.com"
+        },
+        {
+          "full_name": "Uma White",
+          "email": "uma.white101@gmail.com"
+        },
+        {
+          "full_name": "Wendy Hall",
+          "email": "wendy.hall160@proton.me"
+        },
+        {
+          "full_name": "Yara Martinez",
+          "email": "yara.martinez9@fastmail.com"
+        }
+      ]
+    },
+    "mcpreact-customer-orders-history-180": {
+      "type": "deterministic-sql",
+      "prompt": "Show the subscription history for business user ID 180: status, total amount, and creation date, most recent first.",
+      "expected": [
+        {
+          "order_id": 1231,
+          "status": "cancelled",
+          "total_amount": 33000.0,
+          "created_at": "2026-07-04T15:17:30"
+        },
+        {
+          "order_id": 631,
+          "status": "cancelled",
+          "total_amount": 33000.0,
+          "created_at": "2026-07-03T11:44:23"
+        },
+        {
+          "order_id": 31,
+          "status": "cancelled",
+          "total_amount": 33000.0,
+          "created_at": "2026-06-30T17:07:12"
+        },
+        {
+          "order_id": 1781,
+          "status": "delivered",
+          "total_amount": 64500.0,
+          "created_at": "2025-11-26T13:55:28"
+        },
+        {
+          "order_id": 1181,
+          "status": "delivered",
+          "total_amount": 64500.0,
+          "created_at": "2025-11-25T10:22:22"
+        },
+        {
+          "order_id": 581,
+          "status": "delivered",
+          "total_amount": 64500.0,
+          "created_at": "2025-11-22T15:45:10"
+        },
+        {
+          "order_id": 1421,
+          "status": "pending",
+          "total_amount": 36500.0,
+          "created_at": "2025-09-03T11:18:28"
+        },
+        {
+          "order_id": 821,
+          "status": "pending",
+          "total_amount": 36500.0,
+          "created_at": "2025-09-02T07:45:22"
+        },
+        {
+          "order_id": 221,
+          "status": "pending",
+          "total_amount": 36500.0,
+          "created_at": "2025-08-30T13:08:10"
+        }
+      ]
+    },
+    "mcpreact-order-detail-900": {
+      "type": "deterministic-sql",
+      "prompt": "Get full subscription details for order ID 900, including status, total amount, and every analytics module line item.",
+      "expected": {
+        "header": {
+          "id": 900,
+          "status": "delivered",
+          "total_amount": 22000.0,
+          "created_at": "2026-03-02T14:49:40",
+          "customer_name": "Sam Thompson"
+        },
+        "items": [
+          {
+            "module_name": "Talent Retention Predictor",
+            "seats": 2,
+            "unit_price": 11000.0,
+            "line_total": 22000.0
+          }
+        ]
+      }
+    },
+    "mcpreact-customer-lifetime-value-110": {
+      "type": "deterministic-sql",
+      "prompt": "What is the total lifetime spend and top business function for business user ID 110, based on delivered subscriptions only?",
+      "expected": {
+        "id": 110,
+        "full_name": "Rosa Hall",
+        "total_spend": 124500.0,
+        "top_business_function": "HR & People"
+      }
+    },
+    "mcpreact-revenue-by-month-lastyear": {
+      "type": "deterministic-sql",
+      "prompt": "Show monthly subscription revenue and subscription counts for the last calendar year in the database.",
+      "expected": [
+        {
+          "month": "2025-07",
+          "subscriptions": 118,
+          "revenue": 4764000.0
+        },
+        {
+          "month": "2025-08",
+          "subscriptions": 136,
+          "revenue": 6334500.0
+        },
+        {
+          "month": "2025-09",
+          "subscriptions": 118,
+          "revenue": 5638500.0
+        },
+        {
+          "month": "2025-10",
+          "subscriptions": 129,
+          "revenue": 5728500.0
+        },
+        {
+          "month": "2025-11",
+          "subscriptions": 110,
+          "revenue": 5452500.0
+        },
+        {
+          "month": "2025-12",
+          "subscriptions": 123,
+          "revenue": 6235500.0
+        }
+      ]
+    },
+    "mcpcodemode-silver-lifetime-scan": {
+      "type": "deterministic-sql",
+      "prompt": "For every silver-tier business user, compute lifetime subscription value and total number of non-cancelled subscriptions. Return the 10 with the highest lifetime value: name, city, lifetime value, and subscription count.",
+      "expected": [
+        {
+          "full_name": "Dan Lewis",
+          "city": "Melbourne",
+          "lifetime_value": 1297500.0,
+          "subscription_count": 27
+        },
+        {
+          "full_name": "Jake Garcia",
+          "city": "Sydney",
+          "lifetime_value": 1131000.0,
+          "subscription_count": 18
+        },
+        {
+          "full_name": "Kim Lewis",
+          "city": "Sydney",
+          "lifetime_value": 1018500.0,
+          "subscription_count": 18
+        },
+        {
+          "full_name": "Liam Wright",
+          "city": "Paris",
+          "lifetime_value": 982500.0,
+          "subscription_count": 18
+        },
+        {
+          "full_name": "Bob Davies",
+          "city": "London",
+          "lifetime_value": 882000.0,
+          "subscription_count": 15
+        },
+        {
+          "full_name": "Emma Harris",
+          "city": "Bristol",
+          "lifetime_value": 745500.0,
+          "subscription_count": 15
+        },
+        {
+          "full_name": "Grace Roberts",
+          "city": "Hamburg",
+          "lifetime_value": 738000.0,
+          "subscription_count": 12
+        },
+        {
+          "full_name": "Iris Nguyen",
+          "city": "New York",
+          "lifetime_value": 723000.0,
+          "subscription_count": 12
+        },
+        {
+          "full_name": "Grace Clarke",
+          "city": "Toronto",
+          "lifetime_value": 673500.0,
+          "subscription_count": 12
+        },
+        {
+          "full_name": "Leo Nguyen",
+          "city": "Vancouver",
+          "lifetime_value": 669000.0,
+          "subscription_count": 12
+        }
+      ]
+    },
+    "mcpcodemode-customer-batch-lookup": {
+      "type": "deterministic-sql",
+      "prompt": "Look up business users with IDs 6, 19, 28, 33, 47, 55, 66, 71, 84, 96, 108, 119, 127, 141, 152, 160, 169, 176, 188, 199. For each, report tier and lifetime subscription value. Return only the silver-tier ones, sorted by lifetime value descending.",
+      "expected": [
+        {
+          "full_name": "Tara Green",
+          "tier": "silver",
+          "lifetime_value": 484500.0
+        },
+        {
+          "full_name": "Zach White",
+          "tier": "silver",
+          "lifetime_value": 451500.0
+        },
+        {
+          "full_name": "Wendy Hall",
+          "tier": "silver",
+          "lifetime_value": 382500.0
+        },
+        {
+          "full_name": "Hank Anderson",
+          "tier": "silver",
+          "lifetime_value": 300000.0
+        },
+        {
+          "full_name": "Ava Turner",
+          "tier": "silver",
+          "lifetime_value": 108000.0
+        }
+      ]
+    },
+    "mcpcodemode-module-review-gap-scan-rd": {
+      "type": "deterministic-sql",
+      "prompt": "Check every analytics module in the Research & Development business function for user satisfaction ratings. List the ones with zero ratings along with their active deployment count.",
+      "expected": []
+    },
+    "mcpcodemode-order-batch-audit": {
+      "type": "deterministic-sql",
+      "prompt": "Look up subscriptions (orders) with IDs 15, 60, 95, 140, 190, 250, 300, 355, 410, 470, 520, 580, 630, 690, 750, 820, 880, 940, 1000, 1060, 1120, 1180. Compute the combined total_amount of only the ones with status 'shipped', and list every distinct business function represented across all subscriptions.",
+      "expected": {
+        "shipped_total_amount": 395000.0,
+        "distinct_business_functions": [
+          "Finance",
+          "HR & People",
+          "Research & Development",
+          "Sales & Marketing",
+          "Supply Chain"
+        ]
+      }
+    },
+    "mcpcodemode-top-module-price-value": {
+      "type": "deterministic-sql",
+      "prompt": "Find the top 10 most-activated analytics modules in the last 60 days. For each, compute its revenue per active deployment (subscription_revenue / active_deployments). Return all 10 ranked by that ratio descending, with module name, activation count, and the ratio.",
+      "expected": [
+        {
+          "module_name": "IP Portfolio Analyzer",
+          "activation_count": 7,
+          "active_deployments": 25,
+          "revenue_per_deployment": 7200.0
+        },
+        {
+          "module_name": "IP Portfolio Analyzer",
+          "activation_count": 7,
+          "active_deployments": 25,
+          "revenue_per_deployment": 7200.0
+        },
+        {
+          "module_name": "IP Portfolio Analyzer",
+          "activation_count": 7,
+          "active_deployments": 25,
+          "revenue_per_deployment": 7200.0
+        },
+        {
+          "module_name": "Price Elasticity Model",
+          "activation_count": 7,
+          "active_deployments": 37,
+          "revenue_per_deployment": 4864.8649
+        },
+        {
+          "module_name": "Talent Retention Predictor",
+          "activation_count": 9,
+          "active_deployments": 65,
+          "revenue_per_deployment": 3553.8462
+        },
+        {
+          "module_name": "Talent Retention Predictor",
+          "activation_count": 9,
+          "active_deployments": 65,
+          "revenue_per_deployment": 3553.8462
+        },
+        {
+          "module_name": "Talent Retention Predictor",
+          "activation_count": 9,
+          "active_deployments": 65,
+          "revenue_per_deployment": 3553.8462
+        },
+        {
+          "module_name": "Territory Performance Analyzer",
+          "activation_count": 8,
+          "active_deployments": 49,
+          "revenue_per_deployment": 3214.2857
+        },
+        {
+          "module_name": "Territory Performance Analyzer",
+          "activation_count": 8,
+          "active_deployments": 49,
+          "revenue_per_deployment": 3214.2857
+        },
+        {
+          "module_name": "Order Fulfilment Tracker",
+          "activation_count": 8,
+          "active_deployments": 140,
+          "revenue_per_deployment": 628.5714
+        }
+      ]
+    },
+    "mcpcodemode-silver-churn-scan": {
+      "type": "deterministic-sql",
+      "prompt": "Among all silver-tier business users, identify every one who has had no subscription of any status in the last 150 days. List their name, city, and the date of their most recent subscription (or 'never subscribed' if they have none).",
+      "expected": [
+        {
+          "full_name": "Alice Hall",
+          "city": "Edinburgh",
+          "most_recent_subscription_date": "2025-07-13T15:06:13"
+        },
+        {
+          "full_name": "Alice Hughes",
+          "city": "Austin",
+          "most_recent_subscription_date": "2025-11-30T22:32:08"
+        },
+        {
+          "full_name": "Dan Anderson",
+          "city": "Edinburgh",
+          "most_recent_subscription_date": "2025-11-19T23:35:49"
+        },
+        {
+          "full_name": "David Green",
+          "city": "Paris",
+          "most_recent_subscription_date": "2026-01-27T05:16:54"
+        },
+        {
+          "full_name": "Elena Moore",
+          "city": "Vancouver",
+          "most_recent_subscription_date": "2025-12-28T18:33:06"
+        },
+        {
+          "full_name": "Frank Davies",
+          "city": "Chicago",
+          "most_recent_subscription_date": "2025-09-24T14:50:29"
+        },
+        {
+          "full_name": "Hank Anderson",
+          "city": "Bristol",
+          "most_recent_subscription_date": "2025-12-26T11:55:33"
+        },
+        {
+          "full_name": "Ivy Anderson",
+          "city": "London",
+          "most_recent_subscription_date": "2025-12-26T05:31:00"
+        },
+        {
+          "full_name": "Ivy Hughes",
+          "city": "Toronto",
+          "most_recent_subscription_date": "2025-08-27T17:11:46"
+        },
+        {
+          "full_name": "Ivy Williams",
+          "city": "London",
+          "most_recent_subscription_date": "2025-07-17T10:27:54"
+        },
+        {
+          "full_name": "Maya Edwards",
+          "city": "New York",
+          "most_recent_subscription_date": null
+        },
+        {
+          "full_name": "Mia Thomas",
+          "city": "Berlin",
+          "most_recent_subscription_date": "2026-01-31T12:48:13"
+        },
+        {
+          "full_name": "Pete Evans",
+          "city": "Austin",
+          "most_recent_subscription_date": "2026-01-10T03:33:03"
+        },
+        {
+          "full_name": "Pete Thomas",
+          "city": "Austin",
+          "most_recent_subscription_date": "2025-12-24T02:28:49"
+        },
+        {
+          "full_name": "Quinn Turner",
+          "city": "Edinburgh",
+          "most_recent_subscription_date": "2025-08-15T03:31:42"
+        },
+        {
+          "full_name": "Vince Lewis",
+          "city": "Hamburg",
+          "most_recent_subscription_date": "2025-11-26T00:11:33"
+        },
+        {
+          "full_name": "Yara Hughes",
+          "city": "Hamburg",
+          "most_recent_subscription_date": null
+        }
+      ]
+    },
+    "mcpcodemode-highprice-lowrating-scan": {
+      "type": "deterministic-sql",
+      "prompt": "Find every analytics module with an annual license cost of $12,000 or more. For each, report its average user satisfaction rating, and list the ones with an average rating below 3.5 (or no ratings at all).",
+      "expected": [
+        {
+          "module_name": "Portfolio Prioritisation Engine",
+          "avg_rating": 3.0
+        },
+        {
+          "module_name": "Transportation Network Optimizer",
+          "avg_rating": 3.0
+        },
+        {
+          "module_name": "Revenue Forecast Model",
+          "avg_rating": 3.44
+        }
+      ]
+    },
+    "mcpcodemode-category-deployment-spread": {
+      "type": "deterministic-sql",
+      "prompt": "For each of the 5 business functions, find the minimum, maximum, and average active_deployments among its analytics modules. Return one row per business function.",
+      "expected": [
+        {
+          "business_function": "Finance",
+          "min_deployments": 18,
+          "max_deployments": 120,
+          "avg_deployments": 56.1
+        },
+        {
+          "business_function": "HR & People",
+          "min_deployments": 38,
+          "max_deployments": 105,
+          "avg_deployments": 70.2
+        },
+        {
+          "business_function": "Research & Development",
+          "min_deployments": 19,
+          "max_deployments": 72,
+          "avg_deployments": 41.3
+        },
+        {
+          "business_function": "Sales & Marketing",
+          "min_deployments": 28,
+          "max_deployments": 130,
+          "avg_deployments": 68.9
+        },
+        {
+          "business_function": "Supply Chain",
+          "min_deployments": 31,
+          "max_deployments": 140,
+          "avg_deployments": 75.9
+        }
+      ]
+    },
+    "mcpcodemode-recent-multi-subscribers": {
+      "type": "deterministic-sql",
+      "prompt": "Look up business users with IDs 1 through 40. For each, find how many subscriptions (of any status) they placed in the last 60 days and their total spend on those. List only the ones with 2 or more recent subscriptions.",
+      "expected": [
+        {
+          "full_name": "Elena Robinson",
+          "recent_subscription_count": 6,
+          "recent_total_spend": 304500.0
+        },
+        {
+          "full_name": "Gina Johnson",
+          "recent_subscription_count": 6,
+          "recent_total_spend": 252000.0
+        },
+        {
+          "full_name": "David Brown",
+          "recent_subscription_count": 5,
+          "recent_total_spend": 285000.0
+        },
+        {
+          "full_name": "Alice Wilson",
+          "recent_subscription_count": 3,
+          "recent_total_spend": 123000.0
+        },
+        {
+          "full_name": "Dan Lewis",
+          "recent_subscription_count": 3,
+          "recent_total_spend": 22500.0
+        },
+        {
+          "full_name": "Emma Harris",
+          "recent_subscription_count": 3,
+          "recent_total_spend": 178500.0
+        },
+        {
+          "full_name": "Emma White",
+          "recent_subscription_count": 3,
+          "recent_total_spend": 156000.0
+        },
+        {
+          "full_name": "Gina Wright",
+          "recent_subscription_count": 3,
+          "recent_total_spend": 33000.0
+        },
+        {
+          "full_name": "Grace White",
+          "recent_subscription_count": 3,
+          "recent_total_spend": 133500.0
+        },
+        {
+          "full_name": "Ivy Smith",
+          "recent_subscription_count": 3,
+          "recent_total_spend": 25500.0
+        },
+        {
+          "full_name": "Sam Jackson",
+          "recent_subscription_count": 3,
+          "recent_total_spend": 54000.0
+        },
+        {
+          "full_name": "Uma Martin",
+          "recent_subscription_count": 3,
+          "recent_total_spend": 45000.0
+        },
+        {
+          "full_name": "Xander Garcia",
+          "recent_subscription_count": 3,
+          "recent_total_spend": 319500.0
+        },
+        {
+          "full_name": "Xander Hall",
+          "recent_subscription_count": 3,
+          "recent_total_spend": 121500.0
+        }
+      ]
+    },
+    "mcpcodemode-bundle-scan": {
+      "type": "deterministic-sql",
+      "prompt": "Look up subscriptions (orders) with IDs 20, 65, 110, 160, 220, 270, 330, 380, 440, 490, 550, 600, 660, 710, 770, 820, 890, 930, 990, 1040. Identify which ones include 4 or more distinct analytics modules, and for each, list the customer name, order status, and included module names.",
+      "expected": [
+        {
+          "order_id": 160,
+          "customer_name": "Tara Green",
+          "status": "shipped",
+          "modules": [
+            "Clinical Trial Optimizer",
+            "Customer Acquisition Cost Tracker",
+            "Procurement Savings Analyzer",
+            "Working Capital Optimizer"
+          ]
+        },
+        {
+          "order_id": 550,
+          "customer_name": "Grace Roberts",
+          "status": "shipped",
+          "modules": [
+            "Cash Flow Predictor",
+            "Clinical Trial Optimizer",
+            "Earnings Risk Analyzer",
+            "Talent Retention Predictor"
+          ]
+        }
+      ]
+    },
+    "mcpcodemode-least-reviewed-deepdive": {
+      "type": "deterministic-sql",
+      "prompt": "Find the 10 analytics modules with the fewest user satisfaction ratings among modules that have at least 1 rating. For each, report the average rating and the title of its earliest review. Sort all 10 by review count ascending.",
+      "expected": [
+        {
+          "module_name": "Campaign ROI Optimizer",
+          "review_count": 1,
+          "avg_rating": 4.0,
+          "earliest_review_title": "Saved weeks of manual work"
+        },
+        {
+          "module_name": "Clinical Trial Optimizer",
+          "review_count": 1,
+          "avg_rating": 4.0,
+          "earliest_review_title": "Cut our analysis time by 80%"
+        },
+        {
+          "module_name": "Cost Allocation Engine",
+          "review_count": 1,
+          "avg_rating": 3.0,
+          "earliest_review_title": "Useful but needs calibration"
+        },
+        {
+          "module_name": "Earnings Risk Analyzer",
+          "review_count": 1,
+          "avg_rating": 2.0,
+          "earliest_review_title": "Model needs more training data"
+        },
+        {
+          "module_name": "Employee Engagement Monitor",
+          "review_count": 1,
+          "avg_rating": 5.0,
+          "earliest_review_title": "Our leadership team relies on this daily"
+        },
+        {
+          "module_name": "Innovation Pipeline Dashboard",
+          "review_count": 1,
+          "avg_rating": 5.0,
+          "earliest_review_title": "Impressive predictive power"
+        },
+        {
+          "module_name": "Warehouse Utilisation Dashboard",
+          "review_count": 1,
+          "avg_rating": 4.0,
+          "earliest_review_title": "Finally, data-driven forecasting"
+        },
+        {
+          "module_name": "Working Capital Optimizer",
+          "review_count": 1,
+          "avg_rating": 3.0,
+          "earliest_review_title": "Useful but needs calibration"
+        },
+        {
+          "module_name": "Customer Acquisition Cost Tracker",
+          "review_count": 2,
+          "avg_rating": 3.5,
+          "earliest_review_title": "Finally, data-driven forecasting"
+        },
+        {
+          "module_name": "Demand Forecast Engine",
+          "review_count": 2,
+          "avg_rating": 5.0,
+          "earliest_review_title": "Our leadership team relies on this daily"
+        }
+      ]
+    },
+    "mcpcodemode-recent-cohort-value": {
+      "type": "deterministic-sql",
+      "prompt": "Among business users who created their account within the most recent 90 days before the latest account creation date in the system, compute each one's lifetime subscription value. Return the 10 with the highest lifetime value, including name and account creation date.",
+      "expected": [
+        {
+          "full_name": "David Roberts",
+          "created_at": "2026-05-26T06:30:34",
+          "lifetime_value": 1081500.0
+        },
+        {
+          "full_name": "Mia Martin",
+          "created_at": "2026-04-27T11:38:52",
+          "lifetime_value": 1044000.0
+        },
+        {
+          "full_name": "Emma Taylor",
+          "created_at": "2026-03-31T13:09:33",
+          "lifetime_value": 817500.0
+        },
+        {
+          "full_name": "Gina Evans",
+          "created_at": "2026-04-04T14:47:10",
+          "lifetime_value": 601500.0
+        },
+        {
+          "full_name": "Mia Roberts",
+          "created_at": "2026-05-15T15:22:01",
+          "lifetime_value": 525000.0
+        },
+        {
+          "full_name": "Hugo Wright",
+          "created_at": "2026-04-08T07:11:39",
+          "lifetime_value": 490500.0
+        },
+        {
+          "full_name": "Vince Turner",
+          "created_at": "2026-05-12T06:33:43",
+          "lifetime_value": 471000.0
+        },
+        {
+          "full_name": "Dan Smith",
+          "created_at": "2026-04-30T18:03:28",
+          "lifetime_value": 466500.0
+        },
+        {
+          "full_name": "Alice Anderson",
+          "created_at": "2026-04-20T23:41:33",
+          "lifetime_value": 439500.0
+        },
+        {
+          "full_name": "Ava Davies",
+          "created_at": "2026-04-06T08:50:05",
+          "lifetime_value": 412500.0
+        }
+      ]
+    },
+    "sqlreact-module-affinity": {
+      "type": "deterministic-sql",
+      "prompt": "Which pair of analytics modules is most frequently subscribed together within the same subscription (order)? Report the two module names and how many subscriptions include both.",
+      "expected": {
+        "module_a": "Budget Variance Dashboard",
+        "module_b": "Absenteeism Risk Tracker",
+        "co_occurrence_count": 5
+      }
+    },
+    "sqlreact-median-price": {
+      "type": "deterministic-computed",
+      "prompt": "What is the median annual license cost across all analytics modules currently in the catalogue?",
+      "expected": {
+        "median_annual_license_usd": 9000.0
+      }
+    },
+    "sqlreact-revenue-per-module-efficiency": {
+      "type": "deterministic-sql",
+      "prompt": "Which business function has the highest subscription revenue per analytics module it offers (total non-cancelled subscription revenue divided by number of modules in that function)? Report the business function and the ratio.",
+      "expected": [
+        {
+          "business_function": "Research & Development",
+          "revenue": 18939000.0,
+          "module_count": 30,
+          "revenue_per_module": 631300.0
+        },
+        {
+          "business_function": "Sales & Marketing",
+          "revenue": 14356500.0,
+          "module_count": 30,
+          "revenue_per_module": 478550.0
+        },
+        {
+          "business_function": "Supply Chain",
+          "revenue": 13258500.0,
+          "module_count": 30,
+          "revenue_per_module": 441950.0
+        },
+        {
+          "business_function": "HR & People",
+          "revenue": 12754500.0,
+          "module_count": 30,
+          "revenue_per_module": 425150.0
+        },
+        {
+          "business_function": "Finance",
+          "revenue": 12018000.0,
+          "module_count": 30,
+          "revenue_per_module": 400600.0
+        }
+      ]
+    },
+    "sqlreact-cross-functional-power-users": {
+      "type": "deterministic-sql",
+      "prompt": "Which business users have a non-cancelled subscription to modules from at least 4 different business functions? List their names and how many distinct business functions they've subscribed to.",
+      "expected": [
+        {
+          "full_name": "Carol Jones",
+          "distinct_business_functions": 5
+        },
+        {
+          "full_name": "Dan Lewis",
+          "distinct_business_functions": 5
+        },
+        {
+          "full_name": "Dan Smith",
+          "distinct_business_functions": 5
+        },
+        {
+          "full_name": "David Brown",
+          "distinct_business_functions": 5
+        },
+        {
+          "full_name": "Elena Moore",
+          "distinct_business_functions": 5
+        },
+        {
+          "full_name": "Elena Robinson",
+          "distinct_business_functions": 5
+        },
+        {
+          "full_name": "Emma Harris",
+          "distinct_business_functions": 5
+        },
+        {
+          "full_name": "Felix Williams",
+          "distinct_business_functions": 5
+        },
+        {
+          "full_name": "Frank Moore",
+          "distinct_business_functions": 5
+        },
+        {
+          "full_name": "Gina Evans",
+          "distinct_business_functions": 5
+        },
+        {
+          "full_name": "Gina Johnson",
+          "distinct_business_functions": 5
+        },
+        {
+          "full_name": "Grace Clarke",
+          "distinct_business_functions": 5
+        },
+        {
+          "full_name": "Grace Garcia",
+          "distinct_business_functions": 5
+        },
+        {
+          "full_name": "Grace Roberts",
+          "distinct_business_functions": 5
+        },
+        {
+          "full_name": "Grace Wright",
+          "distinct_business_functions": 5
+        },
+        {
+          "full_name": "Hugo Wright",
+          "distinct_business_functions": 5
+        },
+        {
+          "full_name": "Iris Moore",
+          "distinct_business_functions": 5
+        },
+        {
+          "full_name": "Iris Nguyen",
+          "distinct_business_functions": 5
+        },
+        {
+          "full_name": "Ivy Hall",
+          "distinct_business_functions": 5
+        },
+        {
+          "full_name": "Jack Thompson",
+          "distinct_business_functions": 5
+        },
+        {
+          "full_name": "Jake Garcia",
+          "distinct_business_functions": 5
+        },
+        {
+          "full_name": "Jake Hall",
+          "distinct_business_functions": 5
+        },
+        {
+          "full_name": "Jake Robinson",
+          "distinct_business_functions": 5
+        },
+        {
+          "full_name": "Jake Smith",
+          "distinct_business_functions": 5
+        },
+        {
+          "full_name": "Kim Lewis",
+          "distinct_business_functions": 5
+        },
+        {
+          "full_name": "Leo Jones",
+          "distinct_business_functions": 5
+        },
+        {
+          "full_name": "Leo Nguyen",
+          "distinct_business_functions": 5
+        },
+        {
+          "full_name": "Leo Wright",
+          "distinct_business_functions": 5
+        },
+        {
+          "full_name": "Liam Wright",
+          "distinct_business_functions": 5
+        },
+        {
+          "full_name": "Maya White",
+          "distinct_business_functions": 5
+        },
+        {
+          "full_name": "Mia Thomas",
+          "distinct_business_functions": 5
+        },
+        {
+          "full_name": "Mia Turner",
+          "distinct_business_functions": 5
+        },
+        {
+          "full_name": "Olivia Martin",
+          "distinct_business_functions": 5
+        },
+        {
+          "full_name": "Pete Edwards",
+          "distinct_business_functions": 5
+        },
+        {
+          "full_name": "Pete Turner",
+          "distinct_business_functions": 5
+        },
+        {
+          "full_name": "Rosa Hall",
+          "distinct_business_functions": 5
+        },
+        {
+          "full_name": "Vince Wilson",
+          "distinct_business_functions": 5
+        },
+        {
+          "full_name": "Wendy Green",
+          "distinct_business_functions": 5
+        },
+        {
+          "full_name": "Xander Hall",
+          "distinct_business_functions": 5
+        },
+        {
+          "full_name": "Yara Edwards",
+          "distinct_business_functions": 5
+        },
+        {
+          "full_name": "Yara Nguyen",
+          "distinct_business_functions": 5
+        },
+        {
+          "full_name": "Zach Edwards",
+          "distinct_business_functions": 5
+        },
+        {
+          "full_name": "Zach White",
+          "distinct_business_functions": 5
+        },
+        {
+          "full_name": "Alice Brown",
+          "distinct_business_functions": 4
+        },
+        {
+          "full_name": "Alice Martinez",
+          "distinct_business_functions": 4
+        },
+        {
+          "full_name": "Alice Thomas",
+          "distinct_business_functions": 4
+        },
+        {
+          "full_name": "Alice Wilson",
+          "distinct_business_functions": 4
+        },
+        {
+          "full_name": "Ava Davies",
+          "distinct_business_functions": 4
+        },
+        {
+          "full_name": "Ben Walker",
+          "distinct_business_functions": 4
+        },
+        {
+          "full_name": "Bob Davies",
+          "distinct_business_functions": 4
+        },
+        {
+          "full_name": "Bob Lewis",
+          "distinct_business_functions": 4
+        },
+        {
+          "full_name": "Carol Hall",
+          "distinct_business_functions": 4
+        },
+        {
+          "full_name": "Carol Jackson",
+          "distinct_business_functions": 4
+        },
+        {
+          "full_name": "Claire Garcia",
+          "distinct_business_functions": 4
+        },
+        {
+          "full_name": "Claire Taylor",
+          "distinct_business_functions": 4
+        },
+        {
+          "full_name": "Dan Clarke",
+          "distinct_business_functions": 4
+        },
+        {
+          "full_name": "Dan Lewis",
+          "distinct_business_functions": 4
+        },
+        {
+          "full_name": "Dan Thomas",
+          "distinct_business_functions": 4
+        },
+        {
+          "full_name": "Dan Turner",
+          "distinct_business_functions": 4
+        },
+        {
+          "full_name": "David Roberts",
+          "distinct_business_functions": 4
+        },
+        {
+          "full_name": "Elena Wilson",
+          "distinct_business_functions": 4
+        },
+        {
+          "full_name": "Emma Brown",
+          "distinct_business_functions": 4
+        },
+        {
+          "full_name": "Emma Taylor",
+          "distinct_business_functions": 4
+        },
+        {
+          "full_name": "Frank Davies",
+          "distinct_business_functions": 4
+        },
+        {
+          "full_name": "Frank White",
+          "distinct_business_functions": 4
+        },
+        {
+          "full_name": "Grace Jackson",
+          "distinct_business_functions": 4
+        },
+        {
+          "full_name": "Hank Anderson",
+          "distinct_business_functions": 4
+        },
+        {
+          "full_name": "Hank Martin",
+          "distinct_business_functions": 4
+        },
+        {
+          "full_name": "Iris Brown",
+          "distinct_business_functions": 4
+        },
+        {
+          "full_name": "Iris Evans",
+          "distinct_business_functions": 4
+        },
+        {
+          "full_name": "Iris Hughes",
+          "distinct_business_functions": 4
+        },
+        {
+          "full_name": "Ivy Brown",
+          "distinct_business_functions": 4
+        },
+        {
+          "full_name": "Ivy Smith",
+          "distinct_business_functions": 4
+        },
+        {
+          "full_name": "Ivy Thomas",
+          "distinct_business_functions": 4
+        },
+        {
+          "full_name": "Jack Edwards",
+          "distinct_business_functions": 4
+        },
+        {
+          "full_name": "Jake Nguyen",
+          "distinct_business_functions": 4
+        },
+        {
+          "full_name": "Kim Evans",
+          "distinct_business_functions": 4
+        },
+        {
+          "full_name": "Kim Jones",
+          "distinct_business_functions": 4
+        },
+        {
+          "full_name": "Mia Martin",
+          "distinct_business_functions": 4
+        },
+        {
+          "full_name": "Mia Roberts",
+          "distinct_business_functions": 4
+        },
+        {
+          "full_name": "Nate Turner",
+          "distinct_business_functions": 4
+        },
+        {
+          "full_name": "Noah Taylor",
+          "distinct_business_functions": 4
+        },
+        {
+          "full_name": "Pete Johnson",
+          "distinct_business_functions": 4
+        },
+        {
+          "full_name": "Quinn Turner",
+          "distinct_business_functions": 4
+        },
+        {
+          "full_name": "Quinn Williams",
+          "distinct_business_functions": 4
+        },
+        {
+          "full_name": "Rosa Clarke",
+          "distinct_business_functions": 4
+        },
+        {
+          "full_name": "Tara Green",
+          "distinct_business_functions": 4
+        },
+        {
+          "full_name": "Uma Jackson",
+          "distinct_business_functions": 4
+        },
+        {
+          "full_name": "Uma White",
+          "distinct_business_functions": 4
+        },
+        {
+          "full_name": "Vince Robinson",
+          "distinct_business_functions": 4
+        },
+        {
+          "full_name": "Vince Turner",
+          "distinct_business_functions": 4
+        },
+        {
+          "full_name": "Wendy Hall",
+          "distinct_business_functions": 4
+        },
+        {
+          "full_name": "Wendy Hall",
+          "distinct_business_functions": 4
+        },
+        {
+          "full_name": "Wendy Jackson",
+          "distinct_business_functions": 4
+        },
+        {
+          "full_name": "Wendy Jackson",
+          "distinct_business_functions": 4
+        },
+        {
+          "full_name": "Wendy Taylor",
+          "distinct_business_functions": 4
+        },
+        {
+          "full_name": "Xander Garcia",
+          "distinct_business_functions": 4
+        },
+        {
+          "full_name": "Zach Jackson",
+          "distinct_business_functions": 4
+        }
+      ]
+    },
+    "sqlreact-bundle-percentage": {
+      "type": "deterministic-computed",
+      "prompt": "What percentage of non-cancelled subscriptions include more than 2 distinct analytics modules?",
+      "expected": {
+        "total_non_cancelled_subscriptions": 1491,
+        "bundles_over_2_modules": 738,
+        "bundle_percentage": 49.5
+      }
+    },
+    "sqlreact-tier-rating-gap": {
+      "type": "deterministic-sql",
+      "prompt": "Which analytics modules have an average rating from gold-tier reviewers that differs by more than 1.0 star from their average rating from standard-tier reviewers (among modules with at least 1 rating from each tier)? List the module name and both averages.",
+      "expected": [
+        {
+          "module_name": "Lead Time Predictor",
+          "gold_avg_rating": 1.0,
+          "standard_avg_rating": 5.0,
+          "rating_gap": 4.0
+        },
+        {
+          "module_name": "Performance Management Analyzer",
+          "gold_avg_rating": 1.0,
+          "standard_avg_rating": 4.75,
+          "rating_gap": 3.75
+        },
+        {
+          "module_name": "Sales Pipeline Analyzer",
+          "gold_avg_rating": 5.0,
+          "standard_avg_rating": 2.0,
+          "rating_gap": 3.0
+        },
+        {
+          "module_name": "Transportation Network Optimizer",
+          "gold_avg_rating": 5.0,
+          "standard_avg_rating": 2.0,
+          "rating_gap": 3.0
+        },
+        {
+          "module_name": "Compensation Benchmarking Tool",
+          "gold_avg_rating": 2.0,
+          "standard_avg_rating": 4.0,
+          "rating_gap": 2.0
+        },
+        {
+          "module_name": "FX Exposure Monitor",
+          "gold_avg_rating": 2.0,
+          "standard_avg_rating": 4.0,
+          "rating_gap": 2.0
+        },
+        {
+          "module_name": "P&L Scenario Simulator",
+          "gold_avg_rating": 3.0,
+          "standard_avg_rating": 5.0,
+          "rating_gap": 2.0
+        },
+        {
+          "module_name": "Regulatory Timeline Tracker",
+          "gold_avg_rating": 5.0,
+          "standard_avg_rating": 3.0,
+          "rating_gap": 2.0
+        },
+        {
+          "module_name": "Revenue Forecast Model",
+          "gold_avg_rating": 5.0,
+          "standard_avg_rating": 3.0,
+          "rating_gap": 2.0
+        },
+        {
+          "module_name": "Time-to-Market Predictor",
+          "gold_avg_rating": 3.0,
+          "standard_avg_rating": 5.0,
+          "rating_gap": 2.0
+        },
+        {
+          "module_name": "Sales Pipeline Analyzer",
+          "gold_avg_rating": 5.0,
+          "standard_avg_rating": 3.25,
+          "rating_gap": 1.75
+        },
+        {
+          "module_name": "Sales Pipeline Analyzer",
+          "gold_avg_rating": 5.0,
+          "standard_avg_rating": 3.33,
+          "rating_gap": 1.67
+        },
+        {
+          "module_name": "Stockout Risk Monitor",
+          "gold_avg_rating": 5.0,
+          "standard_avg_rating": 3.75,
+          "rating_gap": 1.25
+        },
+        {
+          "module_name": "Order Fulfilment Tracker",
+          "gold_avg_rating": 4.5,
+          "standard_avg_rating": 3.33,
+          "rating_gap": 1.17
+        }
+      ]
+    },
+    "sqlreact-fast-movers": {
+      "type": "deterministic-sql",
+      "prompt": "Which business users placed their first subscription within 7 days of creating their account? List their names and the number of days between account creation and their first subscription.",
+      "expected": [
+        {
+          "full_name": "Quinn Williams",
+          "days_to_first_subscription": 6
+        }
+      ]
+    },
+    "sqlreact-mom-active-users": {
+      "type": "deterministic-computed",
+      "prompt": "For each of the last 6 calendar months of data, what is the month-over-month percentage change in the number of unique business users who placed a non-cancelled subscription?",
+      "expected": {
+        "monthly_active_users": [
+          {
+            "month": "2026-01",
+            "active_users": 45,
+            "pct_change_from_prior_month": 12.5
+          },
+          {
+            "month": "2026-02",
+            "active_users": 42,
+            "pct_change_from_prior_month": -6.67
+          },
+          {
+            "month": "2026-03",
+            "active_users": 42,
+            "pct_change_from_prior_month": 0.0
+          },
+          {
+            "month": "2026-04",
+            "active_users": 43,
+            "pct_change_from_prior_month": 2.38
+          },
+          {
+            "month": "2026-05",
+            "active_users": 40,
+            "pct_change_from_prior_month": -6.98
+          },
+          {
+            "month": "2026-06",
+            "active_users": 38,
+            "pct_change_from_prior_month": -5.0
+          }
+        ]
+      }
+    },
+    "sqlreact-data-integrity-check": {
+      "type": "deterministic-computed",
+      "prompt": "Are there any subscriptions where the recorded total_amount doesn't match the sum of (seats x unit_price) across their line items? List any mismatches with the order ID, recorded total, and computed total.",
+      "expected": {
+        "mismatch_count": 0,
+        "mismatches": []
+      }
+    },
+    "sqlreact-city-subscription-value": {
+      "type": "deterministic-sql",
+      "prompt": "Which 3 cities have the highest average non-cancelled subscription value per business user based there?",
+      "expected": [
+        {
+          "city": "Vancouver",
+          "avg_subscription_value_per_user": 564500.0,
+          "user_count": 9
+        },
+        {
+          "city": "Melbourne",
+          "avg_subscription_value_per_user": 560500.0,
+          "user_count": 9
+        },
+        {
+          "city": "Sydney",
+          "avg_subscription_value_per_user": 522125.0,
+          "user_count": 12
+        }
+      ]
+    },
+    "sqlreact-early-cohort-comparison": {
+      "type": "deterministic-sql",
+      "prompt": "Business users who created their account within the earliest 90 days of the dataset: what is their combined lifetime subscription value, compared to the combined lifetime subscription value of everyone else?",
+      "expected": {
+        "early_cohort_value": 5307000.0,
+        "rest_value": 66019500.0
+      }
+    },
+    "sqlreact-rating-trend": {
+      "type": "deterministic-computed",
+      "prompt": "For analytics modules with at least 6 ratings, compare the average rating of their most recent half of reviews (by date) to their earliest half. List modules where the recent half's average rating is at least 0.5 stars higher than the earlier half's, along with both averages.",
+      "expected": [
+        {
+          "module_name": "R&D Spend Analyzer",
+          "earlier_half_avg_rating": 1.0,
+          "recent_half_avg_rating": 5.0
+        },
+        {
+          "module_name": "Diversity & Inclusion Scorecard",
+          "earlier_half_avg_rating": 2.5,
+          "recent_half_avg_rating": 5.0
+        },
+        {
+          "module_name": "Diversity & Inclusion Scorecard",
+          "earlier_half_avg_rating": 3.0,
+          "recent_half_avg_rating": 5.0
+        },
+        {
+          "module_name": "FX Exposure Monitor",
+          "earlier_half_avg_rating": 2.0,
+          "recent_half_avg_rating": 4.0
+        },
+        {
+          "module_name": "Transportation Network Optimizer",
+          "earlier_half_avg_rating": 2.0,
+          "recent_half_avg_rating": 3.8
+        },
+        {
+          "module_name": "Talent Retention Predictor",
+          "earlier_half_avg_rating": 3.4,
+          "recent_half_avg_rating": 5.0
+        },
+        {
+          "module_name": "Competitive Intelligence Monitor",
+          "earlier_half_avg_rating": 3.0,
+          "recent_half_avg_rating": 4.33
+        },
+        {
+          "module_name": "Workforce Planning Dashboard",
+          "earlier_half_avg_rating": 3.67,
+          "recent_half_avg_rating": 5.0
+        },
+        {
+          "module_name": "GTM Readiness Planner",
+          "earlier_half_avg_rating": 2.57,
+          "recent_half_avg_rating": 3.75
+        },
+        {
+          "module_name": "Absenteeism Risk Tracker",
+          "earlier_half_avg_rating": 4.0,
+          "recent_half_avg_rating": 5.0
+        },
+        {
+          "module_name": "Absenteeism Risk Tracker",
+          "earlier_half_avg_rating": 4.0,
+          "recent_half_avg_rating": 5.0
+        },
+        {
+          "module_name": "P&L Scenario Simulator",
+          "earlier_half_avg_rating": 4.0,
+          "recent_half_avg_rating": 5.0
+        },
+        {
+          "module_name": "Shareholder Value Scorecard",
+          "earlier_half_avg_rating": 3.0,
+          "recent_half_avg_rating": 4.0
+        },
+        {
+          "module_name": "Succession Planning Engine",
+          "earlier_half_avg_rating": 4.0,
+          "recent_half_avg_rating": 5.0
+        },
+        {
+          "module_name": "Supplier Performance Tracker",
+          "earlier_half_avg_rating": 3.0,
+          "recent_half_avg_rating": 4.0
+        },
+        {
+          "module_name": "Working Capital Optimizer",
+          "earlier_half_avg_rating": 4.0,
+          "recent_half_avg_rating": 5.0
+        },
+        {
+          "module_name": "Trial Success Probability Model",
+          "earlier_half_avg_rating": 3.29,
+          "recent_half_avg_rating": 4.25
+        },
+        {
+          "module_name": "R&D Spend Analyzer",
+          "earlier_half_avg_rating": 3.6,
+          "recent_half_avg_rating": 4.4
+        },
+        {
+          "module_name": "Regulatory Timeline Tracker",
+          "earlier_half_avg_rating": 3.43,
+          "recent_half_avg_rating": 4.12
+        },
+        {
+          "module_name": "Stockout Risk Monitor",
+          "earlier_half_avg_rating": 3.5,
+          "recent_half_avg_rating": 4.18
+        },
+        {
+          "module_name": "Compensation Benchmarking Tool",
+          "earlier_half_avg_rating": 3.33,
+          "recent_half_avg_rating": 4.0
+        },
+        {
+          "module_name": "Price Elasticity Model",
+          "earlier_half_avg_rating": 4.0,
+          "recent_half_avg_rating": 4.67
+        },
+        {
+          "module_name": "Innovation Pipeline Dashboard",
+          "earlier_half_avg_rating": 3.0,
+          "recent_half_avg_rating": 3.6
+        },
+        {
+          "module_name": "Territory Performance Analyzer",
+          "earlier_half_avg_rating": 3.71,
+          "recent_half_avg_rating": 4.25
+        }
+      ]
+    },
+    "sqlcodemode-rating-distribution-top5": {
+      "type": "deterministic-computed",
+      "prompt": "Find the 5 analytics modules with the most user satisfaction ratings. For each, report how many ratings it has at each star level (1 through 5).",
+      "expected": [
+        {
+          "module_name": "Performance Management Analyzer",
+          "review_count": 24,
+          "rating_distribution": {
+            "1": 0,
+            "2": 0,
+            "3": 3,
+            "4": 6,
+            "5": 15
+          }
+        },
+        {
+          "module_name": "Territory Performance Analyzer",
+          "review_count": 24,
+          "rating_distribution": {
+            "1": 0,
+            "2": 0,
+            "3": 4,
+            "4": 8,
+            "5": 12
+          }
+        },
+        {
+          "module_name": "Stockout Risk Monitor",
+          "review_count": 21,
+          "rating_distribution": {
+            "1": 0,
+            "2": 6,
+            "3": 3,
+            "4": 0,
+            "5": 12
+          }
+        },
+        {
+          "module_name": "Workforce Planning Dashboard",
+          "review_count": 21,
+          "rating_distribution": {
+            "1": 0,
+            "2": 0,
+            "3": 0,
+            "4": 18,
+            "5": 3
+          }
+        },
+        {
+          "module_name": "Order Fulfilment Tracker",
+          "review_count": 18,
+          "rating_distribution": {
+            "1": 0,
+            "2": 0,
+            "3": 0,
+            "4": 6,
+            "5": 12
+          }
+        }
+      ]
+    },
+    "sqlcodemode-price-rating-correlation": {
+      "type": "deterministic-computed",
+      "prompt": "Compute the Pearson correlation coefficient between an analytics module's annual license cost and its average user rating, across all modules with at least 3 ratings. Report the coefficient rounded to 3 decimal places.",
+      "expected": {
+        "pearson_correlation": -0.014,
+        "sample_size": 129
+      }
+    },
+    "sqlcodemode-subscription-outliers": {
+      "type": "deterministic-computed",
+      "prompt": "Compute the mean and standard deviation of total_amount across all delivered subscriptions. List every delivered subscription whose total_amount is more than 2 standard deviations above the mean, with its order ID, customer name, and total_amount.",
+      "expected": {
+        "mean": 45793.52,
+        "stdev": 25586.88,
+        "threshold": 96967.28,
+        "outliers": [
+          {
+            "order_id": 297,
+            "customer_name": "David Roberts",
+            "total_amount": 121000.0
+          },
+          {
+            "order_id": 897,
+            "customer_name": "David Roberts",
+            "total_amount": 121000.0
+          },
+          {
+            "order_id": 1497,
+            "customer_name": "David Roberts",
+            "total_amount": 121000.0
+          },
+          {
+            "order_id": 75,
+            "customer_name": "Olivia Clarke",
+            "total_amount": 113000.0
+          },
+          {
+            "order_id": 675,
+            "customer_name": "Olivia Clarke",
+            "total_amount": 113000.0
+          },
+          {
+            "order_id": 1275,
+            "customer_name": "Olivia Clarke",
+            "total_amount": 113000.0
+          },
+          {
+            "order_id": 481,
+            "customer_name": "Liam Wright",
+            "total_amount": 112500.0
+          },
+          {
+            "order_id": 1081,
+            "customer_name": "Liam Wright",
+            "total_amount": 112500.0
+          },
+          {
+            "order_id": 1681,
+            "customer_name": "Liam Wright",
+            "total_amount": 112500.0
+          },
+          {
+            "order_id": 349,
+            "customer_name": "Mia Roberts",
+            "total_amount": 112000.0
+          },
+          {
+            "order_id": 949,
+            "customer_name": "Mia Roberts",
+            "total_amount": 112000.0
+          },
+          {
+            "order_id": 1549,
+            "customer_name": "Mia Roberts",
+            "total_amount": 112000.0
+          },
+          {
+            "order_id": 196,
+            "customer_name": "Zach Jackson",
+            "total_amount": 109000.0
+          },
+          {
+            "order_id": 796,
+            "customer_name": "Zach Jackson",
+            "total_amount": 109000.0
+          },
+          {
+            "order_id": 1396,
+            "customer_name": "Zach Jackson",
+            "total_amount": 109000.0
+          },
+          {
+            "order_id": 403,
+            "customer_name": "Vince Wilson",
+            "total_amount": 108500.0
+          },
+          {
+            "order_id": 1003,
+            "customer_name": "Vince Wilson",
+            "total_amount": 108500.0
+          },
+          {
+            "order_id": 1603,
+            "customer_name": "Vince Wilson",
+            "total_amount": 108500.0
+          },
+          {
+            "order_id": 293,
+            "customer_name": "Jack Edwards",
+            "total_amount": 107500.0
+          },
+          {
+            "order_id": 893,
+            "customer_name": "Jack Edwards",
+            "total_amount": 107500.0
+          },
+          {
+            "order_id": 1493,
+            "customer_name": "Jack Edwards",
+            "total_amount": 107500.0
+          },
+          {
+            "order_id": 87,
+            "customer_name": "Jake Garcia",
+            "total_amount": 104500.0
+          },
+          {
+            "order_id": 687,
+            "customer_name": "Jake Garcia",
+            "total_amount": 104500.0
+          },
+          {
+            "order_id": 1287,
+            "customer_name": "Jake Garcia",
+            "total_amount": 104500.0
+          },
+          {
+            "order_id": 341,
+            "customer_name": "Bob Davies",
+            "total_amount": 99500.0
+          },
+          {
+            "order_id": 385,
+            "customer_name": "Leo Nguyen",
+            "total_amount": 99500.0
+          },
+          {
+            "order_id": 941,
+            "customer_name": "Bob Davies",
+            "total_amount": 99500.0
+          },
+          {
+            "order_id": 985,
+            "customer_name": "Leo Nguyen",
+            "total_amount": 99500.0
+          },
+          {
+            "order_id": 1541,
+            "customer_name": "Bob Davies",
+            "total_amount": 99500.0
+          },
+          {
+            "order_id": 1585,
+            "customer_name": "Leo Nguyen",
+            "total_amount": 99500.0
+          }
+        ]
+      }
+    },
+    "sqlcodemode-customer-spend-jump": {
+      "type": "deterministic-computed",
+      "prompt": "Across all business users, find the single largest month-over-month increase in subscription spend between two consecutive calendar months in which they had at least one non-cancelled subscription. Report the customer name, the two months, and the size of the increase.",
+      "expected": {
+        "customer_id": 34,
+        "prev_month": "2026-04",
+        "cur_month": "2026-05",
+        "increase": 403500.0,
+        "customer_name": "David Brown"
+      }
+    },
+    "sqlcodemode-price-consistency-by-function": {
+      "type": "deterministic-computed",
+      "prompt": "For each business function, compute the coefficient of variation (standard deviation divided by mean) of its analytics modules' annual license costs. Report the business function with the lowest coefficient of variation (most consistent pricing) and its value.",
+      "expected": {
+        "by_function": [
+          {
+            "business_function": "Sales & Marketing",
+            "coefficient_of_variation": 0.1974
+          },
+          {
+            "business_function": "HR & People",
+            "coefficient_of_variation": 0.216
+          },
+          {
+            "business_function": "Finance",
+            "coefficient_of_variation": 0.2189
+          },
+          {
+            "business_function": "Research & Development",
+            "coefficient_of_variation": 0.2803
+          },
+          {
+            "business_function": "Supply Chain",
+            "coefficient_of_variation": 0.2842
+          }
+        ],
+        "most_consistent": {
+          "business_function": "Sales & Marketing",
+          "coefficient_of_variation": 0.1974
+        }
+      }
+    },
+    "sqlcodemode-subscription-cadence": {
+      "type": "deterministic-computed",
+      "prompt": "Among business users with at least 3 non-cancelled subscriptions, compute each one's average number of days between consecutive subscriptions. Report the 3 users with the fastest (lowest) average cadence, including their name and average days.",
+      "expected": [
+        {
+          "customer_id": 183,
+          "avg_days_between_subscriptions": 0.96,
+          "subscription_count": 6,
+          "customer_name": "Bob Brown"
+        },
+        {
+          "customer_id": 198,
+          "avg_days_between_subscriptions": 1.9,
+          "subscription_count": 6,
+          "customer_name": "Quinn Patel"
+        },
+        {
+          "customer_id": 1,
+          "avg_days_between_subscriptions": 1.96,
+          "subscription_count": 3,
+          "customer_name": "Xander Clarke"
+        }
+      ]
+    },
+    "sqlcodemode-weighted-quality-score": {
+      "type": "deterministic-computed",
+      "prompt": "Using the exact formula weighted_score = avg_rating * ln(active_deployments + 1), compute a weighted score for every analytics module with at least 1 rating. Report the top 3 modules platform-wide by this score, with their avg_rating, active_deployments, and weighted_score rounded to 3 decimal places.",
+      "expected": [
+        {
+          "module_name": "Revenue Performance Dashboard",
+          "avg_rating": 5.0,
+          "active_deployments": 130,
+          "weighted_score": 24.376
+        },
+        {
+          "module_name": "Budget Variance Dashboard",
+          "avg_rating": 5.0,
+          "active_deployments": 120,
+          "weighted_score": 23.979
+        },
+        {
+          "module_name": "Employee Engagement Monitor",
+          "avg_rating": 5.0,
+          "active_deployments": 105,
+          "weighted_score": 23.317
+        }
+      ]
+    },
+    "sqlcodemode-unreviewed-below-median": {
+      "type": "deterministic-computed",
+      "prompt": "Find analytics modules that have zero user satisfaction ratings AND have active_deployments below the platform-wide median active_deployments value. List their names, business functions, and active_deployments.",
+      "expected": {
+        "median_active_deployments": 57.5,
+        "modules": []
+      }
+    },
+    "sqlcodemode-gold-category-overlap": {
+      "type": "deterministic-computed",
+      "prompt": "Among the 5 gold-tier business users with the highest lifetime subscription value, find the pair whose sets of business functions (from their non-cancelled subscriptions) have the highest Jaccard similarity (size of intersection divided by size of union). Report both customer names and the similarity value rounded to 3 decimal places.",
+      "expected": {
+        "customer_a": "Wendy Green",
+        "customer_b": "Pete Edwards",
+        "jaccard_similarity": 1.0
+      }
+    },
+    "sqlcodemode-seat-normalization-simulation": {
+      "type": "deterministic-computed",
+      "prompt": "For the last 6 calendar months of data, recompute what monthly subscription revenue would have been if every line item had exactly 2 seats instead of its actual seat count (using the same per-seat unit_price), and compare it to the actual monthly revenue for non-cancelled subscriptions. Report both series by month.",
+      "expected": {
+        "by_month": [
+          {
+            "month": "2026-01",
+            "actual_revenue": 7720000.0,
+            "simulated_2_seat_revenue": 7127000.0
+          },
+          {
+            "month": "2026-02",
+            "actual_revenue": 4893500.0,
+            "simulated_2_seat_revenue": 4697000.0
+          },
+          {
+            "month": "2026-03",
+            "actual_revenue": 5937000.0,
+            "simulated_2_seat_revenue": 6105000.0
+          },
+          {
+            "month": "2026-04",
+            "actual_revenue": 6210000.0,
+            "simulated_2_seat_revenue": 6235000.0
+          },
+          {
+            "month": "2026-05",
+            "actual_revenue": 5954500.0,
+            "simulated_2_seat_revenue": 5873000.0
+          },
+          {
+            "month": "2026-06",
+            "actual_revenue": 5873500.0,
+            "simulated_2_seat_revenue": 5327000.0
+          }
+        ]
+      }
+    },
+    "sqlcodemode-revenue-momentum": {
+      "type": "deterministic-computed",
+      "prompt": "For each business function, compute its subscription revenue in the most recent calendar month of data versus its average monthly revenue over the trailing 12 months. Report the business function with the highest ratio of most-recent-month revenue to trailing-12-month average, along with the ratio.",
+      "expected": {
+        "by_function": [
+          {
+            "business_function": "Finance",
+            "most_recent_month_revenue": 420000.0,
+            "trailing_12mo_avg_revenue": 999625.0,
+            "momentum_ratio": 0.42
+          },
+          {
+            "business_function": "HR & People",
+            "most_recent_month_revenue": 1418000.0,
+            "trailing_12mo_avg_revenue": 1038291.67,
+            "momentum_ratio": 1.366
+          },
+          {
+            "business_function": "Research & Development",
+            "most_recent_month_revenue": 1980000.0,
+            "trailing_12mo_avg_revenue": 1571750.0,
+            "momentum_ratio": 1.26
+          },
+          {
+            "business_function": "Sales & Marketing",
+            "most_recent_month_revenue": 1353000.0,
+            "trailing_12mo_avg_revenue": 1186875.0,
+            "momentum_ratio": 1.14
+          },
+          {
+            "business_function": "Supply Chain",
+            "most_recent_month_revenue": 702500.0,
+            "trailing_12mo_avg_revenue": 1098625.0,
+            "momentum_ratio": 0.639
+          }
+        ],
+        "highest_momentum": {
+          "business_function": "HR & People",
+          "most_recent_month_revenue": 1418000.0,
+          "trailing_12mo_avg_revenue": 1038291.67,
+          "momentum_ratio": 1.366
+        }
+      }
+    },
+    "sqlcodemode-composite-engagement-score": {
+      "type": "deterministic-computed",
+      "prompt": "Using the exact formula engagement_score = (lifetime_subscription_value / 1000) + (number_of_reviews_written * 50) + (100 if the user's most recent non-cancelled subscription is within the last 90 days else 0), compute this score for every gold-tier business user. Report the top 5 by score, including each component value.",
+      "expected": [
+        {
+          "customer_name": "Wendy Green",
+          "lifetime_subscription_value": 813000.0,
+          "number_of_reviews_written": 14,
+          "recency_bonus": 100,
+          "engagement_score": 1613.0
+        },
+        {
+          "customer_name": "Iris Brown",
+          "lifetime_subscription_value": 801000.0,
+          "number_of_reviews_written": 9,
+          "recency_bonus": 100,
+          "engagement_score": 1351.0
+        },
+        {
+          "customer_name": "Zach Jackson",
+          "lifetime_subscription_value": 529500.0,
+          "number_of_reviews_written": 10,
+          "recency_bonus": 0,
+          "engagement_score": 1029.5
+        },
+        {
+          "customer_name": "Bob Lewis",
+          "lifetime_subscription_value": 496500.0,
+          "number_of_reviews_written": 8,
+          "recency_bonus": 100,
+          "engagement_score": 996.5
+        },
+        {
+          "customer_name": "Frank Davies",
+          "lifetime_subscription_value": 487500.0,
+          "number_of_reviews_written": 9,
+          "recency_bonus": 0,
+          "engagement_score": 937.5
+        }
+      ]
+    },
+    "minimal-percentage-discount": {
+      "type": "deterministic-computed",
+      "prompt": "A subscription is priced at $1,200 per year. If a 15% early-renewal discount is applied, what is the discounted price? Round to two decimal places.",
+      "expected": {
+        "discounted_price": 1020.0
+      }
+    },
+    "minimal-compound-interest": {
+      "type": "deterministic-computed",
+      "prompt": "If $5,000 is invested at an annual interest rate of 6%, compounded monthly, what is the balance after 2 years? Round to two decimal places.",
+      "expected": {
+        "balance_after_2_years": 5635.8
+      }
+    },
+    "minimal-list-statistics": {
+      "type": "deterministic-computed",
+      "prompt": "Given the dataset [12, 45, 7, 23, 56, 34, 19, 8], calculate the mean, median, and sample standard deviation. Round each to two decimal places.",
+      "expected": {
+        "mean": 25.5,
+        "median": 21.0,
+        "sample_stdev": 17.98
+      }
+    },
+    "minimal-string-reversal-vowels": {
+      "type": "deterministic-computed",
+      "prompt": "Reverse the string 'DecisionIntelligence' and count how many vowels (a, e, i, o, u, case-insensitive) it contains.",
+      "expected": {
+        "reversed_string": "ecnegilletnInoisiceD",
+        "vowel_count": 9
+      }
+    },
+    "minimal-date-formatting": {
+      "type": "deterministic-computed",
+      "prompt": "Convert the date 2026-11-03 (YYYY-MM-DD) into the format 'Month D, YYYY' (e.g., 'January 5, 2026').",
+      "expected": {
+        "formatted_date": "November 3, 2026"
+      }
+    },
+    "minimal-fizzbuzz-range": {
+      "type": "deterministic-computed",
+      "prompt": "For the numbers 1 through 100, list every number that is divisible by both 3 and 5.",
+      "expected": {
+        "divisible_by_3_and_5": [
+          15,
+          30,
+          45,
+          60,
+          75,
+          90
+        ]
+      }
+    },
+    "minimal-caesar-cipher": {
+      "type": "deterministic-computed",
+      "prompt": "Encode the word 'AGENT' using a Caesar cipher with a shift of 3 (A becomes D, B becomes E, etc., wrapping Z back to C).",
+      "expected": {
+        "encoded_word": "DJHQW"
+      }
+    },
+    "minimal-palindrome-check": {
+      "type": "deterministic-computed",
+      "prompt": "Is the phrase 'A man a plan a canal Panama' a palindrome when ignoring spaces, punctuation, and case? Answer yes or no, and show the cleaned string used for the check.",
+      "expected": {
+        "is_palindrome": true,
+        "cleaned_string": "amanaplanacanalpanama"
+      }
+    },
+    "minimal-gcd-lcm": {
+      "type": "deterministic-computed",
+      "prompt": "What are the greatest common divisor and least common multiple of 48 and 180?",
+      "expected": {
+        "gcd": 12,
+        "lcm": 720
+      }
+    },
+    "minimal-word-count-unique": {
+      "type": "deterministic-computed",
+      "prompt": "Count the total number of words and the number of unique words (case-insensitive) in the sentence: 'The quick brown fox jumps over the lazy dog and the fox runs away'.",
+      "expected": {
+        "total_words": 14,
+        "unique_words": 11
+      }
+    },
+    "minimal-unit-conversion": {
+      "type": "deterministic-computed",
+      "prompt": "Convert 82 kilometers per hour to miles per hour, using 1 km = 0.621371 miles. Round to two decimal places.",
+      "expected": {
+        "miles_per_hour": 50.95
+      }
+    },
+    "minimal-marble-probability": {
+      "type": "deterministic-computed",
+      "prompt": "A bag contains 5 red, 3 blue, and 2 green marbles. If one marble is drawn at random, what is the probability it is NOT blue? Express the answer as a reduced fraction and as a percentage rounded to one decimal place.",
+      "expected": {
+        "fraction": "7/10",
+        "percentage": 70.0
+      }
+    },
+    "minimal-greeting-howareyou": {
+      "type": "conversational",
+      "prompt": "Hi there! How are you doing today?",
+      "expected": null,
+      "notes": "A friendly, brief reply to a greeting; no tool call or business data is applicable."
+    },
+    "minimal-greeting-whatsup": {
+      "type": "conversational",
+      "prompt": "Hey, what's up?",
+      "expected": null,
+      "notes": "A friendly, brief reply to casual small talk; no tool call or business data is applicable."
+    },
+    "minimal-faq-capabilities": {
+      "type": "conversational",
+      "prompt": "Hello! What kinds of things can you help me with?",
+      "expected": null,
+      "notes": "A brief summary of the assistant's own capabilities; no customer/product/order lookup is applicable."
     }
   }
 }

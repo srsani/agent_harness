@@ -1,0 +1,64 @@
+{
+  "mode": "repeat",
+  "session_id": "agent-bench:run:pydantic-ai:adi-user-lookup:20260705T163635Z:d0219c68",
+  "harness": "pydantic-ai",
+  "architecture": "enterprise-codemode",
+  "task": "adi-user-lookup",
+  "repeat": 3,
+  "results": [
+    {
+      "harness": "pydantic-ai",
+      "architecture": "enterprise-codemode",
+      "task": "adi-user-lookup",
+      "prompt": "Look up business user with ID 42. Show their full profile, total lifetime spend, and their last 5 subscriptions with status and total value.",
+      "output": "\n\nBased on the data retrieved, here is the requested information for business user ID 42:\n\n**Customer Profile:**\n| Field | Value |\n|-------|-------|\n| ID | 42 |\n| Full Name | Wendy Taylor |\n| Email | wendy.taylor41@yahoo.com |\n| City | Paris |\n| Country | FR |\n| Tier | standard |\n\n**Total Lifetime Spend:** 300000.0\n\n**Last 5 Subscriptions (Status and Total Value):**\n| Order ID | Status | Total Amount |\n|----------|--------|--------------|\n| 1601 | shipped | 36000.0 |\n| 1001 | shipped | 36000.0 |\n| 401 | shipped | 36000.0 |\n| 1734 | shipped | 64000.0 |\n| 1134 | shipped | 64000.0 |",
+      "started_at": "2026-07-05T16:36:35.493263+00:00",
+      "elapsed_seconds": 20.57934312499856,
+      "metadata": {
+        "langfuse_session_id": "agent-bench:run:pydantic-ai:adi-user-lookup:20260705T163635Z:d0219c68:rep1",
+        "langfuse_trace_id": "f46ac4cd271693ba8836e5003ed595b5",
+        "langfuse_observation_id": "09840457bb3142d2",
+        "langfuse_trace_url": "https://cloud.langfuse.com/project/cmr1ywsf000d5ad0cex3dm2ha/traces/f46ac4cd271693ba8836e5003ed595b5",
+        "repeat_index": 1
+      },
+      "error": null,
+      "ok": true
+    },
+    {
+      "harness": "pydantic-ai",
+      "architecture": "enterprise-codemode",
+      "task": "adi-user-lookup",
+      "prompt": "Look up business user with ID 42. Show their full profile, total lifetime spend, and their last 5 subscriptions with status and total value.",
+      "output": "\n\nBased on the data retrieved, here is the requested information for business user ID 42:\n\n**Customer Profile:**\n| Field | Value |\n|-------|-------|\n| ID | 42 |\n| Full Name | Wendy Taylor |\n| Email | wendy.taylor41@yahoo.com |\n| City | Paris |\n| Country | FR |\n| Tier | standard |\n\n**Total Lifetime Spend:** 300000.0\n\n**Last 5 Subscriptions (Status and Total Value):**\n| Order ID | Status | Total Amount |\n|----------|--------|--------------|\n| 1601 | shipped | 36000.0 |\n| 1001 | shipped | 36000.0 |\n| 401 | shipped | 36000.0 |\n| 1734 | shipped | 64000.0 |\n| 1134 | shipped | 64000.0 |",
+      "started_at": "2026-07-05T16:36:56.074514+00:00",
+      "elapsed_seconds": 18.72690916699503,
+      "metadata": {
+        "langfuse_session_id": "agent-bench:run:pydantic-ai:adi-user-lookup:20260705T163635Z:d0219c68:rep2",
+        "langfuse_trace_id": "648e88dd6e9053ce56103c564b900bce",
+        "langfuse_observation_id": "b1a87ab33b1ed003",
+        "langfuse_trace_url": "https://cloud.langfuse.com/project/cmr1ywsf000d5ad0cex3dm2ha/traces/648e88dd6e9053ce56103c564b900bce",
+        "repeat_index": 2
+      },
+      "error": null,
+      "ok": true
+    },
+    {
+      "harness": "pydantic-ai",
+      "architecture": "enterprise-codemode",
+      "task": "adi-user-lookup",
+      "prompt": "Look up business user with ID 42. Show their full profile, total lifetime spend, and their last 5 subscriptions with status and total value.",
+      "output": "\n\nBased on the data retrieved, here is the requested information for business user ID 42:\n\n**Customer Profile:**\n| Field | Value |\n|-------|-------|\n| ID | 42 |\n| Full Name | Wendy Taylor |\n| Email | wendy.taylor41@yahoo.com |\n| City | Paris |\n| Country | FR |\n| Tier | standard |\n\n**Total Lifetime Spend:** 300000.0\n\n**Last 5 Subscriptions (Status and Total Value):**\n| Order ID | Status | Total Amount |\n|----------|--------|--------------|\n| 1601 | shipped | 36000.0 |\n| 1001 | shipped | 36000.0 |\n| 401 | shipped | 36000.0 |\n| 1734 | shipped | 64000.0 |\n| 1134 | shipped | 64000.0 |",
+      "started_at": "2026-07-05T16:37:14.801983+00:00",
+      "elapsed_seconds": 18.793108625002787,
+      "metadata": {
+        "langfuse_session_id": "agent-bench:run:pydantic-ai:adi-user-lookup:20260705T163635Z:d0219c68:rep3",
+        "langfuse_trace_id": "863765844f55cfe9d762e6109c9614ac",
+        "langfuse_observation_id": "0cf6e27e92ac2e01",
+        "langfuse_trace_url": "https://cloud.langfuse.com/project/cmr1ywsf000d5ad0cex3dm2ha/traces/863765844f55cfe9d762e6109c9614ac",
+        "repeat_index": 3
+      },
+      "error": null,
+      "ok": true
+    }
+  ]
+}

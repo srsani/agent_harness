@@ -51,6 +51,15 @@ def run_single(
     output: Path | None = typer.Option(
         None, help="Optional JSON output path for the benchmark result."
     ),
+    repeat: int = typer.Option(
+        1,
+        "--repeat",
+        min=1,
+        help=(
+            "Run the same architecture + task this many times, to measure how much the "
+            "output varies from run to run (LLM sampling is not fully deterministic)."
+        ),
+    ),
 ) -> None:
     """Run one harness + architecture + task combination."""
     spec = get_harness(harness)
@@ -61,13 +70,40 @@ def run_single(
     prompt = get_task(task)
     session_id = _make_session_id("run", harness, task)
     runner = spec.factory(architecture)
-    result = runner.run(prompt, session_id=session_id)
-    result.task = task
 
-    _print_result(result)
+    if repeat == 1:
+        result = runner.run(prompt, session_id=session_id)
+        result.task = task
+
+        _print_result(result)
+        if output is not None:
+            _write_json_report(output, {"session_id": session_id, **_result_to_dict(result)})
+        if result.error:
+            raise typer.Exit(code=1)
+        return
+
+    results = []
+    for i in range(1, repeat + 1):
+        console.rule(f"[bold]{harness}[/] / {architecture} (repeat {i}/{repeat})")
+        result = runner.run(prompt, session_id=f"{session_id}:rep{i}")
+        result.task = task
+        result.metadata["repeat_index"] = i
+        results.append(result)
+        _print_result(result)
+
+    _print_repeat_summary(results)
     if output is not None:
-        _write_json_report(output, {"session_id": session_id, **_result_to_dict(result)})
-    if result.error:
+        payload = {
+            "mode": "repeat",
+            "session_id": session_id,
+            "harness": harness,
+            "architecture": architecture,
+            "task": task,
+            "repeat": repeat,
+            "results": [_result_to_dict(r) for r in results],
+        }
+        _write_json_report(output, payload)
+    if all(r.error for r in results):
         raise typer.Exit(code=1)
 
 
@@ -78,20 +114,44 @@ def run_all(
     output: Path | None = typer.Option(
         None, help="Optional JSON output path for benchmark summary + results."
     ),
+    repeat: int = typer.Option(
+        1,
+        "--repeat",
+        min=1,
+        help=(
+            "Run each applicable architecture this many times against the task, to measure "
+            "how much each architecture's output varies from run to run."
+        ),
+    ),
 ) -> None:
-    """Run every architecture for a harness against one task."""
+    """Run every architecture applicable to the task, for a harness."""
     spec = get_harness(harness)
     prompt = get_task(task)
     session_id = _make_session_id("run-all", harness, task)
     results = []
 
-    for arch_name in spec.architectures:
-        console.rule(f"[bold]{harness}[/] / {arch_name}")
+    applicable = spec.architectures_for_task(task)
+    skipped = [name for name in spec.architectures if name not in applicable]
+    if skipped:
+        console.print(
+            f"[dim]Skipping architecture(s) not applicable to '{task}': "
+            f"{', '.join(skipped)}[/]"
+        )
+
+    for arch_name in applicable:
         runner = spec.factory(arch_name)
-        result = runner.run(prompt, session_id=session_id)
-        result.task = task
-        results.append(result)
-        _print_result(result)
+        for i in range(1, repeat + 1):
+            label = f"[bold]{harness}[/] / {arch_name}"
+            if repeat > 1:
+                label += f" (repeat {i}/{repeat})"
+            console.rule(label)
+            rep_session_id = session_id if repeat == 1 else f"{session_id}:rep{i}"
+            result = runner.run(prompt, session_id=rep_session_id)
+            result.task = task
+            if repeat > 1:
+                result.metadata["repeat_index"] = i
+            results.append(result)
+            _print_result(result)
 
     _print_summary(results)
     if output is not None:
@@ -100,6 +160,7 @@ def run_all(
             "session_id": session_id,
             "harness": harness,
             "task": task,
+            "repeat": repeat,
             "results": [_result_to_dict(r) for r in results],
         }
         _write_json_report(output, payload)
@@ -135,6 +196,33 @@ def _print_summary(results) -> None:
         preview = (r.output or r.error or "")[:80]
         table.add_row(r.architecture, status, f"{r.elapsed_seconds:.1f}", preview)
     console.print(table)
+
+
+def _print_repeat_summary(results) -> None:
+    """Summarize a set of repeated runs of the same architecture + task.
+
+    LLM sampling is not fully deterministic (see `runners.py`'s `_MODEL_SETTINGS` note),
+    so identical inputs can still produce different outputs run to run. This surfaces that
+    variance directly instead of hiding it behind a single run.
+    """
+    table = Table(title="Repeat Summary")
+    table.add_column("Run")
+    table.add_column("Status")
+    table.add_column("Time (s)")
+    table.add_column("Output preview", overflow="fold")
+
+    for i, r in enumerate(results, start=1):
+        status = "OK" if r.ok else "FAIL"
+        preview = (r.output or r.error or "")[:80]
+        table.add_row(str(i), status, f"{r.elapsed_seconds:.1f}", preview)
+    console.print(table)
+
+    ok_count = sum(1 for r in results if r.ok)
+    distinct_outputs = len({r.output.strip() for r in results if r.ok})
+    console.print(
+        f"[bold]{ok_count}/{len(results)}[/] run(s) succeeded; "
+        f"[bold]{distinct_outputs}[/] distinct output(s) among successful runs."
+    )
 
 
 def _result_to_dict(result: RunResult) -> dict:

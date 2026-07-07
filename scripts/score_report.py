@@ -4,6 +4,7 @@ import argparse
 import json
 import math
 import re
+import statistics
 from datetime import UTC, datetime
 from pathlib import Path
 from typing import Any
@@ -152,6 +153,37 @@ def _score_output(output: str, expected: Any, deterministic: bool) -> dict[str, 
     }
 
 
+def _stability_summary(scored_results: list[dict[str, Any]]) -> dict[str, Any] | None:
+    """Summarize how much a set of repeated runs of the same architecture + task varied.
+
+    LLM sampling is not fully deterministic, so identical (harness, architecture, task)
+    combinations can still swing between correct, partially correct, and total failure
+    across runs (see the `enterprise-codemode` / `adi-top-modules` reports this repo
+    shipped with). `score_stdev` and `distinct_outputs` make that variance measurable
+    instead of relying on a single run's score as ground truth.
+    """
+    if len(scored_results) < 2:
+        return None
+
+    ok_count = sum(1 for r in scored_results if r.get("ok"))
+    distinct_outputs = len({(r.get("output") or "").strip() for r in scored_results})
+    scores = [
+        r["scores"]["overall_score"]
+        for r in scored_results
+        if r["scores"]["scorable"] and r["scores"]["overall_score"] is not None
+    ]
+
+    return {
+        "runs": len(scored_results),
+        "ok_rate": round(ok_count / len(scored_results), 4),
+        "distinct_outputs": distinct_outputs,
+        "avg_overall_score": round(sum(scores) / len(scores), 4) if scores else None,
+        "score_stdev": round(statistics.pstdev(scores), 4) if len(scores) > 1 else (
+            0.0 if scores else None
+        ),
+    }
+
+
 def _score_single_result(
     result: dict[str, Any], task_name: str, gt_tasks: dict[str, Any]
 ) -> dict[str, Any]:
@@ -232,6 +264,43 @@ def score_report(report: dict[str, Any], ground_truth: dict[str, Any]) -> dict[s
             if halluc_vals
             else None,
         }
+
+        # When `--repeat N` was used, multiple results share the same architecture --
+        # break out per-architecture stability (score variance, output diversity) so a
+        # flaky architecture doesn't just silently average out against its own good runs.
+        by_architecture: dict[str, list[dict[str, Any]]] = {}
+        for r in scored_results:
+            by_architecture.setdefault(r["architecture"], []).append(r)
+        architecture_stability = {
+            arch: stability
+            for arch, arch_results in by_architecture.items()
+            if (stability := _stability_summary(arch_results)) is not None
+        }
+        if architecture_stability:
+            summary["architecture_stability"] = architecture_stability
+
+        return {
+            **report,
+            "scored_at": datetime.now(UTC).isoformat(),
+            "ground_truth_generated_at": ground_truth.get("generated_at"),
+            "results": scored_results,
+            "score_summary": summary,
+        }
+
+    if mode == "repeat":
+        task_name = report.get("task")
+        scored_results = [
+            _score_single_result(result, task_name=task_name, gt_tasks=gt_tasks)
+            for result in report.get("results", [])
+        ]
+        summary = _stability_summary(scored_results) or {
+            "runs": len(scored_results),
+            "ok_rate": None,
+            "distinct_outputs": None,
+            "avg_overall_score": None,
+            "score_stdev": None,
+        }
+        summary["overall_score_formula"] = "harmonic_mean(correctness, groundedness)"
 
         return {
             **report,

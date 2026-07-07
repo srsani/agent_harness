@@ -1,0 +1,64 @@
+{
+  "mode": "repeat",
+  "session_id": "agent-bench:run:pydantic-ai:adi-monthly-trend:20260705T165313Z:3c05a663",
+  "harness": "pydantic-ai",
+  "architecture": "enterprise-codemode",
+  "task": "adi-monthly-trend",
+  "repeat": 3,
+  "results": [
+    {
+      "harness": "pydantic-ai",
+      "architecture": "enterprise-codemode",
+      "task": "adi-monthly-trend",
+      "prompt": "Show monthly subscription revenue and activation count for the last calendar year in the database. In which month was revenue highest? What was the month-over-month growth from the lowest to the highest month?",
+      "output": "\n\nBased on the database analysis, here are the results:\n\n**Monthly Subscription Revenue and Activation Count (2026):**\n\n| month | monthly_revenue | activation_count |\n|-------|-----------------|------------------|\n| 2026-01 | 7720000.0 | 157 |\n| 2026-02 | 4893500.0 | 111 |\n| 2026-03 | 5937000.0 | 127 |\n| 2026-04 | 6210000.0 | 122 |\n| 2026-05 | 5954500.0 | 123 |\n| 2026-06 | 5873500.0 | 104 |\n| 2026-07 | 584500.0 | 13 |\n\n**Highest Revenue Month:** January 2026 (2026-01) with $7,720,000.0\n\n**Month-over-Month Growth from Lowest to Highest:** 1,220.8%\n\n- Lowest revenue month: July 2026 (2026-07) with $584,500.0\n- Highest revenue month: January 2026 (2026-01) with $7,720,000.0\n- Growth calculation: ($7,720,000.0 - $584,500.0) / $584,500.0 \u00d7 100 = 1,220.8%",
+      "started_at": "2026-07-05T16:53:13.927466+00:00",
+      "elapsed_seconds": 69.05176283400215,
+      "metadata": {
+        "langfuse_session_id": "agent-bench:run:pydantic-ai:adi-monthly-trend:20260705T165313Z:3c05a663:rep1",
+        "langfuse_trace_id": "efe967153c68e2c802b2c9531956f5f7",
+        "langfuse_observation_id": "9171511635127dae",
+        "langfuse_trace_url": "https://cloud.langfuse.com/project/cmr1ywsf000d5ad0cex3dm2ha/traces/efe967153c68e2c802b2c9531956f5f7",
+        "repeat_index": 1
+      },
+      "error": null,
+      "ok": true
+    },
+    {
+      "harness": "pydantic-ai",
+      "architecture": "enterprise-codemode",
+      "task": "adi-monthly-trend",
+      "prompt": "Show monthly subscription revenue and activation count for the last calendar year in the database. In which month was revenue highest? What was the month-over-month growth from the lowest to the highest month?",
+      "output": "\n\nBased on the database analysis, here are the results:\n\n**Monthly Subscription Revenue and Activation Count (2026):**\n\n| month | monthly_revenue | activation_count |\n|-------|-----------------|------------------|\n| 2026-01 | 7720000.0 | 157 |\n| 2026-02 | 4893500.0 | 111 |\n| 2026-03 | 5937000.0 | 127 |\n| 2026-04 | 6210000.0 | 122 |\n| 2026-05 | 5954500.0 | 123 |\n| 2026-06 | 5873500.0 | 104 |\n| 2026-07 | 584500.0 | 13 |\n\n**Highest Revenue Month:** January 2026 (2026-01) with $7,720,000.0\n\n**Month-over-Month Growth from Lowest to Highest:** 1,220.8%\n\n- Lowest revenue month: July 2026 (2026-07) with $584,500.0\n- Highest revenue month: January 2026 (2026-01) with $7,720,000.0\n- Growth calculation: ($7,720,000.0 - $584,500.0) / $584,500.0 \u00d7 100 = 1,220.8%",
+      "started_at": "2026-07-05T16:54:22.979532+00:00",
+      "elapsed_seconds": 67.00311116699595,
+      "metadata": {
+        "langfuse_session_id": "agent-bench:run:pydantic-ai:adi-monthly-trend:20260705T165313Z:3c05a663:rep2",
+        "langfuse_trace_id": "b0dc25effc8a1c51e9db219b51ec384f",
+        "langfuse_observation_id": "086f5708c44b41df",
+        "langfuse_trace_url": "https://cloud.langfuse.com/project/cmr1ywsf000d5ad0cex3dm2ha/traces/b0dc25effc8a1c51e9db219b51ec384f",
+        "repeat_index": 2
+      },
+      "error": null,
+      "ok": true
+    },
+    {
+      "harness": "pydantic-ai",
+      "architecture": "enterprise-codemode",
+      "task": "adi-monthly-trend",
+      "prompt": "Show monthly subscription revenue and activation count for the last calendar year in the database. In which month was revenue highest? What was the month-over-month growth from the lowest to the highest month?",
+      "output": "\n\nBased on the database analysis, here are the results:\n\n**Monthly Subscription Revenue and Activation Count (2026):**\n\n| month | monthly_revenue | activation_count |\n|-------|-----------------|------------------|\n| 2026-01 | 7720000.0 | 157 |\n| 2026-02 | 4893500.0 | 111 |\n| 2026-03 | 5937000.0 | 127 |\n| 2026-04 | 6210000.0 | 122 |\n| 2026-05 | 5954500.0 | 123 |\n| 2026-06 | 5873500.0 | 104 |\n| 2026-07 | 584500.0 | 13 |\n\n**Highest Revenue Month:** January 2026 (2026-01) with $7,720,000.0\n\n**Month-over-Month Growth from Lowest to Highest:** 1,220.8%\n\n- Lowest revenue month: July 2026 (2026-07) with $584,500.0\n- Highest revenue month: January 2026 (2026-01) with $7,720,000.0\n- Growth calculation: ($7,720,000.0 - $584,500.0) / $584,500.0 \u00d7 100 = 1,220.8%",
+      "started_at": "2026-07-05T16:55:29.983335+00:00",
+      "elapsed_seconds": 67.57261812499928,
+      "metadata": {
+        "langfuse_session_id": "agent-bench:run:pydantic-ai:adi-monthly-trend:20260705T165313Z:3c05a663:rep3",
+        "langfuse_trace_id": "6b273f23758391ca24c52f00c8118efd",
+        "langfuse_observation_id": "8830d405f101f85d",
+        "langfuse_trace_url": "https://cloud.langfuse.com/project/cmr1ywsf000d5ad0cex3dm2ha/traces/6b273f23758391ca24c52f00c8118efd",
+        "repeat_index": 3
+      },
+      "error": null,
+      "ok": true
+    }
+  ]
+}

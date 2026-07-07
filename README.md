@@ -212,6 +212,8 @@ These six architectures all answer the same tasks against the same SQLite databa
 - Total elapsed time
 - Output correctness
 
+**A note on run-to-run stability:** every architecture is built with `model_settings={"temperature": 0}` (see `runners.py`) to minimize output variance, and CodeMode's `run_code` retry budget is raised from its library default of 3 to 6 so an unlucky generation streak is less likely to exhaust retries and fail the whole run. Neither eliminates variance entirely — per pydantic-ai's own docs, `temperature=0` does not guarantee fully deterministic output, and `seed` is only honored by OpenAI/Groq/Cohere/Mistral/Gemini/xAI, not Anthropic (the default `agent_bench_model`). Use `agent-bench run --repeat N` / `run-all --repeat N` to directly measure how much a given architecture's answers vary across repeated runs of the same task — the scored report includes an `ok_rate`, `distinct_outputs`, and `score_stdev` per architecture.
+
 ---
 
 ## Test database

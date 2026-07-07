@@ -1,0 +1,64 @@
+{
+  "mode": "repeat",
+  "session_id": "agent-bench:run:pydantic-ai:adi-top-modules:20260705T163322Z:15adc916",
+  "harness": "pydantic-ai",
+  "architecture": "enterprise-codemode",
+  "task": "adi-top-modules",
+  "repeat": 3,
+  "results": [
+    {
+      "harness": "pydantic-ai",
+      "architecture": "enterprise-codemode",
+      "task": "adi-top-modules",
+      "prompt": "What are the top 5 most-activated analytics modules in the last 90 days? List each module's name, business function, activation count, and subscription revenue.",
+      "output": "\n\n| Module Name | Business Function | Activation Count | Subscription Revenue |\n|-------------|-------------------|------------------|---------------------|\n| Territory Performance Analyzer | Sales & Marketing | 39 | 652500.0 |\n| Talent Retention Predictor | HR & People | 36 | 891000.0 |\n| Order Fulfilment Tracker | Supply Chain | 33 | 379500.0 |\n| IP Portfolio Analyzer | Research & Development | 30 | 750000.0 |\n| Trial Success Probability Model | Research & Development | 27 | 1104000.0 |",
+      "started_at": "2026-07-05T16:33:22.670532+00:00",
+      "elapsed_seconds": 14.685758291998354,
+      "metadata": {
+        "langfuse_session_id": "agent-bench:run:pydantic-ai:adi-top-modules:20260705T163322Z:15adc916:rep1",
+        "langfuse_trace_id": "d91909de608c76c176a550f4ba246c12",
+        "langfuse_observation_id": "e473b4efadb8fba7",
+        "langfuse_trace_url": "https://cloud.langfuse.com/project/cmr1ywsf000d5ad0cex3dm2ha/traces/d91909de608c76c176a550f4ba246c12",
+        "repeat_index": 1
+      },
+      "error": null,
+      "ok": true
+    },
+    {
+      "harness": "pydantic-ai",
+      "architecture": "enterprise-codemode",
+      "task": "adi-top-modules",
+      "prompt": "What are the top 5 most-activated analytics modules in the last 90 days? List each module's name, business function, activation count, and subscription revenue.",
+      "output": "\n\n| Module Name | Business Function | Activation Count | Subscription Revenue |\n|-------------|-------------------|------------------|---------------------|\n| Territory Performance Analyzer | Sales & Marketing | 39 | 652500.0 |\n| Talent Retention Predictor | HR & People | 36 | 891000.0 |\n| Order Fulfilment Tracker | Supply Chain | 33 | 379500.0 |\n| IP Portfolio Analyzer | Research & Development | 30 | 750000.0 |\n| Trial Success Probability Model | Research & Development | 27 | 1104000.0 |",
+      "started_at": "2026-07-05T16:33:37.357087+00:00",
+      "elapsed_seconds": 12.405619167002442,
+      "metadata": {
+        "langfuse_session_id": "agent-bench:run:pydantic-ai:adi-top-modules:20260705T163322Z:15adc916:rep2",
+        "langfuse_trace_id": "ae6e755c82934c5724ec669ae98f611d",
+        "langfuse_observation_id": "5ac0a78b80e16ce2",
+        "langfuse_trace_url": "https://cloud.langfuse.com/project/cmr1ywsf000d5ad0cex3dm2ha/traces/ae6e755c82934c5724ec669ae98f611d",
+        "repeat_index": 2
+      },
+      "error": null,
+      "ok": true
+    },
+    {
+      "harness": "pydantic-ai",
+      "architecture": "enterprise-codemode",
+      "task": "adi-top-modules",
+      "prompt": "What are the top 5 most-activated analytics modules in the last 90 days? List each module's name, business function, activation count, and subscription revenue.",
+      "output": "\n\n| Module Name | Business Function | Activation Count | Subscription Revenue |\n|-------------|-------------------|------------------|---------------------|\n| Territory Performance Analyzer | Sales & Marketing | 39 | 652500.0 |\n| Talent Retention Predictor | HR & People | 36 | 891000.0 |\n| Order Fulfilment Tracker | Supply Chain | 33 | 379500.0 |\n| IP Portfolio Analyzer | Research & Development | 30 | 750000.0 |\n| Trial Success Probability Model | Research & Development | 27 | 1104000.0 |",
+      "started_at": "2026-07-05T16:33:49.763885+00:00",
+      "elapsed_seconds": 12.482404000002134,
+      "metadata": {
+        "langfuse_session_id": "agent-bench:run:pydantic-ai:adi-top-modules:20260705T163322Z:15adc916:rep3",
+        "langfuse_trace_id": "f6f6bac3c77e10557be23d6de833d29c",
+        "langfuse_observation_id": "66369ca2e586149e",
+        "langfuse_trace_url": "https://cloud.langfuse.com/project/cmr1ywsf000d5ad0cex3dm2ha/traces/f6f6bac3c77e10557be23d6de833d29c",
+        "repeat_index": 3
+      },
+      "error": null,
+      "ok": true
+    }
+  ]
+}

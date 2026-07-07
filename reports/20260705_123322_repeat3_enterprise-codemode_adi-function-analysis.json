@@ -1,0 +1,64 @@
+{
+  "mode": "repeat",
+  "session_id": "agent-bench:run:pydantic-ai:adi-function-analysis:20260705T163734Z:4b59d6ec",
+  "harness": "pydantic-ai",
+  "architecture": "enterprise-codemode",
+  "task": "adi-function-analysis",
+  "repeat": 3,
+  "results": [
+    {
+      "harness": "pydantic-ai",
+      "architecture": "enterprise-codemode",
+      "task": "adi-function-analysis",
+      "prompt": "For each business function, calculate: total subscription revenue in the last 6 months, number of unique users who subscribed to at least one module from that function, and the single highest-revenue module. Present the results sorted by revenue descending.",
+      "output": "\n\n| business_function | total_revenue | unique_users | highest_revenue_module |\n|-------------------|---------------|--------------|------------------------|\n| Research & Development | 9496000.0 | 80 | Trial Success Probability Model |\n| Supply Chain | 7195500.0 | 87 | Demand Forecast Engine |\n| Sales & Marketing | 7108500.0 | 77 | Market Share Monitor |\n| HR & People | 6700000.0 | 83 | Talent Retention Predictor |\n| Finance | 5982500.0 | 78 | Revenue Forecast Model |",
+      "started_at": "2026-07-05T16:37:34.758896+00:00",
+      "elapsed_seconds": 62.754313125005865,
+      "metadata": {
+        "langfuse_session_id": "agent-bench:run:pydantic-ai:adi-function-analysis:20260705T163734Z:4b59d6ec:rep1",
+        "langfuse_trace_id": "c6e01ae625e5034cb6276f8d5f32c5e9",
+        "langfuse_observation_id": "cdb27ac69fc963b6",
+        "langfuse_trace_url": "https://cloud.langfuse.com/project/cmr1ywsf000d5ad0cex3dm2ha/traces/c6e01ae625e5034cb6276f8d5f32c5e9",
+        "repeat_index": 1
+      },
+      "error": null,
+      "ok": true
+    },
+    {
+      "harness": "pydantic-ai",
+      "architecture": "enterprise-codemode",
+      "task": "adi-function-analysis",
+      "prompt": "For each business function, calculate: total subscription revenue in the last 6 months, number of unique users who subscribed to at least one module from that function, and the single highest-revenue module. Present the results sorted by revenue descending.",
+      "output": "\n\n| business_function | total_revenue | unique_users | highest_revenue_module |\n|-------------------|---------------|--------------|------------------------|\n| Research & Development | 9496000.0 | 80 | Trial Success Probability Model |\n| Supply Chain | 7195500.0 | 87 | Demand Forecast Engine |\n| Sales & Marketing | 7108500.0 | 77 | Market Share Monitor |\n| HR & People | 6700000.0 | 83 | Talent Retention Predictor |\n| Finance | 5982500.0 | 78 | Revenue Forecast Model |",
+      "started_at": "2026-07-05T16:38:37.513460+00:00",
+      "elapsed_seconds": 61.53977387499617,
+      "metadata": {
+        "langfuse_session_id": "agent-bench:run:pydantic-ai:adi-function-analysis:20260705T163734Z:4b59d6ec:rep2",
+        "langfuse_trace_id": "d0aff5c5eb581a191d21c50af49ac38e",
+        "langfuse_observation_id": "dfb8fb38aa3e7aed",
+        "langfuse_trace_url": "https://cloud.langfuse.com/project/cmr1ywsf000d5ad0cex3dm2ha/traces/d0aff5c5eb581a191d21c50af49ac38e",
+        "repeat_index": 2
+      },
+      "error": null,
+      "ok": true
+    },
+    {
+      "harness": "pydantic-ai",
+      "architecture": "enterprise-codemode",
+      "task": "adi-function-analysis",
+      "prompt": "For each business function, calculate: total subscription revenue in the last 6 months, number of unique users who subscribed to at least one module from that function, and the single highest-revenue module. Present the results sorted by revenue descending.",
+      "output": "\n\n| business_function | total_revenue | unique_users | highest_revenue_module |\n|-------------------|---------------|--------------|------------------------|\n| Research & Development | 9496000.0 | 80 | Trial Success Probability Model |\n| Supply Chain | 7195500.0 | 87 | Demand Forecast Engine |\n| Sales & Marketing | 7108500.0 | 77 | Market Share Monitor |\n| HR & People | 6700000.0 | 83 | Talent Retention Predictor |\n| Finance | 5982500.0 | 78 | Revenue Forecast Model |",
+      "started_at": "2026-07-05T16:39:39.054140+00:00",
+      "elapsed_seconds": 60.865907125000376,
+      "metadata": {
+        "langfuse_session_id": "agent-bench:run:pydantic-ai:adi-function-analysis:20260705T163734Z:4b59d6ec:rep3",
+        "langfuse_trace_id": "9b2603b1578bdc21302ab9ebac0f5f9a",
+        "langfuse_observation_id": "2a0e868b675083f4",
+        "langfuse_trace_url": "https://cloud.langfuse.com/project/cmr1ywsf000d5ad0cex3dm2ha/traces/9b2603b1578bdc21302ab9ebac0f5f9a",
+        "repeat_index": 3
+      },
+      "error": null,
+      "ok": true
+    }
+  ]
+}
