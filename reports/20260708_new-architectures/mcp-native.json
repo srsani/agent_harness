@@ -1,0 +1,15 @@
+{
+  "session_id": "agent-bench:run:pydantic-ai:adi-top-modules:20260708T121052Z:fcf64d56",
+  "harness": "pydantic-ai",
+  "architecture": "enterprise-mcp-react-native",
+  "task": "adi-top-modules",
+  "prompt": "What are the top 5 most-activated analytics modules in the last 90 days? List each module's name, business function, activation count, and subscription revenue.",
+  "output": "",
+  "started_at": "2026-07-08T12:10:52.369850+00:00",
+  "elapsed_seconds": 0.9044500000018161,
+  "metadata": {
+    "langfuse_session_id": "agent-bench:run:pydantic-ai:adi-top-modules:20260708T121052Z:fcf64d56"
+  },
+  "error": "RuntimeError: enterprise-mcp-react-native requires ENTERPRISE_MCP_PUBLIC_URL to be set. Native MCP tool calls are made server-side by the model provider (Anthropic / OpenAI / xAI) -- localhost is not reachable from their servers. Run `uv run python -m agent_harness.mcp_server` with a streamable-HTTP transport behind a public tunnel (e.g. ngrok) and point ENTERPRISE_MCP_PUBLIC_URL at it. See README 'MCP server' section.",
+  "ok": false
+}

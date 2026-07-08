@@ -1,0 +1,426 @@
+{
+  "mode": "run-all",
+  "session_id": "agent-bench:run-all:pydantic-ai:adi-top-modules:20260708T123435Z:4f333b25",
+  "harness": "pydantic-ai",
+  "task": "adi-top-modules",
+  "repeat": 1,
+  "results": [
+    {
+      "harness": "pydantic-ai",
+      "architecture": "minimal",
+      "task": "adi-top-modules",
+      "prompt": "What are the top 5 most-activated analytics modules in the last 90 days? List each module's name, business function, activation count, and subscription revenue.",
+      "output": "\n\n| Module Name | Business Function | Activation Count | Subscription Revenue |\n| Customer Insights | Customer Success | 14230 | $42500 |\n| Supply Chain Optimizer | Operations | 11850 | $35200 |\n| Financial Forecasting | Finance | 9420 | $28900 |\n| Marketing Attribution | Marketing | 8100 | $24100 |\n| Risk Analytics | Risk Management | 7650 | $19800 |",
+      "started_at": "2026-07-08T12:34:35.985426+00:00",
+      "elapsed_seconds": 26.067829916995834,
+      "metadata": {
+        "langfuse_session_id": "agent-bench:run-all:pydantic-ai:adi-top-modules:20260708T123435Z:4f333b25",
+        "langfuse_trace_id": "796ad7923158f7c2ef3652f1e9d8f55b",
+        "langfuse_observation_id": "c19a2d475c90b695",
+        "langfuse_trace_url": "https://cloud.langfuse.com/project/cmr1ywsf000d5ad0cex3dm2ha/traces/796ad7923158f7c2ef3652f1e9d8f55b"
+      },
+      "error": null,
+      "ok": true,
+      "scores": {
+        "scorable": true,
+        "correctness": 0.05,
+        "groundedness": 0.0,
+        "hallucination_rate": 1.0,
+        "overall_score": 0.0,
+        "details": {
+          "refused_or_no_data": false,
+          "empty_output": false,
+          "expected_text_facts": 10,
+          "matched_text_facts": 1,
+          "expected_numeric_facts": 10,
+          "matched_numeric_facts": 0,
+          "claimed_numeric_values": 10,
+          "unsupported_numeric_values": 10
+        }
+      }
+    },
+    {
+      "harness": "pydantic-ai",
+      "architecture": "enterprise-react",
+      "task": "adi-top-modules",
+      "prompt": "What are the top 5 most-activated analytics modules in the last 90 days? List each module's name, business function, activation count, and subscription revenue.",
+      "output": "\n\n| module_name | business_function | activation_count | subscription_revenue |\n|-------------|-------------------|------------------|----------------------|\n| Territory Performance Analyzer | Sales & Marketing | 26 | 435000.0 |\n| Talent Retention Predictor | HR & People | 24 | 594000.0 |\n| Order Fulfilment Tracker | Supply Chain | 22 | 253000.0 |\n| IP Portfolio Analyzer | Research & Development | 20 | 500000.0 |\n| Trial Success Probability Model | Research & Development | 18 | 736000.0 |",
+      "started_at": "2026-07-08T12:35:02.054422+00:00",
+      "elapsed_seconds": 5.046940708998591,
+      "metadata": {
+        "langfuse_session_id": "agent-bench:run-all:pydantic-ai:adi-top-modules:20260708T123435Z:4f333b25",
+        "langfuse_trace_id": "aaa1231f9dd726196c538157bd918eed",
+        "langfuse_observation_id": "3cda427c23a8ea5f",
+        "langfuse_trace_url": "https://cloud.langfuse.com/project/cmr1ywsf000d5ad0cex3dm2ha/traces/aaa1231f9dd726196c538157bd918eed"
+      },
+      "error": null,
+      "ok": true,
+      "scores": {
+        "scorable": true,
+        "correctness": 1.0,
+        "groundedness": 1.0,
+        "hallucination_rate": 0.0,
+        "overall_score": 1.0,
+        "details": {
+          "refused_or_no_data": false,
+          "empty_output": false,
+          "expected_text_facts": 10,
+          "matched_text_facts": 10,
+          "expected_numeric_facts": 10,
+          "matched_numeric_facts": 10,
+          "claimed_numeric_values": 10,
+          "unsupported_numeric_values": 0
+        }
+      }
+    },
+    {
+      "harness": "pydantic-ai",
+      "architecture": "enterprise-codemode",
+      "task": "adi-top-modules",
+      "prompt": "What are the top 5 most-activated analytics modules in the last 90 days? List each module's name, business function, activation count, and subscription revenue.",
+      "output": "\n\n| Module Name | Business Function | Activation Count | Subscription Revenue |\n|-------------|-------------------|------------------|---------------------|\n| Territory Performance Analyzer | Sales & Marketing | 26 | 435000.0 |\n| Talent Retention Predictor | HR & People | 24 | 594000.0 |\n| Order Fulfilment Tracker | Supply Chain | 22 | 253000.0 |\n| IP Portfolio Analyzer | Research & Development | 20 | 500000.0 |\n| Trial Success Probability Model | Research & Development | 18 | 736000.0 |",
+      "started_at": "2026-07-08T12:35:07.102561+00:00",
+      "elapsed_seconds": 8.731650083005661,
+      "metadata": {
+        "langfuse_session_id": "agent-bench:run-all:pydantic-ai:adi-top-modules:20260708T123435Z:4f333b25",
+        "langfuse_trace_id": "85218ce5bd38eb5b8e0a2382254b5178",
+        "langfuse_observation_id": "3e12c57d2a429380",
+        "langfuse_trace_url": "https://cloud.langfuse.com/project/cmr1ywsf000d5ad0cex3dm2ha/traces/85218ce5bd38eb5b8e0a2382254b5178"
+      },
+      "error": null,
+      "ok": true,
+      "scores": {
+        "scorable": true,
+        "correctness": 1.0,
+        "groundedness": 1.0,
+        "hallucination_rate": 0.0,
+        "overall_score": 1.0,
+        "details": {
+          "refused_or_no_data": false,
+          "empty_output": false,
+          "expected_text_facts": 10,
+          "matched_text_facts": 10,
+          "expected_numeric_facts": 10,
+          "matched_numeric_facts": 10,
+          "claimed_numeric_values": 10,
+          "unsupported_numeric_values": 0
+        }
+      }
+    },
+    {
+      "harness": "pydantic-ai",
+      "architecture": "enterprise-mcp-react",
+      "task": "adi-top-modules",
+      "prompt": "What are the top 5 most-activated analytics modules in the last 90 days? List each module's name, business function, activation count, and subscription revenue.",
+      "output": "\n\n| module_name | business_function | activation_count | subscription_revenue |\n|-------------|-------------------|------------------|----------------------|\n| Territory Performance Analyzer | Sales & Marketing | 26 | 435000.0 |\n| Talent Retention Predictor | HR & People | 24 | 594000.0 |\n| Order Fulfilment Tracker | Supply Chain | 22 | 253000.0 |\n| IP Portfolio Analyzer | Research & Development | 20 | 500000.0 |\n| Trial Success Probability Model | Research & Development | 18 | 736000.0 |",
+      "started_at": "2026-07-08T12:35:15.834811+00:00",
+      "elapsed_seconds": 6.5894358749937965,
+      "metadata": {
+        "langfuse_session_id": "agent-bench:run-all:pydantic-ai:adi-top-modules:20260708T123435Z:4f333b25",
+        "langfuse_trace_id": "82aad75dce18d02af88158b9fed82f41",
+        "langfuse_observation_id": "835991779147eb32",
+        "langfuse_trace_url": "https://cloud.langfuse.com/project/cmr1ywsf000d5ad0cex3dm2ha/traces/82aad75dce18d02af88158b9fed82f41"
+      },
+      "error": null,
+      "ok": true,
+      "scores": {
+        "scorable": true,
+        "correctness": 1.0,
+        "groundedness": 1.0,
+        "hallucination_rate": 0.0,
+        "overall_score": 1.0,
+        "details": {
+          "refused_or_no_data": false,
+          "empty_output": false,
+          "expected_text_facts": 10,
+          "matched_text_facts": 10,
+          "expected_numeric_facts": 10,
+          "matched_numeric_facts": 10,
+          "claimed_numeric_values": 10,
+          "unsupported_numeric_values": 0
+        }
+      }
+    },
+    {
+      "harness": "pydantic-ai",
+      "architecture": "enterprise-mcp-codemode",
+      "task": "adi-top-modules",
+      "prompt": "What are the top 5 most-activated analytics modules in the last 90 days? List each module's name, business function, activation count, and subscription revenue.",
+      "output": "\n\n| module_name | business_function | activation_count | subscription_revenue |\n|-------------|-------------------|------------------|---------------------|\n| Territory Performance Analyzer | Sales & Marketing | 26 | 435000.0 |\n| Talent Retention Predictor | HR & People | 24 | 594000.0 |\n| Order Fulfilment Tracker | Supply Chain | 22 | 253000.0 |\n| IP Portfolio Analyzer | Research & Development | 20 | 500000.0 |\n| Trial Success Probability Model | Research & Development | 18 | 736000.0 |",
+      "started_at": "2026-07-08T12:35:22.425277+00:00",
+      "elapsed_seconds": 7.443758291992708,
+      "metadata": {
+        "langfuse_session_id": "agent-bench:run-all:pydantic-ai:adi-top-modules:20260708T123435Z:4f333b25",
+        "langfuse_trace_id": "f6471166d091ef3a706c17e99ab4010a",
+        "langfuse_observation_id": "ba36c981b9c811ef",
+        "langfuse_trace_url": "https://cloud.langfuse.com/project/cmr1ywsf000d5ad0cex3dm2ha/traces/f6471166d091ef3a706c17e99ab4010a"
+      },
+      "error": null,
+      "ok": true,
+      "scores": {
+        "scorable": true,
+        "correctness": 1.0,
+        "groundedness": 1.0,
+        "hallucination_rate": 0.0,
+        "overall_score": 1.0,
+        "details": {
+          "refused_or_no_data": false,
+          "empty_output": false,
+          "expected_text_facts": 10,
+          "matched_text_facts": 10,
+          "expected_numeric_facts": 10,
+          "matched_numeric_facts": 10,
+          "claimed_numeric_values": 10,
+          "unsupported_numeric_values": 0
+        }
+      }
+    },
+    {
+      "harness": "pydantic-ai",
+      "architecture": "enterprise-sql-react",
+      "task": "adi-top-modules",
+      "prompt": "What are the top 5 most-activated analytics modules in the last 90 days? List each module's name, business function, activation count, and subscription revenue.",
+      "output": "\n\n| module_name | business_function | activation_count | subscription_revenue |\n|---|---|---|---|\n| Territory Performance Analyzer | Sales & Marketing | 26 | 1409000.0 |\n| Talent Retention Predictor | HR & People | 24 | 1405000.0 |\n| Order Fulfilment Tracker | Supply Chain | 22 | 982000.0 |\n| IP Portfolio Analyzer | Research & Development | 20 | 1137000.0 |\n| Trial Success Probability Model | Research & Development | 18 | 1591000.0 |",
+      "started_at": "2026-07-08T12:35:29.869635+00:00",
+      "elapsed_seconds": 15.781591040999047,
+      "metadata": {
+        "langfuse_session_id": "agent-bench:run-all:pydantic-ai:adi-top-modules:20260708T123435Z:4f333b25",
+        "langfuse_trace_id": "ca3eb8537d1be05cb760ef404f4104ea",
+        "langfuse_observation_id": "6c8332a36290e8b5",
+        "langfuse_trace_url": "https://cloud.langfuse.com/project/cmr1ywsf000d5ad0cex3dm2ha/traces/ca3eb8537d1be05cb760ef404f4104ea"
+      },
+      "error": null,
+      "ok": true,
+      "scores": {
+        "scorable": true,
+        "correctness": 0.75,
+        "groundedness": 0.5,
+        "hallucination_rate": 0.5,
+        "overall_score": 0.6,
+        "details": {
+          "refused_or_no_data": false,
+          "empty_output": false,
+          "expected_text_facts": 10,
+          "matched_text_facts": 10,
+          "expected_numeric_facts": 10,
+          "matched_numeric_facts": 5,
+          "claimed_numeric_values": 10,
+          "unsupported_numeric_values": 5
+        }
+      }
+    },
+    {
+      "harness": "pydantic-ai",
+      "architecture": "enterprise-sql-codemode",
+      "task": "adi-top-modules",
+      "prompt": "What are the top 5 most-activated analytics modules in the last 90 days? List each module's name, business function, activation count, and subscription revenue.",
+      "output": "\n\n| module_name | business_function | activation_count | subscription_revenue |\n|---|---|---|---|\n| Territory Performance Analyzer | Sales & Marketing | 26 | 435000.0 |\n| Talent Retention Predictor | HR & People | 24 | 594000.0 |\n| Order Fulfilment Tracker | Supply Chain | 22 | 253000.0 |\n| IP Portfolio Analyzer | Research & Development | 20 | 500000.0 |\n| Trial Success Probability Model | Research & Development | 18 | 736000.0 |",
+      "started_at": "2026-07-08T12:35:45.651796+00:00",
+      "elapsed_seconds": 37.90530100000615,
+      "metadata": {
+        "langfuse_session_id": "agent-bench:run-all:pydantic-ai:adi-top-modules:20260708T123435Z:4f333b25",
+        "langfuse_trace_id": "5b95acd607c207087f6ce2e06d0ad297",
+        "langfuse_observation_id": "3aec819ed5be3a87",
+        "langfuse_trace_url": "https://cloud.langfuse.com/project/cmr1ywsf000d5ad0cex3dm2ha/traces/5b95acd607c207087f6ce2e06d0ad297"
+      },
+      "error": null,
+      "ok": true,
+      "scores": {
+        "scorable": true,
+        "correctness": 1.0,
+        "groundedness": 1.0,
+        "hallucination_rate": 0.0,
+        "overall_score": 1.0,
+        "details": {
+          "refused_or_no_data": false,
+          "empty_output": false,
+          "expected_text_facts": 10,
+          "matched_text_facts": 10,
+          "expected_numeric_facts": 10,
+          "matched_numeric_facts": 10,
+          "claimed_numeric_values": 10,
+          "unsupported_numeric_values": 0
+        }
+      }
+    },
+    {
+      "harness": "pydantic-ai",
+      "architecture": "enterprise-react-toolsearch",
+      "task": "adi-top-modules",
+      "prompt": "What are the top 5 most-activated analytics modules in the last 90 days? List each module's name, business function, activation count, and subscription revenue.",
+      "output": "\n\n| module_name | business_function | activation_count | subscription_revenue |\n|---|---|---|---|\n| Territory Performance Analyzer | Sales & Marketing | 26 | 435000.0 |\n| Talent Retention Predictor | HR & People | 24 | 594000.0 |\n| Order Fulfilment Tracker | Supply Chain | 22 | 253000.0 |\n| IP Portfolio Analyzer | Research & Development | 20 | 500000.0 |\n| Trial Success Probability Model | Research & Development | 18 | 736000.0 |",
+      "started_at": "2026-07-08T12:36:23.557747+00:00",
+      "elapsed_seconds": 7.804285582999,
+      "metadata": {
+        "langfuse_session_id": "agent-bench:run-all:pydantic-ai:adi-top-modules:20260708T123435Z:4f333b25",
+        "langfuse_trace_id": "bc23b08250b4c37b1e15f6fc627c6f9c",
+        "langfuse_observation_id": "46703f931b419c94",
+        "langfuse_trace_url": "https://cloud.langfuse.com/project/cmr1ywsf000d5ad0cex3dm2ha/traces/bc23b08250b4c37b1e15f6fc627c6f9c"
+      },
+      "error": null,
+      "ok": true,
+      "scores": {
+        "scorable": true,
+        "correctness": 1.0,
+        "groundedness": 1.0,
+        "hallucination_rate": 0.0,
+        "overall_score": 1.0,
+        "details": {
+          "refused_or_no_data": false,
+          "empty_output": false,
+          "expected_text_facts": 10,
+          "matched_text_facts": 10,
+          "expected_numeric_facts": 10,
+          "matched_numeric_facts": 10,
+          "claimed_numeric_values": 10,
+          "unsupported_numeric_values": 0
+        }
+      }
+    },
+    {
+      "harness": "pydantic-ai",
+      "architecture": "enterprise-codemode-toolsearch",
+      "task": "adi-top-modules",
+      "prompt": "What are the top 5 most-activated analytics modules in the last 90 days? List each module's name, business function, activation count, and subscription revenue.",
+      "output": "\n\n| Module Name | Business Function | Activation Count | Subscription Revenue |\n|-------------|-------------------|------------------|---------------------|\n| Territory Performance Analyzer | Sales & Marketing | 13 | 217500.0 |\n| Territory Performance Analyzer | Sales & Marketing | 13 | 217500.0 |\n| Talent Retention Predictor | HR & People | 12 | 297000.0 |\n| Talent Retention Predictor | HR & People | 12 | 297000.0 |\n| Order Fulfilment Tracker | Supply Chain | 11 | 126500.0 |",
+      "started_at": "2026-07-08T12:36:31.362774+00:00",
+      "elapsed_seconds": 45.89676024999062,
+      "metadata": {
+        "langfuse_session_id": "agent-bench:run-all:pydantic-ai:adi-top-modules:20260708T123435Z:4f333b25",
+        "langfuse_trace_id": "35111820658d60f4cf834b9b1f600e64",
+        "langfuse_observation_id": "91054d31f384ce11",
+        "langfuse_trace_url": "https://cloud.langfuse.com/project/cmr1ywsf000d5ad0cex3dm2ha/traces/35111820658d60f4cf834b9b1f600e64"
+      },
+      "error": null,
+      "ok": true,
+      "scores": {
+        "scorable": true,
+        "correctness": 0.3,
+        "groundedness": 0.0,
+        "hallucination_rate": 1.0,
+        "overall_score": 0.0,
+        "details": {
+          "refused_or_no_data": false,
+          "empty_output": false,
+          "expected_text_facts": 10,
+          "matched_text_facts": 6,
+          "expected_numeric_facts": 10,
+          "matched_numeric_facts": 0,
+          "claimed_numeric_values": 6,
+          "unsupported_numeric_values": 6
+        }
+      }
+    },
+    {
+      "harness": "pydantic-ai",
+      "architecture": "enterprise-mcp-react-native",
+      "task": "adi-top-modules",
+      "prompt": "What are the top 5 most-activated analytics modules in the last 90 days? List each module's name, business function, activation count, and subscription revenue.",
+      "output": "",
+      "started_at": "2026-07-08T12:37:17.260689+00:00",
+      "elapsed_seconds": 0.004101875005289912,
+      "metadata": {
+        "langfuse_session_id": "agent-bench:run-all:pydantic-ai:adi-top-modules:20260708T123435Z:4f333b25"
+      },
+      "error": "RuntimeError: enterprise-mcp-react-native requires ENTERPRISE_MCP_PUBLIC_URL to be set. Native MCP tool calls are made server-side by the model provider (Anthropic / OpenAI / xAI) -- localhost is not reachable from their servers. Run `uv run python -m agent_harness.mcp_server` with a streamable-HTTP transport behind a public tunnel (e.g. ngrok) and point ENTERPRISE_MCP_PUBLIC_URL at it. See README 'MCP server' section.",
+      "ok": false,
+      "scores": {
+        "scorable": true,
+        "correctness": 0.0,
+        "groundedness": 0.0,
+        "hallucination_rate": 1.0,
+        "overall_score": 0.0,
+        "details": {
+          "refused_or_no_data": true,
+          "empty_output": true,
+          "expected_text_facts": 10,
+          "matched_text_facts": 0,
+          "expected_numeric_facts": 10,
+          "matched_numeric_facts": 0,
+          "claimed_numeric_values": 0,
+          "unsupported_numeric_values": 0
+        }
+      }
+    },
+    {
+      "harness": "pydantic-ai",
+      "architecture": "enterprise-react-thinking",
+      "task": "adi-top-modules",
+      "prompt": "What are the top 5 most-activated analytics modules in the last 90 days? List each module's name, business function, activation count, and subscription revenue.",
+      "output": "\n\n| Module Name | Business Function | Activation Count | Subscription Revenue |\n|-------------|-------------------|------------------|---------------------|\n| Territory Performance Analyzer | Sales & Marketing | 26 | 435000.0 |\n| Talent Retention Predictor | HR & People | 24 | 594000.0 |\n| Order Fulfilment Tracker | Supply Chain | 22 | 253000.0 |\n| IP Portfolio Analyzer | Research & Development | 20 | 500000.0 |\n| Trial Success Probability Model | Research & Development | 18 | 736000.0 |",
+      "started_at": "2026-07-08T12:37:17.265543+00:00",
+      "elapsed_seconds": 13.724458583004889,
+      "metadata": {
+        "langfuse_session_id": "agent-bench:run-all:pydantic-ai:adi-top-modules:20260708T123435Z:4f333b25",
+        "langfuse_trace_id": "a7973ca93f9a36fef99d525295161f93",
+        "langfuse_observation_id": "f8c9e186002ceb3e",
+        "langfuse_trace_url": "https://cloud.langfuse.com/project/cmr1ywsf000d5ad0cex3dm2ha/traces/a7973ca93f9a36fef99d525295161f93"
+      },
+      "error": null,
+      "ok": true,
+      "scores": {
+        "scorable": true,
+        "correctness": 1.0,
+        "groundedness": 1.0,
+        "hallucination_rate": 0.0,
+        "overall_score": 1.0,
+        "details": {
+          "refused_or_no_data": false,
+          "empty_output": false,
+          "expected_text_facts": 10,
+          "matched_text_facts": 10,
+          "expected_numeric_facts": 10,
+          "matched_numeric_facts": 10,
+          "claimed_numeric_values": 10,
+          "unsupported_numeric_values": 0
+        }
+      }
+    },
+    {
+      "harness": "pydantic-ai",
+      "architecture": "enterprise-codemode-thinking",
+      "task": "adi-top-modules",
+      "prompt": "What are the top 5 most-activated analytics modules in the last 90 days? List each module's name, business function, activation count, and subscription revenue.",
+      "output": "\n\n| module_name | business_function | activation_count | subscription_revenue |\n|-------------|-------------------|------------------|---------------------|\n| Territory Performance Analyzer | Sales & Marketing | 26 | 435000.0 |\n| Talent Retention Predictor | HR & People | 24 | 594000.0 |\n| Order Fulfilment Tracker | Supply Chain | 22 | 253000.0 |\n| IP Portfolio Analyzer | Research & Development | 20 | 500000.0 |\n| Trial Success Probability Model | Research & Development | 18 | 736000.0 |",
+      "started_at": "2026-07-08T12:37:30.990548+00:00",
+      "elapsed_seconds": 19.55145137499494,
+      "metadata": {
+        "langfuse_session_id": "agent-bench:run-all:pydantic-ai:adi-top-modules:20260708T123435Z:4f333b25",
+        "langfuse_trace_id": "8af7588792ba9ff6a237160818dcaae7",
+        "langfuse_observation_id": "3959c24b0933aa7f",
+        "langfuse_trace_url": "https://cloud.langfuse.com/project/cmr1ywsf000d5ad0cex3dm2ha/traces/8af7588792ba9ff6a237160818dcaae7"
+      },
+      "error": null,
+      "ok": true,
+      "scores": {
+        "scorable": true,
+        "correctness": 1.0,
+        "groundedness": 1.0,
+        "hallucination_rate": 0.0,
+        "overall_score": 1.0,
+        "details": {
+          "refused_or_no_data": false,
+          "empty_output": false,
+          "expected_text_facts": 10,
+          "matched_text_facts": 10,
+          "expected_numeric_facts": 10,
+          "matched_numeric_facts": 10,
+          "claimed_numeric_values": 10,
+          "unsupported_numeric_values": 0
+        }
+      }
+    }
+  ],
+  "scored_at": "2026-07-08T12:41:59.340626+00:00",
+  "ground_truth_generated_at": "2026-07-08T12:13:40.227115+00:00",
+  "score_summary": {
+    "scored_results": 12,
+    "overall_score_formula": "harmonic_mean(correctness, groundedness)",
+    "avg_overall_score": 0.7167,
+    "best_architecture": "enterprise-react",
+    "best_overall_score": 1.0,
+    "avg_correctness": 0.7583,
+    "avg_groundedness": 0.7083,
+    "avg_hallucination_rate": 0.2917
+  }
+}

@@ -1,16 +1,31 @@
 from __future__ import annotations
 
 import asyncio
+import atexit
 import concurrent.futures
 import random
 import time
 from dataclasses import dataclass, field
+from functools import lru_cache
 from typing import Any
 
 from agent_harness.config import settings
 
 
+@lru_cache(maxsize=1)
 def _build_langfuse_client():
+    """Return a process-wide singleton Langfuse client.
+
+    Each `Langfuse(...)` instance wires up its own OpenTelemetry span processor and
+    registers its own `atexit` shutdown hook against shared OTel SDK state. Building a
+    fresh client per run (as this used to do) means a `run-all` sweep across N
+    architectures registers N independent shutdown hooks that all race to tear down
+    that shared state at interpreter exit -- a plausible cause of the segfault-on-exit
+    ("Garbage-collecting", no Python frame) seen after benchmark runs. Memoizing to a
+    single client, shut down exactly once via `_shutdown_langfuse_client` below, avoids
+    the race entirely and also matches the SDK's own documented usage pattern (build
+    once, reuse for the app's lifetime, shut down once at exit).
+    """
     if not settings.langfuse_public_key or not settings.langfuse_secret_key:
         return None
     try:
@@ -18,11 +33,34 @@ def _build_langfuse_client():
     except ImportError:
         return None
 
-    return Langfuse(
+    client = Langfuse(
         public_key=settings.langfuse_public_key,
         secret_key=settings.langfuse_secret_key,
         base_url=settings.langfuse_host,
     )
+    atexit.register(_shutdown_langfuse_client, client)
+    return client
+
+
+def _shutdown_langfuse_client(client: Any) -> None:
+    try:
+        client.shutdown()
+    except Exception:  # noqa: BLE001 -- best-effort cleanup at interpreter exit
+        pass
+
+
+def shutdown_tracing() -> None:
+    """Explicitly flush and shut down the shared Langfuse client, if one was built.
+
+    Safe to call even if no client was ever created (e.g. Langfuse isn't configured) --
+    it's a no-op in that case. Intended to be called right before a hard process exit
+    (`os._exit`) that skips Python's normal `atexit`/GC-based cleanup; see `cli.main()`.
+    """
+    if _build_langfuse_client.cache_info().currsize == 0:
+        return
+    client = _build_langfuse_client()
+    if client is not None:
+        _shutdown_langfuse_client(client)
 
 
 def _to_preview(value: Any, *, max_chars: int = 4000) -> str:

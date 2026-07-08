@@ -212,6 +212,20 @@ These six architectures all answer the same tasks against the same SQLite databa
 - Total elapsed time
 - Output correctness
 
+### Exploratory (new orchestration axes, same 17 tools)
+
+| Name | Tools registered via | What's different |
+|---|---|---|
+| `enterprise-react-toolsearch` | Direct, `defer_loading=True` | [`ToolSearch`](https://ai.pydantic.dev) discovers tools on demand instead of sending all 17 schemas up front |
+| `enterprise-codemode-toolsearch` | Direct, `defer_loading=True` | Same on-demand discovery, then batched into `run_code` like `enterprise-codemode` |
+| `enterprise-mcp-react-native` | Local FastMCP server, `native=True` | The model **provider** calls the MCP server directly instead of pydantic-ai proxying locally — requires `ENTERPRISE_MCP_PUBLIC_URL` (see below) |
+| `enterprise-react-thinking` | Direct function registration | Extended thinking enabled before each tool call |
+| `enterprise-codemode-thinking` | Direct function registration | Extended thinking enabled before the sandboxed `run_code` call |
+
+**Native MCP requires a public URL.** Unlike `enterprise-mcp-react`/`enterprise-mcp-codemode` (where pydantic-ai proxies MCP calls locally against the in-process `FastMCP` server), native MCP tool calls are made server-side by the model provider itself — the provider's servers connect directly to the MCP endpoint, so `localhost` is unreachable. Run the server with a streamable-HTTP transport behind a public tunnel (e.g. `ngrok http 8000`) and set `ENTERPRISE_MCP_PUBLIC_URL` in `.env`. There is no `enterprise-mcp-codemode-native`: native MCP tool calls are executed by the provider, never as local pydantic-ai function tools, so there's nothing for CodeMode to batch into a sandboxed `run_code` call.
+
+**Thinking variants drop the `temperature=0` pin.** Anthropic's extended thinking (and most reasoning-effort APIs) reject a pinned temperature, so `enterprise-react-thinking`/`enterprise-codemode-thinking` fall back to the provider's own sampling behavior — expect somewhat more run-to-run variance than the other architectures.
+
 **A note on run-to-run stability:** every architecture is built with `model_settings={"temperature": 0}` (see `runners.py`) to minimize output variance, and CodeMode's `run_code` retry budget is raised from its library default of 3 to 6 so an unlucky generation streak is less likely to exhaust retries and fail the whole run. Neither eliminates variance entirely — per pydantic-ai's own docs, `temperature=0` does not guarantee fully deterministic output, and `seed` is only honored by OpenAI/Groq/Cohere/Mistral/Gemini/xAI, not Anthropic (the default `agent_bench_model`). Use `agent-bench run --repeat N` / `run-all --repeat N` to directly measure how much a given architecture's answers vary across repeated runs of the same task — the scored report includes an `ok_rate`, `distinct_outputs`, and `score_stdev` per architecture.
 
 ---
@@ -273,6 +287,11 @@ All 17 tools are also exposed over the [MCP protocol](https://modelcontextprotoc
 ```bash
 # Run the server standalone (stdio transport)
 uv run python -m agent_harness.mcp_server
+
+# Run over HTTP (streamable-http, on :8000/mcp) — needed for enterprise-mcp-react-native.
+# Put this behind a public tunnel (e.g. `ngrok http 8000`) and set ENTERPRISE_MCP_PUBLIC_URL
+# to the tunnel's /mcp URL, since native MCP calls are made server-side by the provider.
+uv run python -m agent_harness.mcp_server --http
 ```
 
 Connect any MCP-compatible client to it, or use it as an in-process capability in pydantic-ai:

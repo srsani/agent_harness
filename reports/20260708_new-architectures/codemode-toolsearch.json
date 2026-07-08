@@ -1,0 +1,15 @@
+{
+  "session_id": "agent-bench:run:pydantic-ai:adi-top-modules:20260708T120944Z:50f6f377",
+  "harness": "pydantic-ai",
+  "architecture": "enterprise-codemode-toolsearch",
+  "task": "adi-top-modules",
+  "prompt": "What are the top 5 most-activated analytics modules in the last 90 days? List each module's name, business function, activation count, and subscription revenue.",
+  "output": "",
+  "started_at": "2026-07-08T12:09:44.386657+00:00",
+  "elapsed_seconds": 14.287502540988498,
+  "metadata": {
+    "langfuse_session_id": "agent-bench:run:pydantic-ai:adi-top-modules:20260708T120944Z:50f6f377"
+  },
+  "error": "SQLError: near \"'90'\": syntax error",
+  "ok": false
+}

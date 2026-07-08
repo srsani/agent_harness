@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import json
+import os
 from datetime import UTC, datetime
 from pathlib import Path
 from uuid import uuid4
@@ -246,5 +247,32 @@ def _write_json_report(path: Path, payload: dict) -> None:
     console.print(f"[green]Saved JSON report:[/] {path}")
 
 
+def main() -> None:
+    """Console-script entry point (see `[project.scripts]` in pyproject.toml).
+
+    Runs `app()` and hard-exits via `os._exit()` instead of letting the interpreter
+    unwind and finalize normally. Every benchmark run reliably segfaults during
+    interpreter shutdown ("Fatal Python error: Segmentation fault" / "Garbage-collecting"
+    / no Python frame) *after* results are already printed and saved -- narrowed to
+    something in the combined CLI + tracing + local-model-client import/teardown graph,
+    not any single library in isolation. `os._exit()` skips that finalization sequence
+    (GC, module teardown, atexit) entirely, so we explicitly flush/shut down tracing
+    first (see `shutdown_tracing`) to avoid losing buffered Langfuse spans.
+    """
+    import sys
+
+    from agent_harness.harnesses.pydantic_ai.traced_agent import shutdown_tracing
+
+    exit_code = 0
+    try:
+        app()
+    except SystemExit as exc:
+        exit_code = exc.code if isinstance(exc.code, int) else (1 if exc.code else 0)
+    shutdown_tracing()
+    sys.stdout.flush()
+    sys.stderr.flush()
+    os._exit(exit_code)
+
+
 if __name__ == "__main__":
-    app()
+    main()

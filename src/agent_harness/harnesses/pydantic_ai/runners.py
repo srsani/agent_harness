@@ -24,6 +24,21 @@ _MODEL_SETTINGS = {"temperature": 0.0}
 # Raising it gives the model more chances to self-correct before giving up.
 _CODE_MODE_MAX_RETRIES = 6
 
+# Anthropic's extended thinking (and most reasoning-effort APIs) reject a pinned
+# `temperature=0` — thinking requires the provider's own sampling behavior. The
+# `Thinking` capability variants below intentionally omit the `temperature` pin used
+# everywhere else in this file, at the cost of the extra determinism that pin buys.
+_THINKING_MODEL_SETTINGS: dict = {}
+
+# pydantic-ai defaults a tool's own retry budget to 1: a single bad-argument call (e.g.
+# a string where an int is expected) raises `ModelRetry` once, and a second miss fails
+# the whole run with `UnexpectedModelBehavior: Tool '...' exceeded max retries count of
+# 1`. That's tight for smaller/local models, and especially for CodeMode, where the
+# tool call happens indirectly through model-generated Python rather than a
+# schema-validated tool-call block. Same motivation as `_CODE_MODE_MAX_RETRIES` above:
+# give the model more chances to self-correct before giving up.
+_TOOL_RETRIES = 3
+
 ENTERPRISE_SYSTEM_PROMPT = (
     "You are an AI Decision Intelligence analyst for an enterprise platform. "
     "Your role is to connect siloed data across business functions — finance, supply chain, sales, "
@@ -84,6 +99,34 @@ def _optional_logfire() -> None:
     logfire.instrument_pydantic_ai()
 
 
+def _retryable(fn):
+    """Wrap a tool function so any exception it raises becomes a `pydantic_ai.ModelRetry`.
+
+    `sql.py`'s tools raise a plain `SQLError` (e.g. bad SQL syntax, unknown table) so they
+    stay usable as framework-agnostic callables (MCP tools, notebook cells, standalone
+    scripts). But pydantic-ai's tool-call retry machinery only treats `ValidationError`/
+    `ModelRetry` as retryable -- any other exception propagates straight up and kills the
+    whole run instantly, regardless of the `retries=` budget on the `Agent`. This wrapper
+    bridges that gap at the harness registration layer instead of coupling `sql.py` itself
+    to pydantic-ai. `functools.wraps` preserves `__name__`/`__doc__`/signature so
+    pydantic-ai still derives the correct tool schema from the wrapped function.
+    """
+    from functools import wraps
+
+    from pydantic_ai import ModelRetry
+
+    @wraps(fn)
+    def wrapper(*args, **kwargs):
+        try:
+            return fn(*args, **kwargs)
+        except ModelRetry:
+            raise
+        except Exception as exc:  # noqa: BLE001 -- any tool-raised error becomes a retry
+            raise ModelRetry(str(exc)) from exc
+
+    return wrapper
+
+
 def _enterprise_tools():
     """Return all typed enterprise Decision Intelligence tool functions for direct registration."""
     from agent_harness.tools.enterprise import (
@@ -107,6 +150,9 @@ def _enterprise_tools():
         get_schema_context,
         list_tables,
     )
+
+    describe_table = _retryable(describe_table)
+    execute_sql = _retryable(execute_sql)
 
     return [
         get_schema_context,
@@ -178,7 +224,10 @@ def _build_enterprise_react_agent():
     from pydantic_ai import Agent
 
     agent = Agent(
-        _model(), system_prompt=ENTERPRISE_SYSTEM_PROMPT, model_settings=_MODEL_SETTINGS
+        _model(),
+        system_prompt=ENTERPRISE_SYSTEM_PROMPT,
+        model_settings=_MODEL_SETTINGS,
+        retries=_TOOL_RETRIES,
     )
     for fn in _enterprise_tools():
         agent.tool_plain(fn)
@@ -195,6 +244,7 @@ def _build_enterprise_codemode_agent():
         system_prompt=ENTERPRISE_SYSTEM_PROMPT,
         capabilities=[CodeMode(max_retries=_CODE_MODE_MAX_RETRIES)],
         model_settings=_MODEL_SETTINGS,
+        retries=_TOOL_RETRIES,
     )
     for fn in _enterprise_tools():
         agent.tool_plain(fn)
@@ -213,6 +263,7 @@ def _build_enterprise_mcp_react_agent():
         system_prompt=ENTERPRISE_SYSTEM_PROMPT,
         capabilities=[MCP(mcp, native=False)],
         model_settings=_MODEL_SETTINGS,
+        retries=_TOOL_RETRIES,
     )
 
 
@@ -223,9 +274,12 @@ def _build_enterprise_sql_react_agent():
     from agent_harness.tools.sql import describe_table, execute_sql, list_tables
 
     agent = Agent(
-        _model(), system_prompt=ENTERPRISE_SQL_SYSTEM_PROMPT, model_settings=_MODEL_SETTINGS
+        _model(),
+        system_prompt=ENTERPRISE_SQL_SYSTEM_PROMPT,
+        model_settings=_MODEL_SETTINGS,
+        retries=_TOOL_RETRIES,
     )
-    for fn in [list_tables, describe_table, execute_sql]:
+    for fn in [list_tables, _retryable(describe_table), _retryable(execute_sql)]:
         agent.tool_plain(fn)
     return agent
 
@@ -242,8 +296,9 @@ def _build_enterprise_sql_codemode_agent():
         system_prompt=ENTERPRISE_SQL_SYSTEM_PROMPT,
         capabilities=[CodeMode(max_retries=_CODE_MODE_MAX_RETRIES)],
         model_settings=_MODEL_SETTINGS,
+        retries=_TOOL_RETRIES,
     )
-    for fn in [list_tables, describe_table, execute_sql]:
+    for fn in [list_tables, _retryable(describe_table), _retryable(execute_sql)]:
         agent.tool_plain(fn)
     return agent
 
@@ -261,7 +316,115 @@ def _build_enterprise_mcp_codemode_agent():
         system_prompt=ENTERPRISE_SYSTEM_PROMPT,
         capabilities=[CodeMode(max_retries=_CODE_MODE_MAX_RETRIES), MCP(mcp, native=False)],
         model_settings=_MODEL_SETTINGS,
+        retries=_TOOL_RETRIES,
     )
+
+
+def _build_enterprise_react_toolsearch_agent():
+    """ReAct + ToolSearch: same 17 tools, but hidden behind on-demand discovery
+    (`defer_loading=True`) instead of all 17 schemas being sent to the model every turn."""
+    from pydantic_ai import Agent
+    from pydantic_ai.capabilities import ToolSearch
+
+    agent = Agent(
+        _model(),
+        system_prompt=ENTERPRISE_SYSTEM_PROMPT,
+        capabilities=[ToolSearch()],
+        model_settings=_MODEL_SETTINGS,
+        retries=_TOOL_RETRIES,
+    )
+    for fn in _enterprise_tools():
+        agent.tool_plain(fn, defer_loading=True)
+    return agent
+
+
+def _build_enterprise_codemode_toolsearch_agent():
+    """Harness/CodeMode + ToolSearch: tools stay hidden until discovered, then whatever
+    gets discovered is batched inside the sandboxed run_code call like plain CodeMode."""
+    from pydantic_ai import Agent
+    from pydantic_ai.capabilities import ToolSearch
+    from pydantic_ai_harness import CodeMode
+
+    agent = Agent(
+        _model(),
+        system_prompt=ENTERPRISE_SYSTEM_PROMPT,
+        capabilities=[CodeMode(max_retries=_CODE_MODE_MAX_RETRIES), ToolSearch()],
+        model_settings=_MODEL_SETTINGS,
+        retries=_TOOL_RETRIES,
+    )
+    for fn in _enterprise_tools():
+        agent.tool_plain(fn, defer_loading=True)
+    return agent
+
+
+def _enterprise_mcp_public_url() -> str:
+    if not settings.enterprise_mcp_public_url:
+        raise RuntimeError(
+            "enterprise-mcp-react-native requires ENTERPRISE_MCP_PUBLIC_URL to be set. "
+            "Native MCP tool calls are made server-side by the model provider (Anthropic / "
+            "OpenAI / xAI) -- localhost is not reachable from their servers. Run "
+            "`uv run python -m agent_harness.mcp_server` with a streamable-HTTP transport "
+            "behind a public tunnel (e.g. ngrok) and point ENTERPRISE_MCP_PUBLIC_URL at it. "
+            "See README 'MCP server' section."
+        )
+    return settings.enterprise_mcp_public_url
+
+
+def _build_enterprise_mcp_react_native_agent():
+    """ReAct via native MCP: the model provider connects to the MCP server directly instead
+    of pydantic-ai proxying calls locally. Requires ENTERPRISE_MCP_PUBLIC_URL.
+
+    No CodeMode counterpart: native MCP tool calls are executed server-side by the provider,
+    never as local pydantic-ai function tools, so there is nothing CodeMode could batch into
+    a sandboxed run_code call -- see `pydantic_ai_harness.CodeMode` docs (it only wraps tools
+    the agent executes locally)."""
+    from pydantic_ai import Agent
+    from pydantic_ai.capabilities import MCP
+
+    return Agent(
+        _model(),
+        system_prompt=ENTERPRISE_SYSTEM_PROMPT,
+        capabilities=[MCP(_enterprise_mcp_public_url(), native=True)],
+        model_settings=_MODEL_SETTINGS,
+        retries=_TOOL_RETRIES,
+    )
+
+
+def _build_enterprise_react_thinking_agent():
+    """ReAct + extended thinking: isolates whether reasoning tokens reduce wasted tool calls
+    on multi-step join tasks, at the cost of latency and the temperature=0 determinism pin."""
+    from pydantic_ai import Agent
+    from pydantic_ai.capabilities import Thinking
+
+    agent = Agent(
+        _model(),
+        system_prompt=ENTERPRISE_SYSTEM_PROMPT,
+        capabilities=[Thinking()],
+        model_settings=_THINKING_MODEL_SETTINGS,
+        retries=_TOOL_RETRIES,
+    )
+    for fn in _enterprise_tools():
+        agent.tool_plain(fn)
+    return agent
+
+
+def _build_enterprise_codemode_thinking_agent():
+    """Harness/CodeMode + extended thinking: same tools batched in CodeMode, with the model
+    reasoning before it writes the sandboxed run_code call."""
+    from pydantic_ai import Agent
+    from pydantic_ai.capabilities import Thinking
+    from pydantic_ai_harness import CodeMode
+
+    agent = Agent(
+        _model(),
+        system_prompt=ENTERPRISE_SYSTEM_PROMPT,
+        capabilities=[CodeMode(max_retries=_CODE_MODE_MAX_RETRIES), Thinking()],
+        model_settings=_THINKING_MODEL_SETTINGS,
+        retries=_TOOL_RETRIES,
+    )
+    for fn in _enterprise_tools():
+        agent.tool_plain(fn)
+    return agent
 
 
 ARCHITECTURE_BUILDERS: dict[str, tuple[str, Callable[[], object]]] = {
@@ -302,6 +465,31 @@ ARCHITECTURE_BUILDERS: dict[str, tuple[str, Callable[[], object]]] = {
     "enterprise-sql-codemode": (
         "SQL-only CodeMode: same 3 SQL tools but schema discovery + queries run in one sandbox.",
         _build_enterprise_sql_codemode_agent,
+    ),
+    # ── exploratory architectures: new orchestration axes on the same 17 tools ────
+    "enterprise-react-toolsearch": (
+        "ReAct + ToolSearch: all 17 tools are defer_loading=True, discovered on demand "
+        "instead of sent to the model up front every turn.",
+        _build_enterprise_react_toolsearch_agent,
+    ),
+    "enterprise-codemode-toolsearch": (
+        "Harness/CodeMode + ToolSearch: tools discovered on demand, then batched into "
+        "the sandboxed run_code call like plain enterprise-codemode.",
+        _build_enterprise_codemode_toolsearch_agent,
+    ),
+    "enterprise-mcp-react-native": (
+        "ReAct via native MCP: the model provider calls the MCP server directly "
+        "(no local proxying). Requires ENTERPRISE_MCP_PUBLIC_URL.",
+        _build_enterprise_mcp_react_native_agent,
+    ),
+    "enterprise-react-thinking": (
+        "ReAct + extended thinking: same 17 tools, model reasons before each tool call.",
+        _build_enterprise_react_thinking_agent,
+    ),
+    "enterprise-codemode-thinking": (
+        "Harness/CodeMode + extended thinking: same tools batched in CodeMode, with "
+        "reasoning before the sandboxed run_code call.",
+        _build_enterprise_codemode_thinking_agent,
     ),
 }
 

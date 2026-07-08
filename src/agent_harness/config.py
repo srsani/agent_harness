@@ -29,6 +29,12 @@ class Settings(BaseSettings):
     agent_bench_local_base_url: str | None = None  # e.g. http://192.168.68.60:1234/v1
     agent_bench_local_api_key: str = "lm-studio"   # LM Studio ignores this value
 
+    # Public URL for the enterprise FastMCP server, required by the `enterprise-mcp-react-native`
+    # architecture. Native MCP tool calls are made server-side by the model provider (Anthropic /
+    # OpenAI / xAI), so `localhost` is not reachable — expose `agent_harness.mcp_server` (streamable
+    # HTTP transport) via a public tunnel (e.g. ngrok) and point this at it.
+    enterprise_mcp_public_url: str | None = None
+
     @property
     def is_local(self) -> bool:
         return self.agent_bench_model.startswith("local:")

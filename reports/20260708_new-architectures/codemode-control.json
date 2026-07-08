@@ -1,0 +1,15 @@
+{
+  "session_id": "agent-bench:run:pydantic-ai:adi-top-modules:20260708T121015Z:b619379f",
+  "harness": "pydantic-ai",
+  "architecture": "enterprise-codemode",
+  "task": "adi-top-modules",
+  "prompt": "What are the top 5 most-activated analytics modules in the last 90 days? List each module's name, business function, activation count, and subscription revenue.",
+  "output": "",
+  "started_at": "2026-07-08T12:10:15.277377+00:00",
+  "elapsed_seconds": 5.638311040995177,
+  "metadata": {
+    "langfuse_session_id": "agent-bench:run:pydantic-ai:adi-top-modules:20260708T121015Z:b619379f"
+  },
+  "error": "UnexpectedModelBehavior: Tool 'get_top_selling_products' exceeded max retries count of 1",
+  "ok": false
+}

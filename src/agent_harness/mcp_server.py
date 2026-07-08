@@ -1,7 +1,12 @@
 """FastMCP server that exposes all enterprise Decision Intelligence tools over the MCP protocol.
 
-Run standalone:
+Run standalone (stdio, for local MCP clients):
     uv run python -m agent_harness.mcp_server
+
+Run over HTTP (required for the `enterprise-mcp-react-native` architecture — put this
+behind a public tunnel, e.g. `ngrok http 8000`, and point ENTERPRISE_MCP_PUBLIC_URL at
+the tunnel's `/mcp` URL):
+    uv run python -m agent_harness.mcp_server --http
 
 Or add to an agent as an in-process MCP server:
     from agent_harness.mcp_server import mcp
@@ -9,6 +14,8 @@ Or add to an agent as an in-process MCP server:
 """
 
 from __future__ import annotations
+
+import sys
 
 from mcp.server.fastmcp import FastMCP
 
@@ -233,4 +240,7 @@ def tool_get_revenue_by_month(year: int) -> list[dict]:
 
 
 if __name__ == "__main__":
-    mcp.run()
+    if "--http" in sys.argv:
+        mcp.run(transport="streamable-http")
+    else:
+        mcp.run()
