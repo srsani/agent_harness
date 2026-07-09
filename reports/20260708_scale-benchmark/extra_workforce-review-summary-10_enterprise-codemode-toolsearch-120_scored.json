@@ -1,0 +1,85 @@
+{
+  "session_id": "agent-bench:run:pydantic-ai:workforce-review-summary-10:20260709T181541Z:fabbcfe7",
+  "harness": "pydantic-ai",
+  "architecture": "enterprise-codemode-toolsearch-120",
+  "task": "workforce-review-summary-10",
+  "prompt": "Summarize employee ID 10's performance review history: review count, average rating, and most recent review date.",
+  "output": "\n\n| review_count | avg_rating | most_recent_review_date |\n|--------------|------------|-------------------------|\n| 1 | 4.0 | 2025-10-31T22:35:43 |",
+  "started_at": "2026-07-09T18:15:41.466573+00:00",
+  "elapsed_seconds": 14.582239416980883,
+  "metadata": {
+    "langfuse_session_id": "agent-bench:run:pydantic-ai:workforce-review-summary-10:20260709T181541Z:fabbcfe7",
+    "tool_calls": [
+      {
+        "tool_name": "search_tools",
+        "via": "native"
+      },
+      {
+        "tool_name": "get_performance_review_summary",
+        "via": "native"
+      },
+      {
+        "tool_name": "get_employee",
+        "via": "native"
+      },
+      {
+        "tool_name": "search_tools",
+        "via": "native"
+      },
+      {
+        "tool_name": "execute_sql",
+        "via": "native"
+      },
+      {
+        "tool_name": "execute_sql",
+        "via": "native"
+      },
+      {
+        "tool_name": "execute_sql",
+        "via": "native"
+      }
+    ],
+    "langfuse_trace_id": "732439e2ff0d57d08bcd4a2121abcccc",
+    "langfuse_observation_id": "dbf93b4183542fb9",
+    "langfuse_trace_url": "https://cloud.langfuse.com/project/cmr1ywsf000d5ad0cex3dm2ha/traces/732439e2ff0d57d08bcd4a2121abcccc"
+  },
+  "error": null,
+  "ok": true,
+  "scores": {
+    "scorable": true,
+    "correctness": 0.75,
+    "groundedness": 0.375,
+    "hallucination_rate": 0.625,
+    "overall_score": 0.5,
+    "details": {
+      "refused_or_no_data": false,
+      "empty_output": false,
+      "expected_text_facts": 1,
+      "matched_text_facts": 0,
+      "expected_numeric_facts": 3,
+      "matched_numeric_facts": 3,
+      "claimed_numeric_values": 8,
+      "unsupported_numeric_values": 5
+    }
+  },
+  "tool_selection": {
+    "scorable": true,
+    "expected_tools": [
+      "execute_sql",
+      "get_performance_review_summary"
+    ],
+    "total_tool_calls": 7,
+    "tool_recall": 1.0,
+    "tool_precision": 0.8571,
+    "distractor_call_count": 0,
+    "distractor_calls": [],
+    "any_distractor_called": false,
+    "distractor_call_rate": 0.0,
+    "fabricated_call_count": 0,
+    "fabricated_calls": [],
+    "any_fabricated_called": false,
+    "fabricated_call_rate": 0.0
+  },
+  "scored_at": "2026-07-09T18:15:56.488807+00:00",
+  "ground_truth_generated_at": "2026-07-08T20:08:57.272260+00:00"
+}

@@ -1,0 +1,77 @@
+{
+  "session_id": "agent-bench:run:pydantic-ai:support-open-tickets-priority:20260709T181301Z:b84a20fe",
+  "harness": "pydantic-ai",
+  "architecture": "enterprise-codemode-toolsearch-120",
+  "task": "support-open-tickets-priority",
+  "prompt": "How many open or pending support tickets are there, broken down by priority?",
+  "output": "\n\n| priority | ticket_count |\n|----------|-------------|\n| high     | 26          |\n| low      | 20          |\n| medium   | 36          |\n| urgent   | 21          |",
+  "started_at": "2026-07-09T18:13:01.037764+00:00",
+  "elapsed_seconds": 14.23900179201155,
+  "metadata": {
+    "langfuse_session_id": "agent-bench:run:pydantic-ai:support-open-tickets-priority:20260709T181301Z:b84a20fe",
+    "tool_calls": [
+      {
+        "tool_name": "search_tools",
+        "via": "native"
+      },
+      {
+        "tool_name": "get_open_tickets_by_priority",
+        "via": "native"
+      },
+      {
+        "tool_name": "search_tools",
+        "via": "native"
+      },
+      {
+        "tool_name": "execute_sql",
+        "via": "native"
+      },
+      {
+        "tool_name": "execute_sql",
+        "via": "native"
+      }
+    ],
+    "langfuse_trace_id": "096163f804797d8aa1d9d2e351439ce6",
+    "langfuse_observation_id": "1b7b3282628b3a92",
+    "langfuse_trace_url": "https://cloud.langfuse.com/project/cmr1ywsf000d5ad0cex3dm2ha/traces/096163f804797d8aa1d9d2e351439ce6"
+  },
+  "error": null,
+  "ok": true,
+  "scores": {
+    "scorable": true,
+    "correctness": 1.0,
+    "groundedness": 1.0,
+    "hallucination_rate": 0.0,
+    "overall_score": 1.0,
+    "details": {
+      "refused_or_no_data": false,
+      "empty_output": false,
+      "expected_text_facts": 4,
+      "matched_text_facts": 4,
+      "expected_numeric_facts": 4,
+      "matched_numeric_facts": 4,
+      "claimed_numeric_values": 4,
+      "unsupported_numeric_values": 0
+    }
+  },
+  "tool_selection": {
+    "scorable": true,
+    "expected_tools": [
+      "execute_sql",
+      "get_open_tickets_by_priority"
+    ],
+    "total_tool_calls": 5,
+    "tool_recall": 1.0,
+    "tool_precision": 1.0,
+    "distractor_call_count": 0,
+    "distractor_calls": [],
+    "any_distractor_called": false,
+    "distractor_call_rate": 0.0,
+    "fabricated_call_count": 0,
+    "fabricated_calls": [],
+    "any_fabricated_called": false,
+    "fabricated_call_rate": 0.0
+  },
+  "scored_at": "2026-07-09T18:13:15.553169+00:00",
+  "ground_truth_generated_at": "2026-07-08T20:08:57.272260+00:00"
+}

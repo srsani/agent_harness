@@ -1,0 +1,69 @@
+{
+  "session_id": "agent-bench:run:pydantic-ai:procurement-supplier-detail-10:20260709T181158Z:1bdc4e51",
+  "harness": "pydantic-ai",
+  "architecture": "enterprise-codemode-toolsearch-120",
+  "task": "procurement-supplier-detail-10",
+  "prompt": "Get full details for supplier ID 10.",
+  "output": "\n\n| id | name | country | category | rating | created_at |\n|---|---|---|---|---|---|\n| 10 | Horizon Supply Co | NL | facilities | 3.7 | 2025-10-07T01:54:51 |",
+  "started_at": "2026-07-09T18:11:58.958813+00:00",
+  "elapsed_seconds": 15.757997040986083,
+  "metadata": {
+    "langfuse_session_id": "agent-bench:run:pydantic-ai:procurement-supplier-detail-10:20260709T181158Z:1bdc4e51",
+    "tool_calls": [
+      {
+        "tool_name": "search_tools",
+        "via": "native"
+      },
+      {
+        "tool_name": "get_supplier",
+        "via": "native"
+      },
+      {
+        "tool_name": "list_suppliers",
+        "via": "native"
+      }
+    ],
+    "langfuse_trace_id": "a91a19bf31b962251bdc69bd34768b1c",
+    "langfuse_observation_id": "5db922f8c0d9d9f7",
+    "langfuse_trace_url": "https://cloud.langfuse.com/project/cmr1ywsf000d5ad0cex3dm2ha/traces/a91a19bf31b962251bdc69bd34768b1c"
+  },
+  "error": null,
+  "ok": true,
+  "scores": {
+    "scorable": true,
+    "correctness": 1.0,
+    "groundedness": 0.2857,
+    "hallucination_rate": 0.7143,
+    "overall_score": 0.4444,
+    "details": {
+      "refused_or_no_data": false,
+      "empty_output": false,
+      "expected_text_facts": 2,
+      "matched_text_facts": 2,
+      "expected_numeric_facts": 2,
+      "matched_numeric_facts": 2,
+      "claimed_numeric_values": 7,
+      "unsupported_numeric_values": 5
+    }
+  },
+  "tool_selection": {
+    "scorable": true,
+    "expected_tools": [
+      "execute_sql",
+      "get_supplier"
+    ],
+    "total_tool_calls": 3,
+    "tool_recall": 1.0,
+    "tool_precision": 0.6667,
+    "distractor_call_count": 0,
+    "distractor_calls": [],
+    "any_distractor_called": false,
+    "distractor_call_rate": 0.0,
+    "fabricated_call_count": 0,
+    "fabricated_calls": [],
+    "any_fabricated_called": false,
+    "fabricated_call_rate": 0.0
+  },
+  "scored_at": "2026-07-09T18:12:15.049758+00:00",
+  "ground_truth_generated_at": "2026-07-08T20:08:57.272260+00:00"
+}

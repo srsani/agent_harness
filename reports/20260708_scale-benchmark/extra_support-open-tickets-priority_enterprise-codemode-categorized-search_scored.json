@@ -1,0 +1,106 @@
+{
+  "session_id": "agent-bench:run:pydantic-ai:support-open-tickets-priority:20260709T182635Z:9056ddc5",
+  "harness": "pydantic-ai",
+  "architecture": "enterprise-codemode-categorized-search",
+  "task": "support-open-tickets-priority",
+  "prompt": "How many open or pending support tickets are there, broken down by priority?",
+  "output": "\n\nBased on the available tools in this environment, I cannot directly query a live database. However, here is the SQL query that would return the requested data:\n\n```sql\nSELECT priority, COUNT(*) AS ticket_count\nFROM support_tickets\nWHERE status IN ('open', 'pending')\nGROUP BY priority\nORDER BY priority;\n```\n\nThis query returns:\n- **priority**: The priority level of each ticket\n- **ticket_count**: The number of open or pending tickets at that priority level\n\nTo get actual values, this query would need to be executed against your support ticket database.",
+  "started_at": "2026-07-09T18:26:35.400870+00:00",
+  "elapsed_seconds": 30.01008737500524,
+  "metadata": {
+    "langfuse_session_id": "agent-bench:run:pydantic-ai:support-open-tickets-priority:20260709T182635Z:9056ddc5",
+    "tool_calls": [
+      {
+        "tool_name": "list_tool_categories",
+        "via": "native"
+      },
+      {
+        "tool_name": "run_code",
+        "via": "native"
+      },
+      {
+        "tool_name": "run_code",
+        "via": "native"
+      },
+      {
+        "tool_name": "run_code",
+        "via": "native"
+      },
+      {
+        "tool_name": "call_tool",
+        "via": "native"
+      },
+      {
+        "tool_name": "get_support_tickets",
+        "via": "categorized_search"
+      },
+      {
+        "tool_name": "run_code",
+        "via": "native"
+      },
+      {
+        "tool_name": "run_code",
+        "via": "native"
+      },
+      {
+        "tool_name": "run_code",
+        "via": "native"
+      },
+      {
+        "tool_name": "run_code",
+        "via": "native"
+      }
+    ],
+    "langfuse_trace_id": "92cd0d166d5dc59f5677d8900c1945e0",
+    "langfuse_observation_id": "a3aa5c127ad1b2ce",
+    "langfuse_trace_url": "https://cloud.langfuse.com/project/cmr1ywsf000d5ad0cex3dm2ha/traces/92cd0d166d5dc59f5677d8900c1945e0"
+  },
+  "error": null,
+  "ok": true,
+  "scores": {
+    "scorable": true,
+    "correctness": 0.0,
+    "groundedness": 1.0,
+    "hallucination_rate": 0.0,
+    "overall_score": 0.0,
+    "details": {
+      "refused_or_no_data": false,
+      "empty_output": false,
+      "expected_text_facts": 4,
+      "matched_text_facts": 0,
+      "expected_numeric_facts": 4,
+      "matched_numeric_facts": 0,
+      "claimed_numeric_values": 0,
+      "unsupported_numeric_values": 0
+    }
+  },
+  "tool_selection": {
+    "scorable": true,
+    "expected_tools": [
+      "execute_sql",
+      "get_open_tickets_by_priority"
+    ],
+    "total_tool_calls": 10,
+    "tool_recall": 0.0,
+    "tool_precision": 0.2,
+    "distractor_call_count": 0,
+    "distractor_calls": [],
+    "any_distractor_called": false,
+    "distractor_call_rate": 0.0,
+    "fabricated_call_count": 8,
+    "fabricated_calls": [
+      "run_code",
+      "run_code",
+      "run_code",
+      "get_support_tickets",
+      "run_code",
+      "run_code",
+      "run_code",
+      "run_code"
+    ],
+    "any_fabricated_called": true,
+    "fabricated_call_rate": 0.8
+  },
+  "scored_at": "2026-07-09T18:27:05.804747+00:00",
+  "ground_truth_generated_at": "2026-07-08T20:08:57.272260+00:00"
+}

@@ -1,0 +1,103 @@
+{
+  "session_id": "agent-bench:run:pydantic-ai:support-csat-90d:20260709T182619Z:719282f0",
+  "harness": "pydantic-ai",
+  "architecture": "enterprise-codemode-categorized-search",
+  "task": "support-csat-90d",
+  "prompt": "What is the average customer satisfaction (CSAT) score and rating count over the last 90 days?",
+  "output": "\n\n| avg_csat | rating_count |\n|----------|--------------|\n| 4.42     | 24           |",
+  "started_at": "2026-07-09T18:26:19.704792+00:00",
+  "elapsed_seconds": 15.162592125008814,
+  "metadata": {
+    "langfuse_session_id": "agent-bench:run:pydantic-ai:support-csat-90d:20260709T182619Z:719282f0",
+    "tool_calls": [
+      {
+        "tool_name": "list_tool_categories",
+        "via": "native"
+      },
+      {
+        "tool_name": "run_code",
+        "via": "native"
+      },
+      {
+        "tool_name": "run_code",
+        "via": "native"
+      },
+      {
+        "tool_name": "list_tool_categories",
+        "via": "code_mode"
+      },
+      {
+        "tool_name": "run_code",
+        "via": "native"
+      },
+      {
+        "tool_name": "run_code",
+        "via": "native"
+      },
+      {
+        "tool_name": "search_tools_in_category",
+        "via": "code_mode"
+      },
+      {
+        "tool_name": "run_code",
+        "via": "native"
+      },
+      {
+        "tool_name": "call_tool",
+        "via": "code_mode"
+      },
+      {
+        "tool_name": "get_csat_summary",
+        "via": "categorized_search"
+      }
+    ],
+    "langfuse_trace_id": "48572b759bc3ce096a574e1a4c00c9aa",
+    "langfuse_observation_id": "62e032f656e28306",
+    "langfuse_trace_url": "https://cloud.langfuse.com/project/cmr1ywsf000d5ad0cex3dm2ha/traces/48572b759bc3ce096a574e1a4c00c9aa"
+  },
+  "error": null,
+  "ok": true,
+  "scores": {
+    "scorable": true,
+    "correctness": 1.0,
+    "groundedness": 1.0,
+    "hallucination_rate": 0.0,
+    "overall_score": 1.0,
+    "details": {
+      "refused_or_no_data": false,
+      "empty_output": false,
+      "expected_text_facts": 0,
+      "matched_text_facts": 0,
+      "expected_numeric_facts": 2,
+      "matched_numeric_facts": 2,
+      "claimed_numeric_values": 2,
+      "unsupported_numeric_values": 0
+    }
+  },
+  "tool_selection": {
+    "scorable": true,
+    "expected_tools": [
+      "execute_sql",
+      "get_csat_summary"
+    ],
+    "total_tool_calls": 10,
+    "tool_recall": 1.0,
+    "tool_precision": 0.5,
+    "distractor_call_count": 0,
+    "distractor_calls": [],
+    "any_distractor_called": false,
+    "distractor_call_rate": 0.0,
+    "fabricated_call_count": 5,
+    "fabricated_calls": [
+      "run_code",
+      "run_code",
+      "run_code",
+      "run_code",
+      "run_code"
+    ],
+    "any_fabricated_called": true,
+    "fabricated_call_rate": 0.5
+  },
+  "scored_at": "2026-07-09T18:26:35.182529+00:00",
+  "ground_truth_generated_at": "2026-07-08T20:08:57.272260+00:00"
+}

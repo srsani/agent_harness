@@ -1,0 +1,113 @@
+{
+  "session_id": "agent-bench:run:pydantic-ai:procurement-supplier-performance-10:20260709T182535Z:25fb6b79",
+  "harness": "pydantic-ai",
+  "architecture": "enterprise-codemode-categorized-search",
+  "task": "procurement-supplier-performance-10",
+  "prompt": "Report supplier ID 10's purchase order volume, total spend, and on-time delivery counts.",
+  "output": "\n\n| supplier_id | purchase_order_volume | total_spend_usd | on_time_delivery_count |\n|-------------|----------------------|-----------------|------------------------|\n| 10 | 12 | 815725.29 | 5 |",
+  "started_at": "2026-07-09T18:25:35.666564+00:00",
+  "elapsed_seconds": 29.325896374997683,
+  "metadata": {
+    "langfuse_session_id": "agent-bench:run:pydantic-ai:procurement-supplier-performance-10:20260709T182535Z:25fb6b79",
+    "tool_calls": [
+      {
+        "tool_name": "list_tool_categories",
+        "via": "native"
+      },
+      {
+        "tool_name": "run_code",
+        "via": "native"
+      },
+      {
+        "tool_name": "run_code",
+        "via": "native"
+      },
+      {
+        "tool_name": "run_code",
+        "via": "native"
+      },
+      {
+        "tool_name": "run_code",
+        "via": "native"
+      },
+      {
+        "tool_name": "list_tool_categories",
+        "via": "code_mode"
+      },
+      {
+        "tool_name": "run_code",
+        "via": "native"
+      },
+      {
+        "tool_name": "run_code",
+        "via": "native"
+      },
+      {
+        "tool_name": "search_tools_in_category",
+        "via": "code_mode"
+      },
+      {
+        "tool_name": "run_code",
+        "via": "native"
+      },
+      {
+        "tool_name": "call_tool",
+        "via": "code_mode"
+      },
+      {
+        "tool_name": "get_supplier_performance",
+        "via": "categorized_search"
+      }
+    ],
+    "langfuse_trace_id": "c9118ad86a6952d555c18beb67206a42",
+    "langfuse_observation_id": "c4e147f8a342b75e",
+    "langfuse_trace_url": "https://cloud.langfuse.com/project/cmr1ywsf000d5ad0cex3dm2ha/traces/c9118ad86a6952d555c18beb67206a42"
+  },
+  "error": null,
+  "ok": true,
+  "scores": {
+    "scorable": true,
+    "correctness": 0.7143,
+    "groundedness": 1.0,
+    "hallucination_rate": 0.0,
+    "overall_score": 0.8333,
+    "details": {
+      "refused_or_no_data": false,
+      "empty_output": false,
+      "expected_text_facts": 1,
+      "matched_text_facts": 0,
+      "expected_numeric_facts": 6,
+      "matched_numeric_facts": 5,
+      "claimed_numeric_values": 4,
+      "unsupported_numeric_values": 0
+    }
+  },
+  "tool_selection": {
+    "scorable": true,
+    "expected_tools": [
+      "execute_sql",
+      "get_supplier_performance"
+    ],
+    "total_tool_calls": 12,
+    "tool_recall": 1.0,
+    "tool_precision": 0.4167,
+    "distractor_call_count": 0,
+    "distractor_calls": [],
+    "any_distractor_called": false,
+    "distractor_call_rate": 0.0,
+    "fabricated_call_count": 7,
+    "fabricated_calls": [
+      "run_code",
+      "run_code",
+      "run_code",
+      "run_code",
+      "run_code",
+      "run_code",
+      "run_code"
+    ],
+    "any_fabricated_called": true,
+    "fabricated_call_rate": 0.5833
+  },
+  "scored_at": "2026-07-09T18:26:05.322588+00:00",
+  "ground_truth_generated_at": "2026-07-08T20:08:57.272260+00:00"
+}

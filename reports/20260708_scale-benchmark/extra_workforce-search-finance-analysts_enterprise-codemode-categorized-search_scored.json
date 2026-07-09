@@ -1,0 +1,113 @@
+{
+  "session_id": "agent-bench:run:pydantic-ai:workforce-search-finance-analysts:20260709T182946Z:a2ab3b61",
+  "harness": "pydantic-ai",
+  "architecture": "enterprise-codemode-categorized-search",
+  "task": "workforce-search-finance-analysts",
+  "prompt": "Find active employees in departments matching 'Finance' with a job title matching 'Analyst'.",
+  "output": "\n\n| id | full_name | title | department |\n|----|-----------|-------|------------|\n| 14 | Carol Lewis | Senior Analyst | Finance & Accounting |\n| 4 | Frank Martinez | Senior Analyst | Finance & Accounting |\n| 15 | Vince Harris | Senior Analyst | Finance & Accounting |\n| 1 | Zach Anderson | Analyst | Finance & Accounting |",
+  "started_at": "2026-07-09T18:29:46.916763+00:00",
+  "elapsed_seconds": 18.92943112499779,
+  "metadata": {
+    "langfuse_session_id": "agent-bench:run:pydantic-ai:workforce-search-finance-analysts:20260709T182946Z:a2ab3b61",
+    "tool_calls": [
+      {
+        "tool_name": "list_tool_categories",
+        "via": "native"
+      },
+      {
+        "tool_name": "run_code",
+        "via": "native"
+      },
+      {
+        "tool_name": "run_code",
+        "via": "native"
+      },
+      {
+        "tool_name": "run_code",
+        "via": "native"
+      },
+      {
+        "tool_name": "run_code",
+        "via": "native"
+      },
+      {
+        "tool_name": "list_tool_categories",
+        "via": "code_mode"
+      },
+      {
+        "tool_name": "run_code",
+        "via": "native"
+      },
+      {
+        "tool_name": "search_tools_in_category",
+        "via": "code_mode"
+      },
+      {
+        "tool_name": "run_code",
+        "via": "native"
+      },
+      {
+        "tool_name": "run_code",
+        "via": "native"
+      },
+      {
+        "tool_name": "call_tool",
+        "via": "code_mode"
+      },
+      {
+        "tool_name": "search_employees",
+        "via": "categorized_search"
+      }
+    ],
+    "langfuse_trace_id": "4ce1952ac4f12327eac4bee091d5b34e",
+    "langfuse_observation_id": "8fe1a4aa6afd70bf",
+    "langfuse_trace_url": "https://cloud.langfuse.com/project/cmr1ywsf000d5ad0cex3dm2ha/traces/4ce1952ac4f12327eac4bee091d5b34e"
+  },
+  "error": null,
+  "ok": true,
+  "scores": {
+    "scorable": true,
+    "correctness": 1.0,
+    "groundedness": 1.0,
+    "hallucination_rate": 0.0,
+    "overall_score": 1.0,
+    "details": {
+      "refused_or_no_data": false,
+      "empty_output": false,
+      "expected_text_facts": 12,
+      "matched_text_facts": 12,
+      "expected_numeric_facts": 4,
+      "matched_numeric_facts": 4,
+      "claimed_numeric_values": 4,
+      "unsupported_numeric_values": 0
+    }
+  },
+  "tool_selection": {
+    "scorable": true,
+    "expected_tools": [
+      "execute_sql",
+      "search_employees"
+    ],
+    "total_tool_calls": 12,
+    "tool_recall": 1.0,
+    "tool_precision": 0.4167,
+    "distractor_call_count": 0,
+    "distractor_calls": [],
+    "any_distractor_called": false,
+    "distractor_call_rate": 0.0,
+    "fabricated_call_count": 7,
+    "fabricated_calls": [
+      "run_code",
+      "run_code",
+      "run_code",
+      "run_code",
+      "run_code",
+      "run_code",
+      "run_code"
+    ],
+    "any_fabricated_called": true,
+    "fabricated_call_rate": 0.5833
+  },
+  "scored_at": "2026-07-09T18:30:06.163113+00:00",
+  "ground_truth_generated_at": "2026-07-08T20:08:57.272260+00:00"
+}

@@ -1,0 +1,40 @@
+{
+  "session_id": "agent-bench:run:pydantic-ai:support-search-urgent-open:20260709T181332Z:59e66aba",
+  "harness": "pydantic-ai",
+  "architecture": "enterprise-codemode-toolsearch-120",
+  "task": "support-search-urgent-open",
+  "prompt": "List up to 20 open support tickets with urgent priority.",
+  "output": "\n\n| id | customer_id | product_id | agent_id | subject | priority | status | created_at | resolved_at | satisfaction_rating |\n|---|---|---|---|---|---|---|---|---|---|\n| 48 | 53 | 16 | 14 | Data refresh delayed | urgent | open | 2025-12-02T11:19:43 | null | null |\n| 63 | 166 | 1 | 10 | Dashboard not loading latest data | urgent | open | 2026-03-11T08:29:14 | null | null |\n| 121 | 142 | 12 | 1 | API rate limit question | urgent | open | 2025-09-19T10:48:29 | null | null |\n| 135 | 192 | 30 | 8 | Incorrect revenue totals | urgent | open | 2026-01-24T23:48:48 | null | null |\n| 148 | 106 | 20 | 13 | API rate limit question | urgent | open | 2025-10-08T18:34:30 | null | null |\n| 169 | 189 | 16 | 4 | Permission error viewing module | urgent | open | 2026-02-24T02:43:30 | null | null |\n| 193 | 137 | 41 | 12 | Data refresh delayed | urgent | open | 2026-05-23T01:46:44 | null | null |\n| 257 | 57 | 22 | 7 | Question about seat count on invoice | urgent | open | 2026-02-28T19:54:29 | null | null |",
+  "started_at": "2026-07-09T18:13:32.042429+00:00",
+  "elapsed_seconds": 20.097472000023117,
+  "metadata": {
+    "langfuse_session_id": "agent-bench:run:pydantic-ai:support-search-urgent-open:20260709T181332Z:59e66aba",
+    "tool_calls": [
+      {
+        "tool_name": "search_tools",
+        "via": "native"
+      },
+      {
+        "tool_name": "search_support_tickets",
+        "via": "native"
+      },
+      {
+        "tool_name": "list_tables",
+        "via": "native"
+      },
+      {
+        "tool_name": "execute_sql",
+        "via": "native"
+      },
+      {
+        "tool_name": "execute_sql",
+        "via": "native"
+      }
+    ],
+    "langfuse_trace_id": "ba28028af82d427ac8a3aed40b6d6f98",
+    "langfuse_observation_id": "1d4adf24cc591e70",
+    "langfuse_trace_url": "https://cloud.langfuse.com/project/cmr1ywsf000d5ad0cex3dm2ha/traces/ba28028af82d427ac8a3aed40b6d6f98"
+  },
+  "error": null,
+  "ok": true
+}

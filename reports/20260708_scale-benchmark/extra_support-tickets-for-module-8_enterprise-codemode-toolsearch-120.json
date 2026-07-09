@@ -1,0 +1,40 @@
+{
+  "session_id": "agent-bench:run:pydantic-ai:support-tickets-for-module-8:20260709T181352Z:283f6f4d",
+  "harness": "pydantic-ai",
+  "architecture": "enterprise-codemode-toolsearch-120",
+  "task": "support-tickets-for-module-8",
+  "prompt": "List up to 20 support tickets raised about analytics module ID 8.",
+  "output": "\n\n| id | customer_id | product_id | agent_id | subject | priority | status | created_at | resolved_at | satisfaction_rating |\n|---|---|---|---|---|---|---|---|---|---|\n| 30 | 130 | 8 | 12 | Permission error viewing module | low | closed | 2025-10-11T15:02:45 | 2025-10-18T18:03:29 | 5 |\n| 50 | 24 | 8 | 2 | SSO login error | medium | resolved | 2025-09-13T11:45:32 | 2025-09-24T06:08:27 | 5 |\n| 137 | 76 | 8 | 9 | Incorrect revenue totals | high | pending | 2026-03-10T20:58:28 | null | null |\n| 216 | 167 | 8 | 13 | Cannot invite new teammate | medium | closed | 2025-09-12T18:11:51 | 2025-09-21T03:53:48 | 5 |\n| 217 | 81 | 8 | 1 | Forecast numbers look stale | medium | resolved | 2026-03-04T00:42:36 | 2026-03-05T07:07:48 | 5 |\n| 218 | 22 | 8 | 9 | API rate limit question | medium | resolved | 2025-12-10T05:30:32 | 2025-12-23T11:09:37 | 4 |\n| 258 | 78 | 8 | 5 | Permission error viewing module | high | resolved | 2026-03-25T13:04:09 | 2026-03-29T00:48:13 | null |",
+  "started_at": "2026-07-09T18:13:52.686915+00:00",
+  "elapsed_seconds": 20.239610749995336,
+  "metadata": {
+    "langfuse_session_id": "agent-bench:run:pydantic-ai:support-tickets-for-module-8:20260709T181352Z:283f6f4d",
+    "tool_calls": [
+      {
+        "tool_name": "search_tools",
+        "via": "native"
+      },
+      {
+        "tool_name": "search_support_tickets",
+        "via": "native"
+      },
+      {
+        "tool_name": "get_schema_context",
+        "via": "native"
+      },
+      {
+        "tool_name": "execute_sql",
+        "via": "native"
+      },
+      {
+        "tool_name": "execute_sql",
+        "via": "native"
+      }
+    ],
+    "langfuse_trace_id": "3b0f3ac1472b498f2cd1d1f161625ed3",
+    "langfuse_observation_id": "96f5e2f86c8fe4c3",
+    "langfuse_trace_url": "https://cloud.langfuse.com/project/cmr1ywsf000d5ad0cex3dm2ha/traces/3b0f3ac1472b498f2cd1d1f161625ed3"
+  },
+  "error": null,
+  "ok": true
+}

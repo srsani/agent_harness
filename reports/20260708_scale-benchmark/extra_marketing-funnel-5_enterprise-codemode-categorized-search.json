@@ -1,0 +1,76 @@
+{
+  "session_id": "agent-bench:run:pydantic-ai:marketing-funnel-5:20260709T181930Z:77fcc416",
+  "harness": "pydantic-ai",
+  "architecture": "enterprise-codemode-categorized-search",
+  "task": "marketing-funnel-5",
+  "prompt": "Show the full conversion funnel (click-through rate, lead rate, conversion rate) for marketing campaign ID 5.",
+  "output": "\n\n| id | name | total_impressions | total_clicks | total_leads | total_conversions | total_spend_usd | click_through_rate_pct | lead_rate_pct | conversion_rate_pct |\n|----|------|-------------------|--------------|-------------|-------------------|-----------------|------------------------|---------------|---------------------|\n| 5 | Fall Search Surge 1 | 1599774 | 59927 | 5582 | 1243 | 33540.89 | 3.746 | 9.315 | 22.268 |",
+  "started_at": "2026-07-09T18:19:30.052285+00:00",
+  "elapsed_seconds": 25.287813957984326,
+  "metadata": {
+    "langfuse_session_id": "agent-bench:run:pydantic-ai:marketing-funnel-5:20260709T181930Z:77fcc416",
+    "tool_calls": [
+      {
+        "tool_name": "list_tool_categories",
+        "via": "native"
+      },
+      {
+        "tool_name": "run_code",
+        "via": "native"
+      },
+      {
+        "tool_name": "call_tool",
+        "via": "native"
+      },
+      {
+        "tool_name": "list_tool_categories",
+        "via": "categorized_search"
+      },
+      {
+        "tool_name": "run_code",
+        "via": "native"
+      },
+      {
+        "tool_name": "run_code",
+        "via": "native"
+      },
+      {
+        "tool_name": "list_tool_categories",
+        "via": "code_mode"
+      },
+      {
+        "tool_name": "run_code",
+        "via": "native"
+      },
+      {
+        "tool_name": "search_tools_in_category",
+        "via": "code_mode"
+      },
+      {
+        "tool_name": "run_code",
+        "via": "native"
+      },
+      {
+        "tool_name": "search_tools_in_category",
+        "via": "code_mode"
+      },
+      {
+        "tool_name": "run_code",
+        "via": "native"
+      },
+      {
+        "tool_name": "call_tool",
+        "via": "code_mode"
+      },
+      {
+        "tool_name": "get_lead_conversion_funnel",
+        "via": "categorized_search"
+      }
+    ],
+    "langfuse_trace_id": "a51c13b6305858e90ced364dc2303eab",
+    "langfuse_observation_id": "8f2e11684d78a315",
+    "langfuse_trace_url": "https://cloud.langfuse.com/project/cmr1ywsf000d5ad0cex3dm2ha/traces/a51c13b6305858e90ced364dc2303eab"
+  },
+  "error": null,
+  "ok": true
+}

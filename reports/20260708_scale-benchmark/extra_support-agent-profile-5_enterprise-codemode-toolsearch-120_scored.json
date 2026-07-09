@@ -1,0 +1,77 @@
+{
+  "session_id": "agent-bench:run:pydantic-ai:support-agent-profile-5:20260709T181230Z:20dc38d7",
+  "harness": "pydantic-ai",
+  "architecture": "enterprise-codemode-toolsearch-120",
+  "task": "support-agent-profile-5",
+  "prompt": "Look up support agent ID 5. Show their name, region, and hire date.",
+  "output": "\n\n| Name | Region | Hire Date |\n|---|---|---|\n| Grace Jackson | EMEA | 2025-01-28T22:13:48 |",
+  "started_at": "2026-07-09T18:12:30.084269+00:00",
+  "elapsed_seconds": 12.767215708998265,
+  "metadata": {
+    "langfuse_session_id": "agent-bench:run:pydantic-ai:support-agent-profile-5:20260709T181230Z:20dc38d7",
+    "tool_calls": [
+      {
+        "tool_name": "search_tools",
+        "via": "native"
+      },
+      {
+        "tool_name": "get_support_agent",
+        "via": "native"
+      },
+      {
+        "tool_name": "list_support_agents",
+        "via": "native"
+      },
+      {
+        "tool_name": "list_tables",
+        "via": "native"
+      },
+      {
+        "tool_name": "execute_sql",
+        "via": "native"
+      }
+    ],
+    "langfuse_trace_id": "73c795e5a0337501b9db4bae95ab30ed",
+    "langfuse_observation_id": "c1bf040ad3ea023b",
+    "langfuse_trace_url": "https://cloud.langfuse.com/project/cmr1ywsf000d5ad0cex3dm2ha/traces/73c795e5a0337501b9db4bae95ab30ed"
+  },
+  "error": null,
+  "ok": true,
+  "scores": {
+    "scorable": true,
+    "correctness": 0.6667,
+    "groundedness": 0.0,
+    "hallucination_rate": 1.0,
+    "overall_score": 0.0,
+    "details": {
+      "refused_or_no_data": false,
+      "empty_output": false,
+      "expected_text_facts": 2,
+      "matched_text_facts": 2,
+      "expected_numeric_facts": 1,
+      "matched_numeric_facts": 0,
+      "claimed_numeric_values": 6,
+      "unsupported_numeric_values": 6
+    }
+  },
+  "tool_selection": {
+    "scorable": true,
+    "expected_tools": [
+      "execute_sql",
+      "get_support_agent"
+    ],
+    "total_tool_calls": 5,
+    "tool_recall": 1.0,
+    "tool_precision": 0.8,
+    "distractor_call_count": 0,
+    "distractor_calls": [],
+    "any_distractor_called": false,
+    "distractor_call_rate": 0.0,
+    "fabricated_call_count": 0,
+    "fabricated_calls": [],
+    "any_fabricated_called": false,
+    "fabricated_call_rate": 0.0
+  },
+  "scored_at": "2026-07-09T18:12:43.169515+00:00",
+  "ground_truth_generated_at": "2026-07-08T20:08:57.272260+00:00"
+}

@@ -1,0 +1,76 @@
+{
+  "session_id": "agent-bench:run:pydantic-ai:workforce-employee-detail-10:20260709T182843Z:0292a481",
+  "harness": "pydantic-ai",
+  "architecture": "enterprise-codemode-categorized-search",
+  "task": "workforce-employee-detail-10",
+  "prompt": "Get employee ID 10's profile, including department and manager name.",
+  "output": "\n\n| employee_id | full_name | department | manager_name |\n|-------------|-----------|------------|--------------|\n| 10 | Yara Roberts | Finance & Accounting | Zach Anderson |",
+  "started_at": "2026-07-09T18:28:43.875241+00:00",
+  "elapsed_seconds": 22.877762415999314,
+  "metadata": {
+    "langfuse_session_id": "agent-bench:run:pydantic-ai:workforce-employee-detail-10:20260709T182843Z:0292a481",
+    "tool_calls": [
+      {
+        "tool_name": "list_tool_categories",
+        "via": "native"
+      },
+      {
+        "tool_name": "run_code",
+        "via": "native"
+      },
+      {
+        "tool_name": "list_tool_categories",
+        "via": "native"
+      },
+      {
+        "tool_name": "run_code",
+        "via": "native"
+      },
+      {
+        "tool_name": "list_tool_categories",
+        "via": "native"
+      },
+      {
+        "tool_name": "run_code",
+        "via": "native"
+      },
+      {
+        "tool_name": "run_code",
+        "via": "native"
+      },
+      {
+        "tool_name": "run_code",
+        "via": "native"
+      },
+      {
+        "tool_name": "list_tool_categories",
+        "via": "code_mode"
+      },
+      {
+        "tool_name": "run_code",
+        "via": "native"
+      },
+      {
+        "tool_name": "search_tools_in_category",
+        "via": "code_mode"
+      },
+      {
+        "tool_name": "run_code",
+        "via": "native"
+      },
+      {
+        "tool_name": "call_tool",
+        "via": "code_mode"
+      },
+      {
+        "tool_name": "get_employee",
+        "via": "categorized_search"
+      }
+    ],
+    "langfuse_trace_id": "1003d8ddf20a68fb13eef1102cf0fb77",
+    "langfuse_observation_id": "566324c7c990b23d",
+    "langfuse_trace_url": "https://cloud.langfuse.com/project/cmr1ywsf000d5ad0cex3dm2ha/traces/1003d8ddf20a68fb13eef1102cf0fb77"
+  },
+  "error": null,
+  "ok": true
+}

@@ -1,0 +1,81 @@
+{
+  "session_id": "agent-bench:run:pydantic-ai:workforce-search-finance-analysts:20260709T181556Z:71b1ec1b",
+  "harness": "pydantic-ai",
+  "architecture": "enterprise-codemode-toolsearch-120",
+  "task": "workforce-search-finance-analysts",
+  "prompt": "Find active employees in departments matching 'Finance' with a job title matching 'Analyst'.",
+  "output": "\n\n| id | full_name | title | department_name | department_function |\n|----|-----------|-------|-----------------|---------------------|\n| 1 | Zach Anderson | Analyst | Finance & Accounting | Finance |\n| 4 | Frank Martinez | Senior Analyst | Finance & Accounting | Finance |\n| 14 | Carol Lewis | Senior Analyst | Finance & Accounting | Finance |\n| 15 | Vince Harris | Senior Analyst | Finance & Accounting | Finance |\n| 23 | Frank Clarke | Senior Analyst | Corporate FP&A | Finance |\n| 29 | Dan Green | Analyst | Corporate FP&A | Finance |",
+  "started_at": "2026-07-09T18:15:56.722227+00:00",
+  "elapsed_seconds": 22.638023208011873,
+  "metadata": {
+    "langfuse_session_id": "agent-bench:run:pydantic-ai:workforce-search-finance-analysts:20260709T181556Z:71b1ec1b",
+    "tool_calls": [
+      {
+        "tool_name": "search_tools",
+        "via": "native"
+      },
+      {
+        "tool_name": "search_employees",
+        "via": "native"
+      },
+      {
+        "tool_name": "list_tables",
+        "via": "native"
+      },
+      {
+        "tool_name": "execute_sql",
+        "via": "native"
+      },
+      {
+        "tool_name": "execute_sql",
+        "via": "native"
+      },
+      {
+        "tool_name": "execute_sql",
+        "via": "native"
+      }
+    ],
+    "langfuse_trace_id": "b17cd1ed96c46d71758a9261dc8b3bd5",
+    "langfuse_observation_id": "c046a9f06c0c9a69",
+    "langfuse_trace_url": "https://cloud.langfuse.com/project/cmr1ywsf000d5ad0cex3dm2ha/traces/b17cd1ed96c46d71758a9261dc8b3bd5"
+  },
+  "error": null,
+  "ok": true,
+  "scores": {
+    "scorable": true,
+    "correctness": 1.0,
+    "groundedness": 0.6667,
+    "hallucination_rate": 0.3333,
+    "overall_score": 0.8,
+    "details": {
+      "refused_or_no_data": false,
+      "empty_output": false,
+      "expected_text_facts": 12,
+      "matched_text_facts": 12,
+      "expected_numeric_facts": 4,
+      "matched_numeric_facts": 4,
+      "claimed_numeric_values": 6,
+      "unsupported_numeric_values": 2
+    }
+  },
+  "tool_selection": {
+    "scorable": true,
+    "expected_tools": [
+      "execute_sql",
+      "search_employees"
+    ],
+    "total_tool_calls": 6,
+    "tool_recall": 1.0,
+    "tool_precision": 1.0,
+    "distractor_call_count": 0,
+    "distractor_calls": [],
+    "any_distractor_called": false,
+    "distractor_call_rate": 0.0,
+    "fabricated_call_count": 0,
+    "fabricated_calls": [],
+    "any_fabricated_called": false,
+    "fabricated_call_rate": 0.0
+  },
+  "scored_at": "2026-07-09T18:16:19.725639+00:00",
+  "ground_truth_generated_at": "2026-07-08T20:08:57.272260+00:00"
+}

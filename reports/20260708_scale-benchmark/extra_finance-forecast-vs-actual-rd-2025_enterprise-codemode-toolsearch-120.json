@@ -1,0 +1,36 @@
+{
+  "session_id": "agent-bench:run:pydantic-ai:finance-forecast-vs-actual-rd-2025:20260709T180649Z:79d9d213",
+  "harness": "pydantic-ai",
+  "architecture": "enterprise-codemode-toolsearch-120",
+  "task": "finance-forecast-vs-actual-rd-2025",
+  "prompt": "For the R&D Engineering department in 2025, show allocated budget versus actual spend by category, including the variance.",
+  "output": "\n\n| category | allocated_usd | actual_spend | variance |\n|----------|---------------|--------------|----------|\n| capex | 526772.84 | 665964.61 | -139191.77 |\n| headcount | 215839.46 | 202588.53 | 13250.93 |\n| marketing_spend | 309302.1 | 250911.05 | 58391.05 |\n| opex | 301007.32 | 294615.67 | 6391.65 |\n| travel | 147009.18 | 169112.28 | -22103.1 |",
+  "started_at": "2026-07-09T18:06:49.546883+00:00",
+  "elapsed_seconds": 20.6917731249996,
+  "metadata": {
+    "langfuse_session_id": "agent-bench:run:pydantic-ai:finance-forecast-vs-actual-rd-2025:20260709T180649Z:79d9d213",
+    "tool_calls": [
+      {
+        "tool_name": "search_tools",
+        "via": "native"
+      },
+      {
+        "tool_name": "get_forecast_vs_actual",
+        "via": "native"
+      },
+      {
+        "tool_name": "list_tables",
+        "via": "native"
+      },
+      {
+        "tool_name": "execute_sql",
+        "via": "native"
+      }
+    ],
+    "langfuse_trace_id": "43aa05ea40ce4e8e7f702ea0bcc36e32",
+    "langfuse_observation_id": "bb0abbda1e8cc4f3",
+    "langfuse_trace_url": "https://cloud.langfuse.com/project/cmr1ywsf000d5ad0cex3dm2ha/traces/43aa05ea40ce4e8e7f702ea0bcc36e32"
+  },
+  "error": null,
+  "ok": true
+}

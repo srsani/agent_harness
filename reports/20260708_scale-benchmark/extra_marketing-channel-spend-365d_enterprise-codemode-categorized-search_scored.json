@@ -1,0 +1,114 @@
+{
+  "session_id": "agent-bench:run:pydantic-ai:marketing-channel-spend-365d:20260709T181917Z:9633dcc0",
+  "harness": "pydantic-ai",
+  "architecture": "enterprise-codemode-categorized-search",
+  "task": "marketing-channel-spend-365d",
+  "prompt": "Break down total marketing spend and conversions by channel over the last 365 days.",
+  "output": "\n\n| channel | total_spend_usd | total_conversions |\n|---------|----------------|-------------------|\n| email | 433271.91 | 1471 |\n| paid_search | 401356.15 | 2754 |\n| social | 271019.46 | 522 |\n| events | 227154.01 | 427 |\n| content | 192209.7 | 1441 |\n| webinar | 149036.86 | 933 |",
+  "started_at": "2026-07-09T18:19:17.055978+00:00",
+  "elapsed_seconds": 12.453184166981373,
+  "metadata": {
+    "langfuse_session_id": "agent-bench:run:pydantic-ai:marketing-channel-spend-365d:20260709T181917Z:9633dcc0",
+    "tool_calls": [
+      {
+        "tool_name": "list_tool_categories",
+        "via": "native"
+      },
+      {
+        "tool_name": "run_code",
+        "via": "native"
+      },
+      {
+        "tool_name": "list_tool_categories",
+        "via": "native"
+      },
+      {
+        "tool_name": "run_code",
+        "via": "native"
+      },
+      {
+        "tool_name": "list_tool_categories",
+        "via": "code_mode"
+      },
+      {
+        "tool_name": "search_tools_in_category",
+        "via": "native"
+      },
+      {
+        "tool_name": "run_code",
+        "via": "native"
+      },
+      {
+        "tool_name": "search_tools_in_category",
+        "via": "code_mode"
+      },
+      {
+        "tool_name": "call_tool",
+        "via": "native"
+      },
+      {
+        "tool_name": "get_channel_spend_breakdown",
+        "via": "categorized_search"
+      },
+      {
+        "tool_name": "run_code",
+        "via": "native"
+      },
+      {
+        "tool_name": "call_tool",
+        "via": "code_mode"
+      },
+      {
+        "tool_name": "get_channel_spend_breakdown",
+        "via": "categorized_search"
+      }
+    ],
+    "langfuse_trace_id": "38d461ebfad75f7970935ada134faae0",
+    "langfuse_observation_id": "ab206b489d20ca60",
+    "langfuse_trace_url": "https://cloud.langfuse.com/project/cmr1ywsf000d5ad0cex3dm2ha/traces/38d461ebfad75f7970935ada134faae0"
+  },
+  "error": null,
+  "ok": true,
+  "scores": {
+    "scorable": true,
+    "correctness": 1.0,
+    "groundedness": 1.0,
+    "hallucination_rate": 0.0,
+    "overall_score": 1.0,
+    "details": {
+      "refused_or_no_data": false,
+      "empty_output": false,
+      "expected_text_facts": 6,
+      "matched_text_facts": 6,
+      "expected_numeric_facts": 12,
+      "matched_numeric_facts": 12,
+      "claimed_numeric_values": 12,
+      "unsupported_numeric_values": 0
+    }
+  },
+  "tool_selection": {
+    "scorable": true,
+    "expected_tools": [
+      "execute_sql",
+      "get_channel_spend_breakdown"
+    ],
+    "total_tool_calls": 13,
+    "tool_recall": 1.0,
+    "tool_precision": 0.6923,
+    "distractor_call_count": 0,
+    "distractor_calls": [],
+    "any_distractor_called": false,
+    "distractor_call_rate": 0.0,
+    "fabricated_call_count": 4,
+    "fabricated_calls": [
+      "run_code",
+      "run_code",
+      "run_code",
+      "run_code"
+    ],
+    "any_fabricated_called": true,
+    "fabricated_call_rate": 0.3077
+  },
+  "scored_at": "2026-07-09T18:19:29.832274+00:00",
+  "ground_truth_generated_at": "2026-07-08T20:08:57.272260+00:00"
+}

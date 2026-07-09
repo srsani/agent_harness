@@ -1,0 +1,81 @@
+{
+  "session_id": "agent-bench:run:pydantic-ai:procurement-late-deliveries-365d:20260709T181029Z:36e8339a",
+  "harness": "pydantic-ai",
+  "architecture": "enterprise-codemode-toolsearch-120",
+  "task": "procurement-late-deliveries-365d",
+  "prompt": "List purchase orders received late in the last 365 days, with how many days late.",
+  "output": "\n\n| id | supplier_id | days_late |\n|----|-------------|-----------|\n| 124 | 17 | 8 |\n| 128 | 14 | 5 |\n| 34 | 25 | 12 |\n| 169 | 3 | 12 |\n| 120 | 15 | 8 |\n| 1 | 17 | 12 |\n| 164 | 11 | 1 |\n| 14 | 1 | 15 |\n| 152 | 14 | 6 |\n| 39 | 4 | 14 |\n| 10 | 24 | 8 |\n| 109 | 21 | 14 |\n| 200 | 28 | 4 |",
+  "started_at": "2026-07-09T18:10:29.509531+00:00",
+  "elapsed_seconds": 23.521743166988017,
+  "metadata": {
+    "langfuse_session_id": "agent-bench:run:pydantic-ai:procurement-late-deliveries-365d:20260709T181029Z:36e8339a",
+    "tool_calls": [
+      {
+        "tool_name": "search_tools",
+        "via": "native"
+      },
+      {
+        "tool_name": "get_late_delivery_report",
+        "via": "native"
+      },
+      {
+        "tool_name": "search_tools",
+        "via": "native"
+      },
+      {
+        "tool_name": "list_tables",
+        "via": "native"
+      },
+      {
+        "tool_name": "execute_sql",
+        "via": "native"
+      },
+      {
+        "tool_name": "execute_sql",
+        "via": "native"
+      }
+    ],
+    "langfuse_trace_id": "42aea7ea239687a0e969e4deca665e96",
+    "langfuse_observation_id": "1620418309253677",
+    "langfuse_trace_url": "https://cloud.langfuse.com/project/cmr1ywsf000d5ad0cex3dm2ha/traces/42aea7ea239687a0e969e4deca665e96"
+  },
+  "error": null,
+  "ok": true,
+  "scores": {
+    "scorable": true,
+    "correctness": 0.6667,
+    "groundedness": 0.6154,
+    "hallucination_rate": 0.3846,
+    "overall_score": 0.64,
+    "details": {
+      "refused_or_no_data": false,
+      "empty_output": false,
+      "expected_text_facts": 11,
+      "matched_text_facts": 0,
+      "expected_numeric_facts": 22,
+      "matched_numeric_facts": 22,
+      "claimed_numeric_values": 26,
+      "unsupported_numeric_values": 10
+    }
+  },
+  "tool_selection": {
+    "scorable": true,
+    "expected_tools": [
+      "execute_sql",
+      "get_late_delivery_report"
+    ],
+    "total_tool_calls": 6,
+    "tool_recall": 1.0,
+    "tool_precision": 1.0,
+    "distractor_call_count": 0,
+    "distractor_calls": [],
+    "any_distractor_called": false,
+    "distractor_call_rate": 0.0,
+    "fabricated_call_count": 0,
+    "fabricated_calls": [],
+    "any_fabricated_called": false,
+    "fabricated_call_rate": 0.0
+  },
+  "scored_at": "2026-07-09T18:10:53.359998+00:00",
+  "ground_truth_generated_at": "2026-07-08T20:08:57.272260+00:00"
+}

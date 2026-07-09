@@ -1,0 +1,52 @@
+{
+  "session_id": "agent-bench:run:pydantic-ai:finance-budget-variance-10:20260709T174740Z:4955ae57",
+  "harness": "pydantic-ai",
+  "architecture": "enterprise-codemode-toolsearch-120",
+  "task": "finance-budget-variance-10",
+  "prompt": "Compute budget ID 10's variance: allocated amount minus actual spend.",
+  "output": "\n\n| id | allocated_usd | actual_spend | variance |\n|---|---|---|---|\n| 10 | 798472.52 | 845703.53 | -47231.01 |",
+  "started_at": "2026-07-09T17:47:40.766245+00:00",
+  "elapsed_seconds": 23.654047165997326,
+  "metadata": {
+    "langfuse_session_id": "agent-bench:run:pydantic-ai:finance-budget-variance-10:20260709T174740Z:4955ae57",
+    "tool_calls": [
+      {
+        "tool_name": "search_tools",
+        "via": "native"
+      },
+      {
+        "tool_name": "get_budget_variance",
+        "via": "native"
+      },
+      {
+        "tool_name": "get_budget",
+        "via": "native"
+      },
+      {
+        "tool_name": "get_budget_summary",
+        "via": "native"
+      },
+      {
+        "tool_name": "get_budget_summary",
+        "via": "native"
+      },
+      {
+        "tool_name": "get_budget_summary",
+        "via": "native"
+      },
+      {
+        "tool_name": "get_schema_context",
+        "via": "native"
+      },
+      {
+        "tool_name": "execute_sql",
+        "via": "native"
+      }
+    ],
+    "langfuse_trace_id": "b6a4b3567204ecd2d1137e9a43875c25",
+    "langfuse_observation_id": "49aa97b6143757cd",
+    "langfuse_trace_url": "https://cloud.langfuse.com/project/cmr1ywsf000d5ad0cex3dm2ha/traces/b6a4b3567204ecd2d1137e9a43875c25"
+  },
+  "error": null,
+  "ok": true
+}

@@ -1,0 +1,36 @@
+{
+  "session_id": "agent-bench:run:pydantic-ai:finance-capex-summary-2025:20260709T174805Z:e1fcb550",
+  "harness": "pydantic-ai",
+  "architecture": "enterprise-codemode-toolsearch-120",
+  "task": "finance-capex-summary-2025",
+  "prompt": "For calendar year 2025, show capital expenditure (capex) allocated versus actual spend by department.",
+  "output": "\n\n| department | allocated | actual_spend |\n|---|---|---|\n| Corporate FP&A | 72706.88 | 54823.31 |\n| Finance & Accounting | 164040.44 | 207250.34999999998 |\n| People & Talent | 558265.53 | 390390.77 |\n| Procurement | 412256.37 | 286585.56 |\n| Product Marketing | 402849.07 | 401492.86 |\n| R&D Engineering | 526772.84 | 665964.61 |\n| Sales & Marketing | 106799.75 | 124428.58 |\n| Supply Chain Operations | 424706.74 | 500312.72000000003 |",
+  "started_at": "2026-07-09T17:48:05.019489+00:00",
+  "elapsed_seconds": 17.99893304199213,
+  "metadata": {
+    "langfuse_session_id": "agent-bench:run:pydantic-ai:finance-capex-summary-2025:20260709T174805Z:e1fcb550",
+    "tool_calls": [
+      {
+        "tool_name": "search_tools",
+        "via": "native"
+      },
+      {
+        "tool_name": "get_capex_summary",
+        "via": "native"
+      },
+      {
+        "tool_name": "list_tables",
+        "via": "native"
+      },
+      {
+        "tool_name": "execute_sql",
+        "via": "native"
+      }
+    ],
+    "langfuse_trace_id": "76db6f18c56380d5a0fa554cc61ce4ce",
+    "langfuse_observation_id": "a604897b20573e44",
+    "langfuse_trace_url": "https://cloud.langfuse.com/project/cmr1ywsf000d5ad0cex3dm2ha/traces/76db6f18c56380d5a0fa554cc61ce4ce"
+  },
+  "error": null,
+  "ok": true
+}

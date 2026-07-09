@@ -1,0 +1,40 @@
+{
+  "session_id": "agent-bench:run:pydantic-ai:support-resolution-stats-180d:20260709T181315Z:e57034dc",
+  "harness": "pydantic-ai",
+  "architecture": "enterprise-codemode-toolsearch-120",
+  "task": "support-resolution-stats-180d",
+  "prompt": "Summarize support ticket resolution over the last 180 days: total tickets, resolved count, resolution rate percentage, and average resolution time in hours.",
+  "output": "\n\n| total_tickets | resolved_count | resolution_rate_pct | avg_resolution_time_hours |\n|---------------|----------------|---------------------|---------------------------|\n| 151 | 101 | 66.89 | 174.91 |",
+  "started_at": "2026-07-09T18:13:15.778457+00:00",
+  "elapsed_seconds": 15.716481959010707,
+  "metadata": {
+    "langfuse_session_id": "agent-bench:run:pydantic-ai:support-resolution-stats-180d:20260709T181315Z:e57034dc",
+    "tool_calls": [
+      {
+        "tool_name": "search_tools",
+        "via": "native"
+      },
+      {
+        "tool_name": "get_ticket_resolution_stats",
+        "via": "native"
+      },
+      {
+        "tool_name": "get_schema_context",
+        "via": "native"
+      },
+      {
+        "tool_name": "list_tables",
+        "via": "native"
+      },
+      {
+        "tool_name": "execute_sql",
+        "via": "native"
+      }
+    ],
+    "langfuse_trace_id": "8cbd731749049e10657743343e1c0935",
+    "langfuse_observation_id": "38d2292c8d193f7a",
+    "langfuse_trace_url": "https://cloud.langfuse.com/project/cmr1ywsf000d5ad0cex3dm2ha/traces/8cbd731749049e10657743343e1c0935"
+  },
+  "error": null,
+  "ok": true
+}

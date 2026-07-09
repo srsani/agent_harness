@@ -1,0 +1,102 @@
+{
+  "session_id": "agent-bench:run:pydantic-ai:workforce-headcount-3:20260709T182907Z:b042e548",
+  "harness": "pydantic-ai",
+  "architecture": "enterprise-codemode-categorized-search",
+  "task": "workforce-headcount-3",
+  "prompt": "Report department ID 3's active headcount and average salary.",
+  "output": "\n\n| Department ID | Active Headcount | Average Salary (USD) |\n|---------------|------------------|---------------------|\n| 3 | 14 | 115526.91 |",
+  "started_at": "2026-07-09T18:29:07.304020+00:00",
+  "elapsed_seconds": 16.223601292003877,
+  "metadata": {
+    "langfuse_session_id": "agent-bench:run:pydantic-ai:workforce-headcount-3:20260709T182907Z:b042e548",
+    "tool_calls": [
+      {
+        "tool_name": "list_tool_categories",
+        "via": "native"
+      },
+      {
+        "tool_name": "list_tool_categories",
+        "via": "native"
+      },
+      {
+        "tool_name": "run_code",
+        "via": "native"
+      },
+      {
+        "tool_name": "run_code",
+        "via": "native"
+      },
+      {
+        "tool_name": "list_tool_categories",
+        "via": "code_mode"
+      },
+      {
+        "tool_name": "run_code",
+        "via": "native"
+      },
+      {
+        "tool_name": "search_tools_in_category",
+        "via": "code_mode"
+      },
+      {
+        "tool_name": "run_code",
+        "via": "native"
+      },
+      {
+        "tool_name": "call_tool",
+        "via": "code_mode"
+      },
+      {
+        "tool_name": "get_department_headcount",
+        "via": "categorized_search"
+      }
+    ],
+    "langfuse_trace_id": "03a25b6ea3dd696d5554655cd9011116",
+    "langfuse_observation_id": "ec60391b2b041d07",
+    "langfuse_trace_url": "https://cloud.langfuse.com/project/cmr1ywsf000d5ad0cex3dm2ha/traces/03a25b6ea3dd696d5554655cd9011116"
+  },
+  "error": null,
+  "ok": true,
+  "scores": {
+    "scorable": true,
+    "correctness": 0.75,
+    "groundedness": 1.0,
+    "hallucination_rate": 0.0,
+    "overall_score": 0.8571,
+    "details": {
+      "refused_or_no_data": false,
+      "empty_output": false,
+      "expected_text_facts": 1,
+      "matched_text_facts": 0,
+      "expected_numeric_facts": 3,
+      "matched_numeric_facts": 3,
+      "claimed_numeric_values": 3,
+      "unsupported_numeric_values": 0
+    }
+  },
+  "tool_selection": {
+    "scorable": true,
+    "expected_tools": [
+      "execute_sql",
+      "get_department_headcount"
+    ],
+    "total_tool_calls": 10,
+    "tool_recall": 1.0,
+    "tool_precision": 0.6,
+    "distractor_call_count": 0,
+    "distractor_calls": [],
+    "any_distractor_called": false,
+    "distractor_call_rate": 0.0,
+    "fabricated_call_count": 4,
+    "fabricated_calls": [
+      "run_code",
+      "run_code",
+      "run_code",
+      "run_code"
+    ],
+    "any_fabricated_called": true,
+    "fabricated_call_rate": 0.4
+  },
+  "scored_at": "2026-07-09T18:29:23.874168+00:00",
+  "ground_truth_generated_at": "2026-07-08T20:08:57.272260+00:00"
+}

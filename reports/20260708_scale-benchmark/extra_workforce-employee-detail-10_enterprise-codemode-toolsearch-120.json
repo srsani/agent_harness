@@ -1,0 +1,48 @@
+{
+  "session_id": "agent-bench:run:pydantic-ai:workforce-employee-detail-10:20260709T181428Z:baa6e2dc",
+  "harness": "pydantic-ai",
+  "architecture": "enterprise-codemode-toolsearch-120",
+  "task": "workforce-employee-detail-10",
+  "prompt": "Get employee ID 10's profile, including department and manager name.",
+  "output": "\n\n| employee_id | employee_name | title | department_name | manager_name |\n|-------------|---------------|-------|-----------------|--------------|\n| 10 | Yara Roberts | Director | Finance & Accounting | Zach Anderson |",
+  "started_at": "2026-07-09T18:14:28.579474+00:00",
+  "elapsed_seconds": 20.103719125007046,
+  "metadata": {
+    "langfuse_session_id": "agent-bench:run:pydantic-ai:workforce-employee-detail-10:20260709T181428Z:baa6e2dc",
+    "tool_calls": [
+      {
+        "tool_name": "search_tools",
+        "via": "native"
+      },
+      {
+        "tool_name": "get_employee",
+        "via": "native"
+      },
+      {
+        "tool_name": "search_tools",
+        "via": "native"
+      },
+      {
+        "tool_name": "get_employee_directory",
+        "via": "native"
+      },
+      {
+        "tool_name": "search_employees",
+        "via": "native"
+      },
+      {
+        "tool_name": "list_tables",
+        "via": "native"
+      },
+      {
+        "tool_name": "execute_sql",
+        "via": "native"
+      }
+    ],
+    "langfuse_trace_id": "f76bb35f299294d6d7739e689188b0af",
+    "langfuse_observation_id": "b18e11a6a1280786",
+    "langfuse_trace_url": "https://cloud.langfuse.com/project/cmr1ywsf000d5ad0cex3dm2ha/traces/f76bb35f299294d6d7739e689188b0af"
+  },
+  "error": null,
+  "ok": true
+}

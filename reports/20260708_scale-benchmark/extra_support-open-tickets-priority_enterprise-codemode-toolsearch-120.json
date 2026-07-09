@@ -1,0 +1,40 @@
+{
+  "session_id": "agent-bench:run:pydantic-ai:support-open-tickets-priority:20260709T181301Z:b84a20fe",
+  "harness": "pydantic-ai",
+  "architecture": "enterprise-codemode-toolsearch-120",
+  "task": "support-open-tickets-priority",
+  "prompt": "How many open or pending support tickets are there, broken down by priority?",
+  "output": "\n\n| priority | ticket_count |\n|----------|-------------|\n| high     | 26          |\n| low      | 20          |\n| medium   | 36          |\n| urgent   | 21          |",
+  "started_at": "2026-07-09T18:13:01.037764+00:00",
+  "elapsed_seconds": 14.23900179201155,
+  "metadata": {
+    "langfuse_session_id": "agent-bench:run:pydantic-ai:support-open-tickets-priority:20260709T181301Z:b84a20fe",
+    "tool_calls": [
+      {
+        "tool_name": "search_tools",
+        "via": "native"
+      },
+      {
+        "tool_name": "get_open_tickets_by_priority",
+        "via": "native"
+      },
+      {
+        "tool_name": "search_tools",
+        "via": "native"
+      },
+      {
+        "tool_name": "execute_sql",
+        "via": "native"
+      },
+      {
+        "tool_name": "execute_sql",
+        "via": "native"
+      }
+    ],
+    "langfuse_trace_id": "096163f804797d8aa1d9d2e351439ce6",
+    "langfuse_observation_id": "1b7b3282628b3a92",
+    "langfuse_trace_url": "https://cloud.langfuse.com/project/cmr1ywsf000d5ad0cex3dm2ha/traces/096163f804797d8aa1d9d2e351439ce6"
+  },
+  "error": null,
+  "ok": true
+}

@@ -1,0 +1,113 @@
+{
+  "session_id": "agent-bench:run:pydantic-ai:support-resolution-stats-180d:20260709T182706Z:8f912cb7",
+  "harness": "pydantic-ai",
+  "architecture": "enterprise-codemode-categorized-search",
+  "task": "support-resolution-stats-180d",
+  "prompt": "Summarize support ticket resolution over the last 180 days: total tickets, resolved count, resolution rate percentage, and average resolution time in hours.",
+  "output": "\n\n| total_tickets | resolved_count | resolution_rate_pct | avg_resolution_hours |\n|---------------|----------------|---------------------|----------------------|\n| 154 | 103 | 66.88 | 174.46 |",
+  "started_at": "2026-07-09T18:27:06.030367+00:00",
+  "elapsed_seconds": 23.103834125009598,
+  "metadata": {
+    "langfuse_session_id": "agent-bench:run:pydantic-ai:support-resolution-stats-180d:20260709T182706Z:8f912cb7",
+    "tool_calls": [
+      {
+        "tool_name": "list_tool_categories",
+        "via": "native"
+      },
+      {
+        "tool_name": "run_code",
+        "via": "native"
+      },
+      {
+        "tool_name": "run_code",
+        "via": "native"
+      },
+      {
+        "tool_name": "run_code",
+        "via": "native"
+      },
+      {
+        "tool_name": "run_code",
+        "via": "native"
+      },
+      {
+        "tool_name": "run_code",
+        "via": "native"
+      },
+      {
+        "tool_name": "list_tool_categories",
+        "via": "code_mode"
+      },
+      {
+        "tool_name": "run_code",
+        "via": "native"
+      },
+      {
+        "tool_name": "search_tools_in_category",
+        "via": "code_mode"
+      },
+      {
+        "tool_name": "run_code",
+        "via": "native"
+      },
+      {
+        "tool_name": "call_tool",
+        "via": "code_mode"
+      },
+      {
+        "tool_name": "get_ticket_resolution_stats",
+        "via": "categorized_search"
+      }
+    ],
+    "langfuse_trace_id": "e016040dd1de72812cedab9dc6d5a569",
+    "langfuse_observation_id": "dc66a1cf6b376a8d",
+    "langfuse_trace_url": "https://cloud.langfuse.com/project/cmr1ywsf000d5ad0cex3dm2ha/traces/e016040dd1de72812cedab9dc6d5a569"
+  },
+  "error": null,
+  "ok": true,
+  "scores": {
+    "scorable": true,
+    "correctness": 1.0,
+    "groundedness": 1.0,
+    "hallucination_rate": 0.0,
+    "overall_score": 1.0,
+    "details": {
+      "refused_or_no_data": false,
+      "empty_output": false,
+      "expected_text_facts": 0,
+      "matched_text_facts": 0,
+      "expected_numeric_facts": 4,
+      "matched_numeric_facts": 4,
+      "claimed_numeric_values": 4,
+      "unsupported_numeric_values": 0
+    }
+  },
+  "tool_selection": {
+    "scorable": true,
+    "expected_tools": [
+      "execute_sql",
+      "get_ticket_resolution_stats"
+    ],
+    "total_tool_calls": 12,
+    "tool_recall": 1.0,
+    "tool_precision": 0.4167,
+    "distractor_call_count": 0,
+    "distractor_calls": [],
+    "any_distractor_called": false,
+    "distractor_call_rate": 0.0,
+    "fabricated_call_count": 7,
+    "fabricated_calls": [
+      "run_code",
+      "run_code",
+      "run_code",
+      "run_code",
+      "run_code",
+      "run_code",
+      "run_code"
+    ],
+    "any_fabricated_called": true,
+    "fabricated_call_rate": 0.5833
+  },
+  "scored_at": "2026-07-09T18:27:31.409312+00:00",
+  "ground_truth_generated_at": "2026-07-08T20:08:57.272260+00:00"
+}

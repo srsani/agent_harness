@@ -1,0 +1,68 @@
+{
+  "session_id": "agent-bench:run:pydantic-ai:procurement-supplier-performance-10:20260709T182535Z:25fb6b79",
+  "harness": "pydantic-ai",
+  "architecture": "enterprise-codemode-categorized-search",
+  "task": "procurement-supplier-performance-10",
+  "prompt": "Report supplier ID 10's purchase order volume, total spend, and on-time delivery counts.",
+  "output": "\n\n| supplier_id | purchase_order_volume | total_spend_usd | on_time_delivery_count |\n|-------------|----------------------|-----------------|------------------------|\n| 10 | 12 | 815725.29 | 5 |",
+  "started_at": "2026-07-09T18:25:35.666564+00:00",
+  "elapsed_seconds": 29.325896374997683,
+  "metadata": {
+    "langfuse_session_id": "agent-bench:run:pydantic-ai:procurement-supplier-performance-10:20260709T182535Z:25fb6b79",
+    "tool_calls": [
+      {
+        "tool_name": "list_tool_categories",
+        "via": "native"
+      },
+      {
+        "tool_name": "run_code",
+        "via": "native"
+      },
+      {
+        "tool_name": "run_code",
+        "via": "native"
+      },
+      {
+        "tool_name": "run_code",
+        "via": "native"
+      },
+      {
+        "tool_name": "run_code",
+        "via": "native"
+      },
+      {
+        "tool_name": "list_tool_categories",
+        "via": "code_mode"
+      },
+      {
+        "tool_name": "run_code",
+        "via": "native"
+      },
+      {
+        "tool_name": "run_code",
+        "via": "native"
+      },
+      {
+        "tool_name": "search_tools_in_category",
+        "via": "code_mode"
+      },
+      {
+        "tool_name": "run_code",
+        "via": "native"
+      },
+      {
+        "tool_name": "call_tool",
+        "via": "code_mode"
+      },
+      {
+        "tool_name": "get_supplier_performance",
+        "via": "categorized_search"
+      }
+    ],
+    "langfuse_trace_id": "c9118ad86a6952d555c18beb67206a42",
+    "langfuse_observation_id": "c4e147f8a342b75e",
+    "langfuse_trace_url": "https://cloud.langfuse.com/project/cmr1ywsf000d5ad0cex3dm2ha/traces/c9118ad86a6952d555c18beb67206a42"
+  },
+  "error": null,
+  "ok": true
+}

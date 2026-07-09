@@ -1,0 +1,56 @@
+{
+  "session_id": "agent-bench:run:pydantic-ai:finance-capex-summary-2025:20260709T181708Z:6d02396d",
+  "harness": "pydantic-ai",
+  "architecture": "enterprise-codemode-categorized-search",
+  "task": "finance-capex-summary-2025",
+  "prompt": "For calendar year 2025, show capital expenditure (capex) allocated versus actual spend by department.",
+  "output": "\n\n| Department | Allocated (USD) | Actual Spend (USD) |\n|---|---|---|\n| People & Talent | 558265.53 | 390390.77 |\n| R&D Engineering | 526772.84 | 665964.61 |\n| Supply Chain Operations | 424706.74 | 500312.72 |\n| Procurement | 412256.37 | 286585.56 |\n| Product Marketing | 402849.07 | 401492.86 |\n| Finance & Accounting | 164040.44 | 207250.35 |\n| Sales & Marketing | 106799.75 | 124428.58 |\n| Corporate FP&A | 72706.88 | 54823.31 |",
+  "started_at": "2026-07-09T18:17:08.207264+00:00",
+  "elapsed_seconds": 11.720863791997544,
+  "metadata": {
+    "langfuse_session_id": "agent-bench:run:pydantic-ai:finance-capex-summary-2025:20260709T181708Z:6d02396d",
+    "tool_calls": [
+      {
+        "tool_name": "list_tool_categories",
+        "via": "native"
+      },
+      {
+        "tool_name": "run_code",
+        "via": "native"
+      },
+      {
+        "tool_name": "run_code",
+        "via": "native"
+      },
+      {
+        "tool_name": "list_tool_categories",
+        "via": "code_mode"
+      },
+      {
+        "tool_name": "run_code",
+        "via": "native"
+      },
+      {
+        "tool_name": "search_tools_in_category",
+        "via": "code_mode"
+      },
+      {
+        "tool_name": "run_code",
+        "via": "native"
+      },
+      {
+        "tool_name": "call_tool",
+        "via": "code_mode"
+      },
+      {
+        "tool_name": "get_capex_summary",
+        "via": "categorized_search"
+      }
+    ],
+    "langfuse_trace_id": "231624d2dfc1f85ff11d00380a005df2",
+    "langfuse_observation_id": "e33b5f77b8dafa4d",
+    "langfuse_trace_url": "https://cloud.langfuse.com/project/cmr1ywsf000d5ad0cex3dm2ha/traces/231624d2dfc1f85ff11d00380a005df2"
+  },
+  "error": null,
+  "ok": true
+}

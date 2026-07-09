@@ -1,0 +1,15 @@
+{
+  "session_id": "agent-bench:run:pydantic-ai:marketing-channel-spend-365d:20260709T180824Z:2a33ae36",
+  "harness": "pydantic-ai",
+  "architecture": "enterprise-codemode-toolsearch-120",
+  "task": "marketing-channel-spend-365d",
+  "prompt": "Break down total marketing spend and conversions by channel over the last 365 days.",
+  "output": "",
+  "started_at": "2026-07-09T18:08:24.192676+00:00",
+  "elapsed_seconds": 28.150015291990712,
+  "metadata": {
+    "langfuse_session_id": "agent-bench:run:pydantic-ai:marketing-channel-spend-365d:20260709T180824Z:2a33ae36"
+  },
+  "error": "UnexpectedModelBehavior: Tool 'get_channel_spend_breakdown' exceeded max retries count of 3",
+  "ok": false
+}

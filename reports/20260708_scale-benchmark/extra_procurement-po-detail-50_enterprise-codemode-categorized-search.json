@@ -1,0 +1,68 @@
+{
+  "session_id": "agent-bench:run:pydantic-ai:procurement-po-detail-50:20260709T182105Z:4f663eae",
+  "harness": "pydantic-ai",
+  "architecture": "enterprise-codemode-categorized-search",
+  "task": "procurement-po-detail-50",
+  "prompt": "Get full details for purchase order ID 50, including the supplier name.",
+  "output": "\n\n| id | supplier_name | status | total_amount | ordered_at | expected_at | received_at |\n|---|---|---|---|---|---|---|\n| 50 | Ironclad Systems | approved | 117759.98 | 2025-05-19T09:22:32 | 2025-06-14T09:22:32 | None |",
+  "started_at": "2026-07-09T18:21:05.983864+00:00",
+  "elapsed_seconds": 18.13279879098991,
+  "metadata": {
+    "langfuse_session_id": "agent-bench:run:pydantic-ai:procurement-po-detail-50:20260709T182105Z:4f663eae",
+    "tool_calls": [
+      {
+        "tool_name": "list_tool_categories",
+        "via": "native"
+      },
+      {
+        "tool_name": "run_code",
+        "via": "native"
+      },
+      {
+        "tool_name": "run_code",
+        "via": "native"
+      },
+      {
+        "tool_name": "run_code",
+        "via": "native"
+      },
+      {
+        "tool_name": "list_tool_categories",
+        "via": "code_mode"
+      },
+      {
+        "tool_name": "run_code",
+        "via": "native"
+      },
+      {
+        "tool_name": "search_tools_in_category",
+        "via": "code_mode"
+      },
+      {
+        "tool_name": "run_code",
+        "via": "native"
+      },
+      {
+        "tool_name": "search_tools_in_category",
+        "via": "code_mode"
+      },
+      {
+        "tool_name": "run_code",
+        "via": "native"
+      },
+      {
+        "tool_name": "call_tool",
+        "via": "code_mode"
+      },
+      {
+        "tool_name": "get_purchase_order",
+        "via": "categorized_search"
+      }
+    ],
+    "langfuse_trace_id": "a9bc92e9c8e46176d5bfba057bb98b5d",
+    "langfuse_observation_id": "b5e74385c125c18b",
+    "langfuse_trace_url": "https://cloud.langfuse.com/project/cmr1ywsf000d5ad0cex3dm2ha/traces/a9bc92e9c8e46176d5bfba057bb98b5d"
+  },
+  "error": null,
+  "ok": true
+}

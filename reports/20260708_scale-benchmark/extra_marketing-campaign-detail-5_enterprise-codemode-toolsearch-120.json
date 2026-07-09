@@ -1,0 +1,32 @@
+{
+  "session_id": "agent-bench:run:pydantic-ai:marketing-campaign-detail-5:20260709T180739Z:b0435bfe",
+  "harness": "pydantic-ai",
+  "architecture": "enterprise-codemode-toolsearch-120",
+  "task": "marketing-campaign-detail-5",
+  "prompt": "Get full details for marketing campaign ID 5.",
+  "output": "\n\n| id | name | channel | status | budget_usd | start_date | end_date |\n|---|---|---|---|---|---|---|\n| 5 | Fall Search Surge 1 | paid_search | planned | 36723.7 | 2026-03-31 | 2026-07-08 |",
+  "started_at": "2026-07-09T18:07:39.907683+00:00",
+  "elapsed_seconds": 12.575311916996725,
+  "metadata": {
+    "langfuse_session_id": "agent-bench:run:pydantic-ai:marketing-campaign-detail-5:20260709T180739Z:b0435bfe",
+    "tool_calls": [
+      {
+        "tool_name": "search_tools",
+        "via": "native"
+      },
+      {
+        "tool_name": "get_campaign",
+        "via": "native"
+      },
+      {
+        "tool_name": "list_campaigns",
+        "via": "native"
+      }
+    ],
+    "langfuse_trace_id": "f7f09a2dd589233bbb3767c7c404dca4",
+    "langfuse_observation_id": "ad83013d39ee32d1",
+    "langfuse_trace_url": "https://cloud.langfuse.com/project/cmr1ywsf000d5ad0cex3dm2ha/traces/f7f09a2dd589233bbb3767c7c404dca4"
+  },
+  "error": null,
+  "ok": true
+}

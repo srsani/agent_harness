@@ -1,0 +1,81 @@
+{
+  "session_id": "agent-bench:run:pydantic-ai:support-csat-90d:20260709T181243Z:e2c4fd2b",
+  "harness": "pydantic-ai",
+  "architecture": "enterprise-codemode-toolsearch-120",
+  "task": "support-csat-90d",
+  "prompt": "What is the average customer satisfaction (CSAT) score and rating count over the last 90 days?",
+  "output": "\n\n| avg_rating | rating_count |\n|------------|--------------|\n| 4.092307692307692 | 65 |",
+  "started_at": "2026-07-09T18:12:43.396806+00:00",
+  "elapsed_seconds": 17.09971166701871,
+  "metadata": {
+    "langfuse_session_id": "agent-bench:run:pydantic-ai:support-csat-90d:20260709T181243Z:e2c4fd2b",
+    "tool_calls": [
+      {
+        "tool_name": "search_tools",
+        "via": "native"
+      },
+      {
+        "tool_name": "get_csat_summary",
+        "via": "native"
+      },
+      {
+        "tool_name": "search_tools",
+        "via": "native"
+      },
+      {
+        "tool_name": "execute_sql",
+        "via": "native"
+      },
+      {
+        "tool_name": "list_tables",
+        "via": "native"
+      },
+      {
+        "tool_name": "execute_sql",
+        "via": "native"
+      }
+    ],
+    "langfuse_trace_id": "100a233bd0846b2b5b88affddd5eb376",
+    "langfuse_observation_id": "4d02d84cd7b0acc1",
+    "langfuse_trace_url": "https://cloud.langfuse.com/project/cmr1ywsf000d5ad0cex3dm2ha/traces/100a233bd0846b2b5b88affddd5eb376"
+  },
+  "error": null,
+  "ok": true,
+  "scores": {
+    "scorable": true,
+    "correctness": 0.0,
+    "groundedness": 0.0,
+    "hallucination_rate": 1.0,
+    "overall_score": 0.0,
+    "details": {
+      "refused_or_no_data": false,
+      "empty_output": false,
+      "expected_text_facts": 0,
+      "matched_text_facts": 0,
+      "expected_numeric_facts": 2,
+      "matched_numeric_facts": 0,
+      "claimed_numeric_values": 2,
+      "unsupported_numeric_values": 2
+    }
+  },
+  "tool_selection": {
+    "scorable": true,
+    "expected_tools": [
+      "execute_sql",
+      "get_csat_summary"
+    ],
+    "total_tool_calls": 6,
+    "tool_recall": 1.0,
+    "tool_precision": 1.0,
+    "distractor_call_count": 0,
+    "distractor_calls": [],
+    "any_distractor_called": false,
+    "distractor_call_rate": 0.0,
+    "fabricated_call_count": 0,
+    "fabricated_calls": [],
+    "any_fabricated_called": false,
+    "fabricated_call_rate": 0.0
+  },
+  "scored_at": "2026-07-09T18:13:00.814362+00:00",
+  "ground_truth_generated_at": "2026-07-08T20:08:57.272260+00:00"
+}

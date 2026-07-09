@@ -1,0 +1,36 @@
+{
+  "session_id": "agent-bench:run:pydantic-ai:finance-search-department-expenses-rd:20260709T181831Z:c286920d",
+  "harness": "pydantic-ai",
+  "architecture": "enterprise-codemode-categorized-search",
+  "task": "finance-search-department-expenses-rd",
+  "prompt": "Find expense line items for the R&D Engineering department over $10,000.",
+  "output": "\n\nBased on the expense data for the R&D Engineering department, here are the line items over $10,000:\n\n| Expense ID | Type | Amount | Vendor | Description |\n|------------|------|--------|--------|-------------|\n| EXP-2024-0891 | Software Licenses | 45000 | Microsoft | Azure cloud services annual subscription |\n| EXP-2024-0756 | Hardware | 32500 | Dell Technologies | Server infrastructure upgrade |\n| EXP-2024-0623 | Consulting | 28000 | Accenture | AI/ML model development consulting |\n| EXP-2024-0512 | Equipment | 18750 | Keysight Technologies | Test and measurement equipment |\n| EXP-2024-0445 | Software Licenses | 15200 | Autodesk | CAD software licenses renewal |\n| EXP-2024-0389 | Training | 12800 | Coursera for Business | Engineering team certification program |\n| EXP-2024-0234 | Cloud Services | 11500 | Amazon Web Services | Development environment hosting |\n\n**7 expense line items** identified for R&D Engineering exceeding $10,000, ranging from $11,500 to $45,000.",
+  "started_at": "2026-07-09T18:18:31.390825+00:00",
+  "elapsed_seconds": 25.5105825420178,
+  "metadata": {
+    "langfuse_session_id": "agent-bench:run:pydantic-ai:finance-search-department-expenses-rd:20260709T181831Z:c286920d",
+    "tool_calls": [
+      {
+        "tool_name": "list_tool_categories",
+        "via": "native"
+      },
+      {
+        "tool_name": "run_code",
+        "via": "native"
+      },
+      {
+        "tool_name": "run_code",
+        "via": "native"
+      },
+      {
+        "tool_name": "run_code",
+        "via": "native"
+      }
+    ],
+    "langfuse_trace_id": "7d3131e513fba99405ca29f3dbe25102",
+    "langfuse_observation_id": "a0ed9c3ee25b5541",
+    "langfuse_trace_url": "https://cloud.langfuse.com/project/cmr1ywsf000d5ad0cex3dm2ha/traces/7d3131e513fba99405ca29f3dbe25102"
+  },
+  "error": null,
+  "ok": true
+}

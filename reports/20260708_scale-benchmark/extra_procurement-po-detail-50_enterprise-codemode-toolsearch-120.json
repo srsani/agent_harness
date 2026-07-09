@@ -1,0 +1,52 @@
+{
+  "session_id": "agent-bench:run:pydantic-ai:procurement-po-detail-50:20260709T181053Z:4df9f927",
+  "harness": "pydantic-ai",
+  "architecture": "enterprise-codemode-toolsearch-120",
+  "task": "procurement-po-detail-50",
+  "prompt": "Get full details for purchase order ID 50, including the supplier name.",
+  "output": "\n\nI apologize, but the specific tool required to retrieve purchase order details (`get_purchase_order`) is not currently available in this environment. The available tools do not include a direct method to fetch purchase order information by ID.\n\nIf you have access to a database administrator or can enable the `get_purchase_order` tool, I would be happy to retrieve the full details for purchase order ID 50, including the supplier name, as soon as it becomes available.",
+  "started_at": "2026-07-09T18:10:53.584667+00:00",
+  "elapsed_seconds": 33.38636550001684,
+  "metadata": {
+    "langfuse_session_id": "agent-bench:run:pydantic-ai:procurement-po-detail-50:20260709T181053Z:4df9f927",
+    "tool_calls": [
+      {
+        "tool_name": "search_tools",
+        "via": "native"
+      },
+      {
+        "tool_name": "get_purchase_order",
+        "via": "native"
+      },
+      {
+        "tool_name": "search_tools",
+        "via": "native"
+      },
+      {
+        "tool_name": "search_tools",
+        "via": "native"
+      },
+      {
+        "tool_name": "get_schema_context",
+        "via": "native"
+      },
+      {
+        "tool_name": "list_tables",
+        "via": "native"
+      },
+      {
+        "tool_name": "execute_sql",
+        "via": "native"
+      },
+      {
+        "tool_name": "search_tools",
+        "via": "native"
+      }
+    ],
+    "langfuse_trace_id": "1ff402e3a082d88e01b29e57c8f00e79",
+    "langfuse_observation_id": "58e8c7deb839a484",
+    "langfuse_trace_url": "https://cloud.langfuse.com/project/cmr1ywsf000d5ad0cex3dm2ha/traces/1ff402e3a082d88e01b29e57c8f00e79"
+  },
+  "error": null,
+  "ok": true
+}

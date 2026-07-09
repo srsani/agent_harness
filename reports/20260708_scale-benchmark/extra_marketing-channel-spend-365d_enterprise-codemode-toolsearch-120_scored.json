@@ -1,0 +1,52 @@
+{
+  "session_id": "agent-bench:run:pydantic-ai:marketing-channel-spend-365d:20260709T180824Z:2a33ae36",
+  "harness": "pydantic-ai",
+  "architecture": "enterprise-codemode-toolsearch-120",
+  "task": "marketing-channel-spend-365d",
+  "prompt": "Break down total marketing spend and conversions by channel over the last 365 days.",
+  "output": "",
+  "started_at": "2026-07-09T18:08:24.192676+00:00",
+  "elapsed_seconds": 28.150015291990712,
+  "metadata": {
+    "langfuse_session_id": "agent-bench:run:pydantic-ai:marketing-channel-spend-365d:20260709T180824Z:2a33ae36"
+  },
+  "error": "UnexpectedModelBehavior: Tool 'get_channel_spend_breakdown' exceeded max retries count of 3",
+  "ok": false,
+  "scores": {
+    "scorable": true,
+    "correctness": 0.0,
+    "groundedness": 0.0,
+    "hallucination_rate": 1.0,
+    "overall_score": 0.0,
+    "details": {
+      "refused_or_no_data": true,
+      "empty_output": true,
+      "expected_text_facts": 6,
+      "matched_text_facts": 0,
+      "expected_numeric_facts": 12,
+      "matched_numeric_facts": 0,
+      "claimed_numeric_values": 0,
+      "unsupported_numeric_values": 0
+    }
+  },
+  "tool_selection": {
+    "scorable": true,
+    "expected_tools": [
+      "execute_sql",
+      "get_channel_spend_breakdown"
+    ],
+    "total_tool_calls": 0,
+    "tool_recall": 0.0,
+    "tool_precision": 0.0,
+    "distractor_call_count": 0,
+    "distractor_calls": [],
+    "any_distractor_called": false,
+    "distractor_call_rate": 0.0,
+    "fabricated_call_count": 0,
+    "fabricated_calls": [],
+    "any_fabricated_called": false,
+    "fabricated_call_rate": 0.0
+  },
+  "scored_at": "2026-07-09T18:08:52.676550+00:00",
+  "ground_truth_generated_at": "2026-07-08T20:08:57.272260+00:00"
+}

@@ -1,0 +1,98 @@
+{
+  "session_id": "agent-bench:run:pydantic-ai:support-search-urgent-open:20260709T182731Z:49293a42",
+  "harness": "pydantic-ai",
+  "architecture": "enterprise-codemode-categorized-search",
+  "task": "support-search-urgent-open",
+  "prompt": "List up to 20 open support tickets with urgent priority.",
+  "output": "\n\n| id | customer_id | product_id | agent_id | subject | priority | status | created_at | resolved_at | satisfaction_rating |\n|----|-------------|------------|----------|---------|----------|--------|------------|-------------|---------------------|\n| 193 | 137 | 41 | 12 | Data refresh delayed | urgent | open | 2026-05-23T01:46:44 | None | None |\n| 63 | 166 | 1 | 10 | Dashboard not loading latest data | urgent | open | 2026-03-11T08:29:14 | None | None |\n| 257 | 57 | 22 | 7 | Question about seat count on invoice | urgent | open | 2026-02-28T19:54:29 | None | None |\n| 169 | 189 | 16 | 4 | Permission error viewing module | urgent | open | 2026-02-24T02:43:30 | None | None |\n| 135 | 192 | 30 | 8 | Incorrect revenue totals | urgent | open | 2026-01-24T23:48:48 | None | None |\n| 48 | 53 | 16 | 14 | Data refresh delayed | urgent | open | 2025-12-02T11:19:43 | None | None |\n| 148 | 106 | 20 | 13 | API rate limit question | urgent | open | 2025-10-08T18:34:30 | None | None |\n| 121 | 142 | 12 | 1 | API rate limit question | urgent | open | 2025-09-19T10:48:29 | None | None |",
+  "started_at": "2026-07-09T18:27:31.638237+00:00",
+  "elapsed_seconds": 16.78651062498102,
+  "metadata": {
+    "langfuse_session_id": "agent-bench:run:pydantic-ai:support-search-urgent-open:20260709T182731Z:49293a42",
+    "tool_calls": [
+      {
+        "tool_name": "list_tool_categories",
+        "via": "native"
+      },
+      {
+        "tool_name": "run_code",
+        "via": "native"
+      },
+      {
+        "tool_name": "run_code",
+        "via": "native"
+      },
+      {
+        "tool_name": "list_tool_categories",
+        "via": "code_mode"
+      },
+      {
+        "tool_name": "run_code",
+        "via": "native"
+      },
+      {
+        "tool_name": "search_tools_in_category",
+        "via": "code_mode"
+      },
+      {
+        "tool_name": "run_code",
+        "via": "native"
+      },
+      {
+        "tool_name": "call_tool",
+        "via": "code_mode"
+      },
+      {
+        "tool_name": "search_support_tickets",
+        "via": "categorized_search"
+      }
+    ],
+    "langfuse_trace_id": "47bdd9937fdf4799ce657316c5250ab8",
+    "langfuse_observation_id": "4290577dae776248",
+    "langfuse_trace_url": "https://cloud.langfuse.com/project/cmr1ywsf000d5ad0cex3dm2ha/traces/47bdd9937fdf4799ce657316c5250ab8"
+  },
+  "error": null,
+  "ok": true,
+  "scores": {
+    "scorable": true,
+    "correctness": 1.0,
+    "groundedness": 0.617,
+    "hallucination_rate": 0.383,
+    "overall_score": 0.7631,
+    "details": {
+      "refused_or_no_data": false,
+      "empty_output": false,
+      "expected_text_facts": 24,
+      "matched_text_facts": 24,
+      "expected_numeric_facts": 32,
+      "matched_numeric_facts": 32,
+      "claimed_numeric_values": 47,
+      "unsupported_numeric_values": 18
+    }
+  },
+  "tool_selection": {
+    "scorable": true,
+    "expected_tools": [
+      "execute_sql",
+      "search_support_tickets"
+    ],
+    "total_tool_calls": 9,
+    "tool_recall": 1.0,
+    "tool_precision": 0.5556,
+    "distractor_call_count": 0,
+    "distractor_calls": [],
+    "any_distractor_called": false,
+    "distractor_call_rate": 0.0,
+    "fabricated_call_count": 4,
+    "fabricated_calls": [
+      "run_code",
+      "run_code",
+      "run_code",
+      "run_code"
+    ],
+    "any_fabricated_called": true,
+    "fabricated_call_rate": 0.4444
+  },
+  "scored_at": "2026-07-09T18:27:48.738613+00:00",
+  "ground_truth_generated_at": "2026-07-08T20:08:57.272260+00:00"
+}

@@ -1,0 +1,15 @@
+{
+  "session_id": "agent-bench:run:pydantic-ai:marketing-top-campaigns-conversion:20260709T180936Z:be2ee1ee",
+  "harness": "pydantic-ai",
+  "architecture": "enterprise-codemode-toolsearch-120",
+  "task": "marketing-top-campaigns-conversion",
+  "prompt": "Which 5 marketing campaigns have the most total conversions?",
+  "output": "",
+  "started_at": "2026-07-09T18:09:36.485317+00:00",
+  "elapsed_seconds": 52.397002999990946,
+  "metadata": {
+    "langfuse_session_id": "agent-bench:run:pydantic-ai:marketing-top-campaigns-conversion:20260709T180936Z:be2ee1ee"
+  },
+  "error": "UnexpectedModelBehavior: Tool 'get_top_campaigns_by_conversion' exceeded max retries count of 3",
+  "ok": false
+}

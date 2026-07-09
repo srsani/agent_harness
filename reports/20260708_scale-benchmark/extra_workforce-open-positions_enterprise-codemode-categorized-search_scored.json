@@ -1,0 +1,81 @@
+{
+  "session_id": "agent-bench:run:pydantic-ai:workforce-open-positions:20260709T182924Z:a9da9dd1",
+  "harness": "pydantic-ai",
+  "architecture": "enterprise-codemode-categorized-search",
+  "task": "workforce-open-positions",
+  "prompt": "List departments with recent attrition that haven't been backfilled yet.",
+  "output": "\n\nI don't have access to the enterprise database tools needed to query HR/People data in this environment. The available tools (list_tool_categories, search_tools_in_category, call_tool) that would allow me to access the platform's HR analytics data are not available.\n\nTo answer your question about **departments with recent attrition that haven't been backfilled yet**, I would need access to:\n\n1. **HR/People Analytics tools** - to query employee separation data (attrition/turnover records)\n2. **Recruitment/Hiring tools** - to check backfill status (open requisitions vs. filled positions)\n3. **Organizational structure data** - to map attrition to specific departments\n\nCould you please provide access to the appropriate HR analytics or database query tools so I can retrieve this information? Alternatively, if you have a SQL query or specific database schema in mind, I can help construct the query to identify:\n- Departments with employee separations in a recent lookback window\n- Those departments where open headcount has not been filled (no active backfill requisitions or new hires)",
+  "started_at": "2026-07-09T18:29:24.097989+00:00",
+  "elapsed_seconds": 12.891378792002797,
+  "metadata": {
+    "langfuse_session_id": "agent-bench:run:pydantic-ai:workforce-open-positions:20260709T182924Z:a9da9dd1",
+    "tool_calls": [
+      {
+        "tool_name": "list_tool_categories",
+        "via": "native"
+      },
+      {
+        "tool_name": "run_code",
+        "via": "native"
+      },
+      {
+        "tool_name": "list_tool_categories",
+        "via": "native"
+      },
+      {
+        "tool_name": "run_code",
+        "via": "native"
+      },
+      {
+        "tool_name": "run_code",
+        "via": "native"
+      }
+    ],
+    "langfuse_trace_id": "0a4fefe26617d643343ebfdcaffc3bd2",
+    "langfuse_observation_id": "da14a732d5c6779f",
+    "langfuse_trace_url": "https://cloud.langfuse.com/project/cmr1ywsf000d5ad0cex3dm2ha/traces/0a4fefe26617d643343ebfdcaffc3bd2"
+  },
+  "error": null,
+  "ok": true,
+  "scores": {
+    "scorable": true,
+    "correctness": 0.0,
+    "groundedness": 0.0,
+    "hallucination_rate": 1.0,
+    "overall_score": 0.0,
+    "details": {
+      "refused_or_no_data": true,
+      "empty_output": false,
+      "expected_text_facts": 11,
+      "matched_text_facts": 0,
+      "expected_numeric_facts": 0,
+      "matched_numeric_facts": 0,
+      "claimed_numeric_values": 3,
+      "unsupported_numeric_values": 3
+    }
+  },
+  "tool_selection": {
+    "scorable": true,
+    "expected_tools": [
+      "execute_sql",
+      "get_open_positions"
+    ],
+    "total_tool_calls": 5,
+    "tool_recall": 0.0,
+    "tool_precision": 0.4,
+    "distractor_call_count": 0,
+    "distractor_calls": [],
+    "any_distractor_called": false,
+    "distractor_call_rate": 0.0,
+    "fabricated_call_count": 3,
+    "fabricated_calls": [
+      "run_code",
+      "run_code",
+      "run_code"
+    ],
+    "any_fabricated_called": true,
+    "fabricated_call_rate": 0.6
+  },
+  "scored_at": "2026-07-09T18:29:37.260668+00:00",
+  "ground_truth_generated_at": "2026-07-08T20:08:57.272260+00:00"
+}

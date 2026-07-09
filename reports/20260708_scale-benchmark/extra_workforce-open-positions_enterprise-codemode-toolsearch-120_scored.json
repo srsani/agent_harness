@@ -1,0 +1,107 @@
+{
+  "session_id": "agent-bench:run:pydantic-ai:workforce-open-positions:20260709T181503Z:28c08100",
+  "harness": "pydantic-ai",
+  "architecture": "enterprise-codemode-toolsearch-120",
+  "task": "workforce-open-positions",
+  "prompt": "List departments with recent attrition that haven't been backfilled yet.",
+  "output": "\n\nBased on the open positions data, here are the departments with recent attrition that haven't been backfilled:\n\n| Department | Title |\n|------------|-------|\n| Corporate FP&A | Director |\n| Supply Chain Operations | Lead |\n| Supply Chain Operations | Director |\n| Procurement | VP |",
+  "started_at": "2026-07-09T18:15:03.708470+00:00",
+  "elapsed_seconds": 37.09007945898338,
+  "metadata": {
+    "langfuse_session_id": "agent-bench:run:pydantic-ai:workforce-open-positions:20260709T181503Z:28c08100",
+    "tool_calls": [
+      {
+        "tool_name": "search_tools",
+        "via": "native"
+      },
+      {
+        "tool_name": "get_open_positions",
+        "via": "native"
+      },
+      {
+        "tool_name": "list_departments",
+        "via": "native"
+      },
+      {
+        "tool_name": "search_employees",
+        "via": "native"
+      },
+      {
+        "tool_name": "list_tables",
+        "via": "native"
+      },
+      {
+        "tool_name": "execute_sql",
+        "via": "native"
+      },
+      {
+        "tool_name": "execute_sql",
+        "via": "native"
+      },
+      {
+        "tool_name": "execute_sql",
+        "via": "native"
+      },
+      {
+        "tool_name": "execute_sql",
+        "via": "native"
+      },
+      {
+        "tool_name": "execute_sql",
+        "via": "native"
+      },
+      {
+        "tool_name": "run_code",
+        "via": "native"
+      },
+      {
+        "tool_name": "get_open_positions",
+        "via": "code_mode"
+      }
+    ],
+    "langfuse_trace_id": "6cf46171874aa5557d31cf953fd7ae35",
+    "langfuse_observation_id": "36526578f00f1068",
+    "langfuse_trace_url": "https://cloud.langfuse.com/project/cmr1ywsf000d5ad0cex3dm2ha/traces/6cf46171874aa5557d31cf953fd7ae35"
+  },
+  "error": null,
+  "ok": true,
+  "scores": {
+    "scorable": true,
+    "correctness": 0.6364,
+    "groundedness": 1.0,
+    "hallucination_rate": 0.0,
+    "overall_score": 0.7778,
+    "details": {
+      "refused_or_no_data": false,
+      "empty_output": false,
+      "expected_text_facts": 11,
+      "matched_text_facts": 7,
+      "expected_numeric_facts": 0,
+      "matched_numeric_facts": 0,
+      "claimed_numeric_values": 0,
+      "unsupported_numeric_values": 0
+    }
+  },
+  "tool_selection": {
+    "scorable": true,
+    "expected_tools": [
+      "execute_sql",
+      "get_open_positions"
+    ],
+    "total_tool_calls": 12,
+    "tool_recall": 1.0,
+    "tool_precision": 0.75,
+    "distractor_call_count": 0,
+    "distractor_calls": [],
+    "any_distractor_called": false,
+    "distractor_call_rate": 0.0,
+    "fabricated_call_count": 1,
+    "fabricated_calls": [
+      "run_code"
+    ],
+    "any_fabricated_called": true,
+    "fabricated_call_rate": 0.0833
+  },
+  "scored_at": "2026-07-09T18:15:41.241306+00:00",
+  "ground_truth_generated_at": "2026-07-08T20:08:57.272260+00:00"
+}

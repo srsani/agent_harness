@@ -1,0 +1,77 @@
+{
+  "session_id": "agent-bench:run:pydantic-ai:procurement-spend-summary-2025:20260709T181141Z:cded1ede",
+  "harness": "pydantic-ai",
+  "architecture": "enterprise-codemode-toolsearch-120",
+  "task": "procurement-spend-summary-2025",
+  "prompt": "Summarize procurement spend between 2025-01-01 and 2025-12-31: total purchase orders, total spend, average PO value, and distinct suppliers used.",
+  "output": "\n\n| total_purchase_orders | total_spend | average_po_value | distinct_suppliers |\n|----------------------|-------------|------------------|-------------------|\n| 116 | 10735096.55 | 92543.93577586208 | 30 |",
+  "started_at": "2026-07-09T18:11:41.065540+00:00",
+  "elapsed_seconds": 17.309448292013258,
+  "metadata": {
+    "langfuse_session_id": "agent-bench:run:pydantic-ai:procurement-spend-summary-2025:20260709T181141Z:cded1ede",
+    "tool_calls": [
+      {
+        "tool_name": "search_tools",
+        "via": "native"
+      },
+      {
+        "tool_name": "get_procurement_spend_summary",
+        "via": "native"
+      },
+      {
+        "tool_name": "list_tables",
+        "via": "native"
+      },
+      {
+        "tool_name": "execute_sql",
+        "via": "native"
+      },
+      {
+        "tool_name": "execute_sql",
+        "via": "native"
+      }
+    ],
+    "langfuse_trace_id": "36cf5c6f384c0cbbd1c5caecdf2c6207",
+    "langfuse_observation_id": "c77caf047099802a",
+    "langfuse_trace_url": "https://cloud.langfuse.com/project/cmr1ywsf000d5ad0cex3dm2ha/traces/36cf5c6f384c0cbbd1c5caecdf2c6207"
+  },
+  "error": null,
+  "ok": true,
+  "scores": {
+    "scorable": true,
+    "correctness": 0.25,
+    "groundedness": 0.25,
+    "hallucination_rate": 0.75,
+    "overall_score": 0.25,
+    "details": {
+      "refused_or_no_data": false,
+      "empty_output": false,
+      "expected_text_facts": 0,
+      "matched_text_facts": 0,
+      "expected_numeric_facts": 4,
+      "matched_numeric_facts": 1,
+      "claimed_numeric_values": 4,
+      "unsupported_numeric_values": 3
+    }
+  },
+  "tool_selection": {
+    "scorable": true,
+    "expected_tools": [
+      "execute_sql",
+      "get_procurement_spend_summary"
+    ],
+    "total_tool_calls": 5,
+    "tool_recall": 1.0,
+    "tool_precision": 1.0,
+    "distractor_call_count": 0,
+    "distractor_calls": [],
+    "any_distractor_called": false,
+    "distractor_call_rate": 0.0,
+    "fabricated_call_count": 0,
+    "fabricated_calls": [],
+    "any_fabricated_called": false,
+    "fabricated_call_rate": 0.0
+  },
+  "scored_at": "2026-07-09T18:11:58.733988+00:00",
+  "ground_truth_generated_at": "2026-07-08T20:08:57.272260+00:00"
+}

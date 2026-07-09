@@ -1,0 +1,44 @@
+{
+  "session_id": "agent-bench:run:pydantic-ai:workforce-headcount-3:20260709T181449Z:2dee2b35",
+  "harness": "pydantic-ai",
+  "architecture": "enterprise-codemode-toolsearch-120",
+  "task": "workforce-headcount-3",
+  "prompt": "Report department ID 3's active headcount and average salary.",
+  "output": "\n\n| active_headcount | average_salary |\n|------------------|----------------|\n| 14               | 115526.91428571429 |",
+  "started_at": "2026-07-09T18:14:49.306099+00:00",
+  "elapsed_seconds": 13.817708874994423,
+  "metadata": {
+    "langfuse_session_id": "agent-bench:run:pydantic-ai:workforce-headcount-3:20260709T181449Z:2dee2b35",
+    "tool_calls": [
+      {
+        "tool_name": "search_tools",
+        "via": "native"
+      },
+      {
+        "tool_name": "get_department_headcount",
+        "via": "native"
+      },
+      {
+        "tool_name": "get_schema_context",
+        "via": "native"
+      },
+      {
+        "tool_name": "execute_sql",
+        "via": "native"
+      },
+      {
+        "tool_name": "describe_table",
+        "via": "native"
+      },
+      {
+        "tool_name": "execute_sql",
+        "via": "native"
+      }
+    ],
+    "langfuse_trace_id": "d5cf5986feace5a42356a05f1beb2538",
+    "langfuse_observation_id": "f1bf667e4336a658",
+    "langfuse_trace_url": "https://cloud.langfuse.com/project/cmr1ywsf000d5ad0cex3dm2ha/traces/d5cf5986feace5a42356a05f1beb2538"
+  },
+  "error": null,
+  "ok": true
+}

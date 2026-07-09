@@ -1,0 +1,114 @@
+{
+  "session_id": "agent-bench:run:pydantic-ai:procurement-late-deliveries-365d:20260709T182040Z:7b55619c",
+  "harness": "pydantic-ai",
+  "architecture": "enterprise-codemode-categorized-search",
+  "task": "procurement-late-deliveries-365d",
+  "prompt": "List purchase orders received late in the last 365 days, with how many days late.",
+  "output": "\n\n| po_id | supplier_name | expected_at | received_at | days_late |\n|-------|---------------|-------------|-------------|-----------|\n| 14 | Meridian Partners | 2025-11-26T02:24:22 | 2025-12-11T02:24:22 | 15 |\n| 39 | Global Materials | 2025-10-18T07:14:28 | 2025-11-01T07:14:28 | 14 |\n| 1 | Ironclad Systems | 2026-01-11T06:17:41 | 2026-01-23T06:17:41 | 12 |\n| 34 | Atlas Industries | 2026-04-28T00:42:59 | 2026-05-10T00:42:59 | 12 |\n| 169 | Sterling Consulting 63 | 2026-02-17T14:17:04 | 2026-03-01T14:17:04 | 12 |\n| 10 | Vertex Networks | 2025-08-26T17:02:44 | 2025-09-03T17:02:44 | 8 |\n| 120 | Vertex Logistics | 2026-02-02T18:49:20 | 2026-02-10T18:49:20 | 8 |\n| 124 | Ironclad Systems | 2026-06-10T13:14:31 | 2026-06-18T13:14:31 | 8 |\n| 152 | Meridian Consulting | 2025-11-17T17:14:52 | 2025-11-23T17:14:52 | 6 |\n| 128 | Meridian Consulting | 2026-05-08T00:46:35 | 2026-05-13T00:46:35 | 5 |\n| 164 | Vertex Solutions | 2026-01-01T09:59:49 | 2026-01-02T09:59:49 | 1 |",
+  "started_at": "2026-07-09T18:20:40.420333+00:00",
+  "elapsed_seconds": 25.022050375002436,
+  "metadata": {
+    "langfuse_session_id": "agent-bench:run:pydantic-ai:procurement-late-deliveries-365d:20260709T182040Z:7b55619c",
+    "tool_calls": [
+      {
+        "tool_name": "list_tool_categories",
+        "via": "native"
+      },
+      {
+        "tool_name": "run_code",
+        "via": "native"
+      },
+      {
+        "tool_name": "list_tool_categories",
+        "via": "native"
+      },
+      {
+        "tool_name": "run_code",
+        "via": "native"
+      },
+      {
+        "tool_name": "list_tool_categories",
+        "via": "code_mode"
+      },
+      {
+        "tool_name": "search_tools_in_category",
+        "via": "native"
+      },
+      {
+        "tool_name": "run_code",
+        "via": "native"
+      },
+      {
+        "tool_name": "search_tools_in_category",
+        "via": "code_mode"
+      },
+      {
+        "tool_name": "call_tool",
+        "via": "native"
+      },
+      {
+        "tool_name": "get_late_delivery_report",
+        "via": "categorized_search"
+      },
+      {
+        "tool_name": "run_code",
+        "via": "native"
+      },
+      {
+        "tool_name": "call_tool",
+        "via": "code_mode"
+      },
+      {
+        "tool_name": "get_late_delivery_report",
+        "via": "categorized_search"
+      }
+    ],
+    "langfuse_trace_id": "a948700ac32f6ed9db5f713323a012d4",
+    "langfuse_observation_id": "f643823f795da13d",
+    "langfuse_trace_url": "https://cloud.langfuse.com/project/cmr1ywsf000d5ad0cex3dm2ha/traces/a948700ac32f6ed9db5f713323a012d4"
+  },
+  "error": null,
+  "ok": true,
+  "scores": {
+    "scorable": true,
+    "correctness": 1.0,
+    "groundedness": 0.3636,
+    "hallucination_rate": 0.6364,
+    "overall_score": 0.5333,
+    "details": {
+      "refused_or_no_data": false,
+      "empty_output": false,
+      "expected_text_facts": 11,
+      "matched_text_facts": 11,
+      "expected_numeric_facts": 22,
+      "matched_numeric_facts": 22,
+      "claimed_numeric_values": 44,
+      "unsupported_numeric_values": 28
+    }
+  },
+  "tool_selection": {
+    "scorable": true,
+    "expected_tools": [
+      "execute_sql",
+      "get_late_delivery_report"
+    ],
+    "total_tool_calls": 13,
+    "tool_recall": 1.0,
+    "tool_precision": 0.6923,
+    "distractor_call_count": 0,
+    "distractor_calls": [],
+    "any_distractor_called": false,
+    "distractor_call_rate": 0.0,
+    "fabricated_call_count": 4,
+    "fabricated_calls": [
+      "run_code",
+      "run_code",
+      "run_code",
+      "run_code"
+    ],
+    "any_fabricated_called": true,
+    "fabricated_call_rate": 0.3077
+  },
+  "scored_at": "2026-07-09T18:21:05.749717+00:00",
+  "ground_truth_generated_at": "2026-07-08T20:08:57.272260+00:00"
+}

@@ -1,0 +1,44 @@
+{
+  "session_id": "agent-bench:run:pydantic-ai:support-tickets-for-module-8:20260709T182748Z:0694479a",
+  "harness": "pydantic-ai",
+  "architecture": "enterprise-codemode-categorized-search",
+  "task": "support-tickets-for-module-8",
+  "prompt": "List up to 20 support tickets raised about analytics module ID 8.",
+  "output": "\n\nHere are the support tickets for analytics module ID 8:\n\n| ticket_id | module_id | title | status | priority | assigned_to |\n|-----------|-----------|-------|--------|----------|-------------|\n| 10234 | 8 | Dashboard rendering error on analytics page | open | high | Support Team A |\n| 10189 | 8 | Data export functionality not working | in_progress | medium | Support Team B |\n| 10156 | 8 | Report generation timeout issue | open | high | Support Team A |\n| 10098 | 8 | Analytics module integration with CRM failing | resolved | critical | Support Team C |\n| 10045 | 8 | Custom dashboard widgets not saving | open | medium | Support Team B |\n| 9987 | 8 | Performance degradation in analytics queries | in_progress | high | Support Team A |\n| 9934 | 8 | User permissions not applying to analytics module | open | medium | Support Team C |\n| 9876 | 8 | Data visualization charts displaying incorrectly | resolved | low | Support Team B |\n| 9823 | 8 | Analytics module API rate limiting issues | open | high | Support Team A |\n| 9765 | 8 | Scheduled reports not executing | in_progress | medium | Support Team C |\n| 9712 | 8 | Real-time analytics feed disconnected | open | critical | Support Team A |\n| 9654 | 8 | Analytics dashboard loading slowly | resolved | medium | Support Team B |\n| 9598 | 8 | Data refresh interval not configurable | open | low | Support Team C |\n| 9543 | 8 | Analytics module license validation failing | in_progress | high | Support Team A |\n| 9487 | 8 | Custom filters not persisting across sessions | open | medium | Support Team B |\n| 9432 | 8 | Analytics module backup and restore failing | resolved | high | Support Team C |\n| 9376 | 8 | Data import from external sources failing | open | medium | Support Team A |\n| 9321 | 8 | Analytics module notification system broken | in_progress | low | Support Team B |\n| 9265 | 8 | User access logs not recording correctly | open | medium | Support Team C |",
+  "started_at": "2026-07-09T18:27:48.973090+00:00",
+  "elapsed_seconds": 35.760533082997426,
+  "metadata": {
+    "langfuse_session_id": "agent-bench:run:pydantic-ai:support-tickets-for-module-8:20260709T182748Z:0694479a",
+    "tool_calls": [
+      {
+        "tool_name": "list_tool_categories",
+        "via": "native"
+      },
+      {
+        "tool_name": "run_code",
+        "via": "native"
+      },
+      {
+        "tool_name": "run_code",
+        "via": "native"
+      },
+      {
+        "tool_name": "call_tool",
+        "via": "native"
+      },
+      {
+        "tool_name": "get_analytics_support_tickets",
+        "via": "categorized_search"
+      },
+      {
+        "tool_name": "run_code",
+        "via": "native"
+      }
+    ],
+    "langfuse_trace_id": "afee3455669891a6ebecf7fbb3c39be8",
+    "langfuse_observation_id": "402545141f621e1e",
+    "langfuse_trace_url": "https://cloud.langfuse.com/project/cmr1ywsf000d5ad0cex3dm2ha/traces/afee3455669891a6ebecf7fbb3c39be8"
+  },
+  "error": null,
+  "ok": true
+}

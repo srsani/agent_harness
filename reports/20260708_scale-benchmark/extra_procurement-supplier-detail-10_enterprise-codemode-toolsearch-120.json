@@ -1,0 +1,32 @@
+{
+  "session_id": "agent-bench:run:pydantic-ai:procurement-supplier-detail-10:20260709T181158Z:1bdc4e51",
+  "harness": "pydantic-ai",
+  "architecture": "enterprise-codemode-toolsearch-120",
+  "task": "procurement-supplier-detail-10",
+  "prompt": "Get full details for supplier ID 10.",
+  "output": "\n\n| id | name | country | category | rating | created_at |\n|---|---|---|---|---|---|\n| 10 | Horizon Supply Co | NL | facilities | 3.7 | 2025-10-07T01:54:51 |",
+  "started_at": "2026-07-09T18:11:58.958813+00:00",
+  "elapsed_seconds": 15.757997040986083,
+  "metadata": {
+    "langfuse_session_id": "agent-bench:run:pydantic-ai:procurement-supplier-detail-10:20260709T181158Z:1bdc4e51",
+    "tool_calls": [
+      {
+        "tool_name": "search_tools",
+        "via": "native"
+      },
+      {
+        "tool_name": "get_supplier",
+        "via": "native"
+      },
+      {
+        "tool_name": "list_suppliers",
+        "via": "native"
+      }
+    ],
+    "langfuse_trace_id": "a91a19bf31b962251bdc69bd34768b1c",
+    "langfuse_observation_id": "5db922f8c0d9d9f7",
+    "langfuse_trace_url": "https://cloud.langfuse.com/project/cmr1ywsf000d5ad0cex3dm2ha/traces/a91a19bf31b962251bdc69bd34768b1c"
+  },
+  "error": null,
+  "ok": true
+}

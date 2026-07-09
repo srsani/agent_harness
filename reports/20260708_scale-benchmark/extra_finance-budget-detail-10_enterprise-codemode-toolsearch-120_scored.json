@@ -1,0 +1,73 @@
+{
+  "session_id": "agent-bench:run:pydantic-ai:finance-budget-detail-10:20260709T174730Z:d9e8a1f5",
+  "harness": "pydantic-ai",
+  "architecture": "enterprise-codemode-toolsearch-120",
+  "task": "finance-budget-detail-10",
+  "prompt": "Get budget ID 10's allocation details.",
+  "output": "\n\n| id | department_id | year | category | allocated_usd |\n|---|---|---|---|---|\n| 10 | 1 | 2026 | marketing_spend | 798472.52 |",
+  "started_at": "2026-07-09T17:47:30.875068+00:00",
+  "elapsed_seconds": 9.349717415985651,
+  "metadata": {
+    "langfuse_session_id": "agent-bench:run:pydantic-ai:finance-budget-detail-10:20260709T174730Z:d9e8a1f5",
+    "tool_calls": [
+      {
+        "tool_name": "search_tools",
+        "via": "native"
+      },
+      {
+        "tool_name": "get_budget",
+        "via": "native"
+      },
+      {
+        "tool_name": "describe_table",
+        "via": "native"
+      },
+      {
+        "tool_name": "execute_sql",
+        "via": "native"
+      }
+    ],
+    "langfuse_trace_id": "7395c89e2a0a1ffb6431e4d769109ca4",
+    "langfuse_observation_id": "7bda507c8752704c",
+    "langfuse_trace_url": "https://cloud.langfuse.com/project/cmr1ywsf000d5ad0cex3dm2ha/traces/7395c89e2a0a1ffb6431e4d769109ca4"
+  },
+  "error": null,
+  "ok": true,
+  "scores": {
+    "scorable": true,
+    "correctness": 0.8,
+    "groundedness": 0.75,
+    "hallucination_rate": 0.25,
+    "overall_score": 0.7742,
+    "details": {
+      "refused_or_no_data": false,
+      "empty_output": false,
+      "expected_text_facts": 2,
+      "matched_text_facts": 1,
+      "expected_numeric_facts": 3,
+      "matched_numeric_facts": 3,
+      "claimed_numeric_values": 4,
+      "unsupported_numeric_values": 1
+    }
+  },
+  "tool_selection": {
+    "scorable": true,
+    "expected_tools": [
+      "execute_sql",
+      "get_budget"
+    ],
+    "total_tool_calls": 4,
+    "tool_recall": 1.0,
+    "tool_precision": 1.0,
+    "distractor_call_count": 0,
+    "distractor_calls": [],
+    "any_distractor_called": false,
+    "distractor_call_rate": 0.0,
+    "fabricated_call_count": 0,
+    "fabricated_calls": [],
+    "any_fabricated_called": false,
+    "fabricated_call_rate": 0.0
+  },
+  "scored_at": "2026-07-09T17:47:40.493288+00:00",
+  "ground_truth_generated_at": "2026-07-08T20:08:57.272260+00:00"
+}

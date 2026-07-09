@@ -1,0 +1,52 @@
+{
+  "session_id": "agent-bench:run:pydantic-ai:finance-search-department-expenses-rd:20260709T180710Z:0afade3f",
+  "harness": "pydantic-ai",
+  "architecture": "enterprise-codemode-toolsearch-120",
+  "task": "finance-search-department-expenses-rd",
+  "prompt": "Find expense line items for the R&D Engineering department over $10,000.",
+  "output": "\n\n| id | budget_id | department_id | category | amount_usd | incurred_at | description |\n|----|-----------|---------------|----------|------------|-------------|-------------|\n| 421 | 69 | 7 | headcount | 48283.12 | 2026-05-25T07:54:04 | Signing bonus |\n| 422 | 69 | 7 | travel | 24437.94 | 2026-03-30T16:32:30 | Client site visit |\n| 384 | 63 | 7 | headcount | 23695.31 | 2025-09-22T11:25:54 | Contractor payment |\n| 393 | 64 | 7 | travel | 23633.88 | 2025-06-03T11:31:12 | Team offsite |\n| 392 | 64 | 7 | travel | 21985.04 | 2025-12-28T15:52:42 | Team offsite |\n| 425 | 69 | 7 | travel | 21853.24 | 2026-03-09T21:11:45 | Client site visit |\n| 419 | 68 | 7 | headcount | 19350.83 | 2026-01-15T14:32:57 | Signing bonus |\n| 378 | 61 | 7 | opex | 19213.06 | 2025-11-27T14:54:09 | Office supplies |\n| 424 | 69 | 7 | travel | 18533.18 | 2026-06-01T01:43:10 | Sales trip |\n| 420 | 69 | 7 | travel | 18423.79 | 2026-03-18T11:45:11 | Conference attendance |\n| 389 | 63 | 7 | headcount | 15592.86 | 2025-08-10T04:25:03 | Contractor payment |\n| 403 | 66 | 7 | opex | 13905.49 | 2026-03-08T18:08:47 | Office supplies |\n| 394 | 64 | 7 | travel | 12807.31 | 2025-06-06T02:42:56 | Sales trip |\n| 405 | 66 | 7 | opex | 12253.37 | 2026-02-02T10:43:01 | Facilities maintenance |\n| 402 | 66 | 7 | opex | 11154.91 | 2026-04-18T17:47:48 | Cloud infrastructure spend |",
+  "started_at": "2026-07-09T18:07:10.830093+00:00",
+  "elapsed_seconds": 28.51418574998388,
+  "metadata": {
+    "langfuse_session_id": "agent-bench:run:pydantic-ai:finance-search-department-expenses-rd:20260709T180710Z:0afade3f",
+    "tool_calls": [
+      {
+        "tool_name": "search_tools",
+        "via": "native"
+      },
+      {
+        "tool_name": "search_expenses",
+        "via": "native"
+      },
+      {
+        "tool_name": "get_budget_by_department_name",
+        "via": "native"
+      },
+      {
+        "tool_name": "get_budget_by_department_name",
+        "via": "native"
+      },
+      {
+        "tool_name": "get_expense_category_breakdown",
+        "via": "native"
+      },
+      {
+        "tool_name": "list_tables",
+        "via": "native"
+      },
+      {
+        "tool_name": "execute_sql",
+        "via": "native"
+      },
+      {
+        "tool_name": "execute_sql",
+        "via": "native"
+      }
+    ],
+    "langfuse_trace_id": "4ca7a1b549183d8f2f2ff8820a88315d",
+    "langfuse_observation_id": "77551a1b939ae780",
+    "langfuse_trace_url": "https://cloud.langfuse.com/project/cmr1ywsf000d5ad0cex3dm2ha/traces/4ca7a1b549183d8f2f2ff8820a88315d"
+  },
+  "error": null,
+  "ok": true
+}

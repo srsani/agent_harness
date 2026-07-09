@@ -1,0 +1,112 @@
+{
+  "session_id": "agent-bench:run:pydantic-ai:marketing-top-campaigns-conversion:20260709T182008Z:75dfda25",
+  "harness": "pydantic-ai",
+  "architecture": "enterprise-codemode-categorized-search",
+  "task": "marketing-top-campaigns-conversion",
+  "prompt": "Which 5 marketing campaigns have the most total conversions?",
+  "output": "\n\n| name | total_conversions |\n|------|-------------------|\n| Regional Content Sprint 3 | 1282 |\n| Fall Search Surge 1 | 1243 |\n| Spring Social Push 2 | 1220 |\n| Enterprise Nurture Sequence 2 | 1183 |\n| Flagship Content Sprint 4 | 1103 |",
+  "started_at": "2026-07-09T18:20:08.903739+00:00",
+  "elapsed_seconds": 30.92468891700264,
+  "metadata": {
+    "langfuse_session_id": "agent-bench:run:pydantic-ai:marketing-top-campaigns-conversion:20260709T182008Z:75dfda25",
+    "tool_calls": [
+      {
+        "tool_name": "list_tool_categories",
+        "via": "native"
+      },
+      {
+        "tool_name": "run_code",
+        "via": "native"
+      },
+      {
+        "tool_name": "run_code",
+        "via": "native"
+      },
+      {
+        "tool_name": "list_tool_categories",
+        "via": "native"
+      },
+      {
+        "tool_name": "run_code",
+        "via": "native"
+      },
+      {
+        "tool_name": "run_code",
+        "via": "native"
+      },
+      {
+        "tool_name": "list_tool_categories",
+        "via": "code_mode"
+      },
+      {
+        "tool_name": "run_code",
+        "via": "native"
+      },
+      {
+        "tool_name": "search_tools_in_category",
+        "via": "code_mode"
+      },
+      {
+        "tool_name": "run_code",
+        "via": "native"
+      },
+      {
+        "tool_name": "call_tool",
+        "via": "code_mode"
+      },
+      {
+        "tool_name": "get_top_campaigns_by_conversion",
+        "via": "categorized_search"
+      }
+    ],
+    "langfuse_trace_id": "ec05afcaa832ea4c8527ad7b9688e4b5",
+    "langfuse_observation_id": "41fed69bba6187ca",
+    "langfuse_trace_url": "https://cloud.langfuse.com/project/cmr1ywsf000d5ad0cex3dm2ha/traces/ec05afcaa832ea4c8527ad7b9688e4b5"
+  },
+  "error": null,
+  "ok": true,
+  "scores": {
+    "scorable": true,
+    "correctness": 0.56,
+    "groundedness": 0.6667,
+    "hallucination_rate": 0.3333,
+    "overall_score": 0.6087,
+    "details": {
+      "refused_or_no_data": false,
+      "empty_output": false,
+      "expected_text_facts": 10,
+      "matched_text_facts": 8,
+      "expected_numeric_facts": 15,
+      "matched_numeric_facts": 6,
+      "claimed_numeric_values": 9,
+      "unsupported_numeric_values": 3
+    }
+  },
+  "tool_selection": {
+    "scorable": true,
+    "expected_tools": [
+      "execute_sql",
+      "get_top_campaigns_by_conversion"
+    ],
+    "total_tool_calls": 12,
+    "tool_recall": 1.0,
+    "tool_precision": 0.5,
+    "distractor_call_count": 0,
+    "distractor_calls": [],
+    "any_distractor_called": false,
+    "distractor_call_rate": 0.0,
+    "fabricated_call_count": 6,
+    "fabricated_calls": [
+      "run_code",
+      "run_code",
+      "run_code",
+      "run_code",
+      "run_code",
+      "run_code"
+    ],
+    "any_fabricated_called": true,
+    "fabricated_call_rate": 0.5
+  },
+  "scored_at": "2026-07-09T18:20:40.195436+00:00",
+  "ground_truth_generated_at": "2026-07-08T20:08:57.272260+00:00"
+}

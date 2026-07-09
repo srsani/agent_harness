@@ -1,0 +1,101 @@
+{
+  "session_id": "agent-bench:run:pydantic-ai:workforce-review-summary-10:20260709T182937Z:0c4bc781",
+  "harness": "pydantic-ai",
+  "architecture": "enterprise-codemode-categorized-search",
+  "task": "workforce-review-summary-10",
+  "prompt": "Summarize employee ID 10's performance review history: review count, average rating, and most recent review date.",
+  "output": "\n\n| employee_id | full_name | review_count | avg_rating | most_recent_review_date |\n|-------------|-----------|--------------|------------|-------------------------|\n| 10 | Yara Roberts | 1 | 4.0 | 2025-10-31T22:35:43 |",
+  "started_at": "2026-07-09T18:29:37.480722+00:00",
+  "elapsed_seconds": 8.85611408398836,
+  "metadata": {
+    "langfuse_session_id": "agent-bench:run:pydantic-ai:workforce-review-summary-10:20260709T182937Z:0c4bc781",
+    "tool_calls": [
+      {
+        "tool_name": "list_tool_categories",
+        "via": "native"
+      },
+      {
+        "tool_name": "list_tool_categories",
+        "via": "native"
+      },
+      {
+        "tool_name": "run_code",
+        "via": "native"
+      },
+      {
+        "tool_name": "list_tool_categories",
+        "via": "code_mode"
+      },
+      {
+        "tool_name": "search_tools_in_category",
+        "via": "native"
+      },
+      {
+        "tool_name": "run_code",
+        "via": "native"
+      },
+      {
+        "tool_name": "search_tools_in_category",
+        "via": "code_mode"
+      },
+      {
+        "tool_name": "run_code",
+        "via": "native"
+      },
+      {
+        "tool_name": "call_tool",
+        "via": "code_mode"
+      },
+      {
+        "tool_name": "get_performance_review_summary",
+        "via": "categorized_search"
+      }
+    ],
+    "langfuse_trace_id": "feac55bf31efa9172d5cf3bc34c75226",
+    "langfuse_observation_id": "a478cb408f358af1",
+    "langfuse_trace_url": "https://cloud.langfuse.com/project/cmr1ywsf000d5ad0cex3dm2ha/traces/feac55bf31efa9172d5cf3bc34c75226"
+  },
+  "error": null,
+  "ok": true,
+  "scores": {
+    "scorable": true,
+    "correctness": 1.0,
+    "groundedness": 0.375,
+    "hallucination_rate": 0.625,
+    "overall_score": 0.5455,
+    "details": {
+      "refused_or_no_data": false,
+      "empty_output": false,
+      "expected_text_facts": 1,
+      "matched_text_facts": 1,
+      "expected_numeric_facts": 3,
+      "matched_numeric_facts": 3,
+      "claimed_numeric_values": 8,
+      "unsupported_numeric_values": 5
+    }
+  },
+  "tool_selection": {
+    "scorable": true,
+    "expected_tools": [
+      "execute_sql",
+      "get_performance_review_summary"
+    ],
+    "total_tool_calls": 10,
+    "tool_recall": 1.0,
+    "tool_precision": 0.7,
+    "distractor_call_count": 0,
+    "distractor_calls": [],
+    "any_distractor_called": false,
+    "distractor_call_rate": 0.0,
+    "fabricated_call_count": 3,
+    "fabricated_calls": [
+      "run_code",
+      "run_code",
+      "run_code"
+    ],
+    "any_fabricated_called": true,
+    "fabricated_call_rate": 0.3
+  },
+  "scored_at": "2026-07-09T18:29:46.692680+00:00",
+  "ground_truth_generated_at": "2026-07-08T20:08:57.272260+00:00"
+}

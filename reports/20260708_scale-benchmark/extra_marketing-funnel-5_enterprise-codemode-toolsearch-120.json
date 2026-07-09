@@ -1,0 +1,44 @@
+{
+  "session_id": "agent-bench:run:pydantic-ai:marketing-funnel-5:20260709T180852Z:01c4603f",
+  "harness": "pydantic-ai",
+  "architecture": "enterprise-codemode-toolsearch-120",
+  "task": "marketing-funnel-5",
+  "prompt": "Show the full conversion funnel (click-through rate, lead rate, conversion rate) for marketing campaign ID 5.",
+  "output": "\n\n| campaign_id | month | click_through_rate | lead_rate | conversion_rate |\n|-------------|-------|-------------------|-----------|-----------------|\n| 5 | 2026-03 | 0.0213 | 0.0457 | 0.2846 |\n| 5 | 2026-04 | 0.0429 | 0.0409 | 0.2236 |\n| 5 | 2026-05 | 0.0364 | 0.1269 | 0.19 |\n| 5 | 2026-06 | 0.0093 | 0.1067 | 0.2037 |\n| 5 | 2026-07 | 0.0566 | 0.1165 | 0.2341 |",
+  "started_at": "2026-07-09T18:08:52.898326+00:00",
+  "elapsed_seconds": 21.805012333003106,
+  "metadata": {
+    "langfuse_session_id": "agent-bench:run:pydantic-ai:marketing-funnel-5:20260709T180852Z:01c4603f",
+    "tool_calls": [
+      {
+        "tool_name": "search_tools",
+        "via": "native"
+      },
+      {
+        "tool_name": "get_lead_conversion_funnel",
+        "via": "native"
+      },
+      {
+        "tool_name": "get_schema_context",
+        "via": "native"
+      },
+      {
+        "tool_name": "list_tables",
+        "via": "native"
+      },
+      {
+        "tool_name": "execute_sql",
+        "via": "native"
+      },
+      {
+        "tool_name": "execute_sql",
+        "via": "native"
+      }
+    ],
+    "langfuse_trace_id": "ffd7a86701de8420e83ca40b6e306b53",
+    "langfuse_observation_id": "421c1bbde9aa7ed8",
+    "langfuse_trace_url": "https://cloud.langfuse.com/project/cmr1ywsf000d5ad0cex3dm2ha/traces/ffd7a86701de8420e83ca40b6e306b53"
+  },
+  "error": null,
+  "ok": true
+}

@@ -1,0 +1,93 @@
+{
+  "session_id": "agent-bench:run:pydantic-ai:finance-budget-variance-10:20260709T174740Z:4955ae57",
+  "harness": "pydantic-ai",
+  "architecture": "enterprise-codemode-toolsearch-120",
+  "task": "finance-budget-variance-10",
+  "prompt": "Compute budget ID 10's variance: allocated amount minus actual spend.",
+  "output": "\n\n| id | allocated_usd | actual_spend | variance |\n|---|---|---|---|\n| 10 | 798472.52 | 845703.53 | -47231.01 |",
+  "started_at": "2026-07-09T17:47:40.766245+00:00",
+  "elapsed_seconds": 23.654047165997326,
+  "metadata": {
+    "langfuse_session_id": "agent-bench:run:pydantic-ai:finance-budget-variance-10:20260709T174740Z:4955ae57",
+    "tool_calls": [
+      {
+        "tool_name": "search_tools",
+        "via": "native"
+      },
+      {
+        "tool_name": "get_budget_variance",
+        "via": "native"
+      },
+      {
+        "tool_name": "get_budget",
+        "via": "native"
+      },
+      {
+        "tool_name": "get_budget_summary",
+        "via": "native"
+      },
+      {
+        "tool_name": "get_budget_summary",
+        "via": "native"
+      },
+      {
+        "tool_name": "get_budget_summary",
+        "via": "native"
+      },
+      {
+        "tool_name": "get_schema_context",
+        "via": "native"
+      },
+      {
+        "tool_name": "execute_sql",
+        "via": "native"
+      }
+    ],
+    "langfuse_trace_id": "b6a4b3567204ecd2d1137e9a43875c25",
+    "langfuse_observation_id": "49aa97b6143757cd",
+    "langfuse_trace_url": "https://cloud.langfuse.com/project/cmr1ywsf000d5ad0cex3dm2ha/traces/b6a4b3567204ecd2d1137e9a43875c25"
+  },
+  "error": null,
+  "ok": true,
+  "scores": {
+    "scorable": true,
+    "correctness": 0.4286,
+    "groundedness": 0.75,
+    "hallucination_rate": 0.25,
+    "overall_score": 0.5455,
+    "details": {
+      "refused_or_no_data": false,
+      "empty_output": false,
+      "expected_text_facts": 2,
+      "matched_text_facts": 0,
+      "expected_numeric_facts": 5,
+      "matched_numeric_facts": 3,
+      "claimed_numeric_values": 4,
+      "unsupported_numeric_values": 1
+    }
+  },
+  "tool_selection": {
+    "scorable": true,
+    "expected_tools": [
+      "execute_sql",
+      "get_budget_variance"
+    ],
+    "total_tool_calls": 8,
+    "tool_recall": 1.0,
+    "tool_precision": 0.5,
+    "distractor_call_count": 3,
+    "distractor_calls": [
+      "get_budget_summary",
+      "get_budget_summary",
+      "get_budget_summary"
+    ],
+    "any_distractor_called": true,
+    "distractor_call_rate": 0.375,
+    "fabricated_call_count": 0,
+    "fabricated_calls": [],
+    "any_fabricated_called": false,
+    "fabricated_call_rate": 0.0
+  },
+  "scored_at": "2026-07-09T17:48:04.740800+00:00",
+  "ground_truth_generated_at": "2026-07-08T20:08:57.272260+00:00"
+}

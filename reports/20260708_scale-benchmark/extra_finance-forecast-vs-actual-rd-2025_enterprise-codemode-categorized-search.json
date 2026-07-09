@@ -1,0 +1,64 @@
+{
+  "session_id": "agent-bench:run:pydantic-ai:finance-forecast-vs-actual-rd-2025:20260709T181814Z:d70e9890",
+  "harness": "pydantic-ai",
+  "architecture": "enterprise-codemode-categorized-search",
+  "task": "finance-forecast-vs-actual-rd-2025",
+  "prompt": "For the R&D Engineering department in 2025, show allocated budget versus actual spend by category, including the variance.",
+  "output": "\n\n| Category | Allocated Budget (USD) | Actual Spend (USD) | Variance (USD) |\n|----------|----------------------|-------------------|----------------|\n| capex | 526772.84 | 665964.61 | -139191.77 |\n| headcount | 215839.46 | 202588.53 | 13250.93 |\n| marketing_spend | 309302.1 | 250911.05 | 58391.05 |\n| opex | 301007.32 | 294615.67 | 6391.65 |\n| travel | 147009.18 | 169112.28 | -22103.1 |",
+  "started_at": "2026-07-09T18:18:14.823090+00:00",
+  "elapsed_seconds": 15.999539207987254,
+  "metadata": {
+    "langfuse_session_id": "agent-bench:run:pydantic-ai:finance-forecast-vs-actual-rd-2025:20260709T181814Z:d70e9890",
+    "tool_calls": [
+      {
+        "tool_name": "list_tool_categories",
+        "via": "native"
+      },
+      {
+        "tool_name": "run_code",
+        "via": "native"
+      },
+      {
+        "tool_name": "run_code",
+        "via": "native"
+      },
+      {
+        "tool_name": "run_code",
+        "via": "native"
+      },
+      {
+        "tool_name": "run_code",
+        "via": "native"
+      },
+      {
+        "tool_name": "list_tool_categories",
+        "via": "code_mode"
+      },
+      {
+        "tool_name": "run_code",
+        "via": "native"
+      },
+      {
+        "tool_name": "search_tools_in_category",
+        "via": "code_mode"
+      },
+      {
+        "tool_name": "run_code",
+        "via": "native"
+      },
+      {
+        "tool_name": "call_tool",
+        "via": "code_mode"
+      },
+      {
+        "tool_name": "get_forecast_vs_actual",
+        "via": "categorized_search"
+      }
+    ],
+    "langfuse_trace_id": "78309015e6e9617017344bbe244c1166",
+    "langfuse_observation_id": "899d4bf3927fb287",
+    "langfuse_trace_url": "https://cloud.langfuse.com/project/cmr1ywsf000d5ad0cex3dm2ha/traces/78309015e6e9617017344bbe244c1166"
+  },
+  "error": null,
+  "ok": true
+}

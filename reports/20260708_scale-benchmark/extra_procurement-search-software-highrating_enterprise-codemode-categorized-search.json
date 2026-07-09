@@ -1,0 +1,96 @@
+{
+  "session_id": "agent-bench:run:pydantic-ai:procurement-search-software-highrating:20260709T182124Z:22f5ddb1",
+  "harness": "pydantic-ai",
+  "architecture": "enterprise-codemode-categorized-search",
+  "task": "procurement-search-software-highrating",
+  "prompt": "Find software-category suppliers with a scorecard rating of at least 4.0.",
+  "output": "\n\n| id | name | country | category | rating |\n|---|---|---|---|---|\n| 3 | Sterling Consulting 63 | GB | software | 4.1 |\n| 19 | Atlas Group | GB | software | 4.8 |\n| 20 | Summit Consulting | NL | software | 4.4 |",
+  "started_at": "2026-07-09T18:21:24.755266+00:00",
+  "elapsed_seconds": 55.43063537499984,
+  "metadata": {
+    "langfuse_session_id": "agent-bench:run:pydantic-ai:procurement-search-software-highrating:20260709T182124Z:22f5ddb1",
+    "tool_calls": [
+      {
+        "tool_name": "list_tool_categories",
+        "via": "native"
+      },
+      {
+        "tool_name": "run_code",
+        "via": "native"
+      },
+      {
+        "tool_name": "run_code",
+        "via": "native"
+      },
+      {
+        "tool_name": "call_tool",
+        "via": "native"
+      },
+      {
+        "tool_name": "get_supplier_scorecards",
+        "via": "categorized_search"
+      },
+      {
+        "tool_name": "run_code",
+        "via": "native"
+      },
+      {
+        "tool_name": "run_code",
+        "via": "native"
+      },
+      {
+        "tool_name": "run_code",
+        "via": "native"
+      },
+      {
+        "tool_name": "run_code",
+        "via": "native"
+      },
+      {
+        "tool_name": "run_code",
+        "via": "native"
+      },
+      {
+        "tool_name": "run_code",
+        "via": "native"
+      },
+      {
+        "tool_name": "run_code",
+        "via": "native"
+      },
+      {
+        "tool_name": "call_tool",
+        "via": "code_mode"
+      },
+      {
+        "tool_name": "search_suppliers",
+        "via": "categorized_search"
+      },
+      {
+        "tool_name": "run_code",
+        "via": "native"
+      },
+      {
+        "tool_name": "call_tool",
+        "via": "code_mode"
+      },
+      {
+        "tool_name": "list_suppliers",
+        "via": "categorized_search"
+      },
+      {
+        "tool_name": "call_tool",
+        "via": "code_mode"
+      },
+      {
+        "tool_name": "search_suppliers",
+        "via": "categorized_search"
+      }
+    ],
+    "langfuse_trace_id": "9e1fe17e18d588a6012fdff6e5d33c13",
+    "langfuse_observation_id": "a30bc38fc03af2d4",
+    "langfuse_trace_url": "https://cloud.langfuse.com/project/cmr1ywsf000d5ad0cex3dm2ha/traces/9e1fe17e18d588a6012fdff6e5d33c13"
+  },
+  "error": null,
+  "ok": true
+}

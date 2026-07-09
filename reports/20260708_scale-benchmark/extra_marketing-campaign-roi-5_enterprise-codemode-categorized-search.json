@@ -1,0 +1,56 @@
+{
+  "session_id": "agent-bench:run:pydantic-ai:marketing-campaign-roi-5:20260709T181909Z:33297fa2",
+  "harness": "pydantic-ai",
+  "architecture": "enterprise-codemode-categorized-search",
+  "task": "marketing-campaign-roi-5",
+  "prompt": "Compute the ROI for marketing campaign ID 5.",
+  "output": "\n\n| campaign_id | roi |\n|-------------|-----|\n| 5 | 1771.8411 |",
+  "started_at": "2026-07-09T18:19:09.970901+00:00",
+  "elapsed_seconds": 6.541099333000602,
+  "metadata": {
+    "langfuse_session_id": "agent-bench:run:pydantic-ai:marketing-campaign-roi-5:20260709T181909Z:33297fa2",
+    "tool_calls": [
+      {
+        "tool_name": "list_tool_categories",
+        "via": "native"
+      },
+      {
+        "tool_name": "run_code",
+        "via": "native"
+      },
+      {
+        "tool_name": "run_code",
+        "via": "native"
+      },
+      {
+        "tool_name": "list_tool_categories",
+        "via": "code_mode"
+      },
+      {
+        "tool_name": "run_code",
+        "via": "native"
+      },
+      {
+        "tool_name": "search_tools_in_category",
+        "via": "code_mode"
+      },
+      {
+        "tool_name": "run_code",
+        "via": "native"
+      },
+      {
+        "tool_name": "call_tool",
+        "via": "code_mode"
+      },
+      {
+        "tool_name": "get_campaign_roi",
+        "via": "categorized_search"
+      }
+    ],
+    "langfuse_trace_id": "b10d0562964818eba70090aaf7da219e",
+    "langfuse_observation_id": "0d96a13e57ffd982",
+    "langfuse_trace_url": "https://cloud.langfuse.com/project/cmr1ywsf000d5ad0cex3dm2ha/traces/b10d0562964818eba70090aaf7da219e"
+  },
+  "error": null,
+  "ok": true
+}

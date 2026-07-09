@@ -1,0 +1,68 @@
+{
+  "session_id": "agent-bench:run:pydantic-ai:workforce-search-finance-analysts:20260709T182946Z:a2ab3b61",
+  "harness": "pydantic-ai",
+  "architecture": "enterprise-codemode-categorized-search",
+  "task": "workforce-search-finance-analysts",
+  "prompt": "Find active employees in departments matching 'Finance' with a job title matching 'Analyst'.",
+  "output": "\n\n| id | full_name | title | department |\n|----|-----------|-------|------------|\n| 14 | Carol Lewis | Senior Analyst | Finance & Accounting |\n| 4 | Frank Martinez | Senior Analyst | Finance & Accounting |\n| 15 | Vince Harris | Senior Analyst | Finance & Accounting |\n| 1 | Zach Anderson | Analyst | Finance & Accounting |",
+  "started_at": "2026-07-09T18:29:46.916763+00:00",
+  "elapsed_seconds": 18.92943112499779,
+  "metadata": {
+    "langfuse_session_id": "agent-bench:run:pydantic-ai:workforce-search-finance-analysts:20260709T182946Z:a2ab3b61",
+    "tool_calls": [
+      {
+        "tool_name": "list_tool_categories",
+        "via": "native"
+      },
+      {
+        "tool_name": "run_code",
+        "via": "native"
+      },
+      {
+        "tool_name": "run_code",
+        "via": "native"
+      },
+      {
+        "tool_name": "run_code",
+        "via": "native"
+      },
+      {
+        "tool_name": "run_code",
+        "via": "native"
+      },
+      {
+        "tool_name": "list_tool_categories",
+        "via": "code_mode"
+      },
+      {
+        "tool_name": "run_code",
+        "via": "native"
+      },
+      {
+        "tool_name": "search_tools_in_category",
+        "via": "code_mode"
+      },
+      {
+        "tool_name": "run_code",
+        "via": "native"
+      },
+      {
+        "tool_name": "run_code",
+        "via": "native"
+      },
+      {
+        "tool_name": "call_tool",
+        "via": "code_mode"
+      },
+      {
+        "tool_name": "search_employees",
+        "via": "categorized_search"
+      }
+    ],
+    "langfuse_trace_id": "4ce1952ac4f12327eac4bee091d5b34e",
+    "langfuse_observation_id": "8fe1a4aa6afd70bf",
+    "langfuse_trace_url": "https://cloud.langfuse.com/project/cmr1ywsf000d5ad0cex3dm2ha/traces/4ce1952ac4f12327eac4bee091d5b34e"
+  },
+  "error": null,
+  "ok": true
+}
