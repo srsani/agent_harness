@@ -10,6 +10,7 @@ from typing import Any
 
 from agent_harness.db.schema import DB_PATH, get_connection
 from agent_harness.tasks.builtins import TASKS
+from agent_harness.tools import finance_ops, marketing, procurement, support, workforce
 
 
 def _rows(conn, sql: str, params: tuple[Any, ...] = ()) -> list[dict[str, Any]]:
@@ -2400,6 +2401,281 @@ def build_ground_truth() -> dict[str, Any]:
             "type": "deterministic-computed",
             "prompt": TASKS["sqlcodemode-composite-engagement-score"],
             "expected": _engagement_scores[:5],
+        }
+
+        # ═══════════════════════════════════════════════════════════════════
+        # 120-tool scale benchmark — ground truth for the 5 new domains.
+        # Ground truth is computed by calling the same typed tool functions the
+        # agent has access to (tools/support.py, marketing.py, procurement.py,
+        # workforce.py, finance_ops.py) rather than hand-written SQL, since those
+        # functions ARE the deterministic, authoritative source of these answers.
+        # See agent_harness/tasks/tool_selection_benchmark.py for the matching
+        # expected_tools/forbidden_tools annotations used for tool-selection scoring.
+        # ═══════════════════════════════════════════════════════════════════
+
+        # ── support & success ──────────────────────────────────────────────
+        tasks["support-agent-profile-5"] = {
+            "type": "deterministic-sql",
+            "prompt": TASKS["support-agent-profile-5"],
+            "expected": support.get_support_agent(5),
+        }
+        tasks["support-open-tickets-priority"] = {
+            "type": "deterministic-sql",
+            "prompt": TASKS["support-open-tickets-priority"],
+            "expected": support.get_open_tickets_by_priority(),
+        }
+        tasks["support-ticket-detail-10"] = {
+            "type": "deterministic-sql",
+            "prompt": TASKS["support-ticket-detail-10"],
+            "expected": support.get_support_ticket(10),
+        }
+        tasks["support-csat-90d"] = {
+            "type": "deterministic-sql",
+            "prompt": TASKS["support-csat-90d"],
+            "expected": support.get_csat_summary(90),
+        }
+        tasks["support-resolution-stats-180d"] = {
+            "type": "deterministic-sql",
+            "prompt": TASKS["support-resolution-stats-180d"],
+            "expected": support.get_ticket_resolution_stats(180),
+        }
+        tasks["support-agent-performance-3"] = {
+            "type": "deterministic-sql",
+            "prompt": TASKS["support-agent-performance-3"],
+            "expected": support.get_agent_performance(3),
+        }
+        tasks["support-customer-history-42"] = {
+            "type": "deterministic-sql",
+            "prompt": TASKS["support-customer-history-42"],
+            "expected": support.get_customer_support_history(42, 20),
+        }
+        tasks["support-search-urgent-open"] = {
+            "type": "deterministic-sql",
+            "prompt": TASKS["support-search-urgent-open"],
+            "expected": support.search_support_tickets(status="open", priority="urgent", limit=20),
+        }
+        tasks["support-list-agents"] = {
+            "type": "deterministic-sql",
+            "prompt": TASKS["support-list-agents"],
+            "expected": support.list_support_agents(),
+        }
+        tasks["support-tickets-for-module-8"] = {
+            "type": "deterministic-sql",
+            "prompt": TASKS["support-tickets-for-module-8"],
+            "expected": support.search_support_tickets(product_id=8, limit=20),
+        }
+
+        # ── marketing campaigns ──────────────────────────────────────────────
+        tasks["marketing-list-campaigns"] = {
+            "type": "deterministic-sql",
+            "prompt": TASKS["marketing-list-campaigns"],
+            "expected": marketing.list_campaigns(),
+        }
+        tasks["marketing-campaign-detail-5"] = {
+            "type": "deterministic-sql",
+            "prompt": TASKS["marketing-campaign-detail-5"],
+            "expected": marketing.get_campaign(5),
+        }
+        tasks["marketing-campaign-performance-5"] = {
+            "type": "deterministic-sql",
+            "prompt": TASKS["marketing-campaign-performance-5"],
+            "expected": marketing.get_campaign_performance(5),
+        }
+        tasks["marketing-campaign-roi-5"] = {
+            "type": "deterministic-sql",
+            "prompt": TASKS["marketing-campaign-roi-5"],
+            "expected": marketing.get_campaign_roi(5),
+        }
+        tasks["marketing-top-campaigns-conversion"] = {
+            "type": "deterministic-sql",
+            "prompt": TASKS["marketing-top-campaigns-conversion"],
+            "expected": marketing.get_top_campaigns_by_conversion(5),
+        }
+        tasks["marketing-channel-spend-365d"] = {
+            "type": "deterministic-sql",
+            "prompt": TASKS["marketing-channel-spend-365d"],
+            "expected": marketing.get_channel_spend_breakdown(365),
+        }
+        tasks["marketing-funnel-5"] = {
+            "type": "deterministic-sql",
+            "prompt": TASKS["marketing-funnel-5"],
+            "expected": marketing.get_lead_conversion_funnel(5),
+        }
+        tasks["marketing-search-paid-search-active"] = {
+            "type": "deterministic-sql",
+            "prompt": TASKS["marketing-search-paid-search-active"],
+            "expected": marketing.search_campaigns(channel="paid_search", min_budget=50000),
+        }
+        tasks["marketing-monthly-spend-2025"] = {
+            "type": "deterministic-sql",
+            "prompt": TASKS["marketing-monthly-spend-2025"],
+            "expected": marketing.get_monthly_marketing_spend(2025),
+        }
+        tasks["marketing-search-webinar"] = {
+            "type": "deterministic-sql",
+            "prompt": TASKS["marketing-search-webinar"],
+            "expected": marketing.search_campaigns(channel="webinar"),
+        }
+
+        # ── procurement / suppliers ───────────────────────────────────────────
+        tasks["procurement-list-suppliers"] = {
+            "type": "deterministic-sql",
+            "prompt": TASKS["procurement-list-suppliers"],
+            "expected": procurement.list_suppliers(),
+        }
+        tasks["procurement-supplier-detail-10"] = {
+            "type": "deterministic-sql",
+            "prompt": TASKS["procurement-supplier-detail-10"],
+            "expected": procurement.get_supplier(10),
+        }
+        tasks["procurement-po-detail-50"] = {
+            "type": "deterministic-sql",
+            "prompt": TASKS["procurement-po-detail-50"],
+            "expected": procurement.get_purchase_order(50),
+        }
+        tasks["procurement-supplier-history-10"] = {
+            "type": "deterministic-sql",
+            "prompt": TASKS["procurement-supplier-history-10"],
+            "expected": procurement.get_supplier_purchase_history(10, 20),
+        }
+        tasks["procurement-supplier-performance-10"] = {
+            "type": "deterministic-sql",
+            "prompt": TASKS["procurement-supplier-performance-10"],
+            "expected": procurement.get_supplier_performance(10),
+        }
+        tasks["procurement-late-deliveries-365d"] = {
+            "type": "deterministic-sql",
+            "prompt": TASKS["procurement-late-deliveries-365d"],
+            "expected": procurement.get_late_delivery_report(365),
+        }
+        tasks["procurement-spend-summary-2025"] = {
+            "type": "deterministic-sql",
+            "prompt": TASKS["procurement-spend-summary-2025"],
+            "expected": procurement.get_procurement_spend_summary("2025-01-01", "2025-12-31"),
+        }
+        tasks["procurement-supplier-risk-10"] = {
+            "type": "deterministic-sql",
+            "prompt": TASKS["procurement-supplier-risk-10"],
+            "expected": procurement.get_supplier_risk_score(10),
+        }
+        tasks["procurement-search-software-highrating"] = {
+            "type": "deterministic-sql",
+            "prompt": TASKS["procurement-search-software-highrating"],
+            "expected": procurement.search_suppliers(category="software", min_rating=4.0),
+        }
+        tasks["procurement-search-us-suppliers"] = {
+            "type": "deterministic-sql",
+            "prompt": TASKS["procurement-search-us-suppliers"],
+            "expected": procurement.search_suppliers(country="US"),
+        }
+
+        # ── workforce / HR ─────────────────────────────────────────────────
+        tasks["workforce-list-departments"] = {
+            "type": "deterministic-sql",
+            "prompt": TASKS["workforce-list-departments"],
+            "expected": workforce.list_departments(),
+        }
+        tasks["workforce-department-detail-3"] = {
+            "type": "deterministic-sql",
+            "prompt": TASKS["workforce-department-detail-3"],
+            "expected": workforce.get_department(3),
+        }
+        tasks["workforce-employee-detail-10"] = {
+            "type": "deterministic-sql",
+            "prompt": TASKS["workforce-employee-detail-10"],
+            "expected": workforce.get_employee(10),
+        }
+        tasks["workforce-headcount-3"] = {
+            "type": "deterministic-sql",
+            "prompt": TASKS["workforce-headcount-3"],
+            "expected": workforce.get_department_headcount(3),
+        }
+        tasks["workforce-attrition-3-365d"] = {
+            "type": "deterministic-sql",
+            "prompt": TASKS["workforce-attrition-3-365d"],
+            "expected": workforce.get_attrition_rate(3, 365),
+            "notes": "Anchored to real wall-clock 'now' at generation time; regenerate close to eval run time.",
+        }
+        tasks["workforce-review-summary-10"] = {
+            "type": "deterministic-sql",
+            "prompt": TASKS["workforce-review-summary-10"],
+            "expected": workforce.get_performance_review_summary(10),
+        }
+        tasks["workforce-compensation-band-manager"] = {
+            "type": "deterministic-sql",
+            "prompt": TASKS["workforce-compensation-band-manager"],
+            "expected": workforce.get_compensation_band("Manager"),
+        }
+        tasks["workforce-open-positions"] = {
+            "type": "deterministic-sql",
+            "prompt": TASKS["workforce-open-positions"],
+            "expected": workforce.get_open_positions(),
+            "notes": "Anchored to real wall-clock 'now' at generation time; regenerate close to eval run time.",
+        }
+        tasks["workforce-search-finance-analysts"] = {
+            "type": "deterministic-sql",
+            "prompt": TASKS["workforce-search-finance-analysts"],
+            "expected": workforce.search_employees(department="Finance", title="Analyst"),
+        }
+        tasks["workforce-search-tenure-3y"] = {
+            "type": "deterministic-sql",
+            "prompt": TASKS["workforce-search-tenure-3y"],
+            "expected": workforce.search_employees(min_tenure_years=2.5),
+            "notes": "Tenure computed against real wall-clock 'now' at generation time.",
+        }
+
+        # ── finance / budgets ────────────────────────────────────────────────
+        tasks["finance-list-budgets"] = {
+            "type": "deterministic-sql",
+            "prompt": TASKS["finance-list-budgets"],
+            "expected": finance_ops.list_budgets(),
+        }
+        tasks["finance-budget-detail-10"] = {
+            "type": "deterministic-sql",
+            "prompt": TASKS["finance-budget-detail-10"],
+            "expected": finance_ops.get_budget(10),
+        }
+        tasks["finance-budget-variance-10"] = {
+            "type": "deterministic-sql",
+            "prompt": TASKS["finance-budget-variance-10"],
+            "expected": finance_ops.get_budget_variance(10),
+        }
+        tasks["finance-capex-summary-2025"] = {
+            "type": "deterministic-sql",
+            "prompt": TASKS["finance-capex-summary-2025"],
+            "expected": finance_ops.get_capex_summary(2025),
+        }
+        tasks["finance-expense-breakdown-2025"] = {
+            "type": "deterministic-sql",
+            "prompt": TASKS["finance-expense-breakdown-2025"],
+            "expected": finance_ops.get_expense_category_breakdown("2025-01-01", "2025-12-31"),
+        }
+        tasks["finance-search-capex-expenses"] = {
+            "type": "deterministic-sql",
+            "prompt": TASKS["finance-search-capex-expenses"],
+            "expected": finance_ops.search_expenses(category="capex", min_amount=50000),
+        }
+        tasks["finance-department-spend-rd-2025"] = {
+            "type": "deterministic-sql",
+            "prompt": TASKS["finance-department-spend-rd-2025"],
+            "expected": finance_ops.get_department_spend(
+                "R&D Engineering", "2025-01-01", "2025-12-31"
+            ),
+        }
+        tasks["finance-forecast-vs-actual-rd-2025"] = {
+            "type": "deterministic-sql",
+            "prompt": TASKS["finance-forecast-vs-actual-rd-2025"],
+            "expected": finance_ops.get_forecast_vs_actual("R&D Engineering", 2025),
+        }
+        tasks["finance-expense-detail-10"] = {
+            "type": "deterministic-sql",
+            "prompt": TASKS["finance-expense-detail-10"],
+            "expected": finance_ops.get_expense(10),
+        }
+        tasks["finance-search-department-expenses-rd"] = {
+            "type": "deterministic-sql",
+            "prompt": TASKS["finance-search-department-expenses-rd"],
+            "expected": finance_ops.search_expenses(department="R&D Engineering", min_amount=10000),
         }
 
         # ── minimal: pure computation, no database access ─────────────────

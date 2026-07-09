@@ -1,0 +1,1007 @@
+{
+  "mode": "run-all",
+  "session_id": "agent-bench:run-all:pydantic-ai:marketing-campaign-roi-5:20260708T211920Z:batch",
+  "harness": "pydantic-ai",
+  "task": "marketing-campaign-roi-5",
+  "repeat": 1,
+  "results": [
+    {
+      "harness": "pydantic-ai",
+      "architecture": "minimal",
+      "task": "marketing-campaign-roi-5",
+      "prompt": "Compute the ROI for marketing campaign ID 5.",
+      "output": "\n\n| campaign_id | roi |\n|-------------|-----|\n| 5         | 0.42 |",
+      "started_at": "2026-07-08T21:19:20.997920+00:00",
+      "elapsed_seconds": 36.99992258400016,
+      "metadata": {
+        "langfuse_session_id": "agent-bench:run-all:pydantic-ai:marketing-campaign-roi-5:20260708T211920Z:batch",
+        "tool_calls": [],
+        "langfuse_trace_id": "2536aa481e2fd06164e9ae9bf3e9ca11",
+        "langfuse_observation_id": "2e51d204fbff8fc7",
+        "langfuse_trace_url": "https://cloud.langfuse.com/project/cmr1ywsf000d5ad0cex3dm2ha/traces/2536aa481e2fd06164e9ae9bf3e9ca11"
+      },
+      "error": null,
+      "ok": true,
+      "scores": {
+        "scorable": true,
+        "correctness": 0.1,
+        "groundedness": 0.5,
+        "hallucination_rate": 0.5,
+        "overall_score": 0.1667,
+        "details": {
+          "refused_or_no_data": false,
+          "empty_output": false,
+          "expected_text_facts": 1,
+          "matched_text_facts": 0,
+          "expected_numeric_facts": 9,
+          "matched_numeric_facts": 1,
+          "claimed_numeric_values": 2,
+          "unsupported_numeric_values": 1
+        }
+      },
+      "tool_selection": {
+        "scorable": true,
+        "expected_tools": [
+          "execute_sql",
+          "get_campaign_roi"
+        ],
+        "total_tool_calls": 0,
+        "tool_recall": 0.0,
+        "tool_precision": 0.0,
+        "distractor_call_count": 0,
+        "distractor_calls": [],
+        "any_distractor_called": false,
+        "distractor_call_rate": 0.0,
+        "fabricated_call_count": 0,
+        "fabricated_calls": [],
+        "any_fabricated_called": false,
+        "fabricated_call_rate": 0.0
+      }
+    },
+    {
+      "harness": "pydantic-ai",
+      "architecture": "enterprise-react",
+      "task": "marketing-campaign-roi-5",
+      "prompt": "Compute the ROI for marketing campaign ID 5.",
+      "output": "\n\n| campaign_id | roi |\n|-------------|-----|\n| 5 | 1771.8411206167905 |",
+      "started_at": "2026-07-08T21:19:57.998376+00:00",
+      "elapsed_seconds": 14.923469750006916,
+      "metadata": {
+        "langfuse_session_id": "agent-bench:run-all:pydantic-ai:marketing-campaign-roi-5:20260708T211920Z:batch",
+        "tool_calls": [
+          {
+            "tool_name": "get_schema_context",
+            "via": "native"
+          },
+          {
+            "tool_name": "execute_sql",
+            "via": "native"
+          },
+          {
+            "tool_name": "execute_sql",
+            "via": "native"
+          },
+          {
+            "tool_name": "execute_sql",
+            "via": "native"
+          }
+        ],
+        "langfuse_trace_id": "02ef6e5667a078323d06f9f21d63da1e",
+        "langfuse_observation_id": "c916c7905c641f83",
+        "langfuse_trace_url": "https://cloud.langfuse.com/project/cmr1ywsf000d5ad0cex3dm2ha/traces/02ef6e5667a078323d06f9f21d63da1e"
+      },
+      "error": null,
+      "ok": true,
+      "scores": {
+        "scorable": true,
+        "correctness": 0.2,
+        "groundedness": 1.0,
+        "hallucination_rate": 0.0,
+        "overall_score": 0.3333,
+        "details": {
+          "refused_or_no_data": false,
+          "empty_output": false,
+          "expected_text_facts": 1,
+          "matched_text_facts": 0,
+          "expected_numeric_facts": 9,
+          "matched_numeric_facts": 2,
+          "claimed_numeric_values": 2,
+          "unsupported_numeric_values": 0
+        }
+      },
+      "tool_selection": {
+        "scorable": true,
+        "expected_tools": [
+          "execute_sql",
+          "get_campaign_roi"
+        ],
+        "total_tool_calls": 4,
+        "tool_recall": 1.0,
+        "tool_precision": 1.0,
+        "distractor_call_count": 0,
+        "distractor_calls": [],
+        "any_distractor_called": false,
+        "distractor_call_rate": 0.0,
+        "fabricated_call_count": 0,
+        "fabricated_calls": [],
+        "any_fabricated_called": false,
+        "fabricated_call_rate": 0.0
+      }
+    },
+    {
+      "harness": "pydantic-ai",
+      "architecture": "enterprise-codemode",
+      "task": "marketing-campaign-roi-5",
+      "prompt": "Compute the ROI for marketing campaign ID 5.",
+      "output": "\n\n| roi |\n|-----|\n| 1771.8411206167905 |",
+      "started_at": "2026-07-08T21:20:12.922184+00:00",
+      "elapsed_seconds": 11.114131584006827,
+      "metadata": {
+        "langfuse_session_id": "agent-bench:run-all:pydantic-ai:marketing-campaign-roi-5:20260708T211920Z:batch",
+        "tool_calls": [
+          {
+            "tool_name": "list_tables",
+            "via": "native"
+          },
+          {
+            "tool_name": "run_code",
+            "via": "native"
+          },
+          {
+            "tool_name": "run_code",
+            "via": "native"
+          },
+          {
+            "tool_name": "get_schema_context",
+            "via": "code_mode"
+          },
+          {
+            "tool_name": "run_code",
+            "via": "native"
+          },
+          {
+            "tool_name": "execute_sql",
+            "via": "code_mode"
+          }
+        ],
+        "langfuse_trace_id": "f6da6134cb29bf7b3398b74b5de4be93",
+        "langfuse_observation_id": "2d0d282404461fc1",
+        "langfuse_trace_url": "https://cloud.langfuse.com/project/cmr1ywsf000d5ad0cex3dm2ha/traces/f6da6134cb29bf7b3398b74b5de4be93"
+      },
+      "error": null,
+      "ok": true,
+      "scores": {
+        "scorable": true,
+        "correctness": 0.1,
+        "groundedness": 1.0,
+        "hallucination_rate": 0.0,
+        "overall_score": 0.1818,
+        "details": {
+          "refused_or_no_data": false,
+          "empty_output": false,
+          "expected_text_facts": 1,
+          "matched_text_facts": 0,
+          "expected_numeric_facts": 9,
+          "matched_numeric_facts": 1,
+          "claimed_numeric_values": 1,
+          "unsupported_numeric_values": 0
+        }
+      },
+      "tool_selection": {
+        "scorable": true,
+        "expected_tools": [
+          "execute_sql",
+          "get_campaign_roi"
+        ],
+        "total_tool_calls": 6,
+        "tool_recall": 1.0,
+        "tool_precision": 0.5,
+        "distractor_call_count": 0,
+        "distractor_calls": [],
+        "any_distractor_called": false,
+        "distractor_call_rate": 0.0,
+        "fabricated_call_count": 3,
+        "fabricated_calls": [
+          "run_code",
+          "run_code",
+          "run_code"
+        ],
+        "any_fabricated_called": true,
+        "fabricated_call_rate": 0.5
+      }
+    },
+    {
+      "harness": "pydantic-ai",
+      "architecture": "enterprise-mcp-react",
+      "task": "marketing-campaign-roi-5",
+      "prompt": "Compute the ROI for marketing campaign ID 5.",
+      "output": "\n\n| roi |\n|-----|\n| 0.03705924321030241 |",
+      "started_at": "2026-07-08T21:20:24.036529+00:00",
+      "elapsed_seconds": 39.70709362500929,
+      "metadata": {
+        "langfuse_session_id": "agent-bench:run-all:pydantic-ai:marketing-campaign-roi-5:20260708T211920Z:batch",
+        "tool_calls": [
+          {
+            "tool_name": "tool_list_tables",
+            "via": "native"
+          },
+          {
+            "tool_name": "tool_execute_sql",
+            "via": "native"
+          },
+          {
+            "tool_name": "tool_execute_sql",
+            "via": "native"
+          },
+          {
+            "tool_name": "tool_execute_sql",
+            "via": "native"
+          },
+          {
+            "tool_name": "tool_execute_sql",
+            "via": "native"
+          }
+        ],
+        "langfuse_trace_id": "3aa2a00a7e0989a87c43bf4acb5c0434",
+        "langfuse_observation_id": "be9d136177a53afa",
+        "langfuse_trace_url": "https://cloud.langfuse.com/project/cmr1ywsf000d5ad0cex3dm2ha/traces/3aa2a00a7e0989a87c43bf4acb5c0434"
+      },
+      "error": null,
+      "ok": true,
+      "scores": {
+        "scorable": true,
+        "correctness": 0.0,
+        "groundedness": 0.0,
+        "hallucination_rate": 1.0,
+        "overall_score": 0.0,
+        "details": {
+          "refused_or_no_data": false,
+          "empty_output": false,
+          "expected_text_facts": 1,
+          "matched_text_facts": 0,
+          "expected_numeric_facts": 9,
+          "matched_numeric_facts": 0,
+          "claimed_numeric_values": 1,
+          "unsupported_numeric_values": 1
+        }
+      },
+      "tool_selection": {
+        "scorable": true,
+        "expected_tools": [
+          "execute_sql",
+          "get_campaign_roi"
+        ],
+        "total_tool_calls": 5,
+        "tool_recall": 1.0,
+        "tool_precision": 1.0,
+        "distractor_call_count": 0,
+        "distractor_calls": [],
+        "any_distractor_called": false,
+        "distractor_call_rate": 0.0,
+        "fabricated_call_count": 0,
+        "fabricated_calls": [],
+        "any_fabricated_called": false,
+        "fabricated_call_rate": 0.0
+      }
+    },
+    {
+      "harness": "pydantic-ai",
+      "architecture": "enterprise-mcp-codemode",
+      "task": "marketing-campaign-roi-5",
+      "prompt": "Compute the ROI for marketing campaign ID 5.",
+      "output": "",
+      "started_at": "2026-07-08T21:21:03.744135+00:00",
+      "elapsed_seconds": 29.847702165992814,
+      "metadata": {
+        "langfuse_session_id": "agent-bench:run-all:pydantic-ai:marketing-campaign-roi-5:20260708T211920Z:batch"
+      },
+      "error": "UnexpectedModelBehavior: Tool 'tool_list_tables' exceeded max retries count of 3",
+      "ok": false,
+      "scores": {
+        "scorable": true,
+        "correctness": 0.0,
+        "groundedness": 0.0,
+        "hallucination_rate": 1.0,
+        "overall_score": 0.0,
+        "details": {
+          "refused_or_no_data": true,
+          "empty_output": true,
+          "expected_text_facts": 1,
+          "matched_text_facts": 0,
+          "expected_numeric_facts": 9,
+          "matched_numeric_facts": 0,
+          "claimed_numeric_values": 0,
+          "unsupported_numeric_values": 0
+        }
+      },
+      "tool_selection": {
+        "scorable": true,
+        "expected_tools": [
+          "execute_sql",
+          "get_campaign_roi"
+        ],
+        "total_tool_calls": 0,
+        "tool_recall": 0.0,
+        "tool_precision": 0.0,
+        "distractor_call_count": 0,
+        "distractor_calls": [],
+        "any_distractor_called": false,
+        "distractor_call_rate": 0.0,
+        "fabricated_call_count": 0,
+        "fabricated_calls": [],
+        "any_fabricated_called": false,
+        "fabricated_call_rate": 0.0
+      }
+    },
+    {
+      "harness": "pydantic-ai",
+      "architecture": "enterprise-sql-react",
+      "task": "marketing-campaign-roi-5",
+      "prompt": "Compute the ROI for marketing campaign ID 5.",
+      "output": "\n\n| campaign_id | roi |\n|-------------|-------------------|\n| 5 | -0.9629407567896976 |",
+      "started_at": "2026-07-08T21:21:33.592286+00:00",
+      "elapsed_seconds": 35.265920833000564,
+      "metadata": {
+        "langfuse_session_id": "agent-bench:run-all:pydantic-ai:marketing-campaign-roi-5:20260708T211920Z:batch",
+        "tool_calls": [
+          {
+            "tool_name": "list_tables",
+            "via": "native"
+          },
+          {
+            "tool_name": "describe_table",
+            "via": "native"
+          },
+          {
+            "tool_name": "describe_table",
+            "via": "native"
+          },
+          {
+            "tool_name": "execute_sql",
+            "via": "native"
+          },
+          {
+            "tool_name": "execute_sql",
+            "via": "native"
+          }
+        ],
+        "langfuse_trace_id": "928d4ef73fdde2fe5d462e6bcc6abc41",
+        "langfuse_observation_id": "8f363f4cd55b066c",
+        "langfuse_trace_url": "https://cloud.langfuse.com/project/cmr1ywsf000d5ad0cex3dm2ha/traces/928d4ef73fdde2fe5d462e6bcc6abc41"
+      },
+      "error": null,
+      "ok": true,
+      "scores": {
+        "scorable": true,
+        "correctness": 0.1,
+        "groundedness": 0.5,
+        "hallucination_rate": 0.5,
+        "overall_score": 0.1667,
+        "details": {
+          "refused_or_no_data": false,
+          "empty_output": false,
+          "expected_text_facts": 1,
+          "matched_text_facts": 0,
+          "expected_numeric_facts": 9,
+          "matched_numeric_facts": 1,
+          "claimed_numeric_values": 2,
+          "unsupported_numeric_values": 1
+        }
+      },
+      "tool_selection": {
+        "scorable": true,
+        "expected_tools": [
+          "execute_sql",
+          "get_campaign_roi"
+        ],
+        "total_tool_calls": 5,
+        "tool_recall": 1.0,
+        "tool_precision": 1.0,
+        "distractor_call_count": 0,
+        "distractor_calls": [],
+        "any_distractor_called": false,
+        "distractor_call_rate": 0.0,
+        "fabricated_call_count": 0,
+        "fabricated_calls": [],
+        "any_fabricated_called": false,
+        "fabricated_call_rate": 0.0
+      }
+    },
+    {
+      "harness": "pydantic-ai",
+      "architecture": "enterprise-sql-codemode",
+      "task": "marketing-campaign-roi-5",
+      "prompt": "Compute the ROI for marketing campaign ID 5.",
+      "output": "\n\n| roi |\n|-----|\n| 169607.30231202475 |",
+      "started_at": "2026-07-08T21:22:08.858607+00:00",
+      "elapsed_seconds": 44.98599449999165,
+      "metadata": {
+        "langfuse_session_id": "agent-bench:run-all:pydantic-ai:marketing-campaign-roi-5:20260708T211920Z:batch",
+        "tool_calls": [
+          {
+            "tool_name": "list_tables",
+            "via": "native"
+          },
+          {
+            "tool_name": "run_code",
+            "via": "native"
+          },
+          {
+            "tool_name": "list_tables",
+            "via": "code_mode"
+          },
+          {
+            "tool_name": "run_code",
+            "via": "native"
+          },
+          {
+            "tool_name": "describe_table",
+            "via": "code_mode"
+          },
+          {
+            "tool_name": "run_code",
+            "via": "native"
+          },
+          {
+            "tool_name": "describe_table",
+            "via": "code_mode"
+          },
+          {
+            "tool_name": "run_code",
+            "via": "native"
+          },
+          {
+            "tool_name": "execute_sql",
+            "via": "code_mode"
+          },
+          {
+            "tool_name": "run_code",
+            "via": "native"
+          },
+          {
+            "tool_name": "describe_table",
+            "via": "code_mode"
+          },
+          {
+            "tool_name": "run_code",
+            "via": "native"
+          },
+          {
+            "tool_name": "execute_sql",
+            "via": "code_mode"
+          },
+          {
+            "tool_name": "run_code",
+            "via": "native"
+          },
+          {
+            "tool_name": "execute_sql",
+            "via": "code_mode"
+          },
+          {
+            "tool_name": "run_code",
+            "via": "native"
+          },
+          {
+            "tool_name": "execute_sql",
+            "via": "code_mode"
+          },
+          {
+            "tool_name": "run_code",
+            "via": "native"
+          },
+          {
+            "tool_name": "execute_sql",
+            "via": "code_mode"
+          },
+          {
+            "tool_name": "run_code",
+            "via": "native"
+          },
+          {
+            "tool_name": "execute_sql",
+            "via": "code_mode"
+          }
+        ],
+        "langfuse_trace_id": "11b16c3169410b48a076f76cd0462bdb",
+        "langfuse_observation_id": "bb7cf3f45b3764c3",
+        "langfuse_trace_url": "https://cloud.langfuse.com/project/cmr1ywsf000d5ad0cex3dm2ha/traces/11b16c3169410b48a076f76cd0462bdb"
+      },
+      "error": null,
+      "ok": true,
+      "scores": {
+        "scorable": true,
+        "correctness": 0.0,
+        "groundedness": 0.0,
+        "hallucination_rate": 1.0,
+        "overall_score": 0.0,
+        "details": {
+          "refused_or_no_data": false,
+          "empty_output": false,
+          "expected_text_facts": 1,
+          "matched_text_facts": 0,
+          "expected_numeric_facts": 9,
+          "matched_numeric_facts": 0,
+          "claimed_numeric_values": 1,
+          "unsupported_numeric_values": 1
+        }
+      },
+      "tool_selection": {
+        "scorable": true,
+        "expected_tools": [
+          "execute_sql",
+          "get_campaign_roi"
+        ],
+        "total_tool_calls": 21,
+        "tool_recall": 1.0,
+        "tool_precision": 0.5238,
+        "distractor_call_count": 0,
+        "distractor_calls": [],
+        "any_distractor_called": false,
+        "distractor_call_rate": 0.0,
+        "fabricated_call_count": 10,
+        "fabricated_calls": [
+          "run_code",
+          "run_code",
+          "run_code",
+          "run_code",
+          "run_code",
+          "run_code",
+          "run_code",
+          "run_code",
+          "run_code",
+          "run_code"
+        ],
+        "any_fabricated_called": true,
+        "fabricated_call_rate": 0.4762
+      }
+    },
+    {
+      "harness": "pydantic-ai",
+      "architecture": "enterprise-react-toolsearch",
+      "task": "marketing-campaign-roi-5",
+      "prompt": "Compute the ROI for marketing campaign ID 5.",
+      "output": "\n\n```sql\nSELECT \n    (SUM(cp.conversions) * (SELECT AVG(o.total_amount) FROM orders o WHERE o.status != 'cancelled') - SUM(cp.spend_usd)) / SUM(cp.spend_usd) AS roi\nFROM campaign_performance cp\nWHERE cp.campaign_id = 5\n```",
+      "started_at": "2026-07-08T21:22:53.845101+00:00",
+      "elapsed_seconds": 27.237096083990764,
+      "metadata": {
+        "langfuse_session_id": "agent-bench:run-all:pydantic-ai:marketing-campaign-roi-5:20260708T211920Z:batch",
+        "tool_calls": [
+          {
+            "tool_name": "search_tools",
+            "via": "native"
+          },
+          {
+            "tool_name": "search_tools",
+            "via": "native"
+          },
+          {
+            "tool_name": "get_schema_context",
+            "via": "native"
+          }
+        ],
+        "langfuse_trace_id": "a9909140a62a8c72dd567225b5b408bb",
+        "langfuse_observation_id": "d62cc070d018b2f2",
+        "langfuse_trace_url": "https://cloud.langfuse.com/project/cmr1ywsf000d5ad0cex3dm2ha/traces/a9909140a62a8c72dd567225b5b408bb"
+      },
+      "error": null,
+      "ok": true,
+      "scores": {
+        "scorable": true,
+        "correctness": 0.1,
+        "groundedness": 1.0,
+        "hallucination_rate": 0.0,
+        "overall_score": 0.1818,
+        "details": {
+          "refused_or_no_data": false,
+          "empty_output": false,
+          "expected_text_facts": 1,
+          "matched_text_facts": 0,
+          "expected_numeric_facts": 9,
+          "matched_numeric_facts": 1,
+          "claimed_numeric_values": 1,
+          "unsupported_numeric_values": 0
+        }
+      },
+      "tool_selection": {
+        "scorable": true,
+        "expected_tools": [
+          "execute_sql",
+          "get_campaign_roi"
+        ],
+        "total_tool_calls": 3,
+        "tool_recall": 0.0,
+        "tool_precision": 1.0,
+        "distractor_call_count": 0,
+        "distractor_calls": [],
+        "any_distractor_called": false,
+        "distractor_call_rate": 0.0,
+        "fabricated_call_count": 0,
+        "fabricated_calls": [],
+        "any_fabricated_called": false,
+        "fabricated_call_rate": 0.0
+      }
+    },
+    {
+      "harness": "pydantic-ai",
+      "architecture": "enterprise-codemode-toolsearch",
+      "task": "marketing-campaign-roi-5",
+      "prompt": "Compute the ROI for marketing campaign ID 5.",
+      "output": "\n\nThe available database tools do not support marketing campaign ROI calculations. The system's current capabilities are focused on:\n\n- **Product analytics** (search, ratings, reviews)\n- **Subscription/order management** (order details, top sellers, low stock alerts)\n- **Sales/revenue metrics** (sales summaries, monthly revenue breakdowns)\n\nThere are no tools available for marketing campaign tracking, campaign-specific cost/revenue attribution, or ROI computation. If you need marketing campaign ROI, please provide the relevant cost and revenue data, or let me know if you'd like to explore the available sales/revenue metrics instead.",
+      "started_at": "2026-07-08T21:23:21.082538+00:00",
+      "elapsed_seconds": 8.997986417001812,
+      "metadata": {
+        "langfuse_session_id": "agent-bench:run-all:pydantic-ai:marketing-campaign-roi-5:20260708T211920Z:batch",
+        "tool_calls": [
+          {
+            "tool_name": "search_tools",
+            "via": "native"
+          },
+          {
+            "tool_name": "search_tools",
+            "via": "native"
+          }
+        ],
+        "langfuse_trace_id": "9b3f139a907dd8dc774e92ba11884f5d",
+        "langfuse_observation_id": "701a078c208af9c3",
+        "langfuse_trace_url": "https://cloud.langfuse.com/project/cmr1ywsf000d5ad0cex3dm2ha/traces/9b3f139a907dd8dc774e92ba11884f5d"
+      },
+      "error": null,
+      "ok": true,
+      "scores": {
+        "scorable": true,
+        "correctness": 0.0,
+        "groundedness": 1.0,
+        "hallucination_rate": 0.0,
+        "overall_score": 0.0,
+        "details": {
+          "refused_or_no_data": false,
+          "empty_output": false,
+          "expected_text_facts": 1,
+          "matched_text_facts": 0,
+          "expected_numeric_facts": 9,
+          "matched_numeric_facts": 0,
+          "claimed_numeric_values": 0,
+          "unsupported_numeric_values": 0
+        }
+      },
+      "tool_selection": {
+        "scorable": true,
+        "expected_tools": [
+          "execute_sql",
+          "get_campaign_roi"
+        ],
+        "total_tool_calls": 2,
+        "tool_recall": 0.0,
+        "tool_precision": 1.0,
+        "distractor_call_count": 0,
+        "distractor_calls": [],
+        "any_distractor_called": false,
+        "distractor_call_rate": 0.0,
+        "fabricated_call_count": 0,
+        "fabricated_calls": [],
+        "any_fabricated_called": false,
+        "fabricated_call_rate": 0.0
+      }
+    },
+    {
+      "harness": "pydantic-ai",
+      "architecture": "enterprise-react-thinking",
+      "task": "marketing-campaign-roi-5",
+      "prompt": "Compute the ROI for marketing campaign ID 5.",
+      "output": "\n\n| roi |\n|-----|\n| 1771.876784455117 |",
+      "started_at": "2026-07-08T21:23:30.080700+00:00",
+      "elapsed_seconds": 28.850761166992015,
+      "metadata": {
+        "langfuse_session_id": "agent-bench:run-all:pydantic-ai:marketing-campaign-roi-5:20260708T211920Z:batch",
+        "tool_calls": [
+          {
+            "tool_name": "get_schema_context",
+            "via": "native"
+          },
+          {
+            "tool_name": "execute_sql",
+            "via": "native"
+          },
+          {
+            "tool_name": "execute_sql",
+            "via": "native"
+          },
+          {
+            "tool_name": "execute_sql",
+            "via": "native"
+          },
+          {
+            "tool_name": "execute_sql",
+            "via": "native"
+          }
+        ],
+        "langfuse_trace_id": "f4ed0217588db40b25e45c73c238521f",
+        "langfuse_observation_id": "99aa2cc8f4053cda",
+        "langfuse_trace_url": "https://cloud.langfuse.com/project/cmr1ywsf000d5ad0cex3dm2ha/traces/f4ed0217588db40b25e45c73c238521f"
+      },
+      "error": null,
+      "ok": true,
+      "scores": {
+        "scorable": true,
+        "correctness": 0.1,
+        "groundedness": 1.0,
+        "hallucination_rate": 0.0,
+        "overall_score": 0.1818,
+        "details": {
+          "refused_or_no_data": false,
+          "empty_output": false,
+          "expected_text_facts": 1,
+          "matched_text_facts": 0,
+          "expected_numeric_facts": 9,
+          "matched_numeric_facts": 1,
+          "claimed_numeric_values": 1,
+          "unsupported_numeric_values": 0
+        }
+      },
+      "tool_selection": {
+        "scorable": true,
+        "expected_tools": [
+          "execute_sql",
+          "get_campaign_roi"
+        ],
+        "total_tool_calls": 5,
+        "tool_recall": 1.0,
+        "tool_precision": 1.0,
+        "distractor_call_count": 0,
+        "distractor_calls": [],
+        "any_distractor_called": false,
+        "distractor_call_rate": 0.0,
+        "fabricated_call_count": 0,
+        "fabricated_calls": [],
+        "any_fabricated_called": false,
+        "fabricated_call_rate": 0.0
+      }
+    },
+    {
+      "harness": "pydantic-ai",
+      "architecture": "enterprise-codemode-thinking",
+      "task": "marketing-campaign-roi-5",
+      "prompt": "Compute the ROI for marketing campaign ID 5.",
+      "output": "\n\n| campaign_id | roi |\n|-------------|-----|\n| 5 | 1771.8411206167905 |",
+      "started_at": "2026-07-08T21:23:58.931925+00:00",
+      "elapsed_seconds": 16.895880500000203,
+      "metadata": {
+        "langfuse_session_id": "agent-bench:run-all:pydantic-ai:marketing-campaign-roi-5:20260708T211920Z:batch",
+        "tool_calls": [
+          {
+            "tool_name": "list_tables",
+            "via": "native"
+          },
+          {
+            "tool_name": "run_code",
+            "via": "native"
+          },
+          {
+            "tool_name": "run_code",
+            "via": "native"
+          },
+          {
+            "tool_name": "get_schema_context",
+            "via": "code_mode"
+          },
+          {
+            "tool_name": "run_code",
+            "via": "native"
+          },
+          {
+            "tool_name": "execute_sql",
+            "via": "code_mode"
+          },
+          {
+            "tool_name": "execute_sql",
+            "via": "code_mode"
+          },
+          {
+            "tool_name": "execute_sql",
+            "via": "code_mode"
+          },
+          {
+            "tool_name": "run_code",
+            "via": "native"
+          }
+        ],
+        "langfuse_trace_id": "e6d6011235e36db0081140950d69a563",
+        "langfuse_observation_id": "15ced0219911e44a",
+        "langfuse_trace_url": "https://cloud.langfuse.com/project/cmr1ywsf000d5ad0cex3dm2ha/traces/e6d6011235e36db0081140950d69a563"
+      },
+      "error": null,
+      "ok": true,
+      "scores": {
+        "scorable": true,
+        "correctness": 0.2,
+        "groundedness": 1.0,
+        "hallucination_rate": 0.0,
+        "overall_score": 0.3333,
+        "details": {
+          "refused_or_no_data": false,
+          "empty_output": false,
+          "expected_text_facts": 1,
+          "matched_text_facts": 0,
+          "expected_numeric_facts": 9,
+          "matched_numeric_facts": 2,
+          "claimed_numeric_values": 2,
+          "unsupported_numeric_values": 0
+        }
+      },
+      "tool_selection": {
+        "scorable": true,
+        "expected_tools": [
+          "execute_sql",
+          "get_campaign_roi"
+        ],
+        "total_tool_calls": 9,
+        "tool_recall": 1.0,
+        "tool_precision": 0.5556,
+        "distractor_call_count": 0,
+        "distractor_calls": [],
+        "any_distractor_called": false,
+        "distractor_call_rate": 0.0,
+        "fabricated_call_count": 4,
+        "fabricated_calls": [
+          "run_code",
+          "run_code",
+          "run_code",
+          "run_code"
+        ],
+        "any_fabricated_called": true,
+        "fabricated_call_rate": 0.4444
+      }
+    },
+    {
+      "harness": "pydantic-ai",
+      "architecture": "enterprise-react-toolsearch-120",
+      "task": "marketing-campaign-roi-5",
+      "prompt": "Compute the ROI for marketing campaign ID 5.",
+      "output": "\n\n| id | name | roi |\n|----|------|-----|\n| 5 | Fall Search Surge 1 | 1771.8411 |",
+      "started_at": "2026-07-08T21:24:15.828062+00:00",
+      "elapsed_seconds": 7.051049375004368,
+      "metadata": {
+        "langfuse_session_id": "agent-bench:run-all:pydantic-ai:marketing-campaign-roi-5:20260708T211920Z:batch",
+        "tool_calls": [
+          {
+            "tool_name": "search_tools",
+            "via": "native"
+          },
+          {
+            "tool_name": "get_campaign_roi",
+            "via": "native"
+          }
+        ],
+        "langfuse_trace_id": "d492cf18090956ac2d508fc33d28d8d2",
+        "langfuse_observation_id": "c65684ddbe598f1c",
+        "langfuse_trace_url": "https://cloud.langfuse.com/project/cmr1ywsf000d5ad0cex3dm2ha/traces/d492cf18090956ac2d508fc33d28d8d2"
+      },
+      "error": null,
+      "ok": true,
+      "scores": {
+        "scorable": true,
+        "correctness": 0.3,
+        "groundedness": 0.6667,
+        "hallucination_rate": 0.3333,
+        "overall_score": 0.4138,
+        "details": {
+          "refused_or_no_data": false,
+          "empty_output": false,
+          "expected_text_facts": 1,
+          "matched_text_facts": 1,
+          "expected_numeric_facts": 9,
+          "matched_numeric_facts": 2,
+          "claimed_numeric_values": 3,
+          "unsupported_numeric_values": 1
+        }
+      },
+      "tool_selection": {
+        "scorable": true,
+        "expected_tools": [
+          "execute_sql",
+          "get_campaign_roi"
+        ],
+        "total_tool_calls": 2,
+        "tool_recall": 1.0,
+        "tool_precision": 1.0,
+        "distractor_call_count": 0,
+        "distractor_calls": [],
+        "any_distractor_called": false,
+        "distractor_call_rate": 0.0,
+        "fabricated_call_count": 0,
+        "fabricated_calls": [],
+        "any_fabricated_called": false,
+        "fabricated_call_rate": 0.0
+      }
+    },
+    {
+      "harness": "pydantic-ai",
+      "architecture": "enterprise-categorized-search",
+      "task": "marketing-campaign-roi-5",
+      "prompt": "Compute the ROI for marketing campaign ID 5.",
+      "output": "\n\n",
+      "started_at": "2026-07-08T21:24:22.879319+00:00",
+      "elapsed_seconds": 3.9476820830022916,
+      "metadata": {
+        "langfuse_session_id": "agent-bench:run-all:pydantic-ai:marketing-campaign-roi-5:20260708T211920Z:batch",
+        "tool_calls": [
+          {
+            "tool_name": "list_tool_categories",
+            "via": "native"
+          },
+          {
+            "tool_name": "search_tools_in_category",
+            "via": "native"
+          }
+        ],
+        "langfuse_trace_id": "344f7e9518666276c5f72b5cb9695423",
+        "langfuse_observation_id": "cd625d0550ce3c5b",
+        "langfuse_trace_url": "https://cloud.langfuse.com/project/cmr1ywsf000d5ad0cex3dm2ha/traces/344f7e9518666276c5f72b5cb9695423"
+      },
+      "error": null,
+      "ok": true,
+      "scores": {
+        "scorable": true,
+        "correctness": 0.0,
+        "groundedness": 0.0,
+        "hallucination_rate": 1.0,
+        "overall_score": 0.0,
+        "details": {
+          "refused_or_no_data": true,
+          "empty_output": true,
+          "expected_text_facts": 1,
+          "matched_text_facts": 0,
+          "expected_numeric_facts": 9,
+          "matched_numeric_facts": 0,
+          "claimed_numeric_values": 0,
+          "unsupported_numeric_values": 0
+        }
+      },
+      "tool_selection": {
+        "scorable": true,
+        "expected_tools": [
+          "execute_sql",
+          "get_campaign_roi"
+        ],
+        "total_tool_calls": 2,
+        "tool_recall": 0.0,
+        "tool_precision": 1.0,
+        "distractor_call_count": 0,
+        "distractor_calls": [],
+        "any_distractor_called": false,
+        "distractor_call_rate": 0.0,
+        "fabricated_call_count": 0,
+        "fabricated_calls": [],
+        "any_fabricated_called": false,
+        "fabricated_call_rate": 0.0
+      }
+    }
+  ],
+  "scored_at": "2026-07-08T22:25:20.000298+00:00",
+  "ground_truth_generated_at": "2026-07-08T20:08:57.272260+00:00",
+  "score_summary": {
+    "scored_results": 13,
+    "overall_score_formula": "harmonic_mean(correctness, groundedness)",
+    "avg_overall_score": 0.1507,
+    "best_architecture": "enterprise-react-toolsearch-120",
+    "best_overall_score": 0.4138,
+    "avg_correctness": 0.0923,
+    "avg_groundedness": 0.5897,
+    "avg_hallucination_rate": 0.4103,
+    "tool_selection": {
+      "scored_tasks": 13,
+      "avg_tool_precision": 0.7369,
+      "avg_tool_recall": 0.6154,
+      "total_tool_calls": 64,
+      "total_distractor_calls": 0,
+      "distractor_call_rate": 0.0,
+      "tasks_with_any_distractor_call": 0,
+      "tasks_with_any_distractor_call_pct": 0.0,
+      "total_fabricated_calls": 17,
+      "fabricated_call_rate": 0.2656,
+      "tasks_with_any_fabricated_call": 3,
+      "tasks_with_any_fabricated_call_pct": 23.08
+    }
+  }
+}

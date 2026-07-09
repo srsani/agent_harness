@@ -1,0 +1,556 @@
+{
+  "mode": "run-all",
+  "session_id": "agent-bench:run-all:pydantic-ai:workforce-open-positions:20260708T214630Z:batch",
+  "harness": "pydantic-ai",
+  "task": "workforce-open-positions",
+  "repeat": 1,
+  "results": [
+    {
+      "harness": "pydantic-ai",
+      "architecture": "minimal",
+      "task": "workforce-open-positions",
+      "prompt": "List departments with recent attrition that haven't been backfilled yet.",
+      "output": "\n\n| Department |\n|------------|\n| Sales      |\n| Engineering|\n| Marketing  |\n| Customer Support |\n| Human Resources |",
+      "started_at": "2026-07-08T21:46:30.859683+00:00",
+      "elapsed_seconds": 12.62418808300572,
+      "metadata": {
+        "langfuse_session_id": "agent-bench:run-all:pydantic-ai:workforce-open-positions:20260708T214630Z:batch",
+        "tool_calls": [],
+        "langfuse_trace_id": "070dc2be4438dc80edb998fac884603e",
+        "langfuse_observation_id": "c541fe9318b595ab",
+        "langfuse_trace_url": "https://cloud.langfuse.com/project/cmr1ywsf000d5ad0cex3dm2ha/traces/070dc2be4438dc80edb998fac884603e"
+      },
+      "error": null,
+      "ok": true
+    },
+    {
+      "harness": "pydantic-ai",
+      "architecture": "enterprise-react",
+      "task": "workforce-open-positions",
+      "prompt": "List departments with recent attrition that haven't been backfilled yet.",
+      "output": "\n\n| department_name |\n|-----------------|\n| Corporate FP&A |\n| Supply Chain Operations |",
+      "started_at": "2026-07-08T21:46:43.484181+00:00",
+      "elapsed_seconds": 39.730132916985895,
+      "metadata": {
+        "langfuse_session_id": "agent-bench:run-all:pydantic-ai:workforce-open-positions:20260708T214630Z:batch",
+        "tool_calls": [
+          {
+            "tool_name": "list_tables",
+            "via": "native"
+          },
+          {
+            "tool_name": "get_schema_context",
+            "via": "native"
+          },
+          {
+            "tool_name": "execute_sql",
+            "via": "native"
+          }
+        ],
+        "langfuse_trace_id": "7a8f5eeab4f13d8b7d4ed56e1d0ab800",
+        "langfuse_observation_id": "473d947c34d3ab93",
+        "langfuse_trace_url": "https://cloud.langfuse.com/project/cmr1ywsf000d5ad0cex3dm2ha/traces/7a8f5eeab4f13d8b7d4ed56e1d0ab800"
+      },
+      "error": null,
+      "ok": true
+    },
+    {
+      "harness": "pydantic-ai",
+      "architecture": "enterprise-codemode",
+      "task": "workforce-open-positions",
+      "prompt": "List departments with recent attrition that haven't been backfilled yet.",
+      "output": "\n\n| department_name |\n|-----------------|\n| Corporate FP&A |\n| Supply Chain Operations |\n| Procurement |\n| Sales & Marketing |",
+      "started_at": "2026-07-08T21:47:23.214898+00:00",
+      "elapsed_seconds": 26.679871916989214,
+      "metadata": {
+        "langfuse_session_id": "agent-bench:run-all:pydantic-ai:workforce-open-positions:20260708T214630Z:batch",
+        "tool_calls": [
+          {
+            "tool_name": "list_tables",
+            "via": "native"
+          },
+          {
+            "tool_name": "run_code",
+            "via": "native"
+          },
+          {
+            "tool_name": "list_tables",
+            "via": "code_mode"
+          },
+          {
+            "tool_name": "run_code",
+            "via": "native"
+          },
+          {
+            "tool_name": "describe_table",
+            "via": "code_mode"
+          },
+          {
+            "tool_name": "run_code",
+            "via": "native"
+          },
+          {
+            "tool_name": "execute_sql",
+            "via": "code_mode"
+          },
+          {
+            "tool_name": "run_code",
+            "via": "native"
+          },
+          {
+            "tool_name": "execute_sql",
+            "via": "code_mode"
+          },
+          {
+            "tool_name": "run_code",
+            "via": "native"
+          },
+          {
+            "tool_name": "execute_sql",
+            "via": "code_mode"
+          },
+          {
+            "tool_name": "run_code",
+            "via": "native"
+          },
+          {
+            "tool_name": "execute_sql",
+            "via": "code_mode"
+          },
+          {
+            "tool_name": "run_code",
+            "via": "native"
+          },
+          {
+            "tool_name": "execute_sql",
+            "via": "code_mode"
+          }
+        ],
+        "langfuse_trace_id": "7d90ce13b8852633510daee3bbe56ce1",
+        "langfuse_observation_id": "a2a85087fa7615ae",
+        "langfuse_trace_url": "https://cloud.langfuse.com/project/cmr1ywsf000d5ad0cex3dm2ha/traces/7d90ce13b8852633510daee3bbe56ce1"
+      },
+      "error": null,
+      "ok": true
+    },
+    {
+      "harness": "pydantic-ai",
+      "architecture": "enterprise-mcp-react",
+      "task": "workforce-open-positions",
+      "prompt": "List departments with recent attrition that haven't been backfilled yet.",
+      "output": "",
+      "started_at": "2026-07-08T21:47:49.895149+00:00",
+      "elapsed_seconds": 140.22146679200523,
+      "metadata": {
+        "langfuse_session_id": "agent-bench:run-all:pydantic-ai:workforce-open-positions:20260708T214630Z:batch"
+      },
+      "error": "UsageLimitExceeded: The next request would exceed the request_limit of 50",
+      "ok": false
+    },
+    {
+      "harness": "pydantic-ai",
+      "architecture": "enterprise-mcp-codemode",
+      "task": "workforce-open-positions",
+      "prompt": "List departments with recent attrition that haven't been backfilled yet.",
+      "output": "",
+      "started_at": "2026-07-08T21:50:10.118125+00:00",
+      "elapsed_seconds": 16.012558040994918,
+      "metadata": {
+        "langfuse_session_id": "agent-bench:run-all:pydantic-ai:workforce-open-positions:20260708T214630Z:batch"
+      },
+      "error": "UnexpectedModelBehavior: Tool 'tool_list_tables' exceeded max retries count of 3",
+      "ok": false
+    },
+    {
+      "harness": "pydantic-ai",
+      "architecture": "enterprise-sql-react",
+      "task": "workforce-open-positions",
+      "prompt": "List departments with recent attrition that haven't been backfilled yet.",
+      "output": "\n\n| name |\n|------|\n\nNo departments with recent attrition have gone without being backfilled. All four departments that experienced recent departures (Finance & Accounting, Corporate FP&A, Supply Chain Operations, and Procurement) also have recent active hires.",
+      "started_at": "2026-07-08T21:50:26.130928+00:00",
+      "elapsed_seconds": 64.51172125000448,
+      "metadata": {
+        "langfuse_session_id": "agent-bench:run-all:pydantic-ai:workforce-open-positions:20260708T214630Z:batch",
+        "tool_calls": [
+          {
+            "tool_name": "list_tables",
+            "via": "native"
+          },
+          {
+            "tool_name": "describe_table",
+            "via": "native"
+          },
+          {
+            "tool_name": "describe_table",
+            "via": "native"
+          },
+          {
+            "tool_name": "execute_sql",
+            "via": "native"
+          },
+          {
+            "tool_name": "execute_sql",
+            "via": "native"
+          },
+          {
+            "tool_name": "execute_sql",
+            "via": "native"
+          },
+          {
+            "tool_name": "execute_sql",
+            "via": "native"
+          },
+          {
+            "tool_name": "execute_sql",
+            "via": "native"
+          },
+          {
+            "tool_name": "describe_table",
+            "via": "native"
+          },
+          {
+            "tool_name": "execute_sql",
+            "via": "native"
+          },
+          {
+            "tool_name": "execute_sql",
+            "via": "native"
+          },
+          {
+            "tool_name": "execute_sql",
+            "via": "native"
+          },
+          {
+            "tool_name": "execute_sql",
+            "via": "native"
+          },
+          {
+            "tool_name": "describe_table",
+            "via": "native"
+          },
+          {
+            "tool_name": "execute_sql",
+            "via": "native"
+          },
+          {
+            "tool_name": "execute_sql",
+            "via": "native"
+          },
+          {
+            "tool_name": "execute_sql",
+            "via": "native"
+          },
+          {
+            "tool_name": "describe_table",
+            "via": "native"
+          },
+          {
+            "tool_name": "execute_sql",
+            "via": "native"
+          }
+        ],
+        "langfuse_trace_id": "32593d34d4637635853d7e9702a30874",
+        "langfuse_observation_id": "b50a1bb6f895c5b2",
+        "langfuse_trace_url": "https://cloud.langfuse.com/project/cmr1ywsf000d5ad0cex3dm2ha/traces/32593d34d4637635853d7e9702a30874"
+      },
+      "error": null,
+      "ok": true
+    },
+    {
+      "harness": "pydantic-ai",
+      "architecture": "enterprise-sql-codemode",
+      "task": "workforce-open-positions",
+      "prompt": "List departments with recent attrition that haven't been backfilled yet.",
+      "output": "\n\n| name |\n|------|\n| Corporate FP&A |\n| Supply Chain Operations |",
+      "started_at": "2026-07-08T21:51:30.643391+00:00",
+      "elapsed_seconds": 23.099711415998172,
+      "metadata": {
+        "langfuse_session_id": "agent-bench:run-all:pydantic-ai:workforce-open-positions:20260708T214630Z:batch",
+        "tool_calls": [
+          {
+            "tool_name": "list_tables",
+            "via": "native"
+          },
+          {
+            "tool_name": "run_code",
+            "via": "native"
+          },
+          {
+            "tool_name": "list_tables",
+            "via": "code_mode"
+          },
+          {
+            "tool_name": "describe_table",
+            "via": "native"
+          },
+          {
+            "tool_name": "run_code",
+            "via": "native"
+          },
+          {
+            "tool_name": "describe_table",
+            "via": "code_mode"
+          },
+          {
+            "tool_name": "run_code",
+            "via": "native"
+          },
+          {
+            "tool_name": "execute_sql",
+            "via": "code_mode"
+          },
+          {
+            "tool_name": "run_code",
+            "via": "native"
+          },
+          {
+            "tool_name": "execute_sql",
+            "via": "code_mode"
+          },
+          {
+            "tool_name": "run_code",
+            "via": "native"
+          },
+          {
+            "tool_name": "execute_sql",
+            "via": "code_mode"
+          },
+          {
+            "tool_name": "run_code",
+            "via": "native"
+          },
+          {
+            "tool_name": "execute_sql",
+            "via": "code_mode"
+          },
+          {
+            "tool_name": "run_code",
+            "via": "native"
+          },
+          {
+            "tool_name": "execute_sql",
+            "via": "code_mode"
+          }
+        ],
+        "langfuse_trace_id": "e8f4753a3721095bc74819f4d986cf19",
+        "langfuse_observation_id": "9eece9b1598d89cf",
+        "langfuse_trace_url": "https://cloud.langfuse.com/project/cmr1ywsf000d5ad0cex3dm2ha/traces/e8f4753a3721095bc74819f4d986cf19"
+      },
+      "error": null,
+      "ok": true
+    },
+    {
+      "harness": "pydantic-ai",
+      "architecture": "enterprise-react-toolsearch",
+      "task": "workforce-open-positions",
+      "prompt": "List departments with recent attrition that haven't been backfilled yet.",
+      "output": "\n\nI am unable to retrieve the requested information. The currently available tools (`get_product_reviews`, `get_customer_orders`, `get_order`) are limited to business subscription and analytics module data and do not include HR or workforce management capabilities required to identify departments with recent attrition and backfill status.",
+      "started_at": "2026-07-08T21:51:53.743404+00:00",
+      "elapsed_seconds": 4.4126253750000615,
+      "metadata": {
+        "langfuse_session_id": "agent-bench:run-all:pydantic-ai:workforce-open-positions:20260708T214630Z:batch",
+        "tool_calls": [
+          {
+            "tool_name": "search_tools",
+            "via": "native"
+          }
+        ],
+        "langfuse_trace_id": "d6846fb671c74f87659ff0891c8f93f8",
+        "langfuse_observation_id": "4b71a1e224e7bcef",
+        "langfuse_trace_url": "https://cloud.langfuse.com/project/cmr1ywsf000d5ad0cex3dm2ha/traces/d6846fb671c74f87659ff0891c8f93f8"
+      },
+      "error": null,
+      "ok": true
+    },
+    {
+      "harness": "pydantic-ai",
+      "architecture": "enterprise-codemode-toolsearch",
+      "task": "workforce-open-positions",
+      "prompt": "List departments with recent attrition that haven't been backfilled yet.",
+      "output": "\n\n| department_id | department_name |\n|---------------|-----------------|\n| 2 | Corporate FP&A |\n| 3 | Supply Chain Operations |\n| 5 | Sales & Marketing |",
+      "started_at": "2026-07-08T21:51:58.156148+00:00",
+      "elapsed_seconds": 18.319220666991896,
+      "metadata": {
+        "langfuse_session_id": "agent-bench:run-all:pydantic-ai:workforce-open-positions:20260708T214630Z:batch",
+        "tool_calls": [
+          {
+            "tool_name": "search_tools",
+            "via": "native"
+          },
+          {
+            "tool_name": "get_schema_context",
+            "via": "native"
+          },
+          {
+            "tool_name": "list_tables",
+            "via": "native"
+          },
+          {
+            "tool_name": "execute_sql",
+            "via": "native"
+          },
+          {
+            "tool_name": "execute_sql",
+            "via": "native"
+          },
+          {
+            "tool_name": "execute_sql",
+            "via": "native"
+          },
+          {
+            "tool_name": "execute_sql",
+            "via": "native"
+          },
+          {
+            "tool_name": "execute_sql",
+            "via": "native"
+          }
+        ],
+        "langfuse_trace_id": "3223ea22bb66e87dfe4b10705c1f47f2",
+        "langfuse_observation_id": "d944753d77c47b47",
+        "langfuse_trace_url": "https://cloud.langfuse.com/project/cmr1ywsf000d5ad0cex3dm2ha/traces/3223ea22bb66e87dfe4b10705c1f47f2"
+      },
+      "error": null,
+      "ok": true
+    },
+    {
+      "harness": "pydantic-ai",
+      "architecture": "enterprise-react-thinking",
+      "task": "workforce-open-positions",
+      "prompt": "List departments with recent attrition that haven't been backfilled yet.",
+      "output": "\n\n| department |\n|------------|\n| Corporate FP&A |\n| Supply Chain Operations |",
+      "started_at": "2026-07-08T21:52:16.475674+00:00",
+      "elapsed_seconds": 43.65548554199631,
+      "metadata": {
+        "langfuse_session_id": "agent-bench:run-all:pydantic-ai:workforce-open-positions:20260708T214630Z:batch",
+        "tool_calls": [
+          {
+            "tool_name": "get_schema_context",
+            "via": "native"
+          },
+          {
+            "tool_name": "list_tables",
+            "via": "native"
+          },
+          {
+            "tool_name": "execute_sql",
+            "via": "native"
+          },
+          {
+            "tool_name": "execute_sql",
+            "via": "native"
+          },
+          {
+            "tool_name": "execute_sql",
+            "via": "native"
+          },
+          {
+            "tool_name": "execute_sql",
+            "via": "native"
+          },
+          {
+            "tool_name": "describe_table",
+            "via": "native"
+          },
+          {
+            "tool_name": "execute_sql",
+            "via": "native"
+          },
+          {
+            "tool_name": "execute_sql",
+            "via": "native"
+          },
+          {
+            "tool_name": "describe_table",
+            "via": "native"
+          },
+          {
+            "tool_name": "execute_sql",
+            "via": "native"
+          }
+        ],
+        "langfuse_trace_id": "26b00b7de9fa797b80fdd35943dd5154",
+        "langfuse_observation_id": "5a2e61aed964a412",
+        "langfuse_trace_url": "https://cloud.langfuse.com/project/cmr1ywsf000d5ad0cex3dm2ha/traces/26b00b7de9fa797b80fdd35943dd5154"
+      },
+      "error": null,
+      "ok": true
+    },
+    {
+      "harness": "pydantic-ai",
+      "architecture": "enterprise-codemode-thinking",
+      "task": "workforce-open-positions",
+      "prompt": "List departments with recent attrition that haven't been backfilled yet.",
+      "output": "",
+      "started_at": "2026-07-08T21:53:00.131682+00:00",
+      "elapsed_seconds": 109.275206833001,
+      "metadata": {
+        "langfuse_session_id": "agent-bench:run-all:pydantic-ai:workforce-open-positions:20260708T214630Z:batch"
+      },
+      "error": "UsageLimitExceeded: The next request would exceed the request_limit of 50",
+      "ok": false
+    },
+    {
+      "harness": "pydantic-ai",
+      "architecture": "enterprise-react-toolsearch-120",
+      "task": "workforce-open-positions",
+      "prompt": "List departments with recent attrition that haven't been backfilled yet.",
+      "output": "\n\n| department | title | departed_employee | departed_at |\n|---|---|---|---|\n| Corporate FP&A | Director | Liam Jackson | 2026-06-29T21:08:15 |\n| Supply Chain Operations | Lead | Dan Green | 2026-06-12T07:26:06 |\n| Supply Chain Operations | Director | Maya Harris | 2026-05-10T06:08:12 |\n| Procurement | VP | Quinn Edwards | 2026-04-11T11:02:38 |",
+      "started_at": "2026-07-08T21:54:49.408074+00:00",
+      "elapsed_seconds": 6.402769000007538,
+      "metadata": {
+        "langfuse_session_id": "agent-bench:run-all:pydantic-ai:workforce-open-positions:20260708T214630Z:batch",
+        "tool_calls": [
+          {
+            "tool_name": "search_tools",
+            "via": "native"
+          },
+          {
+            "tool_name": "get_open_positions",
+            "via": "native"
+          }
+        ],
+        "langfuse_trace_id": "294212c06d2708c74b3ee510bab27737",
+        "langfuse_observation_id": "af25b0acc41577a8",
+        "langfuse_trace_url": "https://cloud.langfuse.com/project/cmr1ywsf000d5ad0cex3dm2ha/traces/294212c06d2708c74b3ee510bab27737"
+      },
+      "error": null,
+      "ok": true
+    },
+    {
+      "harness": "pydantic-ai",
+      "architecture": "enterprise-categorized-search",
+      "task": "workforce-open-positions",
+      "prompt": "List departments with recent attrition that haven't been backfilled yet.",
+      "output": "\n\n| department | title | departed_employee | departed_at |\n|------------|-------|-------------------|-------------|\n| Corporate FP&A | Director | Liam Jackson | 2026-06-29T21:08:15 |\n| Supply Chain Operations | Lead | Dan Green | 2026-06-12T07:26:06 |\n| Supply Chain Operations | Director | Maya Harris | 2026-05-10T06:08:12 |\n| Procurement | VP | Quinn Edwards | 2026-04-11T11:02:38 |",
+      "started_at": "2026-07-08T21:54:55.810989+00:00",
+      "elapsed_seconds": 7.990589749999344,
+      "metadata": {
+        "langfuse_session_id": "agent-bench:run-all:pydantic-ai:workforce-open-positions:20260708T214630Z:batch",
+        "tool_calls": [
+          {
+            "tool_name": "list_tool_categories",
+            "via": "native"
+          },
+          {
+            "tool_name": "search_tools_in_category",
+            "via": "native"
+          },
+          {
+            "tool_name": "call_tool",
+            "via": "native"
+          },
+          {
+            "tool_name": "get_open_positions",
+            "via": "categorized_search"
+          }
+        ],
+        "langfuse_trace_id": "afda26c22c6d9fe286205a6113f0f9ec",
+        "langfuse_observation_id": "2e2d32fa2c78aab3",
+        "langfuse_trace_url": "https://cloud.langfuse.com/project/cmr1ywsf000d5ad0cex3dm2ha/traces/afda26c22c6d9fe286205a6113f0f9ec"
+      },
+      "error": null,
+      "ok": true
+    }
+  ]
+}

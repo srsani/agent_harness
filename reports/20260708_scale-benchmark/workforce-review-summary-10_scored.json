@@ -1,0 +1,955 @@
+{
+  "mode": "run-all",
+  "session_id": "agent-bench:run-all:pydantic-ai:workforce-review-summary-10:20260708T214429Z:batch",
+  "harness": "pydantic-ai",
+  "task": "workforce-review-summary-10",
+  "repeat": 1,
+  "results": [
+    {
+      "harness": "pydantic-ai",
+      "architecture": "minimal",
+      "task": "workforce-review-summary-10",
+      "prompt": "Summarize employee ID 10's performance review history: review count, average rating, and most recent review date.",
+      "output": "\n\n| review count | average rating | most recent review date |\n|--------------|----------------|-------------------------|\n| 5            | 4.2            | 2023-11-15              |",
+      "started_at": "2026-07-08T21:44:29.672124+00:00",
+      "elapsed_seconds": 23.08580083299603,
+      "metadata": {
+        "langfuse_session_id": "agent-bench:run-all:pydantic-ai:workforce-review-summary-10:20260708T214429Z:batch",
+        "tool_calls": [],
+        "langfuse_trace_id": "697f4173e329029dd084eaee775e3fa2",
+        "langfuse_observation_id": "9637951150584084",
+        "langfuse_trace_url": "https://cloud.langfuse.com/project/cmr1ywsf000d5ad0cex3dm2ha/traces/697f4173e329029dd084eaee775e3fa2"
+      },
+      "error": null,
+      "ok": true,
+      "scores": {
+        "scorable": true,
+        "correctness": 0.0,
+        "groundedness": 0.0,
+        "hallucination_rate": 1.0,
+        "overall_score": 0.0,
+        "details": {
+          "refused_or_no_data": false,
+          "empty_output": false,
+          "expected_text_facts": 1,
+          "matched_text_facts": 0,
+          "expected_numeric_facts": 3,
+          "matched_numeric_facts": 0,
+          "claimed_numeric_values": 5,
+          "unsupported_numeric_values": 5
+        }
+      },
+      "tool_selection": {
+        "scorable": true,
+        "expected_tools": [
+          "execute_sql",
+          "get_performance_review_summary"
+        ],
+        "total_tool_calls": 0,
+        "tool_recall": 0.0,
+        "tool_precision": 0.0,
+        "distractor_call_count": 0,
+        "distractor_calls": [],
+        "any_distractor_called": false,
+        "distractor_call_rate": 0.0,
+        "fabricated_call_count": 0,
+        "fabricated_calls": [],
+        "any_fabricated_called": false,
+        "fabricated_call_rate": 0.0
+      }
+    },
+    {
+      "harness": "pydantic-ai",
+      "architecture": "enterprise-react",
+      "task": "workforce-review-summary-10",
+      "prompt": "Summarize employee ID 10's performance review history: review count, average rating, and most recent review date.",
+      "output": "\n\n| review_count | avg_rating | most_recent_review_date |\n|--------------|------------|-------------------------|\n| 1 | 4.0 | 2025-10-31T22:35:43 |",
+      "started_at": "2026-07-08T21:44:52.758235+00:00",
+      "elapsed_seconds": 12.227067624990013,
+      "metadata": {
+        "langfuse_session_id": "agent-bench:run-all:pydantic-ai:workforce-review-summary-10:20260708T214429Z:batch",
+        "tool_calls": [
+          {
+            "tool_name": "get_schema_context",
+            "via": "native"
+          },
+          {
+            "tool_name": "execute_sql",
+            "via": "native"
+          }
+        ],
+        "langfuse_trace_id": "2e5f2808d00a9d51111c056c8848bbfb",
+        "langfuse_observation_id": "99c382d908ab0fc7",
+        "langfuse_trace_url": "https://cloud.langfuse.com/project/cmr1ywsf000d5ad0cex3dm2ha/traces/2e5f2808d00a9d51111c056c8848bbfb"
+      },
+      "error": null,
+      "ok": true,
+      "scores": {
+        "scorable": true,
+        "correctness": 0.75,
+        "groundedness": 0.375,
+        "hallucination_rate": 0.625,
+        "overall_score": 0.5,
+        "details": {
+          "refused_or_no_data": false,
+          "empty_output": false,
+          "expected_text_facts": 1,
+          "matched_text_facts": 0,
+          "expected_numeric_facts": 3,
+          "matched_numeric_facts": 3,
+          "claimed_numeric_values": 8,
+          "unsupported_numeric_values": 5
+        }
+      },
+      "tool_selection": {
+        "scorable": true,
+        "expected_tools": [
+          "execute_sql",
+          "get_performance_review_summary"
+        ],
+        "total_tool_calls": 2,
+        "tool_recall": 1.0,
+        "tool_precision": 1.0,
+        "distractor_call_count": 0,
+        "distractor_calls": [],
+        "any_distractor_called": false,
+        "distractor_call_rate": 0.0,
+        "fabricated_call_count": 0,
+        "fabricated_calls": [],
+        "any_fabricated_called": false,
+        "fabricated_call_rate": 0.0
+      }
+    },
+    {
+      "harness": "pydantic-ai",
+      "architecture": "enterprise-codemode",
+      "task": "workforce-review-summary-10",
+      "prompt": "Summarize employee ID 10's performance review history: review count, average rating, and most recent review date.",
+      "output": "\n\n| review_count | avg_rating | most_recent_review_date |\n|---|---|---|\n| 1 | 4.0 | 2025-10-31T22:35:43 |",
+      "started_at": "2026-07-08T21:45:04.985530+00:00",
+      "elapsed_seconds": 6.86347549999482,
+      "metadata": {
+        "langfuse_session_id": "agent-bench:run-all:pydantic-ai:workforce-review-summary-10:20260708T214429Z:batch",
+        "tool_calls": [
+          {
+            "tool_name": "list_tables",
+            "via": "native"
+          },
+          {
+            "tool_name": "run_code",
+            "via": "native"
+          },
+          {
+            "tool_name": "run_code",
+            "via": "native"
+          },
+          {
+            "tool_name": "list_tables",
+            "via": "code_mode"
+          },
+          {
+            "tool_name": "run_code",
+            "via": "native"
+          },
+          {
+            "tool_name": "execute_sql",
+            "via": "code_mode"
+          }
+        ],
+        "langfuse_trace_id": "3191d748272e9c0c4e63d95e99d322c5",
+        "langfuse_observation_id": "1444cdf3e5f74a9f",
+        "langfuse_trace_url": "https://cloud.langfuse.com/project/cmr1ywsf000d5ad0cex3dm2ha/traces/3191d748272e9c0c4e63d95e99d322c5"
+      },
+      "error": null,
+      "ok": true,
+      "scores": {
+        "scorable": true,
+        "correctness": 0.75,
+        "groundedness": 0.375,
+        "hallucination_rate": 0.625,
+        "overall_score": 0.5,
+        "details": {
+          "refused_or_no_data": false,
+          "empty_output": false,
+          "expected_text_facts": 1,
+          "matched_text_facts": 0,
+          "expected_numeric_facts": 3,
+          "matched_numeric_facts": 3,
+          "claimed_numeric_values": 8,
+          "unsupported_numeric_values": 5
+        }
+      },
+      "tool_selection": {
+        "scorable": true,
+        "expected_tools": [
+          "execute_sql",
+          "get_performance_review_summary"
+        ],
+        "total_tool_calls": 6,
+        "tool_recall": 1.0,
+        "tool_precision": 0.5,
+        "distractor_call_count": 0,
+        "distractor_calls": [],
+        "any_distractor_called": false,
+        "distractor_call_rate": 0.0,
+        "fabricated_call_count": 3,
+        "fabricated_calls": [
+          "run_code",
+          "run_code",
+          "run_code"
+        ],
+        "any_fabricated_called": true,
+        "fabricated_call_rate": 0.5
+      }
+    },
+    {
+      "harness": "pydantic-ai",
+      "architecture": "enterprise-mcp-react",
+      "task": "workforce-review-summary-10",
+      "prompt": "Summarize employee ID 10's performance review history: review count, average rating, and most recent review date.",
+      "output": "\n\n| review_count | average_rating | most_recent_review_date |\n|--------------|----------------|-------------------------|\n| 1 | 4.0 | 2025-10-31T22:35:43 |",
+      "started_at": "2026-07-08T21:45:11.849259+00:00",
+      "elapsed_seconds": 5.939448709003045,
+      "metadata": {
+        "langfuse_session_id": "agent-bench:run-all:pydantic-ai:workforce-review-summary-10:20260708T214429Z:batch",
+        "tool_calls": [
+          {
+            "tool_name": "tool_list_tables",
+            "via": "native"
+          },
+          {
+            "tool_name": "tool_execute_sql",
+            "via": "native"
+          }
+        ],
+        "langfuse_trace_id": "84877475a672418bbd7ec79d44124f3d",
+        "langfuse_observation_id": "2259d7866c94cede",
+        "langfuse_trace_url": "https://cloud.langfuse.com/project/cmr1ywsf000d5ad0cex3dm2ha/traces/84877475a672418bbd7ec79d44124f3d"
+      },
+      "error": null,
+      "ok": true,
+      "scores": {
+        "scorable": true,
+        "correctness": 0.75,
+        "groundedness": 0.375,
+        "hallucination_rate": 0.625,
+        "overall_score": 0.5,
+        "details": {
+          "refused_or_no_data": false,
+          "empty_output": false,
+          "expected_text_facts": 1,
+          "matched_text_facts": 0,
+          "expected_numeric_facts": 3,
+          "matched_numeric_facts": 3,
+          "claimed_numeric_values": 8,
+          "unsupported_numeric_values": 5
+        }
+      },
+      "tool_selection": {
+        "scorable": true,
+        "expected_tools": [
+          "execute_sql",
+          "get_performance_review_summary"
+        ],
+        "total_tool_calls": 2,
+        "tool_recall": 1.0,
+        "tool_precision": 1.0,
+        "distractor_call_count": 0,
+        "distractor_calls": [],
+        "any_distractor_called": false,
+        "distractor_call_rate": 0.0,
+        "fabricated_call_count": 0,
+        "fabricated_calls": [],
+        "any_fabricated_called": false,
+        "fabricated_call_rate": 0.0
+      }
+    },
+    {
+      "harness": "pydantic-ai",
+      "architecture": "enterprise-mcp-codemode",
+      "task": "workforce-review-summary-10",
+      "prompt": "Summarize employee ID 10's performance review history: review count, average rating, and most recent review date.",
+      "output": "\n\n| employee_id | review_count | avg_rating | most_recent_review_date |\n|-------------|--------------|------------|-------------------------|\n| 10          | 1            | 4.0        | 2025-10-31T22:35:43     |",
+      "started_at": "2026-07-08T21:45:17.788886+00:00",
+      "elapsed_seconds": 7.94320179198985,
+      "metadata": {
+        "langfuse_session_id": "agent-bench:run-all:pydantic-ai:workforce-review-summary-10:20260708T214429Z:batch",
+        "tool_calls": [
+          {
+            "tool_name": "tool_list_tables",
+            "via": "native"
+          },
+          {
+            "tool_name": "tool_list_tables",
+            "via": "native"
+          },
+          {
+            "tool_name": "run_code",
+            "via": "native"
+          },
+          {
+            "tool_name": "tool_list_tables",
+            "via": "code_mode"
+          },
+          {
+            "tool_name": "run_code",
+            "via": "native"
+          },
+          {
+            "tool_name": "tool_execute_sql",
+            "via": "code_mode"
+          }
+        ],
+        "langfuse_trace_id": "2510121362a129b80f4295e46088c524",
+        "langfuse_observation_id": "514c973143364e5b",
+        "langfuse_trace_url": "https://cloud.langfuse.com/project/cmr1ywsf000d5ad0cex3dm2ha/traces/2510121362a129b80f4295e46088c524"
+      },
+      "error": null,
+      "ok": true,
+      "scores": {
+        "scorable": true,
+        "correctness": 0.75,
+        "groundedness": 0.375,
+        "hallucination_rate": 0.625,
+        "overall_score": 0.5,
+        "details": {
+          "refused_or_no_data": false,
+          "empty_output": false,
+          "expected_text_facts": 1,
+          "matched_text_facts": 0,
+          "expected_numeric_facts": 3,
+          "matched_numeric_facts": 3,
+          "claimed_numeric_values": 8,
+          "unsupported_numeric_values": 5
+        }
+      },
+      "tool_selection": {
+        "scorable": true,
+        "expected_tools": [
+          "execute_sql",
+          "get_performance_review_summary"
+        ],
+        "total_tool_calls": 6,
+        "tool_recall": 1.0,
+        "tool_precision": 0.6667,
+        "distractor_call_count": 0,
+        "distractor_calls": [],
+        "any_distractor_called": false,
+        "distractor_call_rate": 0.0,
+        "fabricated_call_count": 2,
+        "fabricated_calls": [
+          "run_code",
+          "run_code"
+        ],
+        "any_fabricated_called": true,
+        "fabricated_call_rate": 0.3333
+      }
+    },
+    {
+      "harness": "pydantic-ai",
+      "architecture": "enterprise-sql-react",
+      "task": "workforce-review-summary-10",
+      "prompt": "Summarize employee ID 10's performance review history: review count, average rating, and most recent review date.",
+      "output": "\n\n| review_count | avg_rating | most_recent_review_date |\n|---|---|---|\n| 1 | 4.0 | 2025-10-31T22:35:43 |",
+      "started_at": "2026-07-08T21:45:25.732324+00:00",
+      "elapsed_seconds": 5.543627292005112,
+      "metadata": {
+        "langfuse_session_id": "agent-bench:run-all:pydantic-ai:workforce-review-summary-10:20260708T214429Z:batch",
+        "tool_calls": [
+          {
+            "tool_name": "list_tables",
+            "via": "native"
+          },
+          {
+            "tool_name": "describe_table",
+            "via": "native"
+          },
+          {
+            "tool_name": "execute_sql",
+            "via": "native"
+          }
+        ],
+        "langfuse_trace_id": "01243ad91c77db37194b7f8b53b39366",
+        "langfuse_observation_id": "80d8bc5fd5526778",
+        "langfuse_trace_url": "https://cloud.langfuse.com/project/cmr1ywsf000d5ad0cex3dm2ha/traces/01243ad91c77db37194b7f8b53b39366"
+      },
+      "error": null,
+      "ok": true,
+      "scores": {
+        "scorable": true,
+        "correctness": 0.75,
+        "groundedness": 0.375,
+        "hallucination_rate": 0.625,
+        "overall_score": 0.5,
+        "details": {
+          "refused_or_no_data": false,
+          "empty_output": false,
+          "expected_text_facts": 1,
+          "matched_text_facts": 0,
+          "expected_numeric_facts": 3,
+          "matched_numeric_facts": 3,
+          "claimed_numeric_values": 8,
+          "unsupported_numeric_values": 5
+        }
+      },
+      "tool_selection": {
+        "scorable": true,
+        "expected_tools": [
+          "execute_sql",
+          "get_performance_review_summary"
+        ],
+        "total_tool_calls": 3,
+        "tool_recall": 1.0,
+        "tool_precision": 1.0,
+        "distractor_call_count": 0,
+        "distractor_calls": [],
+        "any_distractor_called": false,
+        "distractor_call_rate": 0.0,
+        "fabricated_call_count": 0,
+        "fabricated_calls": [],
+        "any_fabricated_called": false,
+        "fabricated_call_rate": 0.0
+      }
+    },
+    {
+      "harness": "pydantic-ai",
+      "architecture": "enterprise-sql-codemode",
+      "task": "workforce-review-summary-10",
+      "prompt": "Summarize employee ID 10's performance review history: review count, average rating, and most recent review date.",
+      "output": "\n\n| review_count | avg_rating | most_recent_review_date |\n|--------------|------------|-------------------------|\n| 1 | 4.0 | 2025-10-31T22:35:43 |",
+      "started_at": "2026-07-08T21:45:31.276075+00:00",
+      "elapsed_seconds": 7.363456000006408,
+      "metadata": {
+        "langfuse_session_id": "agent-bench:run-all:pydantic-ai:workforce-review-summary-10:20260708T214429Z:batch",
+        "tool_calls": [
+          {
+            "tool_name": "list_tables",
+            "via": "native"
+          },
+          {
+            "tool_name": "run_code",
+            "via": "native"
+          },
+          {
+            "tool_name": "list_tables",
+            "via": "code_mode"
+          },
+          {
+            "tool_name": "describe_table",
+            "via": "native"
+          },
+          {
+            "tool_name": "run_code",
+            "via": "native"
+          },
+          {
+            "tool_name": "describe_table",
+            "via": "code_mode"
+          },
+          {
+            "tool_name": "run_code",
+            "via": "native"
+          },
+          {
+            "tool_name": "execute_sql",
+            "via": "code_mode"
+          }
+        ],
+        "langfuse_trace_id": "f5424ed5e3a9bef63f939563c8e0ed5a",
+        "langfuse_observation_id": "9510ec432844115a",
+        "langfuse_trace_url": "https://cloud.langfuse.com/project/cmr1ywsf000d5ad0cex3dm2ha/traces/f5424ed5e3a9bef63f939563c8e0ed5a"
+      },
+      "error": null,
+      "ok": true,
+      "scores": {
+        "scorable": true,
+        "correctness": 0.75,
+        "groundedness": 0.375,
+        "hallucination_rate": 0.625,
+        "overall_score": 0.5,
+        "details": {
+          "refused_or_no_data": false,
+          "empty_output": false,
+          "expected_text_facts": 1,
+          "matched_text_facts": 0,
+          "expected_numeric_facts": 3,
+          "matched_numeric_facts": 3,
+          "claimed_numeric_values": 8,
+          "unsupported_numeric_values": 5
+        }
+      },
+      "tool_selection": {
+        "scorable": true,
+        "expected_tools": [
+          "execute_sql",
+          "get_performance_review_summary"
+        ],
+        "total_tool_calls": 8,
+        "tool_recall": 1.0,
+        "tool_precision": 0.625,
+        "distractor_call_count": 0,
+        "distractor_calls": [],
+        "any_distractor_called": false,
+        "distractor_call_rate": 0.0,
+        "fabricated_call_count": 3,
+        "fabricated_calls": [
+          "run_code",
+          "run_code",
+          "run_code"
+        ],
+        "any_fabricated_called": true,
+        "fabricated_call_rate": 0.375
+      }
+    },
+    {
+      "harness": "pydantic-ai",
+      "architecture": "enterprise-react-toolsearch",
+      "task": "workforce-review-summary-10",
+      "prompt": "Summarize employee ID 10's performance review history: review count, average rating, and most recent review date.",
+      "output": "\n\n```sql\nSELECT \n  COUNT(*) AS review_count, \n  AVG(rating) AS average_rating, \n  MAX(review_date) AS most_recent_review_date \nFROM performance_reviews \nWHERE employee_id = 10;\n```",
+      "started_at": "2026-07-08T21:45:38.639682+00:00",
+      "elapsed_seconds": 12.121571791998576,
+      "metadata": {
+        "langfuse_session_id": "agent-bench:run-all:pydantic-ai:workforce-review-summary-10:20260708T214429Z:batch",
+        "tool_calls": [
+          {
+            "tool_name": "search_tools",
+            "via": "native"
+          },
+          {
+            "tool_name": "get_schema_context",
+            "via": "native"
+          }
+        ],
+        "langfuse_trace_id": "c4929a61b719ef7c21fa811f0fc34a61",
+        "langfuse_observation_id": "8ea89369c44eb196",
+        "langfuse_trace_url": "https://cloud.langfuse.com/project/cmr1ywsf000d5ad0cex3dm2ha/traces/c4929a61b719ef7c21fa811f0fc34a61"
+      },
+      "error": null,
+      "ok": true,
+      "scores": {
+        "scorable": true,
+        "correctness": 0.25,
+        "groundedness": 1.0,
+        "hallucination_rate": 0.0,
+        "overall_score": 0.4,
+        "details": {
+          "refused_or_no_data": false,
+          "empty_output": false,
+          "expected_text_facts": 1,
+          "matched_text_facts": 0,
+          "expected_numeric_facts": 3,
+          "matched_numeric_facts": 1,
+          "claimed_numeric_values": 1,
+          "unsupported_numeric_values": 0
+        }
+      },
+      "tool_selection": {
+        "scorable": true,
+        "expected_tools": [
+          "execute_sql",
+          "get_performance_review_summary"
+        ],
+        "total_tool_calls": 2,
+        "tool_recall": 0.0,
+        "tool_precision": 1.0,
+        "distractor_call_count": 0,
+        "distractor_calls": [],
+        "any_distractor_called": false,
+        "distractor_call_rate": 0.0,
+        "fabricated_call_count": 0,
+        "fabricated_calls": [],
+        "any_fabricated_called": false,
+        "fabricated_call_rate": 0.0
+      }
+    },
+    {
+      "harness": "pydantic-ai",
+      "architecture": "enterprise-codemode-toolsearch",
+      "task": "workforce-review-summary-10",
+      "prompt": "Summarize employee ID 10's performance review history: review count, average rating, and most recent review date.",
+      "output": "\n\n| review_count | average_rating | most_recent_review_date |\n|--------------|----------------|-------------------------|\n| 1 | 4.0 | 2025-10-31T22:35:43 |",
+      "started_at": "2026-07-08T21:45:50.761557+00:00",
+      "elapsed_seconds": 9.00297329100431,
+      "metadata": {
+        "langfuse_session_id": "agent-bench:run-all:pydantic-ai:workforce-review-summary-10:20260708T214429Z:batch",
+        "tool_calls": [
+          {
+            "tool_name": "search_tools",
+            "via": "native"
+          },
+          {
+            "tool_name": "get_schema_context",
+            "via": "native"
+          },
+          {
+            "tool_name": "list_tables",
+            "via": "native"
+          },
+          {
+            "tool_name": "execute_sql",
+            "via": "native"
+          },
+          {
+            "tool_name": "execute_sql",
+            "via": "native"
+          },
+          {
+            "tool_name": "execute_sql",
+            "via": "native"
+          }
+        ],
+        "langfuse_trace_id": "43e1e579b578dc592316b9db4ebd6126",
+        "langfuse_observation_id": "1bf6156a5664d8a2",
+        "langfuse_trace_url": "https://cloud.langfuse.com/project/cmr1ywsf000d5ad0cex3dm2ha/traces/43e1e579b578dc592316b9db4ebd6126"
+      },
+      "error": null,
+      "ok": true,
+      "scores": {
+        "scorable": true,
+        "correctness": 0.75,
+        "groundedness": 0.375,
+        "hallucination_rate": 0.625,
+        "overall_score": 0.5,
+        "details": {
+          "refused_or_no_data": false,
+          "empty_output": false,
+          "expected_text_facts": 1,
+          "matched_text_facts": 0,
+          "expected_numeric_facts": 3,
+          "matched_numeric_facts": 3,
+          "claimed_numeric_values": 8,
+          "unsupported_numeric_values": 5
+        }
+      },
+      "tool_selection": {
+        "scorable": true,
+        "expected_tools": [
+          "execute_sql",
+          "get_performance_review_summary"
+        ],
+        "total_tool_calls": 6,
+        "tool_recall": 1.0,
+        "tool_precision": 1.0,
+        "distractor_call_count": 0,
+        "distractor_calls": [],
+        "any_distractor_called": false,
+        "distractor_call_rate": 0.0,
+        "fabricated_call_count": 0,
+        "fabricated_calls": [],
+        "any_fabricated_called": false,
+        "fabricated_call_rate": 0.0
+      }
+    },
+    {
+      "harness": "pydantic-ai",
+      "architecture": "enterprise-react-thinking",
+      "task": "workforce-review-summary-10",
+      "prompt": "Summarize employee ID 10's performance review history: review count, average rating, and most recent review date.",
+      "output": "\n\n| review_count | average_rating | most_recent_review_date |\n|--------------|----------------|-------------------------|\n| 1 | 4.0 | 2025-10-31T22:35:43 |",
+      "started_at": "2026-07-08T21:45:59.764775+00:00",
+      "elapsed_seconds": 9.537013959008618,
+      "metadata": {
+        "langfuse_session_id": "agent-bench:run-all:pydantic-ai:workforce-review-summary-10:20260708T214429Z:batch",
+        "tool_calls": [
+          {
+            "tool_name": "get_schema_context",
+            "via": "native"
+          },
+          {
+            "tool_name": "execute_sql",
+            "via": "native"
+          }
+        ],
+        "langfuse_trace_id": "2afdd2ffb0367fc73ccf124575e1a08b",
+        "langfuse_observation_id": "51f1c8824ea3aa15",
+        "langfuse_trace_url": "https://cloud.langfuse.com/project/cmr1ywsf000d5ad0cex3dm2ha/traces/2afdd2ffb0367fc73ccf124575e1a08b"
+      },
+      "error": null,
+      "ok": true,
+      "scores": {
+        "scorable": true,
+        "correctness": 0.75,
+        "groundedness": 0.375,
+        "hallucination_rate": 0.625,
+        "overall_score": 0.5,
+        "details": {
+          "refused_or_no_data": false,
+          "empty_output": false,
+          "expected_text_facts": 1,
+          "matched_text_facts": 0,
+          "expected_numeric_facts": 3,
+          "matched_numeric_facts": 3,
+          "claimed_numeric_values": 8,
+          "unsupported_numeric_values": 5
+        }
+      },
+      "tool_selection": {
+        "scorable": true,
+        "expected_tools": [
+          "execute_sql",
+          "get_performance_review_summary"
+        ],
+        "total_tool_calls": 2,
+        "tool_recall": 1.0,
+        "tool_precision": 1.0,
+        "distractor_call_count": 0,
+        "distractor_calls": [],
+        "any_distractor_called": false,
+        "distractor_call_rate": 0.0,
+        "fabricated_call_count": 0,
+        "fabricated_calls": [],
+        "any_fabricated_called": false,
+        "fabricated_call_rate": 0.0
+      }
+    },
+    {
+      "harness": "pydantic-ai",
+      "architecture": "enterprise-codemode-thinking",
+      "task": "workforce-review-summary-10",
+      "prompt": "Summarize employee ID 10's performance review history: review count, average rating, and most recent review date.",
+      "output": "\n\n| review_count | average_rating | most_recent_review_date |\n|--------------|----------------|-------------------------|\n| 1 | 4.0 | 2025-10-31T22:35:43 |",
+      "started_at": "2026-07-08T21:46:09.301975+00:00",
+      "elapsed_seconds": 10.686431374997483,
+      "metadata": {
+        "langfuse_session_id": "agent-bench:run-all:pydantic-ai:workforce-review-summary-10:20260708T214429Z:batch",
+        "tool_calls": [
+          {
+            "tool_name": "get_customer",
+            "via": "native"
+          },
+          {
+            "tool_name": "list_tables",
+            "via": "native"
+          },
+          {
+            "tool_name": "run_code",
+            "via": "native"
+          },
+          {
+            "tool_name": "execute_sql",
+            "via": "code_mode"
+          },
+          {
+            "tool_name": "run_code",
+            "via": "native"
+          },
+          {
+            "tool_name": "describe_table",
+            "via": "code_mode"
+          },
+          {
+            "tool_name": "run_code",
+            "via": "native"
+          },
+          {
+            "tool_name": "execute_sql",
+            "via": "code_mode"
+          }
+        ],
+        "langfuse_trace_id": "be83c011eaddb9a796a03b4cfe3178d9",
+        "langfuse_observation_id": "1507a5482424b114",
+        "langfuse_trace_url": "https://cloud.langfuse.com/project/cmr1ywsf000d5ad0cex3dm2ha/traces/be83c011eaddb9a796a03b4cfe3178d9"
+      },
+      "error": null,
+      "ok": true,
+      "scores": {
+        "scorable": true,
+        "correctness": 0.75,
+        "groundedness": 0.375,
+        "hallucination_rate": 0.625,
+        "overall_score": 0.5,
+        "details": {
+          "refused_or_no_data": false,
+          "empty_output": false,
+          "expected_text_facts": 1,
+          "matched_text_facts": 0,
+          "expected_numeric_facts": 3,
+          "matched_numeric_facts": 3,
+          "claimed_numeric_values": 8,
+          "unsupported_numeric_values": 5
+        }
+      },
+      "tool_selection": {
+        "scorable": true,
+        "expected_tools": [
+          "execute_sql",
+          "get_performance_review_summary"
+        ],
+        "total_tool_calls": 8,
+        "tool_recall": 1.0,
+        "tool_precision": 0.5,
+        "distractor_call_count": 0,
+        "distractor_calls": [],
+        "any_distractor_called": false,
+        "distractor_call_rate": 0.0,
+        "fabricated_call_count": 3,
+        "fabricated_calls": [
+          "run_code",
+          "run_code",
+          "run_code"
+        ],
+        "any_fabricated_called": true,
+        "fabricated_call_rate": 0.375
+      }
+    },
+    {
+      "harness": "pydantic-ai",
+      "architecture": "enterprise-react-toolsearch-120",
+      "task": "workforce-review-summary-10",
+      "prompt": "Summarize employee ID 10's performance review history: review count, average rating, and most recent review date.",
+      "output": "\n\n| review_count | avg_rating | most_recent_review_date |\n|--------------|------------|-------------------------|\n| 1            | 4.0        | 2025-10-31T22:35:43     |",
+      "started_at": "2026-07-08T21:46:19.988680+00:00",
+      "elapsed_seconds": 5.788369707996026,
+      "metadata": {
+        "langfuse_session_id": "agent-bench:run-all:pydantic-ai:workforce-review-summary-10:20260708T214429Z:batch",
+        "tool_calls": [
+          {
+            "tool_name": "search_tools",
+            "via": "native"
+          },
+          {
+            "tool_name": "get_performance_review_summary",
+            "via": "native"
+          }
+        ],
+        "langfuse_trace_id": "e5f53cd2c0edeaf919405c38d974061a",
+        "langfuse_observation_id": "46964818d9b9c859",
+        "langfuse_trace_url": "https://cloud.langfuse.com/project/cmr1ywsf000d5ad0cex3dm2ha/traces/e5f53cd2c0edeaf919405c38d974061a"
+      },
+      "error": null,
+      "ok": true,
+      "scores": {
+        "scorable": true,
+        "correctness": 0.75,
+        "groundedness": 0.375,
+        "hallucination_rate": 0.625,
+        "overall_score": 0.5,
+        "details": {
+          "refused_or_no_data": false,
+          "empty_output": false,
+          "expected_text_facts": 1,
+          "matched_text_facts": 0,
+          "expected_numeric_facts": 3,
+          "matched_numeric_facts": 3,
+          "claimed_numeric_values": 8,
+          "unsupported_numeric_values": 5
+        }
+      },
+      "tool_selection": {
+        "scorable": true,
+        "expected_tools": [
+          "execute_sql",
+          "get_performance_review_summary"
+        ],
+        "total_tool_calls": 2,
+        "tool_recall": 1.0,
+        "tool_precision": 1.0,
+        "distractor_call_count": 0,
+        "distractor_calls": [],
+        "any_distractor_called": false,
+        "distractor_call_rate": 0.0,
+        "fabricated_call_count": 0,
+        "fabricated_calls": [],
+        "any_fabricated_called": false,
+        "fabricated_call_rate": 0.0
+      }
+    },
+    {
+      "harness": "pydantic-ai",
+      "architecture": "enterprise-categorized-search",
+      "task": "workforce-review-summary-10",
+      "prompt": "Summarize employee ID 10's performance review history: review count, average rating, and most recent review date.",
+      "output": "\n\n| employee_id | review_count | avg_rating | most_recent_review_date |\n|-------------|--------------|------------|-------------------------|\n| 10          | 1            | 4.0        | 2025-10-31T22:35:43     |",
+      "started_at": "2026-07-08T21:46:25.777202+00:00",
+      "elapsed_seconds": 5.08093275000283,
+      "metadata": {
+        "langfuse_session_id": "agent-bench:run-all:pydantic-ai:workforce-review-summary-10:20260708T214429Z:batch",
+        "tool_calls": [
+          {
+            "tool_name": "list_tool_categories",
+            "via": "native"
+          },
+          {
+            "tool_name": "search_tools_in_category",
+            "via": "native"
+          },
+          {
+            "tool_name": "call_tool",
+            "via": "native"
+          },
+          {
+            "tool_name": "get_performance_review_summary",
+            "via": "categorized_search"
+          }
+        ],
+        "langfuse_trace_id": "1bf6b1263258d50caafd1910b1bca9cd",
+        "langfuse_observation_id": "19d07dbabc71dcfa",
+        "langfuse_trace_url": "https://cloud.langfuse.com/project/cmr1ywsf000d5ad0cex3dm2ha/traces/1bf6b1263258d50caafd1910b1bca9cd"
+      },
+      "error": null,
+      "ok": true,
+      "scores": {
+        "scorable": true,
+        "correctness": 0.75,
+        "groundedness": 0.375,
+        "hallucination_rate": 0.625,
+        "overall_score": 0.5,
+        "details": {
+          "refused_or_no_data": false,
+          "empty_output": false,
+          "expected_text_facts": 1,
+          "matched_text_facts": 0,
+          "expected_numeric_facts": 3,
+          "matched_numeric_facts": 3,
+          "claimed_numeric_values": 8,
+          "unsupported_numeric_values": 5
+        }
+      },
+      "tool_selection": {
+        "scorable": true,
+        "expected_tools": [
+          "execute_sql",
+          "get_performance_review_summary"
+        ],
+        "total_tool_calls": 4,
+        "tool_recall": 1.0,
+        "tool_precision": 1.0,
+        "distractor_call_count": 0,
+        "distractor_calls": [],
+        "any_distractor_called": false,
+        "distractor_call_rate": 0.0,
+        "fabricated_call_count": 0,
+        "fabricated_calls": [],
+        "any_fabricated_called": false,
+        "fabricated_call_rate": 0.0
+      }
+    }
+  ],
+  "scored_at": "2026-07-08T22:25:20.739645+00:00",
+  "ground_truth_generated_at": "2026-07-08T20:08:57.272260+00:00",
+  "score_summary": {
+    "scored_results": 13,
+    "overall_score_formula": "harmonic_mean(correctness, groundedness)",
+    "avg_overall_score": 0.4538,
+    "best_architecture": "enterprise-react",
+    "best_overall_score": 0.5,
+    "avg_correctness": 0.6538,
+    "avg_groundedness": 0.3942,
+    "avg_hallucination_rate": 0.6058,
+    "tool_selection": {
+      "scored_tasks": 13,
+      "avg_tool_precision": 0.7917,
+      "avg_tool_recall": 0.8462,
+      "total_tool_calls": 51,
+      "total_distractor_calls": 0,
+      "distractor_call_rate": 0.0,
+      "tasks_with_any_distractor_call": 0,
+      "tasks_with_any_distractor_call_pct": 0.0,
+      "total_fabricated_calls": 11,
+      "fabricated_call_rate": 0.2157,
+      "tasks_with_any_fabricated_call": 4,
+      "tasks_with_any_fabricated_call_pct": 30.77
+    }
+  }
+}

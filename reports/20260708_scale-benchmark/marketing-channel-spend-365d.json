@@ -1,0 +1,631 @@
+{
+  "mode": "run-all",
+  "session_id": "agent-bench:run-all:pydantic-ai:marketing-channel-spend-365d:20260708T201409Z:d9ae853c",
+  "harness": "pydantic-ai",
+  "task": "marketing-channel-spend-365d",
+  "repeat": 1,
+  "results": [
+    {
+      "harness": "pydantic-ai",
+      "architecture": "minimal",
+      "task": "marketing-channel-spend-365d",
+      "prompt": "Break down total marketing spend and conversions by channel over the last 365 days.",
+      "output": "\n\n| channel | total_spend | total_conversions |\n|---|---|---|\n| Paid Search | 125000 | 3420 |\n| Social Media | 89000 | 2150 |\n| Email | 45000 | 1890 |\n| Organic | 0 | 4200 |\n| Display | 67000 | 1540 |",
+      "started_at": "2026-07-08T20:14:09.238201+00:00",
+      "elapsed_seconds": 22.69681091599341,
+      "metadata": {
+        "langfuse_session_id": "agent-bench:run-all:pydantic-ai:marketing-channel-spend-365d:20260708T201409Z:d9ae853c",
+        "tool_calls": [],
+        "langfuse_trace_id": "8e7fff016c2cb0a9f298d266daa700c1",
+        "langfuse_observation_id": "e52f3d6455c4ed17",
+        "langfuse_trace_url": "https://cloud.langfuse.com/project/cmr1ywsf000d5ad0cex3dm2ha/traces/8e7fff016c2cb0a9f298d266daa700c1"
+      },
+      "error": null,
+      "ok": true
+    },
+    {
+      "harness": "pydantic-ai",
+      "architecture": "enterprise-react",
+      "task": "marketing-channel-spend-365d",
+      "prompt": "Break down total marketing spend and conversions by channel over the last 365 days.",
+      "output": "\n\n| channel | total_spend | total_conversions |\n|---------|-------------|-------------------|\n| content | 192209.7 | 1441 |\n| email | 433271.91 | 1471 |\n| events | 227154.01 | 427 |\n| paid_search | 401356.15 | 2754 |\n| social | 271019.46 | 522 |\n| webinar | 149036.86 | 933 |",
+      "started_at": "2026-07-08T20:14:31.936084+00:00",
+      "elapsed_seconds": 18.089292874996318,
+      "metadata": {
+        "langfuse_session_id": "agent-bench:run-all:pydantic-ai:marketing-channel-spend-365d:20260708T201409Z:d9ae853c",
+        "tool_calls": [
+          {
+            "tool_name": "get_schema_context",
+            "via": "native"
+          },
+          {
+            "tool_name": "describe_table",
+            "via": "native"
+          },
+          {
+            "tool_name": "describe_table",
+            "via": "native"
+          },
+          {
+            "tool_name": "execute_sql",
+            "via": "native"
+          },
+          {
+            "tool_name": "execute_sql",
+            "via": "native"
+          }
+        ],
+        "langfuse_trace_id": "fc79400bf376233699c7a8d061347d57",
+        "langfuse_observation_id": "115227831d4228e8",
+        "langfuse_trace_url": "https://cloud.langfuse.com/project/cmr1ywsf000d5ad0cex3dm2ha/traces/fc79400bf376233699c7a8d061347d57"
+      },
+      "error": null,
+      "ok": true
+    },
+    {
+      "harness": "pydantic-ai",
+      "architecture": "enterprise-codemode",
+      "task": "marketing-channel-spend-365d",
+      "prompt": "Break down total marketing spend and conversions by channel over the last 365 days.",
+      "output": "\n\n| channel | total_spend_usd | total_conversions |\n|---------|----------------|-------------------|\n| content | 192209.7 | 1441 |\n| email | 433271.91 | 1471 |\n| events | 227154.01 | 427 |\n| paid_search | 401356.15 | 2754 |\n| social | 271019.46 | 522 |\n| webinar | 149036.86 | 933 |",
+      "started_at": "2026-07-08T20:14:50.026539+00:00",
+      "elapsed_seconds": 17.03469000000041,
+      "metadata": {
+        "langfuse_session_id": "agent-bench:run-all:pydantic-ai:marketing-channel-spend-365d:20260708T201409Z:d9ae853c",
+        "tool_calls": [
+          {
+            "tool_name": "list_tables",
+            "via": "native"
+          },
+          {
+            "tool_name": "run_code",
+            "via": "native"
+          },
+          {
+            "tool_name": "list_tables",
+            "via": "code_mode"
+          },
+          {
+            "tool_name": "describe_table",
+            "via": "native"
+          },
+          {
+            "tool_name": "describe_table",
+            "via": "native"
+          },
+          {
+            "tool_name": "run_code",
+            "via": "native"
+          },
+          {
+            "tool_name": "run_code",
+            "via": "native"
+          },
+          {
+            "tool_name": "describe_table",
+            "via": "code_mode"
+          },
+          {
+            "tool_name": "describe_table",
+            "via": "code_mode"
+          },
+          {
+            "tool_name": "run_code",
+            "via": "native"
+          },
+          {
+            "tool_name": "execute_sql",
+            "via": "code_mode"
+          },
+          {
+            "tool_name": "run_code",
+            "via": "native"
+          },
+          {
+            "tool_name": "execute_sql",
+            "via": "code_mode"
+          },
+          {
+            "tool_name": "run_code",
+            "via": "native"
+          },
+          {
+            "tool_name": "execute_sql",
+            "via": "code_mode"
+          }
+        ],
+        "langfuse_trace_id": "6a46b49b01f5f43c10a33303f63565ac",
+        "langfuse_observation_id": "4983c40c8f831aa1",
+        "langfuse_trace_url": "https://cloud.langfuse.com/project/cmr1ywsf000d5ad0cex3dm2ha/traces/6a46b49b01f5f43c10a33303f63565ac"
+      },
+      "error": null,
+      "ok": true
+    },
+    {
+      "harness": "pydantic-ai",
+      "architecture": "enterprise-mcp-react",
+      "task": "marketing-channel-spend-365d",
+      "prompt": "Break down total marketing spend and conversions by channel over the last 365 days.",
+      "output": "\n\n| channel | total_spend | total_conversions |\n|---------|-------------|-------------------|\n| content | 192209.7 | 1441 |\n| email | 433271.91 | 1471 |\n| events | 227154.01 | 427 |\n| paid_search | 401356.15 | 2754 |\n| social | 271019.46 | 522 |\n| webinar | 149036.86 | 933 |",
+      "started_at": "2026-07-08T20:15:07.061724+00:00",
+      "elapsed_seconds": 18.685798833001172,
+      "metadata": {
+        "langfuse_session_id": "agent-bench:run-all:pydantic-ai:marketing-channel-spend-365d:20260708T201409Z:d9ae853c",
+        "tool_calls": [
+          {
+            "tool_name": "tool_get_schema_context",
+            "via": "native"
+          },
+          {
+            "tool_name": "tool_describe_table",
+            "via": "native"
+          },
+          {
+            "tool_name": "tool_describe_table",
+            "via": "native"
+          },
+          {
+            "tool_name": "tool_execute_sql",
+            "via": "native"
+          },
+          {
+            "tool_name": "tool_execute_sql",
+            "via": "native"
+          }
+        ],
+        "langfuse_trace_id": "cae26b55b57be55990b05b5665901d63",
+        "langfuse_observation_id": "2341752b58be1efe",
+        "langfuse_trace_url": "https://cloud.langfuse.com/project/cmr1ywsf000d5ad0cex3dm2ha/traces/cae26b55b57be55990b05b5665901d63"
+      },
+      "error": null,
+      "ok": true
+    },
+    {
+      "harness": "pydantic-ai",
+      "architecture": "enterprise-mcp-codemode",
+      "task": "marketing-channel-spend-365d",
+      "prompt": "Break down total marketing spend and conversions by channel over the last 365 days.",
+      "output": "\n\n| channel | total_spend_usd | total_conversions |\n|---------|----------------|-------------------|\n| content | 192209.7 | 1441 |\n| email | 433271.91 | 1471 |\n| events | 227154.01 | 427 |\n| paid_search | 401356.15 | 2754 |\n| social | 271019.46 | 522 |\n| webinar | 149036.86 | 933 |",
+      "started_at": "2026-07-08T20:15:25.748577+00:00",
+      "elapsed_seconds": 18.625928957990254,
+      "metadata": {
+        "langfuse_session_id": "agent-bench:run-all:pydantic-ai:marketing-channel-spend-365d:20260708T201409Z:d9ae853c",
+        "tool_calls": [
+          {
+            "tool_name": "tool_list_tables",
+            "via": "native"
+          },
+          {
+            "tool_name": "run_code",
+            "via": "native"
+          },
+          {
+            "tool_name": "run_code",
+            "via": "native"
+          },
+          {
+            "tool_name": "tool_list_tables",
+            "via": "code_mode"
+          },
+          {
+            "tool_name": "run_code",
+            "via": "native"
+          },
+          {
+            "tool_name": "tool_describe_table",
+            "via": "code_mode"
+          },
+          {
+            "tool_name": "tool_describe_table",
+            "via": "code_mode"
+          },
+          {
+            "tool_name": "run_code",
+            "via": "native"
+          },
+          {
+            "tool_name": "tool_execute_sql",
+            "via": "code_mode"
+          },
+          {
+            "tool_name": "tool_execute_sql",
+            "via": "code_mode"
+          },
+          {
+            "tool_name": "run_code",
+            "via": "native"
+          },
+          {
+            "tool_name": "tool_execute_sql",
+            "via": "code_mode"
+          }
+        ],
+        "langfuse_trace_id": "d8b45e28f5d8aa2b262529188c2e8cdf",
+        "langfuse_observation_id": "b06e50f72a5b56e8",
+        "langfuse_trace_url": "https://cloud.langfuse.com/project/cmr1ywsf000d5ad0cex3dm2ha/traces/d8b45e28f5d8aa2b262529188c2e8cdf"
+      },
+      "error": null,
+      "ok": true
+    },
+    {
+      "harness": "pydantic-ai",
+      "architecture": "enterprise-sql-react",
+      "task": "marketing-channel-spend-365d",
+      "prompt": "Break down total marketing spend and conversions by channel over the last 365 days.",
+      "output": "\n\n| channel | total_spend_usd | total_conversions |\n|---------|----------------|-------------------|\n| content | 192209.7 | 1441 |\n| email | 433271.91 | 1471 |\n| events | 227154.01 | 427 |\n| paid_search | 401356.15 | 2754 |\n| social | 271019.46 | 522 |\n| webinar | 149036.86 | 933 |",
+      "started_at": "2026-07-08T20:15:44.374923+00:00",
+      "elapsed_seconds": 11.202549791996717,
+      "metadata": {
+        "langfuse_session_id": "agent-bench:run-all:pydantic-ai:marketing-channel-spend-365d:20260708T201409Z:d9ae853c",
+        "tool_calls": [
+          {
+            "tool_name": "list_tables",
+            "via": "native"
+          },
+          {
+            "tool_name": "describe_table",
+            "via": "native"
+          },
+          {
+            "tool_name": "describe_table",
+            "via": "native"
+          },
+          {
+            "tool_name": "execute_sql",
+            "via": "native"
+          },
+          {
+            "tool_name": "execute_sql",
+            "via": "native"
+          }
+        ],
+        "langfuse_trace_id": "ece003afea71715e17e7a705486f0981",
+        "langfuse_observation_id": "7e492e8ce3121af0",
+        "langfuse_trace_url": "https://cloud.langfuse.com/project/cmr1ywsf000d5ad0cex3dm2ha/traces/ece003afea71715e17e7a705486f0981"
+      },
+      "error": null,
+      "ok": true
+    },
+    {
+      "harness": "pydantic-ai",
+      "architecture": "enterprise-sql-codemode",
+      "task": "marketing-channel-spend-365d",
+      "prompt": "Break down total marketing spend and conversions by channel over the last 365 days.",
+      "output": "\n\n| channel | total_spend_usd | total_conversions |\n|---------|----------------|-------------------|\n| content | 192209.7 | 1441 |\n| email | 433271.91 | 1471 |\n| events | 227154.01 | 427 |\n| paid_search | 401356.15 | 2754 |\n| social | 271019.46 | 522 |\n| webinar | 149036.86 | 933 |",
+      "started_at": "2026-07-08T20:15:55.578538+00:00",
+      "elapsed_seconds": 13.464093375005177,
+      "metadata": {
+        "langfuse_session_id": "agent-bench:run-all:pydantic-ai:marketing-channel-spend-365d:20260708T201409Z:d9ae853c",
+        "tool_calls": [
+          {
+            "tool_name": "list_tables",
+            "via": "native"
+          },
+          {
+            "tool_name": "run_code",
+            "via": "native"
+          },
+          {
+            "tool_name": "list_tables",
+            "via": "code_mode"
+          },
+          {
+            "tool_name": "run_code",
+            "via": "native"
+          },
+          {
+            "tool_name": "describe_table",
+            "via": "code_mode"
+          },
+          {
+            "tool_name": "describe_table",
+            "via": "code_mode"
+          },
+          {
+            "tool_name": "run_code",
+            "via": "native"
+          },
+          {
+            "tool_name": "execute_sql",
+            "via": "code_mode"
+          },
+          {
+            "tool_name": "run_code",
+            "via": "native"
+          },
+          {
+            "tool_name": "execute_sql",
+            "via": "code_mode"
+          }
+        ],
+        "langfuse_trace_id": "c8f3902a57d97b3297aaee9f661f8624",
+        "langfuse_observation_id": "667593382ec2809f",
+        "langfuse_trace_url": "https://cloud.langfuse.com/project/cmr1ywsf000d5ad0cex3dm2ha/traces/c8f3902a57d97b3297aaee9f661f8624"
+      },
+      "error": null,
+      "ok": true
+    },
+    {
+      "harness": "pydantic-ai",
+      "architecture": "enterprise-react-toolsearch",
+      "task": "marketing-channel-spend-365d",
+      "prompt": "Break down total marketing spend and conversions by channel over the last 365 days.",
+      "output": "\n\n| Channel | Total Marketing Spend | Conversions |\n|---------|----------------------|-------------|\n| Data not available via current tools | | |\n\nThe current toolset does not include a function to retrieve marketing spend and conversions breakdown by channel. Available tools cover product search, customer search, customer lifetime value, and monthly subscription revenue/activations.",
+      "started_at": "2026-07-08T20:16:09.044165+00:00",
+      "elapsed_seconds": 33.744845124994754,
+      "metadata": {
+        "langfuse_session_id": "agent-bench:run-all:pydantic-ai:marketing-channel-spend-365d:20260708T201409Z:d9ae853c",
+        "tool_calls": [
+          {
+            "tool_name": "search_tools",
+            "via": "native"
+          }
+        ],
+        "langfuse_trace_id": "bff7aa2be3f7761b22f5f49fa69e72b6",
+        "langfuse_observation_id": "85dfce2ccb9c75fa",
+        "langfuse_trace_url": "https://cloud.langfuse.com/project/cmr1ywsf000d5ad0cex3dm2ha/traces/bff7aa2be3f7761b22f5f49fa69e72b6"
+      },
+      "error": null,
+      "ok": true
+    },
+    {
+      "harness": "pydantic-ai",
+      "architecture": "enterprise-codemode-toolsearch",
+      "task": "marketing-channel-spend-365d",
+      "prompt": "Break down total marketing spend and conversions by channel over the last 365 days.",
+      "output": "\n\n| channel | total_spend | total_conversions |\n|---------|-------------|-------------------|\n| email | 433271.91 | 1471 |\n| social | 241507.78 | 414 |\n| events | 171083.63 | 294 |\n| content | 168832.41 | 1424 |\n| webinar | 149036.86 | 933 |\n| paid_search | 111442.38 | 1800 |",
+      "started_at": "2026-07-08T20:16:42.789905+00:00",
+      "elapsed_seconds": 14.324322125001345,
+      "metadata": {
+        "langfuse_session_id": "agent-bench:run-all:pydantic-ai:marketing-channel-spend-365d:20260708T201409Z:d9ae853c",
+        "tool_calls": [
+          {
+            "tool_name": "search_tools",
+            "via": "native"
+          },
+          {
+            "tool_name": "get_schema_context",
+            "via": "native"
+          },
+          {
+            "tool_name": "list_tables",
+            "via": "native"
+          },
+          {
+            "tool_name": "execute_sql",
+            "via": "native"
+          },
+          {
+            "tool_name": "execute_sql",
+            "via": "native"
+          }
+        ],
+        "langfuse_trace_id": "d4b84dfd687b26b4d3bef770d415be5e",
+        "langfuse_observation_id": "0c4add5d9e1a9df7",
+        "langfuse_trace_url": "https://cloud.langfuse.com/project/cmr1ywsf000d5ad0cex3dm2ha/traces/d4b84dfd687b26b4d3bef770d415be5e"
+      },
+      "error": null,
+      "ok": true
+    },
+    {
+      "harness": "pydantic-ai",
+      "architecture": "enterprise-mcp-react-native",
+      "task": "marketing-channel-spend-365d",
+      "prompt": "Break down total marketing spend and conversions by channel over the last 365 days.",
+      "output": "",
+      "started_at": "2026-07-08T20:16:57.115450+00:00",
+      "elapsed_seconds": 0.006208124992554076,
+      "metadata": {
+        "langfuse_session_id": "agent-bench:run-all:pydantic-ai:marketing-channel-spend-365d:20260708T201409Z:d9ae853c"
+      },
+      "error": "RuntimeError: enterprise-mcp-react-native requires ENTERPRISE_MCP_PUBLIC_URL to be set. Native MCP tool calls are made server-side by the model provider (Anthropic / OpenAI / xAI) -- localhost is not reachable from their servers. Run `uv run python -m agent_harness.mcp_server` with a streamable-HTTP transport behind a public tunnel (e.g. ngrok) and point ENTERPRISE_MCP_PUBLIC_URL at it. See README 'MCP server' section.",
+      "ok": false
+    },
+    {
+      "harness": "pydantic-ai",
+      "architecture": "enterprise-react-thinking",
+      "task": "marketing-channel-spend-365d",
+      "prompt": "Break down total marketing spend and conversions by channel over the last 365 days.",
+      "output": "\n\n| channel | total_spend | total_conversions |\n|---------|-------------|-------------------|\n| content | 192209.7 | 1441 |\n| email | 433271.91 | 1471 |\n| events | 227154.01 | 427 |\n| paid_search | 401356.15 | 2754 |\n| social | 271019.46 | 522 |\n| webinar | 149036.86 | 933 |",
+      "started_at": "2026-07-08T20:16:57.122338+00:00",
+      "elapsed_seconds": 14.107800958998268,
+      "metadata": {
+        "langfuse_session_id": "agent-bench:run-all:pydantic-ai:marketing-channel-spend-365d:20260708T201409Z:d9ae853c",
+        "tool_calls": [
+          {
+            "tool_name": "get_schema_context",
+            "via": "native"
+          },
+          {
+            "tool_name": "execute_sql",
+            "via": "native"
+          }
+        ],
+        "langfuse_trace_id": "516a2f91ff64756ea2f7567adc8359ab",
+        "langfuse_observation_id": "cc56f45d72676b09",
+        "langfuse_trace_url": "https://cloud.langfuse.com/project/cmr1ywsf000d5ad0cex3dm2ha/traces/516a2f91ff64756ea2f7567adc8359ab"
+      },
+      "error": null,
+      "ok": true
+    },
+    {
+      "harness": "pydantic-ai",
+      "architecture": "enterprise-codemode-thinking",
+      "task": "marketing-channel-spend-365d",
+      "prompt": "Break down total marketing spend and conversions by channel over the last 365 days.",
+      "output": "\n\n| channel | total_spend_usd | total_conversions |\n|---------|-----------------|-------------------|\n| content | 192209.7 | 1441 |\n| email | 433271.91 | 1471 |\n| events | 227154.01 | 427 |\n| paid_search | 401356.15 | 2754 |\n| social | 271019.46 | 522 |\n| webinar | 149036.86 | 933 |",
+      "started_at": "2026-07-08T20:17:11.231417+00:00",
+      "elapsed_seconds": 19.411196500004735,
+      "metadata": {
+        "langfuse_session_id": "agent-bench:run-all:pydantic-ai:marketing-channel-spend-365d:20260708T201409Z:d9ae853c",
+        "tool_calls": [
+          {
+            "tool_name": "get_schema_context",
+            "via": "native"
+          },
+          {
+            "tool_name": "list_tables",
+            "via": "native"
+          },
+          {
+            "tool_name": "run_code",
+            "via": "native"
+          },
+          {
+            "tool_name": "list_tables",
+            "via": "code_mode"
+          },
+          {
+            "tool_name": "run_code",
+            "via": "native"
+          },
+          {
+            "tool_name": "describe_table",
+            "via": "code_mode"
+          },
+          {
+            "tool_name": "run_code",
+            "via": "native"
+          },
+          {
+            "tool_name": "describe_table",
+            "via": "code_mode"
+          },
+          {
+            "tool_name": "run_code",
+            "via": "native"
+          },
+          {
+            "tool_name": "execute_sql",
+            "via": "code_mode"
+          },
+          {
+            "tool_name": "run_code",
+            "via": "native"
+          },
+          {
+            "tool_name": "execute_sql",
+            "via": "code_mode"
+          },
+          {
+            "tool_name": "run_code",
+            "via": "native"
+          },
+          {
+            "tool_name": "execute_sql",
+            "via": "code_mode"
+          }
+        ],
+        "langfuse_trace_id": "2c81803af3503692b903839314d141ba",
+        "langfuse_observation_id": "ddedba5440791f96",
+        "langfuse_trace_url": "https://cloud.langfuse.com/project/cmr1ywsf000d5ad0cex3dm2ha/traces/2c81803af3503692b903839314d141ba"
+      },
+      "error": null,
+      "ok": true
+    },
+    {
+      "harness": "pydantic-ai",
+      "architecture": "enterprise-react-120",
+      "task": "marketing-channel-spend-365d",
+      "prompt": "Break down total marketing spend and conversions by channel over the last 365 days.",
+      "output": "",
+      "started_at": "2026-07-08T20:17:30.643706+00:00",
+      "elapsed_seconds": 0.0998336670018034,
+      "metadata": {
+        "langfuse_session_id": "agent-bench:run-all:pydantic-ai:marketing-channel-spend-365d:20260708T201409Z:d9ae853c"
+      },
+      "error": "ModelHTTPError: status_code: 400, model_name: qwen/qwen3.6-35b-a3b, body: The number of tokens to keep from the initial prompt is greater than the context length. Try to load the model with a larger context length, or provide a shorter input",
+      "ok": false
+    },
+    {
+      "harness": "pydantic-ai",
+      "architecture": "enterprise-codemode-120",
+      "task": "marketing-channel-spend-365d",
+      "prompt": "Break down total marketing spend and conversions by channel over the last 365 days.",
+      "output": "",
+      "started_at": "2026-07-08T20:17:30.744086+00:00",
+      "elapsed_seconds": 20.646578416999546,
+      "metadata": {
+        "langfuse_session_id": "agent-bench:run-all:pydantic-ai:marketing-channel-spend-365d:20260708T201409Z:d9ae853c"
+      },
+      "error": "UnexpectedModelBehavior: Tool 'get_channel_spend_breakdown' exceeded max retries count of 3",
+      "ok": false
+    },
+    {
+      "harness": "pydantic-ai",
+      "architecture": "enterprise-mcp-react-120",
+      "task": "marketing-channel-spend-365d",
+      "prompt": "Break down total marketing spend and conversions by channel over the last 365 days.",
+      "output": "",
+      "started_at": "2026-07-08T20:17:51.391450+00:00",
+      "elapsed_seconds": 0.0703686250053579,
+      "metadata": {
+        "langfuse_session_id": "agent-bench:run-all:pydantic-ai:marketing-channel-spend-365d:20260708T201409Z:d9ae853c"
+      },
+      "error": "ModelHTTPError: status_code: 400, model_name: qwen/qwen3.6-35b-a3b, body: The number of tokens to keep from the initial prompt is greater than the context length. Try to load the model with a larger context length, or provide a shorter input",
+      "ok": false
+    },
+    {
+      "harness": "pydantic-ai",
+      "architecture": "enterprise-react-toolsearch-120",
+      "task": "marketing-channel-spend-365d",
+      "prompt": "Break down total marketing spend and conversions by channel over the last 365 days.",
+      "output": "\n\n| channel | total_spend_usd | total_conversions |\n|---------|----------------|-------------------|\n| email | 433271.91 | 1471 |\n| paid_search | 401356.15 | 2754 |\n| social | 271019.46 | 522 |\n| events | 227154.01 | 427 |\n| content | 192209.7 | 1441 |\n| webinar | 149036.86 | 933 |",
+      "started_at": "2026-07-08T20:17:51.462243+00:00",
+      "elapsed_seconds": 6.608952042006422,
+      "metadata": {
+        "langfuse_session_id": "agent-bench:run-all:pydantic-ai:marketing-channel-spend-365d:20260708T201409Z:d9ae853c",
+        "tool_calls": [
+          {
+            "tool_name": "search_tools",
+            "via": "native"
+          },
+          {
+            "tool_name": "get_channel_spend_breakdown",
+            "via": "native"
+          }
+        ],
+        "langfuse_trace_id": "78ed33ace2581f058d1eb721573eedb4",
+        "langfuse_observation_id": "9968568de4330254",
+        "langfuse_trace_url": "https://cloud.langfuse.com/project/cmr1ywsf000d5ad0cex3dm2ha/traces/78ed33ace2581f058d1eb721573eedb4"
+      },
+      "error": null,
+      "ok": true
+    },
+    {
+      "harness": "pydantic-ai",
+      "architecture": "enterprise-categorized-search",
+      "task": "marketing-channel-spend-365d",
+      "prompt": "Break down total marketing spend and conversions by channel over the last 365 days.",
+      "output": "\n\n| channel | total_spend_usd | total_conversions |\n|---|---|---|\n| email | 433271.91 | 1471 |\n| paid_search | 401356.15 | 2754 |\n| social | 271019.46 | 522 |\n| events | 227154.01 | 427 |\n| content | 192209.7 | 1441 |\n| webinar | 149036.86 | 933 |",
+      "started_at": "2026-07-08T20:17:58.072380+00:00",
+      "elapsed_seconds": 6.317591500002891,
+      "metadata": {
+        "langfuse_session_id": "agent-bench:run-all:pydantic-ai:marketing-channel-spend-365d:20260708T201409Z:d9ae853c",
+        "tool_calls": [
+          {
+            "tool_name": "list_tool_categories",
+            "via": "native"
+          },
+          {
+            "tool_name": "search_tools_in_category",
+            "via": "native"
+          },
+          {
+            "tool_name": "call_tool",
+            "via": "native"
+          },
+          {
+            "tool_name": "get_channel_spend_breakdown",
+            "via": "categorized_search"
+          }
+        ],
+        "langfuse_trace_id": "1bc228c3e89e85353066ebb8dce98b21",
+        "langfuse_observation_id": "8479403147603b52",
+        "langfuse_trace_url": "https://cloud.langfuse.com/project/cmr1ywsf000d5ad0cex3dm2ha/traces/1bc228c3e89e85353066ebb8dce98b21"
+      },
+      "error": null,
+      "ok": true
+    }
+  ]
+}

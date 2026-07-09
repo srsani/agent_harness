@@ -1,0 +1,1134 @@
+{
+  "mode": "run-all",
+  "session_id": "agent-bench:run-all:pydantic-ai:marketing-campaign-detail-5:20260708T201134Z:640bbf13",
+  "harness": "pydantic-ai",
+  "task": "marketing-campaign-detail-5",
+  "repeat": 1,
+  "results": [
+    {
+      "harness": "pydantic-ai",
+      "architecture": "minimal",
+      "task": "marketing-campaign-detail-5",
+      "prompt": "Get full details for marketing campaign ID 5.",
+      "output": "\n\n| campaign_id | campaign_name | status | budget | channel | target_audience | campaign_type | owner |\n| 5 | Summer Brand Awareness | Active | 15000 | Social Media | 18-34 urban professionals | Brand | Marketing Team |",
+      "started_at": "2026-07-08T20:11:34.318682+00:00",
+      "elapsed_seconds": 24.487220374998287,
+      "metadata": {
+        "langfuse_session_id": "agent-bench:run-all:pydantic-ai:marketing-campaign-detail-5:20260708T201134Z:640bbf13",
+        "tool_calls": [],
+        "langfuse_trace_id": "fc3c2d621d920be9a440d55dc3aeb8cc",
+        "langfuse_observation_id": "bc1b42a553d1d6c4",
+        "langfuse_trace_url": "https://cloud.langfuse.com/project/cmr1ywsf000d5ad0cex3dm2ha/traces/fc3c2d621d920be9a440d55dc3aeb8cc"
+      },
+      "error": null,
+      "ok": true,
+      "scores": {
+        "scorable": true,
+        "correctness": 0.2,
+        "groundedness": 0.25,
+        "hallucination_rate": 0.75,
+        "overall_score": 0.2222,
+        "details": {
+          "refused_or_no_data": false,
+          "empty_output": false,
+          "expected_text_facts": 3,
+          "matched_text_facts": 0,
+          "expected_numeric_facts": 2,
+          "matched_numeric_facts": 1,
+          "claimed_numeric_values": 4,
+          "unsupported_numeric_values": 3
+        }
+      },
+      "tool_selection": {
+        "scorable": true,
+        "expected_tools": [
+          "execute_sql",
+          "get_campaign"
+        ],
+        "total_tool_calls": 0,
+        "tool_recall": 0.0,
+        "tool_precision": 0.0,
+        "distractor_call_count": 0,
+        "distractor_calls": [],
+        "any_distractor_called": false,
+        "distractor_call_rate": 0.0,
+        "fabricated_call_count": 0,
+        "fabricated_calls": [],
+        "any_fabricated_called": false,
+        "fabricated_call_rate": 0.0
+      }
+    },
+    {
+      "harness": "pydantic-ai",
+      "architecture": "enterprise-react",
+      "task": "marketing-campaign-detail-5",
+      "prompt": "Get full details for marketing campaign ID 5.",
+      "output": "\n\n| id | name | channel | status | budget_usd | start_date | end_date |\n|----|------|---------|--------|------------|------------|----------|\n| 5 | Fall Search Surge 1 | paid_search | planned | 36723.7 | 2026-03-31 | 2026-07-08 |",
+      "started_at": "2026-07-08T20:11:58.806574+00:00",
+      "elapsed_seconds": 7.269006999995327,
+      "metadata": {
+        "langfuse_session_id": "agent-bench:run-all:pydantic-ai:marketing-campaign-detail-5:20260708T201134Z:640bbf13",
+        "tool_calls": [
+          {
+            "tool_name": "list_tables",
+            "via": "native"
+          },
+          {
+            "tool_name": "execute_sql",
+            "via": "native"
+          }
+        ],
+        "langfuse_trace_id": "6f9795c061dd4b1543630d306d2cd5ee",
+        "langfuse_observation_id": "b94eaa1ddfab4e18",
+        "langfuse_trace_url": "https://cloud.langfuse.com/project/cmr1ywsf000d5ad0cex3dm2ha/traces/6f9795c061dd4b1543630d306d2cd5ee"
+      },
+      "error": null,
+      "ok": true,
+      "scores": {
+        "scorable": true,
+        "correctness": 1.0,
+        "groundedness": 0.25,
+        "hallucination_rate": 0.75,
+        "overall_score": 0.4,
+        "details": {
+          "refused_or_no_data": false,
+          "empty_output": false,
+          "expected_text_facts": 3,
+          "matched_text_facts": 3,
+          "expected_numeric_facts": 2,
+          "matched_numeric_facts": 2,
+          "claimed_numeric_values": 8,
+          "unsupported_numeric_values": 6
+        }
+      },
+      "tool_selection": {
+        "scorable": true,
+        "expected_tools": [
+          "execute_sql",
+          "get_campaign"
+        ],
+        "total_tool_calls": 2,
+        "tool_recall": 1.0,
+        "tool_precision": 1.0,
+        "distractor_call_count": 0,
+        "distractor_calls": [],
+        "any_distractor_called": false,
+        "distractor_call_rate": 0.0,
+        "fabricated_call_count": 0,
+        "fabricated_calls": [],
+        "any_fabricated_called": false,
+        "fabricated_call_rate": 0.0
+      }
+    },
+    {
+      "harness": "pydantic-ai",
+      "architecture": "enterprise-codemode",
+      "task": "marketing-campaign-detail-5",
+      "prompt": "Get full details for marketing campaign ID 5.",
+      "output": "\n\n| id | name | channel | status | budget_usd | start_date | end_date |\n|----|------|---------|--------|------------|------------|----------|\n| 5 | Fall Search Surge 1 | paid_search | planned | 36723.7 | 2026-03-31 | 2026-07-08 |",
+      "started_at": "2026-07-08T20:12:06.082813+00:00",
+      "elapsed_seconds": 11.231949583001551,
+      "metadata": {
+        "langfuse_session_id": "agent-bench:run-all:pydantic-ai:marketing-campaign-detail-5:20260708T201134Z:640bbf13",
+        "tool_calls": [
+          {
+            "tool_name": "list_tables",
+            "via": "native"
+          },
+          {
+            "tool_name": "list_tables",
+            "via": "native"
+          },
+          {
+            "tool_name": "run_code",
+            "via": "native"
+          },
+          {
+            "tool_name": "list_tables",
+            "via": "code_mode"
+          },
+          {
+            "tool_name": "execute_sql",
+            "via": "native"
+          },
+          {
+            "tool_name": "run_code",
+            "via": "native"
+          },
+          {
+            "tool_name": "execute_sql",
+            "via": "code_mode"
+          }
+        ],
+        "langfuse_trace_id": "5e5cdfe8b7a987363f57683b61c2b9bf",
+        "langfuse_observation_id": "cb86fdc0cc21f8d0",
+        "langfuse_trace_url": "https://cloud.langfuse.com/project/cmr1ywsf000d5ad0cex3dm2ha/traces/5e5cdfe8b7a987363f57683b61c2b9bf"
+      },
+      "error": null,
+      "ok": true,
+      "scores": {
+        "scorable": true,
+        "correctness": 1.0,
+        "groundedness": 0.25,
+        "hallucination_rate": 0.75,
+        "overall_score": 0.4,
+        "details": {
+          "refused_or_no_data": false,
+          "empty_output": false,
+          "expected_text_facts": 3,
+          "matched_text_facts": 3,
+          "expected_numeric_facts": 2,
+          "matched_numeric_facts": 2,
+          "claimed_numeric_values": 8,
+          "unsupported_numeric_values": 6
+        }
+      },
+      "tool_selection": {
+        "scorable": true,
+        "expected_tools": [
+          "execute_sql",
+          "get_campaign"
+        ],
+        "total_tool_calls": 7,
+        "tool_recall": 1.0,
+        "tool_precision": 0.7143,
+        "distractor_call_count": 0,
+        "distractor_calls": [],
+        "any_distractor_called": false,
+        "distractor_call_rate": 0.0,
+        "fabricated_call_count": 2,
+        "fabricated_calls": [
+          "run_code",
+          "run_code"
+        ],
+        "any_fabricated_called": true,
+        "fabricated_call_rate": 0.2857
+      }
+    },
+    {
+      "harness": "pydantic-ai",
+      "architecture": "enterprise-mcp-react",
+      "task": "marketing-campaign-detail-5",
+      "prompt": "Get full details for marketing campaign ID 5.",
+      "output": "\n\n| id | name | channel | status | budget_usd | start_date | end_date |\n|----|------|---------|--------|------------|------------|----------|\n| 5 | Fall Search Surge 1 | paid_search | planned | 36723.7 | 2026-03-31 | 2026-07-08 |",
+      "started_at": "2026-07-08T20:12:17.315873+00:00",
+      "elapsed_seconds": 8.401016874995548,
+      "metadata": {
+        "langfuse_session_id": "agent-bench:run-all:pydantic-ai:marketing-campaign-detail-5:20260708T201134Z:640bbf13",
+        "tool_calls": [
+          {
+            "tool_name": "tool_list_tables",
+            "via": "native"
+          },
+          {
+            "tool_name": "tool_execute_sql",
+            "via": "native"
+          }
+        ],
+        "langfuse_trace_id": "6dc4cd7ed9eb8b1dbd63ed6413e037ab",
+        "langfuse_observation_id": "4aee18bdd04fcdb3",
+        "langfuse_trace_url": "https://cloud.langfuse.com/project/cmr1ywsf000d5ad0cex3dm2ha/traces/6dc4cd7ed9eb8b1dbd63ed6413e037ab"
+      },
+      "error": null,
+      "ok": true,
+      "scores": {
+        "scorable": true,
+        "correctness": 1.0,
+        "groundedness": 0.25,
+        "hallucination_rate": 0.75,
+        "overall_score": 0.4,
+        "details": {
+          "refused_or_no_data": false,
+          "empty_output": false,
+          "expected_text_facts": 3,
+          "matched_text_facts": 3,
+          "expected_numeric_facts": 2,
+          "matched_numeric_facts": 2,
+          "claimed_numeric_values": 8,
+          "unsupported_numeric_values": 6
+        }
+      },
+      "tool_selection": {
+        "scorable": true,
+        "expected_tools": [
+          "execute_sql",
+          "get_campaign"
+        ],
+        "total_tool_calls": 2,
+        "tool_recall": 1.0,
+        "tool_precision": 1.0,
+        "distractor_call_count": 0,
+        "distractor_calls": [],
+        "any_distractor_called": false,
+        "distractor_call_rate": 0.0,
+        "fabricated_call_count": 0,
+        "fabricated_calls": [],
+        "any_fabricated_called": false,
+        "fabricated_call_rate": 0.0
+      }
+    },
+    {
+      "harness": "pydantic-ai",
+      "architecture": "enterprise-mcp-codemode",
+      "task": "marketing-campaign-detail-5",
+      "prompt": "Get full details for marketing campaign ID 5.",
+      "output": "\n\n| id | name | channel | status | budget_usd | start_date | end_date |\n|----|------|---------|--------|------------|------------|----------|\n| 5 | Fall Search Surge 1 | paid_search | planned | 36723.7 | 2026-03-31 | 2026-07-08 |",
+      "started_at": "2026-07-08T20:12:25.719329+00:00",
+      "elapsed_seconds": 13.102271083000232,
+      "metadata": {
+        "langfuse_session_id": "agent-bench:run-all:pydantic-ai:marketing-campaign-detail-5:20260708T201134Z:640bbf13",
+        "tool_calls": [
+          {
+            "tool_name": "tool_list_tables",
+            "via": "native"
+          },
+          {
+            "tool_name": "run_code",
+            "via": "native"
+          },
+          {
+            "tool_name": "tool_list_tables",
+            "via": "code_mode"
+          },
+          {
+            "tool_name": "run_code",
+            "via": "native"
+          },
+          {
+            "tool_name": "tool_execute_sql",
+            "via": "code_mode"
+          }
+        ],
+        "langfuse_trace_id": "7c0fbc196d117fa0f6a73342a381eb91",
+        "langfuse_observation_id": "94ca3eff7c58ad03",
+        "langfuse_trace_url": "https://cloud.langfuse.com/project/cmr1ywsf000d5ad0cex3dm2ha/traces/7c0fbc196d117fa0f6a73342a381eb91"
+      },
+      "error": null,
+      "ok": true,
+      "scores": {
+        "scorable": true,
+        "correctness": 1.0,
+        "groundedness": 0.25,
+        "hallucination_rate": 0.75,
+        "overall_score": 0.4,
+        "details": {
+          "refused_or_no_data": false,
+          "empty_output": false,
+          "expected_text_facts": 3,
+          "matched_text_facts": 3,
+          "expected_numeric_facts": 2,
+          "matched_numeric_facts": 2,
+          "claimed_numeric_values": 8,
+          "unsupported_numeric_values": 6
+        }
+      },
+      "tool_selection": {
+        "scorable": true,
+        "expected_tools": [
+          "execute_sql",
+          "get_campaign"
+        ],
+        "total_tool_calls": 5,
+        "tool_recall": 1.0,
+        "tool_precision": 0.6,
+        "distractor_call_count": 0,
+        "distractor_calls": [],
+        "any_distractor_called": false,
+        "distractor_call_rate": 0.0,
+        "fabricated_call_count": 2,
+        "fabricated_calls": [
+          "run_code",
+          "run_code"
+        ],
+        "any_fabricated_called": true,
+        "fabricated_call_rate": 0.4
+      }
+    },
+    {
+      "harness": "pydantic-ai",
+      "architecture": "enterprise-sql-react",
+      "task": "marketing-campaign-detail-5",
+      "prompt": "Get full details for marketing campaign ID 5.",
+      "output": "\n\n| id | name | channel | status | budget_usd | start_date | end_date |\n|---|---|---|---|---|---|---|\n| 5 | Fall Search Surge 1 | paid_search | planned | 36723.7 | 2026-03-31 | 2026-07-08 |",
+      "started_at": "2026-07-08T20:12:38.822824+00:00",
+      "elapsed_seconds": 4.91913341700274,
+      "metadata": {
+        "langfuse_session_id": "agent-bench:run-all:pydantic-ai:marketing-campaign-detail-5:20260708T201134Z:640bbf13",
+        "tool_calls": [
+          {
+            "tool_name": "list_tables",
+            "via": "native"
+          },
+          {
+            "tool_name": "describe_table",
+            "via": "native"
+          },
+          {
+            "tool_name": "execute_sql",
+            "via": "native"
+          }
+        ],
+        "langfuse_trace_id": "fbe90c63ec2021226a595c509d788547",
+        "langfuse_observation_id": "4c79857a29971f7f",
+        "langfuse_trace_url": "https://cloud.langfuse.com/project/cmr1ywsf000d5ad0cex3dm2ha/traces/fbe90c63ec2021226a595c509d788547"
+      },
+      "error": null,
+      "ok": true,
+      "scores": {
+        "scorable": true,
+        "correctness": 1.0,
+        "groundedness": 0.25,
+        "hallucination_rate": 0.75,
+        "overall_score": 0.4,
+        "details": {
+          "refused_or_no_data": false,
+          "empty_output": false,
+          "expected_text_facts": 3,
+          "matched_text_facts": 3,
+          "expected_numeric_facts": 2,
+          "matched_numeric_facts": 2,
+          "claimed_numeric_values": 8,
+          "unsupported_numeric_values": 6
+        }
+      },
+      "tool_selection": {
+        "scorable": true,
+        "expected_tools": [
+          "execute_sql",
+          "get_campaign"
+        ],
+        "total_tool_calls": 3,
+        "tool_recall": 1.0,
+        "tool_precision": 1.0,
+        "distractor_call_count": 0,
+        "distractor_calls": [],
+        "any_distractor_called": false,
+        "distractor_call_rate": 0.0,
+        "fabricated_call_count": 0,
+        "fabricated_calls": [],
+        "any_fabricated_called": false,
+        "fabricated_call_rate": 0.0
+      }
+    },
+    {
+      "harness": "pydantic-ai",
+      "architecture": "enterprise-sql-codemode",
+      "task": "marketing-campaign-detail-5",
+      "prompt": "Get full details for marketing campaign ID 5.",
+      "output": "\n\n| id | name | channel | status | budget_usd | start_date | end_date |\n|----|------|---------|--------|------------|------------|----------|\n| 5 | Fall Search Surge 1 | paid_search | planned | 36723.7 | 2026-03-31 | 2026-07-08 |",
+      "started_at": "2026-07-08T20:12:43.743222+00:00",
+      "elapsed_seconds": 9.409011166993878,
+      "metadata": {
+        "langfuse_session_id": "agent-bench:run-all:pydantic-ai:marketing-campaign-detail-5:20260708T201134Z:640bbf13",
+        "tool_calls": [
+          {
+            "tool_name": "list_tables",
+            "via": "native"
+          },
+          {
+            "tool_name": "run_code",
+            "via": "native"
+          },
+          {
+            "tool_name": "run_code",
+            "via": "native"
+          },
+          {
+            "tool_name": "list_tables",
+            "via": "code_mode"
+          },
+          {
+            "tool_name": "describe_table",
+            "via": "native"
+          },
+          {
+            "tool_name": "run_code",
+            "via": "native"
+          },
+          {
+            "tool_name": "describe_table",
+            "via": "code_mode"
+          },
+          {
+            "tool_name": "run_code",
+            "via": "native"
+          },
+          {
+            "tool_name": "execute_sql",
+            "via": "code_mode"
+          }
+        ],
+        "langfuse_trace_id": "ea3c60613c87ec297d1cb831a80bea61",
+        "langfuse_observation_id": "ed81f06cdf29e34d",
+        "langfuse_trace_url": "https://cloud.langfuse.com/project/cmr1ywsf000d5ad0cex3dm2ha/traces/ea3c60613c87ec297d1cb831a80bea61"
+      },
+      "error": null,
+      "ok": true,
+      "scores": {
+        "scorable": true,
+        "correctness": 1.0,
+        "groundedness": 0.25,
+        "hallucination_rate": 0.75,
+        "overall_score": 0.4,
+        "details": {
+          "refused_or_no_data": false,
+          "empty_output": false,
+          "expected_text_facts": 3,
+          "matched_text_facts": 3,
+          "expected_numeric_facts": 2,
+          "matched_numeric_facts": 2,
+          "claimed_numeric_values": 8,
+          "unsupported_numeric_values": 6
+        }
+      },
+      "tool_selection": {
+        "scorable": true,
+        "expected_tools": [
+          "execute_sql",
+          "get_campaign"
+        ],
+        "total_tool_calls": 9,
+        "tool_recall": 1.0,
+        "tool_precision": 0.5556,
+        "distractor_call_count": 0,
+        "distractor_calls": [],
+        "any_distractor_called": false,
+        "distractor_call_rate": 0.0,
+        "fabricated_call_count": 4,
+        "fabricated_calls": [
+          "run_code",
+          "run_code",
+          "run_code",
+          "run_code"
+        ],
+        "any_fabricated_called": true,
+        "fabricated_call_rate": 0.4444
+      }
+    },
+    {
+      "harness": "pydantic-ai",
+      "architecture": "enterprise-react-toolsearch",
+      "task": "marketing-campaign-detail-5",
+      "prompt": "Get full details for marketing campaign ID 5.",
+      "output": "\n\n```sql\nSELECT id, name, channel, status, budget_usd, start_date, end_date \nFROM campaigns \nWHERE id = 5;\n```",
+      "started_at": "2026-07-08T20:12:53.153187+00:00",
+      "elapsed_seconds": 17.927704624991748,
+      "metadata": {
+        "langfuse_session_id": "agent-bench:run-all:pydantic-ai:marketing-campaign-detail-5:20260708T201134Z:640bbf13",
+        "tool_calls": [
+          {
+            "tool_name": "search_tools",
+            "via": "native"
+          },
+          {
+            "tool_name": "get_schema_context",
+            "via": "native"
+          }
+        ],
+        "langfuse_trace_id": "6323504c92c1e955dd70a8442ab02471",
+        "langfuse_observation_id": "7cea510a63d5ae5a",
+        "langfuse_trace_url": "https://cloud.langfuse.com/project/cmr1ywsf000d5ad0cex3dm2ha/traces/6323504c92c1e955dd70a8442ab02471"
+      },
+      "error": null,
+      "ok": true,
+      "scores": {
+        "scorable": true,
+        "correctness": 0.2,
+        "groundedness": 1.0,
+        "hallucination_rate": 0.0,
+        "overall_score": 0.3333,
+        "details": {
+          "refused_or_no_data": false,
+          "empty_output": false,
+          "expected_text_facts": 3,
+          "matched_text_facts": 0,
+          "expected_numeric_facts": 2,
+          "matched_numeric_facts": 1,
+          "claimed_numeric_values": 1,
+          "unsupported_numeric_values": 0
+        }
+      },
+      "tool_selection": {
+        "scorable": true,
+        "expected_tools": [
+          "execute_sql",
+          "get_campaign"
+        ],
+        "total_tool_calls": 2,
+        "tool_recall": 0.0,
+        "tool_precision": 1.0,
+        "distractor_call_count": 0,
+        "distractor_calls": [],
+        "any_distractor_called": false,
+        "distractor_call_rate": 0.0,
+        "fabricated_call_count": 0,
+        "fabricated_calls": [],
+        "any_fabricated_called": false,
+        "fabricated_call_rate": 0.0
+      }
+    },
+    {
+      "harness": "pydantic-ai",
+      "architecture": "enterprise-codemode-toolsearch",
+      "task": "marketing-campaign-detail-5",
+      "prompt": "Get full details for marketing campaign ID 5.",
+      "output": "\n\n| id | name | channel | status | budget_usd | start_date | end_date |\n|---|---|---|---|---|---|---|\n| 5 | Fall Search Surge 1 | paid_search | planned | 36723.7 | 2026-03-31 | 2026-07-08 |",
+      "started_at": "2026-07-08T20:13:11.082056+00:00",
+      "elapsed_seconds": 9.799597583012655,
+      "metadata": {
+        "langfuse_session_id": "agent-bench:run-all:pydantic-ai:marketing-campaign-detail-5:20260708T201134Z:640bbf13",
+        "tool_calls": [
+          {
+            "tool_name": "search_tools",
+            "via": "native"
+          },
+          {
+            "tool_name": "get_schema_context",
+            "via": "native"
+          },
+          {
+            "tool_name": "list_tables",
+            "via": "native"
+          },
+          {
+            "tool_name": "execute_sql",
+            "via": "native"
+          }
+        ],
+        "langfuse_trace_id": "f0ed47342c9b179486f8168a85f5d28c",
+        "langfuse_observation_id": "c9d938d7d1e7ae36",
+        "langfuse_trace_url": "https://cloud.langfuse.com/project/cmr1ywsf000d5ad0cex3dm2ha/traces/f0ed47342c9b179486f8168a85f5d28c"
+      },
+      "error": null,
+      "ok": true,
+      "scores": {
+        "scorable": true,
+        "correctness": 1.0,
+        "groundedness": 0.25,
+        "hallucination_rate": 0.75,
+        "overall_score": 0.4,
+        "details": {
+          "refused_or_no_data": false,
+          "empty_output": false,
+          "expected_text_facts": 3,
+          "matched_text_facts": 3,
+          "expected_numeric_facts": 2,
+          "matched_numeric_facts": 2,
+          "claimed_numeric_values": 8,
+          "unsupported_numeric_values": 6
+        }
+      },
+      "tool_selection": {
+        "scorable": true,
+        "expected_tools": [
+          "execute_sql",
+          "get_campaign"
+        ],
+        "total_tool_calls": 4,
+        "tool_recall": 1.0,
+        "tool_precision": 1.0,
+        "distractor_call_count": 0,
+        "distractor_calls": [],
+        "any_distractor_called": false,
+        "distractor_call_rate": 0.0,
+        "fabricated_call_count": 0,
+        "fabricated_calls": [],
+        "any_fabricated_called": false,
+        "fabricated_call_rate": 0.0
+      }
+    },
+    {
+      "harness": "pydantic-ai",
+      "architecture": "enterprise-mcp-react-native",
+      "task": "marketing-campaign-detail-5",
+      "prompt": "Get full details for marketing campaign ID 5.",
+      "output": "",
+      "started_at": "2026-07-08T20:13:20.882613+00:00",
+      "elapsed_seconds": 0.006932749995030463,
+      "metadata": {
+        "langfuse_session_id": "agent-bench:run-all:pydantic-ai:marketing-campaign-detail-5:20260708T201134Z:640bbf13"
+      },
+      "error": "RuntimeError: enterprise-mcp-react-native requires ENTERPRISE_MCP_PUBLIC_URL to be set. Native MCP tool calls are made server-side by the model provider (Anthropic / OpenAI / xAI) -- localhost is not reachable from their servers. Run `uv run python -m agent_harness.mcp_server` with a streamable-HTTP transport behind a public tunnel (e.g. ngrok) and point ENTERPRISE_MCP_PUBLIC_URL at it. See README 'MCP server' section.",
+      "ok": false,
+      "scores": {
+        "scorable": true,
+        "correctness": 0.0,
+        "groundedness": 0.0,
+        "hallucination_rate": 1.0,
+        "overall_score": 0.0,
+        "details": {
+          "refused_or_no_data": true,
+          "empty_output": true,
+          "expected_text_facts": 3,
+          "matched_text_facts": 0,
+          "expected_numeric_facts": 2,
+          "matched_numeric_facts": 0,
+          "claimed_numeric_values": 0,
+          "unsupported_numeric_values": 0
+        }
+      },
+      "tool_selection": {
+        "scorable": true,
+        "expected_tools": [
+          "execute_sql",
+          "get_campaign"
+        ],
+        "total_tool_calls": 0,
+        "tool_recall": 0.0,
+        "tool_precision": 0.0,
+        "distractor_call_count": 0,
+        "distractor_calls": [],
+        "any_distractor_called": false,
+        "distractor_call_rate": 0.0,
+        "fabricated_call_count": 0,
+        "fabricated_calls": [],
+        "any_fabricated_called": false,
+        "fabricated_call_rate": 0.0
+      }
+    },
+    {
+      "harness": "pydantic-ai",
+      "architecture": "enterprise-react-thinking",
+      "task": "marketing-campaign-detail-5",
+      "prompt": "Get full details for marketing campaign ID 5.",
+      "output": "\n\n| id | name | channel | status | budget_usd | start_date | end_date |\n|----|------|---------|--------|------------|------------|----------|\n| 5 | Fall Search Surge 1 | paid_search | planned | 36723.7 | 2026-03-31 | 2026-07-08 |",
+      "started_at": "2026-07-08T20:13:20.890317+00:00",
+      "elapsed_seconds": 7.9909752090024995,
+      "metadata": {
+        "langfuse_session_id": "agent-bench:run-all:pydantic-ai:marketing-campaign-detail-5:20260708T201134Z:640bbf13",
+        "tool_calls": [
+          {
+            "tool_name": "list_tables",
+            "via": "native"
+          },
+          {
+            "tool_name": "execute_sql",
+            "via": "native"
+          }
+        ],
+        "langfuse_trace_id": "9051afc4214efbf154bf423a0e6eec98",
+        "langfuse_observation_id": "73a59bb5993f0d75",
+        "langfuse_trace_url": "https://cloud.langfuse.com/project/cmr1ywsf000d5ad0cex3dm2ha/traces/9051afc4214efbf154bf423a0e6eec98"
+      },
+      "error": null,
+      "ok": true,
+      "scores": {
+        "scorable": true,
+        "correctness": 1.0,
+        "groundedness": 0.25,
+        "hallucination_rate": 0.75,
+        "overall_score": 0.4,
+        "details": {
+          "refused_or_no_data": false,
+          "empty_output": false,
+          "expected_text_facts": 3,
+          "matched_text_facts": 3,
+          "expected_numeric_facts": 2,
+          "matched_numeric_facts": 2,
+          "claimed_numeric_values": 8,
+          "unsupported_numeric_values": 6
+        }
+      },
+      "tool_selection": {
+        "scorable": true,
+        "expected_tools": [
+          "execute_sql",
+          "get_campaign"
+        ],
+        "total_tool_calls": 2,
+        "tool_recall": 1.0,
+        "tool_precision": 1.0,
+        "distractor_call_count": 0,
+        "distractor_calls": [],
+        "any_distractor_called": false,
+        "distractor_call_rate": 0.0,
+        "fabricated_call_count": 0,
+        "fabricated_calls": [],
+        "any_fabricated_called": false,
+        "fabricated_call_rate": 0.0
+      }
+    },
+    {
+      "harness": "pydantic-ai",
+      "architecture": "enterprise-codemode-thinking",
+      "task": "marketing-campaign-detail-5",
+      "prompt": "Get full details for marketing campaign ID 5.",
+      "output": "\n\n| id | name | channel | status | budget_usd | start_date | end_date |\n|---|---|---|---|---|---|---|\n| 5 | Fall Search Surge 1 | paid_search | planned | 36723.7 | 2026-03-31 | 2026-07-08 |",
+      "started_at": "2026-07-08T20:13:28.882536+00:00",
+      "elapsed_seconds": 10.956687875004718,
+      "metadata": {
+        "langfuse_session_id": "agent-bench:run-all:pydantic-ai:marketing-campaign-detail-5:20260708T201134Z:640bbf13",
+        "tool_calls": [
+          {
+            "tool_name": "list_tables",
+            "via": "native"
+          },
+          {
+            "tool_name": "run_code",
+            "via": "native"
+          },
+          {
+            "tool_name": "list_tables",
+            "via": "code_mode"
+          },
+          {
+            "tool_name": "run_code",
+            "via": "native"
+          },
+          {
+            "tool_name": "execute_sql",
+            "via": "code_mode"
+          }
+        ],
+        "langfuse_trace_id": "f224c29bca856f2bef49f50a60d060bf",
+        "langfuse_observation_id": "164c435418c69f5f",
+        "langfuse_trace_url": "https://cloud.langfuse.com/project/cmr1ywsf000d5ad0cex3dm2ha/traces/f224c29bca856f2bef49f50a60d060bf"
+      },
+      "error": null,
+      "ok": true,
+      "scores": {
+        "scorable": true,
+        "correctness": 1.0,
+        "groundedness": 0.25,
+        "hallucination_rate": 0.75,
+        "overall_score": 0.4,
+        "details": {
+          "refused_or_no_data": false,
+          "empty_output": false,
+          "expected_text_facts": 3,
+          "matched_text_facts": 3,
+          "expected_numeric_facts": 2,
+          "matched_numeric_facts": 2,
+          "claimed_numeric_values": 8,
+          "unsupported_numeric_values": 6
+        }
+      },
+      "tool_selection": {
+        "scorable": true,
+        "expected_tools": [
+          "execute_sql",
+          "get_campaign"
+        ],
+        "total_tool_calls": 5,
+        "tool_recall": 1.0,
+        "tool_precision": 0.6,
+        "distractor_call_count": 0,
+        "distractor_calls": [],
+        "any_distractor_called": false,
+        "distractor_call_rate": 0.0,
+        "fabricated_call_count": 2,
+        "fabricated_calls": [
+          "run_code",
+          "run_code"
+        ],
+        "any_fabricated_called": true,
+        "fabricated_call_rate": 0.4
+      }
+    },
+    {
+      "harness": "pydantic-ai",
+      "architecture": "enterprise-react-120",
+      "task": "marketing-campaign-detail-5",
+      "prompt": "Get full details for marketing campaign ID 5.",
+      "output": "",
+      "started_at": "2026-07-08T20:13:39.840090+00:00",
+      "elapsed_seconds": 0.10037183300300967,
+      "metadata": {
+        "langfuse_session_id": "agent-bench:run-all:pydantic-ai:marketing-campaign-detail-5:20260708T201134Z:640bbf13"
+      },
+      "error": "ModelHTTPError: status_code: 400, model_name: qwen/qwen3.6-35b-a3b, body: The number of tokens to keep from the initial prompt is greater than the context length. Try to load the model with a larger context length, or provide a shorter input",
+      "ok": false,
+      "scores": {
+        "scorable": true,
+        "correctness": 0.0,
+        "groundedness": 0.0,
+        "hallucination_rate": 1.0,
+        "overall_score": 0.0,
+        "details": {
+          "refused_or_no_data": true,
+          "empty_output": true,
+          "expected_text_facts": 3,
+          "matched_text_facts": 0,
+          "expected_numeric_facts": 2,
+          "matched_numeric_facts": 0,
+          "claimed_numeric_values": 0,
+          "unsupported_numeric_values": 0
+        }
+      },
+      "tool_selection": {
+        "scorable": true,
+        "expected_tools": [
+          "execute_sql",
+          "get_campaign"
+        ],
+        "total_tool_calls": 0,
+        "tool_recall": 0.0,
+        "tool_precision": 0.0,
+        "distractor_call_count": 0,
+        "distractor_calls": [],
+        "any_distractor_called": false,
+        "distractor_call_rate": 0.0,
+        "fabricated_call_count": 0,
+        "fabricated_calls": [],
+        "any_fabricated_called": false,
+        "fabricated_call_rate": 0.0
+      }
+    },
+    {
+      "harness": "pydantic-ai",
+      "architecture": "enterprise-codemode-120",
+      "task": "marketing-campaign-detail-5",
+      "prompt": "Get full details for marketing campaign ID 5.",
+      "output": "",
+      "started_at": "2026-07-08T20:13:39.940986+00:00",
+      "elapsed_seconds": 17.827886875005788,
+      "metadata": {
+        "langfuse_session_id": "agent-bench:run-all:pydantic-ai:marketing-campaign-detail-5:20260708T201134Z:640bbf13"
+      },
+      "error": "UnexpectedModelBehavior: Tool 'get_campaign' exceeded max retries count of 3",
+      "ok": false,
+      "scores": {
+        "scorable": true,
+        "correctness": 0.0,
+        "groundedness": 0.0,
+        "hallucination_rate": 1.0,
+        "overall_score": 0.0,
+        "details": {
+          "refused_or_no_data": true,
+          "empty_output": true,
+          "expected_text_facts": 3,
+          "matched_text_facts": 0,
+          "expected_numeric_facts": 2,
+          "matched_numeric_facts": 0,
+          "claimed_numeric_values": 0,
+          "unsupported_numeric_values": 0
+        }
+      },
+      "tool_selection": {
+        "scorable": true,
+        "expected_tools": [
+          "execute_sql",
+          "get_campaign"
+        ],
+        "total_tool_calls": 0,
+        "tool_recall": 0.0,
+        "tool_precision": 0.0,
+        "distractor_call_count": 0,
+        "distractor_calls": [],
+        "any_distractor_called": false,
+        "distractor_call_rate": 0.0,
+        "fabricated_call_count": 0,
+        "fabricated_calls": [],
+        "any_fabricated_called": false,
+        "fabricated_call_rate": 0.0
+      }
+    },
+    {
+      "harness": "pydantic-ai",
+      "architecture": "enterprise-mcp-react-120",
+      "task": "marketing-campaign-detail-5",
+      "prompt": "Get full details for marketing campaign ID 5.",
+      "output": "",
+      "started_at": "2026-07-08T20:13:57.769571+00:00",
+      "elapsed_seconds": 0.062284457992063835,
+      "metadata": {
+        "langfuse_session_id": "agent-bench:run-all:pydantic-ai:marketing-campaign-detail-5:20260708T201134Z:640bbf13"
+      },
+      "error": "ModelHTTPError: status_code: 400, model_name: qwen/qwen3.6-35b-a3b, body: The number of tokens to keep from the initial prompt is greater than the context length. Try to load the model with a larger context length, or provide a shorter input",
+      "ok": false,
+      "scores": {
+        "scorable": true,
+        "correctness": 0.0,
+        "groundedness": 0.0,
+        "hallucination_rate": 1.0,
+        "overall_score": 0.0,
+        "details": {
+          "refused_or_no_data": true,
+          "empty_output": true,
+          "expected_text_facts": 3,
+          "matched_text_facts": 0,
+          "expected_numeric_facts": 2,
+          "matched_numeric_facts": 0,
+          "claimed_numeric_values": 0,
+          "unsupported_numeric_values": 0
+        }
+      },
+      "tool_selection": {
+        "scorable": true,
+        "expected_tools": [
+          "execute_sql",
+          "get_campaign"
+        ],
+        "total_tool_calls": 0,
+        "tool_recall": 0.0,
+        "tool_precision": 0.0,
+        "distractor_call_count": 0,
+        "distractor_calls": [],
+        "any_distractor_called": false,
+        "distractor_call_rate": 0.0,
+        "fabricated_call_count": 0,
+        "fabricated_calls": [],
+        "any_fabricated_called": false,
+        "fabricated_call_rate": 0.0
+      }
+    },
+    {
+      "harness": "pydantic-ai",
+      "architecture": "enterprise-react-toolsearch-120",
+      "task": "marketing-campaign-detail-5",
+      "prompt": "Get full details for marketing campaign ID 5.",
+      "output": "\n\n| id | name | channel | status | budget_usd | start_date | end_date |\n|---|---|---|---|---|---|---|\n| 5 | Fall Search Surge 1 | paid_search | planned | 36723.7 | 2026-03-31 | 2026-07-08 |",
+      "started_at": "2026-07-08T20:13:57.832270+00:00",
+      "elapsed_seconds": 5.026273042007233,
+      "metadata": {
+        "langfuse_session_id": "agent-bench:run-all:pydantic-ai:marketing-campaign-detail-5:20260708T201134Z:640bbf13",
+        "tool_calls": [
+          {
+            "tool_name": "search_tools",
+            "via": "native"
+          },
+          {
+            "tool_name": "get_campaign",
+            "via": "native"
+          }
+        ],
+        "langfuse_trace_id": "1d06e57504a8d3c63411ede08751cfc1",
+        "langfuse_observation_id": "ec8efb4438ed4394",
+        "langfuse_trace_url": "https://cloud.langfuse.com/project/cmr1ywsf000d5ad0cex3dm2ha/traces/1d06e57504a8d3c63411ede08751cfc1"
+      },
+      "error": null,
+      "ok": true,
+      "scores": {
+        "scorable": true,
+        "correctness": 1.0,
+        "groundedness": 0.25,
+        "hallucination_rate": 0.75,
+        "overall_score": 0.4,
+        "details": {
+          "refused_or_no_data": false,
+          "empty_output": false,
+          "expected_text_facts": 3,
+          "matched_text_facts": 3,
+          "expected_numeric_facts": 2,
+          "matched_numeric_facts": 2,
+          "claimed_numeric_values": 8,
+          "unsupported_numeric_values": 6
+        }
+      },
+      "tool_selection": {
+        "scorable": true,
+        "expected_tools": [
+          "execute_sql",
+          "get_campaign"
+        ],
+        "total_tool_calls": 2,
+        "tool_recall": 1.0,
+        "tool_precision": 1.0,
+        "distractor_call_count": 0,
+        "distractor_calls": [],
+        "any_distractor_called": false,
+        "distractor_call_rate": 0.0,
+        "fabricated_call_count": 0,
+        "fabricated_calls": [],
+        "any_fabricated_called": false,
+        "fabricated_call_rate": 0.0
+      }
+    },
+    {
+      "harness": "pydantic-ai",
+      "architecture": "enterprise-categorized-search",
+      "task": "marketing-campaign-detail-5",
+      "prompt": "Get full details for marketing campaign ID 5.",
+      "output": "\n\n| id | name | channel | status | budget_usd | start_date | end_date |\n|---|---|---|---|---|---|---|\n| 5 | Fall Search Surge 1 | paid_search | planned | 36723.7 | 2026-03-31 | 2026-07-08 |",
+      "started_at": "2026-07-08T20:14:02.859634+00:00",
+      "elapsed_seconds": 6.0152943749999395,
+      "metadata": {
+        "langfuse_session_id": "agent-bench:run-all:pydantic-ai:marketing-campaign-detail-5:20260708T201134Z:640bbf13",
+        "tool_calls": [
+          {
+            "tool_name": "list_tool_categories",
+            "via": "native"
+          },
+          {
+            "tool_name": "search_tools_in_category",
+            "via": "native"
+          },
+          {
+            "tool_name": "call_tool",
+            "via": "native"
+          },
+          {
+            "tool_name": "get_campaign",
+            "via": "categorized_search"
+          }
+        ],
+        "langfuse_trace_id": "eb93813d36a3c6e699e84b13b1422e2c",
+        "langfuse_observation_id": "084529c472087fa1",
+        "langfuse_trace_url": "https://cloud.langfuse.com/project/cmr1ywsf000d5ad0cex3dm2ha/traces/eb93813d36a3c6e699e84b13b1422e2c"
+      },
+      "error": null,
+      "ok": true,
+      "scores": {
+        "scorable": true,
+        "correctness": 1.0,
+        "groundedness": 0.25,
+        "hallucination_rate": 0.75,
+        "overall_score": 0.4,
+        "details": {
+          "refused_or_no_data": false,
+          "empty_output": false,
+          "expected_text_facts": 3,
+          "matched_text_facts": 3,
+          "expected_numeric_facts": 2,
+          "matched_numeric_facts": 2,
+          "claimed_numeric_values": 8,
+          "unsupported_numeric_values": 6
+        }
+      },
+      "tool_selection": {
+        "scorable": true,
+        "expected_tools": [
+          "execute_sql",
+          "get_campaign"
+        ],
+        "total_tool_calls": 4,
+        "tool_recall": 1.0,
+        "tool_precision": 1.0,
+        "distractor_call_count": 0,
+        "distractor_calls": [],
+        "any_distractor_called": false,
+        "distractor_call_rate": 0.0,
+        "fabricated_call_count": 0,
+        "fabricated_calls": [],
+        "any_fabricated_called": false,
+        "fabricated_call_rate": 0.0
+      }
+    }
+  ],
+  "scored_at": "2026-07-08T22:25:19.966809+00:00",
+  "ground_truth_generated_at": "2026-07-08T20:08:57.272260+00:00",
+  "score_summary": {
+    "scored_results": 17,
+    "overall_score_formula": "harmonic_mean(correctness, groundedness)",
+    "avg_overall_score": 0.2915,
+    "best_architecture": "enterprise-react",
+    "best_overall_score": 0.4,
+    "avg_correctness": 0.6706,
+    "avg_groundedness": 0.2353,
+    "avg_hallucination_rate": 0.7647,
+    "tool_selection": {
+      "scored_tasks": 17,
+      "avg_tool_precision": 0.6159,
+      "avg_tool_recall": 0.6471,
+      "total_tool_calls": 47,
+      "total_distractor_calls": 0,
+      "distractor_call_rate": 0.0,
+      "tasks_with_any_distractor_call": 0,
+      "tasks_with_any_distractor_call_pct": 0.0,
+      "total_fabricated_calls": 10,
+      "fabricated_call_rate": 0.2128,
+      "tasks_with_any_fabricated_call": 4,
+      "tasks_with_any_fabricated_call_pct": 23.53
+    }
+  }
+}

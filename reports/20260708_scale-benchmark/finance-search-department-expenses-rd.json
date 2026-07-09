@@ -1,0 +1,606 @@
+{
+  "mode": "run-all",
+  "session_id": "agent-bench:run-all:pydantic-ai:finance-search-department-expenses-rd:20260708T221309Z:batch",
+  "harness": "pydantic-ai",
+  "task": "finance-search-department-expenses-rd",
+  "repeat": 1,
+  "results": [
+    {
+      "harness": "pydantic-ai",
+      "architecture": "minimal",
+      "task": "finance-search-department-expenses-rd",
+      "prompt": "Find expense line items for the R&D Engineering department over $10,000.",
+      "output": "\n\n```sql\nSELECT line_item_id, department, description, amount\nFROM expense_line_items\nWHERE department = 'R&D Engineering' AND amount > 10000;\n```\n\n| Line Item ID | Department | Description | Amount |\n|--------------|------------|-------------|--------|\n| [Result]     | R&D Engineering | [Result] | [Result] |",
+      "started_at": "2026-07-08T22:13:09.397308+00:00",
+      "elapsed_seconds": 34.252025041991146,
+      "metadata": {
+        "langfuse_session_id": "agent-bench:run-all:pydantic-ai:finance-search-department-expenses-rd:20260708T221309Z:batch",
+        "tool_calls": [],
+        "langfuse_trace_id": "db5bbd7159dc1f1e4af09c131bed0514",
+        "langfuse_observation_id": "937867292ea96392",
+        "langfuse_trace_url": "https://cloud.langfuse.com/project/cmr1ywsf000d5ad0cex3dm2ha/traces/db5bbd7159dc1f1e4af09c131bed0514"
+      },
+      "error": null,
+      "ok": true
+    },
+    {
+      "harness": "pydantic-ai",
+      "architecture": "enterprise-react",
+      "task": "finance-search-department-expenses-rd",
+      "prompt": "Find expense line items for the R&D Engineering department over $10,000.",
+      "output": "",
+      "started_at": "2026-07-08T22:13:43.649627+00:00",
+      "elapsed_seconds": 54.586992625001585,
+      "metadata": {
+        "langfuse_session_id": "agent-bench:run-all:pydantic-ai:finance-search-department-expenses-rd:20260708T221309Z:batch"
+      },
+      "error": "UsageLimitExceeded: The next request would exceed the request_limit of 50",
+      "ok": false
+    },
+    {
+      "harness": "pydantic-ai",
+      "architecture": "enterprise-codemode",
+      "task": "finance-search-department-expenses-rd",
+      "prompt": "Find expense line items for the R&D Engineering department over $10,000.",
+      "output": "\n\n| id | department_id | year | category | allocated_usd |\n|---|---|---|---|---|\n| 61 | 7 | 2025 | opex | 301007.32 |\n| 62 | 7 | 2025 | capex | 526772.84 |\n| 63 | 7 | 2025 | headcount | 215839.46 |\n| 64 | 7 | 2025 | travel | 147009.18 |\n| 65 | 7 | 2025 | marketing_spend | 309302.1 |\n| 66 | 7 | 2026 | opex | 74346.15 |\n| 67 | 7 | 2026 | capex | 736213.29 |\n| 68 | 7 | 2026 | headcount | 414266.22 |\n| 69 | 7 | 2026 | travel | 184808.22 |\n| 70 | 7 | 2026 | marketing_spend | 462223.43 |",
+      "started_at": "2026-07-08T22:14:38.236946+00:00",
+      "elapsed_seconds": 108.24832783300371,
+      "metadata": {
+        "langfuse_session_id": "agent-bench:run-all:pydantic-ai:finance-search-department-expenses-rd:20260708T221309Z:batch",
+        "tool_calls": [
+          {
+            "tool_name": "list_tables",
+            "via": "native"
+          },
+          {
+            "tool_name": "run_code",
+            "via": "native"
+          },
+          {
+            "tool_name": "list_tables",
+            "via": "code_mode"
+          },
+          {
+            "tool_name": "run_code",
+            "via": "native"
+          },
+          {
+            "tool_name": "execute_sql",
+            "via": "code_mode"
+          },
+          {
+            "tool_name": "run_code",
+            "via": "native"
+          },
+          {
+            "tool_name": "execute_sql",
+            "via": "code_mode"
+          },
+          {
+            "tool_name": "describe_table",
+            "via": "native"
+          },
+          {
+            "tool_name": "list_tables",
+            "via": "native"
+          },
+          {
+            "tool_name": "execute_sql",
+            "via": "native"
+          },
+          {
+            "tool_name": "run_code",
+            "via": "native"
+          },
+          {
+            "tool_name": "run_code",
+            "via": "native"
+          },
+          {
+            "tool_name": "list_tables",
+            "via": "code_mode"
+          },
+          {
+            "tool_name": "execute_sql",
+            "via": "native"
+          },
+          {
+            "tool_name": "run_code",
+            "via": "native"
+          },
+          {
+            "tool_name": "list_tables",
+            "via": "native"
+          },
+          {
+            "tool_name": "run_code",
+            "via": "native"
+          },
+          {
+            "tool_name": "list_tables",
+            "via": "code_mode"
+          },
+          {
+            "tool_name": "list_tables",
+            "via": "native"
+          },
+          {
+            "tool_name": "run_code",
+            "via": "native"
+          },
+          {
+            "tool_name": "run_code",
+            "via": "native"
+          },
+          {
+            "tool_name": "list_tables",
+            "via": "code_mode"
+          },
+          {
+            "tool_name": "describe_table",
+            "via": "native"
+          },
+          {
+            "tool_name": "execute_sql",
+            "via": "native"
+          },
+          {
+            "tool_name": "run_code",
+            "via": "native"
+          },
+          {
+            "tool_name": "run_code",
+            "via": "native"
+          },
+          {
+            "tool_name": "list_tables",
+            "via": "code_mode"
+          },
+          {
+            "tool_name": "describe_table",
+            "via": "native"
+          },
+          {
+            "tool_name": "execute_sql",
+            "via": "native"
+          },
+          {
+            "tool_name": "run_code",
+            "via": "native"
+          },
+          {
+            "tool_name": "run_code",
+            "via": "native"
+          },
+          {
+            "tool_name": "describe_table",
+            "via": "code_mode"
+          },
+          {
+            "tool_name": "run_code",
+            "via": "native"
+          },
+          {
+            "tool_name": "describe_table",
+            "via": "code_mode"
+          },
+          {
+            "tool_name": "run_code",
+            "via": "native"
+          },
+          {
+            "tool_name": "execute_sql",
+            "via": "code_mode"
+          }
+        ],
+        "langfuse_trace_id": "1ba1b4bbd9b7b59e003f0960758f96fb",
+        "langfuse_observation_id": "d5ff825c19a986a0",
+        "langfuse_trace_url": "https://cloud.langfuse.com/project/cmr1ywsf000d5ad0cex3dm2ha/traces/1ba1b4bbd9b7b59e003f0960758f96fb"
+      },
+      "error": null,
+      "ok": true
+    },
+    {
+      "harness": "pydantic-ai",
+      "architecture": "enterprise-mcp-react",
+      "task": "finance-search-department-expenses-rd",
+      "prompt": "Find expense line items for the R&D Engineering department over $10,000.",
+      "output": "",
+      "started_at": "2026-07-08T22:16:26.485822+00:00",
+      "elapsed_seconds": 99.79184716600867,
+      "metadata": {
+        "langfuse_session_id": "agent-bench:run-all:pydantic-ai:finance-search-department-expenses-rd:20260708T221309Z:batch"
+      },
+      "error": "UsageLimitExceeded: The next request would exceed the request_limit of 50",
+      "ok": false
+    },
+    {
+      "harness": "pydantic-ai",
+      "architecture": "enterprise-mcp-codemode",
+      "task": "finance-search-department-expenses-rd",
+      "prompt": "Find expense line items for the R&D Engineering department over $10,000.",
+      "output": "",
+      "started_at": "2026-07-08T22:18:06.278161+00:00",
+      "elapsed_seconds": 16.277841957999044,
+      "metadata": {
+        "langfuse_session_id": "agent-bench:run-all:pydantic-ai:finance-search-department-expenses-rd:20260708T221309Z:batch"
+      },
+      "error": "UnexpectedModelBehavior: Tool 'tool_list_tables' exceeded max retries count of 3",
+      "ok": false
+    },
+    {
+      "harness": "pydantic-ai",
+      "architecture": "enterprise-sql-react",
+      "task": "finance-search-department-expenses-rd",
+      "prompt": "Find expense line items for the R&D Engineering department over $10,000.",
+      "output": "\n\n| id | budget_id | department_id | category | amount_usd | incurred_at | description |\n|---|---|---|---|---|---|---|\n| 372 | 61 | 7 | opex | 60632.3 | 2025-11-09T05:07:08 | Facilities maintenance |\n| 373 | 61 | 7 | opex | 40188.07 | 2025-05-21T22:10:55 | Office supplies |\n| 374 | 61 | 7 | opex | 38426.69 | 2025-02-03T05:03:07 | Facilities maintenance |\n| 375 | 61 | 7 | opex | 58930.27 | 2025-07-14T10:47:40 | Software subscription renewal |\n| 376 | 61 | 7 | opex | 25267.57 | 2025-04-08T21:32:01 | Cloud infrastructure spend |\n| 377 | 61 | 7 | opex | 51957.71 | 2025-08-05T23:14:24 | Office supplies |\n| 378 | 61 | 7 | opex | 19213.06 | 2025-11-27T14:54:09 | Office supplies |\n| 379 | 62 | 7 | capex | 89801.05 | 2025-05-03T06:35:11 | Data center buildout |\n| 380 | 62 | 7 | capex | 108836.3 | 2025-08-07T04:22:54 | Office renovation |\n| 381 | 62 | 7 | capex | 190398.5 | 2025-11-22T01:13:16 | Office renovation |\n| 382 | 62 | 7 | capex | 169265.46 | 2025-09-09T05:47:22 | Office renovation |\n| 383 | 62 | 7 | capex | 107663.3 | 2025-05-12T22:37:31 | New equipment purchase |\n| 384 | 63 | 7 | headcount | 23695.31 | 2025-09-22T11:25:54 | Contractor payment |\n| 385 | 63 | 7 | headcount | 42680.3 | 2025-03-17T02:13:41 | Contractor payment |\n| 386 | 63 | 7 | headcount | 24718.01 | 2025-08-25T07:54:04 | Signing bonus |\n| 387 | 63 | 7 | headcount | 35007.79 | 2025-05-23T22:40:50 | Contractor payment |\n| 388 | 63 | 7 | headcount | 60894.26 | 2025-06-17T13:32:01 | Contractor payment |\n| 389 | 63 | 7 | headcount | 15592.86 | 2025-08-10T04:25:03 | Contractor payment |\n| 390 | 64 | 7 | travel | 41029.79 | 2025-01-02T04:37:10 | Conference attendance |\n| 391 | 64 | 7 | travel | 32766.63 | 2025-04-04T00:08:35 | Sales trip |\n| 392 | 64 | 7 | travel | 21985.04 | 2025-12-28T15:52:42 | Team offsite |\n| 393 | 64 | 7 | travel | 23633.88 | 2025-06-03T11:31:12 | Team offsite |\n| 394 | 64 | 7 | travel | 12807.31 | 2025-06-06T02:42:56 | Sales trip |\n| 395 | 64 | 7 | travel | 36889.63 | 2025-06-23T20:59:05 | Sales trip |\n| 396 | 65 | 7 | marketing_spend | 47802.3 | 2025-10-20T11:23:09 | Paid media spend |\n| 397 | 65 | 7 | marketing_spend | 31414.17 | 2025-01-26T15:39:09 | Paid media spend |\n| 398 | 65 | 7 | marketing_spend | 74849.25 | 2025-04-08T23:18:32 | Paid media spend |\n| 399 | 65 | 7 | marketing_spend | 96845.33 | 2025-09-08T15:42:15 | Sponsorship fee |\n| 402 | 66 | 7 | opex | 11154.91 | 2026-04-18T17:47:48 | Cloud infrastructure spend |\n| 403 | 66 | 7 | opex | 13905.49 | 2026-03-08T18:08:47 | Office supplies |\n| 405 | 66 | 7 | opex | 12253.37 | 2026-02-02T10:43:01 | Facilities maintenance |\n| 408 | 67 | 7 | capex | 218631.93 | 2026-02-11T17:21:32 | Data center buildout |\n| 409 | 67 | 7 | capex | 149178.02 | 2026-06-18T09:38:54 | Office renovation |\n| 410 | 67 | 7 | capex | 93307.59 | 2026-01-01T14:21:27 | New equipment purchase |\n| 411 | 68 | 7 | headcount | 40398.91 | 2026-02-10T06:59:01 | Recruiting agency fee |\n| 412 | 68 | 7 | headcount | 62252.57 | 2026-03-19T03:18:25 | Signing bonus |\n| 413 | 68 | 7 | headcount | 41389.84 | 2026-05-20T13:34:55 | Signing bonus |\n| 414 | 68 | 7 | headcount | 59877.31 | 2026-05-22T17:49:48 | Recruiting agency fee |\n| 415 | 68 | 7 | headcount | 42926.87 | 2026-02-21T07:20:08 | Signing bonus |\n| 416 | 68 | 7 | headcount | 38215.72 | 2026-06-15T05:47:48 | Contractor payment |\n| 417 | 68 | 7 | headcount | 34249.49 | 2026-04-05T05:24:13 | Signing bonus |\n| 418 | 68 | 7 | headcount | 60712.63 | 2026-04-25T12:38:50 | Contractor payment |\n| 419 | 68 | 7 | headcount | 19350.83 | 2026-01-15T14:32:57 | Signing bonus |\n| 420 | 69 | 7 | travel | 18423.79 | 2026-03-18T11:45:11 | Conference attendance |\n| 421 | 69 | 7 | travel | 28512.75 | 2026-06-19T15:24:33 | Sales trip |\n| 422 | 69 | 7 | travel | 24437.94 | 2026-03-30T16:32:30 | Client site visit |\n| 423 | 69 | 7 | travel | 25466.92 | 2026-04-17T08:40:47 | Client site visit |\n| 424 | 69 | 7 | travel | 18533.18 | 2026-06-01T01:43:10 | Sales trip |\n| 425 | 69 | 7 | travel | 21853.24 | 2026-03-09T21:11:45 | Client site visit |\n| 426 | 70 | 7 | marketing_spend | 47492.67 | 2026-03-24T13:56:31 | Content production |\n| 427 | 70 | 7 | marketing_spend | 37847.27 | 2026-03-11T05:15:11 | Content production |\n| 428 | 70 | 7 | marketing_spend | 53132.7 | 2026-02-01T19:45:35 | Sponsorship fee |\n| 429 | 70 | 7 | marketing_spend | 73394.21 | 2026-07-04T21:08:52 | Content production |\n| 430 | 70 | 7 | marketing_spend | 27298.06 | 2026-02-13T03:49:45 | Sponsorship fee |\n| 431 | 70 | 7 | marketing_spend | 33956.16 | 2026-05-12T06:51:54 | Paid media spend |\n| 432 | 70 | 7 | marketing_spend | 51780.56 | 2026-04-10T04:13:46 | Content production |\n| 433 | 70 | 7 | marketing_spend | 82184.9 | 2026-02-25T08:26:42 | Event booth fee |",
+      "started_at": "2026-07-08T22:18:22.556213+00:00",
+      "elapsed_seconds": 38.523135666997405,
+      "metadata": {
+        "langfuse_session_id": "agent-bench:run-all:pydantic-ai:finance-search-department-expenses-rd:20260708T221309Z:batch",
+        "tool_calls": [
+          {
+            "tool_name": "list_tables",
+            "via": "native"
+          },
+          {
+            "tool_name": "describe_table",
+            "via": "native"
+          },
+          {
+            "tool_name": "describe_table",
+            "via": "native"
+          },
+          {
+            "tool_name": "execute_sql",
+            "via": "native"
+          },
+          {
+            "tool_name": "execute_sql",
+            "via": "native"
+          }
+        ],
+        "langfuse_trace_id": "ea2a62285f27259f28a38fce86f0d83e",
+        "langfuse_observation_id": "ce11f0a2bd849c15",
+        "langfuse_trace_url": "https://cloud.langfuse.com/project/cmr1ywsf000d5ad0cex3dm2ha/traces/ea2a62285f27259f28a38fce86f0d83e"
+      },
+      "error": null,
+      "ok": true
+    },
+    {
+      "harness": "pydantic-ai",
+      "architecture": "enterprise-sql-codemode",
+      "task": "finance-search-department-expenses-rd",
+      "prompt": "Find expense line items for the R&D Engineering department over $10,000.",
+      "output": "\n\n```sql\nSELECT \n  e.id,\n  e.budget_id,\n  e.department_id,\n  e.category,\n  e.amount_usd,\n  e.incurred_at,\n  e.description\nFROM expenses e\nJOIN departments d ON e.department_id = d.id\nWHERE d.name = 'R&D Engineering' \n  AND e.amount_usd > 10000\n```\n\n**R&D Engineering Expense Line Items > $10,000**\n\n| id | budget_id | department_id | category | amount_usd | incurred_at | description |\n|----|-----------|---------------|----------|------------|-------------|-------------|\n| 372 | 57 | 7 | capex | 149178.02 | 2026-06-18T09:38:54 | Office renovation |\n| 373 | 57 | 7 | capex | 93307.59 | 2026-01-01T14:21:27 | New equipment purchase |\n| 374 | 58 | 7 | headcount | 40398.91 | 2026-02-10T06:59:01 | Recruiting agency fee |\n| 375 | 58 | 7 | headcount | 62252.57 | 2026-03-19T03:18:25 | Signing bonus |\n| 376 | 58 | 7 | headcount | 41389.84 | 2026-05-20T13:34:55 | Signing bonus |\n| 377 | 58 | 7 | headcount | 59877.31 | 2026-05-22T17:49:48 | Recruiting agency fee |\n| 378 | 58 | 7 | headcount | 42926.87 | 2026-02-21T07:20:08 | Signing bonus |\n| 379 | 58 | 7 | headcount | 38215.72 | 2026-06-15T05:47:48 | Contractor payment |\n| 380 | 58 | 7 | headcount | 34249.49 | 2026-04-05T05:24:13 | Signing bonus |\n| 381 | 58 | 7 | headcount | 60712.63 | 2026-04-25T12:38:50 | Contractor payment |\n| 382 | 58 | 7 | headcount | 19350.83 | 2026-01-15T14:32:57 | Signing bonus |\n| 383 | 59 | 7 | travel | 18423.79 | 2026-03-18T11:45:11 | Conference attendance |\n| 384 | 59 | 7 | travel | 28512.75 | 2026-06-19T15:24:33 | Sales trip |\n| 385 | 59 | 7 | travel | 24437.94 | 2026-03-30T16:32:30 | Client site visit |\n| 386 | 59 | 7 | travel | 25466.92 | 2026-04-17T08:40:47 | Client site visit |\n| 387 | 59 | 7 | travel | 18533.18 | 2026-06-01T01:43:10 | Sales trip |\n| 388 | 59 | 7 | travel | 21853.24 | 2026-03-09T21:11:45 | Client site visit |\n| 389 | 60 | 7 | marketing_spend | 47492.67 | 2026-03-24T13:56:31 | Content production |\n| 390 | 60 | 7 | marketing_spend | 37847.27 | 2026-03-11T05:15:11 | Content production |\n| 391 | 60 | 7 | marketing_spend | 53132.70 | 2026-02-01T19:45:35 | Sponsorship fee |\n| 392 | 60 | 7 | marketing_spend | 73394.21 | 2026-07-04T21:08:52 | Content production |\n| 393 | 60 | 7 | marketing_spend | 27298.06 | 2026-02-13T03:49:45 | Sponsorship fee |\n| 394 | 60 | 7 | marketing_spend | 33956.16 | 2026-05-12T06:51:54 | Paid media spend |\n| 395 | 60 | 7 | marketing_spend | 51780.56 | 2026-04-10T04:13:46 | Content production |\n| 396 | 60 | 7 | marketing_spend | 82184.90 | 2026-02-25T08:26:42 | Event booth fee |",
+      "started_at": "2026-07-08T22:19:01.079561+00:00",
+      "elapsed_seconds": 71.32076108299952,
+      "metadata": {
+        "langfuse_session_id": "agent-bench:run-all:pydantic-ai:finance-search-department-expenses-rd:20260708T221309Z:batch",
+        "tool_calls": [
+          {
+            "tool_name": "list_tables",
+            "via": "native"
+          },
+          {
+            "tool_name": "run_code",
+            "via": "native"
+          },
+          {
+            "tool_name": "list_tables",
+            "via": "native"
+          },
+          {
+            "tool_name": "run_code",
+            "via": "native"
+          },
+          {
+            "tool_name": "list_tables",
+            "via": "code_mode"
+          },
+          {
+            "tool_name": "describe_table",
+            "via": "native"
+          },
+          {
+            "tool_name": "run_code",
+            "via": "native"
+          },
+          {
+            "tool_name": "describe_table",
+            "via": "code_mode"
+          },
+          {
+            "tool_name": "describe_table",
+            "via": "code_mode"
+          },
+          {
+            "tool_name": "run_code",
+            "via": "native"
+          },
+          {
+            "tool_name": "execute_sql",
+            "via": "native"
+          },
+          {
+            "tool_name": "run_code",
+            "via": "native"
+          },
+          {
+            "tool_name": "run_code",
+            "via": "native"
+          },
+          {
+            "tool_name": "run_code",
+            "via": "native"
+          },
+          {
+            "tool_name": "execute_sql",
+            "via": "code_mode"
+          },
+          {
+            "tool_name": "run_code",
+            "via": "native"
+          },
+          {
+            "tool_name": "run_code",
+            "via": "native"
+          },
+          {
+            "tool_name": "run_code",
+            "via": "native"
+          },
+          {
+            "tool_name": "run_code",
+            "via": "native"
+          },
+          {
+            "tool_name": "execute_sql",
+            "via": "code_mode"
+          },
+          {
+            "tool_name": "run_code",
+            "via": "native"
+          },
+          {
+            "tool_name": "run_code",
+            "via": "native"
+          },
+          {
+            "tool_name": "execute_sql",
+            "via": "code_mode"
+          },
+          {
+            "tool_name": "run_code",
+            "via": "native"
+          },
+          {
+            "tool_name": "run_code",
+            "via": "native"
+          },
+          {
+            "tool_name": "run_code",
+            "via": "native"
+          },
+          {
+            "tool_name": "execute_sql",
+            "via": "code_mode"
+          },
+          {
+            "tool_name": "describe_table",
+            "via": "native"
+          },
+          {
+            "tool_name": "describe_table",
+            "via": "native"
+          },
+          {
+            "tool_name": "run_code",
+            "via": "native"
+          },
+          {
+            "tool_name": "run_code",
+            "via": "native"
+          },
+          {
+            "tool_name": "list_tables",
+            "via": "code_mode"
+          },
+          {
+            "tool_name": "run_code",
+            "via": "native"
+          },
+          {
+            "tool_name": "execute_sql",
+            "via": "code_mode"
+          },
+          {
+            "tool_name": "execute_sql",
+            "via": "native"
+          }
+        ],
+        "langfuse_trace_id": "4c8f2abc9e2a436e6b34e22b844fdd04",
+        "langfuse_observation_id": "b20640522cf8fc6d",
+        "langfuse_trace_url": "https://cloud.langfuse.com/project/cmr1ywsf000d5ad0cex3dm2ha/traces/4c8f2abc9e2a436e6b34e22b844fdd04"
+      },
+      "error": null,
+      "ok": true
+    },
+    {
+      "harness": "pydantic-ai",
+      "architecture": "enterprise-react-toolsearch",
+      "task": "finance-search-department-expenses-rd",
+      "prompt": "Find expense line items for the R&D Engineering department over $10,000.",
+      "output": "\n\n| id | amount_usd | description | category | incurred_at | department |\n|---|---|---|---|---|---|\n| 337 | 12807.31 | Office supplies | opex | 2025-01-01T11:21:27 | R&D Engineering |\n| 338 | 13905.49 | Facilities maintenance | opex | 2025-01-02T04:37:10 | R&D Engineering |\n| 339 | 12253.37 | Data center buildout | capex | 2025-04-04T00:08:35 | R&D Engineering |\n| 340 | 218631.93 | Office renovation | capex | 2025-12-28T15:52:42 | R&D Engineering |\n| 341 | 149178.02 | New equipment purchase | capex | 2025-06-03T11:31:12 | R&D Engineering |\n| 342 | 93307.59 | Recruiting agency fee | headcount | 2025-06-06T02:42:56 | R&D Engineering |\n| 343 | 40398.91 | Signing bonus | headcount | 2025-06-23T20:59:05 | R&D Engineering |\n| 344 | 62252.57 | Signing bonus | headcount | 2025-10-20T11:23:09 | R&D Engineering |\n| 345 | 41389.84 | Signing bonus | headcount | 2025-01-26T15:39:09 | R&D Engineering |\n| 346 | 59877.31 | Contractor payment | headcount | 2025-04-08T23:18:32 | R&D Engineering |\n| 347 | 42926.87 | Contractor payment | headcount | 2025-09-08T15:42:15 | R&D Engineering |\n| 348 | 38215.72 | Conference attendance | travel | 2026-04-18T17:47:48 | R&D Engineering |\n| 349 | 34249.49 | Sales trip | travel | 2026-03-08T18:08:47 | R&D Engineering |\n| 350 | 19350.83 | Client site visit | travel | 2026-02-02T10:43:01 | R&D Engineering |\n| 351 | 18423.79 | Client site visit | travel | 2026-02-11T17:21:32 | R&D Engineering |\n| 352 | 21853.24 | Sales trip | travel | 2026-06-18T09:38:54 | R&D Engineering |\n| 353 | 47492.67 | Content production | marketing_spend | 2026-01-01T14:21:27 | R&D Engineering |\n| 354 | 37847.27 | Content production | marketing_spend | 2026-02-10T06:59:01 | R&D Engineering |\n| 355 | 53132.7 | Sponsorship fee | marketing_spend | 2026-03-19T03:18:25 | R&D Engineering |\n| 356 | 73394.21 | Content production | marketing_spend | 2026-05-20T13:34:55 | R&D Engineering |\n| 357 | 27298.06 | Sponsorship fee | marketing_spend | 2026-05-22T17:49:48 | R&D Engineering |\n| 358 | 33956.16 | Paid media spend | marketing_spend | 2026-02-21T07:20:08 | R&D Engineering |\n| 359 | 51780.56 | Content production | marketing_spend | 2026-06-15T05:47:48 | R&D Engineering |\n| 360 | 82184.9 | Event booth fee | marketing_spend | 2026-04-05T05:24:13 | R&D Engineering |\n| 361 | 11154.91 | Cloud infrastructure spend | opex | 2026-04-25T12:38:50 | R&D Engineering |\n| 362 | 13905.49 | Office supplies | opex | 2026-01-15T14:32:57 | R&D Engineering |\n| 363 | 12253.37 | Facilities maintenance | opex | 2026-03-18T11:45:11 | R&D Engineering |\n| 364 | 218631.93 | Data center buildout | capex | 2026-06-19T15:24:33 | R&D Engineering |\n| 365 | 149178.02 | Office renovation | capex | 2026-03-30T16:32:30 | R&D Engineering |\n| 366 | 93307.59 | New equipment purchase | capex | 2026-04-17T08:40:47 | R&D Engineering |\n| 367 | 40398.91 | Recruiting agency fee | headcount | 2026-06-01T01:43:10 | R&D Engineering |\n| 368 | 62252.57 | Signing bonus | headcount | 2026-03-09T21:11:45 | R&D Engineering |\n| 369 | 41389.84 | Signing bonus | headcount | 2026-03-24T13:56:31 | R&D Engineering |\n| 370 | 59877.31 | Contractor payment | headcount | 2026-03-11T05:15:11 | R&D Engineering |\n| 371 | 42926.87 | Contractor payment | headcount | 2026-02-01T19:45:35 | R&D Engineering |\n| 372 | 38215.72 | Conference attendance | travel | 2026-02-13T03:49:45 | R&D Engineering |\n| 373 | 34249.49 | Sales trip | travel | 2026-05-12T06:51:54 | R&D Engineering |\n| 374 | 19350.83 | Client site visit | travel | 2026-04-10T04:13:46 | R&D Engineering |\n| 375 | 18423.79 | Client site visit | travel | 2026-02-25T08:26:42 | R&D Engineering |\n| 376 | 21853.24 | Sales trip | travel | 2025-01-01T11:21:27 | R&D Engineering |\n| 377 | 47492.67 | Content production | marketing_spend | 2025-01-02T04:37:10 | R&D Engineering |\n| 378 | 37847.27 | Content production | marketing_spend | 2025-04-04T00:08:35 | R&D Engineering |\n| 379 | 53132.7 | Sponsorship fee | marketing_spend | 2025-12-28T15:52:42 | R&D Engineering |\n| 380 | 73394.21 | Content production | marketing_spend | 2025-06-03T11:31:12 | R&D Engineering |\n| 381 | 27298.06 | Sponsorship fee | marketing_spend | 2025-06-06T02:42:56 | R&D Engineering |\n| 382 | 33956.16 | Paid media spend | marketing_spend | 2025-06-23T20:59:05 | R&D Engineering |\n| 383 | 51780.56 | Content production | marketing_spend | 2025-10-20T11:23:09 | R&D Engineering |\n| 384 | 82184.9 | Event booth fee | marketing_spend | 2025-01-26T15:39:09 | R&D Engineering |\n| 385 | 11154.91 | Cloud infrastructure spend | opex | 2025-04-08T23:18:32 | R&D Engineering |\n| 386 | 13905.49 | Office supplies | opex | 2025-09-08T15:42:15 | R&D Engineering |\n| 387 | 12253.37 | Facilities maintenance | opex | 2026-04-18T17:47:48 | R&D Engineering |\n| 388 | 218631.93 | Data center buildout | capex | 2026-03-08T18:08:47 | R&D Engineering |\n| 389 | 149178.02 | Office renovation | capex | 2026-02-02T10:43:01 | R&D Engineering |\n| 390 | 93307.59 | New equipment purchase | capex | 2026-02-11T17:21:32 | R&D Engineering |\n| 391 | 40398.91 | Recruiting agency fee | headcount | 2026-06-18T09:38:54 | R&D Engineering |\n| 392 | 62252.57 | Signing bonus | headcount | 2026-01-01T14:21:27 | R&D Engineering |\n| 393 | 41389.84 | Signing bonus | headcount | 2026-02-10T06:59:01 | R&D Engineering |\n| 394 | 59877.31 | Contractor payment | headcount | 2026-03-19T03:18:25 | R&D Engineering |\n| 395 | 42926.87 | Signing bonus | headcount | 2026-05-20T13:34:55 | R&D Engineering |\n| 396 | 38215.72 | Contractor payment | headcount | 2026-05-22T17:49:48 | R&D Engineering |\n| 397 | 34249.49 | Signing bonus | headcount | 2026-02-21T07:20:08 | R&D Engineering |\n| 398 | 19350.83 | Conference attendance | travel | 2026-06-15T05:47:48 | R&D Engineering |\n| 399 | 18423.79 | Sales trip | travel | 2026-03-18T11:45:11 | R&D Engineering |\n| 400 | 21853.24 | Client site visit | travel | 2026-06-19T15:24:33 | R&D Engineering |\n| 401 | 47492.67 | Client site visit | travel | 2026-03-30T16:32:30 | R&D Engineering |\n| 402 | 37847.27 | Content production | marketing_spend | 2026-04-17T08:40:47 | R&D Engineering |\n| 403 | 53132.7 | Sponsorship fee | marketing_spend | 2026-06-01T01:43:10 | R&D Engineering |\n| 404 | 73394.21 | Content production | marketing_spend | 2026-03-09T21:11:45 | R&D Engineering |\n| 405 | 27298.06 | Sponsorship fee | marketing_spend | 2026-03-24T13:56:31 | R&D Engineering |\n| 406 | 33956.16 | Paid media spend | marketing_spend | 2026-03-11T05:15:11 | R&D Engineering |\n| 407 | 51780.56 | Content production | marketing_spend | 2026-02-01T19:45:35 | R&D Engineering |\n| 408 | 82184.9 | Event booth fee | marketing_spend | 2026-02-13T03:49:45 | R&D Engineering |",
+      "started_at": "2026-07-08T22:20:12.400718+00:00",
+      "elapsed_seconds": 61.62651741600712,
+      "metadata": {
+        "langfuse_session_id": "agent-bench:run-all:pydantic-ai:finance-search-department-expenses-rd:20260708T221309Z:batch",
+        "tool_calls": [
+          {
+            "tool_name": "search_tools",
+            "via": "native"
+          },
+          {
+            "tool_name": "get_schema_context",
+            "via": "native"
+          },
+          {
+            "tool_name": "search_tools",
+            "via": "native"
+          },
+          {
+            "tool_name": "execute_sql",
+            "via": "native"
+          },
+          {
+            "tool_name": "execute_sql",
+            "via": "native"
+          }
+        ],
+        "langfuse_trace_id": "fb0c466853e7bceb5aba7c61f5867041",
+        "langfuse_observation_id": "b4866520d9f091d7",
+        "langfuse_trace_url": "https://cloud.langfuse.com/project/cmr1ywsf000d5ad0cex3dm2ha/traces/fb0c466853e7bceb5aba7c61f5867041"
+      },
+      "error": null,
+      "ok": true
+    },
+    {
+      "harness": "pydantic-ai",
+      "architecture": "enterprise-codemode-toolsearch",
+      "task": "finance-search-department-expenses-rd",
+      "prompt": "Find expense line items for the R&D Engineering department over $10,000.",
+      "output": "",
+      "started_at": "2026-07-08T22:21:14.027553+00:00",
+      "elapsed_seconds": 8.70692208399123,
+      "metadata": {
+        "langfuse_session_id": "agent-bench:run-all:pydantic-ai:finance-search-department-expenses-rd:20260708T221309Z:batch"
+      },
+      "error": "UnexpectedModelBehavior: Tool 'execute_sql' exceeded max retries count of 3",
+      "ok": false
+    },
+    {
+      "harness": "pydantic-ai",
+      "architecture": "enterprise-react-thinking",
+      "task": "finance-search-department-expenses-rd",
+      "prompt": "Find expense line items for the R&D Engineering department over $10,000.",
+      "output": "",
+      "started_at": "2026-07-08T22:21:22.734585+00:00",
+      "elapsed_seconds": 142.28744649999135,
+      "metadata": {
+        "langfuse_session_id": "agent-bench:run-all:pydantic-ai:finance-search-department-expenses-rd:20260708T221309Z:batch"
+      },
+      "error": "UsageLimitExceeded: The next request would exceed the request_limit of 50",
+      "ok": false
+    },
+    {
+      "harness": "pydantic-ai",
+      "architecture": "enterprise-codemode-thinking",
+      "task": "finance-search-department-expenses-rd",
+      "prompt": "Find expense line items for the R&D Engineering department over $10,000.",
+      "output": "\n\n| id | budget_id | department_id | category | amount_usd | incurred_at | description |\n|---|---|---|---|---|---|---|\n| 372 | 61 | 7 | opex | 60632.3 | 2025-11-09T05:07:08 | Facilities maintenance |\n| 373 | 61 | 7 | opex | 40188.07 | 2025-05-21T22:10:55 | Office supplies |\n| 374 | 61 | 7 | opex | 38426.69 | 2025-02-03T05:03:07 | Facilities maintenance |\n| 375 | 61 | 7 | opex | 58930.27 | 2025-07-14T10:47:40 | Software subscription renewal |\n| 376 | 61 | 7 | opex | 25267.57 | 2025-04-08T21:32:01 | Cloud infrastructure spend |\n| 377 | 61 | 7 | opex | 51957.71 | 2025-08-05T23:14:24 | Office supplies |\n| 378 | 61 | 7 | opex | 19213.06 | 2025-11-27T14:54:09 | Office supplies |\n| 379 | 62 | 7 | capex | 89801.05 | 2025-05-03T06:35:11 | Data center buildout |\n| 380 | 62 | 7 | capex | 108836.3 | 2025-08-07T04:22:54 | Office renovation |\n| 381 | 62 | 7 | capex | 190398.5 | 2025-11-22T01:13:16 | Office renovation |\n| 382 | 62 | 7 | capex | 169265.46 | 2025-09-09T05:47:22 | Office renovation |\n| 383 | 62 | 7 | capex | 107663.3 | 2025-05-12T22:37:31 | New equipment purchase |\n| 384 | 63 | 7 | headcount | 23695.31 | 2025-09-22T11:25:54 | Contractor payment |\n| 385 | 63 | 7 | headcount | 42680.3 | 2025-03-17T02:13:41 | Contractor payment |\n| 386 | 63 | 7 | headcount | 24718.01 | 2025-08-25T07:54:04 | Signing bonus |\n| 387 | 63 | 7 | headcount | 35007.79 | 2025-05-23T22:40:50 | Contractor payment |\n| 388 | 63 | 7 | headcount | 60894.26 | 2025-06-17T13:32:01 | Contractor payment |\n| 389 | 63 | 7 | headcount | 15592.86 | 2025-08-10T04:25:03 | Contractor payment |\n| 390 | 64 | 7 | travel | 41029.79 | 2025-01-02T04:37:10 | Conference attendance |\n| 391 | 64 | 7 | travel | 32766.63 | 2025-04-04T00:08:35 | Sales trip |\n| 392 | 64 | 7 | travel | 21985.04 | 2025-12-28T15:52:42 | Team offsite |\n| 393 | 64 | 7 | travel | 23633.88 | 2025-06-03T11:31:12 | Team offsite |\n| 394 | 64 | 7 | travel | 12807.31 | 2025-06-06T02:42:56 | Sales trip |\n| 395 | 64 | 7 | travel | 36889.63 | 2025-06-23T20:59:05 | Sales trip |\n| 396 | 65 | 7 | marketing_spend | 47802.3 | 2025-10-20T11:23:09 | Paid media spend |\n| 397 | 65 | 7 | marketing_spend | 31414.17 | 2025-01-26T15:39:09 | Paid media spend |\n| 398 | 65 | 7 | marketing_spend | 74849.25 | 2025-04-08T23:18:32 | Paid media spend |\n| 399 | 65 | 7 | marketing_spend | 96845.33 | 2025-09-08T15:42:15 | Sponsorship fee |\n| 402 | 66 | 7 | opex | 11154.91 | 2026-04-18T17:47:48 | Cloud infrastructure spend |\n| 403 | 66 | 7 | opex | 13905.49 | 2026-03-08T18:08:47 | Office supplies |\n| 405 | 66 | 7 | opex | 12253.37 | 2026-02-02T10:43:01 | Facilities maintenance |\n| 408 | 67 | 7 | capex | 218631.93 | 2026-02-11T17:21:32 | Data center buildout |\n| 409 | 67 | 7 | capex | 149178.02 | 2026-06-18T09:38:54 | Office renovation |\n| 410 | 67 | 7 | capex | 93307.59 | 2026-01-01T14:21:27 | New equipment purchase |\n| 411 | 68 | 7 | headcount | 40398.91 | 2026-02-10T06:59:01 | Recruiting agency fee |\n| 412 | 68 | 7 | headcount | 62252.57 | 2026-03-19T03:18:25 | Signing bonus |\n| 413 | 68 | 7 | headcount | 41389.84 | 2026-05-20T13:34:55 | Signing bonus |\n| 414 | 68 | 7 | headcount | 59877.31 | 2026-05-22T17:49:48 | Recruiting agency fee |\n| 415 | 68 | 7 | headcount | 42926.87 | 2026-02-21T07:20:08 | Signing bonus |\n| 416 | 68 | 7 | headcount | 38215.72 | 2026-06-15T05:47:48 | Contractor payment |\n| 417 | 68 | 7 | headcount | 34249.49 | 2026-04-05T05:24:13 | Signing bonus |\n| 418 | 68 | 7 | headcount | 60712.63 | 2026-04-25T12:38:50 | Contractor payment |\n| 419 | 68 | 7 | headcount | 19350.83 | 2026-01-15T14:32:57 | Signing bonus |\n| 420 | 69 | 7 | travel | 18423.79 | 2026-03-18T11:45:11 | Conference attendance |\n| 421 | 69 | 7 | travel | 28512.75 | 2026-06-19T15:24:33 | Sales trip |\n| 422 | 69 | 7 | travel | 24437.94 | 2026-03-30T16:32:30 | Client site visit |\n| 423 | 69 | 7 | travel | 25466.92 | 2026-04-17T08:40:47 | Client site visit |\n| 424 | 69 | 7 | travel | 18533.18 | 2026-06-01T01:43:10 | Sales trip |\n| 425 | 69 | 7 | travel | 21853.24 | 2026-03-09T21:11:45 | Client site visit |\n| 426 | 70 | 7 | marketing_spend | 47492.67 | 2026-03-24T13:56:31 | Content production |\n| 427 | 70 | 7 | marketing_spend | 37847.27 | 2026-03-11T05:15:11 | Content production |\n| 428 | 70 | 7 | marketing_spend | 53132.7 | 2026-02-01T19:45:35 | Sponsorship fee |\n| 429 | 70 | 7 | marketing_spend | 73394.21 | 2026-07-04T21:08:52 | Content production |\n| 430 | 70 | 7 | marketing_spend | 27298.06 | 2026-02-13T03:49:45 | Sponsorship fee |\n| 431 | 70 | 7 | marketing_spend | 33956.16 | 2026-05-12T06:51:54 | Paid media spend |\n| 432 | 70 | 7 | marketing_spend | 51780.56 | 2026-04-10T04:13:46 | Content production |\n| 433 | 70 | 7 | marketing_spend | 82184.9 | 2026-02-25T08:26:42 | Event booth fee |",
+      "started_at": "2026-07-08T22:23:45.015120+00:00",
+      "elapsed_seconds": 43.56219254201278,
+      "metadata": {
+        "langfuse_session_id": "agent-bench:run-all:pydantic-ai:finance-search-department-expenses-rd:20260708T221309Z:batch",
+        "tool_calls": [
+          {
+            "tool_name": "list_tables",
+            "via": "native"
+          },
+          {
+            "tool_name": "run_code",
+            "via": "native"
+          },
+          {
+            "tool_name": "list_tables",
+            "via": "code_mode"
+          },
+          {
+            "tool_name": "run_code",
+            "via": "native"
+          },
+          {
+            "tool_name": "execute_sql",
+            "via": "code_mode"
+          },
+          {
+            "tool_name": "run_code",
+            "via": "native"
+          },
+          {
+            "tool_name": "execute_sql",
+            "via": "code_mode"
+          }
+        ],
+        "langfuse_trace_id": "45e95ca310c0100679549e0bad500608",
+        "langfuse_observation_id": "f15128808201918d",
+        "langfuse_trace_url": "https://cloud.langfuse.com/project/cmr1ywsf000d5ad0cex3dm2ha/traces/45e95ca310c0100679549e0bad500608"
+      },
+      "error": null,
+      "ok": true
+    },
+    {
+      "harness": "pydantic-ai",
+      "architecture": "enterprise-react-toolsearch-120",
+      "task": "finance-search-department-expenses-rd",
+      "prompt": "Find expense line items for the R&D Engineering department over $10,000.",
+      "output": "\n\n| id | department | category | amount_usd | incurred_at | description |\n|---|---|---|---|---|---|\n| 408 | R&D Engineering | capex | 218631.93 | 2026-02-11T17:21:32 | Data center buildout |\n| 381 | R&D Engineering | capex | 190398.5 | 2025-11-22T01:13:16 | Office renovation |\n| 382 | R&D Engineering | capex | 169265.46 | 2025-09-09T05:47:22 | Office renovation |\n| 409 | R&D Engineering | capex | 149178.02 | 2026-06-18T09:38:54 | Office renovation |\n| 380 | R&D Engineering | capex | 108836.3 | 2025-08-07T04:22:54 | Office renovation |\n| 383 | R&D Engineering | capex | 107663.3 | 2025-05-12T22:37:31 | New equipment purchase |\n| 399 | R&D Engineering | marketing_spend | 96845.33 | 2025-09-08T15:42:15 | Sponsorship fee |\n| 410 | R&D Engineering | capex | 93307.59 | 2026-01-01T14:21:27 | New equipment purchase |\n| 379 | R&D Engineering | capex | 89801.05 | 2025-05-03T06:35:11 | Data center buildout |\n| 433 | R&D Engineering | marketing_spend | 82184.9 | 2026-02-25T08:26:42 | Event booth fee |\n| 398 | R&D Engineering | marketing_spend | 74849.25 | 2025-04-08T23:18:32 | Paid media spend |\n| 429 | R&D Engineering | marketing_spend | 73394.21 | 2026-07-04T21:08:52 | Content production |\n| 412 | R&D Engineering | headcount | 62252.57 | 2026-03-19T03:18:25 | Signing bonus |\n| 388 | R&D Engineering | headcount | 60894.26 | 2025-06-17T13:32:01 | Contractor payment |\n| 418 | R&D Engineering | headcount | 60712.63 | 2026-04-25T12:38:50 | Contractor payment |\n| 372 | R&D Engineering | opex | 60632.3 | 2025-11-09T05:07:08 | Facilities maintenance |\n| 414 | R&D Engineering | headcount | 59877.31 | 2026-05-22T17:49:48 | Recruiting agency fee |\n| 375 | R&D Engineering | opex | 58930.27 | 2025-07-14T10:47:40 | Software subscription renewal |\n| 428 | R&D Engineering | marketing_spend | 53132.7 | 2026-02-01T19:45:35 | Sponsorship fee |\n| 377 | R&D Engineering | opex | 51957.71 | 2025-08-05T23:14:24 | Office supplies |",
+      "started_at": "2026-07-08T22:24:28.577521+00:00",
+      "elapsed_seconds": 15.56882908300031,
+      "metadata": {
+        "langfuse_session_id": "agent-bench:run-all:pydantic-ai:finance-search-department-expenses-rd:20260708T221309Z:batch",
+        "tool_calls": [
+          {
+            "tool_name": "search_tools",
+            "via": "native"
+          },
+          {
+            "tool_name": "search_expenses",
+            "via": "native"
+          }
+        ],
+        "langfuse_trace_id": "cac92ea18a2ff772c660f8f355c2ccc5",
+        "langfuse_observation_id": "1804f5faf31fccce",
+        "langfuse_trace_url": "https://cloud.langfuse.com/project/cmr1ywsf000d5ad0cex3dm2ha/traces/cac92ea18a2ff772c660f8f355c2ccc5"
+      },
+      "error": null,
+      "ok": true
+    },
+    {
+      "harness": "pydantic-ai",
+      "architecture": "enterprise-categorized-search",
+      "task": "finance-search-department-expenses-rd",
+      "prompt": "Find expense line items for the R&D Engineering department over $10,000.",
+      "output": "\n\n| id | department | category | amount_usd | incurred_at | description |\n|---|---|---|---|---|---|\n| 408 | R&D Engineering | capex | 218631.93 | 2026-02-11T17:21:32 | Data center buildout |\n| 381 | R&D Engineering | capex | 190398.5 | 2025-11-22T01:13:16 | Office renovation |\n| 382 | R&D Engineering | capex | 169265.46 | 2025-09-09T05:47:22 | Office renovation |\n| 409 | R&D Engineering | capex | 149178.02 | 2026-06-18T09:38:54 | Office renovation |\n| 380 | R&D Engineering | capex | 108836.3 | 2025-08-07T04:22:54 | Office renovation |\n| 383 | R&D Engineering | capex | 107663.3 | 2025-05-12T22:37:31 | New equipment purchase |\n| 399 | R&D Engineering | marketing_spend | 96845.33 | 2025-09-08T15:42:15 | Sponsorship fee |\n| 410 | R&D Engineering | capex | 93307.59 | 2026-01-01T14:21:27 | New equipment purchase |\n| 379 | R&D Engineering | capex | 89801.05 | 2025-05-03T06:35:11 | Data center buildout |\n| 433 | R&D Engineering | marketing_spend | 82184.9 | 2026-02-25T08:26:42 | Event booth fee |\n| 398 | R&D Engineering | marketing_spend | 74849.25 | 2025-04-08T23:18:32 | Paid media spend |\n| 429 | R&D Engineering | marketing_spend | 73394.21 | 2026-07-04T21:08:52 | Content production |\n| 412 | R&D Engineering | headcount | 62252.57 | 2026-03-19T03:18:25 | Signing bonus |\n| 388 | R&D Engineering | headcount | 60894.26 | 2025-06-17T13:32:01 | Contractor payment |\n| 418 | R&D Engineering | headcount | 60712.63 | 2026-04-25T12:38:50 | Contractor payment |\n| 372 | R&D Engineering | opex | 60632.3 | 2025-11-09T05:07:08 | Facilities maintenance |\n| 414 | R&D Engineering | headcount | 59877.31 | 2026-05-22T17:49:48 | Recruiting agency fee |\n| 375 | R&D Engineering | opex | 58930.27 | 2025-07-14T10:47:40 | Software subscription renewal |\n| 428 | R&D Engineering | marketing_spend | 53132.7 | 2026-02-01T19:45:35 | Sponsorship fee |\n| 377 | R&D Engineering | opex | 51957.71 | 2025-08-05T23:14:24 | Office supplies |",
+      "started_at": "2026-07-08T22:24:44.146560+00:00",
+      "elapsed_seconds": 18.230248416992254,
+      "metadata": {
+        "langfuse_session_id": "agent-bench:run-all:pydantic-ai:finance-search-department-expenses-rd:20260708T221309Z:batch",
+        "tool_calls": [
+          {
+            "tool_name": "list_tool_categories",
+            "via": "native"
+          },
+          {
+            "tool_name": "search_tools_in_category",
+            "via": "native"
+          },
+          {
+            "tool_name": "call_tool",
+            "via": "native"
+          },
+          {
+            "tool_name": "search_expenses",
+            "via": "categorized_search"
+          }
+        ],
+        "langfuse_trace_id": "944bc5837ca24d2f46a330dd6906ac1e",
+        "langfuse_observation_id": "9189040153d5c2f8",
+        "langfuse_trace_url": "https://cloud.langfuse.com/project/cmr1ywsf000d5ad0cex3dm2ha/traces/944bc5837ca24d2f46a330dd6906ac1e"
+      },
+      "error": null,
+      "ok": true
+    }
+  ]
+}

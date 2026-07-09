@@ -1,0 +1,960 @@
+{
+  "mode": "run-all",
+  "session_id": "agent-bench:run-all:pydantic-ai:finance-expense-breakdown-2025:20260708T220636Z:batch",
+  "harness": "pydantic-ai",
+  "task": "finance-expense-breakdown-2025",
+  "repeat": 1,
+  "results": [
+    {
+      "harness": "pydantic-ai",
+      "architecture": "minimal",
+      "task": "finance-expense-breakdown-2025",
+      "prompt": "Show total expense spend by budget category between 2025-01-01 and 2025-12-31.",
+      "output": "\n\n| budget_category | total_spend |\n|-----------------|-------------|\n| Marketing       | 125000.00   |\n| Operations      | 340000.50   |\n| Technology      | 210000.75   |\n| Human Resources | 95000.25    |\n| Facilities      | 180000.00   |",
+      "started_at": "2026-07-08T22:06:36.952652+00:00",
+      "elapsed_seconds": 18.861751292002737,
+      "metadata": {
+        "langfuse_session_id": "agent-bench:run-all:pydantic-ai:finance-expense-breakdown-2025:20260708T220636Z:batch",
+        "tool_calls": [],
+        "langfuse_trace_id": "a647290135d81dba74f316c69cd62f49",
+        "langfuse_observation_id": "63f6bbd03e39d269",
+        "langfuse_trace_url": "https://cloud.langfuse.com/project/cmr1ywsf000d5ad0cex3dm2ha/traces/a647290135d81dba74f316c69cd62f49"
+      },
+      "error": null,
+      "ok": true,
+      "scores": {
+        "scorable": true,
+        "correctness": 0.0,
+        "groundedness": 0.0,
+        "hallucination_rate": 1.0,
+        "overall_score": 0.0,
+        "details": {
+          "refused_or_no_data": false,
+          "empty_output": false,
+          "expected_text_facts": 5,
+          "matched_text_facts": 0,
+          "expected_numeric_facts": 10,
+          "matched_numeric_facts": 0,
+          "claimed_numeric_values": 5,
+          "unsupported_numeric_values": 5
+        }
+      },
+      "tool_selection": {
+        "scorable": true,
+        "expected_tools": [
+          "execute_sql",
+          "get_expense_category_breakdown"
+        ],
+        "total_tool_calls": 0,
+        "tool_recall": 0.0,
+        "tool_precision": 0.0,
+        "distractor_call_count": 0,
+        "distractor_calls": [],
+        "any_distractor_called": false,
+        "distractor_call_rate": 0.0,
+        "fabricated_call_count": 0,
+        "fabricated_calls": [],
+        "any_fabricated_called": false,
+        "fabricated_call_rate": 0.0
+      }
+    },
+    {
+      "harness": "pydantic-ai",
+      "architecture": "enterprise-react",
+      "task": "finance-expense-breakdown-2025",
+      "prompt": "Show total expense spend by budget category between 2025-01-01 and 2025-12-31.",
+      "output": "\n\n| category | total_spend |\n|----------|-------------|\n| capex | 2631248.76 |\n| headcount | 3657223.61 |\n| marketing_spend | 2391712.54 |\n| opex | 3386874.02 |\n| travel | 2971982.01 |",
+      "started_at": "2026-07-08T22:06:55.815082+00:00",
+      "elapsed_seconds": 8.647072667008615,
+      "metadata": {
+        "langfuse_session_id": "agent-bench:run-all:pydantic-ai:finance-expense-breakdown-2025:20260708T220636Z:batch",
+        "tool_calls": [
+          {
+            "tool_name": "get_schema_context",
+            "via": "native"
+          },
+          {
+            "tool_name": "execute_sql",
+            "via": "native"
+          }
+        ],
+        "langfuse_trace_id": "fd9de7a7f6f902a2ff25533019fee71d",
+        "langfuse_observation_id": "e6ea457ba7fb2bae",
+        "langfuse_trace_url": "https://cloud.langfuse.com/project/cmr1ywsf000d5ad0cex3dm2ha/traces/fd9de7a7f6f902a2ff25533019fee71d"
+      },
+      "error": null,
+      "ok": true,
+      "scores": {
+        "scorable": true,
+        "correctness": 0.6667,
+        "groundedness": 1.0,
+        "hallucination_rate": 0.0,
+        "overall_score": 0.8,
+        "details": {
+          "refused_or_no_data": false,
+          "empty_output": false,
+          "expected_text_facts": 5,
+          "matched_text_facts": 5,
+          "expected_numeric_facts": 10,
+          "matched_numeric_facts": 5,
+          "claimed_numeric_values": 5,
+          "unsupported_numeric_values": 0
+        }
+      },
+      "tool_selection": {
+        "scorable": true,
+        "expected_tools": [
+          "execute_sql",
+          "get_expense_category_breakdown"
+        ],
+        "total_tool_calls": 2,
+        "tool_recall": 1.0,
+        "tool_precision": 1.0,
+        "distractor_call_count": 0,
+        "distractor_calls": [],
+        "any_distractor_called": false,
+        "distractor_call_rate": 0.0,
+        "fabricated_call_count": 0,
+        "fabricated_calls": [],
+        "any_fabricated_called": false,
+        "fabricated_call_rate": 0.0
+      }
+    },
+    {
+      "harness": "pydantic-ai",
+      "architecture": "enterprise-codemode",
+      "task": "finance-expense-breakdown-2025",
+      "prompt": "Show total expense spend by budget category between 2025-01-01 and 2025-12-31.",
+      "output": "\n\n| category | total_spend |\n|----------|-------------|\n| capex | 2631248.76 |\n| headcount | 3657223.61 |\n| marketing_spend | 2391712.54 |\n| opex | 3386874.02 |\n| travel | 2971982.01 |",
+      "started_at": "2026-07-08T22:07:04.462288+00:00",
+      "elapsed_seconds": 8.971164041999145,
+      "metadata": {
+        "langfuse_session_id": "agent-bench:run-all:pydantic-ai:finance-expense-breakdown-2025:20260708T220636Z:batch",
+        "tool_calls": [
+          {
+            "tool_name": "list_tables",
+            "via": "native"
+          },
+          {
+            "tool_name": "run_code",
+            "via": "native"
+          },
+          {
+            "tool_name": "list_tables",
+            "via": "code_mode"
+          },
+          {
+            "tool_name": "run_code",
+            "via": "native"
+          },
+          {
+            "tool_name": "execute_sql",
+            "via": "code_mode"
+          }
+        ],
+        "langfuse_trace_id": "0413160ecd34274f802eaf81459c11a6",
+        "langfuse_observation_id": "e7c7cb8a4902c9e6",
+        "langfuse_trace_url": "https://cloud.langfuse.com/project/cmr1ywsf000d5ad0cex3dm2ha/traces/0413160ecd34274f802eaf81459c11a6"
+      },
+      "error": null,
+      "ok": true,
+      "scores": {
+        "scorable": true,
+        "correctness": 0.6667,
+        "groundedness": 1.0,
+        "hallucination_rate": 0.0,
+        "overall_score": 0.8,
+        "details": {
+          "refused_or_no_data": false,
+          "empty_output": false,
+          "expected_text_facts": 5,
+          "matched_text_facts": 5,
+          "expected_numeric_facts": 10,
+          "matched_numeric_facts": 5,
+          "claimed_numeric_values": 5,
+          "unsupported_numeric_values": 0
+        }
+      },
+      "tool_selection": {
+        "scorable": true,
+        "expected_tools": [
+          "execute_sql",
+          "get_expense_category_breakdown"
+        ],
+        "total_tool_calls": 5,
+        "tool_recall": 1.0,
+        "tool_precision": 0.6,
+        "distractor_call_count": 0,
+        "distractor_calls": [],
+        "any_distractor_called": false,
+        "distractor_call_rate": 0.0,
+        "fabricated_call_count": 2,
+        "fabricated_calls": [
+          "run_code",
+          "run_code"
+        ],
+        "any_fabricated_called": true,
+        "fabricated_call_rate": 0.4
+      }
+    },
+    {
+      "harness": "pydantic-ai",
+      "architecture": "enterprise-mcp-react",
+      "task": "finance-expense-breakdown-2025",
+      "prompt": "Show total expense spend by budget category between 2025-01-01 and 2025-12-31.",
+      "output": "\n\n| category | total_spend |\n|----------|-------------|\n| capex | 2631248.76 |\n| headcount | 3657223.61 |\n| marketing_spend | 2391712.54 |\n| opex | 3386874.02 |\n| travel | 2971982.01 |",
+      "started_at": "2026-07-08T22:07:13.433558+00:00",
+      "elapsed_seconds": 6.836138208003831,
+      "metadata": {
+        "langfuse_session_id": "agent-bench:run-all:pydantic-ai:finance-expense-breakdown-2025:20260708T220636Z:batch",
+        "tool_calls": [
+          {
+            "tool_name": "tool_list_tables",
+            "via": "native"
+          },
+          {
+            "tool_name": "tool_execute_sql",
+            "via": "native"
+          }
+        ],
+        "langfuse_trace_id": "07abb12a7218815764fa31ec842c4438",
+        "langfuse_observation_id": "e27a4bda74839a62",
+        "langfuse_trace_url": "https://cloud.langfuse.com/project/cmr1ywsf000d5ad0cex3dm2ha/traces/07abb12a7218815764fa31ec842c4438"
+      },
+      "error": null,
+      "ok": true,
+      "scores": {
+        "scorable": true,
+        "correctness": 0.6667,
+        "groundedness": 1.0,
+        "hallucination_rate": 0.0,
+        "overall_score": 0.8,
+        "details": {
+          "refused_or_no_data": false,
+          "empty_output": false,
+          "expected_text_facts": 5,
+          "matched_text_facts": 5,
+          "expected_numeric_facts": 10,
+          "matched_numeric_facts": 5,
+          "claimed_numeric_values": 5,
+          "unsupported_numeric_values": 0
+        }
+      },
+      "tool_selection": {
+        "scorable": true,
+        "expected_tools": [
+          "execute_sql",
+          "get_expense_category_breakdown"
+        ],
+        "total_tool_calls": 2,
+        "tool_recall": 1.0,
+        "tool_precision": 1.0,
+        "distractor_call_count": 0,
+        "distractor_calls": [],
+        "any_distractor_called": false,
+        "distractor_call_rate": 0.0,
+        "fabricated_call_count": 0,
+        "fabricated_calls": [],
+        "any_fabricated_called": false,
+        "fabricated_call_rate": 0.0
+      }
+    },
+    {
+      "harness": "pydantic-ai",
+      "architecture": "enterprise-mcp-codemode",
+      "task": "finance-expense-breakdown-2025",
+      "prompt": "Show total expense spend by budget category between 2025-01-01 and 2025-12-31.",
+      "output": "\n\n| category | total_spend |\n|----------|-------------|\n| capex | 2631248.76 |\n| headcount | 3657223.61 |\n| marketing_spend | 2391712.54 |\n| opex | 3386874.02 |\n| travel | 2971982.01 |",
+      "started_at": "2026-07-08T22:07:20.269897+00:00",
+      "elapsed_seconds": 8.521469250001246,
+      "metadata": {
+        "langfuse_session_id": "agent-bench:run-all:pydantic-ai:finance-expense-breakdown-2025:20260708T220636Z:batch",
+        "tool_calls": [
+          {
+            "tool_name": "tool_list_tables",
+            "via": "native"
+          },
+          {
+            "tool_name": "run_code",
+            "via": "native"
+          },
+          {
+            "tool_name": "tool_list_tables",
+            "via": "code_mode"
+          },
+          {
+            "tool_name": "run_code",
+            "via": "native"
+          },
+          {
+            "tool_name": "tool_execute_sql",
+            "via": "code_mode"
+          }
+        ],
+        "langfuse_trace_id": "8ae229522c6e543e7bb5b1ac4e81704e",
+        "langfuse_observation_id": "47c3241ef7eba45f",
+        "langfuse_trace_url": "https://cloud.langfuse.com/project/cmr1ywsf000d5ad0cex3dm2ha/traces/8ae229522c6e543e7bb5b1ac4e81704e"
+      },
+      "error": null,
+      "ok": true,
+      "scores": {
+        "scorable": true,
+        "correctness": 0.6667,
+        "groundedness": 1.0,
+        "hallucination_rate": 0.0,
+        "overall_score": 0.8,
+        "details": {
+          "refused_or_no_data": false,
+          "empty_output": false,
+          "expected_text_facts": 5,
+          "matched_text_facts": 5,
+          "expected_numeric_facts": 10,
+          "matched_numeric_facts": 5,
+          "claimed_numeric_values": 5,
+          "unsupported_numeric_values": 0
+        }
+      },
+      "tool_selection": {
+        "scorable": true,
+        "expected_tools": [
+          "execute_sql",
+          "get_expense_category_breakdown"
+        ],
+        "total_tool_calls": 5,
+        "tool_recall": 1.0,
+        "tool_precision": 0.6,
+        "distractor_call_count": 0,
+        "distractor_calls": [],
+        "any_distractor_called": false,
+        "distractor_call_rate": 0.0,
+        "fabricated_call_count": 2,
+        "fabricated_calls": [
+          "run_code",
+          "run_code"
+        ],
+        "any_fabricated_called": true,
+        "fabricated_call_rate": 0.4
+      }
+    },
+    {
+      "harness": "pydantic-ai",
+      "architecture": "enterprise-sql-react",
+      "task": "finance-expense-breakdown-2025",
+      "prompt": "Show total expense spend by budget category between 2025-01-01 and 2025-12-31.",
+      "output": "\n\n| category | total_spend |\n|----------|-------------|\n| capex | 2631248.76 |\n| headcount | 3657223.61 |\n| marketing_spend | 2391712.54 |\n| opex | 3386874.02 |\n| travel | 2971982.01 |",
+      "started_at": "2026-07-08T22:07:28.791452+00:00",
+      "elapsed_seconds": 7.194731625000713,
+      "metadata": {
+        "langfuse_session_id": "agent-bench:run-all:pydantic-ai:finance-expense-breakdown-2025:20260708T220636Z:batch",
+        "tool_calls": [
+          {
+            "tool_name": "list_tables",
+            "via": "native"
+          },
+          {
+            "tool_name": "describe_table",
+            "via": "native"
+          },
+          {
+            "tool_name": "execute_sql",
+            "via": "native"
+          }
+        ],
+        "langfuse_trace_id": "a122453d2411f9957638d05cc89d6f0b",
+        "langfuse_observation_id": "3c1ad9e1fa70f112",
+        "langfuse_trace_url": "https://cloud.langfuse.com/project/cmr1ywsf000d5ad0cex3dm2ha/traces/a122453d2411f9957638d05cc89d6f0b"
+      },
+      "error": null,
+      "ok": true,
+      "scores": {
+        "scorable": true,
+        "correctness": 0.6667,
+        "groundedness": 1.0,
+        "hallucination_rate": 0.0,
+        "overall_score": 0.8,
+        "details": {
+          "refused_or_no_data": false,
+          "empty_output": false,
+          "expected_text_facts": 5,
+          "matched_text_facts": 5,
+          "expected_numeric_facts": 10,
+          "matched_numeric_facts": 5,
+          "claimed_numeric_values": 5,
+          "unsupported_numeric_values": 0
+        }
+      },
+      "tool_selection": {
+        "scorable": true,
+        "expected_tools": [
+          "execute_sql",
+          "get_expense_category_breakdown"
+        ],
+        "total_tool_calls": 3,
+        "tool_recall": 1.0,
+        "tool_precision": 1.0,
+        "distractor_call_count": 0,
+        "distractor_calls": [],
+        "any_distractor_called": false,
+        "distractor_call_rate": 0.0,
+        "fabricated_call_count": 0,
+        "fabricated_calls": [],
+        "any_fabricated_called": false,
+        "fabricated_call_rate": 0.0
+      }
+    },
+    {
+      "harness": "pydantic-ai",
+      "architecture": "enterprise-sql-codemode",
+      "task": "finance-expense-breakdown-2025",
+      "prompt": "Show total expense spend by budget category between 2025-01-01 and 2025-12-31.",
+      "output": "\n\n| category | total_spend |\n|----------|-------------|\n| capex | 2631248.76 |\n| headcount | 3657223.61 |\n| marketing_spend | 2391712.54 |\n| opex | 3386874.02 |\n| travel | 2971982.01 |",
+      "started_at": "2026-07-08T22:07:35.986312+00:00",
+      "elapsed_seconds": 8.27562625000428,
+      "metadata": {
+        "langfuse_session_id": "agent-bench:run-all:pydantic-ai:finance-expense-breakdown-2025:20260708T220636Z:batch",
+        "tool_calls": [
+          {
+            "tool_name": "list_tables",
+            "via": "native"
+          },
+          {
+            "tool_name": "run_code",
+            "via": "native"
+          },
+          {
+            "tool_name": "list_tables",
+            "via": "code_mode"
+          },
+          {
+            "tool_name": "describe_table",
+            "via": "native"
+          },
+          {
+            "tool_name": "run_code",
+            "via": "native"
+          },
+          {
+            "tool_name": "describe_table",
+            "via": "code_mode"
+          },
+          {
+            "tool_name": "run_code",
+            "via": "native"
+          },
+          {
+            "tool_name": "execute_sql",
+            "via": "code_mode"
+          }
+        ],
+        "langfuse_trace_id": "2ceba05b72d91cc7c834035508bdff33",
+        "langfuse_observation_id": "ac31961a08454072",
+        "langfuse_trace_url": "https://cloud.langfuse.com/project/cmr1ywsf000d5ad0cex3dm2ha/traces/2ceba05b72d91cc7c834035508bdff33"
+      },
+      "error": null,
+      "ok": true,
+      "scores": {
+        "scorable": true,
+        "correctness": 0.6667,
+        "groundedness": 1.0,
+        "hallucination_rate": 0.0,
+        "overall_score": 0.8,
+        "details": {
+          "refused_or_no_data": false,
+          "empty_output": false,
+          "expected_text_facts": 5,
+          "matched_text_facts": 5,
+          "expected_numeric_facts": 10,
+          "matched_numeric_facts": 5,
+          "claimed_numeric_values": 5,
+          "unsupported_numeric_values": 0
+        }
+      },
+      "tool_selection": {
+        "scorable": true,
+        "expected_tools": [
+          "execute_sql",
+          "get_expense_category_breakdown"
+        ],
+        "total_tool_calls": 8,
+        "tool_recall": 1.0,
+        "tool_precision": 0.625,
+        "distractor_call_count": 0,
+        "distractor_calls": [],
+        "any_distractor_called": false,
+        "distractor_call_rate": 0.0,
+        "fabricated_call_count": 3,
+        "fabricated_calls": [
+          "run_code",
+          "run_code",
+          "run_code"
+        ],
+        "any_fabricated_called": true,
+        "fabricated_call_rate": 0.375
+      }
+    },
+    {
+      "harness": "pydantic-ai",
+      "architecture": "enterprise-react-toolsearch",
+      "task": "finance-expense-breakdown-2025",
+      "prompt": "Show total expense spend by budget category between 2025-01-01 and 2025-12-31.",
+      "output": "\n\n```sql\nSELECT category, SUM(amount_usd) AS total_spend\nFROM expenses\nWHERE incurred_at BETWEEN '2025-01-01' AND '2025-12-31'\nGROUP BY category;\n```",
+      "started_at": "2026-07-08T22:07:44.262096+00:00",
+      "elapsed_seconds": 36.07483070899616,
+      "metadata": {
+        "langfuse_session_id": "agent-bench:run-all:pydantic-ai:finance-expense-breakdown-2025:20260708T220636Z:batch",
+        "tool_calls": [
+          {
+            "tool_name": "search_tools",
+            "via": "native"
+          },
+          {
+            "tool_name": "search_tools",
+            "via": "native"
+          },
+          {
+            "tool_name": "search_tools",
+            "via": "native"
+          },
+          {
+            "tool_name": "get_schema_context",
+            "via": "native"
+          }
+        ],
+        "langfuse_trace_id": "077eabefbc7911c9fdcd603528d80b53",
+        "langfuse_observation_id": "2f24f25cb41a0ca7",
+        "langfuse_trace_url": "https://cloud.langfuse.com/project/cmr1ywsf000d5ad0cex3dm2ha/traces/077eabefbc7911c9fdcd603528d80b53"
+      },
+      "error": null,
+      "ok": true,
+      "scores": {
+        "scorable": true,
+        "correctness": 0.0,
+        "groundedness": 0.0,
+        "hallucination_rate": 1.0,
+        "overall_score": 0.0,
+        "details": {
+          "refused_or_no_data": false,
+          "empty_output": false,
+          "expected_text_facts": 5,
+          "matched_text_facts": 0,
+          "expected_numeric_facts": 10,
+          "matched_numeric_facts": 0,
+          "claimed_numeric_values": 4,
+          "unsupported_numeric_values": 4
+        }
+      },
+      "tool_selection": {
+        "scorable": true,
+        "expected_tools": [
+          "execute_sql",
+          "get_expense_category_breakdown"
+        ],
+        "total_tool_calls": 4,
+        "tool_recall": 0.0,
+        "tool_precision": 1.0,
+        "distractor_call_count": 0,
+        "distractor_calls": [],
+        "any_distractor_called": false,
+        "distractor_call_rate": 0.0,
+        "fabricated_call_count": 0,
+        "fabricated_calls": [],
+        "any_fabricated_called": false,
+        "fabricated_call_rate": 0.0
+      }
+    },
+    {
+      "harness": "pydantic-ai",
+      "architecture": "enterprise-codemode-toolsearch",
+      "task": "finance-expense-breakdown-2025",
+      "prompt": "Show total expense spend by budget category between 2025-01-01 and 2025-12-31.",
+      "output": "",
+      "started_at": "2026-07-08T22:08:20.337314+00:00",
+      "elapsed_seconds": 18.315945207999903,
+      "metadata": {
+        "langfuse_session_id": "agent-bench:run-all:pydantic-ai:finance-expense-breakdown-2025:20260708T220636Z:batch"
+      },
+      "error": "UnexpectedModelBehavior: Tool 'search_tools' exceeded max retries count of 1",
+      "ok": false,
+      "scores": {
+        "scorable": true,
+        "correctness": 0.0,
+        "groundedness": 0.0,
+        "hallucination_rate": 1.0,
+        "overall_score": 0.0,
+        "details": {
+          "refused_or_no_data": true,
+          "empty_output": true,
+          "expected_text_facts": 5,
+          "matched_text_facts": 0,
+          "expected_numeric_facts": 10,
+          "matched_numeric_facts": 0,
+          "claimed_numeric_values": 0,
+          "unsupported_numeric_values": 0
+        }
+      },
+      "tool_selection": {
+        "scorable": true,
+        "expected_tools": [
+          "execute_sql",
+          "get_expense_category_breakdown"
+        ],
+        "total_tool_calls": 0,
+        "tool_recall": 0.0,
+        "tool_precision": 0.0,
+        "distractor_call_count": 0,
+        "distractor_calls": [],
+        "any_distractor_called": false,
+        "distractor_call_rate": 0.0,
+        "fabricated_call_count": 0,
+        "fabricated_calls": [],
+        "any_fabricated_called": false,
+        "fabricated_call_rate": 0.0
+      }
+    },
+    {
+      "harness": "pydantic-ai",
+      "architecture": "enterprise-react-thinking",
+      "task": "finance-expense-breakdown-2025",
+      "prompt": "Show total expense spend by budget category between 2025-01-01 and 2025-12-31.",
+      "output": "\n\n| category | total_spend |\n|----------|-------------|\n| capex | 2631248.76 |\n| headcount | 3657223.61 |\n| marketing_spend | 2391712.54 |\n| opex | 3386874.02 |\n| travel | 2971982.01 |",
+      "started_at": "2026-07-08T22:08:38.653501+00:00",
+      "elapsed_seconds": 9.258789291998255,
+      "metadata": {
+        "langfuse_session_id": "agent-bench:run-all:pydantic-ai:finance-expense-breakdown-2025:20260708T220636Z:batch",
+        "tool_calls": [
+          {
+            "tool_name": "get_schema_context",
+            "via": "native"
+          },
+          {
+            "tool_name": "execute_sql",
+            "via": "native"
+          }
+        ],
+        "langfuse_trace_id": "63f77f97471b79fd7985e7f0314b720b",
+        "langfuse_observation_id": "31a7b66a22a16e55",
+        "langfuse_trace_url": "https://cloud.langfuse.com/project/cmr1ywsf000d5ad0cex3dm2ha/traces/63f77f97471b79fd7985e7f0314b720b"
+      },
+      "error": null,
+      "ok": true,
+      "scores": {
+        "scorable": true,
+        "correctness": 0.6667,
+        "groundedness": 1.0,
+        "hallucination_rate": 0.0,
+        "overall_score": 0.8,
+        "details": {
+          "refused_or_no_data": false,
+          "empty_output": false,
+          "expected_text_facts": 5,
+          "matched_text_facts": 5,
+          "expected_numeric_facts": 10,
+          "matched_numeric_facts": 5,
+          "claimed_numeric_values": 5,
+          "unsupported_numeric_values": 0
+        }
+      },
+      "tool_selection": {
+        "scorable": true,
+        "expected_tools": [
+          "execute_sql",
+          "get_expense_category_breakdown"
+        ],
+        "total_tool_calls": 2,
+        "tool_recall": 1.0,
+        "tool_precision": 1.0,
+        "distractor_call_count": 0,
+        "distractor_calls": [],
+        "any_distractor_called": false,
+        "distractor_call_rate": 0.0,
+        "fabricated_call_count": 0,
+        "fabricated_calls": [],
+        "any_fabricated_called": false,
+        "fabricated_call_rate": 0.0
+      }
+    },
+    {
+      "harness": "pydantic-ai",
+      "architecture": "enterprise-codemode-thinking",
+      "task": "finance-expense-breakdown-2025",
+      "prompt": "Show total expense spend by budget category between 2025-01-01 and 2025-12-31.",
+      "output": "\n\n| budget_category | total_spend |\n|-----------------|-------------|\n| headcount | 3657223.61 |\n| opex | 3386874.02 |\n| travel | 2971982.01 |\n| capex | 2631248.76 |\n| marketing_spend | 2391712.54 |",
+      "started_at": "2026-07-08T22:08:47.912483+00:00",
+      "elapsed_seconds": 19.56146087500383,
+      "metadata": {
+        "langfuse_session_id": "agent-bench:run-all:pydantic-ai:finance-expense-breakdown-2025:20260708T220636Z:batch",
+        "tool_calls": [
+          {
+            "tool_name": "list_tables",
+            "via": "native"
+          },
+          {
+            "tool_name": "describe_table",
+            "via": "native"
+          },
+          {
+            "tool_name": "run_code",
+            "via": "native"
+          },
+          {
+            "tool_name": "execute_sql",
+            "via": "code_mode"
+          },
+          {
+            "tool_name": "run_code",
+            "via": "native"
+          },
+          {
+            "tool_name": "execute_sql",
+            "via": "code_mode"
+          },
+          {
+            "tool_name": "run_code",
+            "via": "native"
+          },
+          {
+            "tool_name": "execute_sql",
+            "via": "code_mode"
+          },
+          {
+            "tool_name": "run_code",
+            "via": "native"
+          },
+          {
+            "tool_name": "run_code",
+            "via": "native"
+          },
+          {
+            "tool_name": "execute_sql",
+            "via": "code_mode"
+          },
+          {
+            "tool_name": "execute_sql",
+            "via": "code_mode"
+          },
+          {
+            "tool_name": "execute_sql",
+            "via": "code_mode"
+          },
+          {
+            "tool_name": "execute_sql",
+            "via": "code_mode"
+          },
+          {
+            "tool_name": "run_code",
+            "via": "native"
+          },
+          {
+            "tool_name": "execute_sql",
+            "via": "code_mode"
+          }
+        ],
+        "langfuse_trace_id": "63b23e94c47075c4c87f320d357ff0e4",
+        "langfuse_observation_id": "c52b6cde0b3d47aa",
+        "langfuse_trace_url": "https://cloud.langfuse.com/project/cmr1ywsf000d5ad0cex3dm2ha/traces/63b23e94c47075c4c87f320d357ff0e4"
+      },
+      "error": null,
+      "ok": true,
+      "scores": {
+        "scorable": true,
+        "correctness": 0.6667,
+        "groundedness": 1.0,
+        "hallucination_rate": 0.0,
+        "overall_score": 0.8,
+        "details": {
+          "refused_or_no_data": false,
+          "empty_output": false,
+          "expected_text_facts": 5,
+          "matched_text_facts": 5,
+          "expected_numeric_facts": 10,
+          "matched_numeric_facts": 5,
+          "claimed_numeric_values": 5,
+          "unsupported_numeric_values": 0
+        }
+      },
+      "tool_selection": {
+        "scorable": true,
+        "expected_tools": [
+          "execute_sql",
+          "get_expense_category_breakdown"
+        ],
+        "total_tool_calls": 16,
+        "tool_recall": 1.0,
+        "tool_precision": 0.625,
+        "distractor_call_count": 0,
+        "distractor_calls": [],
+        "any_distractor_called": false,
+        "distractor_call_rate": 0.0,
+        "fabricated_call_count": 6,
+        "fabricated_calls": [
+          "run_code",
+          "run_code",
+          "run_code",
+          "run_code",
+          "run_code",
+          "run_code"
+        ],
+        "any_fabricated_called": true,
+        "fabricated_call_rate": 0.375
+      }
+    },
+    {
+      "harness": "pydantic-ai",
+      "architecture": "enterprise-react-toolsearch-120",
+      "task": "finance-expense-breakdown-2025",
+      "prompt": "Show total expense spend by budget category between 2025-01-01 and 2025-12-31.",
+      "output": "\n\n| category | total_spend_usd |\n|----------|-----------------|\n| headcount | 3657223.61 |\n| opex | 3386874.02 |\n| travel | 2971982.01 |\n| capex | 2631248.76 |\n| marketing_spend | 2391712.54 |",
+      "started_at": "2026-07-08T22:09:07.474135+00:00",
+      "elapsed_seconds": 7.127058832993498,
+      "metadata": {
+        "langfuse_session_id": "agent-bench:run-all:pydantic-ai:finance-expense-breakdown-2025:20260708T220636Z:batch",
+        "tool_calls": [
+          {
+            "tool_name": "search_tools",
+            "via": "native"
+          },
+          {
+            "tool_name": "get_expense_category_breakdown",
+            "via": "native"
+          }
+        ],
+        "langfuse_trace_id": "a690e1ef281d0398ca29d90f82bfb6f9",
+        "langfuse_observation_id": "4151d61a09fc0774",
+        "langfuse_trace_url": "https://cloud.langfuse.com/project/cmr1ywsf000d5ad0cex3dm2ha/traces/a690e1ef281d0398ca29d90f82bfb6f9"
+      },
+      "error": null,
+      "ok": true,
+      "scores": {
+        "scorable": true,
+        "correctness": 0.6667,
+        "groundedness": 1.0,
+        "hallucination_rate": 0.0,
+        "overall_score": 0.8,
+        "details": {
+          "refused_or_no_data": false,
+          "empty_output": false,
+          "expected_text_facts": 5,
+          "matched_text_facts": 5,
+          "expected_numeric_facts": 10,
+          "matched_numeric_facts": 5,
+          "claimed_numeric_values": 5,
+          "unsupported_numeric_values": 0
+        }
+      },
+      "tool_selection": {
+        "scorable": true,
+        "expected_tools": [
+          "execute_sql",
+          "get_expense_category_breakdown"
+        ],
+        "total_tool_calls": 2,
+        "tool_recall": 1.0,
+        "tool_precision": 1.0,
+        "distractor_call_count": 0,
+        "distractor_calls": [],
+        "any_distractor_called": false,
+        "distractor_call_rate": 0.0,
+        "fabricated_call_count": 0,
+        "fabricated_calls": [],
+        "any_fabricated_called": false,
+        "fabricated_call_rate": 0.0
+      }
+    },
+    {
+      "harness": "pydantic-ai",
+      "architecture": "enterprise-categorized-search",
+      "task": "finance-expense-breakdown-2025",
+      "prompt": "Show total expense spend by budget category between 2025-01-01 and 2025-12-31.",
+      "output": "\n\n| category | expense_count | total_spend_usd |\n|---|---|---|\n| headcount | 39 | 3657223.61 |\n| opex | 48 | 3386874.02 |\n| travel | 48 | 2971982.01 |\n| capex | 41 | 2631248.76 |\n| marketing_spend | 48 | 2391712.54 |",
+      "started_at": "2026-07-08T22:09:14.601376+00:00",
+      "elapsed_seconds": 6.8923856250039535,
+      "metadata": {
+        "langfuse_session_id": "agent-bench:run-all:pydantic-ai:finance-expense-breakdown-2025:20260708T220636Z:batch",
+        "tool_calls": [
+          {
+            "tool_name": "list_tool_categories",
+            "via": "native"
+          },
+          {
+            "tool_name": "search_tools_in_category",
+            "via": "native"
+          },
+          {
+            "tool_name": "call_tool",
+            "via": "native"
+          },
+          {
+            "tool_name": "get_expense_category_breakdown",
+            "via": "categorized_search"
+          }
+        ],
+        "langfuse_trace_id": "0a8c49460645acf9c720aea4603a558d",
+        "langfuse_observation_id": "3aa876d934f84cac",
+        "langfuse_trace_url": "https://cloud.langfuse.com/project/cmr1ywsf000d5ad0cex3dm2ha/traces/0a8c49460645acf9c720aea4603a558d"
+      },
+      "error": null,
+      "ok": true,
+      "scores": {
+        "scorable": true,
+        "correctness": 1.0,
+        "groundedness": 1.0,
+        "hallucination_rate": 0.0,
+        "overall_score": 1.0,
+        "details": {
+          "refused_or_no_data": false,
+          "empty_output": false,
+          "expected_text_facts": 5,
+          "matched_text_facts": 5,
+          "expected_numeric_facts": 10,
+          "matched_numeric_facts": 10,
+          "claimed_numeric_values": 8,
+          "unsupported_numeric_values": 0
+        }
+      },
+      "tool_selection": {
+        "scorable": true,
+        "expected_tools": [
+          "execute_sql",
+          "get_expense_category_breakdown"
+        ],
+        "total_tool_calls": 4,
+        "tool_recall": 1.0,
+        "tool_precision": 1.0,
+        "distractor_call_count": 0,
+        "distractor_calls": [],
+        "any_distractor_called": false,
+        "distractor_call_rate": 0.0,
+        "fabricated_call_count": 0,
+        "fabricated_calls": [],
+        "any_fabricated_called": false,
+        "fabricated_call_rate": 0.0
+      }
+    }
+  ],
+  "scored_at": "2026-07-08T22:25:19.865612+00:00",
+  "ground_truth_generated_at": "2026-07-08T20:08:57.272260+00:00",
+  "score_summary": {
+    "scored_results": 13,
+    "overall_score_formula": "harmonic_mean(correctness, groundedness)",
+    "avg_overall_score": 0.6308,
+    "best_architecture": "enterprise-categorized-search",
+    "best_overall_score": 1.0,
+    "avg_correctness": 0.5385,
+    "avg_groundedness": 0.7692,
+    "avg_hallucination_rate": 0.2308,
+    "tool_selection": {
+      "scored_tasks": 13,
+      "avg_tool_precision": 0.7269,
+      "avg_tool_recall": 0.7692,
+      "total_tool_calls": 53,
+      "total_distractor_calls": 0,
+      "distractor_call_rate": 0.0,
+      "tasks_with_any_distractor_call": 0,
+      "tasks_with_any_distractor_call_pct": 0.0,
+      "total_fabricated_calls": 13,
+      "fabricated_call_rate": 0.2453,
+      "tasks_with_any_fabricated_call": 4,
+      "tasks_with_any_fabricated_call_pct": 30.77
+    }
+  }
+}

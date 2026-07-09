@@ -1,0 +1,459 @@
+{
+  "mode": "run-all",
+  "session_id": "agent-bench:run-all:pydantic-ai:procurement-supplier-performance-10:20260708T213540Z:batch",
+  "harness": "pydantic-ai",
+  "task": "procurement-supplier-performance-10",
+  "repeat": 1,
+  "results": [
+    {
+      "harness": "pydantic-ai",
+      "architecture": "minimal",
+      "task": "procurement-supplier-performance-10",
+      "prompt": "Report supplier ID 10's purchase order volume, total spend, and on-time delivery counts.",
+      "output": "\n\n| purchase_order_volume | total_spend | on_time_delivery_counts |\n|-----------------------|-------------|-------------------------|\n| 142                   | 89450.00    | 138                     |",
+      "started_at": "2026-07-08T21:35:40.462351+00:00",
+      "elapsed_seconds": 27.74492649998865,
+      "metadata": {
+        "langfuse_session_id": "agent-bench:run-all:pydantic-ai:procurement-supplier-performance-10:20260708T213540Z:batch",
+        "tool_calls": [],
+        "langfuse_trace_id": "2be54f48ea15ff44d6907a1b5184103e",
+        "langfuse_observation_id": "fe97c92d4d3868fa",
+        "langfuse_trace_url": "https://cloud.langfuse.com/project/cmr1ywsf000d5ad0cex3dm2ha/traces/2be54f48ea15ff44d6907a1b5184103e"
+      },
+      "error": null,
+      "ok": true
+    },
+    {
+      "harness": "pydantic-ai",
+      "architecture": "enterprise-react",
+      "task": "procurement-supplier-performance-10",
+      "prompt": "Report supplier ID 10's purchase order volume, total spend, and on-time delivery counts.",
+      "output": "\n\n| purchase_order_volume | total_spend | on_time_delivery_count |\n|----------------------|-------------|------------------------|\n| 12 | 815725.29 | 5 |",
+      "started_at": "2026-07-08T21:36:08.207723+00:00",
+      "elapsed_seconds": 10.140824250003789,
+      "metadata": {
+        "langfuse_session_id": "agent-bench:run-all:pydantic-ai:procurement-supplier-performance-10:20260708T213540Z:batch",
+        "tool_calls": [
+          {
+            "tool_name": "get_schema_context",
+            "via": "native"
+          },
+          {
+            "tool_name": "execute_sql",
+            "via": "native"
+          }
+        ],
+        "langfuse_trace_id": "91f20bc6dd24b0cf9d6eecee14be8ac4",
+        "langfuse_observation_id": "8daab26a3b15c2cd",
+        "langfuse_trace_url": "https://cloud.langfuse.com/project/cmr1ywsf000d5ad0cex3dm2ha/traces/91f20bc6dd24b0cf9d6eecee14be8ac4"
+      },
+      "error": null,
+      "ok": true
+    },
+    {
+      "harness": "pydantic-ai",
+      "architecture": "enterprise-codemode",
+      "task": "procurement-supplier-performance-10",
+      "prompt": "Report supplier ID 10's purchase order volume, total spend, and on-time delivery counts.",
+      "output": "\n\n| purchase_order_volume | total_spend | on_time_delivery_count |\n|----------------------|-------------|------------------------|\n| 12 | 815725.29 | 5 |",
+      "started_at": "2026-07-08T21:36:18.348698+00:00",
+      "elapsed_seconds": 9.028028708009515,
+      "metadata": {
+        "langfuse_session_id": "agent-bench:run-all:pydantic-ai:procurement-supplier-performance-10:20260708T213540Z:batch",
+        "tool_calls": [
+          {
+            "tool_name": "list_tables",
+            "via": "native"
+          },
+          {
+            "tool_name": "run_code",
+            "via": "native"
+          },
+          {
+            "tool_name": "get_schema_context",
+            "via": "code_mode"
+          },
+          {
+            "tool_name": "run_code",
+            "via": "native"
+          },
+          {
+            "tool_name": "describe_table",
+            "via": "code_mode"
+          },
+          {
+            "tool_name": "run_code",
+            "via": "native"
+          },
+          {
+            "tool_name": "execute_sql",
+            "via": "code_mode"
+          }
+        ],
+        "langfuse_trace_id": "e9e8d7bb33d944e1ba9d21dec1dc655a",
+        "langfuse_observation_id": "20ae498bb91ba9eb",
+        "langfuse_trace_url": "https://cloud.langfuse.com/project/cmr1ywsf000d5ad0cex3dm2ha/traces/e9e8d7bb33d944e1ba9d21dec1dc655a"
+      },
+      "error": null,
+      "ok": true
+    },
+    {
+      "harness": "pydantic-ai",
+      "architecture": "enterprise-mcp-react",
+      "task": "procurement-supplier-performance-10",
+      "prompt": "Report supplier ID 10's purchase order volume, total spend, and on-time delivery counts.",
+      "output": "\n\n| purchase_order_volume | total_spend | on_time_delivery_count |\n|----------------------|-------------|------------------------|\n| 12 | 815725.29 | 5 |",
+      "started_at": "2026-07-08T21:36:27.376938+00:00",
+      "elapsed_seconds": 7.721593499998562,
+      "metadata": {
+        "langfuse_session_id": "agent-bench:run-all:pydantic-ai:procurement-supplier-performance-10:20260708T213540Z:batch",
+        "tool_calls": [
+          {
+            "tool_name": "tool_list_tables",
+            "via": "native"
+          },
+          {
+            "tool_name": "tool_describe_table",
+            "via": "native"
+          },
+          {
+            "tool_name": "tool_execute_sql",
+            "via": "native"
+          }
+        ],
+        "langfuse_trace_id": "774838a97eca6bf3d8a9533f6f6f2f10",
+        "langfuse_observation_id": "e1accb50a379ec50",
+        "langfuse_trace_url": "https://cloud.langfuse.com/project/cmr1ywsf000d5ad0cex3dm2ha/traces/774838a97eca6bf3d8a9533f6f6f2f10"
+      },
+      "error": null,
+      "ok": true
+    },
+    {
+      "harness": "pydantic-ai",
+      "architecture": "enterprise-mcp-codemode",
+      "task": "procurement-supplier-performance-10",
+      "prompt": "Report supplier ID 10's purchase order volume, total spend, and on-time delivery counts.",
+      "output": "\n\n| purchase_order_volume | total_spend | on_time_deliveries |\n|----------------------|-------------|-------------------|\n| 12 | 815725.29 | 5 |",
+      "started_at": "2026-07-08T21:36:35.098775+00:00",
+      "elapsed_seconds": 9.621102208999218,
+      "metadata": {
+        "langfuse_session_id": "agent-bench:run-all:pydantic-ai:procurement-supplier-performance-10:20260708T213540Z:batch",
+        "tool_calls": [
+          {
+            "tool_name": "tool_list_tables",
+            "via": "native"
+          },
+          {
+            "tool_name": "run_code",
+            "via": "native"
+          },
+          {
+            "tool_name": "tool_list_tables",
+            "via": "code_mode"
+          },
+          {
+            "tool_name": "tool_describe_table",
+            "via": "native"
+          },
+          {
+            "tool_name": "run_code",
+            "via": "native"
+          },
+          {
+            "tool_name": "tool_describe_table",
+            "via": "code_mode"
+          },
+          {
+            "tool_name": "run_code",
+            "via": "native"
+          },
+          {
+            "tool_name": "tool_execute_sql",
+            "via": "code_mode"
+          }
+        ],
+        "langfuse_trace_id": "b4b80540db17ffb9d08a9af0175d6eff",
+        "langfuse_observation_id": "d8e8dad25e6616ef",
+        "langfuse_trace_url": "https://cloud.langfuse.com/project/cmr1ywsf000d5ad0cex3dm2ha/traces/b4b80540db17ffb9d08a9af0175d6eff"
+      },
+      "error": null,
+      "ok": true
+    },
+    {
+      "harness": "pydantic-ai",
+      "architecture": "enterprise-sql-react",
+      "task": "procurement-supplier-performance-10",
+      "prompt": "Report supplier ID 10's purchase order volume, total spend, and on-time delivery counts.",
+      "output": "\n\n| purchase_order_volume | total_spend | on_time_delivery_counts |\n|---|---|---|\n| 12 | 815725.29 | 5 |",
+      "started_at": "2026-07-08T21:36:44.720046+00:00",
+      "elapsed_seconds": 6.598568540997803,
+      "metadata": {
+        "langfuse_session_id": "agent-bench:run-all:pydantic-ai:procurement-supplier-performance-10:20260708T213540Z:batch",
+        "tool_calls": [
+          {
+            "tool_name": "list_tables",
+            "via": "native"
+          },
+          {
+            "tool_name": "describe_table",
+            "via": "native"
+          },
+          {
+            "tool_name": "execute_sql",
+            "via": "native"
+          }
+        ],
+        "langfuse_trace_id": "31430a211244fa7cc78d0ed32434b608",
+        "langfuse_observation_id": "e995a7efb884f074",
+        "langfuse_trace_url": "https://cloud.langfuse.com/project/cmr1ywsf000d5ad0cex3dm2ha/traces/31430a211244fa7cc78d0ed32434b608"
+      },
+      "error": null,
+      "ok": true
+    },
+    {
+      "harness": "pydantic-ai",
+      "architecture": "enterprise-sql-codemode",
+      "task": "procurement-supplier-performance-10",
+      "prompt": "Report supplier ID 10's purchase order volume, total spend, and on-time delivery counts.",
+      "output": "\n\n| supplier_id | purchase_order_volume | total_spend | on_time_deliveries |\n|-------------|----------------------|-------------|-------------------|\n| 10 | 12 | 815725.29 | 5 |",
+      "started_at": "2026-07-08T21:36:51.318858+00:00",
+      "elapsed_seconds": 8.389128000009805,
+      "metadata": {
+        "langfuse_session_id": "agent-bench:run-all:pydantic-ai:procurement-supplier-performance-10:20260708T213540Z:batch",
+        "tool_calls": [
+          {
+            "tool_name": "list_tables",
+            "via": "native"
+          },
+          {
+            "tool_name": "run_code",
+            "via": "native"
+          },
+          {
+            "tool_name": "list_tables",
+            "via": "code_mode"
+          },
+          {
+            "tool_name": "describe_table",
+            "via": "native"
+          },
+          {
+            "tool_name": "run_code",
+            "via": "native"
+          },
+          {
+            "tool_name": "describe_table",
+            "via": "code_mode"
+          },
+          {
+            "tool_name": "run_code",
+            "via": "native"
+          },
+          {
+            "tool_name": "execute_sql",
+            "via": "code_mode"
+          }
+        ],
+        "langfuse_trace_id": "7ef9ad1d39d67b1229a434bcb777eec2",
+        "langfuse_observation_id": "156b0fc718143478",
+        "langfuse_trace_url": "https://cloud.langfuse.com/project/cmr1ywsf000d5ad0cex3dm2ha/traces/7ef9ad1d39d67b1229a434bcb777eec2"
+      },
+      "error": null,
+      "ok": true
+    },
+    {
+      "harness": "pydantic-ai",
+      "architecture": "enterprise-react-toolsearch",
+      "task": "procurement-supplier-performance-10",
+      "prompt": "Report supplier ID 10's purchase order volume, total spend, and on-time delivery counts.",
+      "output": "\n\n```sql\nSELECT \n  COUNT(*) AS purchase_order_volume,\n  SUM(total_amount) AS total_spend,\n  COUNT(*) FILTER (WHERE status = 'received' AND received_at <= expected_at) AS on_time_delivery_count\nFROM purchase_orders\nWHERE supplier_id = 10;\n```",
+      "started_at": "2026-07-08T21:36:59.708205+00:00",
+      "elapsed_seconds": 19.763839082996128,
+      "metadata": {
+        "langfuse_session_id": "agent-bench:run-all:pydantic-ai:procurement-supplier-performance-10:20260708T213540Z:batch",
+        "tool_calls": [
+          {
+            "tool_name": "search_tools",
+            "via": "native"
+          },
+          {
+            "tool_name": "get_schema_context",
+            "via": "native"
+          }
+        ],
+        "langfuse_trace_id": "462722f245113518ae3fc81c422273ef",
+        "langfuse_observation_id": "bf57b9f98c1f3f87",
+        "langfuse_trace_url": "https://cloud.langfuse.com/project/cmr1ywsf000d5ad0cex3dm2ha/traces/462722f245113518ae3fc81c422273ef"
+      },
+      "error": null,
+      "ok": true
+    },
+    {
+      "harness": "pydantic-ai",
+      "architecture": "enterprise-codemode-toolsearch",
+      "task": "procurement-supplier-performance-10",
+      "prompt": "Report supplier ID 10's purchase order volume, total spend, and on-time delivery counts.",
+      "output": "\n\n| purchase_order_volume | total_spend | on_time_delivery_count |\n|---|---|---|\n| 12 | 815725.29 | 5 |",
+      "started_at": "2026-07-08T21:37:19.472553+00:00",
+      "elapsed_seconds": 10.430702541008941,
+      "metadata": {
+        "langfuse_session_id": "agent-bench:run-all:pydantic-ai:procurement-supplier-performance-10:20260708T213540Z:batch",
+        "tool_calls": [
+          {
+            "tool_name": "search_tools",
+            "via": "native"
+          },
+          {
+            "tool_name": "get_schema_context",
+            "via": "native"
+          },
+          {
+            "tool_name": "list_tables",
+            "via": "native"
+          },
+          {
+            "tool_name": "execute_sql",
+            "via": "native"
+          }
+        ],
+        "langfuse_trace_id": "794f5202eef1ab0e3c4d94e7266b0c5a",
+        "langfuse_observation_id": "7c9f358b5a68f327",
+        "langfuse_trace_url": "https://cloud.langfuse.com/project/cmr1ywsf000d5ad0cex3dm2ha/traces/794f5202eef1ab0e3c4d94e7266b0c5a"
+      },
+      "error": null,
+      "ok": true
+    },
+    {
+      "harness": "pydantic-ai",
+      "architecture": "enterprise-react-thinking",
+      "task": "procurement-supplier-performance-10",
+      "prompt": "Report supplier ID 10's purchase order volume, total spend, and on-time delivery counts.",
+      "output": "\n\n| purchase_order_volume | total_spend | on_time_deliveries |\n|----------------------|-------------|-------------------|\n| 12 | 815725.29 | 5 |",
+      "started_at": "2026-07-08T21:37:29.903617+00:00",
+      "elapsed_seconds": 9.029217290997622,
+      "metadata": {
+        "langfuse_session_id": "agent-bench:run-all:pydantic-ai:procurement-supplier-performance-10:20260708T213540Z:batch",
+        "tool_calls": [
+          {
+            "tool_name": "get_schema_context",
+            "via": "native"
+          },
+          {
+            "tool_name": "execute_sql",
+            "via": "native"
+          }
+        ],
+        "langfuse_trace_id": "ccac83448621a2d7b45bf0d8cb953468",
+        "langfuse_observation_id": "2689032013153af7",
+        "langfuse_trace_url": "https://cloud.langfuse.com/project/cmr1ywsf000d5ad0cex3dm2ha/traces/ccac83448621a2d7b45bf0d8cb953468"
+      },
+      "error": null,
+      "ok": true
+    },
+    {
+      "harness": "pydantic-ai",
+      "architecture": "enterprise-codemode-thinking",
+      "task": "procurement-supplier-performance-10",
+      "prompt": "Report supplier ID 10's purchase order volume, total spend, and on-time delivery counts.",
+      "output": "\n\n| purchase_order_volume | total_spend | on_time_deliveries |\n|-----------------------|-------------|-------------------|\n| 12 | 815725.29 | 5 |",
+      "started_at": "2026-07-08T21:37:38.933071+00:00",
+      "elapsed_seconds": 11.174694584013196,
+      "metadata": {
+        "langfuse_session_id": "agent-bench:run-all:pydantic-ai:procurement-supplier-performance-10:20260708T213540Z:batch",
+        "tool_calls": [
+          {
+            "tool_name": "list_tables",
+            "via": "native"
+          },
+          {
+            "tool_name": "run_code",
+            "via": "native"
+          },
+          {
+            "tool_name": "run_code",
+            "via": "native"
+          },
+          {
+            "tool_name": "get_schema_context",
+            "via": "code_mode"
+          },
+          {
+            "tool_name": "run_code",
+            "via": "native"
+          },
+          {
+            "tool_name": "execute_sql",
+            "via": "code_mode"
+          }
+        ],
+        "langfuse_trace_id": "12b4f13e4ea29c3ca78df7f9c8fc9239",
+        "langfuse_observation_id": "c2b6d03e091ab245",
+        "langfuse_trace_url": "https://cloud.langfuse.com/project/cmr1ywsf000d5ad0cex3dm2ha/traces/12b4f13e4ea29c3ca78df7f9c8fc9239"
+      },
+      "error": null,
+      "ok": true
+    },
+    {
+      "harness": "pydantic-ai",
+      "architecture": "enterprise-react-toolsearch-120",
+      "task": "procurement-supplier-performance-10",
+      "prompt": "Report supplier ID 10's purchase order volume, total spend, and on-time delivery counts.",
+      "output": "\n\n| supplier_id | total_purchase_orders | total_spend_usd | on_time_count |\n|-------------|-----------------------|-----------------|---------------|\n| 10          | 12                    | 815725.29       | 5             |",
+      "started_at": "2026-07-08T21:37:50.108025+00:00",
+      "elapsed_seconds": 5.8441984999954,
+      "metadata": {
+        "langfuse_session_id": "agent-bench:run-all:pydantic-ai:procurement-supplier-performance-10:20260708T213540Z:batch",
+        "tool_calls": [
+          {
+            "tool_name": "search_tools",
+            "via": "native"
+          },
+          {
+            "tool_name": "get_supplier_performance",
+            "via": "native"
+          }
+        ],
+        "langfuse_trace_id": "fc25c64ada840d2116e89a938912db11",
+        "langfuse_observation_id": "f33a0ea804a923b9",
+        "langfuse_trace_url": "https://cloud.langfuse.com/project/cmr1ywsf000d5ad0cex3dm2ha/traces/fc25c64ada840d2116e89a938912db11"
+      },
+      "error": null,
+      "ok": true
+    },
+    {
+      "harness": "pydantic-ai",
+      "architecture": "enterprise-categorized-search",
+      "task": "procurement-supplier-performance-10",
+      "prompt": "Report supplier ID 10's purchase order volume, total spend, and on-time delivery counts.",
+      "output": "\n\n| Supplier ID | Purchase Order Volume | Total Spend | On-Time Delivery Count |\n|-------------|-----------------------|-------------|------------------------|\n| 10          | 12                    | 815725.29   | 5                      |",
+      "started_at": "2026-07-08T21:37:55.952437+00:00",
+      "elapsed_seconds": 6.1875019170111045,
+      "metadata": {
+        "langfuse_session_id": "agent-bench:run-all:pydantic-ai:procurement-supplier-performance-10:20260708T213540Z:batch",
+        "tool_calls": [
+          {
+            "tool_name": "list_tool_categories",
+            "via": "native"
+          },
+          {
+            "tool_name": "search_tools_in_category",
+            "via": "native"
+          },
+          {
+            "tool_name": "call_tool",
+            "via": "native"
+          },
+          {
+            "tool_name": "get_supplier_performance",
+            "via": "categorized_search"
+          }
+        ],
+        "langfuse_trace_id": "fa0c9d4d2aa58a01e35cd96fb1b85e32",
+        "langfuse_observation_id": "72726b80af311091",
+        "langfuse_trace_url": "https://cloud.langfuse.com/project/cmr1ywsf000d5ad0cex3dm2ha/traces/fa0c9d4d2aa58a01e35cd96fb1b85e32"
+      },
+      "error": null,
+      "ok": true
+    }
+  ]
+}

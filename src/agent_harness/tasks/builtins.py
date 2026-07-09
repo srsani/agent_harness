@@ -558,4 +558,168 @@ TASKS: dict[str, str] = {
     "minimal-greeting-howareyou": ("Hi there! How are you doing today?"),
     "minimal-greeting-whatsup": ("Hey, what's up?"),
     "minimal-faq-capabilities": ("Hello! What kinds of things can you help me with?"),
+    # ═══════════════════════════════════════════════════════════════════════════
+    # 120-tool scale benchmark: 5 new business domains
+    #
+    # 10 tasks per domain (50 total), each answerable with exactly one (occasionally
+    # two) of the 45 new real tools in tools/{support,marketing,procurement,workforce,
+    # finance_ops}.py. Combined with the 58 distractor tools in tools/distractors.py
+    # (never the right choice for ANY task, including these), this is the task set
+    # `tool_selection_benchmark.py` uses to measure tool-selection accuracy and tool
+    # hallucination as the tool surface scales from 17 to 120. Ground truth in
+    # generate_ground_truth.py calls the same tool functions directly (not hand-written
+    # SQL) since those functions ARE the deterministic ground truth for this data.
+    # ═══════════════════════════════════════════════════════════════════════════
+    # ── support & success ──────────────────────────────────────────────────────
+    "support-agent-profile-5": (
+        "Look up support agent ID 5. Show their name, region, and hire date."
+    ),
+    "support-open-tickets-priority": (
+        "How many open or pending support tickets are there, broken down by priority?"
+    ),
+    "support-ticket-detail-10": (
+        "Get full details for support ticket ID 10, including the customer name, "
+        "analytics module name, and assigned agent name."
+    ),
+    "support-csat-90d": (
+        "What is the average customer satisfaction (CSAT) score and rating count "
+        "over the last 90 days?"
+    ),
+    "support-resolution-stats-180d": (
+        "Summarize support ticket resolution over the last 180 days: total tickets, "
+        "resolved count, resolution rate percentage, and average resolution time in hours."
+    ),
+    "support-agent-performance-3": (
+        "Report support agent ID 3's total ticket volume, resolved ticket count, "
+        "and average CSAT rating."
+    ),
+    "support-customer-history-42": (
+        "Show business user ID 42's support ticket history: analytics module, subject, "
+        "priority, status, and satisfaction rating for each ticket."
+    ),
+    "support-search-urgent-open": (
+        "List up to 20 open support tickets with urgent priority."
+    ),
+    "support-list-agents": (
+        "List every support agent along with their region and hire date."
+    ),
+    "support-tickets-for-module-8": (
+        "List up to 20 support tickets raised about analytics module ID 8."
+    ),
+    # ── marketing campaigns ────────────────────────────────────────────────────
+    "marketing-list-campaigns": (
+        "List every marketing campaign with its channel, status, and budget."
+    ),
+    "marketing-campaign-detail-5": ("Get full details for marketing campaign ID 5."),
+    "marketing-campaign-performance-5": (
+        "Report marketing campaign ID 5's funnel totals: impressions, clicks, leads, "
+        "conversions, and total spend."
+    ),
+    "marketing-campaign-roi-5": ("Compute the ROI for marketing campaign ID 5."),
+    "marketing-top-campaigns-conversion": (
+        "Which 5 marketing campaigns have the most total conversions?"
+    ),
+    "marketing-channel-spend-365d": (
+        "Break down total marketing spend and conversions by channel over the last 365 days."
+    ),
+    "marketing-funnel-5": (
+        "Show the full conversion funnel (click-through rate, lead rate, conversion rate) "
+        "for marketing campaign ID 5."
+    ),
+    "marketing-search-paid-search-active": (
+        "Find paid-search campaigns with a budget of at least $50,000."
+    ),
+    "marketing-monthly-spend-2025": (
+        "Show total marketing spend and conversions by month for calendar year 2025."
+    ),
+    "marketing-search-webinar": ("Find every webinar campaign."),
+    # ── procurement / suppliers ────────────────────────────────────────────────
+    "procurement-list-suppliers": (
+        "List every supplier with their country, sourcing category, and scorecard rating."
+    ),
+    "procurement-supplier-detail-10": ("Get full details for supplier ID 10."),
+    "procurement-po-detail-50": (
+        "Get full details for purchase order ID 50, including the supplier name."
+    ),
+    "procurement-supplier-history-10": (
+        "Show supplier ID 10's purchase order history."
+    ),
+    "procurement-supplier-performance-10": (
+        "Report supplier ID 10's purchase order volume, total spend, and on-time "
+        "delivery counts."
+    ),
+    "procurement-late-deliveries-365d": (
+        "List purchase orders received late in the last 365 days, with how many days late."
+    ),
+    "procurement-spend-summary-2025": (
+        "Summarize procurement spend between 2025-01-01 and 2025-12-31: total purchase "
+        "orders, total spend, average PO value, and distinct suppliers used."
+    ),
+    "procurement-supplier-risk-10": ("Compute a risk score for supplier ID 10."),
+    "procurement-search-software-highrating": (
+        "Find software-category suppliers with a scorecard rating of at least 4.0."
+    ),
+    "procurement-search-us-suppliers": ("Find every supplier based in the US."),
+    # ── workforce / HR ──────────────────────────────────────────────────────────
+    "workforce-list-departments": (
+        "List every department with its business function and annual budget."
+    ),
+    "workforce-department-detail-3": (
+        "Get department ID 3's details including its current active headcount."
+    ),
+    "workforce-employee-detail-10": (
+        "Get employee ID 10's profile, including department and manager name."
+    ),
+    "workforce-headcount-3": (
+        "Report department ID 3's active headcount and average salary."
+    ),
+    "workforce-attrition-3-365d": (
+        "Compute department ID 3's attrition rate over the last 365 days."
+    ),
+    "workforce-review-summary-10": (
+        "Summarize employee ID 10's performance review history: review count, "
+        "average rating, and most recent review date."
+    ),
+    "workforce-compensation-band-manager": (
+        "What is the compensation band (employee count, min, max, and average salary) "
+        "for the 'Manager' job title?"
+    ),
+    "workforce-open-positions": (
+        "List departments with recent attrition that haven't been backfilled yet."
+    ),
+    "workforce-search-finance-analysts": (
+        "Find active employees in departments matching 'Finance' with a job title "
+        "matching 'Analyst'."
+    ),
+    "workforce-search-tenure-3y": (
+        "Find active employees with at least 2.5 years of tenure."
+    ),
+    # ── finance / budgets ─────────────────────────────────────────────────────
+    "finance-list-budgets": ("List every department budget."),
+    "finance-budget-detail-10": ("Get budget ID 10's allocation details."),
+    "finance-budget-variance-10": (
+        "Compute budget ID 10's variance: allocated amount minus actual spend."
+    ),
+    "finance-capex-summary-2025": (
+        "For calendar year 2025, show capital expenditure (capex) allocated versus "
+        "actual spend by department."
+    ),
+    "finance-expense-breakdown-2025": (
+        "Show total expense spend by budget category between 2025-01-01 and 2025-12-31."
+    ),
+    "finance-search-capex-expenses": (
+        "Find capex-category expense line items of at least $50,000."
+    ),
+    "finance-department-spend-rd-2025": (
+        "What was the R&D Engineering department's total expense spend between "
+        "2025-01-01 and 2025-12-31?"
+    ),
+    "finance-forecast-vs-actual-rd-2025": (
+        "For the R&D Engineering department in 2025, show allocated budget versus "
+        "actual spend by category, including the variance."
+    ),
+    "finance-expense-detail-10": ("Get full details for expense line item ID 10."),
+    "finance-search-department-expenses-rd": (
+        "Find expense line items for the R&D Engineering department over $10,000."
+    ),
 }

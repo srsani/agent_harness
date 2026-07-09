@@ -1,0 +1,567 @@
+{
+  "mode": "run-all",
+  "session_id": "agent-bench:run-all:pydantic-ai:finance-budget-detail-10:20260708T205148Z:84d12468",
+  "harness": "pydantic-ai",
+  "task": "finance-budget-detail-10",
+  "repeat": 1,
+  "results": [
+    {
+      "harness": "pydantic-ai",
+      "architecture": "minimal",
+      "task": "finance-budget-detail-10",
+      "prompt": "Get budget ID 10's allocation details.",
+      "output": "\n\n```sql\nSELECT allocation_id, category, description, amount, status\nFROM budget_allocations\nWHERE budget_id = 10;\n```",
+      "started_at": "2026-07-08T20:51:48.457540+00:00",
+      "elapsed_seconds": 52.00415254100517,
+      "metadata": {
+        "langfuse_session_id": "agent-bench:run-all:pydantic-ai:finance-budget-detail-10:20260708T205148Z:84d12468",
+        "tool_calls": [],
+        "langfuse_trace_id": "730e1bfbc84528a93ed6c2d53b375937",
+        "langfuse_observation_id": "c15465971f50778b",
+        "langfuse_trace_url": "https://cloud.langfuse.com/project/cmr1ywsf000d5ad0cex3dm2ha/traces/730e1bfbc84528a93ed6c2d53b375937"
+      },
+      "error": null,
+      "ok": true
+    },
+    {
+      "harness": "pydantic-ai",
+      "architecture": "enterprise-react",
+      "task": "finance-budget-detail-10",
+      "prompt": "Get budget ID 10's allocation details.",
+      "output": "\n\n| id | department_id | year | category | allocated_usd |\n|----|---------------|------|----------|---------------|\n| 10 | 1 | 2026 | marketing_spend | 798472.52 |\n\n**Expenses against Budget ID 10:**\n\n| id | budget_id | department_id | category | amount_usd | incurred_at | description |\n|----|-----------|---------------|----------|------------|-------------|-------------|\n| 60 | 10 | 1 | marketing_spend | 167853.69 | 2026-06-20T07:52:57 | Content production |\n| 61 | 10 | 1 | marketing_spend | 93658.33 | 2026-06-15T21:48:46 | Content production |\n| 62 | 10 | 1 | marketing_spend | 129720.99 | 2026-01-02T22:20:46 | Event booth fee |\n| 63 | 10 | 1 | marketing_spend | 128932.74 | 2026-06-09T02:27:50 | Sponsorship fee |\n| 64 | 10 | 1 | marketing_spend | 205440.64 | 2026-04-03T04:23:30 | Paid media spend |\n| 65 | 10 | 1 | marketing_spend | 120097.14 | 2026-03-16T16:05:48 | Event booth fee |",
+      "started_at": "2026-07-08T20:52:40.463183+00:00",
+      "elapsed_seconds": 11.287949915989884,
+      "metadata": {
+        "langfuse_session_id": "agent-bench:run-all:pydantic-ai:finance-budget-detail-10:20260708T205148Z:84d12468",
+        "tool_calls": [
+          {
+            "tool_name": "list_tables",
+            "via": "native"
+          },
+          {
+            "tool_name": "execute_sql",
+            "via": "native"
+          },
+          {
+            "tool_name": "execute_sql",
+            "via": "native"
+          },
+          {
+            "tool_name": "execute_sql",
+            "via": "native"
+          }
+        ],
+        "langfuse_trace_id": "540e82054282cc21c073e0cfef7e0f9d",
+        "langfuse_observation_id": "5372566fa220a5bd",
+        "langfuse_trace_url": "https://cloud.langfuse.com/project/cmr1ywsf000d5ad0cex3dm2ha/traces/540e82054282cc21c073e0cfef7e0f9d"
+      },
+      "error": null,
+      "ok": true
+    },
+    {
+      "harness": "pydantic-ai",
+      "architecture": "enterprise-codemode",
+      "task": "finance-budget-detail-10",
+      "prompt": "Get budget ID 10's allocation details.",
+      "output": "\n\n| id | department_id | year | category | allocated_usd |\n|----|---------------|------|----------|---------------|\n| 10 | 1 | 2026 | marketing_spend | 798472.52 |",
+      "started_at": "2026-07-08T20:52:51.753058+00:00",
+      "elapsed_seconds": 14.744060375000117,
+      "metadata": {
+        "langfuse_session_id": "agent-bench:run-all:pydantic-ai:finance-budget-detail-10:20260708T205148Z:84d12468",
+        "tool_calls": [
+          {
+            "tool_name": "list_tables",
+            "via": "native"
+          },
+          {
+            "tool_name": "run_code",
+            "via": "native"
+          },
+          {
+            "tool_name": "run_code",
+            "via": "native"
+          },
+          {
+            "tool_name": "describe_table",
+            "via": "code_mode"
+          },
+          {
+            "tool_name": "describe_table",
+            "via": "code_mode"
+          },
+          {
+            "tool_name": "describe_table",
+            "via": "code_mode"
+          },
+          {
+            "tool_name": "describe_table",
+            "via": "code_mode"
+          },
+          {
+            "tool_name": "describe_table",
+            "via": "code_mode"
+          },
+          {
+            "tool_name": "describe_table",
+            "via": "code_mode"
+          },
+          {
+            "tool_name": "run_code",
+            "via": "native"
+          },
+          {
+            "tool_name": "run_code",
+            "via": "native"
+          },
+          {
+            "tool_name": "describe_table",
+            "via": "code_mode"
+          },
+          {
+            "tool_name": "run_code",
+            "via": "native"
+          },
+          {
+            "tool_name": "describe_table",
+            "via": "code_mode"
+          },
+          {
+            "tool_name": "run_code",
+            "via": "native"
+          },
+          {
+            "tool_name": "execute_sql",
+            "via": "code_mode"
+          }
+        ],
+        "langfuse_trace_id": "de733e1ae114c3976380dcaabc056819",
+        "langfuse_observation_id": "d9d9c6c3c636c8b0",
+        "langfuse_trace_url": "https://cloud.langfuse.com/project/cmr1ywsf000d5ad0cex3dm2ha/traces/de733e1ae114c3976380dcaabc056819"
+      },
+      "error": null,
+      "ok": true
+    },
+    {
+      "harness": "pydantic-ai",
+      "architecture": "enterprise-mcp-react",
+      "task": "finance-budget-detail-10",
+      "prompt": "Get budget ID 10's allocation details.",
+      "output": "\n\n| id | department_id | year | category | allocated_usd |\n|----|---------------|------|----------|---------------|\n| 10 | 1 | 2026 | marketing_spend | 798472.52 |",
+      "started_at": "2026-07-08T20:53:06.498203+00:00",
+      "elapsed_seconds": 5.4170287500019185,
+      "metadata": {
+        "langfuse_session_id": "agent-bench:run-all:pydantic-ai:finance-budget-detail-10:20260708T205148Z:84d12468",
+        "tool_calls": [
+          {
+            "tool_name": "tool_list_tables",
+            "via": "native"
+          },
+          {
+            "tool_name": "tool_execute_sql",
+            "via": "native"
+          }
+        ],
+        "langfuse_trace_id": "e57f953a2a013d525b163d709e97a61f",
+        "langfuse_observation_id": "2ec03f871ac6224a",
+        "langfuse_trace_url": "https://cloud.langfuse.com/project/cmr1ywsf000d5ad0cex3dm2ha/traces/e57f953a2a013d525b163d709e97a61f"
+      },
+      "error": null,
+      "ok": true
+    },
+    {
+      "harness": "pydantic-ai",
+      "architecture": "enterprise-mcp-codemode",
+      "task": "finance-budget-detail-10",
+      "prompt": "Get budget ID 10's allocation details.",
+      "output": "\n\n| id | department_id | year | category | allocated_usd |\n|----|---------------|------|----------|---------------|\n| 10 | 1 | 2026 | marketing_spend | 798472.52 |",
+      "started_at": "2026-07-08T20:53:11.916245+00:00",
+      "elapsed_seconds": 6.693863167005475,
+      "metadata": {
+        "langfuse_session_id": "agent-bench:run-all:pydantic-ai:finance-budget-detail-10:20260708T205148Z:84d12468",
+        "tool_calls": [
+          {
+            "tool_name": "tool_list_tables",
+            "via": "native"
+          },
+          {
+            "tool_name": "run_code",
+            "via": "native"
+          },
+          {
+            "tool_name": "tool_list_tables",
+            "via": "code_mode"
+          },
+          {
+            "tool_name": "run_code",
+            "via": "native"
+          },
+          {
+            "tool_name": "tool_execute_sql",
+            "via": "code_mode"
+          }
+        ],
+        "langfuse_trace_id": "2b6f6fc3b12bc5b084ec2121f0540273",
+        "langfuse_observation_id": "69e5aa3ff708a8da",
+        "langfuse_trace_url": "https://cloud.langfuse.com/project/cmr1ywsf000d5ad0cex3dm2ha/traces/2b6f6fc3b12bc5b084ec2121f0540273"
+      },
+      "error": null,
+      "ok": true
+    },
+    {
+      "harness": "pydantic-ai",
+      "architecture": "enterprise-sql-react",
+      "task": "finance-budget-detail-10",
+      "prompt": "Get budget ID 10's allocation details.",
+      "output": "\n\n| id | department_id | year | category | allocated_usd |\n|---|---|---|---|---|\n| 10 | 1 | 2026 | marketing_spend | 798472.52 |",
+      "started_at": "2026-07-08T20:53:18.611516+00:00",
+      "elapsed_seconds": 4.693816416998743,
+      "metadata": {
+        "langfuse_session_id": "agent-bench:run-all:pydantic-ai:finance-budget-detail-10:20260708T205148Z:84d12468",
+        "tool_calls": [
+          {
+            "tool_name": "list_tables",
+            "via": "native"
+          },
+          {
+            "tool_name": "execute_sql",
+            "via": "native"
+          }
+        ],
+        "langfuse_trace_id": "ef2e7342785ff1b1642a26919348bb30",
+        "langfuse_observation_id": "97878796d2f0936a",
+        "langfuse_trace_url": "https://cloud.langfuse.com/project/cmr1ywsf000d5ad0cex3dm2ha/traces/ef2e7342785ff1b1642a26919348bb30"
+      },
+      "error": null,
+      "ok": true
+    },
+    {
+      "harness": "pydantic-ai",
+      "architecture": "enterprise-sql-codemode",
+      "task": "finance-budget-detail-10",
+      "prompt": "Get budget ID 10's allocation details.",
+      "output": "\n\n| id | department_id | year | category | allocated_usd |\n|----|---------------|------|-------------------|---------------|\n| 10 | 1 | 2026 | marketing_spend | 798472.52 |",
+      "started_at": "2026-07-08T20:53:23.306455+00:00",
+      "elapsed_seconds": 8.932179040988558,
+      "metadata": {
+        "langfuse_session_id": "agent-bench:run-all:pydantic-ai:finance-budget-detail-10:20260708T205148Z:84d12468",
+        "tool_calls": [
+          {
+            "tool_name": "list_tables",
+            "via": "native"
+          },
+          {
+            "tool_name": "run_code",
+            "via": "native"
+          },
+          {
+            "tool_name": "run_code",
+            "via": "native"
+          },
+          {
+            "tool_name": "run_code",
+            "via": "native"
+          },
+          {
+            "tool_name": "list_tables",
+            "via": "code_mode"
+          },
+          {
+            "tool_name": "run_code",
+            "via": "native"
+          },
+          {
+            "tool_name": "describe_table",
+            "via": "code_mode"
+          },
+          {
+            "tool_name": "execute_sql",
+            "via": "code_mode"
+          }
+        ],
+        "langfuse_trace_id": "d96328a1e7ae0037ec7ca8ed6a3aacd4",
+        "langfuse_observation_id": "a0186b55dc5e1859",
+        "langfuse_trace_url": "https://cloud.langfuse.com/project/cmr1ywsf000d5ad0cex3dm2ha/traces/d96328a1e7ae0037ec7ca8ed6a3aacd4"
+      },
+      "error": null,
+      "ok": true
+    },
+    {
+      "harness": "pydantic-ai",
+      "architecture": "enterprise-react-toolsearch",
+      "task": "finance-budget-detail-10",
+      "prompt": "Get budget ID 10's allocation details.",
+      "output": "\n\n| id | department_id | year | category | allocated_usd |\n|----|---------------|------|------------------|---------------|\n| 10 | 1 | 2026 | marketing_spend | 798472.52 |",
+      "started_at": "2026-07-08T20:53:32.239702+00:00",
+      "elapsed_seconds": 14.412412666002638,
+      "metadata": {
+        "langfuse_session_id": "agent-bench:run-all:pydantic-ai:finance-budget-detail-10:20260708T205148Z:84d12468",
+        "tool_calls": [
+          {
+            "tool_name": "search_tools",
+            "via": "native"
+          },
+          {
+            "tool_name": "search_tools",
+            "via": "native"
+          },
+          {
+            "tool_name": "search_tools",
+            "via": "native"
+          },
+          {
+            "tool_name": "get_schema_context",
+            "via": "native"
+          },
+          {
+            "tool_name": "execute_sql",
+            "via": "native"
+          },
+          {
+            "tool_name": "execute_sql",
+            "via": "native"
+          }
+        ],
+        "langfuse_trace_id": "71d818d1ca1a1b9446092ae78ffc127e",
+        "langfuse_observation_id": "36041e82c5947a1c",
+        "langfuse_trace_url": "https://cloud.langfuse.com/project/cmr1ywsf000d5ad0cex3dm2ha/traces/71d818d1ca1a1b9446092ae78ffc127e"
+      },
+      "error": null,
+      "ok": true
+    },
+    {
+      "harness": "pydantic-ai",
+      "architecture": "enterprise-codemode-toolsearch",
+      "task": "finance-budget-detail-10",
+      "prompt": "Get budget ID 10's allocation details.",
+      "output": "\n\n| id | department_id | year | category | allocated_usd |\n|----|---------------|------|-------------------|---------------|\n| 10 | 1 | 2026 | marketing_spend | 798472.52 |",
+      "started_at": "2026-07-08T20:53:46.652959+00:00",
+      "elapsed_seconds": 12.212543333997019,
+      "metadata": {
+        "langfuse_session_id": "agent-bench:run-all:pydantic-ai:finance-budget-detail-10:20260708T205148Z:84d12468",
+        "tool_calls": [
+          {
+            "tool_name": "search_tools",
+            "via": "native"
+          },
+          {
+            "tool_name": "search_tools",
+            "via": "native"
+          },
+          {
+            "tool_name": "search_tools",
+            "via": "native"
+          },
+          {
+            "tool_name": "get_schema_context",
+            "via": "native"
+          },
+          {
+            "tool_name": "list_tables",
+            "via": "native"
+          },
+          {
+            "tool_name": "execute_sql",
+            "via": "native"
+          },
+          {
+            "tool_name": "execute_sql",
+            "via": "native"
+          },
+          {
+            "tool_name": "execute_sql",
+            "via": "native"
+          }
+        ],
+        "langfuse_trace_id": "9934b6a2c1e853aab3547a0dd5bbc638",
+        "langfuse_observation_id": "a7b394761c89b915",
+        "langfuse_trace_url": "https://cloud.langfuse.com/project/cmr1ywsf000d5ad0cex3dm2ha/traces/9934b6a2c1e853aab3547a0dd5bbc638"
+      },
+      "error": null,
+      "ok": true
+    },
+    {
+      "harness": "pydantic-ai",
+      "architecture": "enterprise-mcp-react-native",
+      "task": "finance-budget-detail-10",
+      "prompt": "Get budget ID 10's allocation details.",
+      "output": "",
+      "started_at": "2026-07-08T20:53:58.866477+00:00",
+      "elapsed_seconds": 0.006231209001271054,
+      "metadata": {
+        "langfuse_session_id": "agent-bench:run-all:pydantic-ai:finance-budget-detail-10:20260708T205148Z:84d12468"
+      },
+      "error": "RuntimeError: enterprise-mcp-react-native requires ENTERPRISE_MCP_PUBLIC_URL to be set. Native MCP tool calls are made server-side by the model provider (Anthropic / OpenAI / xAI) -- localhost is not reachable from their servers. Run `uv run python -m agent_harness.mcp_server` with a streamable-HTTP transport behind a public tunnel (e.g. ngrok) and point ENTERPRISE_MCP_PUBLIC_URL at it. See README 'MCP server' section.",
+      "ok": false
+    },
+    {
+      "harness": "pydantic-ai",
+      "architecture": "enterprise-react-thinking",
+      "task": "finance-budget-detail-10",
+      "prompt": "Get budget ID 10's allocation details.",
+      "output": "\n\n| id | department_id | year | category | allocated_usd |\n|----|---------------|------|------------|---------------|\n| 10 | 1 | 2026 | marketing_spend | 798472.52 |",
+      "started_at": "2026-07-08T20:53:58.873148+00:00",
+      "elapsed_seconds": 8.45862383399799,
+      "metadata": {
+        "langfuse_session_id": "agent-bench:run-all:pydantic-ai:finance-budget-detail-10:20260708T205148Z:84d12468",
+        "tool_calls": [
+          {
+            "tool_name": "list_tables",
+            "via": "native"
+          },
+          {
+            "tool_name": "execute_sql",
+            "via": "native"
+          },
+          {
+            "tool_name": "execute_sql",
+            "via": "native"
+          }
+        ],
+        "langfuse_trace_id": "cd131ed2892269ecae5a021ef8fb9190",
+        "langfuse_observation_id": "c7110ae4fb29ebe3",
+        "langfuse_trace_url": "https://cloud.langfuse.com/project/cmr1ywsf000d5ad0cex3dm2ha/traces/cd131ed2892269ecae5a021ef8fb9190"
+      },
+      "error": null,
+      "ok": true
+    },
+    {
+      "harness": "pydantic-ai",
+      "architecture": "enterprise-codemode-thinking",
+      "task": "finance-budget-detail-10",
+      "prompt": "Get budget ID 10's allocation details.",
+      "output": "\n\n| id | department_id | year | category | allocated_usd |\n|---|---|---|---|---|\n| 10 | 1 | 2026 | marketing_spend | 798472.52 |",
+      "started_at": "2026-07-08T20:54:07.332470+00:00",
+      "elapsed_seconds": 7.212905583990505,
+      "metadata": {
+        "langfuse_session_id": "agent-bench:run-all:pydantic-ai:finance-budget-detail-10:20260708T205148Z:84d12468",
+        "tool_calls": [
+          {
+            "tool_name": "list_tables",
+            "via": "native"
+          },
+          {
+            "tool_name": "list_tables",
+            "via": "native"
+          },
+          {
+            "tool_name": "run_code",
+            "via": "native"
+          },
+          {
+            "tool_name": "list_tables",
+            "via": "code_mode"
+          },
+          {
+            "tool_name": "execute_sql",
+            "via": "native"
+          },
+          {
+            "tool_name": "run_code",
+            "via": "native"
+          },
+          {
+            "tool_name": "execute_sql",
+            "via": "code_mode"
+          }
+        ],
+        "langfuse_trace_id": "2df6071eb016fe40b4298efa9e992de5",
+        "langfuse_observation_id": "de78c2b3ee7bdaae",
+        "langfuse_trace_url": "https://cloud.langfuse.com/project/cmr1ywsf000d5ad0cex3dm2ha/traces/2df6071eb016fe40b4298efa9e992de5"
+      },
+      "error": null,
+      "ok": true
+    },
+    {
+      "harness": "pydantic-ai",
+      "architecture": "enterprise-react-120",
+      "task": "finance-budget-detail-10",
+      "prompt": "Get budget ID 10's allocation details.",
+      "output": "",
+      "started_at": "2026-07-08T20:54:14.546037+00:00",
+      "elapsed_seconds": 0.08476579199486878,
+      "metadata": {
+        "langfuse_session_id": "agent-bench:run-all:pydantic-ai:finance-budget-detail-10:20260708T205148Z:84d12468"
+      },
+      "error": "ModelHTTPError: status_code: 400, model_name: qwen/qwen3.6-35b-a3b, body: The number of tokens to keep from the initial prompt is greater than the context length. Try to load the model with a larger context length, or provide a shorter input",
+      "ok": false
+    },
+    {
+      "harness": "pydantic-ai",
+      "architecture": "enterprise-codemode-120",
+      "task": "finance-budget-detail-10",
+      "prompt": "Get budget ID 10's allocation details.",
+      "output": "",
+      "started_at": "2026-07-08T20:54:14.631246+00:00",
+      "elapsed_seconds": 13.324280959001044,
+      "metadata": {
+        "langfuse_session_id": "agent-bench:run-all:pydantic-ai:finance-budget-detail-10:20260708T205148Z:84d12468"
+      },
+      "error": "UnexpectedModelBehavior: Tool 'get_budget' exceeded max retries count of 3",
+      "ok": false
+    },
+    {
+      "harness": "pydantic-ai",
+      "architecture": "enterprise-mcp-react-120",
+      "task": "finance-budget-detail-10",
+      "prompt": "Get budget ID 10's allocation details.",
+      "output": "",
+      "started_at": "2026-07-08T20:54:27.956532+00:00",
+      "elapsed_seconds": 0.060770791009417735,
+      "metadata": {
+        "langfuse_session_id": "agent-bench:run-all:pydantic-ai:finance-budget-detail-10:20260708T205148Z:84d12468"
+      },
+      "error": "ModelHTTPError: status_code: 400, model_name: qwen/qwen3.6-35b-a3b, body: The number of tokens to keep from the initial prompt is greater than the context length. Try to load the model with a larger context length, or provide a shorter input",
+      "ok": false
+    },
+    {
+      "harness": "pydantic-ai",
+      "architecture": "enterprise-react-toolsearch-120",
+      "task": "finance-budget-detail-10",
+      "prompt": "Get budget ID 10's allocation details.",
+      "output": "\n\n| id | department | year | category | allocated_usd |\n|----|------------|------|----------|---------------|\n| 10 | Finance & Accounting | 2026 | marketing_spend | 798472.52 |",
+      "started_at": "2026-07-08T20:54:28.017939+00:00",
+      "elapsed_seconds": 4.517005000001518,
+      "metadata": {
+        "langfuse_session_id": "agent-bench:run-all:pydantic-ai:finance-budget-detail-10:20260708T205148Z:84d12468",
+        "tool_calls": [
+          {
+            "tool_name": "search_tools",
+            "via": "native"
+          },
+          {
+            "tool_name": "get_budget",
+            "via": "native"
+          }
+        ],
+        "langfuse_trace_id": "b19a03446fb795cc2dc74f2f48b0813c",
+        "langfuse_observation_id": "d81cc8c7cfd1dd0c",
+        "langfuse_trace_url": "https://cloud.langfuse.com/project/cmr1ywsf000d5ad0cex3dm2ha/traces/b19a03446fb795cc2dc74f2f48b0813c"
+      },
+      "error": null,
+      "ok": true
+    },
+    {
+      "harness": "pydantic-ai",
+      "architecture": "enterprise-categorized-search",
+      "task": "finance-budget-detail-10",
+      "prompt": "Get budget ID 10's allocation details.",
+      "output": "\n\n",
+      "started_at": "2026-07-08T20:54:32.535806+00:00",
+      "elapsed_seconds": 2.8910799580044113,
+      "metadata": {
+        "langfuse_session_id": "agent-bench:run-all:pydantic-ai:finance-budget-detail-10:20260708T205148Z:84d12468",
+        "tool_calls": [
+          {
+            "tool_name": "list_tool_categories",
+            "via": "native"
+          }
+        ],
+        "langfuse_trace_id": "194b9fa6e6823a397477b1e0e284dcbc",
+        "langfuse_observation_id": "be6e93ff98700d4a",
+        "langfuse_trace_url": "https://cloud.langfuse.com/project/cmr1ywsf000d5ad0cex3dm2ha/traces/194b9fa6e6823a397477b1e0e284dcbc"
+      },
+      "error": null,
+      "ok": true
+    }
+  ]
+}

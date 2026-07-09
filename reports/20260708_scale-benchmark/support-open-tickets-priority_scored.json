@@ -1,0 +1,951 @@
+{
+  "mode": "run-all",
+  "session_id": "agent-bench:run-all:pydantic-ai:support-open-tickets-priority:20260708T210600Z:batch",
+  "harness": "pydantic-ai",
+  "task": "support-open-tickets-priority",
+  "repeat": 1,
+  "results": [
+    {
+      "harness": "pydantic-ai",
+      "architecture": "minimal",
+      "task": "support-open-tickets-priority",
+      "prompt": "How many open or pending support tickets are there, broken down by priority?",
+      "output": "\n\n| priority | count |\n|----------|-------|\n| Critical | 12    |\n| High     | 45    |\n| Medium   | 89    |\n| Low      | 34    |",
+      "started_at": "2026-07-08T21:06:00.390061+00:00",
+      "elapsed_seconds": 23.68124037499365,
+      "metadata": {
+        "langfuse_session_id": "agent-bench:run-all:pydantic-ai:support-open-tickets-priority:20260708T210600Z:batch",
+        "tool_calls": [],
+        "langfuse_trace_id": "aaa3ef9309d5dd3325712b46aa932292",
+        "langfuse_observation_id": "b5b713f9f35820ad",
+        "langfuse_trace_url": "https://cloud.langfuse.com/project/cmr1ywsf000d5ad0cex3dm2ha/traces/aaa3ef9309d5dd3325712b46aa932292"
+      },
+      "error": null,
+      "ok": true,
+      "scores": {
+        "scorable": true,
+        "correctness": 0.375,
+        "groundedness": 0.0,
+        "hallucination_rate": 1.0,
+        "overall_score": 0.0,
+        "details": {
+          "refused_or_no_data": false,
+          "empty_output": false,
+          "expected_text_facts": 4,
+          "matched_text_facts": 3,
+          "expected_numeric_facts": 4,
+          "matched_numeric_facts": 0,
+          "claimed_numeric_values": 4,
+          "unsupported_numeric_values": 4
+        }
+      },
+      "tool_selection": {
+        "scorable": true,
+        "expected_tools": [
+          "execute_sql",
+          "get_open_tickets_by_priority"
+        ],
+        "total_tool_calls": 0,
+        "tool_recall": 0.0,
+        "tool_precision": 0.0,
+        "distractor_call_count": 0,
+        "distractor_calls": [],
+        "any_distractor_called": false,
+        "distractor_call_rate": 0.0,
+        "fabricated_call_count": 0,
+        "fabricated_calls": [],
+        "any_fabricated_called": false,
+        "fabricated_call_rate": 0.0
+      }
+    },
+    {
+      "harness": "pydantic-ai",
+      "architecture": "enterprise-react",
+      "task": "support-open-tickets-priority",
+      "prompt": "How many open or pending support tickets are there, broken down by priority?",
+      "output": "\n\n| priority | ticket_count |\n|----------|--------------|\n| high     | 26           |\n| low      | 20           |\n| medium   | 36           |\n| urgent   | 21           |",
+      "started_at": "2026-07-08T21:06:24.071509+00:00",
+      "elapsed_seconds": 6.968427832995076,
+      "metadata": {
+        "langfuse_session_id": "agent-bench:run-all:pydantic-ai:support-open-tickets-priority:20260708T210600Z:batch",
+        "tool_calls": [
+          {
+            "tool_name": "list_tables",
+            "via": "native"
+          },
+          {
+            "tool_name": "describe_table",
+            "via": "native"
+          },
+          {
+            "tool_name": "execute_sql",
+            "via": "native"
+          }
+        ],
+        "langfuse_trace_id": "3e81435e879392cd67585fb334cad75f",
+        "langfuse_observation_id": "7703a8a0b60cd6dc",
+        "langfuse_trace_url": "https://cloud.langfuse.com/project/cmr1ywsf000d5ad0cex3dm2ha/traces/3e81435e879392cd67585fb334cad75f"
+      },
+      "error": null,
+      "ok": true,
+      "scores": {
+        "scorable": true,
+        "correctness": 1.0,
+        "groundedness": 1.0,
+        "hallucination_rate": 0.0,
+        "overall_score": 1.0,
+        "details": {
+          "refused_or_no_data": false,
+          "empty_output": false,
+          "expected_text_facts": 4,
+          "matched_text_facts": 4,
+          "expected_numeric_facts": 4,
+          "matched_numeric_facts": 4,
+          "claimed_numeric_values": 4,
+          "unsupported_numeric_values": 0
+        }
+      },
+      "tool_selection": {
+        "scorable": true,
+        "expected_tools": [
+          "execute_sql",
+          "get_open_tickets_by_priority"
+        ],
+        "total_tool_calls": 3,
+        "tool_recall": 1.0,
+        "tool_precision": 1.0,
+        "distractor_call_count": 0,
+        "distractor_calls": [],
+        "any_distractor_called": false,
+        "distractor_call_rate": 0.0,
+        "fabricated_call_count": 0,
+        "fabricated_calls": [],
+        "any_fabricated_called": false,
+        "fabricated_call_rate": 0.0
+      }
+    },
+    {
+      "harness": "pydantic-ai",
+      "architecture": "enterprise-codemode",
+      "task": "support-open-tickets-priority",
+      "prompt": "How many open or pending support tickets are there, broken down by priority?",
+      "output": "\n\n| priority | ticket_count |\n|----------|-------------|\n| high | 26 |\n| low | 20 |\n| medium | 36 |\n| urgent | 21 |",
+      "started_at": "2026-07-08T21:06:31.040147+00:00",
+      "elapsed_seconds": 6.890287834001356,
+      "metadata": {
+        "langfuse_session_id": "agent-bench:run-all:pydantic-ai:support-open-tickets-priority:20260708T210600Z:batch",
+        "tool_calls": [
+          {
+            "tool_name": "list_tables",
+            "via": "native"
+          },
+          {
+            "tool_name": "run_code",
+            "via": "native"
+          },
+          {
+            "tool_name": "run_code",
+            "via": "native"
+          },
+          {
+            "tool_name": "list_tables",
+            "via": "code_mode"
+          },
+          {
+            "tool_name": "run_code",
+            "via": "native"
+          },
+          {
+            "tool_name": "execute_sql",
+            "via": "code_mode"
+          }
+        ],
+        "langfuse_trace_id": "c4cfc4c78f2704590a9bb8353ab4e652",
+        "langfuse_observation_id": "ad8b9e4e56035909",
+        "langfuse_trace_url": "https://cloud.langfuse.com/project/cmr1ywsf000d5ad0cex3dm2ha/traces/c4cfc4c78f2704590a9bb8353ab4e652"
+      },
+      "error": null,
+      "ok": true,
+      "scores": {
+        "scorable": true,
+        "correctness": 1.0,
+        "groundedness": 1.0,
+        "hallucination_rate": 0.0,
+        "overall_score": 1.0,
+        "details": {
+          "refused_or_no_data": false,
+          "empty_output": false,
+          "expected_text_facts": 4,
+          "matched_text_facts": 4,
+          "expected_numeric_facts": 4,
+          "matched_numeric_facts": 4,
+          "claimed_numeric_values": 4,
+          "unsupported_numeric_values": 0
+        }
+      },
+      "tool_selection": {
+        "scorable": true,
+        "expected_tools": [
+          "execute_sql",
+          "get_open_tickets_by_priority"
+        ],
+        "total_tool_calls": 6,
+        "tool_recall": 1.0,
+        "tool_precision": 0.5,
+        "distractor_call_count": 0,
+        "distractor_calls": [],
+        "any_distractor_called": false,
+        "distractor_call_rate": 0.0,
+        "fabricated_call_count": 3,
+        "fabricated_calls": [
+          "run_code",
+          "run_code",
+          "run_code"
+        ],
+        "any_fabricated_called": true,
+        "fabricated_call_rate": 0.5
+      }
+    },
+    {
+      "harness": "pydantic-ai",
+      "architecture": "enterprise-mcp-react",
+      "task": "support-open-tickets-priority",
+      "prompt": "How many open or pending support tickets are there, broken down by priority?",
+      "output": "\n\n| priority | ticket_count |\n|----------|--------------|\n| high     | 26           |\n| low      | 20           |\n| medium   | 36           |\n| urgent   | 21           |",
+      "started_at": "2026-07-08T21:06:37.930638+00:00",
+      "elapsed_seconds": 6.867553249991033,
+      "metadata": {
+        "langfuse_session_id": "agent-bench:run-all:pydantic-ai:support-open-tickets-priority:20260708T210600Z:batch",
+        "tool_calls": [
+          {
+            "tool_name": "tool_list_tables",
+            "via": "native"
+          },
+          {
+            "tool_name": "tool_describe_table",
+            "via": "native"
+          },
+          {
+            "tool_name": "tool_execute_sql",
+            "via": "native"
+          }
+        ],
+        "langfuse_trace_id": "b1d393528791ae54747f1a63a6d4cd9c",
+        "langfuse_observation_id": "38036d01127b47ff",
+        "langfuse_trace_url": "https://cloud.langfuse.com/project/cmr1ywsf000d5ad0cex3dm2ha/traces/b1d393528791ae54747f1a63a6d4cd9c"
+      },
+      "error": null,
+      "ok": true,
+      "scores": {
+        "scorable": true,
+        "correctness": 1.0,
+        "groundedness": 1.0,
+        "hallucination_rate": 0.0,
+        "overall_score": 1.0,
+        "details": {
+          "refused_or_no_data": false,
+          "empty_output": false,
+          "expected_text_facts": 4,
+          "matched_text_facts": 4,
+          "expected_numeric_facts": 4,
+          "matched_numeric_facts": 4,
+          "claimed_numeric_values": 4,
+          "unsupported_numeric_values": 0
+        }
+      },
+      "tool_selection": {
+        "scorable": true,
+        "expected_tools": [
+          "execute_sql",
+          "get_open_tickets_by_priority"
+        ],
+        "total_tool_calls": 3,
+        "tool_recall": 1.0,
+        "tool_precision": 1.0,
+        "distractor_call_count": 0,
+        "distractor_calls": [],
+        "any_distractor_called": false,
+        "distractor_call_rate": 0.0,
+        "fabricated_call_count": 0,
+        "fabricated_calls": [],
+        "any_fabricated_called": false,
+        "fabricated_call_rate": 0.0
+      }
+    },
+    {
+      "harness": "pydantic-ai",
+      "architecture": "enterprise-mcp-codemode",
+      "task": "support-open-tickets-priority",
+      "prompt": "How many open or pending support tickets are there, broken down by priority?",
+      "output": "\n\n| priority | ticket_count |\n|----------|-------------|\n| high     | 26          |\n| low      | 20          |\n| medium   | 36          |\n| urgent   | 21          |",
+      "started_at": "2026-07-08T21:06:44.798270+00:00",
+      "elapsed_seconds": 7.701926375011681,
+      "metadata": {
+        "langfuse_session_id": "agent-bench:run-all:pydantic-ai:support-open-tickets-priority:20260708T210600Z:batch",
+        "tool_calls": [
+          {
+            "tool_name": "tool_list_tables",
+            "via": "native"
+          },
+          {
+            "tool_name": "run_code",
+            "via": "native"
+          },
+          {
+            "tool_name": "tool_list_tables",
+            "via": "code_mode"
+          },
+          {
+            "tool_name": "tool_describe_table",
+            "via": "native"
+          },
+          {
+            "tool_name": "run_code",
+            "via": "native"
+          },
+          {
+            "tool_name": "tool_describe_table",
+            "via": "code_mode"
+          },
+          {
+            "tool_name": "run_code",
+            "via": "native"
+          },
+          {
+            "tool_name": "tool_execute_sql",
+            "via": "code_mode"
+          }
+        ],
+        "langfuse_trace_id": "f1d1f98bc2e0b175c4c4d54e96460d18",
+        "langfuse_observation_id": "8b3ec850c819f8ec",
+        "langfuse_trace_url": "https://cloud.langfuse.com/project/cmr1ywsf000d5ad0cex3dm2ha/traces/f1d1f98bc2e0b175c4c4d54e96460d18"
+      },
+      "error": null,
+      "ok": true,
+      "scores": {
+        "scorable": true,
+        "correctness": 1.0,
+        "groundedness": 1.0,
+        "hallucination_rate": 0.0,
+        "overall_score": 1.0,
+        "details": {
+          "refused_or_no_data": false,
+          "empty_output": false,
+          "expected_text_facts": 4,
+          "matched_text_facts": 4,
+          "expected_numeric_facts": 4,
+          "matched_numeric_facts": 4,
+          "claimed_numeric_values": 4,
+          "unsupported_numeric_values": 0
+        }
+      },
+      "tool_selection": {
+        "scorable": true,
+        "expected_tools": [
+          "execute_sql",
+          "get_open_tickets_by_priority"
+        ],
+        "total_tool_calls": 8,
+        "tool_recall": 1.0,
+        "tool_precision": 0.625,
+        "distractor_call_count": 0,
+        "distractor_calls": [],
+        "any_distractor_called": false,
+        "distractor_call_rate": 0.0,
+        "fabricated_call_count": 3,
+        "fabricated_calls": [
+          "run_code",
+          "run_code",
+          "run_code"
+        ],
+        "any_fabricated_called": true,
+        "fabricated_call_rate": 0.375
+      }
+    },
+    {
+      "harness": "pydantic-ai",
+      "architecture": "enterprise-sql-react",
+      "task": "support-open-tickets-priority",
+      "prompt": "How many open or pending support tickets are there, broken down by priority?",
+      "output": "\n\n| priority | ticket_count |\n|----------|--------------|\n| high     | 26           |\n| low      | 20           |\n| medium   | 36           |\n| urgent   | 21           |",
+      "started_at": "2026-07-08T21:06:52.500315+00:00",
+      "elapsed_seconds": 5.155588916997658,
+      "metadata": {
+        "langfuse_session_id": "agent-bench:run-all:pydantic-ai:support-open-tickets-priority:20260708T210600Z:batch",
+        "tool_calls": [
+          {
+            "tool_name": "list_tables",
+            "via": "native"
+          },
+          {
+            "tool_name": "describe_table",
+            "via": "native"
+          },
+          {
+            "tool_name": "execute_sql",
+            "via": "native"
+          }
+        ],
+        "langfuse_trace_id": "2dd4ab21b3d8549b8a36c9bc58aa501d",
+        "langfuse_observation_id": "161ac0c26ecbdeda",
+        "langfuse_trace_url": "https://cloud.langfuse.com/project/cmr1ywsf000d5ad0cex3dm2ha/traces/2dd4ab21b3d8549b8a36c9bc58aa501d"
+      },
+      "error": null,
+      "ok": true,
+      "scores": {
+        "scorable": true,
+        "correctness": 1.0,
+        "groundedness": 1.0,
+        "hallucination_rate": 0.0,
+        "overall_score": 1.0,
+        "details": {
+          "refused_or_no_data": false,
+          "empty_output": false,
+          "expected_text_facts": 4,
+          "matched_text_facts": 4,
+          "expected_numeric_facts": 4,
+          "matched_numeric_facts": 4,
+          "claimed_numeric_values": 4,
+          "unsupported_numeric_values": 0
+        }
+      },
+      "tool_selection": {
+        "scorable": true,
+        "expected_tools": [
+          "execute_sql",
+          "get_open_tickets_by_priority"
+        ],
+        "total_tool_calls": 3,
+        "tool_recall": 1.0,
+        "tool_precision": 1.0,
+        "distractor_call_count": 0,
+        "distractor_calls": [],
+        "any_distractor_called": false,
+        "distractor_call_rate": 0.0,
+        "fabricated_call_count": 0,
+        "fabricated_calls": [],
+        "any_fabricated_called": false,
+        "fabricated_call_rate": 0.0
+      }
+    },
+    {
+      "harness": "pydantic-ai",
+      "architecture": "enterprise-sql-codemode",
+      "task": "support-open-tickets-priority",
+      "prompt": "How many open or pending support tickets are there, broken down by priority?",
+      "output": "\n\n| priority | ticket_count |\n|----------|-------------|\n| high | 26 |\n| low | 20 |\n| medium | 36 |\n| urgent | 21 |",
+      "started_at": "2026-07-08T21:06:57.656096+00:00",
+      "elapsed_seconds": 7.106404875012231,
+      "metadata": {
+        "langfuse_session_id": "agent-bench:run-all:pydantic-ai:support-open-tickets-priority:20260708T210600Z:batch",
+        "tool_calls": [
+          {
+            "tool_name": "list_tables",
+            "via": "native"
+          },
+          {
+            "tool_name": "run_code",
+            "via": "native"
+          },
+          {
+            "tool_name": "list_tables",
+            "via": "code_mode"
+          },
+          {
+            "tool_name": "describe_table",
+            "via": "native"
+          },
+          {
+            "tool_name": "run_code",
+            "via": "native"
+          },
+          {
+            "tool_name": "describe_table",
+            "via": "code_mode"
+          },
+          {
+            "tool_name": "run_code",
+            "via": "native"
+          },
+          {
+            "tool_name": "execute_sql",
+            "via": "code_mode"
+          }
+        ],
+        "langfuse_trace_id": "38f3d85913c6a29b614bc88f7bb24e37",
+        "langfuse_observation_id": "cc7726bae87662e0",
+        "langfuse_trace_url": "https://cloud.langfuse.com/project/cmr1ywsf000d5ad0cex3dm2ha/traces/38f3d85913c6a29b614bc88f7bb24e37"
+      },
+      "error": null,
+      "ok": true,
+      "scores": {
+        "scorable": true,
+        "correctness": 1.0,
+        "groundedness": 1.0,
+        "hallucination_rate": 0.0,
+        "overall_score": 1.0,
+        "details": {
+          "refused_or_no_data": false,
+          "empty_output": false,
+          "expected_text_facts": 4,
+          "matched_text_facts": 4,
+          "expected_numeric_facts": 4,
+          "matched_numeric_facts": 4,
+          "claimed_numeric_values": 4,
+          "unsupported_numeric_values": 0
+        }
+      },
+      "tool_selection": {
+        "scorable": true,
+        "expected_tools": [
+          "execute_sql",
+          "get_open_tickets_by_priority"
+        ],
+        "total_tool_calls": 8,
+        "tool_recall": 1.0,
+        "tool_precision": 0.625,
+        "distractor_call_count": 0,
+        "distractor_calls": [],
+        "any_distractor_called": false,
+        "distractor_call_rate": 0.0,
+        "fabricated_call_count": 3,
+        "fabricated_calls": [
+          "run_code",
+          "run_code",
+          "run_code"
+        ],
+        "any_fabricated_called": true,
+        "fabricated_call_rate": 0.375
+      }
+    },
+    {
+      "harness": "pydantic-ai",
+      "architecture": "enterprise-react-toolsearch",
+      "task": "support-open-tickets-priority",
+      "prompt": "How many open or pending support tickets are there, broken down by priority?",
+      "output": "\n\nNo tools are currently available to query support ticket data, including ticket status (open/pending) or priority breakdowns. The available tools only provide customer profiles, subscription history, lifetime value, and order details.",
+      "started_at": "2026-07-08T21:07:04.762665+00:00",
+      "elapsed_seconds": 4.74649791700358,
+      "metadata": {
+        "langfuse_session_id": "agent-bench:run-all:pydantic-ai:support-open-tickets-priority:20260708T210600Z:batch",
+        "tool_calls": [
+          {
+            "tool_name": "search_tools",
+            "via": "native"
+          },
+          {
+            "tool_name": "search_tools",
+            "via": "native"
+          }
+        ],
+        "langfuse_trace_id": "72f545bec1267aff04be65f281e0630e",
+        "langfuse_observation_id": "df95ef2c2ed083f4",
+        "langfuse_trace_url": "https://cloud.langfuse.com/project/cmr1ywsf000d5ad0cex3dm2ha/traces/72f545bec1267aff04be65f281e0630e"
+      },
+      "error": null,
+      "ok": true,
+      "scores": {
+        "scorable": true,
+        "correctness": 0.0,
+        "groundedness": 1.0,
+        "hallucination_rate": 0.0,
+        "overall_score": 0.0,
+        "details": {
+          "refused_or_no_data": false,
+          "empty_output": false,
+          "expected_text_facts": 4,
+          "matched_text_facts": 0,
+          "expected_numeric_facts": 4,
+          "matched_numeric_facts": 0,
+          "claimed_numeric_values": 0,
+          "unsupported_numeric_values": 0
+        }
+      },
+      "tool_selection": {
+        "scorable": true,
+        "expected_tools": [
+          "execute_sql",
+          "get_open_tickets_by_priority"
+        ],
+        "total_tool_calls": 2,
+        "tool_recall": 0.0,
+        "tool_precision": 1.0,
+        "distractor_call_count": 0,
+        "distractor_calls": [],
+        "any_distractor_called": false,
+        "distractor_call_rate": 0.0,
+        "fabricated_call_count": 0,
+        "fabricated_calls": [],
+        "any_fabricated_called": false,
+        "fabricated_call_rate": 0.0
+      }
+    },
+    {
+      "harness": "pydantic-ai",
+      "architecture": "enterprise-codemode-toolsearch",
+      "task": "support-open-tickets-priority",
+      "prompt": "How many open or pending support tickets are there, broken down by priority?",
+      "output": "\n\n| priority | ticket_count |\n|---|---|\n| high | 26 |\n| low | 20 |\n| medium | 36 |\n| urgent | 21 |",
+      "started_at": "2026-07-08T21:07:09.509280+00:00",
+      "elapsed_seconds": 8.977195416999166,
+      "metadata": {
+        "langfuse_session_id": "agent-bench:run-all:pydantic-ai:support-open-tickets-priority:20260708T210600Z:batch",
+        "tool_calls": [
+          {
+            "tool_name": "search_tools",
+            "via": "native"
+          },
+          {
+            "tool_name": "get_schema_context",
+            "via": "native"
+          },
+          {
+            "tool_name": "list_tables",
+            "via": "native"
+          },
+          {
+            "tool_name": "execute_sql",
+            "via": "native"
+          }
+        ],
+        "langfuse_trace_id": "e70d8df37653c4e3ad7fc1ecbca61730",
+        "langfuse_observation_id": "e96abd7fd25b1cb3",
+        "langfuse_trace_url": "https://cloud.langfuse.com/project/cmr1ywsf000d5ad0cex3dm2ha/traces/e70d8df37653c4e3ad7fc1ecbca61730"
+      },
+      "error": null,
+      "ok": true,
+      "scores": {
+        "scorable": true,
+        "correctness": 1.0,
+        "groundedness": 1.0,
+        "hallucination_rate": 0.0,
+        "overall_score": 1.0,
+        "details": {
+          "refused_or_no_data": false,
+          "empty_output": false,
+          "expected_text_facts": 4,
+          "matched_text_facts": 4,
+          "expected_numeric_facts": 4,
+          "matched_numeric_facts": 4,
+          "claimed_numeric_values": 4,
+          "unsupported_numeric_values": 0
+        }
+      },
+      "tool_selection": {
+        "scorable": true,
+        "expected_tools": [
+          "execute_sql",
+          "get_open_tickets_by_priority"
+        ],
+        "total_tool_calls": 4,
+        "tool_recall": 1.0,
+        "tool_precision": 1.0,
+        "distractor_call_count": 0,
+        "distractor_calls": [],
+        "any_distractor_called": false,
+        "distractor_call_rate": 0.0,
+        "fabricated_call_count": 0,
+        "fabricated_calls": [],
+        "any_fabricated_called": false,
+        "fabricated_call_rate": 0.0
+      }
+    },
+    {
+      "harness": "pydantic-ai",
+      "architecture": "enterprise-react-thinking",
+      "task": "support-open-tickets-priority",
+      "prompt": "How many open or pending support tickets are there, broken down by priority?",
+      "output": "\n\n| priority | ticket_count |\n|----------|--------------|\n| high     | 26           |\n| low      | 20           |\n| medium   | 36           |\n| urgent   | 21           |",
+      "started_at": "2026-07-08T21:07:18.486682+00:00",
+      "elapsed_seconds": 7.5945020409999415,
+      "metadata": {
+        "langfuse_session_id": "agent-bench:run-all:pydantic-ai:support-open-tickets-priority:20260708T210600Z:batch",
+        "tool_calls": [
+          {
+            "tool_name": "get_schema_context",
+            "via": "native"
+          },
+          {
+            "tool_name": "execute_sql",
+            "via": "native"
+          }
+        ],
+        "langfuse_trace_id": "a43237b839957ce073d62bd4518b7bf6",
+        "langfuse_observation_id": "4f5084457d38f5c9",
+        "langfuse_trace_url": "https://cloud.langfuse.com/project/cmr1ywsf000d5ad0cex3dm2ha/traces/a43237b839957ce073d62bd4518b7bf6"
+      },
+      "error": null,
+      "ok": true,
+      "scores": {
+        "scorable": true,
+        "correctness": 1.0,
+        "groundedness": 1.0,
+        "hallucination_rate": 0.0,
+        "overall_score": 1.0,
+        "details": {
+          "refused_or_no_data": false,
+          "empty_output": false,
+          "expected_text_facts": 4,
+          "matched_text_facts": 4,
+          "expected_numeric_facts": 4,
+          "matched_numeric_facts": 4,
+          "claimed_numeric_values": 4,
+          "unsupported_numeric_values": 0
+        }
+      },
+      "tool_selection": {
+        "scorable": true,
+        "expected_tools": [
+          "execute_sql",
+          "get_open_tickets_by_priority"
+        ],
+        "total_tool_calls": 2,
+        "tool_recall": 1.0,
+        "tool_precision": 1.0,
+        "distractor_call_count": 0,
+        "distractor_calls": [],
+        "any_distractor_called": false,
+        "distractor_call_rate": 0.0,
+        "fabricated_call_count": 0,
+        "fabricated_calls": [],
+        "any_fabricated_called": false,
+        "fabricated_call_rate": 0.0
+      }
+    },
+    {
+      "harness": "pydantic-ai",
+      "architecture": "enterprise-codemode-thinking",
+      "task": "support-open-tickets-priority",
+      "prompt": "How many open or pending support tickets are there, broken down by priority?",
+      "output": "\n\n| priority | ticket_count |\n|----------|--------------|\n| high     | 26           |\n| low      | 20           |\n| medium   | 36           |\n| urgent   | 21           |",
+      "started_at": "2026-07-08T21:07:26.081389+00:00",
+      "elapsed_seconds": 6.3951688340021065,
+      "metadata": {
+        "langfuse_session_id": "agent-bench:run-all:pydantic-ai:support-open-tickets-priority:20260708T210600Z:batch",
+        "tool_calls": [
+          {
+            "tool_name": "list_tables",
+            "via": "native"
+          },
+          {
+            "tool_name": "run_code",
+            "via": "native"
+          },
+          {
+            "tool_name": "list_tables",
+            "via": "code_mode"
+          },
+          {
+            "tool_name": "run_code",
+            "via": "native"
+          },
+          {
+            "tool_name": "execute_sql",
+            "via": "code_mode"
+          }
+        ],
+        "langfuse_trace_id": "2281c4e7a58927a944681b7de3a52f85",
+        "langfuse_observation_id": "6561bc0673936d7e",
+        "langfuse_trace_url": "https://cloud.langfuse.com/project/cmr1ywsf000d5ad0cex3dm2ha/traces/2281c4e7a58927a944681b7de3a52f85"
+      },
+      "error": null,
+      "ok": true,
+      "scores": {
+        "scorable": true,
+        "correctness": 1.0,
+        "groundedness": 1.0,
+        "hallucination_rate": 0.0,
+        "overall_score": 1.0,
+        "details": {
+          "refused_or_no_data": false,
+          "empty_output": false,
+          "expected_text_facts": 4,
+          "matched_text_facts": 4,
+          "expected_numeric_facts": 4,
+          "matched_numeric_facts": 4,
+          "claimed_numeric_values": 4,
+          "unsupported_numeric_values": 0
+        }
+      },
+      "tool_selection": {
+        "scorable": true,
+        "expected_tools": [
+          "execute_sql",
+          "get_open_tickets_by_priority"
+        ],
+        "total_tool_calls": 5,
+        "tool_recall": 1.0,
+        "tool_precision": 0.6,
+        "distractor_call_count": 0,
+        "distractor_calls": [],
+        "any_distractor_called": false,
+        "distractor_call_rate": 0.0,
+        "fabricated_call_count": 2,
+        "fabricated_calls": [
+          "run_code",
+          "run_code"
+        ],
+        "any_fabricated_called": true,
+        "fabricated_call_rate": 0.4
+      }
+    },
+    {
+      "harness": "pydantic-ai",
+      "architecture": "enterprise-react-toolsearch-120",
+      "task": "support-open-tickets-priority",
+      "prompt": "How many open or pending support tickets are there, broken down by priority?",
+      "output": "\n\n| priority | ticket_count |\n|----------|--------------|\n| urgent   | 21           |\n| high     | 26           |\n| medium   | 36           |\n| low      | 20           |",
+      "started_at": "2026-07-08T21:07:32.476665+00:00",
+      "elapsed_seconds": 5.039989084005356,
+      "metadata": {
+        "langfuse_session_id": "agent-bench:run-all:pydantic-ai:support-open-tickets-priority:20260708T210600Z:batch",
+        "tool_calls": [
+          {
+            "tool_name": "search_tools",
+            "via": "native"
+          },
+          {
+            "tool_name": "get_open_tickets_by_priority",
+            "via": "native"
+          }
+        ],
+        "langfuse_trace_id": "e823187d7a8b45978c35dcae3032a8b1",
+        "langfuse_observation_id": "e2f3f657ef2556cd",
+        "langfuse_trace_url": "https://cloud.langfuse.com/project/cmr1ywsf000d5ad0cex3dm2ha/traces/e823187d7a8b45978c35dcae3032a8b1"
+      },
+      "error": null,
+      "ok": true,
+      "scores": {
+        "scorable": true,
+        "correctness": 1.0,
+        "groundedness": 1.0,
+        "hallucination_rate": 0.0,
+        "overall_score": 1.0,
+        "details": {
+          "refused_or_no_data": false,
+          "empty_output": false,
+          "expected_text_facts": 4,
+          "matched_text_facts": 4,
+          "expected_numeric_facts": 4,
+          "matched_numeric_facts": 4,
+          "claimed_numeric_values": 4,
+          "unsupported_numeric_values": 0
+        }
+      },
+      "tool_selection": {
+        "scorable": true,
+        "expected_tools": [
+          "execute_sql",
+          "get_open_tickets_by_priority"
+        ],
+        "total_tool_calls": 2,
+        "tool_recall": 1.0,
+        "tool_precision": 1.0,
+        "distractor_call_count": 0,
+        "distractor_calls": [],
+        "any_distractor_called": false,
+        "distractor_call_rate": 0.0,
+        "fabricated_call_count": 0,
+        "fabricated_calls": [],
+        "any_fabricated_called": false,
+        "fabricated_call_rate": 0.0
+      }
+    },
+    {
+      "harness": "pydantic-ai",
+      "architecture": "enterprise-categorized-search",
+      "task": "support-open-tickets-priority",
+      "prompt": "How many open or pending support tickets are there, broken down by priority?",
+      "output": "\n\n| priority | ticket_count |\n|----------|--------------|\n| urgent   | 21           |\n| high     | 26           |\n| medium   | 36           |\n| low      | 20           |",
+      "started_at": "2026-07-08T21:07:37.516793+00:00",
+      "elapsed_seconds": 5.221534084004816,
+      "metadata": {
+        "langfuse_session_id": "agent-bench:run-all:pydantic-ai:support-open-tickets-priority:20260708T210600Z:batch",
+        "tool_calls": [
+          {
+            "tool_name": "list_tool_categories",
+            "via": "native"
+          },
+          {
+            "tool_name": "search_tools_in_category",
+            "via": "native"
+          },
+          {
+            "tool_name": "call_tool",
+            "via": "native"
+          },
+          {
+            "tool_name": "get_open_tickets_by_priority",
+            "via": "categorized_search"
+          }
+        ],
+        "langfuse_trace_id": "d3cdbbb278dba652847de8040b21a69b",
+        "langfuse_observation_id": "373e8e2e7994c842",
+        "langfuse_trace_url": "https://cloud.langfuse.com/project/cmr1ywsf000d5ad0cex3dm2ha/traces/d3cdbbb278dba652847de8040b21a69b"
+      },
+      "error": null,
+      "ok": true,
+      "scores": {
+        "scorable": true,
+        "correctness": 1.0,
+        "groundedness": 1.0,
+        "hallucination_rate": 0.0,
+        "overall_score": 1.0,
+        "details": {
+          "refused_or_no_data": false,
+          "empty_output": false,
+          "expected_text_facts": 4,
+          "matched_text_facts": 4,
+          "expected_numeric_facts": 4,
+          "matched_numeric_facts": 4,
+          "claimed_numeric_values": 4,
+          "unsupported_numeric_values": 0
+        }
+      },
+      "tool_selection": {
+        "scorable": true,
+        "expected_tools": [
+          "execute_sql",
+          "get_open_tickets_by_priority"
+        ],
+        "total_tool_calls": 4,
+        "tool_recall": 1.0,
+        "tool_precision": 1.0,
+        "distractor_call_count": 0,
+        "distractor_calls": [],
+        "any_distractor_called": false,
+        "distractor_call_rate": 0.0,
+        "fabricated_call_count": 0,
+        "fabricated_calls": [],
+        "any_fabricated_called": false,
+        "fabricated_call_rate": 0.0
+      }
+    }
+  ],
+  "scored_at": "2026-07-08T22:25:20.456763+00:00",
+  "ground_truth_generated_at": "2026-07-08T20:08:57.272260+00:00",
+  "score_summary": {
+    "scored_results": 13,
+    "overall_score_formula": "harmonic_mean(correctness, groundedness)",
+    "avg_overall_score": 0.8462,
+    "best_architecture": "enterprise-react",
+    "best_overall_score": 1.0,
+    "avg_correctness": 0.875,
+    "avg_groundedness": 0.9231,
+    "avg_hallucination_rate": 0.0769,
+    "tool_selection": {
+      "scored_tasks": 13,
+      "avg_tool_precision": 0.7962,
+      "avg_tool_recall": 0.8462,
+      "total_tool_calls": 50,
+      "total_distractor_calls": 0,
+      "distractor_call_rate": 0.0,
+      "tasks_with_any_distractor_call": 0,
+      "tasks_with_any_distractor_call_pct": 0.0,
+      "total_fabricated_calls": 11,
+      "fabricated_call_rate": 0.22,
+      "tasks_with_any_fabricated_call": 4,
+      "tasks_with_any_fabricated_call_pct": 30.77
+    }
+  }
+}

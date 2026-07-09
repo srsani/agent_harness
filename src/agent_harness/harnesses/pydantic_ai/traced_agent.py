@@ -68,6 +68,17 @@ def _to_preview(value: Any, *, max_chars: int = 4000) -> str:
     return text if len(text) <= max_chars else f"{text[:max_chars]}...[truncated]"
 
 
+# CodeMode's `run_code` toolset (see `pydantic_ai_harness.code_mode._toolset.CodeModeToolset.
+# call_tool`) executes wrapped tools *inside* the sandbox and returns a `ToolReturn` whose
+# `metadata` carries `{'code_mode': True, 'tool_calls': {call_id: ToolCallPart, ...},
+# 'tool_returns': {call_id: ToolReturnPart, ...}}`. Those nested calls never appear as their
+# own top-level `ToolCallPart` in `result.all_messages()` -- from the outside, CodeMode looks
+# like a single `run_code` call. Flattening them here (tagged `via='code_mode'`) is what makes
+# tool-selection / tool-hallucination scoring (`tool_selection_benchmark.py`) work identically
+# for ReAct-style and CodeMode-style architectures instead of only seeing "run_code" for the latter.
+_CODE_MODE_TOOL_NAME = "run_code"
+
+
 def _extract_run_artifacts(result: Any) -> dict[str, Any]:
     from pydantic_ai.messages import (
         ModelRequest,
@@ -103,6 +114,7 @@ def _extract_run_artifacts(result: Any) -> dict[str, Any]:
                             "args_json": part.args_as_json_str(),
                             "tool_kind": getattr(part, "tool_kind", None),
                             "provider_name": getattr(part, "provider_name", None),
+                            "via": "native",
                         }
                     )
                 elif isinstance(part, ThinkingPart):
@@ -128,6 +140,30 @@ def _extract_run_artifacts(result: Any) -> dict[str, Any]:
                             "timestamp": str(part.timestamp),
                         }
                     )
+                    if part.tool_name == _CODE_MODE_TOOL_NAME and isinstance(part.metadata, dict):
+                        nested_calls = part.metadata.get("tool_calls") or {}
+                        nested_returns = part.metadata.get("tool_returns") or {}
+                        for call_id, nested_call in nested_calls.items():
+                            tool_calls.append(
+                                {
+                                    "tool_name": getattr(nested_call, "tool_name", None),
+                                    "tool_call_id": call_id,
+                                    "args_json": getattr(nested_call, "args_as_json_str", lambda: "{}")(),
+                                    "tool_kind": None,
+                                    "provider_name": None,
+                                    "via": "code_mode",
+                                }
+                            )
+                        for call_id, nested_ret in nested_returns.items():
+                            tool_returns.append(
+                                {
+                                    "tool_name": getattr(nested_ret, "tool_name", None),
+                                    "tool_call_id": call_id,
+                                    "outcome": getattr(nested_ret, "outcome", "success"),
+                                    "content": _to_preview(getattr(nested_ret, "content", None)),
+                                    "timestamp": str(part.timestamp),
+                                }
+                            )
 
     returns_by_call_id = {ret["tool_call_id"]: ret for ret in tool_returns}
     tool_steps = [

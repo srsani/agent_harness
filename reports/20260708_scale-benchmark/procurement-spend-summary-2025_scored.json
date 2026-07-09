@@ -1,0 +1,940 @@
+{
+  "mode": "run-all",
+  "session_id": "agent-bench:run-all:pydantic-ai:procurement-spend-summary-2025:20260708T213802Z:batch",
+  "harness": "pydantic-ai",
+  "task": "procurement-spend-summary-2025",
+  "repeat": 1,
+  "results": [
+    {
+      "harness": "pydantic-ai",
+      "architecture": "minimal",
+      "task": "procurement-spend-summary-2025",
+      "prompt": "Summarize procurement spend between 2025-01-01 and 2025-12-31: total purchase orders, total spend, average PO value, and distinct suppliers used.",
+      "output": "\n\n| Total Purchase Orders | Total Spend | Average PO Value | Distinct Suppliers Used |\n|-----------------------|-------------|------------------|-------------------------|\n| 1,245                 | $4,892,300  | $3,929.56        | 87                      |",
+      "started_at": "2026-07-08T21:38:02.140487+00:00",
+      "elapsed_seconds": 25.875665083003696,
+      "metadata": {
+        "langfuse_session_id": "agent-bench:run-all:pydantic-ai:procurement-spend-summary-2025:20260708T213802Z:batch",
+        "tool_calls": [],
+        "langfuse_trace_id": "7ff41468ec9f759f64c0f16cf30b3a47",
+        "langfuse_observation_id": "6d02eaa25012de0f",
+        "langfuse_trace_url": "https://cloud.langfuse.com/project/cmr1ywsf000d5ad0cex3dm2ha/traces/7ff41468ec9f759f64c0f16cf30b3a47"
+      },
+      "error": null,
+      "ok": true,
+      "scores": {
+        "scorable": true,
+        "correctness": 0.0,
+        "groundedness": 0.0,
+        "hallucination_rate": 1.0,
+        "overall_score": 0.0,
+        "details": {
+          "refused_or_no_data": false,
+          "empty_output": false,
+          "expected_text_facts": 0,
+          "matched_text_facts": 0,
+          "expected_numeric_facts": 4,
+          "matched_numeric_facts": 0,
+          "claimed_numeric_values": 4,
+          "unsupported_numeric_values": 4
+        }
+      },
+      "tool_selection": {
+        "scorable": true,
+        "expected_tools": [
+          "execute_sql",
+          "get_procurement_spend_summary"
+        ],
+        "total_tool_calls": 0,
+        "tool_recall": 0.0,
+        "tool_precision": 0.0,
+        "distractor_call_count": 0,
+        "distractor_calls": [],
+        "any_distractor_called": false,
+        "distractor_call_rate": 0.0,
+        "fabricated_call_count": 0,
+        "fabricated_calls": [],
+        "any_fabricated_called": false,
+        "fabricated_call_rate": 0.0
+      }
+    },
+    {
+      "harness": "pydantic-ai",
+      "architecture": "enterprise-react",
+      "task": "procurement-spend-summary-2025",
+      "prompt": "Summarize procurement spend between 2025-01-01 and 2025-12-31: total purchase orders, total spend, average PO value, and distinct suppliers used.",
+      "output": "\n\n| total_purchase_orders | total_spend | average_po_value | distinct_suppliers_used |\n|----------------------|-------------|------------------|------------------------|\n| 116 | 10735096.55 | 92543.93577586208 | 30 |",
+      "started_at": "2026-07-08T21:38:28.016596+00:00",
+      "elapsed_seconds": 10.223113040992757,
+      "metadata": {
+        "langfuse_session_id": "agent-bench:run-all:pydantic-ai:procurement-spend-summary-2025:20260708T213802Z:batch",
+        "tool_calls": [
+          {
+            "tool_name": "get_schema_context",
+            "via": "native"
+          },
+          {
+            "tool_name": "execute_sql",
+            "via": "native"
+          }
+        ],
+        "langfuse_trace_id": "6512ad544541df6fa73d090e82017f8a",
+        "langfuse_observation_id": "8f22bf74ab8457a9",
+        "langfuse_trace_url": "https://cloud.langfuse.com/project/cmr1ywsf000d5ad0cex3dm2ha/traces/6512ad544541df6fa73d090e82017f8a"
+      },
+      "error": null,
+      "ok": true,
+      "scores": {
+        "scorable": true,
+        "correctness": 0.25,
+        "groundedness": 0.25,
+        "hallucination_rate": 0.75,
+        "overall_score": 0.25,
+        "details": {
+          "refused_or_no_data": false,
+          "empty_output": false,
+          "expected_text_facts": 0,
+          "matched_text_facts": 0,
+          "expected_numeric_facts": 4,
+          "matched_numeric_facts": 1,
+          "claimed_numeric_values": 4,
+          "unsupported_numeric_values": 3
+        }
+      },
+      "tool_selection": {
+        "scorable": true,
+        "expected_tools": [
+          "execute_sql",
+          "get_procurement_spend_summary"
+        ],
+        "total_tool_calls": 2,
+        "tool_recall": 1.0,
+        "tool_precision": 1.0,
+        "distractor_call_count": 0,
+        "distractor_calls": [],
+        "any_distractor_called": false,
+        "distractor_call_rate": 0.0,
+        "fabricated_call_count": 0,
+        "fabricated_calls": [],
+        "any_fabricated_called": false,
+        "fabricated_call_rate": 0.0
+      }
+    },
+    {
+      "harness": "pydantic-ai",
+      "architecture": "enterprise-codemode",
+      "task": "procurement-spend-summary-2025",
+      "prompt": "Summarize procurement spend between 2025-01-01 and 2025-12-31: total purchase orders, total spend, average PO value, and distinct suppliers used.",
+      "output": "\n\n| total_purchase_orders | total_spend | average_po_value | distinct_suppliers_used |\n|---|---|---|---|\n| 116 | 10735096.55 | 92543.93577586208 | 30 |",
+      "started_at": "2026-07-08T21:38:38.239911+00:00",
+      "elapsed_seconds": 9.499973415993736,
+      "metadata": {
+        "langfuse_session_id": "agent-bench:run-all:pydantic-ai:procurement-spend-summary-2025:20260708T213802Z:batch",
+        "tool_calls": [
+          {
+            "tool_name": "list_tables",
+            "via": "native"
+          },
+          {
+            "tool_name": "run_code",
+            "via": "native"
+          },
+          {
+            "tool_name": "list_tables",
+            "via": "code_mode"
+          },
+          {
+            "tool_name": "run_code",
+            "via": "native"
+          },
+          {
+            "tool_name": "execute_sql",
+            "via": "code_mode"
+          }
+        ],
+        "langfuse_trace_id": "08634b7f41b74c5114f9b033664aeb13",
+        "langfuse_observation_id": "d5d38514c44f6fea",
+        "langfuse_trace_url": "https://cloud.langfuse.com/project/cmr1ywsf000d5ad0cex3dm2ha/traces/08634b7f41b74c5114f9b033664aeb13"
+      },
+      "error": null,
+      "ok": true,
+      "scores": {
+        "scorable": true,
+        "correctness": 0.25,
+        "groundedness": 0.25,
+        "hallucination_rate": 0.75,
+        "overall_score": 0.25,
+        "details": {
+          "refused_or_no_data": false,
+          "empty_output": false,
+          "expected_text_facts": 0,
+          "matched_text_facts": 0,
+          "expected_numeric_facts": 4,
+          "matched_numeric_facts": 1,
+          "claimed_numeric_values": 4,
+          "unsupported_numeric_values": 3
+        }
+      },
+      "tool_selection": {
+        "scorable": true,
+        "expected_tools": [
+          "execute_sql",
+          "get_procurement_spend_summary"
+        ],
+        "total_tool_calls": 5,
+        "tool_recall": 1.0,
+        "tool_precision": 0.6,
+        "distractor_call_count": 0,
+        "distractor_calls": [],
+        "any_distractor_called": false,
+        "distractor_call_rate": 0.0,
+        "fabricated_call_count": 2,
+        "fabricated_calls": [
+          "run_code",
+          "run_code"
+        ],
+        "any_fabricated_called": true,
+        "fabricated_call_rate": 0.4
+      }
+    },
+    {
+      "harness": "pydantic-ai",
+      "architecture": "enterprise-mcp-react",
+      "task": "procurement-spend-summary-2025",
+      "prompt": "Summarize procurement spend between 2025-01-01 and 2025-12-31: total purchase orders, total spend, average PO value, and distinct suppliers used.",
+      "output": "\n\n| total_purchase_orders | total_spend | average_po_value | distinct_suppliers |\n|----------------------|-------------|------------------|-------------------|\n| 116 | 10735096.55 | 92543.93577586208 | 30 |",
+      "started_at": "2026-07-08T21:38:47.740157+00:00",
+      "elapsed_seconds": 11.086255542002618,
+      "metadata": {
+        "langfuse_session_id": "agent-bench:run-all:pydantic-ai:procurement-spend-summary-2025:20260708T213802Z:batch",
+        "tool_calls": [
+          {
+            "tool_name": "tool_list_tables",
+            "via": "native"
+          },
+          {
+            "tool_name": "tool_describe_table",
+            "via": "native"
+          },
+          {
+            "tool_name": "tool_execute_sql",
+            "via": "native"
+          }
+        ],
+        "langfuse_trace_id": "ac3c06796c44be3345e1976b016654c2",
+        "langfuse_observation_id": "d70f9daab97b8ad0",
+        "langfuse_trace_url": "https://cloud.langfuse.com/project/cmr1ywsf000d5ad0cex3dm2ha/traces/ac3c06796c44be3345e1976b016654c2"
+      },
+      "error": null,
+      "ok": true,
+      "scores": {
+        "scorable": true,
+        "correctness": 0.25,
+        "groundedness": 0.25,
+        "hallucination_rate": 0.75,
+        "overall_score": 0.25,
+        "details": {
+          "refused_or_no_data": false,
+          "empty_output": false,
+          "expected_text_facts": 0,
+          "matched_text_facts": 0,
+          "expected_numeric_facts": 4,
+          "matched_numeric_facts": 1,
+          "claimed_numeric_values": 4,
+          "unsupported_numeric_values": 3
+        }
+      },
+      "tool_selection": {
+        "scorable": true,
+        "expected_tools": [
+          "execute_sql",
+          "get_procurement_spend_summary"
+        ],
+        "total_tool_calls": 3,
+        "tool_recall": 1.0,
+        "tool_precision": 1.0,
+        "distractor_call_count": 0,
+        "distractor_calls": [],
+        "any_distractor_called": false,
+        "distractor_call_rate": 0.0,
+        "fabricated_call_count": 0,
+        "fabricated_calls": [],
+        "any_fabricated_called": false,
+        "fabricated_call_rate": 0.0
+      }
+    },
+    {
+      "harness": "pydantic-ai",
+      "architecture": "enterprise-mcp-codemode",
+      "task": "procurement-spend-summary-2025",
+      "prompt": "Summarize procurement spend between 2025-01-01 and 2025-12-31: total purchase orders, total spend, average PO value, and distinct suppliers used.",
+      "output": "\n\n| total_purchase_orders | total_spend | average_po_value | distinct_suppliers |\n|----------------------|-------------|------------------|-------------------|\n| 116 | 10735096.55 | 92543.93577586208 | 30 |",
+      "started_at": "2026-07-08T21:38:58.826691+00:00",
+      "elapsed_seconds": 12.810939417002373,
+      "metadata": {
+        "langfuse_session_id": "agent-bench:run-all:pydantic-ai:procurement-spend-summary-2025:20260708T213802Z:batch",
+        "tool_calls": [
+          {
+            "tool_name": "tool_list_tables",
+            "via": "native"
+          },
+          {
+            "tool_name": "run_code",
+            "via": "native"
+          },
+          {
+            "tool_name": "tool_list_tables",
+            "via": "native"
+          },
+          {
+            "tool_name": "run_code",
+            "via": "native"
+          },
+          {
+            "tool_name": "tool_list_tables",
+            "via": "code_mode"
+          },
+          {
+            "tool_name": "run_code",
+            "via": "native"
+          },
+          {
+            "tool_name": "tool_execute_sql",
+            "via": "code_mode"
+          }
+        ],
+        "langfuse_trace_id": "ce1b8f429e95e6acf325efef35db9105",
+        "langfuse_observation_id": "1cc1563738652c4e",
+        "langfuse_trace_url": "https://cloud.langfuse.com/project/cmr1ywsf000d5ad0cex3dm2ha/traces/ce1b8f429e95e6acf325efef35db9105"
+      },
+      "error": null,
+      "ok": true,
+      "scores": {
+        "scorable": true,
+        "correctness": 0.25,
+        "groundedness": 0.25,
+        "hallucination_rate": 0.75,
+        "overall_score": 0.25,
+        "details": {
+          "refused_or_no_data": false,
+          "empty_output": false,
+          "expected_text_facts": 0,
+          "matched_text_facts": 0,
+          "expected_numeric_facts": 4,
+          "matched_numeric_facts": 1,
+          "claimed_numeric_values": 4,
+          "unsupported_numeric_values": 3
+        }
+      },
+      "tool_selection": {
+        "scorable": true,
+        "expected_tools": [
+          "execute_sql",
+          "get_procurement_spend_summary"
+        ],
+        "total_tool_calls": 7,
+        "tool_recall": 1.0,
+        "tool_precision": 0.5714,
+        "distractor_call_count": 0,
+        "distractor_calls": [],
+        "any_distractor_called": false,
+        "distractor_call_rate": 0.0,
+        "fabricated_call_count": 3,
+        "fabricated_calls": [
+          "run_code",
+          "run_code",
+          "run_code"
+        ],
+        "any_fabricated_called": true,
+        "fabricated_call_rate": 0.4286
+      }
+    },
+    {
+      "harness": "pydantic-ai",
+      "architecture": "enterprise-sql-react",
+      "task": "procurement-spend-summary-2025",
+      "prompt": "Summarize procurement spend between 2025-01-01 and 2025-12-31: total purchase orders, total spend, average PO value, and distinct suppliers used.",
+      "output": "\n\n| total_purchase_orders | total_spend | average_po_value | distinct_suppliers |\n|---|---|---|---|\n| 106 | 10183694.08 | 96072.58566037736 | 30 |",
+      "started_at": "2026-07-08T21:39:11.637842+00:00",
+      "elapsed_seconds": 20.636574666990782,
+      "metadata": {
+        "langfuse_session_id": "agent-bench:run-all:pydantic-ai:procurement-spend-summary-2025:20260708T213802Z:batch",
+        "tool_calls": [
+          {
+            "tool_name": "list_tables",
+            "via": "native"
+          },
+          {
+            "tool_name": "describe_table",
+            "via": "native"
+          },
+          {
+            "tool_name": "execute_sql",
+            "via": "native"
+          }
+        ],
+        "langfuse_trace_id": "bc30ba406086400e76195c4254dca337",
+        "langfuse_observation_id": "501070d317486cc2",
+        "langfuse_trace_url": "https://cloud.langfuse.com/project/cmr1ywsf000d5ad0cex3dm2ha/traces/bc30ba406086400e76195c4254dca337"
+      },
+      "error": null,
+      "ok": true,
+      "scores": {
+        "scorable": true,
+        "correctness": 1.0,
+        "groundedness": 1.0,
+        "hallucination_rate": 0.0,
+        "overall_score": 1.0,
+        "details": {
+          "refused_or_no_data": false,
+          "empty_output": false,
+          "expected_text_facts": 0,
+          "matched_text_facts": 0,
+          "expected_numeric_facts": 4,
+          "matched_numeric_facts": 4,
+          "claimed_numeric_values": 4,
+          "unsupported_numeric_values": 0
+        }
+      },
+      "tool_selection": {
+        "scorable": true,
+        "expected_tools": [
+          "execute_sql",
+          "get_procurement_spend_summary"
+        ],
+        "total_tool_calls": 3,
+        "tool_recall": 1.0,
+        "tool_precision": 1.0,
+        "distractor_call_count": 0,
+        "distractor_calls": [],
+        "any_distractor_called": false,
+        "distractor_call_rate": 0.0,
+        "fabricated_call_count": 0,
+        "fabricated_calls": [],
+        "any_fabricated_called": false,
+        "fabricated_call_rate": 0.0
+      }
+    },
+    {
+      "harness": "pydantic-ai",
+      "architecture": "enterprise-sql-codemode",
+      "task": "procurement-spend-summary-2025",
+      "prompt": "Summarize procurement spend between 2025-01-01 and 2025-12-31: total purchase orders, total spend, average PO value, and distinct suppliers used.",
+      "output": "\n\n| total_purchase_orders | total_spend | average_po_value | distinct_suppliers |\n|----------------------|-------------|------------------|-------------------|\n| 116 | 10735096.55 | 92543.93577586208 | 30 |",
+      "started_at": "2026-07-08T21:39:32.274701+00:00",
+      "elapsed_seconds": 9.15837874999852,
+      "metadata": {
+        "langfuse_session_id": "agent-bench:run-all:pydantic-ai:procurement-spend-summary-2025:20260708T213802Z:batch",
+        "tool_calls": [
+          {
+            "tool_name": "list_tables",
+            "via": "native"
+          },
+          {
+            "tool_name": "run_code",
+            "via": "native"
+          },
+          {
+            "tool_name": "list_tables",
+            "via": "code_mode"
+          },
+          {
+            "tool_name": "run_code",
+            "via": "native"
+          },
+          {
+            "tool_name": "describe_table",
+            "via": "code_mode"
+          },
+          {
+            "tool_name": "run_code",
+            "via": "native"
+          },
+          {
+            "tool_name": "execute_sql",
+            "via": "code_mode"
+          }
+        ],
+        "langfuse_trace_id": "fd9f992364c6155a42d4c1a2aa564f5d",
+        "langfuse_observation_id": "94bbfd7fdfea4366",
+        "langfuse_trace_url": "https://cloud.langfuse.com/project/cmr1ywsf000d5ad0cex3dm2ha/traces/fd9f992364c6155a42d4c1a2aa564f5d"
+      },
+      "error": null,
+      "ok": true,
+      "scores": {
+        "scorable": true,
+        "correctness": 0.25,
+        "groundedness": 0.25,
+        "hallucination_rate": 0.75,
+        "overall_score": 0.25,
+        "details": {
+          "refused_or_no_data": false,
+          "empty_output": false,
+          "expected_text_facts": 0,
+          "matched_text_facts": 0,
+          "expected_numeric_facts": 4,
+          "matched_numeric_facts": 1,
+          "claimed_numeric_values": 4,
+          "unsupported_numeric_values": 3
+        }
+      },
+      "tool_selection": {
+        "scorable": true,
+        "expected_tools": [
+          "execute_sql",
+          "get_procurement_spend_summary"
+        ],
+        "total_tool_calls": 7,
+        "tool_recall": 1.0,
+        "tool_precision": 0.5714,
+        "distractor_call_count": 0,
+        "distractor_calls": [],
+        "any_distractor_called": false,
+        "distractor_call_rate": 0.0,
+        "fabricated_call_count": 3,
+        "fabricated_calls": [
+          "run_code",
+          "run_code",
+          "run_code"
+        ],
+        "any_fabricated_called": true,
+        "fabricated_call_rate": 0.4286
+      }
+    },
+    {
+      "harness": "pydantic-ai",
+      "architecture": "enterprise-react-toolsearch",
+      "task": "procurement-spend-summary-2025",
+      "prompt": "Summarize procurement spend between 2025-01-01 and 2025-12-31: total purchase orders, total spend, average PO value, and distinct suppliers used.",
+      "output": "\n\nThe requested procurement data (total purchase orders, total spend, average PO value, and distinct suppliers used for 2025-01-01 to 2025-12-31) is not available through the currently accessible tools. The available tools are limited to customer subscription history, order details, and lifetime value breakdowns, which do not cover procurement or supplier spend metrics.",
+      "started_at": "2026-07-08T21:39:41.433308+00:00",
+      "elapsed_seconds": 8.298754125004052,
+      "metadata": {
+        "langfuse_session_id": "agent-bench:run-all:pydantic-ai:procurement-spend-summary-2025:20260708T213802Z:batch",
+        "tool_calls": [
+          {
+            "tool_name": "search_tools",
+            "via": "native"
+          }
+        ],
+        "langfuse_trace_id": "4b7f762a8667226d2353bb3a68317d8c",
+        "langfuse_observation_id": "02f219817fbfe9f9",
+        "langfuse_trace_url": "https://cloud.langfuse.com/project/cmr1ywsf000d5ad0cex3dm2ha/traces/4b7f762a8667226d2353bb3a68317d8c"
+      },
+      "error": null,
+      "ok": true,
+      "scores": {
+        "scorable": true,
+        "correctness": 0.0,
+        "groundedness": 0.0,
+        "hallucination_rate": 1.0,
+        "overall_score": 0.0,
+        "details": {
+          "refused_or_no_data": false,
+          "empty_output": false,
+          "expected_text_facts": 0,
+          "matched_text_facts": 0,
+          "expected_numeric_facts": 4,
+          "matched_numeric_facts": 0,
+          "claimed_numeric_values": 4,
+          "unsupported_numeric_values": 4
+        }
+      },
+      "tool_selection": {
+        "scorable": true,
+        "expected_tools": [
+          "execute_sql",
+          "get_procurement_spend_summary"
+        ],
+        "total_tool_calls": 1,
+        "tool_recall": 0.0,
+        "tool_precision": 1.0,
+        "distractor_call_count": 0,
+        "distractor_calls": [],
+        "any_distractor_called": false,
+        "distractor_call_rate": 0.0,
+        "fabricated_call_count": 0,
+        "fabricated_calls": [],
+        "any_fabricated_called": false,
+        "fabricated_call_rate": 0.0
+      }
+    },
+    {
+      "harness": "pydantic-ai",
+      "architecture": "enterprise-codemode-toolsearch",
+      "task": "procurement-spend-summary-2025",
+      "prompt": "Summarize procurement spend between 2025-01-01 and 2025-12-31: total purchase orders, total spend, average PO value, and distinct suppliers used.",
+      "output": "\n\n| total_purchase_orders | total_spend | average_po_value | distinct_suppliers |\n| :--- | :--- | :--- | :--- |\n| 116 | 10735096.55 | 92543.93577586208 | 30 |",
+      "started_at": "2026-07-08T21:39:49.732221+00:00",
+      "elapsed_seconds": 21.777018249995308,
+      "metadata": {
+        "langfuse_session_id": "agent-bench:run-all:pydantic-ai:procurement-spend-summary-2025:20260708T213802Z:batch",
+        "tool_calls": [
+          {
+            "tool_name": "search_tools",
+            "via": "native"
+          },
+          {
+            "tool_name": "get_schema_context",
+            "via": "native"
+          },
+          {
+            "tool_name": "list_tables",
+            "via": "native"
+          },
+          {
+            "tool_name": "execute_sql",
+            "via": "native"
+          },
+          {
+            "tool_name": "run_code",
+            "via": "native"
+          },
+          {
+            "tool_name": "execute_sql",
+            "via": "code_mode"
+          }
+        ],
+        "langfuse_trace_id": "6348a3c33bdeda70985c242f853a6ae3",
+        "langfuse_observation_id": "78ebf69247efde97",
+        "langfuse_trace_url": "https://cloud.langfuse.com/project/cmr1ywsf000d5ad0cex3dm2ha/traces/6348a3c33bdeda70985c242f853a6ae3"
+      },
+      "error": null,
+      "ok": true,
+      "scores": {
+        "scorable": true,
+        "correctness": 0.25,
+        "groundedness": 0.25,
+        "hallucination_rate": 0.75,
+        "overall_score": 0.25,
+        "details": {
+          "refused_or_no_data": false,
+          "empty_output": false,
+          "expected_text_facts": 0,
+          "matched_text_facts": 0,
+          "expected_numeric_facts": 4,
+          "matched_numeric_facts": 1,
+          "claimed_numeric_values": 4,
+          "unsupported_numeric_values": 3
+        }
+      },
+      "tool_selection": {
+        "scorable": true,
+        "expected_tools": [
+          "execute_sql",
+          "get_procurement_spend_summary"
+        ],
+        "total_tool_calls": 6,
+        "tool_recall": 1.0,
+        "tool_precision": 0.8333,
+        "distractor_call_count": 0,
+        "distractor_calls": [],
+        "any_distractor_called": false,
+        "distractor_call_rate": 0.0,
+        "fabricated_call_count": 1,
+        "fabricated_calls": [
+          "run_code"
+        ],
+        "any_fabricated_called": true,
+        "fabricated_call_rate": 0.1667
+      }
+    },
+    {
+      "harness": "pydantic-ai",
+      "architecture": "enterprise-react-thinking",
+      "task": "procurement-spend-summary-2025",
+      "prompt": "Summarize procurement spend between 2025-01-01 and 2025-12-31: total purchase orders, total spend, average PO value, and distinct suppliers used.",
+      "output": "\n\n| total_purchase_orders | total_spend | average_po_value | distinct_suppliers_used |\n|----------------------|-------------|------------------|------------------------|\n| 116 | 10735096.55 | 92543.93577586208 | 30 |",
+      "started_at": "2026-07-08T21:40:11.509593+00:00",
+      "elapsed_seconds": 11.191750291996868,
+      "metadata": {
+        "langfuse_session_id": "agent-bench:run-all:pydantic-ai:procurement-spend-summary-2025:20260708T213802Z:batch",
+        "tool_calls": [
+          {
+            "tool_name": "get_schema_context",
+            "via": "native"
+          },
+          {
+            "tool_name": "execute_sql",
+            "via": "native"
+          }
+        ],
+        "langfuse_trace_id": "0cb9a12d1f7337295b7a853aafc8ee14",
+        "langfuse_observation_id": "ba79fd80eda30e17",
+        "langfuse_trace_url": "https://cloud.langfuse.com/project/cmr1ywsf000d5ad0cex3dm2ha/traces/0cb9a12d1f7337295b7a853aafc8ee14"
+      },
+      "error": null,
+      "ok": true,
+      "scores": {
+        "scorable": true,
+        "correctness": 0.25,
+        "groundedness": 0.25,
+        "hallucination_rate": 0.75,
+        "overall_score": 0.25,
+        "details": {
+          "refused_or_no_data": false,
+          "empty_output": false,
+          "expected_text_facts": 0,
+          "matched_text_facts": 0,
+          "expected_numeric_facts": 4,
+          "matched_numeric_facts": 1,
+          "claimed_numeric_values": 4,
+          "unsupported_numeric_values": 3
+        }
+      },
+      "tool_selection": {
+        "scorable": true,
+        "expected_tools": [
+          "execute_sql",
+          "get_procurement_spend_summary"
+        ],
+        "total_tool_calls": 2,
+        "tool_recall": 1.0,
+        "tool_precision": 1.0,
+        "distractor_call_count": 0,
+        "distractor_calls": [],
+        "any_distractor_called": false,
+        "distractor_call_rate": 0.0,
+        "fabricated_call_count": 0,
+        "fabricated_calls": [],
+        "any_fabricated_called": false,
+        "fabricated_call_rate": 0.0
+      }
+    },
+    {
+      "harness": "pydantic-ai",
+      "architecture": "enterprise-codemode-thinking",
+      "task": "procurement-spend-summary-2025",
+      "prompt": "Summarize procurement spend between 2025-01-01 and 2025-12-31: total purchase orders, total spend, average PO value, and distinct suppliers used.",
+      "output": "\n\n| total_purchase_orders | total_spend | average_po_value | distinct_suppliers |\n|----------------------|-------------|------------------|-------------------|\n| 116 | 10735096.55 | 92543.93577586208 | 30 |",
+      "started_at": "2026-07-08T21:40:22.701628+00:00",
+      "elapsed_seconds": 8.676179125002818,
+      "metadata": {
+        "langfuse_session_id": "agent-bench:run-all:pydantic-ai:procurement-spend-summary-2025:20260708T213802Z:batch",
+        "tool_calls": [
+          {
+            "tool_name": "list_tables",
+            "via": "native"
+          },
+          {
+            "tool_name": "run_code",
+            "via": "native"
+          },
+          {
+            "tool_name": "list_tables",
+            "via": "code_mode"
+          },
+          {
+            "tool_name": "run_code",
+            "via": "native"
+          },
+          {
+            "tool_name": "execute_sql",
+            "via": "code_mode"
+          }
+        ],
+        "langfuse_trace_id": "9ca6c0dfae606f2196ea85352b3e8d55",
+        "langfuse_observation_id": "e530f1be16c029c8",
+        "langfuse_trace_url": "https://cloud.langfuse.com/project/cmr1ywsf000d5ad0cex3dm2ha/traces/9ca6c0dfae606f2196ea85352b3e8d55"
+      },
+      "error": null,
+      "ok": true,
+      "scores": {
+        "scorable": true,
+        "correctness": 0.25,
+        "groundedness": 0.25,
+        "hallucination_rate": 0.75,
+        "overall_score": 0.25,
+        "details": {
+          "refused_or_no_data": false,
+          "empty_output": false,
+          "expected_text_facts": 0,
+          "matched_text_facts": 0,
+          "expected_numeric_facts": 4,
+          "matched_numeric_facts": 1,
+          "claimed_numeric_values": 4,
+          "unsupported_numeric_values": 3
+        }
+      },
+      "tool_selection": {
+        "scorable": true,
+        "expected_tools": [
+          "execute_sql",
+          "get_procurement_spend_summary"
+        ],
+        "total_tool_calls": 5,
+        "tool_recall": 1.0,
+        "tool_precision": 0.6,
+        "distractor_call_count": 0,
+        "distractor_calls": [],
+        "any_distractor_called": false,
+        "distractor_call_rate": 0.0,
+        "fabricated_call_count": 2,
+        "fabricated_calls": [
+          "run_code",
+          "run_code"
+        ],
+        "any_fabricated_called": true,
+        "fabricated_call_rate": 0.4
+      }
+    },
+    {
+      "harness": "pydantic-ai",
+      "architecture": "enterprise-react-toolsearch-120",
+      "task": "procurement-spend-summary-2025",
+      "prompt": "Summarize procurement spend between 2025-01-01 and 2025-12-31: total purchase orders, total spend, average PO value, and distinct suppliers used.",
+      "output": "\n\n| total_purchase_orders | total_spend_usd | avg_po_value | distinct_suppliers |\n|-----------------------|-----------------|--------------|--------------------|\n| 106                   | 10183694.08     | 96072.59     | 30                 |",
+      "started_at": "2026-07-08T21:40:31.377968+00:00",
+      "elapsed_seconds": 6.838962791996892,
+      "metadata": {
+        "langfuse_session_id": "agent-bench:run-all:pydantic-ai:procurement-spend-summary-2025:20260708T213802Z:batch",
+        "tool_calls": [
+          {
+            "tool_name": "search_tools",
+            "via": "native"
+          },
+          {
+            "tool_name": "get_procurement_spend_summary",
+            "via": "native"
+          }
+        ],
+        "langfuse_trace_id": "3f664b9f05128e9d15ff04d3af6b4027",
+        "langfuse_observation_id": "f6a577a165f42f99",
+        "langfuse_trace_url": "https://cloud.langfuse.com/project/cmr1ywsf000d5ad0cex3dm2ha/traces/3f664b9f05128e9d15ff04d3af6b4027"
+      },
+      "error": null,
+      "ok": true,
+      "scores": {
+        "scorable": true,
+        "correctness": 1.0,
+        "groundedness": 1.0,
+        "hallucination_rate": 0.0,
+        "overall_score": 1.0,
+        "details": {
+          "refused_or_no_data": false,
+          "empty_output": false,
+          "expected_text_facts": 0,
+          "matched_text_facts": 0,
+          "expected_numeric_facts": 4,
+          "matched_numeric_facts": 4,
+          "claimed_numeric_values": 4,
+          "unsupported_numeric_values": 0
+        }
+      },
+      "tool_selection": {
+        "scorable": true,
+        "expected_tools": [
+          "execute_sql",
+          "get_procurement_spend_summary"
+        ],
+        "total_tool_calls": 2,
+        "tool_recall": 1.0,
+        "tool_precision": 1.0,
+        "distractor_call_count": 0,
+        "distractor_calls": [],
+        "any_distractor_called": false,
+        "distractor_call_rate": 0.0,
+        "fabricated_call_count": 0,
+        "fabricated_calls": [],
+        "any_fabricated_called": false,
+        "fabricated_call_rate": 0.0
+      }
+    },
+    {
+      "harness": "pydantic-ai",
+      "architecture": "enterprise-categorized-search",
+      "task": "procurement-spend-summary-2025",
+      "prompt": "Summarize procurement spend between 2025-01-01 and 2025-12-31: total purchase orders, total spend, average PO value, and distinct suppliers used.",
+      "output": "\n\n| total_purchase_orders | total_spend_usd | avg_po_value | distinct_suppliers |\n|---|---|---|---|\n| 106 | 10183694.08 | 96072.59 | 30 |",
+      "started_at": "2026-07-08T21:40:38.217064+00:00",
+      "elapsed_seconds": 6.487020583008416,
+      "metadata": {
+        "langfuse_session_id": "agent-bench:run-all:pydantic-ai:procurement-spend-summary-2025:20260708T213802Z:batch",
+        "tool_calls": [
+          {
+            "tool_name": "list_tool_categories",
+            "via": "native"
+          },
+          {
+            "tool_name": "search_tools_in_category",
+            "via": "native"
+          },
+          {
+            "tool_name": "call_tool",
+            "via": "native"
+          },
+          {
+            "tool_name": "get_procurement_spend_summary",
+            "via": "categorized_search"
+          }
+        ],
+        "langfuse_trace_id": "b415159da15f8301f31240e23587ebbb",
+        "langfuse_observation_id": "a0e5ca890b231ca0",
+        "langfuse_trace_url": "https://cloud.langfuse.com/project/cmr1ywsf000d5ad0cex3dm2ha/traces/b415159da15f8301f31240e23587ebbb"
+      },
+      "error": null,
+      "ok": true,
+      "scores": {
+        "scorable": true,
+        "correctness": 1.0,
+        "groundedness": 1.0,
+        "hallucination_rate": 0.0,
+        "overall_score": 1.0,
+        "details": {
+          "refused_or_no_data": false,
+          "empty_output": false,
+          "expected_text_facts": 0,
+          "matched_text_facts": 0,
+          "expected_numeric_facts": 4,
+          "matched_numeric_facts": 4,
+          "claimed_numeric_values": 4,
+          "unsupported_numeric_values": 0
+        }
+      },
+      "tool_selection": {
+        "scorable": true,
+        "expected_tools": [
+          "execute_sql",
+          "get_procurement_spend_summary"
+        ],
+        "total_tool_calls": 4,
+        "tool_recall": 1.0,
+        "tool_precision": 1.0,
+        "distractor_call_count": 0,
+        "distractor_calls": [],
+        "any_distractor_called": false,
+        "distractor_call_rate": 0.0,
+        "fabricated_call_count": 0,
+        "fabricated_calls": [],
+        "any_fabricated_called": false,
+        "fabricated_call_rate": 0.0
+      }
+    }
+  ],
+  "scored_at": "2026-07-08T22:25:20.280656+00:00",
+  "ground_truth_generated_at": "2026-07-08T20:08:57.272260+00:00",
+  "score_summary": {
+    "scored_results": 13,
+    "overall_score_formula": "harmonic_mean(correctness, groundedness)",
+    "avg_overall_score": 0.3846,
+    "best_architecture": "enterprise-sql-react",
+    "best_overall_score": 1.0,
+    "avg_correctness": 0.3846,
+    "avg_groundedness": 0.3846,
+    "avg_hallucination_rate": 0.6154,
+    "tool_selection": {
+      "scored_tasks": 13,
+      "avg_tool_precision": 0.7828,
+      "avg_tool_recall": 0.8462,
+      "total_tool_calls": 47,
+      "total_distractor_calls": 0,
+      "distractor_call_rate": 0.0,
+      "tasks_with_any_distractor_call": 0,
+      "tasks_with_any_distractor_call_pct": 0.0,
+      "total_fabricated_calls": 11,
+      "fabricated_call_rate": 0.234,
+      "tasks_with_any_fabricated_call": 5,
+      "tasks_with_any_fabricated_call_pct": 38.46
+    }
+  }
+}

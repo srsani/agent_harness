@@ -37,6 +37,16 @@ ARCH_PRIORITY = [
     "enterprise-mcp-codemode",
     "enterprise-sql-react",
     "enterprise-sql-codemode",
+    "enterprise-react-toolsearch",
+    "enterprise-codemode-toolsearch",
+    "enterprise-mcp-react-native",
+    "enterprise-react-thinking",
+    "enterprise-codemode-thinking",
+    "enterprise-react-120",
+    "enterprise-codemode-120",
+    "enterprise-mcp-react-120",
+    "enterprise-react-toolsearch-120",
+    "enterprise-categorized-search",
 ]
 
 
@@ -56,6 +66,7 @@ def load_results(reports_dir: str) -> dict[tuple[str, str], dict[str, Any]]:
 
     def add_result(r: dict[str, Any]) -> None:
         scores = r.get("scores") or {}
+        tool_sel = r.get("tool_selection") or {}
         data[(r["task"], r["architecture"])] = {
             "ok": r["ok"],
             "score": scores.get("overall_score"),
@@ -64,6 +75,11 @@ def load_results(reports_dir: str) -> dict[tuple[str, str], dict[str, Any]]:
             "hallucination_rate": scores.get("hallucination_rate"),
             "elapsed": r["elapsed_seconds"],
             "error": (r.get("error") or "").replace("\n", " "),
+            "tool_recall": tool_sel.get("tool_recall"),
+            "tool_precision": tool_sel.get("tool_precision"),
+            "total_tool_calls": tool_sel.get("total_tool_calls"),
+            "distractor_call_count": tool_sel.get("distractor_call_count"),
+            "fabricated_call_count": tool_sel.get("fabricated_call_count"),
         }
 
     for path in glob.glob(os.path.join(reports_dir, "*_scored.json")):
@@ -89,6 +105,11 @@ def write_full_matrix_csv(data: dict[tuple[str, str], dict[str, Any]], out_path:
             "groundedness": d["groundedness"],
             "hallucination_rate": d["hallucination_rate"],
             "elapsed_seconds": round(d["elapsed"], 2),
+            "tool_recall": d["tool_recall"],
+            "tool_precision": d["tool_precision"],
+            "total_tool_calls": d["total_tool_calls"],
+            "distractor_call_count": d["distractor_call_count"],
+            "fabricated_call_count": d["fabricated_call_count"],
             "error": d["error"],
         }
         for (task, arch), d in data.items()
@@ -112,6 +133,8 @@ def write_architecture_summary_csv(
     rows = []
     for arch in archs:
         adj_scores, raw_scores, elapsed_ok = [], [], []
+        recalls, precisions = [], []
+        total_calls = total_distractor = total_fabricated = 0
         ok_count = 0
         for task in tasks:
             d = data.get((task, arch))
@@ -123,6 +146,12 @@ def write_architecture_summary_csv(
                 ok_count += 1
                 raw_scores.append(score)
                 elapsed_ok.append(d["elapsed"])
+            if d.get("tool_recall") is not None:
+                recalls.append(d["tool_recall"])
+                precisions.append(d["tool_precision"])
+                total_calls += d.get("total_tool_calls") or 0
+                total_distractor += d.get("distractor_call_count") or 0
+                total_fabricated += d.get("fabricated_call_count") or 0
 
         wins = sum(
             1
@@ -151,6 +180,16 @@ def write_architecture_summary_csv(
                 if elapsed_ok
                 else 0,
                 "tasks_won": wins,
+                "avg_tool_recall": round(sum(recalls) / len(recalls), 4) if recalls else None,
+                "avg_tool_precision": round(sum(precisions) / len(precisions), 4)
+                if precisions
+                else None,
+                "distractor_call_rate": round(total_distractor / total_calls, 4)
+                if total_calls
+                else None,
+                "fabricated_call_rate": round(total_fabricated / total_calls, 4)
+                if total_calls
+                else None,
             }
         )
 

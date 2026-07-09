@@ -153,6 +153,79 @@ REVIEW_BODIES = {
 
 ORDER_STATUSES = ["pending", "shipped", "delivered", "delivered", "delivered", "cancelled"]
 
+# ── support & success reference data ─────────────────────────────────────────
+SUPPORT_REGIONS = ["US", "EMEA", "APAC"]
+TICKET_PRIORITIES = ["low", "low", "medium", "medium", "medium", "high", "high", "urgent"]
+TICKET_STATUSES = ["open", "pending", "resolved", "resolved", "resolved", "closed", "closed"]
+TICKET_SUBJECTS = [
+    "Dashboard not loading latest data", "Export to CSV fails", "Incorrect revenue totals",
+    "Cannot invite new teammate", "SSO login error", "API rate limit question",
+    "Forecast numbers look stale", "Need help configuring alert thresholds",
+    "Module missing expected filter", "Slow load time on large reports",
+    "Data refresh delayed", "Permission error viewing module",
+    "Chart rendering incorrectly", "Question about seat count on invoice",
+    "Requesting historical data export", "Integration with data warehouse broken",
+]
+
+# ── marketing campaign reference data ────────────────────────────────────────
+CAMPAIGN_CHANNELS = ["email", "paid_search", "social", "webinar", "content", "events"]
+CAMPAIGN_STATUSES = ["planned", "active", "completed", "completed", "completed", "paused"]
+CAMPAIGN_ADJECTIVES = ["Spring", "Summer", "Fall", "Winter", "Enterprise", "Global", "Regional", "Flagship"]
+CAMPAIGN_NOUNS = {
+    "email": "Nurture Sequence",
+    "paid_search": "Search Surge",
+    "social": "Social Push",
+    "webinar": "Webinar Series",
+    "content": "Content Sprint",
+    "events": "Field Event",
+}
+
+# ── procurement / supplier reference data ────────────────────────────────────
+SUPPLIER_CATEGORIES = ["raw_materials", "logistics", "software", "facilities", "professional_services"]
+SUPPLIER_NAME_PREFIXES = [
+    "Global", "Apex", "Summit", "NorthStar", "Meridian", "Vertex", "Atlas",
+    "Pioneer", "Sterling", "Horizon", "Cascade", "Ironclad", "Bluewave", "Redstone",
+]
+SUPPLIER_NAME_SUFFIXES = [
+    "Logistics", "Supply Co", "Materials", "Systems", "Solutions",
+    "Partners", "Group", "Industries", "Networks", "Consulting",
+]
+SUPPLIER_COUNTRIES = ["US", "GB", "DE", "FR", "CA", "AU", "NL", "SG"]
+
+# ── workforce / HR reference data ────────────────────────────────────────────
+DEPARTMENTS = [
+    ("Finance & Accounting",   "Finance"),
+    ("Corporate FP&A",         "Finance"),
+    ("Supply Chain Operations","Supply Chain"),
+    ("Procurement",            "Supply Chain"),
+    ("Sales & Marketing",      "Sales & Marketing"),
+    ("Product Marketing",      "Sales & Marketing"),
+    ("R&D Engineering",        "Research & Development"),
+    ("People & Talent",        "HR & People"),
+]
+JOB_TITLES = [
+    ("Analyst", 65000, 85000),
+    ("Senior Analyst", 85000, 105000),
+    ("Associate", 60000, 78000),
+    ("Specialist", 70000, 90000),
+    ("Coordinator", 55000, 70000),
+    ("Manager", 105000, 135000),
+    ("Senior Manager", 130000, 160000),
+    ("Lead", 110000, 140000),
+    ("Director", 160000, 200000),
+    ("VP", 200000, 260000),
+]
+
+# ── finance / budgets reference data ─────────────────────────────────────────
+BUDGET_CATEGORIES = ["opex", "capex", "headcount", "travel", "marketing_spend"]
+EXPENSE_DESCRIPTIONS = {
+    "opex": ["Software subscription renewal", "Office supplies", "Cloud infrastructure spend", "Facilities maintenance"],
+    "capex": ["Server hardware purchase", "Office renovation", "New equipment purchase", "Data center buildout"],
+    "headcount": ["Recruiting agency fee", "Relocation assistance", "Contractor payment", "Signing bonus"],
+    "travel": ["Client site visit", "Conference attendance", "Team offsite", "Sales trip"],
+    "marketing_spend": ["Paid media spend", "Sponsorship fee", "Content production", "Event booth fee"],
+}
+
 
 # ── helpers ───────────────────────────────────────────────────────────────────
 
@@ -310,6 +383,294 @@ def seed(conn: sqlite3.Connection, *, n_customers: int = 200, n_orders: int = 60
             (pid, cid, rating, title, body, review_date),
         )
 
+    conn.commit()
+
+    _seed_support(conn, customer_ids, product_ids, three_years_ago, now)
+    _seed_marketing(conn, three_years_ago, now)
+    _seed_procurement(conn, three_years_ago, now)
+    department_ids = _seed_workforce(conn, three_years_ago, now)
+    _seed_finance(conn, department_ids, now)
+
+
+# ── Support & Success ─────────────────────────────────────────────────────────
+
+def _seed_support(
+    conn: sqlite3.Connection,
+    customer_ids: list[int],
+    product_ids: list[int],
+    start: datetime,
+    now: datetime,
+    *,
+    n_agents: int = 15,
+    n_tickets: int = 320,
+) -> None:
+    agent_ids: list[int] = []
+    for i in range(n_agents):
+        first = RNG.choice(FIRST_NAMES)
+        last = RNG.choice(LAST_NAMES)
+        region = SUPPORT_REGIONS[i % len(SUPPORT_REGIONS)]
+        hired = _random_dt(start, now - timedelta(days=30))
+        cur = conn.execute(
+            "INSERT INTO support_agents(full_name, region, hired_at) VALUES (?,?,?)",
+            (f"{first} {last}", region, hired),
+        )
+        agent_ids.append(cur.lastrowid)
+
+    one_year_ago = now - timedelta(days=365)
+    for _ in range(n_tickets):
+        customer_id = RNG.choice(customer_ids)
+        product_id = RNG.choice(product_ids)
+        agent_id = RNG.choice(agent_ids)
+        priority = RNG.choice(TICKET_PRIORITIES)
+        status = RNG.choice(TICKET_STATUSES)
+        subject = RNG.choice(TICKET_SUBJECTS)
+        created = _random_dt(one_year_ago, now)
+        resolved_at = None
+        satisfaction_rating = None
+        if status in ("resolved", "closed"):
+            resolved_at = _random_dt(
+                datetime.fromisoformat(created) + timedelta(hours=1),
+                datetime.fromisoformat(created) + timedelta(days=14),
+            )
+            if RNG.random() < 0.6:
+                satisfaction_rating = RNG.choices([1, 2, 3, 4, 5], weights=[3, 5, 12, 35, 45])[0]
+        conn.execute(
+            """
+            INSERT INTO support_tickets
+              (customer_id, product_id, agent_id, subject, priority, status, created_at,
+               resolved_at, satisfaction_rating)
+            VALUES (?,?,?,?,?,?,?,?,?)
+            """,
+            (
+                customer_id, product_id, agent_id, subject, priority, status, created,
+                resolved_at, satisfaction_rating,
+            ),
+        )
+    conn.commit()
+
+
+# ── Marketing Campaigns ────────────────────────────────────────────────────────
+
+def _seed_marketing(
+    conn: sqlite3.Connection, start: datetime, now: datetime, *, n_per_channel: int = 4
+) -> None:
+    two_years_ago = now - timedelta(days=2 * 365)
+    for channel in CAMPAIGN_CHANNELS:
+        for i in range(n_per_channel):
+            adjective = RNG.choice(CAMPAIGN_ADJECTIVES)
+            name = f"{adjective} {CAMPAIGN_NOUNS[channel]} {i + 1}"
+            status = RNG.choice(CAMPAIGN_STATUSES)
+            budget = round(RNG.uniform(15000, 250000), 2)
+            campaign_start = _random_dt(two_years_ago, now - timedelta(days=30))
+            duration_days = RNG.randint(30, 180)
+            campaign_start_dt = datetime.fromisoformat(campaign_start)
+            campaign_end_dt = min(campaign_start_dt + timedelta(days=duration_days), now)
+            cur = conn.execute(
+                """
+                INSERT INTO campaigns(name, channel, status, budget_usd, start_date, end_date)
+                VALUES (?,?,?,?,?,?)
+                """,
+                (
+                    name, channel, status, budget,
+                    campaign_start_dt.date().isoformat(),
+                    campaign_end_dt.date().isoformat(),
+                ),
+            )
+            campaign_id = cur.lastrowid
+
+            n_months = max(1, (campaign_end_dt.year - campaign_start_dt.year) * 12
+                            + (campaign_end_dt.month - campaign_start_dt.month) + 1)
+            year, month = campaign_start_dt.year, campaign_start_dt.month
+            monthly_budget = budget / n_months
+            for _m in range(n_months):
+                month_str = f"{year:04d}-{month:02d}"
+                impressions = RNG.randint(5000, 500000)
+                clicks = int(impressions * RNG.uniform(0.005, 0.06))
+                leads = int(clicks * RNG.uniform(0.02, 0.15))
+                conversions = int(leads * RNG.uniform(0.05, 0.30))
+                spend = round(monthly_budget * RNG.uniform(0.7, 1.15), 2)
+                conn.execute(
+                    """
+                    INSERT INTO campaign_performance
+                      (campaign_id, month, impressions, clicks, leads, conversions, spend_usd)
+                    VALUES (?,?,?,?,?,?,?)
+                    """,
+                    (campaign_id, month_str, impressions, clicks, leads, conversions, spend),
+                )
+                month += 1
+                if month == 13:
+                    month = 1
+                    year += 1
+    conn.commit()
+
+
+# ── Procurement / Suppliers ────────────────────────────────────────────────────
+
+def _seed_procurement(
+    conn: sqlite3.Connection, start: datetime, now: datetime,
+    *, n_suppliers: int = 30, n_purchase_orders: int = 220,
+) -> None:
+    supplier_ids: list[int] = []
+    used_names: set[str] = set()
+    for _ in range(n_suppliers):
+        name = f"{RNG.choice(SUPPLIER_NAME_PREFIXES)} {RNG.choice(SUPPLIER_NAME_SUFFIXES)}"
+        while name in used_names:
+            name = f"{RNG.choice(SUPPLIER_NAME_PREFIXES)} {RNG.choice(SUPPLIER_NAME_SUFFIXES)} {RNG.randint(2, 99)}"
+        used_names.add(name)
+        country = RNG.choice(SUPPLIER_COUNTRIES)
+        category = RNG.choice(SUPPLIER_CATEGORIES)
+        rating = round(RNG.uniform(2.0, 5.0), 1)
+        created = _random_dt(start, now - timedelta(days=60))
+        cur = conn.execute(
+            "INSERT INTO suppliers(name, country, category, rating, created_at) VALUES (?,?,?,?,?)",
+            (name, country, category, rating, created),
+        )
+        supplier_ids.append(cur.lastrowid)
+
+    two_years_ago = now - timedelta(days=2 * 365)
+    po_statuses = ["draft", "approved", "shipped", "received", "received", "received", "cancelled"]
+    for _ in range(n_purchase_orders):
+        supplier_id = RNG.choice(supplier_ids)
+        status = RNG.choice(po_statuses)
+        total = round(RNG.uniform(2000, 180000), 2)
+        ordered = _random_dt(two_years_ago, now - timedelta(days=1))
+        ordered_dt = datetime.fromisoformat(ordered)
+        expected_dt = ordered_dt + timedelta(days=RNG.randint(7, 45))
+        received_at = None
+        if status == "received":
+            # ~30% of received POs arrive late (after expected_at).
+            if RNG.random() < 0.3:
+                received_dt = expected_dt + timedelta(days=RNG.randint(1, 15))
+            else:
+                received_dt = expected_dt - timedelta(days=RNG.randint(0, 5))
+            received_dt = min(received_dt, now)
+            if received_dt < ordered_dt:
+                received_dt = ordered_dt + timedelta(days=1)
+            received_at = received_dt.isoformat(timespec="seconds")
+        conn.execute(
+            """
+            INSERT INTO purchase_orders
+              (supplier_id, status, total_amount, ordered_at, expected_at, received_at)
+            VALUES (?,?,?,?,?,?)
+            """,
+            (supplier_id, status, total, ordered, expected_dt.isoformat(timespec="seconds"), received_at),
+        )
+    conn.commit()
+
+
+# ── Workforce / HR ──────────────────────────────────────────────────────────────
+
+def _seed_workforce(
+    conn: sqlite3.Connection, start: datetime, now: datetime,
+    *, employees_per_department: int = 16,
+) -> list[int]:
+    department_ids: list[int] = []
+    for name, function in DEPARTMENTS:
+        dept_budget = round(RNG.uniform(800000, 4500000), 2)
+        cur = conn.execute(
+            "INSERT INTO departments(name, function, budget_usd) VALUES (?,?,?)",
+            (name, function, dept_budget),
+        )
+        department_ids.append(cur.lastrowid)
+
+    two_years_ago = now - timedelta(days=2 * 365)
+    for dept_id in department_ids:
+        dept_employee_ids: list[int] = []
+        head_id: int | None = None
+        for i in range(employees_per_department):
+            first = RNG.choice(FIRST_NAMES)
+            last = RNG.choice(LAST_NAMES)
+            title, lo, hi = RNG.choice(JOB_TITLES)
+            salary = round(RNG.uniform(lo, hi), 2)
+            hired = _random_dt(start, now - timedelta(days=14))
+            manager_id = head_id if (head_id is not None and RNG.random() < 0.85) else None
+            is_active = 1 if RNG.random() > 0.08 else 0
+            departed_at = None
+            hired_dt = datetime.fromisoformat(hired)
+            if is_active == 0:
+                departed_at = _random_dt(
+                    max(hired_dt, two_years_ago), now - timedelta(days=1)
+                )
+            cur = conn.execute(
+                """
+                INSERT INTO employees
+                  (department_id, full_name, title, hired_at, salary_usd, manager_id,
+                   is_active, departed_at)
+                VALUES (?,?,?,?,?,?,?,?)
+                """,
+                (
+                    dept_id, f"{first} {last}", title, hired, salary, manager_id,
+                    is_active, departed_at,
+                ),
+            )
+            emp_id = cur.lastrowid
+            dept_employee_ids.append(emp_id)
+            if head_id is None:
+                head_id = emp_id
+
+        for emp_id in dept_employee_ids:
+            n_reviews = RNG.randint(1, 2)
+            for _ in range(n_reviews):
+                rating = RNG.choices([1, 2, 3, 4, 5], weights=[3, 7, 20, 40, 30])[0]
+                review_date = _random_dt(two_years_ago, now - timedelta(days=1))
+                summary = {
+                    5: "Consistently exceeds expectations; strong candidate for advancement.",
+                    4: "Meets and often exceeds expectations; solid contributor.",
+                    3: "Meets expectations; some room for growth identified.",
+                    2: "Below expectations in key areas; improvement plan recommended.",
+                    1: "Significantly below expectations; performance improvement plan required.",
+                }[rating]
+                conn.execute(
+                    """
+                    INSERT INTO performance_reviews(employee_id, review_date, rating, summary)
+                    VALUES (?,?,?,?)
+                    """,
+                    (emp_id, review_date, rating, summary),
+                )
+    conn.commit()
+    return department_ids
+
+
+# ── Finance / Budgets ────────────────────────────────────────────────────────────
+
+def _seed_finance(conn: sqlite3.Connection, department_ids: list[int], now: datetime) -> None:
+    latest_year = now.year
+    years = [latest_year - 1, latest_year]
+    for dept_id in department_ids:
+        for year in years:
+            for category in BUDGET_CATEGORIES:
+                allocated = round(RNG.uniform(40000, 900000), 2)
+                cur = conn.execute(
+                    """
+                    INSERT INTO budgets(department_id, year, category, allocated_usd)
+                    VALUES (?,?,?,?)
+                    """,
+                    (dept_id, year, category, allocated),
+                )
+                budget_id = cur.lastrowid
+
+                year_start = datetime(year, 1, 1)
+                year_end = min(datetime(year, 12, 31, 23, 59, 59), now)
+                if year_end < year_start:
+                    continue
+                n_expenses = RNG.randint(3, 9)
+                # Bias total spend around allocated budget, with some departments over/under.
+                spend_factor = RNG.uniform(0.6, 1.25)
+                remaining = allocated * spend_factor
+                for i in range(n_expenses):
+                    portion = remaining / (n_expenses - i) * RNG.uniform(0.5, 1.5)
+                    portion = max(500.0, round(portion, 2))
+                    remaining = max(0.0, remaining - portion)
+                    incurred = _random_dt(year_start, year_end)
+                    description = RNG.choice(EXPENSE_DESCRIPTIONS[category])
+                    conn.execute(
+                        """
+                        INSERT INTO expenses
+                          (budget_id, department_id, category, amount_usd, incurred_at, description)
+                        VALUES (?,?,?,?,?,?)
+                        """,
+                        (budget_id, dept_id, category, portion, incurred, description),
+                    )
     conn.commit()
 
 

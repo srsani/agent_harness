@@ -1,0 +1,439 @@
+{
+  "mode": "run-all",
+  "session_id": "agent-bench:run-all:pydantic-ai:marketing-top-campaigns-conversion:20260708T212426Z:batch",
+  "harness": "pydantic-ai",
+  "task": "marketing-top-campaigns-conversion",
+  "repeat": 1,
+  "results": [
+    {
+      "harness": "pydantic-ai",
+      "architecture": "minimal",
+      "task": "marketing-top-campaigns-conversion",
+      "prompt": "Which 5 marketing campaigns have the most total conversions?",
+      "output": "\n\n| Campaign Name |\n|---|\n| Summer Product Launch |\n| Q3 Retargeting Drive |\n| Brand Awareness Email |\n| Holiday Flash Sale |\n| Influencer Partnership |",
+      "started_at": "2026-07-08T21:24:26.829000+00:00",
+      "elapsed_seconds": 29.94999833298789,
+      "metadata": {
+        "langfuse_session_id": "agent-bench:run-all:pydantic-ai:marketing-top-campaigns-conversion:20260708T212426Z:batch",
+        "tool_calls": [],
+        "langfuse_trace_id": "80df510e91660e7ac8060a43f886a925",
+        "langfuse_observation_id": "2d3463d4b3530181",
+        "langfuse_trace_url": "https://cloud.langfuse.com/project/cmr1ywsf000d5ad0cex3dm2ha/traces/80df510e91660e7ac8060a43f886a925"
+      },
+      "error": null,
+      "ok": true
+    },
+    {
+      "harness": "pydantic-ai",
+      "architecture": "enterprise-react",
+      "task": "marketing-top-campaigns-conversion",
+      "prompt": "Which 5 marketing campaigns have the most total conversions?",
+      "output": "\n\n| name | total_conversions |\n|------|-------------------|\n| Regional Content Sprint 3 | 1282 |\n| Fall Search Surge 1 | 1243 |\n| Spring Social Push 2 | 1220 |\n| Enterprise Nurture Sequence 2 | 1183 |\n| Flagship Content Sprint 4 | 1103 |",
+      "started_at": "2026-07-08T21:24:56.779401+00:00",
+      "elapsed_seconds": 8.877347250003368,
+      "metadata": {
+        "langfuse_session_id": "agent-bench:run-all:pydantic-ai:marketing-top-campaigns-conversion:20260708T212426Z:batch",
+        "tool_calls": [
+          {
+            "tool_name": "get_schema_context",
+            "via": "native"
+          },
+          {
+            "tool_name": "execute_sql",
+            "via": "native"
+          }
+        ],
+        "langfuse_trace_id": "4f6b073f1137a993ee8ac06d8077cd66",
+        "langfuse_observation_id": "a1086152a09b6b6d",
+        "langfuse_trace_url": "https://cloud.langfuse.com/project/cmr1ywsf000d5ad0cex3dm2ha/traces/4f6b073f1137a993ee8ac06d8077cd66"
+      },
+      "error": null,
+      "ok": true
+    },
+    {
+      "harness": "pydantic-ai",
+      "architecture": "enterprise-codemode",
+      "task": "marketing-top-campaigns-conversion",
+      "prompt": "Which 5 marketing campaigns have the most total conversions?",
+      "output": "\n\n| name | channel | total_conversions |\n|------|---------|-------------------|\n| Regional Content Sprint 3 | content | 1282 |\n| Fall Search Surge 1 | paid_search | 1243 |\n| Spring Social Push 2 | social | 1220 |\n| Enterprise Nurture Sequence 2 | email | 1183 |\n| Flagship Content Sprint 4 | content | 1103 |",
+      "started_at": "2026-07-08T21:25:05.656890+00:00",
+      "elapsed_seconds": 7.868896832995233,
+      "metadata": {
+        "langfuse_session_id": "agent-bench:run-all:pydantic-ai:marketing-top-campaigns-conversion:20260708T212426Z:batch",
+        "tool_calls": [
+          {
+            "tool_name": "list_tables",
+            "via": "native"
+          },
+          {
+            "tool_name": "run_code",
+            "via": "native"
+          },
+          {
+            "tool_name": "list_tables",
+            "via": "code_mode"
+          },
+          {
+            "tool_name": "run_code",
+            "via": "native"
+          },
+          {
+            "tool_name": "execute_sql",
+            "via": "code_mode"
+          }
+        ],
+        "langfuse_trace_id": "a43eeeb0ee88cd946640b16dd95f63e3",
+        "langfuse_observation_id": "b0e548354b935235",
+        "langfuse_trace_url": "https://cloud.langfuse.com/project/cmr1ywsf000d5ad0cex3dm2ha/traces/a43eeeb0ee88cd946640b16dd95f63e3"
+      },
+      "error": null,
+      "ok": true
+    },
+    {
+      "harness": "pydantic-ai",
+      "architecture": "enterprise-mcp-react",
+      "task": "marketing-top-campaigns-conversion",
+      "prompt": "Which 5 marketing campaigns have the most total conversions?",
+      "output": "\n\n| name | total_conversions |\n|------|-------------------|\n| Regional Content Sprint 3 | 1282 |\n| Fall Search Surge 1 | 1243 |\n| Spring Social Push 2 | 1220 |\n| Enterprise Nurture Sequence 2 | 1183 |\n| Flagship Content Sprint 4 | 1103 |",
+      "started_at": "2026-07-08T21:25:13.525982+00:00",
+      "elapsed_seconds": 7.272712999998475,
+      "metadata": {
+        "langfuse_session_id": "agent-bench:run-all:pydantic-ai:marketing-top-campaigns-conversion:20260708T212426Z:batch",
+        "tool_calls": [
+          {
+            "tool_name": "tool_list_tables",
+            "via": "native"
+          },
+          {
+            "tool_name": "tool_execute_sql",
+            "via": "native"
+          }
+        ],
+        "langfuse_trace_id": "a0f72cb39fcd0a03d3b104459d2a69d4",
+        "langfuse_observation_id": "24b8263850f94876",
+        "langfuse_trace_url": "https://cloud.langfuse.com/project/cmr1ywsf000d5ad0cex3dm2ha/traces/a0f72cb39fcd0a03d3b104459d2a69d4"
+      },
+      "error": null,
+      "ok": true
+    },
+    {
+      "harness": "pydantic-ai",
+      "architecture": "enterprise-mcp-codemode",
+      "task": "marketing-top-campaigns-conversion",
+      "prompt": "Which 5 marketing campaigns have the most total conversions?",
+      "output": "\n\n| name | channel | total_conversions |\n|------|---------|-------------------|\n| Regional Content Sprint 3 | content | 1282 |\n| Fall Search Surge 1 | paid_search | 1243 |\n| Spring Social Push 2 | social | 1220 |\n| Enterprise Nurture Sequence 2 | email | 1183 |\n| Flagship Content Sprint 4 | content | 1103 |",
+      "started_at": "2026-07-08T21:25:20.798947+00:00",
+      "elapsed_seconds": 12.294484124999144,
+      "metadata": {
+        "langfuse_session_id": "agent-bench:run-all:pydantic-ai:marketing-top-campaigns-conversion:20260708T212426Z:batch",
+        "tool_calls": [
+          {
+            "tool_name": "tool_list_tables",
+            "via": "native"
+          },
+          {
+            "tool_name": "run_code",
+            "via": "native"
+          },
+          {
+            "tool_name": "run_code",
+            "via": "native"
+          },
+          {
+            "tool_name": "tool_get_schema_context",
+            "via": "code_mode"
+          },
+          {
+            "tool_name": "run_code",
+            "via": "native"
+          },
+          {
+            "tool_name": "tool_execute_sql",
+            "via": "code_mode"
+          }
+        ],
+        "langfuse_trace_id": "3be3ae40bd587948458d270b5c2242d1",
+        "langfuse_observation_id": "de80749b0bf3637d",
+        "langfuse_trace_url": "https://cloud.langfuse.com/project/cmr1ywsf000d5ad0cex3dm2ha/traces/3be3ae40bd587948458d270b5c2242d1"
+      },
+      "error": null,
+      "ok": true
+    },
+    {
+      "harness": "pydantic-ai",
+      "architecture": "enterprise-sql-react",
+      "task": "marketing-top-campaigns-conversion",
+      "prompt": "Which 5 marketing campaigns have the most total conversions?",
+      "output": "\n\n| name | total_conversions |\n|---|---|\n| Regional Content Sprint 3 | 1282 |\n| Fall Search Surge 1 | 1243 |\n| Spring Social Push 2 | 1220 |\n| Enterprise Nurture Sequence 2 | 1183 |\n| Flagship Content Sprint 4 | 1103 |",
+      "started_at": "2026-07-08T21:25:33.093704+00:00",
+      "elapsed_seconds": 10.11017591599375,
+      "metadata": {
+        "langfuse_session_id": "agent-bench:run-all:pydantic-ai:marketing-top-campaigns-conversion:20260708T212426Z:batch",
+        "tool_calls": [
+          {
+            "tool_name": "list_tables",
+            "via": "native"
+          },
+          {
+            "tool_name": "describe_table",
+            "via": "native"
+          },
+          {
+            "tool_name": "describe_table",
+            "via": "native"
+          },
+          {
+            "tool_name": "execute_sql",
+            "via": "native"
+          }
+        ],
+        "langfuse_trace_id": "50b860a48707a5f98e51ea160f18b070",
+        "langfuse_observation_id": "08c49c2d654020e0",
+        "langfuse_trace_url": "https://cloud.langfuse.com/project/cmr1ywsf000d5ad0cex3dm2ha/traces/50b860a48707a5f98e51ea160f18b070"
+      },
+      "error": null,
+      "ok": true
+    },
+    {
+      "harness": "pydantic-ai",
+      "architecture": "enterprise-sql-codemode",
+      "task": "marketing-top-campaigns-conversion",
+      "prompt": "Which 5 marketing campaigns have the most total conversions?",
+      "output": "\n\n| name | total_conversions |\n|------|-------------------|\n| Regional Content Sprint 3 | 1282 |\n| Fall Search Surge 1 | 1243 |\n| Spring Social Push 2 | 1220 |\n| Enterprise Nurture Sequence 2 | 1183 |\n| Flagship Content Sprint 4 | 1103 |",
+      "started_at": "2026-07-08T21:25:43.204041+00:00",
+      "elapsed_seconds": 8.669382500011125,
+      "metadata": {
+        "langfuse_session_id": "agent-bench:run-all:pydantic-ai:marketing-top-campaigns-conversion:20260708T212426Z:batch",
+        "tool_calls": [
+          {
+            "tool_name": "list_tables",
+            "via": "native"
+          },
+          {
+            "tool_name": "run_code",
+            "via": "native"
+          },
+          {
+            "tool_name": "list_tables",
+            "via": "code_mode"
+          },
+          {
+            "tool_name": "run_code",
+            "via": "native"
+          },
+          {
+            "tool_name": "execute_sql",
+            "via": "code_mode"
+          }
+        ],
+        "langfuse_trace_id": "5ced629d6a5dbfa3c592a672304c5faf",
+        "langfuse_observation_id": "e1a095adab84d630",
+        "langfuse_trace_url": "https://cloud.langfuse.com/project/cmr1ywsf000d5ad0cex3dm2ha/traces/5ced629d6a5dbfa3c592a672304c5faf"
+      },
+      "error": null,
+      "ok": true
+    },
+    {
+      "harness": "pydantic-ai",
+      "architecture": "enterprise-react-toolsearch",
+      "task": "marketing-top-campaigns-conversion",
+      "prompt": "Which 5 marketing campaigns have the most total conversions?",
+      "output": "\n\n| name | total_conversions |\n|---|---|\n| Regional Content Sprint 3 | 1282 |\n| Fall Search Surge 1 | 1243 |\n| Spring Social Push 2 | 1220 |\n| Enterprise Nurture Sequence 2 | 1183 |\n| Flagship Content Sprint 4 | 1103 |",
+      "started_at": "2026-07-08T21:25:51.873586+00:00",
+      "elapsed_seconds": 14.51419587500277,
+      "metadata": {
+        "langfuse_session_id": "agent-bench:run-all:pydantic-ai:marketing-top-campaigns-conversion:20260708T212426Z:batch",
+        "tool_calls": [
+          {
+            "tool_name": "search_tools",
+            "via": "native"
+          },
+          {
+            "tool_name": "get_schema_context",
+            "via": "native"
+          },
+          {
+            "tool_name": "search_tools",
+            "via": "native"
+          },
+          {
+            "tool_name": "execute_sql",
+            "via": "native"
+          }
+        ],
+        "langfuse_trace_id": "89de09aa8b50bffbef0d85868dc6e844",
+        "langfuse_observation_id": "bd9e55887e6e79e1",
+        "langfuse_trace_url": "https://cloud.langfuse.com/project/cmr1ywsf000d5ad0cex3dm2ha/traces/89de09aa8b50bffbef0d85868dc6e844"
+      },
+      "error": null,
+      "ok": true
+    },
+    {
+      "harness": "pydantic-ai",
+      "architecture": "enterprise-codemode-toolsearch",
+      "task": "marketing-top-campaigns-conversion",
+      "prompt": "Which 5 marketing campaigns have the most total conversions?",
+      "output": "\n\n| name | total_conversions |\n|------|-------------------|\n| Regional Content Sprint 3 | 1282 |\n| Fall Search Surge 1 | 1243 |\n| Spring Social Push 2 | 1220 |\n| Enterprise Nurture Sequence 2 | 1183 |\n| Flagship Content Sprint 4 | 1103 |",
+      "started_at": "2026-07-08T21:26:06.388112+00:00",
+      "elapsed_seconds": 8.728003749987693,
+      "metadata": {
+        "langfuse_session_id": "agent-bench:run-all:pydantic-ai:marketing-top-campaigns-conversion:20260708T212426Z:batch",
+        "tool_calls": [
+          {
+            "tool_name": "search_tools",
+            "via": "native"
+          },
+          {
+            "tool_name": "get_schema_context",
+            "via": "native"
+          },
+          {
+            "tool_name": "list_tables",
+            "via": "native"
+          },
+          {
+            "tool_name": "execute_sql",
+            "via": "native"
+          },
+          {
+            "tool_name": "execute_sql",
+            "via": "native"
+          }
+        ],
+        "langfuse_trace_id": "bd3bcb1d389222caba5afac85ff11358",
+        "langfuse_observation_id": "8db78777cee2b14e",
+        "langfuse_trace_url": "https://cloud.langfuse.com/project/cmr1ywsf000d5ad0cex3dm2ha/traces/bd3bcb1d389222caba5afac85ff11358"
+      },
+      "error": null,
+      "ok": true
+    },
+    {
+      "harness": "pydantic-ai",
+      "architecture": "enterprise-react-thinking",
+      "task": "marketing-top-campaigns-conversion",
+      "prompt": "Which 5 marketing campaigns have the most total conversions?",
+      "output": "\n\n| name | total_conversions |\n|------|-------------------|\n| Regional Content Sprint 3 | 1282 |\n| Fall Search Surge 1 | 1243 |\n| Spring Social Push 2 | 1220 |\n| Enterprise Nurture Sequence 2 | 1183 |\n| Flagship Content Sprint 4 | 1103 |",
+      "started_at": "2026-07-08T21:26:15.116348+00:00",
+      "elapsed_seconds": 6.965711666998686,
+      "metadata": {
+        "langfuse_session_id": "agent-bench:run-all:pydantic-ai:marketing-top-campaigns-conversion:20260708T212426Z:batch",
+        "tool_calls": [
+          {
+            "tool_name": "list_tables",
+            "via": "native"
+          },
+          {
+            "tool_name": "execute_sql",
+            "via": "native"
+          }
+        ],
+        "langfuse_trace_id": "decf548948c562ea4a8c37c00e5f1dfb",
+        "langfuse_observation_id": "13ae50074280dbd1",
+        "langfuse_trace_url": "https://cloud.langfuse.com/project/cmr1ywsf000d5ad0cex3dm2ha/traces/decf548948c562ea4a8c37c00e5f1dfb"
+      },
+      "error": null,
+      "ok": true
+    },
+    {
+      "harness": "pydantic-ai",
+      "architecture": "enterprise-codemode-thinking",
+      "task": "marketing-top-campaigns-conversion",
+      "prompt": "Which 5 marketing campaigns have the most total conversions?",
+      "output": "\n\n| name | channel | total_conversions |\n|------|---------|-------------------|\n| Regional Content Sprint 3 | content | 1282 |\n| Fall Search Surge 1 | paid_search | 1243 |\n| Spring Social Push 2 | social | 1220 |\n| Enterprise Nurture Sequence 2 | email | 1183 |\n| Flagship Content Sprint 4 | content | 1103 |",
+      "started_at": "2026-07-08T21:26:22.082230+00:00",
+      "elapsed_seconds": 9.705264832999092,
+      "metadata": {
+        "langfuse_session_id": "agent-bench:run-all:pydantic-ai:marketing-top-campaigns-conversion:20260708T212426Z:batch",
+        "tool_calls": [
+          {
+            "tool_name": "list_tables",
+            "via": "native"
+          },
+          {
+            "tool_name": "run_code",
+            "via": "native"
+          },
+          {
+            "tool_name": "get_schema_context",
+            "via": "code_mode"
+          },
+          {
+            "tool_name": "run_code",
+            "via": "native"
+          },
+          {
+            "tool_name": "execute_sql",
+            "via": "code_mode"
+          }
+        ],
+        "langfuse_trace_id": "c94325ace0841b1fbc82186c08b8061d",
+        "langfuse_observation_id": "564a53997bc85cc5",
+        "langfuse_trace_url": "https://cloud.langfuse.com/project/cmr1ywsf000d5ad0cex3dm2ha/traces/c94325ace0841b1fbc82186c08b8061d"
+      },
+      "error": null,
+      "ok": true
+    },
+    {
+      "harness": "pydantic-ai",
+      "architecture": "enterprise-react-toolsearch-120",
+      "task": "marketing-top-campaigns-conversion",
+      "prompt": "Which 5 marketing campaigns have the most total conversions?",
+      "output": "\n\n| id | name | channel | total_conversions | total_spend_usd |\n|----|------|---------|-------------------|-----------------|\n| 19 | Regional Content Sprint 3 | content | 1282 | 49260.99 |\n| 5 | Fall Search Surge 1 | paid_search | 1243 | 33540.89 |\n| 10 | Spring Social Push 2 | social | 1220 | 19931.3 |\n| 2 | Enterprise Nurture Sequence 2 | email | 1183 | 238988.47 |\n| 20 | Flagship Content Sprint 4 | content | 1103 | 41959.55 |",
+      "started_at": "2026-07-08T21:26:31.787651+00:00",
+      "elapsed_seconds": 6.598140499991132,
+      "metadata": {
+        "langfuse_session_id": "agent-bench:run-all:pydantic-ai:marketing-top-campaigns-conversion:20260708T212426Z:batch",
+        "tool_calls": [
+          {
+            "tool_name": "search_tools",
+            "via": "native"
+          },
+          {
+            "tool_name": "get_top_campaigns_by_conversion",
+            "via": "native"
+          }
+        ],
+        "langfuse_trace_id": "7d2f207f7a90f1a4b3ae3e21e8670566",
+        "langfuse_observation_id": "8f9d4c6ca79e9f67",
+        "langfuse_trace_url": "https://cloud.langfuse.com/project/cmr1ywsf000d5ad0cex3dm2ha/traces/7d2f207f7a90f1a4b3ae3e21e8670566"
+      },
+      "error": null,
+      "ok": true
+    },
+    {
+      "harness": "pydantic-ai",
+      "architecture": "enterprise-categorized-search",
+      "task": "marketing-top-campaigns-conversion",
+      "prompt": "Which 5 marketing campaigns have the most total conversions?",
+      "output": "\n\n| id | name | channel | total_conversions | total_spend_usd |\n|---|---|---|---|---|\n| 19 | Regional Content Sprint 3 | content | 1282 | 49260.99 |\n| 5 | Fall Search Surge 1 | paid_search | 1243 | 33540.89 |\n| 10 | Spring Social Push 2 | social | 1220 | 19931.3 |\n| 2 | Enterprise Nurture Sequence 2 | email | 1183 | 238988.47 |\n| 20 | Flagship Content Sprint 4 | content | 1103 | 41959.55 |",
+      "started_at": "2026-07-08T21:26:38.385957+00:00",
+      "elapsed_seconds": 6.736425416995189,
+      "metadata": {
+        "langfuse_session_id": "agent-bench:run-all:pydantic-ai:marketing-top-campaigns-conversion:20260708T212426Z:batch",
+        "tool_calls": [
+          {
+            "tool_name": "list_tool_categories",
+            "via": "native"
+          },
+          {
+            "tool_name": "search_tools_in_category",
+            "via": "native"
+          },
+          {
+            "tool_name": "call_tool",
+            "via": "native"
+          },
+          {
+            "tool_name": "get_top_campaigns_by_conversion",
+            "via": "categorized_search"
+          }
+        ],
+        "langfuse_trace_id": "b4aed1a1d95c36d9a52764923822718a",
+        "langfuse_observation_id": "adff79d7c0a7895d",
+        "langfuse_trace_url": "https://cloud.langfuse.com/project/cmr1ywsf000d5ad0cex3dm2ha/traces/b4aed1a1d95c36d9a52764923822718a"
+      },
+      "error": null,
+      "ok": true
+    }
+  ]
+}

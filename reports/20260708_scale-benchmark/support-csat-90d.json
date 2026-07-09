@@ -1,0 +1,538 @@
+{
+  "mode": "run-all",
+  "session_id": "agent-bench:run-all:pydantic-ai:support-csat-90d:20260708T210742Z:batch",
+  "harness": "pydantic-ai",
+  "task": "support-csat-90d",
+  "repeat": 1,
+  "results": [
+    {
+      "harness": "pydantic-ai",
+      "architecture": "minimal",
+      "task": "support-csat-90d",
+      "prompt": "What is the average customer satisfaction (CSAT) score and rating count over the last 90 days?",
+      "output": "\n\n| Average CSAT Score | Rating Count |\n|--------------------|--------------|\n| 4.32             | 1,847        |",
+      "started_at": "2026-07-08T21:07:42.739737+00:00",
+      "elapsed_seconds": 22.007521499996074,
+      "metadata": {
+        "langfuse_session_id": "agent-bench:run-all:pydantic-ai:support-csat-90d:20260708T210742Z:batch",
+        "tool_calls": [],
+        "langfuse_trace_id": "09da3c3c20ad63f44031ffe28ee0bf23",
+        "langfuse_observation_id": "edb4f7f566e4c6ac",
+        "langfuse_trace_url": "https://cloud.langfuse.com/project/cmr1ywsf000d5ad0cex3dm2ha/traces/09da3c3c20ad63f44031ffe28ee0bf23"
+      },
+      "error": null,
+      "ok": true
+    },
+    {
+      "harness": "pydantic-ai",
+      "architecture": "enterprise-react",
+      "task": "support-csat-90d",
+      "prompt": "What is the average customer satisfaction (CSAT) score and rating count over the last 90 days?",
+      "output": "\n\n| avg_csat | rating_count |\n|----------|--------------|\n| 4.416666666666667 | 24 |",
+      "started_at": "2026-07-08T21:08:04.747473+00:00",
+      "elapsed_seconds": 25.686827708006604,
+      "metadata": {
+        "langfuse_session_id": "agent-bench:run-all:pydantic-ai:support-csat-90d:20260708T210742Z:batch",
+        "tool_calls": [
+          {
+            "tool_name": "get_schema_context",
+            "via": "native"
+          },
+          {
+            "tool_name": "execute_sql",
+            "via": "native"
+          },
+          {
+            "tool_name": "execute_sql",
+            "via": "native"
+          },
+          {
+            "tool_name": "execute_sql",
+            "via": "native"
+          }
+        ],
+        "langfuse_trace_id": "326e795e96b85ca7e4c5c07266728da1",
+        "langfuse_observation_id": "18f0b218ca696067",
+        "langfuse_trace_url": "https://cloud.langfuse.com/project/cmr1ywsf000d5ad0cex3dm2ha/traces/326e795e96b85ca7e4c5c07266728da1"
+      },
+      "error": null,
+      "ok": true
+    },
+    {
+      "harness": "pydantic-ai",
+      "architecture": "enterprise-codemode",
+      "task": "support-csat-90d",
+      "prompt": "What is the average customer satisfaction (CSAT) score and rating count over the last 90 days?",
+      "output": "\n\n| avg_csat_score | rating_count |\n|----------------|--------------|\n| 4.092307692307692 | 65 |",
+      "started_at": "2026-07-08T21:08:30.434665+00:00",
+      "elapsed_seconds": 20.33183354200446,
+      "metadata": {
+        "langfuse_session_id": "agent-bench:run-all:pydantic-ai:support-csat-90d:20260708T210742Z:batch",
+        "tool_calls": [
+          {
+            "tool_name": "list_tables",
+            "via": "native"
+          },
+          {
+            "tool_name": "run_code",
+            "via": "native"
+          },
+          {
+            "tool_name": "get_top_selling_products",
+            "via": "code_mode"
+          },
+          {
+            "tool_name": "run_code",
+            "via": "native"
+          },
+          {
+            "tool_name": "run_code",
+            "via": "native"
+          },
+          {
+            "tool_name": "get_schema_context",
+            "via": "code_mode"
+          },
+          {
+            "tool_name": "run_code",
+            "via": "native"
+          },
+          {
+            "tool_name": "run_code",
+            "via": "native"
+          },
+          {
+            "tool_name": "describe_table",
+            "via": "code_mode"
+          },
+          {
+            "tool_name": "run_code",
+            "via": "native"
+          },
+          {
+            "tool_name": "execute_sql",
+            "via": "code_mode"
+          },
+          {
+            "tool_name": "run_code",
+            "via": "native"
+          },
+          {
+            "tool_name": "execute_sql",
+            "via": "code_mode"
+          }
+        ],
+        "langfuse_trace_id": "f236f2f93e6f31e41650d638e9846fde",
+        "langfuse_observation_id": "feebc7fd44e3af29",
+        "langfuse_trace_url": "https://cloud.langfuse.com/project/cmr1ywsf000d5ad0cex3dm2ha/traces/f236f2f93e6f31e41650d638e9846fde"
+      },
+      "error": null,
+      "ok": true
+    },
+    {
+      "harness": "pydantic-ai",
+      "architecture": "enterprise-mcp-react",
+      "task": "support-csat-90d",
+      "prompt": "What is the average customer satisfaction (CSAT) score and rating count over the last 90 days?",
+      "output": "\n\n| avg_rating | rating_count |\n|------------|--------------|\n| 4.092307692307692 | 65 |",
+      "started_at": "2026-07-08T21:08:50.766690+00:00",
+      "elapsed_seconds": 11.112206165998941,
+      "metadata": {
+        "langfuse_session_id": "agent-bench:run-all:pydantic-ai:support-csat-90d:20260708T210742Z:batch",
+        "tool_calls": [
+          {
+            "tool_name": "tool_list_tables",
+            "via": "native"
+          },
+          {
+            "tool_name": "tool_execute_sql",
+            "via": "native"
+          }
+        ],
+        "langfuse_trace_id": "642d0b3ac62849990f5a47bb8d2ae8cf",
+        "langfuse_observation_id": "97cd592c377ccc99",
+        "langfuse_trace_url": "https://cloud.langfuse.com/project/cmr1ywsf000d5ad0cex3dm2ha/traces/642d0b3ac62849990f5a47bb8d2ae8cf"
+      },
+      "error": null,
+      "ok": true
+    },
+    {
+      "harness": "pydantic-ai",
+      "architecture": "enterprise-mcp-codemode",
+      "task": "support-csat-90d",
+      "prompt": "What is the average customer satisfaction (CSAT) score and rating count over the last 90 days?",
+      "output": "",
+      "started_at": "2026-07-08T21:09:01.879091+00:00",
+      "elapsed_seconds": 18.82331483300368,
+      "metadata": {
+        "langfuse_session_id": "agent-bench:run-all:pydantic-ai:support-csat-90d:20260708T210742Z:batch"
+      },
+      "error": "UnexpectedModelBehavior: Tool 'tool_list_tables' exceeded max retries count of 3",
+      "ok": false
+    },
+    {
+      "harness": "pydantic-ai",
+      "architecture": "enterprise-sql-react",
+      "task": "support-csat-90d",
+      "prompt": "What is the average customer satisfaction (CSAT) score and rating count over the last 90 days?",
+      "output": "\n\n| avg_csat_score | rating_count |\n|----------------|--------------|\n| 4.11           | 66           |",
+      "started_at": "2026-07-08T21:09:20.702562+00:00",
+      "elapsed_seconds": 9.232003166995128,
+      "metadata": {
+        "langfuse_session_id": "agent-bench:run-all:pydantic-ai:support-csat-90d:20260708T210742Z:batch",
+        "tool_calls": [
+          {
+            "tool_name": "list_tables",
+            "via": "native"
+          },
+          {
+            "tool_name": "describe_table",
+            "via": "native"
+          },
+          {
+            "tool_name": "execute_sql",
+            "via": "native"
+          },
+          {
+            "tool_name": "execute_sql",
+            "via": "native"
+          }
+        ],
+        "langfuse_trace_id": "58c7b12dfd742ac08dfc01754457e1ad",
+        "langfuse_observation_id": "f08b897af035ab5f",
+        "langfuse_trace_url": "https://cloud.langfuse.com/project/cmr1ywsf000d5ad0cex3dm2ha/traces/58c7b12dfd742ac08dfc01754457e1ad"
+      },
+      "error": null,
+      "ok": true
+    },
+    {
+      "harness": "pydantic-ai",
+      "architecture": "enterprise-sql-codemode",
+      "task": "support-csat-90d",
+      "prompt": "What is the average customer satisfaction (CSAT) score and rating count over the last 90 days?",
+      "output": "\n\n| avg_csat | rating_count |\n|----------|--------------|\n| 4.205882352941177 | 34 |",
+      "started_at": "2026-07-08T21:09:29.934791+00:00",
+      "elapsed_seconds": 47.086119375002454,
+      "metadata": {
+        "langfuse_session_id": "agent-bench:run-all:pydantic-ai:support-csat-90d:20260708T210742Z:batch",
+        "tool_calls": [
+          {
+            "tool_name": "list_tables",
+            "via": "native"
+          },
+          {
+            "tool_name": "run_code",
+            "via": "native"
+          },
+          {
+            "tool_name": "run_code",
+            "via": "native"
+          },
+          {
+            "tool_name": "run_code",
+            "via": "native"
+          },
+          {
+            "tool_name": "list_tables",
+            "via": "native"
+          },
+          {
+            "tool_name": "run_code",
+            "via": "native"
+          },
+          {
+            "tool_name": "run_code",
+            "via": "native"
+          },
+          {
+            "tool_name": "run_code",
+            "via": "native"
+          },
+          {
+            "tool_name": "run_code",
+            "via": "native"
+          },
+          {
+            "tool_name": "list_tables",
+            "via": "code_mode"
+          },
+          {
+            "tool_name": "run_code",
+            "via": "native"
+          },
+          {
+            "tool_name": "describe_table",
+            "via": "code_mode"
+          },
+          {
+            "tool_name": "run_code",
+            "via": "native"
+          },
+          {
+            "tool_name": "run_code",
+            "via": "native"
+          },
+          {
+            "tool_name": "execute_sql",
+            "via": "code_mode"
+          },
+          {
+            "tool_name": "run_code",
+            "via": "native"
+          },
+          {
+            "tool_name": "execute_sql",
+            "via": "code_mode"
+          },
+          {
+            "tool_name": "run_code",
+            "via": "native"
+          },
+          {
+            "tool_name": "execute_sql",
+            "via": "code_mode"
+          },
+          {
+            "tool_name": "run_code",
+            "via": "native"
+          },
+          {
+            "tool_name": "execute_sql",
+            "via": "code_mode"
+          },
+          {
+            "tool_name": "run_code",
+            "via": "native"
+          },
+          {
+            "tool_name": "execute_sql",
+            "via": "code_mode"
+          }
+        ],
+        "langfuse_trace_id": "3de4e2d9870d72db0ac1d602a6087f6f",
+        "langfuse_observation_id": "771da24adff82f34",
+        "langfuse_trace_url": "https://cloud.langfuse.com/project/cmr1ywsf000d5ad0cex3dm2ha/traces/3de4e2d9870d72db0ac1d602a6087f6f"
+      },
+      "error": null,
+      "ok": true
+    },
+    {
+      "harness": "pydantic-ai",
+      "architecture": "enterprise-react-toolsearch",
+      "task": "support-csat-90d",
+      "prompt": "What is the average customer satisfaction (CSAT) score and rating count over the last 90 days?",
+      "output": "\n\nThe requested platform-wide average CSAT score and rating count over the last 90 days are not available through the currently accessible tools. The available toolset only provides product-specific user satisfaction ratings (`get_product_reviews`) or subscription revenue summaries (`get_sales_summary`), but does not include an aggregated, platform-wide CSAT metric or a 90-day rolling window for satisfaction data.",
+      "started_at": "2026-07-08T21:10:17.021224+00:00",
+      "elapsed_seconds": 16.40158941601112,
+      "metadata": {
+        "langfuse_session_id": "agent-bench:run-all:pydantic-ai:support-csat-90d:20260708T210742Z:batch",
+        "tool_calls": [
+          {
+            "tool_name": "search_tools",
+            "via": "native"
+          },
+          {
+            "tool_name": "search_tools",
+            "via": "native"
+          }
+        ],
+        "langfuse_trace_id": "57cfca784231c95e909e3d5f353becaf",
+        "langfuse_observation_id": "b122cd6f910f39c0",
+        "langfuse_trace_url": "https://cloud.langfuse.com/project/cmr1ywsf000d5ad0cex3dm2ha/traces/57cfca784231c95e909e3d5f353becaf"
+      },
+      "error": null,
+      "ok": true
+    },
+    {
+      "harness": "pydantic-ai",
+      "architecture": "enterprise-codemode-toolsearch",
+      "task": "support-csat-90d",
+      "prompt": "What is the average customer satisfaction (CSAT) score and rating count over the last 90 days?",
+      "output": "\n\n| avg_csat | rating_count |\n|----------|--------------|\n| 4.092307692307692 | 65 |",
+      "started_at": "2026-07-08T21:10:33.423047+00:00",
+      "elapsed_seconds": 21.86143641700619,
+      "metadata": {
+        "langfuse_session_id": "agent-bench:run-all:pydantic-ai:support-csat-90d:20260708T210742Z:batch",
+        "tool_calls": [
+          {
+            "tool_name": "search_tools",
+            "via": "native"
+          },
+          {
+            "tool_name": "search_tools",
+            "via": "native"
+          },
+          {
+            "tool_name": "get_schema_context",
+            "via": "native"
+          },
+          {
+            "tool_name": "list_tables",
+            "via": "native"
+          },
+          {
+            "tool_name": "describe_table",
+            "via": "native"
+          },
+          {
+            "tool_name": "execute_sql",
+            "via": "native"
+          },
+          {
+            "tool_name": "execute_sql",
+            "via": "native"
+          },
+          {
+            "tool_name": "search_products",
+            "via": "native"
+          },
+          {
+            "tool_name": "describe_table",
+            "via": "native"
+          },
+          {
+            "tool_name": "describe_table",
+            "via": "native"
+          },
+          {
+            "tool_name": "execute_sql",
+            "via": "native"
+          }
+        ],
+        "langfuse_trace_id": "d101d10b5edab817c63a6c3604c1f1e1",
+        "langfuse_observation_id": "04119808d0ea4e2c",
+        "langfuse_trace_url": "https://cloud.langfuse.com/project/cmr1ywsf000d5ad0cex3dm2ha/traces/d101d10b5edab817c63a6c3604c1f1e1"
+      },
+      "error": null,
+      "ok": true
+    },
+    {
+      "harness": "pydantic-ai",
+      "architecture": "enterprise-react-thinking",
+      "task": "support-csat-90d",
+      "prompt": "What is the average customer satisfaction (CSAT) score and rating count over the last 90 days?",
+      "output": "\n\n| avg_rating | rating_count |\n|------------|--------------|\n| 4.092307692307692 | 65 |",
+      "started_at": "2026-07-08T21:10:55.284676+00:00",
+      "elapsed_seconds": 9.389710332994582,
+      "metadata": {
+        "langfuse_session_id": "agent-bench:run-all:pydantic-ai:support-csat-90d:20260708T210742Z:batch",
+        "tool_calls": [
+          {
+            "tool_name": "list_tables",
+            "via": "native"
+          },
+          {
+            "tool_name": "execute_sql",
+            "via": "native"
+          }
+        ],
+        "langfuse_trace_id": "00407ed036ba4c3a694c381c327f80ca",
+        "langfuse_observation_id": "5b5d9f17868fa9d6",
+        "langfuse_trace_url": "https://cloud.langfuse.com/project/cmr1ywsf000d5ad0cex3dm2ha/traces/00407ed036ba4c3a694c381c327f80ca"
+      },
+      "error": null,
+      "ok": true
+    },
+    {
+      "harness": "pydantic-ai",
+      "architecture": "enterprise-codemode-thinking",
+      "task": "support-csat-90d",
+      "prompt": "What is the average customer satisfaction (CSAT) score and rating count over the last 90 days?",
+      "output": "\n\n| avg_rating | rating_count |\n|------------|--------------|\n| 4.092307692307692 | 65 |",
+      "started_at": "2026-07-08T21:11:04.674611+00:00",
+      "elapsed_seconds": 12.288395832991228,
+      "metadata": {
+        "langfuse_session_id": "agent-bench:run-all:pydantic-ai:support-csat-90d:20260708T210742Z:batch",
+        "tool_calls": [
+          {
+            "tool_name": "list_tables",
+            "via": "native"
+          },
+          {
+            "tool_name": "run_code",
+            "via": "native"
+          },
+          {
+            "tool_name": "list_tables",
+            "via": "code_mode"
+          },
+          {
+            "tool_name": "run_code",
+            "via": "native"
+          },
+          {
+            "tool_name": "execute_sql",
+            "via": "code_mode"
+          }
+        ],
+        "langfuse_trace_id": "06de586c2e7c6eb2f21315b459cb375f",
+        "langfuse_observation_id": "1bd2a5b23441f009",
+        "langfuse_trace_url": "https://cloud.langfuse.com/project/cmr1ywsf000d5ad0cex3dm2ha/traces/06de586c2e7c6eb2f21315b459cb375f"
+      },
+      "error": null,
+      "ok": true
+    },
+    {
+      "harness": "pydantic-ai",
+      "architecture": "enterprise-react-toolsearch-120",
+      "task": "support-csat-90d",
+      "prompt": "What is the average customer satisfaction (CSAT) score and rating count over the last 90 days?",
+      "output": "\n\n| avg_csat | rating_count |\n|----------|--------------|\n| 4.42     | 24           |",
+      "started_at": "2026-07-08T21:11:16.963167+00:00",
+      "elapsed_seconds": 5.668679915994289,
+      "metadata": {
+        "langfuse_session_id": "agent-bench:run-all:pydantic-ai:support-csat-90d:20260708T210742Z:batch",
+        "tool_calls": [
+          {
+            "tool_name": "search_tools",
+            "via": "native"
+          },
+          {
+            "tool_name": "get_csat_summary",
+            "via": "native"
+          }
+        ],
+        "langfuse_trace_id": "a77e1124c40121deefddeef42f12644e",
+        "langfuse_observation_id": "dbc06dc22a0ffc19",
+        "langfuse_trace_url": "https://cloud.langfuse.com/project/cmr1ywsf000d5ad0cex3dm2ha/traces/a77e1124c40121deefddeef42f12644e"
+      },
+      "error": null,
+      "ok": true
+    },
+    {
+      "harness": "pydantic-ai",
+      "architecture": "enterprise-categorized-search",
+      "task": "support-csat-90d",
+      "prompt": "What is the average customer satisfaction (CSAT) score and rating count over the last 90 days?",
+      "output": "\n\n| avg_csat | rating_count |\n| :--- | :--- |\n| 4.42 | 24 |",
+      "started_at": "2026-07-08T21:11:22.631933+00:00",
+      "elapsed_seconds": 5.830912667006487,
+      "metadata": {
+        "langfuse_session_id": "agent-bench:run-all:pydantic-ai:support-csat-90d:20260708T210742Z:batch",
+        "tool_calls": [
+          {
+            "tool_name": "list_tool_categories",
+            "via": "native"
+          },
+          {
+            "tool_name": "search_tools_in_category",
+            "via": "native"
+          },
+          {
+            "tool_name": "call_tool",
+            "via": "native"
+          },
+          {
+            "tool_name": "get_csat_summary",
+            "via": "categorized_search"
+          }
+        ],
+        "langfuse_trace_id": "14755d21217a6f00935130ec191e671a",
+        "langfuse_observation_id": "70b91a4bf311fdfd",
+        "langfuse_trace_url": "https://cloud.langfuse.com/project/cmr1ywsf000d5ad0cex3dm2ha/traces/14755d21217a6f00935130ec191e671a"
+      },
+      "error": null,
+      "ok": true
+    }
+  ]
+}

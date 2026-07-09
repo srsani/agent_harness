@@ -1,0 +1,483 @@
+{
+  "mode": "run-all",
+  "session_id": "agent-bench:run-all:pydantic-ai:marketing-search-webinar:20260708T212940Z:batch",
+  "harness": "pydantic-ai",
+  "task": "marketing-search-webinar",
+  "repeat": 1,
+  "results": [
+    {
+      "harness": "pydantic-ai",
+      "architecture": "minimal",
+      "task": "marketing-search-webinar",
+      "prompt": "Find every webinar campaign.",
+      "output": "\n\n| Campaign ID | Campaign Name |\n|-------------|---------------|\n| 101 | Q3 Product Launch Webinar |\n| 102 | Enterprise Security Best Practices |\n| 103 | AI Integration Workshop |",
+      "started_at": "2026-07-08T21:29:40.989439+00:00",
+      "elapsed_seconds": 24.656006165998406,
+      "metadata": {
+        "langfuse_session_id": "agent-bench:run-all:pydantic-ai:marketing-search-webinar:20260708T212940Z:batch",
+        "tool_calls": [],
+        "langfuse_trace_id": "1fc7eca5578b2d5d191d3bac5a8e212c",
+        "langfuse_observation_id": "9894543100585f86",
+        "langfuse_trace_url": "https://cloud.langfuse.com/project/cmr1ywsf000d5ad0cex3dm2ha/traces/1fc7eca5578b2d5d191d3bac5a8e212c"
+      },
+      "error": null,
+      "ok": true
+    },
+    {
+      "harness": "pydantic-ai",
+      "architecture": "enterprise-react",
+      "task": "marketing-search-webinar",
+      "prompt": "Find every webinar campaign.",
+      "output": "\n\n| id | name | channel | status | budget_usd | start_date | end_date |\n|---|---|---|---|---|---|---|\n| 13 | Winter Webinar Series 1 | webinar | paused | 113678.17 | 2026-03-23 | 2026-07-08 |\n| 14 | Spring Webinar Series 2 | webinar | completed | 47562.78 | 2024-09-05 | 2024-11-06 |\n| 15 | Enterprise Webinar Series 3 | webinar | completed | 39180.23 | 2026-01-15 | 2026-07-08 |\n| 16 | Fall Webinar Series 4 | webinar | completed | 43741.35 | 2025-02-16 | 2025-03-20 |",
+      "started_at": "2026-07-08T21:30:05.645880+00:00",
+      "elapsed_seconds": 10.277844665994053,
+      "metadata": {
+        "langfuse_session_id": "agent-bench:run-all:pydantic-ai:marketing-search-webinar:20260708T212940Z:batch",
+        "tool_calls": [
+          {
+            "tool_name": "list_tables",
+            "via": "native"
+          },
+          {
+            "tool_name": "execute_sql",
+            "via": "native"
+          }
+        ],
+        "langfuse_trace_id": "965f1907981cf13e45a62d2271302f7d",
+        "langfuse_observation_id": "3a9c2098fad20c61",
+        "langfuse_trace_url": "https://cloud.langfuse.com/project/cmr1ywsf000d5ad0cex3dm2ha/traces/965f1907981cf13e45a62d2271302f7d"
+      },
+      "error": null,
+      "ok": true
+    },
+    {
+      "harness": "pydantic-ai",
+      "architecture": "enterprise-codemode",
+      "task": "marketing-search-webinar",
+      "prompt": "Find every webinar campaign.",
+      "output": "\n\n| id | name | channel | status | budget_usd | start_date | end_date |\n|----|------|---------|--------|------------|------------|----------|\n| 13 | Winter Webinar Series 1 | webinar | paused | 113678.17 | 2026-03-23 | 2026-07-08 |\n| 14 | Spring Webinar Series 2 | webinar | completed | 47562.78 | 2024-09-05 | 2024-11-06 |\n| 15 | Enterprise Webinar Series 3 | webinar | completed | 39180.23 | 2026-01-15 | 2026-07-08 |\n| 16 | Fall Webinar Series 4 | webinar | completed | 43741.35 | 2025-02-16 | 2025-03-20 |",
+      "started_at": "2026-07-08T21:30:15.923925+00:00",
+      "elapsed_seconds": 6.969337834001635,
+      "metadata": {
+        "langfuse_session_id": "agent-bench:run-all:pydantic-ai:marketing-search-webinar:20260708T212940Z:batch",
+        "tool_calls": [
+          {
+            "tool_name": "list_tables",
+            "via": "native"
+          },
+          {
+            "tool_name": "run_code",
+            "via": "native"
+          },
+          {
+            "tool_name": "list_tables",
+            "via": "code_mode"
+          },
+          {
+            "tool_name": "run_code",
+            "via": "native"
+          },
+          {
+            "tool_name": "execute_sql",
+            "via": "code_mode"
+          }
+        ],
+        "langfuse_trace_id": "2de18ebbefd18f818df8f34cb9805eb9",
+        "langfuse_observation_id": "280c4d3d599e962e",
+        "langfuse_trace_url": "https://cloud.langfuse.com/project/cmr1ywsf000d5ad0cex3dm2ha/traces/2de18ebbefd18f818df8f34cb9805eb9"
+      },
+      "error": null,
+      "ok": true
+    },
+    {
+      "harness": "pydantic-ai",
+      "architecture": "enterprise-mcp-react",
+      "task": "marketing-search-webinar",
+      "prompt": "Find every webinar campaign.",
+      "output": "\n\n| id | name | channel | status | budget_usd | start_date | end_date |\n|----|------|---------|--------|------------|------------|----------|\n| 13 | Winter Webinar Series 1 | webinar | paused | 113678.17 | 2026-03-23 | 2026-07-08 |\n| 14 | Spring Webinar Series 2 | webinar | completed | 47562.78 | 2024-09-05 | 2024-11-06 |\n| 15 | Enterprise Webinar Series 3 | webinar | completed | 39180.23 | 2026-01-15 | 2026-07-08 |\n| 16 | Fall Webinar Series 4 | webinar | completed | 43741.35 | 2025-02-16 | 2025-03-20 |",
+      "started_at": "2026-07-08T21:30:22.893441+00:00",
+      "elapsed_seconds": 7.953747834006208,
+      "metadata": {
+        "langfuse_session_id": "agent-bench:run-all:pydantic-ai:marketing-search-webinar:20260708T212940Z:batch",
+        "tool_calls": [
+          {
+            "tool_name": "tool_list_tables",
+            "via": "native"
+          },
+          {
+            "tool_name": "tool_describe_table",
+            "via": "native"
+          },
+          {
+            "tool_name": "tool_execute_sql",
+            "via": "native"
+          }
+        ],
+        "langfuse_trace_id": "259f04069d30917a07285ce95354b86e",
+        "langfuse_observation_id": "49349a76af1302d4",
+        "langfuse_trace_url": "https://cloud.langfuse.com/project/cmr1ywsf000d5ad0cex3dm2ha/traces/259f04069d30917a07285ce95354b86e"
+      },
+      "error": null,
+      "ok": true
+    },
+    {
+      "harness": "pydantic-ai",
+      "architecture": "enterprise-mcp-codemode",
+      "task": "marketing-search-webinar",
+      "prompt": "Find every webinar campaign.",
+      "output": "\n\n| id | name | channel | status | budget_usd | start_date | end_date |\n|----|------|---------|--------|------------|------------|----------|\n| 13 | Winter Webinar Series 1 | webinar | paused | 113678.17 | 2026-03-23 | 2026-07-08 |\n| 14 | Spring Webinar Series 2 | webinar | completed | 47562.78 | 2024-09-05 | 2024-11-06 |\n| 15 | Enterprise Webinar Series 3 | webinar | completed | 39180.23 | 2026-01-15 | 2026-07-08 |\n| 16 | Fall Webinar Series 4 | webinar | completed | 43741.35 | 2025-02-16 | 2025-03-20 |",
+      "started_at": "2026-07-08T21:30:30.847478+00:00",
+      "elapsed_seconds": 15.956172540987609,
+      "metadata": {
+        "langfuse_session_id": "agent-bench:run-all:pydantic-ai:marketing-search-webinar:20260708T212940Z:batch",
+        "tool_calls": [
+          {
+            "tool_name": "tool_list_tables",
+            "via": "native"
+          },
+          {
+            "tool_name": "run_code",
+            "via": "native"
+          },
+          {
+            "tool_name": "run_code",
+            "via": "native"
+          },
+          {
+            "tool_name": "tool_get_schema_context",
+            "via": "code_mode"
+          },
+          {
+            "tool_name": "run_code",
+            "via": "native"
+          },
+          {
+            "tool_name": "tool_execute_sql",
+            "via": "code_mode"
+          }
+        ],
+        "langfuse_trace_id": "2dbdb3d74a37d1d5cbae6b55e9af5861",
+        "langfuse_observation_id": "ca06162a645dea15",
+        "langfuse_trace_url": "https://cloud.langfuse.com/project/cmr1ywsf000d5ad0cex3dm2ha/traces/2dbdb3d74a37d1d5cbae6b55e9af5861"
+      },
+      "error": null,
+      "ok": true
+    },
+    {
+      "harness": "pydantic-ai",
+      "architecture": "enterprise-sql-react",
+      "task": "marketing-search-webinar",
+      "prompt": "Find every webinar campaign.",
+      "output": "\n\n| id | name | channel | status | budget_usd | start_date | end_date |\n|---|---|---|---|---|---|---|\n| 13 | Winter Webinar Series 1 | webinar | paused | 113678.17 | 2026-03-23 | 2026-07-08 |\n| 14 | Spring Webinar Series 2 | webinar | completed | 47562.78 | 2024-09-05 | 2024-11-06 |\n| 15 | Enterprise Webinar Series 3 | webinar | completed | 39180.23 | 2026-01-15 | 2026-07-08 |\n| 16 | Fall Webinar Series 4 | webinar | completed | 43741.35 | 2025-02-16 | 2025-03-20 |",
+      "started_at": "2026-07-08T21:30:46.803917+00:00",
+      "elapsed_seconds": 7.186070499999914,
+      "metadata": {
+        "langfuse_session_id": "agent-bench:run-all:pydantic-ai:marketing-search-webinar:20260708T212940Z:batch",
+        "tool_calls": [
+          {
+            "tool_name": "list_tables",
+            "via": "native"
+          },
+          {
+            "tool_name": "describe_table",
+            "via": "native"
+          },
+          {
+            "tool_name": "execute_sql",
+            "via": "native"
+          }
+        ],
+        "langfuse_trace_id": "bbb69105e853593aead44765f678172e",
+        "langfuse_observation_id": "1c624c6b64d888dd",
+        "langfuse_trace_url": "https://cloud.langfuse.com/project/cmr1ywsf000d5ad0cex3dm2ha/traces/bbb69105e853593aead44765f678172e"
+      },
+      "error": null,
+      "ok": true
+    },
+    {
+      "harness": "pydantic-ai",
+      "architecture": "enterprise-sql-codemode",
+      "task": "marketing-search-webinar",
+      "prompt": "Find every webinar campaign.",
+      "output": "\n\nHere are all webinar campaigns from the database:\n\n| id | name | channel | status | budget_usd | start_date | end_date |\n|----|------|---------|--------|------------|------------|----------|\n| 13 | Winter Webinar Series 1 | webinar | paused | 113678.17 | 2026-03-23 | 2026-07-08 |\n| 14 | Spring Webinar Series 2 | webinar | completed | 47562.78 | 2024-09-05 | 2024-11-06 |\n| 15 | Enterprise Webinar Series 3 | webinar | completed | 39180.23 | 2026-01-15 | 2026-07-08 |\n| 16 | Fall Webinar Series 4 | webinar | completed | 43741.35 | 2025-02-16 | 2025-03-20 |",
+      "started_at": "2026-07-08T21:30:53.990121+00:00",
+      "elapsed_seconds": 14.858091874993988,
+      "metadata": {
+        "langfuse_session_id": "agent-bench:run-all:pydantic-ai:marketing-search-webinar:20260708T212940Z:batch",
+        "tool_calls": [
+          {
+            "tool_name": "list_tables",
+            "via": "native"
+          },
+          {
+            "tool_name": "run_code",
+            "via": "native"
+          },
+          {
+            "tool_name": "run_code",
+            "via": "native"
+          },
+          {
+            "tool_name": "run_code",
+            "via": "native"
+          },
+          {
+            "tool_name": "list_tables",
+            "via": "code_mode"
+          },
+          {
+            "tool_name": "run_code",
+            "via": "native"
+          },
+          {
+            "tool_name": "execute_sql",
+            "via": "code_mode"
+          }
+        ],
+        "langfuse_trace_id": "3fe4bf9492a0b5870c602e73109363f0",
+        "langfuse_observation_id": "859823ce0a4aa54f",
+        "langfuse_trace_url": "https://cloud.langfuse.com/project/cmr1ywsf000d5ad0cex3dm2ha/traces/3fe4bf9492a0b5870c602e73109363f0"
+      },
+      "error": null,
+      "ok": true
+    },
+    {
+      "harness": "pydantic-ai",
+      "architecture": "enterprise-react-toolsearch",
+      "task": "marketing-search-webinar",
+      "prompt": "Find every webinar campaign.",
+      "output": "\n\n| id | name | channel | status | budget_usd | start_date | end_date |\n|---|---|---|---|---|---|---|\n| 13 | Winter Webinar Series 1 | webinar | paused | 113678.17 | 2026-03-23 | 2026-07-08 |\n| 14 | Spring Webinar Series 2 | webinar | completed | 47562.78 | 2024-09-05 | 2024-11-06 |\n| 15 | Enterprise Webinar Series 3 | webinar | completed | 39180.23 | 2026-01-15 | 2026-07-08 |\n| 16 | Fall Webinar Series 4 | webinar | completed | 43741.35 | 2025-02-16 | 2025-03-20 |",
+      "started_at": "2026-07-08T21:31:08.848452+00:00",
+      "elapsed_seconds": 19.716552749989205,
+      "metadata": {
+        "langfuse_session_id": "agent-bench:run-all:pydantic-ai:marketing-search-webinar:20260708T212940Z:batch",
+        "tool_calls": [
+          {
+            "tool_name": "search_tools",
+            "via": "native"
+          },
+          {
+            "tool_name": "list_categories",
+            "via": "native"
+          },
+          {
+            "tool_name": "search_tools",
+            "via": "native"
+          },
+          {
+            "tool_name": "list_tables",
+            "via": "native"
+          },
+          {
+            "tool_name": "search_tools",
+            "via": "native"
+          },
+          {
+            "tool_name": "execute_sql",
+            "via": "native"
+          }
+        ],
+        "langfuse_trace_id": "cab1df36842dea75d0317fbe809ec1d5",
+        "langfuse_observation_id": "c91321e72abf09bb",
+        "langfuse_trace_url": "https://cloud.langfuse.com/project/cmr1ywsf000d5ad0cex3dm2ha/traces/cab1df36842dea75d0317fbe809ec1d5"
+      },
+      "error": null,
+      "ok": true
+    },
+    {
+      "harness": "pydantic-ai",
+      "architecture": "enterprise-codemode-toolsearch",
+      "task": "marketing-search-webinar",
+      "prompt": "Find every webinar campaign.",
+      "output": "\n\n| id | name | channel | status | budget_usd | start_date | end_date |\n|----|------|---------|--------|------------|------------|----------|\n| 13 | Winter Webinar Series 1 | webinar | paused | 113678.17 | 2026-03-23 | 2026-07-08 |\n| 14 | Spring Webinar Series 2 | webinar | completed | 47562.78 | 2024-09-05 | 2024-11-06 |\n| 15 | Enterprise Webinar Series 3 | webinar | completed | 39180.23 | 2026-01-15 | 2026-07-08 |\n| 16 | Fall Webinar Series 4 | webinar | completed | 43741.35 | 2025-02-16 | 2025-03-20 |",
+      "started_at": "2026-07-08T21:31:28.565396+00:00",
+      "elapsed_seconds": 23.890981459000614,
+      "metadata": {
+        "langfuse_session_id": "agent-bench:run-all:pydantic-ai:marketing-search-webinar:20260708T212940Z:batch",
+        "tool_calls": [
+          {
+            "tool_name": "search_tools",
+            "via": "native"
+          },
+          {
+            "tool_name": "search_tools",
+            "via": "native"
+          },
+          {
+            "tool_name": "get_schema_context",
+            "via": "native"
+          },
+          {
+            "tool_name": "list_tables",
+            "via": "native"
+          },
+          {
+            "tool_name": "execute_sql",
+            "via": "native"
+          },
+          {
+            "tool_name": "run_code",
+            "via": "native"
+          },
+          {
+            "tool_name": "describe_table",
+            "via": "native"
+          },
+          {
+            "tool_name": "describe_table",
+            "via": "native"
+          },
+          {
+            "tool_name": "search_tools",
+            "via": "native"
+          },
+          {
+            "tool_name": "run_code",
+            "via": "native"
+          },
+          {
+            "tool_name": "execute_sql",
+            "via": "code_mode"
+          }
+        ],
+        "langfuse_trace_id": "732d421da1388d6fde11b6b858e984d0",
+        "langfuse_observation_id": "ec1e45ec987c9757",
+        "langfuse_trace_url": "https://cloud.langfuse.com/project/cmr1ywsf000d5ad0cex3dm2ha/traces/732d421da1388d6fde11b6b858e984d0"
+      },
+      "error": null,
+      "ok": true
+    },
+    {
+      "harness": "pydantic-ai",
+      "architecture": "enterprise-react-thinking",
+      "task": "marketing-search-webinar",
+      "prompt": "Find every webinar campaign.",
+      "output": "\n\n| id | name | channel | status | budget_usd | start_date | end_date |\n|---|---|---|---|---|---|---|\n| 13 | Winter Webinar Series 1 | webinar | paused | 113678.17 | 2026-03-23 | 2026-07-08 |\n| 14 | Spring Webinar Series 2 | webinar | completed | 47562.78 | 2024-09-05 | 2024-11-06 |\n| 15 | Enterprise Webinar Series 3 | webinar | completed | 39180.23 | 2026-01-15 | 2026-07-08 |\n| 16 | Fall Webinar Series 4 | webinar | completed | 43741.35 | 2025-02-16 | 2025-03-20 |",
+      "started_at": "2026-07-08T21:31:52.456690+00:00",
+      "elapsed_seconds": 7.656605708005372,
+      "metadata": {
+        "langfuse_session_id": "agent-bench:run-all:pydantic-ai:marketing-search-webinar:20260708T212940Z:batch",
+        "tool_calls": [
+          {
+            "tool_name": "list_tables",
+            "via": "native"
+          },
+          {
+            "tool_name": "execute_sql",
+            "via": "native"
+          }
+        ],
+        "langfuse_trace_id": "e27780dc38d8ac289ed9ef5de01f58d1",
+        "langfuse_observation_id": "969b33b173644495",
+        "langfuse_trace_url": "https://cloud.langfuse.com/project/cmr1ywsf000d5ad0cex3dm2ha/traces/e27780dc38d8ac289ed9ef5de01f58d1"
+      },
+      "error": null,
+      "ok": true
+    },
+    {
+      "harness": "pydantic-ai",
+      "architecture": "enterprise-codemode-thinking",
+      "task": "marketing-search-webinar",
+      "prompt": "Find every webinar campaign.",
+      "output": "\n\n| id | name | channel | status | budget_usd | start_date | end_date |\n|----|------|---------|--------|------------|------------|----------|\n| 13 | Winter Webinar Series 1 | webinar | paused | 113678.17 | 2026-03-23 | 2026-07-08 |\n| 14 | Spring Webinar Series 2 | webinar | completed | 47562.78 | 2024-09-05 | 2024-11-06 |\n| 15 | Enterprise Webinar Series 3 | webinar | completed | 39180.23 | 2026-01-15 | 2026-07-08 |\n| 16 | Fall Webinar Series 4 | webinar | completed | 43741.35 | 2025-02-16 | 2025-03-20 |",
+      "started_at": "2026-07-08T21:32:00.113478+00:00",
+      "elapsed_seconds": 17.36795670801075,
+      "metadata": {
+        "langfuse_session_id": "agent-bench:run-all:pydantic-ai:marketing-search-webinar:20260708T212940Z:batch",
+        "tool_calls": [
+          {
+            "tool_name": "list_tables",
+            "via": "native"
+          },
+          {
+            "tool_name": "list_tables",
+            "via": "native"
+          },
+          {
+            "tool_name": "run_code",
+            "via": "native"
+          },
+          {
+            "tool_name": "list_tables",
+            "via": "code_mode"
+          },
+          {
+            "tool_name": "run_code",
+            "via": "native"
+          },
+          {
+            "tool_name": "execute_sql",
+            "via": "code_mode"
+          }
+        ],
+        "langfuse_trace_id": "8c8e8fb3487d331d876202ef3e80f399",
+        "langfuse_observation_id": "1326fbc1348096f7",
+        "langfuse_trace_url": "https://cloud.langfuse.com/project/cmr1ywsf000d5ad0cex3dm2ha/traces/8c8e8fb3487d331d876202ef3e80f399"
+      },
+      "error": null,
+      "ok": true
+    },
+    {
+      "harness": "pydantic-ai",
+      "architecture": "enterprise-react-toolsearch-120",
+      "task": "marketing-search-webinar",
+      "prompt": "Find every webinar campaign.",
+      "output": "\n\n| id | name | status |\n|----|-------------------------|--------|\n| 13 | Winter Webinar Series 1 | paused |",
+      "started_at": "2026-07-08T21:32:17.481675+00:00",
+      "elapsed_seconds": 10.964845583002898,
+      "metadata": {
+        "langfuse_session_id": "agent-bench:run-all:pydantic-ai:marketing-search-webinar:20260708T212940Z:batch",
+        "tool_calls": [
+          {
+            "tool_name": "search_tools",
+            "via": "native"
+          },
+          {
+            "tool_name": "get_campaign_by_name",
+            "via": "native"
+          }
+        ],
+        "langfuse_trace_id": "e047e7ef5c18e528c2c44f0e60c62df8",
+        "langfuse_observation_id": "9a7baace01f19821",
+        "langfuse_trace_url": "https://cloud.langfuse.com/project/cmr1ywsf000d5ad0cex3dm2ha/traces/e047e7ef5c18e528c2c44f0e60c62df8"
+      },
+      "error": null,
+      "ok": true
+    },
+    {
+      "harness": "pydantic-ai",
+      "architecture": "enterprise-categorized-search",
+      "task": "marketing-search-webinar",
+      "prompt": "Find every webinar campaign.",
+      "output": "\n\n| id | name | channel | status | budget_usd | start_date | end_date |\n|---|---|---|---|---|---|---|\n| 13 | Winter Webinar Series 1 | webinar | paused | 113678.17 | 2026-03-23 | 2026-07-08 |\n| 14 | Spring Webinar Series 2 | webinar | completed | 47562.78 | 2024-09-05 | 2024-11-06 |\n| 16 | Fall Webinar Series 4 | webinar | completed | 43741.35 | 2025-02-16 | 2025-03-20 |\n| 15 | Enterprise Webinar Series 3 | webinar | completed | 39180.23 | 2026-01-15 | 2026-07-08 |",
+      "started_at": "2026-07-08T21:32:28.446714+00:00",
+      "elapsed_seconds": 7.96287800000573,
+      "metadata": {
+        "langfuse_session_id": "agent-bench:run-all:pydantic-ai:marketing-search-webinar:20260708T212940Z:batch",
+        "tool_calls": [
+          {
+            "tool_name": "list_tool_categories",
+            "via": "native"
+          },
+          {
+            "tool_name": "search_tools_in_category",
+            "via": "native"
+          },
+          {
+            "tool_name": "call_tool",
+            "via": "native"
+          },
+          {
+            "tool_name": "search_campaigns",
+            "via": "categorized_search"
+          }
+        ],
+        "langfuse_trace_id": "7ae9c5cbabb53a713366d1e6ee115b40",
+        "langfuse_observation_id": "ec87ff768c107b7d",
+        "langfuse_trace_url": "https://cloud.langfuse.com/project/cmr1ywsf000d5ad0cex3dm2ha/traces/7ae9c5cbabb53a713366d1e6ee115b40"
+      },
+      "error": null,
+      "ok": true
+    }
+  ]
+}

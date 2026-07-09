@@ -1,6 +1,16 @@
-"""FastMCP server that exposes all enterprise Decision Intelligence tools over the MCP protocol.
+"""FastMCP server(s) that expose the enterprise Decision Intelligence tools over MCP.
 
-Run standalone (stdio, for local MCP clients):
+Two server instances are defined here:
+
+  mcp_core — the original 17-tool surface (13 typed enterprise tools + 4 SQL tools), used by
+             the `enterprise-mcp-react` / `enterprise-mcp-codemode` / `enterprise-mcp-react-native`
+             architectures so they stay a stable, comparable baseline as the tool surface grows.
+  mcp      — the full 120-tool surface (the same 17 plus 45 new real-domain tools and 58
+             distractor tools), used by the `-120` suffixed architectures and served by default
+             when this module is run standalone, since "what an external MCP client can see"
+             should reflect the whole available toolset.
+
+Run standalone (stdio, for local MCP clients; serves the full 120-tool `mcp`):
     uv run python -m agent_harness.mcp_server
 
 Run over HTTP (required for the `enterprise-mcp-react-native` architecture — put this
@@ -9,20 +19,30 @@ the tunnel's `/mcp` URL):
     uv run python -m agent_harness.mcp_server --http
 
 Or add to an agent as an in-process MCP server:
-    from agent_harness.mcp_server import mcp
-    agent = Agent(model, capabilities=[MCP(mcp)])
+    from agent_harness.mcp_server import mcp, mcp_core
+    agent = Agent(model, capabilities=[MCP(mcp_core)])  # 17-tool baseline
+    agent = Agent(model, capabilities=[MCP(mcp)])        # full 120-tool surface
 """
 
 from __future__ import annotations
 
+import inspect
 import sys
 
 from mcp.server.fastmcp import FastMCP
 
-from agent_harness.tools import enterprise as ec
+from agent_harness.tools import (
+    distractors,
+    enterprise as ec,
+    finance_ops,
+    marketing,
+    procurement,
+    support,
+    workforce,
+)
 from agent_harness.tools.sql import describe_table, execute_sql, get_schema_context, list_tables
 
-mcp = FastMCP(
+mcp_core = FastMCP(
     name="enterprise-decision-intel",
     instructions=(
         "Enterprise Decision Intelligence tools for testing agent performance. "
@@ -35,7 +55,7 @@ mcp = FastMCP(
 
 # ── schema exploration ────────────────────────────────────────────────────────
 
-@mcp.tool()
+@mcp_core.tool()
 def tool_get_schema_context() -> dict:
     """Return the full semantic layer: table meanings, column descriptions, FK relationships,
     common business metric SQL patterns, and query tips.
@@ -46,13 +66,13 @@ def tool_get_schema_context() -> dict:
     return get_schema_context()
 
 
-@mcp.tool()
+@mcp_core.tool()
 def tool_list_tables() -> list[dict]:
     """List all tables with their semantic name, description, and column signatures."""
     return list_tables()
 
 
-@mcp.tool()
+@mcp_core.tool()
 def tool_describe_table(table_name: str) -> list[dict]:
     """Return column definitions for a table.
 
@@ -62,7 +82,7 @@ def tool_describe_table(table_name: str) -> list[dict]:
     return describe_table(table_name)
 
 
-@mcp.tool()
+@mcp_core.tool()
 def tool_execute_sql(query: str, limit: int = 100) -> dict:
     """Run a read-only SELECT statement and return results.
 
@@ -75,13 +95,13 @@ def tool_execute_sql(query: str, limit: int = 100) -> dict:
 
 # ── catalogue (analytics modules by business function) ───────────────────────
 
-@mcp.tool()
+@mcp_core.tool()
 def tool_list_categories() -> list[dict]:
     """Return all business function categories (Finance, Supply Chain, Sales & Marketing, etc.)."""
     return ec.list_categories()
 
 
-@mcp.tool()
+@mcp_core.tool()
 def tool_search_products(
     query: str = "",
     category: str = "",
@@ -107,7 +127,7 @@ def tool_search_products(
     )
 
 
-@mcp.tool()
+@mcp_core.tool()
 def tool_get_product(product_id: int) -> dict | None:
     """Get full details for an analytics module including average user satisfaction rating.
 
@@ -117,7 +137,7 @@ def tool_get_product(product_id: int) -> dict | None:
     return ec.get_product(product_id)
 
 
-@mcp.tool()
+@mcp_core.tool()
 def tool_get_product_reviews(product_id: int, limit: int = 10) -> list[dict]:
     """Return recent user satisfaction ratings for an analytics module.
 
@@ -128,7 +148,7 @@ def tool_get_product_reviews(product_id: int, limit: int = 10) -> list[dict]:
     return ec.get_product_reviews(product_id, limit=limit)
 
 
-@mcp.tool()
+@mcp_core.tool()
 def tool_get_top_selling_products(limit: int = 10, days: int = 90) -> list[dict]:
     """Return analytics modules with the most subscription activations in the last N days.
 
@@ -141,7 +161,7 @@ def tool_get_top_selling_products(limit: int = 10, days: int = 90) -> list[dict]
     return ec.get_top_selling_products(limit=limit, days=days)
 
 
-@mcp.tool()
+@mcp_core.tool()
 def tool_get_low_stock_products(threshold: int = 30) -> list[dict]:
     """Return analytics modules with deployments at or below the threshold (low adoption alert).
 
@@ -153,7 +173,7 @@ def tool_get_low_stock_products(threshold: int = 30) -> list[dict]:
 
 # ── users (enterprise business users and decision-makers) ────────────────────
 
-@mcp.tool()
+@mcp_core.tool()
 def tool_get_customer(customer_id: int) -> dict | None:
     """Get a business user's profile and lifetime subscription stats.
 
@@ -163,7 +183,7 @@ def tool_get_customer(customer_id: int) -> dict | None:
     return ec.get_customer(customer_id)
 
 
-@mcp.tool()
+@mcp_core.tool()
 def tool_search_customers(
     name: str = "",
     email: str = "",
@@ -183,7 +203,7 @@ def tool_search_customers(
     return ec.search_customers(name=name, email=email, tier=tier, city=city, limit=limit)
 
 
-@mcp.tool()
+@mcp_core.tool()
 def tool_get_customer_orders(customer_id: int, limit: int = 20) -> list[dict]:
     """Return a business user's subscription history (most recent first).
 
@@ -194,7 +214,7 @@ def tool_get_customer_orders(customer_id: int, limit: int = 20) -> list[dict]:
     return ec.get_customer_orders(customer_id, limit=limit)
 
 
-@mcp.tool()
+@mcp_core.tool()
 def tool_get_customer_lifetime_value(customer_id: int) -> dict | None:
     """Return total spend, active subscription count, and top business function for a user.
 
@@ -206,7 +226,7 @@ def tool_get_customer_lifetime_value(customer_id: int) -> dict | None:
 
 # ── subscriptions ─────────────────────────────────────────────────────────────
 
-@mcp.tool()
+@mcp_core.tool()
 def tool_get_order(order_id: int) -> dict | None:
     """Return full subscription details including all analytics modules.
 
@@ -218,7 +238,7 @@ def tool_get_order(order_id: int) -> dict | None:
 
 # ── analytics ─────────────────────────────────────────────────────────────────
 
-@mcp.tool()
+@mcp_core.tool()
 def tool_get_sales_summary(start_date: str, end_date: str) -> dict:
     """Aggregate subscription revenue metrics between two ISO dates.
 
@@ -229,7 +249,7 @@ def tool_get_sales_summary(start_date: str, end_date: str) -> dict:
     return ec.get_sales_summary(start_date, end_date)
 
 
-@mcp.tool()
+@mcp_core.tool()
 def tool_get_revenue_by_month(year: int) -> list[dict]:
     """Monthly subscription revenue and activation counts for a calendar year.
 
@@ -237,6 +257,60 @@ def tool_get_revenue_by_month(year: int) -> list[dict]:
         year: Four-digit year, e.g. 2024.
     """
     return ec.get_revenue_by_month(year)
+
+
+# ── mcp: the full 120-tool surface ─────────────────────────────────────────────
+# The original 17 tools (re-registered here from their plain functions, not the `mcp_core`
+# decorator wrappers -- FastMCP tools aren't transferable between server instances) plus 45
+# new real-domain tools and 58 distractor tools. Registered programmatically via `add_tool`
+# (which derives name/schema straight from each function's signature and docstring) rather
+# than one hand-written `@mcp.tool()` wrapper per function like `mcp_core` above -- identical
+# behavior, far less boilerplate at 120 tools.
+
+mcp = FastMCP(
+    name="enterprise-decision-intel-120",
+    instructions=(
+        mcp_core.instructions
+        + " This server additionally exposes Support & Success, Marketing Campaigns, "
+        "Procurement/Suppliers, Workforce/HR, and Finance/Budgets tools, alongside a large "
+        "number of decoy tools that are never the right choice for a real question -- "
+        "read each tool's description carefully before choosing one."
+    ),
+)
+
+_CORE_TOOL_FUNCTIONS = [
+    get_schema_context,
+    list_tables,
+    describe_table,
+    execute_sql,
+    ec.list_categories,
+    ec.search_products,
+    ec.get_product,
+    ec.get_product_reviews,
+    ec.get_top_selling_products,
+    ec.get_low_stock_products,
+    ec.get_customer,
+    ec.search_customers,
+    ec.get_customer_orders,
+    ec.get_customer_lifetime_value,
+    ec.get_order,
+    ec.get_sales_summary,
+    ec.get_revenue_by_month,
+]
+_SCALE_OUT_MODULES = (support, marketing, procurement, workforce, finance_ops, distractors)
+
+
+def _register_120_tools() -> None:
+    for fn in _CORE_TOOL_FUNCTIONS:
+        mcp.add_tool(fn, name=f"tool_{fn.__name__}")
+    for module in _SCALE_OUT_MODULES:
+        for name, fn in inspect.getmembers(module, inspect.isfunction):
+            if name.startswith("_") or fn.__module__ != module.__name__:
+                continue
+            mcp.add_tool(fn, name=f"tool_{name}")
+
+
+_register_120_tools()
 
 
 if __name__ == "__main__":

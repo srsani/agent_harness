@@ -83,6 +83,146 @@ CREATE INDEX IF NOT EXISTS idx_order_items_order   ON order_items(order_id);
 CREATE INDEX IF NOT EXISTS idx_order_items_product ON order_items(product_id);
 CREATE INDEX IF NOT EXISTS idx_reviews_product     ON reviews(product_id);
 CREATE INDEX IF NOT EXISTS idx_reviews_customer    ON reviews(customer_id);
+
+-- ── Support & Success ─────────────────────────────────────────────────────────
+CREATE TABLE IF NOT EXISTS support_agents (
+    id         INTEGER PRIMARY KEY,
+    full_name  TEXT    NOT NULL,
+    -- Region the agent primarily supports: US, EMEA, APAC
+    region     TEXT    NOT NULL CHECK(region IN ('US','EMEA','APAC')),
+    hired_at   TEXT    NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS support_tickets (
+    id                  INTEGER PRIMARY KEY,
+    customer_id         INTEGER NOT NULL REFERENCES customers(id),
+    product_id          INTEGER NOT NULL REFERENCES products(id),
+    agent_id            INTEGER NOT NULL REFERENCES support_agents(id),
+    subject             TEXT    NOT NULL,
+    -- low | medium | high | urgent
+    priority            TEXT    NOT NULL CHECK(priority IN ('low','medium','high','urgent')),
+    -- open | pending | resolved | closed
+    status              TEXT    NOT NULL CHECK(status IN ('open','pending','resolved','closed')),
+    created_at          TEXT    NOT NULL,
+    -- NULL until status is resolved/closed
+    resolved_at         TEXT,
+    -- 1-5 post-resolution satisfaction score; NULL if unresolved or not rated
+    satisfaction_rating INTEGER CHECK(satisfaction_rating BETWEEN 1 AND 5)
+);
+
+-- ── Marketing Campaigns ────────────────────────────────────────────────────────
+CREATE TABLE IF NOT EXISTS campaigns (
+    id          INTEGER PRIMARY KEY,
+    name        TEXT    NOT NULL,
+    -- email | paid_search | social | webinar | content | events
+    channel     TEXT    NOT NULL CHECK(channel IN ('email','paid_search','social','webinar','content','events')),
+    -- planned | active | completed | paused
+    status      TEXT    NOT NULL CHECK(status IN ('planned','active','completed','paused')),
+    budget_usd  REAL    NOT NULL CHECK(budget_usd > 0),
+    start_date  TEXT    NOT NULL,
+    end_date    TEXT    NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS campaign_performance (
+    id           INTEGER PRIMARY KEY,
+    campaign_id  INTEGER NOT NULL REFERENCES campaigns(id),
+    -- Calendar month this performance snapshot covers, format YYYY-MM
+    month        TEXT    NOT NULL,
+    impressions  INTEGER NOT NULL DEFAULT 0,
+    clicks       INTEGER NOT NULL DEFAULT 0,
+    leads        INTEGER NOT NULL DEFAULT 0,
+    conversions  INTEGER NOT NULL DEFAULT 0,
+    spend_usd    REAL    NOT NULL DEFAULT 0
+);
+
+-- ── Procurement / Suppliers ────────────────────────────────────────────────────
+CREATE TABLE IF NOT EXISTS suppliers (
+    id          INTEGER PRIMARY KEY,
+    name        TEXT    NOT NULL,
+    country     TEXT    NOT NULL,
+    -- Sourcing category: raw_materials | logistics | software | facilities | professional_services
+    category    TEXT    NOT NULL CHECK(category IN ('raw_materials','logistics','software','facilities','professional_services')),
+    -- 1-5 supplier scorecard rating (5 = best)
+    rating      REAL    NOT NULL CHECK(rating BETWEEN 1 AND 5),
+    created_at  TEXT    NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS purchase_orders (
+    id            INTEGER PRIMARY KEY,
+    supplier_id   INTEGER NOT NULL REFERENCES suppliers(id),
+    -- draft | approved | shipped | received | cancelled
+    status        TEXT    NOT NULL CHECK(status IN ('draft','approved','shipped','received','cancelled')),
+    total_amount  REAL    NOT NULL,
+    ordered_at    TEXT    NOT NULL,
+    expected_at   TEXT    NOT NULL,
+    -- NULL until status = received; compare to expected_at for lateness
+    received_at   TEXT
+);
+
+-- ── Workforce / HR ──────────────────────────────────────────────────────────────
+CREATE TABLE IF NOT EXISTS departments (
+    id           INTEGER PRIMARY KEY,
+    name         TEXT    NOT NULL UNIQUE,
+    -- Maps to a categories.name business function this department primarily serves
+    function     TEXT    NOT NULL,
+    budget_usd   REAL    NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS employees (
+    id             INTEGER PRIMARY KEY,
+    department_id  INTEGER NOT NULL REFERENCES departments(id),
+    full_name      TEXT    NOT NULL,
+    title          TEXT    NOT NULL,
+    hired_at       TEXT    NOT NULL,
+    salary_usd     REAL    NOT NULL,
+    -- Self-referencing FK; NULL for department heads with no manager
+    manager_id     INTEGER REFERENCES employees(id),
+    -- 0 once the employee has left the company (attrition)
+    is_active      INTEGER NOT NULL DEFAULT 1 CHECK(is_active IN (0,1)),
+    -- NULL while is_active = 1
+    departed_at    TEXT
+);
+
+CREATE TABLE IF NOT EXISTS performance_reviews (
+    id           INTEGER PRIMARY KEY,
+    employee_id  INTEGER NOT NULL REFERENCES employees(id),
+    review_date  TEXT    NOT NULL,
+    -- 1-5 performance rating (5 = highest)
+    rating       INTEGER NOT NULL CHECK(rating BETWEEN 1 AND 5),
+    summary      TEXT    NOT NULL
+);
+
+-- ── Finance / Budgets ────────────────────────────────────────────────────────────
+CREATE TABLE IF NOT EXISTS budgets (
+    id             INTEGER PRIMARY KEY,
+    department_id  INTEGER NOT NULL REFERENCES departments(id),
+    year           INTEGER NOT NULL,
+    -- opex | capex | headcount | travel | marketing_spend
+    category       TEXT    NOT NULL CHECK(category IN ('opex','capex','headcount','travel','marketing_spend')),
+    allocated_usd  REAL    NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS expenses (
+    id             INTEGER PRIMARY KEY,
+    budget_id      INTEGER NOT NULL REFERENCES budgets(id),
+    department_id  INTEGER NOT NULL REFERENCES departments(id),
+    category       TEXT    NOT NULL CHECK(category IN ('opex','capex','headcount','travel','marketing_spend')),
+    amount_usd     REAL    NOT NULL CHECK(amount_usd > 0),
+    incurred_at    TEXT    NOT NULL,
+    description    TEXT    NOT NULL
+);
+
+CREATE INDEX IF NOT EXISTS idx_tickets_customer       ON support_tickets(customer_id);
+CREATE INDEX IF NOT EXISTS idx_tickets_agent          ON support_tickets(agent_id);
+CREATE INDEX IF NOT EXISTS idx_tickets_product        ON support_tickets(product_id);
+CREATE INDEX IF NOT EXISTS idx_campaign_perf_campaign  ON campaign_performance(campaign_id);
+CREATE INDEX IF NOT EXISTS idx_po_supplier            ON purchase_orders(supplier_id);
+CREATE INDEX IF NOT EXISTS idx_employees_department   ON employees(department_id);
+CREATE INDEX IF NOT EXISTS idx_employees_manager      ON employees(manager_id);
+CREATE INDEX IF NOT EXISTS idx_reviews_employee        ON performance_reviews(employee_id);
+CREATE INDEX IF NOT EXISTS idx_budgets_department      ON budgets(department_id);
+CREATE INDEX IF NOT EXISTS idx_expenses_budget         ON expenses(budget_id);
+CREATE INDEX IF NOT EXISTS idx_expenses_department     ON expenses(department_id);
 """
 
 # ── Semantic metadata ─────────────────────────────────────────────────────────
@@ -228,6 +368,177 @@ SCHEMA_METADATA: dict[str, dict] = {
             "created_at": "ISO-8601 timestamp (submitted 5–60 days after delivery).",
         },
     },
+    "support_agents": {
+        "semantic_name": "Support Agents",
+        "description": (
+            "Customer support staff who handle tickets, grouped by the region they primarily "
+            "support: US, EMEA, APAC."
+        ),
+        "columns": {
+            "id": "Surrogate primary key.",
+            "full_name": "Agent's full name.",
+            "region": "Primary support region: US, EMEA, or APAC.",
+            "hired_at": "ISO-8601 date the agent joined the support team.",
+        },
+    },
+    "support_tickets": {
+        "semantic_name": "Support Tickets",
+        "description": (
+            "Customer support cases raised against a specific analytics module. "
+            "Lifecycle: open -> pending -> resolved -> closed. "
+            "satisfaction_rating is only populated after resolution and only if the customer rated it."
+        ),
+        "columns": {
+            "id": "Surrogate primary key.",
+            "customer_id": "FK -> customers.id — who raised the ticket.",
+            "product_id": "FK -> products.id — which analytics module the ticket concerns.",
+            "agent_id": "FK -> support_agents.id — who is handling the ticket.",
+            "subject": "Short one-line ticket subject.",
+            "priority": "low | medium | high | urgent.",
+            "status": "open | pending | resolved | closed.",
+            "created_at": "ISO-8601 timestamp the ticket was opened.",
+            "resolved_at": "ISO-8601 timestamp the ticket was resolved; NULL if still open/pending.",
+            "satisfaction_rating": "1-5 post-resolution CSAT score; NULL if unresolved or unrated.",
+        },
+    },
+    "campaigns": {
+        "semantic_name": "Marketing Campaigns",
+        "description": (
+            "Marketing campaigns across channels (email, paid search, social, webinar, content, "
+            "events). Each campaign has monthly performance snapshots in campaign_performance."
+        ),
+        "columns": {
+            "id": "Surrogate primary key.",
+            "name": "Campaign name.",
+            "channel": "email | paid_search | social | webinar | content | events.",
+            "status": "planned | active | completed | paused.",
+            "budget_usd": "Total planned budget for the campaign in USD.",
+            "start_date": "ISO-8601 campaign start date.",
+            "end_date": "ISO-8601 campaign end date.",
+        },
+    },
+    "campaign_performance": {
+        "semantic_name": "Campaign Monthly Performance",
+        "description": (
+            "One row per campaign per calendar month it ran, with funnel metrics: "
+            "impressions -> clicks -> leads -> conversions, and actual spend that month. "
+            "ROI-style metrics should sum spend_usd and conversions across all months for a campaign."
+        ),
+        "columns": {
+            "id": "Surrogate primary key.",
+            "campaign_id": "FK -> campaigns.id.",
+            "month": "Calendar month this snapshot covers, format YYYY-MM.",
+            "impressions": "Ad/email impressions that month.",
+            "clicks": "Clicks that month.",
+            "leads": "Marketing-qualified leads generated that month.",
+            "conversions": "Leads that converted to a paying subscription that month.",
+            "spend_usd": "Actual spend that month in USD.",
+        },
+    },
+    "suppliers": {
+        "semantic_name": "Suppliers",
+        "description": (
+            "Third-party suppliers used for procurement, rated on a 1-5 scorecard. "
+            "Sourcing categories: raw_materials, logistics, software, facilities, professional_services."
+        ),
+        "columns": {
+            "id": "Surrogate primary key.",
+            "name": "Supplier company name.",
+            "country": "Two-letter ISO country code.",
+            "category": "raw_materials | logistics | software | facilities | professional_services.",
+            "rating": "1-5 supplier scorecard rating (5 = best).",
+            "created_at": "ISO-8601 date the supplier relationship began.",
+        },
+    },
+    "purchase_orders": {
+        "semantic_name": "Purchase Orders",
+        "description": (
+            "Procurement purchase orders placed with suppliers. Lifecycle: draft -> approved -> "
+            "shipped -> received | cancelled. A PO is 'late' when received_at is after expected_at."
+        ),
+        "columns": {
+            "id": "Surrogate primary key.",
+            "supplier_id": "FK -> suppliers.id.",
+            "status": "draft | approved | shipped | received | cancelled.",
+            "total_amount": "Total PO value in USD.",
+            "ordered_at": "ISO-8601 timestamp the PO was placed.",
+            "expected_at": "ISO-8601 timestamp delivery was expected.",
+            "received_at": "ISO-8601 timestamp actually received; NULL until status = received.",
+        },
+    },
+    "departments": {
+        "semantic_name": "Departments",
+        "description": (
+            "Internal company departments. `function` maps to the categories.name business "
+            "function the department primarily serves (Finance, Supply Chain, Sales & Marketing, "
+            "Research & Development, HR & People)."
+        ),
+        "columns": {
+            "id": "Surrogate primary key.",
+            "name": "Department name.",
+            "function": "The business function (categories.name) this department serves.",
+            "budget_usd": "Total annual operating budget in USD.",
+        },
+    },
+    "employees": {
+        "semantic_name": "Employees",
+        "description": (
+            "Internal company workforce. manager_id self-references employees.id for reporting "
+            "lines. is_active=0 marks someone who has left the company (attrition)."
+        ),
+        "columns": {
+            "id": "Surrogate primary key.",
+            "department_id": "FK -> departments.id.",
+            "full_name": "Employee's full name.",
+            "title": "Job title.",
+            "hired_at": "ISO-8601 hire date.",
+            "salary_usd": "Annual base salary in USD.",
+            "manager_id": "FK -> employees.id — direct manager; NULL for department heads.",
+            "is_active": "1 = currently employed, 0 = departed (attrition).",
+            "departed_at": "ISO-8601 departure date; NULL while is_active = 1.",
+        },
+    },
+    "performance_reviews": {
+        "semantic_name": "Employee Performance Reviews",
+        "description": "Periodic 1-5 performance ratings for employees, with a short summary.",
+        "columns": {
+            "id": "Surrogate primary key.",
+            "employee_id": "FK -> employees.id.",
+            "review_date": "ISO-8601 date of the review.",
+            "rating": "1-5 performance rating (5 = highest).",
+            "summary": "Short free-text review summary.",
+        },
+    },
+    "budgets": {
+        "semantic_name": "Department Budgets",
+        "description": (
+            "Annual budget allocations per department per category "
+            "(opex, capex, headcount, travel, marketing_spend). Compare to expenses for variance."
+        ),
+        "columns": {
+            "id": "Surrogate primary key.",
+            "department_id": "FK -> departments.id.",
+            "year": "Four-digit budget year.",
+            "category": "opex | capex | headcount | travel | marketing_spend.",
+            "allocated_usd": "Allocated budget amount in USD for that year/category.",
+        },
+    },
+    "expenses": {
+        "semantic_name": "Expenses",
+        "description": (
+            "Individual expense line items charged against a budget. "
+            "Sum of expenses.amount_usd for a budget_id vs. budgets.allocated_usd gives variance."
+        ),
+        "columns": {
+            "id": "Surrogate primary key.",
+            "budget_id": "FK -> budgets.id.",
+            "department_id": "FK -> departments.id (denormalized for convenience).",
+            "category": "opex | capex | headcount | travel | marketing_spend.",
+            "amount_usd": "Expense amount in USD.",
+            "incurred_at": "ISO-8601 date the expense was incurred.",
+            "description": "Short free-text expense description.",
+        },
+    },
 }
 
 # ── Foreign-key relationship map ──────────────────────────────────────────────
@@ -239,6 +550,17 @@ RELATIONSHIPS = [
     {"from_table": "order_items", "from_col": "product_id",   "to_table": "products",   "to_col": "id"},
     {"from_table": "reviews",     "from_col": "product_id",   "to_table": "products",   "to_col": "id"},
     {"from_table": "reviews",     "from_col": "customer_id",  "to_table": "customers",  "to_col": "id"},
+    {"from_table": "support_tickets",      "from_col": "customer_id",    "to_table": "customers",       "to_col": "id"},
+    {"from_table": "support_tickets",      "from_col": "product_id",     "to_table": "products",        "to_col": "id"},
+    {"from_table": "support_tickets",      "from_col": "agent_id",       "to_table": "support_agents",  "to_col": "id"},
+    {"from_table": "campaign_performance", "from_col": "campaign_id",    "to_table": "campaigns",       "to_col": "id"},
+    {"from_table": "purchase_orders",      "from_col": "supplier_id",    "to_table": "suppliers",       "to_col": "id"},
+    {"from_table": "employees",            "from_col": "department_id",  "to_table": "departments",     "to_col": "id"},
+    {"from_table": "employees",            "from_col": "manager_id",     "to_table": "employees",       "to_col": "id"},
+    {"from_table": "performance_reviews",  "from_col": "employee_id",    "to_table": "employees",       "to_col": "id"},
+    {"from_table": "budgets",              "from_col": "department_id",  "to_table": "departments",     "to_col": "id"},
+    {"from_table": "expenses",             "from_col": "budget_id",      "to_table": "budgets",         "to_col": "id"},
+    {"from_table": "expenses",             "from_col": "department_id",  "to_table": "departments",     "to_col": "id"},
 ]
 
 # ── Common business metric patterns ──────────────────────────────────────────
@@ -276,6 +598,27 @@ BUSINESS_METRICS = {
     "portfolio_depth": (
         "AVG(item_count) WHERE item_count = "
         "COUNT(oi.id) per order FROM order_items oi GROUP BY oi.order_id"
+    ),
+    "ticket_resolution_rate": (
+        "COUNT(*) WHERE status IN ('resolved','closed') / COUNT(*) FROM support_tickets"
+    ),
+    "avg_csat": "AVG(satisfaction_rating) FROM support_tickets WHERE satisfaction_rating IS NOT NULL",
+    "campaign_roi": (
+        "(SUM(cp.conversions) * avg_subscription_value - SUM(cp.spend_usd)) / SUM(cp.spend_usd) "
+        "FROM campaign_performance cp WHERE cp.campaign_id = <id>"
+    ),
+    "conversion_rate": "SUM(cp.conversions) / NULLIF(SUM(cp.leads), 0) FROM campaign_performance cp",
+    "supplier_on_time_rate": (
+        "COUNT(*) WHERE received_at <= expected_at / COUNT(*) WHERE status = 'received' "
+        "FROM purchase_orders"
+    ),
+    "attrition_rate": (
+        "COUNT(*) WHERE is_active = 0 AND departed_at >= <start> / "
+        "COUNT(*) WHERE hired_at <= <start> FROM employees"
+    ),
+    "budget_variance": (
+        "budgets.allocated_usd - SUM(expenses.amount_usd) FROM expenses "
+        "JOIN budgets ON budgets.id = expenses.budget_id GROUP BY budgets.id"
     ),
 }
 

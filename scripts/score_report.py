@@ -9,6 +9,8 @@ from datetime import UTC, datetime
 from pathlib import Path
 from typing import Any
 
+from agent_harness.tasks.tool_selection_benchmark import score_tool_selection
+
 NUMBER_RE = re.compile(r"\$?\d[\d,]*(?:\.\d+)?")
 ISO_DATE_RE = re.compile(r"\d{4}-\d{2}-\d{2}(?:[T ][0-2]\d:[0-5]\d:[0-5]\d)?")
 
@@ -153,6 +155,45 @@ def _score_output(output: str, expected: Any, deterministic: bool) -> dict[str, 
     }
 
 
+def _tool_selection_summary(scored_results: list[dict[str, Any]]) -> dict[str, Any] | None:
+    """Aggregate tool-selection precision/recall and distractor/fabricated call rates across a
+    set of results, for the 120-tool scale benchmark (see `tool_selection_benchmark.py`).
+
+    Skips results whose task isn't part of `TOOL_SELECTION_BENCHMARK` (e.g. `hn-research`) or
+    that recorded no tool-call trace at all (harnesses/tasks predating tool-call capture).
+    """
+    scorable = [
+        r["tool_selection"]
+        for r in scored_results
+        if r.get("tool_selection") is not None and r["tool_selection"].get("scorable")
+    ]
+    if not scorable:
+        return None
+
+    precisions = [s["tool_precision"] for s in scorable]
+    recalls = [s["tool_recall"] for s in scorable]
+    total_calls = sum(s["total_tool_calls"] for s in scorable)
+    total_distractor_calls = sum(s["distractor_call_count"] for s in scorable)
+    total_fabricated_calls = sum(s["fabricated_call_count"] for s in scorable)
+    tasks_with_distractor = sum(1 for s in scorable if s["any_distractor_called"])
+    tasks_with_fabricated = sum(1 for s in scorable if s["any_fabricated_called"])
+
+    return {
+        "scored_tasks": len(scorable),
+        "avg_tool_precision": round(sum(precisions) / len(precisions), 4),
+        "avg_tool_recall": round(sum(recalls) / len(recalls), 4),
+        "total_tool_calls": total_calls,
+        "total_distractor_calls": total_distractor_calls,
+        "distractor_call_rate": round(total_distractor_calls / total_calls, 4) if total_calls else 0.0,
+        "tasks_with_any_distractor_call": tasks_with_distractor,
+        "tasks_with_any_distractor_call_pct": round(100 * tasks_with_distractor / len(scorable), 2),
+        "total_fabricated_calls": total_fabricated_calls,
+        "fabricated_call_rate": round(total_fabricated_calls / total_calls, 4) if total_calls else 0.0,
+        "tasks_with_any_fabricated_call": tasks_with_fabricated,
+        "tasks_with_any_fabricated_call_pct": round(100 * tasks_with_fabricated / len(scorable), 2),
+    }
+
+
 def _stability_summary(scored_results: list[dict[str, Any]]) -> dict[str, Any] | None:
     """Summarize how much a set of repeated runs of the same architecture + task varied.
 
@@ -173,7 +214,7 @@ def _stability_summary(scored_results: list[dict[str, Any]]) -> dict[str, Any] |
         if r["scores"]["scorable"] and r["scores"]["overall_score"] is not None
     ]
 
-    return {
+    summary = {
         "runs": len(scored_results),
         "ok_rate": round(ok_count / len(scored_results), 4),
         "distinct_outputs": distinct_outputs,
@@ -182,11 +223,18 @@ def _stability_summary(scored_results: list[dict[str, Any]]) -> dict[str, Any] |
             0.0 if scores else None
         ),
     }
+    tool_selection = _tool_selection_summary(scored_results)
+    if tool_selection is not None:
+        summary["tool_selection"] = tool_selection
+    return summary
 
 
 def _score_single_result(
     result: dict[str, Any], task_name: str, gt_tasks: dict[str, Any]
 ) -> dict[str, Any]:
+    tool_calls = (result.get("metadata") or {}).get("tool_calls") or []
+    tool_selection = score_tool_selection(task_name, tool_calls)
+
     task_gt = gt_tasks.get(task_name)
     if task_gt is None:
         return {
@@ -199,12 +247,13 @@ def _score_single_result(
                 "overall_score": None,
                 "details": {"reason": f"task '{task_name}' missing in ground truth"},
             },
+            "tool_selection": tool_selection,
         }
 
     deterministic = task_gt.get("type") not in ("external-dynamic", "conversational")
     expected = task_gt.get("expected")
     scored = _score_output(result.get("output", ""), expected, deterministic)
-    return {**result, "scores": scored}
+    return {**result, "scores": scored, "tool_selection": tool_selection}
 
 
 def score_report(report: dict[str, Any], ground_truth: dict[str, Any]) -> dict[str, Any]:
@@ -264,6 +313,9 @@ def score_report(report: dict[str, Any], ground_truth: dict[str, Any]) -> dict[s
             if halluc_vals
             else None,
         }
+        overall_tool_selection = _tool_selection_summary(scored_results)
+        if overall_tool_selection is not None:
+            summary["tool_selection"] = overall_tool_selection
 
         # When `--repeat N` was used, multiple results share the same architecture --
         # break out per-architecture stability (score variance, output diversity) so a

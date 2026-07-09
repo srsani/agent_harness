@@ -1,0 +1,482 @@
+{
+  "mode": "run-all",
+  "session_id": "agent-bench:run-all:pydantic-ai:procurement-search-software-highrating:20260708T214044Z:batch",
+  "harness": "pydantic-ai",
+  "task": "procurement-search-software-highrating",
+  "repeat": 1,
+  "results": [
+    {
+      "harness": "pydantic-ai",
+      "architecture": "minimal",
+      "task": "procurement-search-software-highrating",
+      "prompt": "Find software-category suppliers with a scorecard rating of at least 4.0.",
+      "output": "\n\n| Supplier Name | Category | Scorecard Rating |\n|---------------|----------|------------------|\n| TechSoft Inc. | software | 4.5 |\n| CloudBase Solutions | software | 4.2 |\n| DataSync Corp | software | 4.0 |\n| Nexus Software Group | software | 4.8 |",
+      "started_at": "2026-07-08T21:40:44.704564+00:00",
+      "elapsed_seconds": 21.31407545899856,
+      "metadata": {
+        "langfuse_session_id": "agent-bench:run-all:pydantic-ai:procurement-search-software-highrating:20260708T214044Z:batch",
+        "tool_calls": [],
+        "langfuse_trace_id": "42cc3607fb6d54b4b56cc7577bc85758",
+        "langfuse_observation_id": "d63c969e3a5295d4",
+        "langfuse_trace_url": "https://cloud.langfuse.com/project/cmr1ywsf000d5ad0cex3dm2ha/traces/42cc3607fb6d54b4b56cc7577bc85758"
+      },
+      "error": null,
+      "ok": true
+    },
+    {
+      "harness": "pydantic-ai",
+      "architecture": "enterprise-react",
+      "task": "procurement-search-software-highrating",
+      "prompt": "Find software-category suppliers with a scorecard rating of at least 4.0.",
+      "output": "\n\n| id | name | country | category | rating | created_at |\n|----|------|---------|----------|--------|------------|\n| 3 | Sterling Consulting 63 | GB | software | 4.1 | 2025-08-01T12:27:12 |\n| 19 | Atlas Group | GB | software | 4.8 | 2025-03-18T18:01:22 |\n| 20 | Summit Consulting | NL | software | 4.4 | 2023-11-30T20:43:12 |",
+      "started_at": "2026-07-08T21:41:06.018954+00:00",
+      "elapsed_seconds": 14.4993679170002,
+      "metadata": {
+        "langfuse_session_id": "agent-bench:run-all:pydantic-ai:procurement-search-software-highrating:20260708T214044Z:batch",
+        "tool_calls": [
+          {
+            "tool_name": "get_schema_context",
+            "via": "native"
+          },
+          {
+            "tool_name": "list_categories",
+            "via": "native"
+          },
+          {
+            "tool_name": "execute_sql",
+            "via": "native"
+          }
+        ],
+        "langfuse_trace_id": "9461c53be4185b7c519d8386f0b761fd",
+        "langfuse_observation_id": "253ba432622a29c0",
+        "langfuse_trace_url": "https://cloud.langfuse.com/project/cmr1ywsf000d5ad0cex3dm2ha/traces/9461c53be4185b7c519d8386f0b761fd"
+      },
+      "error": null,
+      "ok": true
+    },
+    {
+      "harness": "pydantic-ai",
+      "architecture": "enterprise-codemode",
+      "task": "procurement-search-software-highrating",
+      "prompt": "Find software-category suppliers with a scorecard rating of at least 4.0.",
+      "output": "\n\n| id | name | country | category | rating |\n|----|------|---------|----------|--------|\n| 3 | Sterling Consulting 63 | GB | software | 4.1 |\n| 19 | Atlas Group | GB | software | 4.8 |\n| 20 | Summit Consulting | NL | software | 4.4 |",
+      "started_at": "2026-07-08T21:41:20.518623+00:00",
+      "elapsed_seconds": 12.85207924999122,
+      "metadata": {
+        "langfuse_session_id": "agent-bench:run-all:pydantic-ai:procurement-search-software-highrating:20260708T214044Z:batch",
+        "tool_calls": [
+          {
+            "tool_name": "list_tables",
+            "via": "native"
+          },
+          {
+            "tool_name": "run_code",
+            "via": "native"
+          },
+          {
+            "tool_name": "run_code",
+            "via": "native"
+          },
+          {
+            "tool_name": "list_tables",
+            "via": "code_mode"
+          },
+          {
+            "tool_name": "run_code",
+            "via": "native"
+          },
+          {
+            "tool_name": "run_code",
+            "via": "native"
+          },
+          {
+            "tool_name": "describe_table",
+            "via": "code_mode"
+          },
+          {
+            "tool_name": "run_code",
+            "via": "native"
+          },
+          {
+            "tool_name": "execute_sql",
+            "via": "code_mode"
+          }
+        ],
+        "langfuse_trace_id": "483e8303c23006ef1f78d520de6be0b9",
+        "langfuse_observation_id": "40b4994c3d09683a",
+        "langfuse_trace_url": "https://cloud.langfuse.com/project/cmr1ywsf000d5ad0cex3dm2ha/traces/483e8303c23006ef1f78d520de6be0b9"
+      },
+      "error": null,
+      "ok": true
+    },
+    {
+      "harness": "pydantic-ai",
+      "architecture": "enterprise-mcp-react",
+      "task": "procurement-search-software-highrating",
+      "prompt": "Find software-category suppliers with a scorecard rating of at least 4.0.",
+      "output": "\n\n| id | name | country | category | rating | created_at |\n|----|------|---------|----------|--------|------------|\n| 3 | Sterling Consulting 63 | GB | software | 4.1 | 2025-08-01T12:27:12 |\n| 19 | Atlas Group | GB | software | 4.8 | 2025-03-18T18:01:22 |\n| 20 | Summit Consulting | NL | software | 4.4 | 2023-11-30T20:43:12 |",
+      "started_at": "2026-07-08T21:41:33.370912+00:00",
+      "elapsed_seconds": 12.530771457997616,
+      "metadata": {
+        "langfuse_session_id": "agent-bench:run-all:pydantic-ai:procurement-search-software-highrating:20260708T214044Z:batch",
+        "tool_calls": [
+          {
+            "tool_name": "tool_list_tables",
+            "via": "native"
+          },
+          {
+            "tool_name": "tool_describe_table",
+            "via": "native"
+          },
+          {
+            "tool_name": "tool_execute_sql",
+            "via": "native"
+          }
+        ],
+        "langfuse_trace_id": "2260814819ff45aba3a95d4b351ecdf8",
+        "langfuse_observation_id": "6a93fb3f0438c718",
+        "langfuse_trace_url": "https://cloud.langfuse.com/project/cmr1ywsf000d5ad0cex3dm2ha/traces/2260814819ff45aba3a95d4b351ecdf8"
+      },
+      "error": null,
+      "ok": true
+    },
+    {
+      "harness": "pydantic-ai",
+      "architecture": "enterprise-mcp-codemode",
+      "task": "procurement-search-software-highrating",
+      "prompt": "Find software-category suppliers with a scorecard rating of at least 4.0.",
+      "output": "\n\n| id | name | category | rating |\n|----|------|----------|--------|\n| 3 | Sterling Consulting 63 | software | 4.1 |\n| 19 | Atlas Group | software | 4.8 |\n| 20 | Summit Consulting | software | 4.4 |",
+      "started_at": "2026-07-08T21:41:45.901951+00:00",
+      "elapsed_seconds": 17.81279004100361,
+      "metadata": {
+        "langfuse_session_id": "agent-bench:run-all:pydantic-ai:procurement-search-software-highrating:20260708T214044Z:batch",
+        "tool_calls": [
+          {
+            "tool_name": "tool_list_tables",
+            "via": "native"
+          },
+          {
+            "tool_name": "run_code",
+            "via": "native"
+          },
+          {
+            "tool_name": "run_code",
+            "via": "native"
+          },
+          {
+            "tool_name": "tool_list_tables",
+            "via": "code_mode"
+          },
+          {
+            "tool_name": "tool_describe_table",
+            "via": "code_mode"
+          },
+          {
+            "tool_name": "tool_execute_sql",
+            "via": "code_mode"
+          },
+          {
+            "tool_name": "run_code",
+            "via": "native"
+          },
+          {
+            "tool_name": "tool_execute_sql",
+            "via": "code_mode"
+          },
+          {
+            "tool_name": "tool_execute_sql",
+            "via": "code_mode"
+          },
+          {
+            "tool_name": "tool_execute_sql",
+            "via": "code_mode"
+          },
+          {
+            "tool_name": "tool_execute_sql",
+            "via": "code_mode"
+          },
+          {
+            "tool_name": "run_code",
+            "via": "native"
+          },
+          {
+            "tool_name": "tool_execute_sql",
+            "via": "code_mode"
+          },
+          {
+            "tool_name": "tool_execute_sql",
+            "via": "code_mode"
+          }
+        ],
+        "langfuse_trace_id": "7f542c8baa01431369cb0384fc47c816",
+        "langfuse_observation_id": "c0b6526af7690611",
+        "langfuse_trace_url": "https://cloud.langfuse.com/project/cmr1ywsf000d5ad0cex3dm2ha/traces/7f542c8baa01431369cb0384fc47c816"
+      },
+      "error": null,
+      "ok": true
+    },
+    {
+      "harness": "pydantic-ai",
+      "architecture": "enterprise-sql-react",
+      "task": "procurement-search-software-highrating",
+      "prompt": "Find software-category suppliers with a scorecard rating of at least 4.0.",
+      "output": "\n\n| id | name | country | category | rating | created_at |\n|---|---|---|---|---|---|\n| 3 | Sterling Consulting 63 | GB | software | 4.1 | 2025-08-01T12:27:12 |\n| 19 | Atlas Group | GB | software | 4.8 | 2025-03-18T18:01:22 |\n| 20 | Summit Consulting | NL | software | 4.4 | 2023-11-30T20:43:12 |",
+      "started_at": "2026-07-08T21:42:03.715011+00:00",
+      "elapsed_seconds": 5.589998791998369,
+      "metadata": {
+        "langfuse_session_id": "agent-bench:run-all:pydantic-ai:procurement-search-software-highrating:20260708T214044Z:batch",
+        "tool_calls": [
+          {
+            "tool_name": "list_tables",
+            "via": "native"
+          },
+          {
+            "tool_name": "execute_sql",
+            "via": "native"
+          }
+        ],
+        "langfuse_trace_id": "e2c07e2365cbe435e1cbfdc7a27b6e22",
+        "langfuse_observation_id": "35b46b64328b75c1",
+        "langfuse_trace_url": "https://cloud.langfuse.com/project/cmr1ywsf000d5ad0cex3dm2ha/traces/e2c07e2365cbe435e1cbfdc7a27b6e22"
+      },
+      "error": null,
+      "ok": true
+    },
+    {
+      "harness": "pydantic-ai",
+      "architecture": "enterprise-sql-codemode",
+      "task": "procurement-search-software-highrating",
+      "prompt": "Find software-category suppliers with a scorecard rating of at least 4.0.",
+      "output": "",
+      "started_at": "2026-07-08T21:42:09.305229+00:00",
+      "elapsed_seconds": 67.50702337500115,
+      "metadata": {
+        "langfuse_session_id": "agent-bench:run-all:pydantic-ai:procurement-search-software-highrating:20260708T214044Z:batch"
+      },
+      "error": "UnexpectedModelBehavior: Tool 'run_code' exceeded max retries count of 6",
+      "ok": false
+    },
+    {
+      "harness": "pydantic-ai",
+      "architecture": "enterprise-react-toolsearch",
+      "task": "procurement-search-software-highrating",
+      "prompt": "Find software-category suppliers with a scorecard rating of at least 4.0.",
+      "output": "\n\n```sql\nSELECT id, name, country, category, rating, created_at\nFROM suppliers\nWHERE category = 'software' AND rating >= 4.0;\n```",
+      "started_at": "2026-07-08T21:43:16.813058+00:00",
+      "elapsed_seconds": 20.50874575000489,
+      "metadata": {
+        "langfuse_session_id": "agent-bench:run-all:pydantic-ai:procurement-search-software-highrating:20260708T214044Z:batch",
+        "tool_calls": [
+          {
+            "tool_name": "search_tools",
+            "via": "native"
+          },
+          {
+            "tool_name": "get_schema_context",
+            "via": "native"
+          },
+          {
+            "tool_name": "get_schema_context",
+            "via": "native"
+          }
+        ],
+        "langfuse_trace_id": "126969f5a851c6fa394276452d0dc32b",
+        "langfuse_observation_id": "a9936ac316902780",
+        "langfuse_trace_url": "https://cloud.langfuse.com/project/cmr1ywsf000d5ad0cex3dm2ha/traces/126969f5a851c6fa394276452d0dc32b"
+      },
+      "error": null,
+      "ok": true
+    },
+    {
+      "harness": "pydantic-ai",
+      "architecture": "enterprise-codemode-toolsearch",
+      "task": "procurement-search-software-highrating",
+      "prompt": "Find software-category suppliers with a scorecard rating of at least 4.0.",
+      "output": "\n\n| id | name | country | category | rating |\n|---|---|---|---|---|\n| 3 | Sterling Consulting 63 | GB | software | 4.1 |\n| 19 | Atlas Group | GB | software | 4.8 |\n| 20 | Summit Consulting | NL | software | 4.4 |",
+      "started_at": "2026-07-08T21:43:37.322210+00:00",
+      "elapsed_seconds": 9.338012457999866,
+      "metadata": {
+        "langfuse_session_id": "agent-bench:run-all:pydantic-ai:procurement-search-software-highrating:20260708T214044Z:batch",
+        "tool_calls": [
+          {
+            "tool_name": "search_tools",
+            "via": "native"
+          },
+          {
+            "tool_name": "get_schema_context",
+            "via": "native"
+          },
+          {
+            "tool_name": "list_tables",
+            "via": "native"
+          },
+          {
+            "tool_name": "execute_sql",
+            "via": "native"
+          },
+          {
+            "tool_name": "execute_sql",
+            "via": "native"
+          },
+          {
+            "tool_name": "execute_sql",
+            "via": "native"
+          }
+        ],
+        "langfuse_trace_id": "e8e06aee08b0f5123edd4511e885f4fd",
+        "langfuse_observation_id": "e54bc9cc2c2d99f1",
+        "langfuse_trace_url": "https://cloud.langfuse.com/project/cmr1ywsf000d5ad0cex3dm2ha/traces/e8e06aee08b0f5123edd4511e885f4fd"
+      },
+      "error": null,
+      "ok": true
+    },
+    {
+      "harness": "pydantic-ai",
+      "architecture": "enterprise-react-thinking",
+      "task": "procurement-search-software-highrating",
+      "prompt": "Find software-category suppliers with a scorecard rating of at least 4.0.",
+      "output": "\n\n| id | name | country | category | rating |\n|---|---|---|---|---|\n| 3 | Sterling Consulting 63 | GB | software | 4.1 |\n| 19 | Atlas Group | GB | software | 4.8 |\n| 20 | Summit Consulting | NL | software | 4.4 |",
+      "started_at": "2026-07-08T21:43:46.660539+00:00",
+      "elapsed_seconds": 14.178856957994867,
+      "metadata": {
+        "langfuse_session_id": "agent-bench:run-all:pydantic-ai:procurement-search-software-highrating:20260708T214044Z:batch",
+        "tool_calls": [
+          {
+            "tool_name": "get_schema_context",
+            "via": "native"
+          },
+          {
+            "tool_name": "execute_sql",
+            "via": "native"
+          },
+          {
+            "tool_name": "execute_sql",
+            "via": "native"
+          }
+        ],
+        "langfuse_trace_id": "59e678d1115707b5c6946bc2cb9680f0",
+        "langfuse_observation_id": "f903ed84b1f3cb67",
+        "langfuse_trace_url": "https://cloud.langfuse.com/project/cmr1ywsf000d5ad0cex3dm2ha/traces/59e678d1115707b5c6946bc2cb9680f0"
+      },
+      "error": null,
+      "ok": true
+    },
+    {
+      "harness": "pydantic-ai",
+      "architecture": "enterprise-codemode-thinking",
+      "task": "procurement-search-software-highrating",
+      "prompt": "Find software-category suppliers with a scorecard rating of at least 4.0.",
+      "output": "\n\n| id | name | country | category | rating |\n|----|------|---------|----------|--------|\n| 3 | Sterling Consulting 63 | GB | software | 4.1 |\n| 19 | Atlas Group | GB | software | 4.8 |\n| 20 | Summit Consulting | NL | software | 4.4 |",
+      "started_at": "2026-07-08T21:44:00.839637+00:00",
+      "elapsed_seconds": 16.781917749991408,
+      "metadata": {
+        "langfuse_session_id": "agent-bench:run-all:pydantic-ai:procurement-search-software-highrating:20260708T214044Z:batch",
+        "tool_calls": [
+          {
+            "tool_name": "list_tables",
+            "via": "native"
+          },
+          {
+            "tool_name": "run_code",
+            "via": "native"
+          },
+          {
+            "tool_name": "list_tables",
+            "via": "native"
+          },
+          {
+            "tool_name": "run_code",
+            "via": "native"
+          },
+          {
+            "tool_name": "run_code",
+            "via": "native"
+          },
+          {
+            "tool_name": "get_schema_context",
+            "via": "code_mode"
+          },
+          {
+            "tool_name": "execute_sql",
+            "via": "native"
+          },
+          {
+            "tool_name": "run_code",
+            "via": "native"
+          },
+          {
+            "tool_name": "execute_sql",
+            "via": "code_mode"
+          }
+        ],
+        "langfuse_trace_id": "3e920379e745be0544c56c1650d90a04",
+        "langfuse_observation_id": "0377524cd8f12b54",
+        "langfuse_trace_url": "https://cloud.langfuse.com/project/cmr1ywsf000d5ad0cex3dm2ha/traces/3e920379e745be0544c56c1650d90a04"
+      },
+      "error": null,
+      "ok": true
+    },
+    {
+      "harness": "pydantic-ai",
+      "architecture": "enterprise-react-toolsearch-120",
+      "task": "procurement-search-software-highrating",
+      "prompt": "Find software-category suppliers with a scorecard rating of at least 4.0.",
+      "output": "\n\n| id | name | country | category | rating |\n|----|----------------------|----------|----------|--------|\n| 19 | Atlas Group | GB | software | 4.8 |\n| 20 | Summit Consulting | NL | software | 4.4 |\n| 3 | Sterling Consulting 63 | GB | software | 4.1 |",
+      "started_at": "2026-07-08T21:44:17.621798+00:00",
+      "elapsed_seconds": 5.908377500003553,
+      "metadata": {
+        "langfuse_session_id": "agent-bench:run-all:pydantic-ai:procurement-search-software-highrating:20260708T214044Z:batch",
+        "tool_calls": [
+          {
+            "tool_name": "search_tools",
+            "via": "native"
+          },
+          {
+            "tool_name": "search_suppliers",
+            "via": "native"
+          }
+        ],
+        "langfuse_trace_id": "5b9499a10e90026c656dc772526d7baf",
+        "langfuse_observation_id": "6bd16f5862a794cd",
+        "langfuse_trace_url": "https://cloud.langfuse.com/project/cmr1ywsf000d5ad0cex3dm2ha/traces/5b9499a10e90026c656dc772526d7baf"
+      },
+      "error": null,
+      "ok": true
+    },
+    {
+      "harness": "pydantic-ai",
+      "architecture": "enterprise-categorized-search",
+      "task": "procurement-search-software-highrating",
+      "prompt": "Find software-category suppliers with a scorecard rating of at least 4.0.",
+      "output": "\n\n| id | name | country | category | rating |\n|---|---|---|---|---|\n| 19 | Atlas Group | GB | software | 4.8 |\n| 20 | Summit Consulting | NL | software | 4.4 |\n| 3 | Sterling Consulting 63 | GB | software | 4.1 |",
+      "started_at": "2026-07-08T21:44:23.530431+00:00",
+      "elapsed_seconds": 6.140896167009487,
+      "metadata": {
+        "langfuse_session_id": "agent-bench:run-all:pydantic-ai:procurement-search-software-highrating:20260708T214044Z:batch",
+        "tool_calls": [
+          {
+            "tool_name": "list_tool_categories",
+            "via": "native"
+          },
+          {
+            "tool_name": "search_tools_in_category",
+            "via": "native"
+          },
+          {
+            "tool_name": "call_tool",
+            "via": "native"
+          },
+          {
+            "tool_name": "search_suppliers",
+            "via": "categorized_search"
+          }
+        ],
+        "langfuse_trace_id": "5fce6187e5076bcd208bff50b3129e32",
+        "langfuse_observation_id": "be728939d4f5a76c",
+        "langfuse_trace_url": "https://cloud.langfuse.com/project/cmr1ywsf000d5ad0cex3dm2ha/traces/5fce6187e5076bcd208bff50b3129e32"
+      },
+      "error": null,
+      "ok": true
+    }
+  ]
+}

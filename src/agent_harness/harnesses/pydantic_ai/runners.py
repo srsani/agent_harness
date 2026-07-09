@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import time
 from collections.abc import Callable
+from typing import Any
 
 from agent_harness.config import settings
 from agent_harness.harnesses.pydantic_ai.traced_agent import TracedAgent
@@ -90,6 +91,46 @@ BENCHMARK_RESPONSE_INSTRUCTIONS = (
 )
 
 
+# The categorized-search architecture (see `categorized_search.py`) dispatches every real
+# tool call through this one native meta-tool, taking `tool_name` as an argument. Like
+# CodeMode's nested calls, that real tool name would otherwise be invisible to tool-selection
+# scoring -- only "call_tool" would show up. `_tool_call_names` unpacks it below.
+_CATEGORIZED_SEARCH_DISPATCH_TOOL = "call_tool"
+
+
+def _tool_call_names(run_result: Any) -> list[dict[str, Any]]:
+    """Extract a flat, framework-agnostic list of tool calls made during a run.
+
+    Always computed (independent of Langfuse tracing/sampling) so `RunResult.metadata`
+    carries `tool_calls` for every run, which `tool_selection_benchmark.py` scoring depends
+    on to measure tool-selection accuracy and tool hallucination (distractor/fabricated
+    tool calls) at the 120-tool scale. Reuses `TracedAgent`'s artifact extractor, which
+    already flattens CodeMode's nested sandboxed tool calls alongside native ones, and further
+    unpacks the categorized-search architecture's `call_tool(tool_name=...)` dispatch calls.
+    """
+    import json as _json
+
+    from agent_harness.harnesses.pydantic_ai.traced_agent import _extract_run_artifacts
+
+    try:
+        artifacts = _extract_run_artifacts(run_result)
+    except Exception:  # noqa: BLE001 -- tool-call capture must never break a benchmark run
+        return []
+
+    calls: list[dict[str, Any]] = []
+    for call in artifacts["tool_calls"]:
+        name = call["tool_name"]
+        calls.append({"tool_name": name, "via": call.get("via", "native")})
+        if name == _CATEGORIZED_SEARCH_DISPATCH_TOOL:
+            try:
+                dispatched = _json.loads(call.get("args_json") or "{}").get("tool_name")
+            except Exception:  # noqa: BLE001 -- best-effort unpacking of a dynamic dispatch call
+                dispatched = None
+            if dispatched:
+                calls.append({"tool_name": dispatched, "via": "categorized_search"})
+    return calls
+
+
 def _optional_logfire() -> None:
     if not settings.logfire_token:
         return
@@ -175,6 +216,28 @@ def _enterprise_tools():
     ]
 
 
+def _enterprise_tools_120():
+    """Return all 120 tools: the 17 core tools, 45 real tools across 5 new business domains
+    (Support & Success, Marketing Campaigns, Procurement, Workforce/HR, Finance/Budgets), and
+    58 plausible-but-wrong "distractor" tools (see `tools/distractors.py`).
+
+    Used by the `-120` suffixed architectures to measure how tool-selection accuracy and
+    hallucination rate degrade (or don't) as the tool surface scales from 17 to 120 -- the
+    central question `tool_selection_benchmark.py` is built to answer.
+    """
+    import inspect
+
+    from agent_harness.tools import distractors, finance_ops, marketing, procurement, support, workforce
+
+    tools = list(_enterprise_tools())
+    for module in (support, marketing, procurement, workforce, finance_ops, distractors):
+        for name, fn in inspect.getmembers(module, inspect.isfunction):
+            if name.startswith("_") or fn.__module__ != module.__name__:
+                continue
+            tools.append(fn)
+    return tools
+
+
 # ── architecture builders ─────────────────────────────────────────────────────
 
 def _model():
@@ -256,12 +319,12 @@ def _build_enterprise_mcp_react_agent():
     from pydantic_ai import Agent
     from pydantic_ai.capabilities import MCP
 
-    from agent_harness.mcp_server import mcp
+    from agent_harness.mcp_server import mcp_core
 
     return Agent(
         _model(),
         system_prompt=ENTERPRISE_SYSTEM_PROMPT,
-        capabilities=[MCP(mcp, native=False)],
+        capabilities=[MCP(mcp_core, native=False)],
         model_settings=_MODEL_SETTINGS,
         retries=_TOOL_RETRIES,
     )
@@ -309,12 +372,12 @@ def _build_enterprise_mcp_codemode_agent():
     from pydantic_ai.capabilities import MCP
     from pydantic_ai_harness import CodeMode
 
-    from agent_harness.mcp_server import mcp
+    from agent_harness.mcp_server import mcp_core
 
     return Agent(
         _model(),
         system_prompt=ENTERPRISE_SYSTEM_PROMPT,
-        capabilities=[CodeMode(max_retries=_CODE_MODE_MAX_RETRIES), MCP(mcp, native=False)],
+        capabilities=[CodeMode(max_retries=_CODE_MODE_MAX_RETRIES), MCP(mcp_core, native=False)],
         model_settings=_MODEL_SETTINGS,
         retries=_TOOL_RETRIES,
     )
@@ -354,6 +417,120 @@ def _build_enterprise_codemode_toolsearch_agent():
     )
     for fn in _enterprise_tools():
         agent.tool_plain(fn, defer_loading=True)
+    return agent
+
+
+ENTERPRISE_SYSTEM_PROMPT_120 = (
+    ENTERPRISE_SYSTEM_PROMPT
+    + " You have access to a very large tool catalogue, including many tools whose names sound "
+    "plausible but are not the right choice for a given question (deprecated/legacy versions, "
+    "tools with no real data behind them, tools that silently ignore some of their arguments, "
+    "and tools totally outside this platform's scope like email/calendar/travel actions). "
+    "Read each candidate tool's full description before calling it, prefer the most specific "
+    "and current tool for the business domain in the question, and never call a tool just "
+    "because its name superficially matches a keyword in the question."
+)
+
+
+def _build_enterprise_react_120_agent():
+    """ReAct at scale: same ReAct pattern as `enterprise-react`, but with all 120 tools
+    (62 real + 58 distractors) registered up front on every turn."""
+    from pydantic_ai import Agent
+
+    agent = Agent(
+        _model(),
+        system_prompt=ENTERPRISE_SYSTEM_PROMPT_120,
+        model_settings=_MODEL_SETTINGS,
+        retries=_TOOL_RETRIES,
+    )
+    for fn in _enterprise_tools_120():
+        agent.tool_plain(fn)
+    return agent
+
+
+def _build_enterprise_codemode_120_agent():
+    """CodeMode at scale: all 120 tools rendered as sandboxed Python function signatures."""
+    from pydantic_ai import Agent
+    from pydantic_ai_harness import CodeMode
+
+    agent = Agent(
+        _model(),
+        system_prompt=ENTERPRISE_SYSTEM_PROMPT_120,
+        capabilities=[CodeMode(max_retries=_CODE_MODE_MAX_RETRIES)],
+        model_settings=_MODEL_SETTINGS,
+        retries=_TOOL_RETRIES,
+    )
+    for fn in _enterprise_tools_120():
+        agent.tool_plain(fn)
+    return agent
+
+
+def _build_enterprise_mcp_react_120_agent():
+    """ReAct via MCP at scale: the full 120-tool FastMCP server (`mcp`, not `mcp_core`)."""
+    from pydantic_ai import Agent
+    from pydantic_ai.capabilities import MCP
+
+    from agent_harness.mcp_server import mcp
+
+    return Agent(
+        _model(),
+        system_prompt=ENTERPRISE_SYSTEM_PROMPT_120,
+        capabilities=[MCP(mcp, native=False)],
+        model_settings=_MODEL_SETTINGS,
+        retries=_TOOL_RETRIES,
+    )
+
+
+def _build_enterprise_react_toolsearch_120_agent():
+    """ReAct + ToolSearch at scale: all 120 tools are defer_loading=True. This is the
+    architecture most likely to hold up as the tool count grows -- the model only ever sees
+    a handful of candidate tool schemas per turn (whatever `search_tools` returns), instead
+    of all 120 schemas on every single turn like `enterprise-react-120`."""
+    from pydantic_ai import Agent
+    from pydantic_ai.capabilities import ToolSearch
+
+    agent = Agent(
+        _model(),
+        system_prompt=ENTERPRISE_SYSTEM_PROMPT_120,
+        capabilities=[ToolSearch()],
+        model_settings=_MODEL_SETTINGS,
+        retries=_TOOL_RETRIES,
+    )
+    for fn in _enterprise_tools_120():
+        agent.tool_plain(fn, defer_loading=True)
+    return agent
+
+
+ENTERPRISE_CATEGORIZED_SEARCH_PROMPT = (
+    ENTERPRISE_SYSTEM_PROMPT_120
+    + " You do not see all 120 tools directly. Instead, follow this three-step protocol: "
+    "(1) call list_tool_categories() to see the available business-domain categories, "
+    "(2) call search_tools_in_category(category, query) on the single most relevant category "
+    "to see the real tools available in it, with their names, descriptions, and parameters, "
+    "(3) call call_tool(tool_name, arguments) to actually invoke the specific tool you chose. "
+    "Never guess a tool_name that search_tools_in_category did not return to you."
+)
+
+
+def _build_enterprise_categorized_search_agent():
+    """Hierarchical/categorized tool search at scale: a two-level discovery flow (category,
+    then tool-within-category) purpose-built for large tool counts -- see
+    `categorized_search.py` module docstring for the full design rationale. Exactly 3
+    meta-tools are ever registered, regardless of the 120-tool corpus size behind them."""
+    from pydantic_ai import Agent
+
+    from agent_harness.harnesses.pydantic_ai.categorized_search import (
+        build_categorized_search_tools,
+    )
+
+    agent = Agent(
+        _model(),
+        system_prompt=ENTERPRISE_CATEGORIZED_SEARCH_PROMPT,
+        model_settings=_MODEL_SETTINGS,
+        retries=_TOOL_RETRIES,
+    )
+    for fn in build_categorized_search_tools(_enterprise_tools_120()):
+        agent.tool_plain(fn)
     return agent
 
 
@@ -491,6 +668,32 @@ ARCHITECTURE_BUILDERS: dict[str, tuple[str, Callable[[], object]]] = {
         "reasoning before the sandboxed run_code call.",
         _build_enterprise_codemode_thinking_agent,
     ),
+    # ── 120-tool scale architectures: 62 real tools (17 core + 45 across 5 new domains) ────
+    # plus 58 distractor tools, to measure tool-selection accuracy and hallucination as the
+    # tool surface grows an order of magnitude past the 17-tool baseline above.
+    "enterprise-react-120": (
+        "ReAct at 120-tool scale: all 62 real + 58 distractor tools sent every turn.",
+        _build_enterprise_react_120_agent,
+    ),
+    "enterprise-codemode-120": (
+        "Harness/CodeMode at 120-tool scale: all 120 tools rendered as sandboxed "
+        "Python function signatures.",
+        _build_enterprise_codemode_120_agent,
+    ),
+    "enterprise-mcp-react-120": (
+        "ReAct via MCP at 120-tool scale: served by the full FastMCP `mcp` instance.",
+        _build_enterprise_mcp_react_120_agent,
+    ),
+    "enterprise-react-toolsearch-120": (
+        "ReAct + ToolSearch at 120-tool scale: all 120 tools are defer_loading=True, "
+        "discovered a handful at a time via semantic search instead of sent up front.",
+        _build_enterprise_react_toolsearch_120_agent,
+    ),
+    "enterprise-categorized-search": (
+        "Hierarchical/categorized tool search at 120-tool scale: list_tool_categories -> "
+        "search_tools_in_category two-step discovery purpose-built for large tool counts.",
+        _build_enterprise_categorized_search_agent,
+    ),
 }
 
 # Generic CodeMode variants have no enterprise DB tools registered (`codemode` has zero
@@ -502,8 +705,13 @@ ARCHITECTURE_BUILDERS: dict[str, tuple[str, Callable[[], object]]] = {
 _GENERIC_ONLY_ARCHITECTURES = ("codemode", "codemode-mcp-search")
 
 # Task-name prefixes that require enterprise DB access (see `agent_harness.tasks.builtins`
-# and `agent_harness.tasks.routing_benchmark`): the six `adi-*` comparison tasks plus the
-# seven routing-benchmark prefixes, one per enterprise architecture.
+# and `agent_harness.tasks.routing_benchmark`): the ten `adi-*` comparison tasks, the seven
+# routing-benchmark prefixes (one per enterprise architecture), and the five 120-tool-scale
+# domain prefixes (support/marketing/procurement/workforce/finance -- see
+# `tools/{support,marketing,procurement,workforce,finance_ops}.py`). Every one of these is
+# reachable via plain `execute_sql`, which every enterprise-* architecture (17-tool, SQL-only,
+# or 120-tool) has, even the ones with no purpose-built typed tool for the new domains --
+# only the tool-less generic CodeMode variants are structurally unable to answer any of them.
 _ENTERPRISE_TASK_PREFIXES = (
     "adi-",
     "react-",
@@ -512,6 +720,11 @@ _ENTERPRISE_TASK_PREFIXES = (
     "mcpcodemode-",
     "sqlreact-",
     "sqlcodemode-",
+    "support-",
+    "marketing-",
+    "procurement-",
+    "workforce-",
+    "finance-",
 )
 
 
@@ -573,6 +786,7 @@ class PydanticAIRunner(AgentRunner):
             )
             run_result = traced_agent.run_sync(_with_benchmark_instructions(prompt))
             result.output = str(run_result.output)
+            result.metadata["tool_calls"] = _tool_call_names(run_result)
             if traced_agent.last_trace_id is not None:
                 result.metadata["langfuse_trace_id"] = traced_agent.last_trace_id
             if traced_agent.last_observation_id is not None:

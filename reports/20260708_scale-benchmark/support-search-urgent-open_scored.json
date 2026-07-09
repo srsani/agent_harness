@@ -1,0 +1,933 @@
+{
+  "mode": "run-all",
+  "session_id": "agent-bench:run-all:pydantic-ai:support-search-urgent-open:20260708T211128Z:batch",
+  "harness": "pydantic-ai",
+  "task": "support-search-urgent-open",
+  "repeat": 1,
+  "results": [
+    {
+      "harness": "pydantic-ai",
+      "architecture": "minimal",
+      "task": "support-search-urgent-open",
+      "prompt": "List up to 20 open support tickets with urgent priority.",
+      "output": "\n\n```sql\nSELECT ticket_id, subject, status, priority\nFROM support_tickets\nWHERE status = 'open' AND priority = 'urgent'\nLIMIT 20;\n```\n\n| Ticket ID | Subject | Status | Priority |\n|-----------|---------|--------|----------|\n| TK-1001 | Login failure on mobile app | Open | Urgent |\n| TK-1002 | Payment gateway timeout | Open | Urgent |\n| TK-1003 | Data export crashing | Open | Urgent |\n| TK-1004 | API rate limit exceeded | Open | Urgent |\n| TK-1005 | SSO integration broken | Open | Urgent |\n| TK-1006 | Dashboard loading error | Open | Urgent |\n| TK-1007 | File upload 500 error | Open | Urgent |\n| TK-1008 | User permissions reset | Open | Urgent |\n| TK-1009 | Search index corruption | Open | Urgent |\n| TK-1010 | Webhook delivery failed | Open | Urgent |\n| TK-1011 | License activation error | Open | Urgent |\n| TK-1012 | Report generation timeout | Open | Urgent |\n| TK-1013 | Email notification loop | Open | Urgent |\n| TK-1014 | Database connection pool exhausted | Open | Urgent |\n| TK-1015 | Cache invalidation failure | Open | Urgent |\n| TK-1016 | SSL certificate mismatch | Open | Urgent |\n| TK-1017 | Backup restoration error | Open | Urgent |\n| TK-1018 | User session hijacking alert | Open | Urgent |\n| TK-1019 | Third-party API downtime | Open | Urgent |\n| TK-1020 | Custom field validation crash | Open | Urgent |",
+      "started_at": "2026-07-08T21:11:28.463353+00:00",
+      "elapsed_seconds": 25.174936499999603,
+      "metadata": {
+        "langfuse_session_id": "agent-bench:run-all:pydantic-ai:support-search-urgent-open:20260708T211128Z:batch",
+        "tool_calls": [],
+        "langfuse_trace_id": "2a7425c65e6c640a6197b91c015af226",
+        "langfuse_observation_id": "554201d38f71d9f8",
+        "langfuse_trace_url": "https://cloud.langfuse.com/project/cmr1ywsf000d5ad0cex3dm2ha/traces/2a7425c65e6c640a6197b91c015af226"
+      },
+      "error": null,
+      "ok": true,
+      "scores": {
+        "scorable": true,
+        "correctness": 0.3036,
+        "groundedness": 0.0455,
+        "hallucination_rate": 0.9545,
+        "overall_score": 0.0791,
+        "details": {
+          "refused_or_no_data": false,
+          "empty_output": false,
+          "expected_text_facts": 24,
+          "matched_text_facts": 16,
+          "expected_numeric_facts": 32,
+          "matched_numeric_facts": 1,
+          "claimed_numeric_values": 22,
+          "unsupported_numeric_values": 21
+        }
+      },
+      "tool_selection": {
+        "scorable": true,
+        "expected_tools": [
+          "execute_sql",
+          "search_support_tickets"
+        ],
+        "total_tool_calls": 0,
+        "tool_recall": 0.0,
+        "tool_precision": 0.0,
+        "distractor_call_count": 0,
+        "distractor_calls": [],
+        "any_distractor_called": false,
+        "distractor_call_rate": 0.0,
+        "fabricated_call_count": 0,
+        "fabricated_calls": [],
+        "any_fabricated_called": false,
+        "fabricated_call_rate": 0.0
+      }
+    },
+    {
+      "harness": "pydantic-ai",
+      "architecture": "enterprise-react",
+      "task": "support-search-urgent-open",
+      "prompt": "List up to 20 open support tickets with urgent priority.",
+      "output": "\n\n| id | customer_id | product_id | agent_id | subject | priority | status | created_at | resolved_at | satisfaction_rating |\n|---|---|---|---|---|---|---|---|---|---|\n| 48 | 53 | 16 | 14 | Data refresh delayed | urgent | open | 2025-12-02T11:19:43 | null | null |\n| 63 | 166 | 1 | 10 | Dashboard not loading latest data | urgent | open | 2026-03-11T08:29:14 | null | null |\n| 121 | 142 | 12 | 1 | API rate limit question | urgent | open | 2025-09-19T10:48:29 | null | null |\n| 135 | 192 | 30 | 8 | Incorrect revenue totals | urgent | open | 2026-01-24T23:48:48 | null | null |\n| 148 | 106 | 20 | 13 | API rate limit question | urgent | open | 2025-10-08T18:34:30 | null | null |\n| 169 | 189 | 16 | 4 | Permission error viewing module | urgent | open | 2026-02-24T02:43:30 | null | null |\n| 193 | 137 | 41 | 12 | Data refresh delayed | urgent | open | 2026-05-23T01:46:44 | null | null |\n| 257 | 57 | 22 | 7 | Question about seat count on invoice | urgent | open | 2026-02-28T19:54:29 | null | null |",
+      "started_at": "2026-07-08T21:11:53.638457+00:00",
+      "elapsed_seconds": 11.730598250011099,
+      "metadata": {
+        "langfuse_session_id": "agent-bench:run-all:pydantic-ai:support-search-urgent-open:20260708T211128Z:batch",
+        "tool_calls": [
+          {
+            "tool_name": "list_tables",
+            "via": "native"
+          },
+          {
+            "tool_name": "execute_sql",
+            "via": "native"
+          }
+        ],
+        "langfuse_trace_id": "52a60b8519348a965981aa6b4e6f6607",
+        "langfuse_observation_id": "3fd361dce100fc79",
+        "langfuse_trace_url": "https://cloud.langfuse.com/project/cmr1ywsf000d5ad0cex3dm2ha/traces/52a60b8519348a965981aa6b4e6f6607"
+      },
+      "error": null,
+      "ok": true,
+      "scores": {
+        "scorable": true,
+        "correctness": 1.0,
+        "groundedness": 0.617,
+        "hallucination_rate": 0.383,
+        "overall_score": 0.7631,
+        "details": {
+          "refused_or_no_data": false,
+          "empty_output": false,
+          "expected_text_facts": 24,
+          "matched_text_facts": 24,
+          "expected_numeric_facts": 32,
+          "matched_numeric_facts": 32,
+          "claimed_numeric_values": 47,
+          "unsupported_numeric_values": 18
+        }
+      },
+      "tool_selection": {
+        "scorable": true,
+        "expected_tools": [
+          "execute_sql",
+          "search_support_tickets"
+        ],
+        "total_tool_calls": 2,
+        "tool_recall": 1.0,
+        "tool_precision": 1.0,
+        "distractor_call_count": 0,
+        "distractor_calls": [],
+        "any_distractor_called": false,
+        "distractor_call_rate": 0.0,
+        "fabricated_call_count": 0,
+        "fabricated_calls": [],
+        "any_fabricated_called": false,
+        "fabricated_call_rate": 0.0
+      }
+    },
+    {
+      "harness": "pydantic-ai",
+      "architecture": "enterprise-codemode",
+      "task": "support-search-urgent-open",
+      "prompt": "List up to 20 open support tickets with urgent priority.",
+      "output": "\n\n| id | customer_id | product_id | agent_id | subject | priority | status | created_at | resolved_at | satisfaction_rating |\n|----|-------------|------------|----------|---------|----------|--------|------------|-------------|---------------------|\n| 48 | 53 | 16 | 14 | Data refresh delayed | urgent | open | 2025-12-02T11:19:43 | null | null |\n| 63 | 166 | 1 | 10 | Dashboard not loading latest data | urgent | open | 2026-03-11T08:29:14 | null | null |\n| 121 | 142 | 12 | 1 | API rate limit question | urgent | open | 2025-09-19T10:48:29 | null | null |\n| 135 | 192 | 30 | 8 | Incorrect revenue totals | urgent | open | 2026-01-24T23:48:48 | null | null |\n| 148 | 106 | 20 | 13 | API rate limit question | urgent | open | 2025-10-08T18:34:30 | null | null |\n| 169 | 189 | 16 | 4 | Permission error viewing module | urgent | open | 2026-02-24T02:43:30 | null | null |\n| 193 | 137 | 41 | 12 | Data refresh delayed | urgent | open | 2026-05-23T01:46:44 | null | null |\n| 257 | 57 | 22 | 7 | Question about seat count on invoice | urgent | open | 2026-02-28T19:54:29 | null | null |",
+      "started_at": "2026-07-08T21:12:05.369213+00:00",
+      "elapsed_seconds": 18.948261374986032,
+      "metadata": {
+        "langfuse_session_id": "agent-bench:run-all:pydantic-ai:support-search-urgent-open:20260708T211128Z:batch",
+        "tool_calls": [
+          {
+            "tool_name": "list_tables",
+            "via": "native"
+          },
+          {
+            "tool_name": "list_tables",
+            "via": "native"
+          },
+          {
+            "tool_name": "run_code",
+            "via": "native"
+          },
+          {
+            "tool_name": "run_code",
+            "via": "native"
+          },
+          {
+            "tool_name": "list_tables",
+            "via": "code_mode"
+          },
+          {
+            "tool_name": "run_code",
+            "via": "native"
+          },
+          {
+            "tool_name": "execute_sql",
+            "via": "code_mode"
+          }
+        ],
+        "langfuse_trace_id": "b5d712576f0a59b0dfd44a6e11fd4c5c",
+        "langfuse_observation_id": "12e7ffeb8145fa92",
+        "langfuse_trace_url": "https://cloud.langfuse.com/project/cmr1ywsf000d5ad0cex3dm2ha/traces/b5d712576f0a59b0dfd44a6e11fd4c5c"
+      },
+      "error": null,
+      "ok": true,
+      "scores": {
+        "scorable": true,
+        "correctness": 1.0,
+        "groundedness": 0.617,
+        "hallucination_rate": 0.383,
+        "overall_score": 0.7631,
+        "details": {
+          "refused_or_no_data": false,
+          "empty_output": false,
+          "expected_text_facts": 24,
+          "matched_text_facts": 24,
+          "expected_numeric_facts": 32,
+          "matched_numeric_facts": 32,
+          "claimed_numeric_values": 47,
+          "unsupported_numeric_values": 18
+        }
+      },
+      "tool_selection": {
+        "scorable": true,
+        "expected_tools": [
+          "execute_sql",
+          "search_support_tickets"
+        ],
+        "total_tool_calls": 7,
+        "tool_recall": 1.0,
+        "tool_precision": 0.5714,
+        "distractor_call_count": 0,
+        "distractor_calls": [],
+        "any_distractor_called": false,
+        "distractor_call_rate": 0.0,
+        "fabricated_call_count": 3,
+        "fabricated_calls": [
+          "run_code",
+          "run_code",
+          "run_code"
+        ],
+        "any_fabricated_called": true,
+        "fabricated_call_rate": 0.4286
+      }
+    },
+    {
+      "harness": "pydantic-ai",
+      "architecture": "enterprise-mcp-react",
+      "task": "support-search-urgent-open",
+      "prompt": "List up to 20 open support tickets with urgent priority.",
+      "output": "\n\n| id | customer_id | product_id | agent_id | subject | priority | status | created_at | resolved_at | satisfaction_rating |\n|---|---|---|---|---|---|---|---|---|---|\n| 48 | 53 | 16 | 14 | Data refresh delayed | urgent | open | 2025-12-02T11:19:43 | null | null |\n| 63 | 166 | 1 | 10 | Dashboard not loading latest data | urgent | open | 2026-03-11T08:29:14 | null | null |\n| 121 | 142 | 12 | 1 | API rate limit question | urgent | open | 2025-09-19T10:48:29 | null | null |\n| 135 | 192 | 30 | 8 | Incorrect revenue totals | urgent | open | 2026-01-24T23:48:48 | null | null |\n| 148 | 106 | 20 | 13 | API rate limit question | urgent | open | 2025-10-08T18:34:30 | null | null |\n| 169 | 189 | 16 | 4 | Permission error viewing module | urgent | open | 2026-02-24T02:43:30 | null | null |\n| 193 | 137 | 41 | 12 | Data refresh delayed | urgent | open | 2026-05-23T01:46:44 | null | null |\n| 257 | 57 | 22 | 7 | Question about seat count on invoice | urgent | open | 2026-02-28T19:54:29 | null | null |",
+      "started_at": "2026-07-08T21:12:24.329834+00:00",
+      "elapsed_seconds": 10.528984834003495,
+      "metadata": {
+        "langfuse_session_id": "agent-bench:run-all:pydantic-ai:support-search-urgent-open:20260708T211128Z:batch",
+        "tool_calls": [
+          {
+            "tool_name": "tool_list_tables",
+            "via": "native"
+          },
+          {
+            "tool_name": "tool_describe_table",
+            "via": "native"
+          },
+          {
+            "tool_name": "tool_execute_sql",
+            "via": "native"
+          }
+        ],
+        "langfuse_trace_id": "6a0deeccb6cdc7b46738dcc97679c371",
+        "langfuse_observation_id": "ac25eb728a151ec7",
+        "langfuse_trace_url": "https://cloud.langfuse.com/project/cmr1ywsf000d5ad0cex3dm2ha/traces/6a0deeccb6cdc7b46738dcc97679c371"
+      },
+      "error": null,
+      "ok": true,
+      "scores": {
+        "scorable": true,
+        "correctness": 1.0,
+        "groundedness": 0.617,
+        "hallucination_rate": 0.383,
+        "overall_score": 0.7631,
+        "details": {
+          "refused_or_no_data": false,
+          "empty_output": false,
+          "expected_text_facts": 24,
+          "matched_text_facts": 24,
+          "expected_numeric_facts": 32,
+          "matched_numeric_facts": 32,
+          "claimed_numeric_values": 47,
+          "unsupported_numeric_values": 18
+        }
+      },
+      "tool_selection": {
+        "scorable": true,
+        "expected_tools": [
+          "execute_sql",
+          "search_support_tickets"
+        ],
+        "total_tool_calls": 3,
+        "tool_recall": 1.0,
+        "tool_precision": 1.0,
+        "distractor_call_count": 0,
+        "distractor_calls": [],
+        "any_distractor_called": false,
+        "distractor_call_rate": 0.0,
+        "fabricated_call_count": 0,
+        "fabricated_calls": [],
+        "any_fabricated_called": false,
+        "fabricated_call_rate": 0.0
+      }
+    },
+    {
+      "harness": "pydantic-ai",
+      "architecture": "enterprise-mcp-codemode",
+      "task": "support-search-urgent-open",
+      "prompt": "List up to 20 open support tickets with urgent priority.",
+      "output": "\n\n| id | customer_id | product_id | agent_id | subject | priority | status | created_at | resolved_at | satisfaction_rating |\n|----|-------------|------------|----------|---------|----------|--------|------------|-------------|---------------------|\n| 48 | 53 | 16 | 14 | Data refresh delayed | urgent | open | 2025-12-02T11:19:43 | None | None |\n| 63 | 166 | 1 | 10 | Dashboard not loading latest data | urgent | open | 2026-03-11T08:29:14 | None | None |\n| 121 | 142 | 12 | 1 | API rate limit question | urgent | open | 2025-09-19T10:48:29 | None | None |\n| 135 | 192 | 30 | 8 | Incorrect revenue totals | urgent | open | 2026-01-24T23:48:48 | None | None |\n| 148 | 106 | 20 | 13 | API rate limit question | urgent | open | 2025-10-08T18:34:30 | None | None |\n| 169 | 189 | 16 | 4 | Permission error viewing module | urgent | open | 2026-02-24T02:43:30 | None | None |\n| 193 | 137 | 41 | 12 | Data refresh delayed | urgent | open | 2026-05-23T01:46:44 | None | None |\n| 257 | 57 | 22 | 7 | Question about seat count on invoice | urgent | open | 2026-02-28T19:54:29 | None | None |",
+      "started_at": "2026-07-08T21:12:34.862219+00:00",
+      "elapsed_seconds": 19.642088499997044,
+      "metadata": {
+        "langfuse_session_id": "agent-bench:run-all:pydantic-ai:support-search-urgent-open:20260708T211128Z:batch",
+        "tool_calls": [
+          {
+            "tool_name": "tool_list_tables",
+            "via": "native"
+          },
+          {
+            "tool_name": "run_code",
+            "via": "native"
+          },
+          {
+            "tool_name": "run_code",
+            "via": "native"
+          },
+          {
+            "tool_name": "tool_list_tables",
+            "via": "code_mode"
+          },
+          {
+            "tool_name": "run_code",
+            "via": "native"
+          },
+          {
+            "tool_name": "tool_describe_table",
+            "via": "code_mode"
+          },
+          {
+            "tool_name": "run_code",
+            "via": "native"
+          },
+          {
+            "tool_name": "tool_execute_sql",
+            "via": "code_mode"
+          }
+        ],
+        "langfuse_trace_id": "6ef0b347df170db8d8446f0751aee8df",
+        "langfuse_observation_id": "bd5e0e6f893202fa",
+        "langfuse_trace_url": "https://cloud.langfuse.com/project/cmr1ywsf000d5ad0cex3dm2ha/traces/6ef0b347df170db8d8446f0751aee8df"
+      },
+      "error": null,
+      "ok": true,
+      "scores": {
+        "scorable": true,
+        "correctness": 1.0,
+        "groundedness": 0.617,
+        "hallucination_rate": 0.383,
+        "overall_score": 0.7631,
+        "details": {
+          "refused_or_no_data": false,
+          "empty_output": false,
+          "expected_text_facts": 24,
+          "matched_text_facts": 24,
+          "expected_numeric_facts": 32,
+          "matched_numeric_facts": 32,
+          "claimed_numeric_values": 47,
+          "unsupported_numeric_values": 18
+        }
+      },
+      "tool_selection": {
+        "scorable": true,
+        "expected_tools": [
+          "execute_sql",
+          "search_support_tickets"
+        ],
+        "total_tool_calls": 8,
+        "tool_recall": 1.0,
+        "tool_precision": 0.5,
+        "distractor_call_count": 0,
+        "distractor_calls": [],
+        "any_distractor_called": false,
+        "distractor_call_rate": 0.0,
+        "fabricated_call_count": 4,
+        "fabricated_calls": [
+          "run_code",
+          "run_code",
+          "run_code",
+          "run_code"
+        ],
+        "any_fabricated_called": true,
+        "fabricated_call_rate": 0.5
+      }
+    },
+    {
+      "harness": "pydantic-ai",
+      "architecture": "enterprise-sql-react",
+      "task": "support-search-urgent-open",
+      "prompt": "List up to 20 open support tickets with urgent priority.",
+      "output": "\n\n| id | customer_id | product_id | agent_id | subject | priority | status | created_at | resolved_at | satisfaction_rating |\n|---|---|---|---|---|---|---|---|---|---|\n| 48 | 53 | 16 | 14 | Data refresh delayed | urgent | open | 2025-12-02T11:19:43 | null | null |\n| 63 | 166 | 1 | 10 | Dashboard not loading latest data | urgent | open | 2026-03-11T08:29:14 | null | null |\n| 121 | 142 | 12 | 1 | API rate limit question | urgent | open | 2025-09-19T10:48:29 | null | null |\n| 135 | 192 | 30 | 8 | Incorrect revenue totals | urgent | open | 2026-01-24T23:48:48 | null | null |\n| 148 | 106 | 20 | 13 | API rate limit question | urgent | open | 2025-10-08T18:34:30 | null | null |\n| 169 | 189 | 16 | 4 | Permission error viewing module | urgent | open | 2026-02-24T02:43:30 | null | null |\n| 193 | 137 | 41 | 12 | Data refresh delayed | urgent | open | 2026-05-23T01:46:44 | null | null |\n| 257 | 57 | 22 | 7 | Question about seat count on invoice | urgent | open | 2026-02-28T19:54:29 | null | null |",
+      "started_at": "2026-07-08T21:12:54.506889+00:00",
+      "elapsed_seconds": 10.376553583992063,
+      "metadata": {
+        "langfuse_session_id": "agent-bench:run-all:pydantic-ai:support-search-urgent-open:20260708T211128Z:batch",
+        "tool_calls": [
+          {
+            "tool_name": "list_tables",
+            "via": "native"
+          },
+          {
+            "tool_name": "describe_table",
+            "via": "native"
+          },
+          {
+            "tool_name": "execute_sql",
+            "via": "native"
+          }
+        ],
+        "langfuse_trace_id": "35877efcccb694132aab0f17f30fce03",
+        "langfuse_observation_id": "884565c6c368a56c",
+        "langfuse_trace_url": "https://cloud.langfuse.com/project/cmr1ywsf000d5ad0cex3dm2ha/traces/35877efcccb694132aab0f17f30fce03"
+      },
+      "error": null,
+      "ok": true,
+      "scores": {
+        "scorable": true,
+        "correctness": 1.0,
+        "groundedness": 0.617,
+        "hallucination_rate": 0.383,
+        "overall_score": 0.7631,
+        "details": {
+          "refused_or_no_data": false,
+          "empty_output": false,
+          "expected_text_facts": 24,
+          "matched_text_facts": 24,
+          "expected_numeric_facts": 32,
+          "matched_numeric_facts": 32,
+          "claimed_numeric_values": 47,
+          "unsupported_numeric_values": 18
+        }
+      },
+      "tool_selection": {
+        "scorable": true,
+        "expected_tools": [
+          "execute_sql",
+          "search_support_tickets"
+        ],
+        "total_tool_calls": 3,
+        "tool_recall": 1.0,
+        "tool_precision": 1.0,
+        "distractor_call_count": 0,
+        "distractor_calls": [],
+        "any_distractor_called": false,
+        "distractor_call_rate": 0.0,
+        "fabricated_call_count": 0,
+        "fabricated_calls": [],
+        "any_fabricated_called": false,
+        "fabricated_call_rate": 0.0
+      }
+    },
+    {
+      "harness": "pydantic-ai",
+      "architecture": "enterprise-sql-codemode",
+      "task": "support-search-urgent-open",
+      "prompt": "List up to 20 open support tickets with urgent priority.",
+      "output": "\n\n| id | customer_id | product_id | agent_id | subject | priority | status | created_at | resolved_at | satisfaction_rating |\n|---|---|---|---|---|---|---|---|---|---|\n| 48 | 53 | 16 | 14 | Data refresh delayed | urgent | open | 2025-12-02T11:19:43 | None | None |\n| 63 | 166 | 1 | 10 | Dashboard not loading latest data | urgent | open | 2026-03-11T08:29:14 | None | None |\n| 121 | 142 | 12 | 1 | API rate limit question | urgent | open | 2025-09-19T10:48:29 | None | None |\n| 135 | 192 | 30 | 8 | Incorrect revenue totals | urgent | open | 2026-01-24T23:48:48 | None | None |\n| 148 | 106 | 20 | 13 | API rate limit question | urgent | open | 2025-10-08T18:34:30 | None | None |\n| 169 | 189 | 16 | 4 | Permission error viewing module | urgent | open | 2026-02-24T02:43:30 | None | None |\n| 193 | 137 | 41 | 12 | Data refresh delayed | urgent | open | 2026-05-23T01:46:44 | None | None |\n| 257 | 57 | 22 | 7 | Question about seat count on invoice | urgent | open | 2026-02-28T19:54:29 | None | None |",
+      "started_at": "2026-07-08T21:13:04.884115+00:00",
+      "elapsed_seconds": 15.177309833001345,
+      "metadata": {
+        "langfuse_session_id": "agent-bench:run-all:pydantic-ai:support-search-urgent-open:20260708T211128Z:batch",
+        "tool_calls": [
+          {
+            "tool_name": "list_tables",
+            "via": "native"
+          },
+          {
+            "tool_name": "run_code",
+            "via": "native"
+          },
+          {
+            "tool_name": "run_code",
+            "via": "native"
+          },
+          {
+            "tool_name": "run_code",
+            "via": "native"
+          },
+          {
+            "tool_name": "list_tables",
+            "via": "code_mode"
+          },
+          {
+            "tool_name": "run_code",
+            "via": "native"
+          },
+          {
+            "tool_name": "execute_sql",
+            "via": "code_mode"
+          }
+        ],
+        "langfuse_trace_id": "4f7cda7529a8ef9fc2599f0fe5d0ff24",
+        "langfuse_observation_id": "c0bf5a4290744e39",
+        "langfuse_trace_url": "https://cloud.langfuse.com/project/cmr1ywsf000d5ad0cex3dm2ha/traces/4f7cda7529a8ef9fc2599f0fe5d0ff24"
+      },
+      "error": null,
+      "ok": true,
+      "scores": {
+        "scorable": true,
+        "correctness": 1.0,
+        "groundedness": 0.617,
+        "hallucination_rate": 0.383,
+        "overall_score": 0.7631,
+        "details": {
+          "refused_or_no_data": false,
+          "empty_output": false,
+          "expected_text_facts": 24,
+          "matched_text_facts": 24,
+          "expected_numeric_facts": 32,
+          "matched_numeric_facts": 32,
+          "claimed_numeric_values": 47,
+          "unsupported_numeric_values": 18
+        }
+      },
+      "tool_selection": {
+        "scorable": true,
+        "expected_tools": [
+          "execute_sql",
+          "search_support_tickets"
+        ],
+        "total_tool_calls": 7,
+        "tool_recall": 1.0,
+        "tool_precision": 0.4286,
+        "distractor_call_count": 0,
+        "distractor_calls": [],
+        "any_distractor_called": false,
+        "distractor_call_rate": 0.0,
+        "fabricated_call_count": 4,
+        "fabricated_calls": [
+          "run_code",
+          "run_code",
+          "run_code",
+          "run_code"
+        ],
+        "any_fabricated_called": true,
+        "fabricated_call_rate": 0.5714
+      }
+    },
+    {
+      "harness": "pydantic-ai",
+      "architecture": "enterprise-react-toolsearch",
+      "task": "support-search-urgent-open",
+      "prompt": "List up to 20 open support tickets with urgent priority.",
+      "output": "\n\nNo tools are available to retrieve support ticket data. The current toolset only provides access to customer profiles, subscription orders, and lifetime value metrics. Please contact your system administrator to enable the support ticketing module or provide the correct tool name for this query.",
+      "started_at": "2026-07-08T21:13:20.062040+00:00",
+      "elapsed_seconds": 6.484713084006216,
+      "metadata": {
+        "langfuse_session_id": "agent-bench:run-all:pydantic-ai:support-search-urgent-open:20260708T211128Z:batch",
+        "tool_calls": [
+          {
+            "tool_name": "search_tools",
+            "via": "native"
+          },
+          {
+            "tool_name": "search_tools",
+            "via": "native"
+          }
+        ],
+        "langfuse_trace_id": "1ce9171fb39c7c024babec47240b5e8f",
+        "langfuse_observation_id": "192bc2d389211b25",
+        "langfuse_trace_url": "https://cloud.langfuse.com/project/cmr1ywsf000d5ad0cex3dm2ha/traces/1ce9171fb39c7c024babec47240b5e8f"
+      },
+      "error": null,
+      "ok": true,
+      "scores": {
+        "scorable": true,
+        "correctness": 0.0,
+        "groundedness": 1.0,
+        "hallucination_rate": 0.0,
+        "overall_score": 0.0,
+        "details": {
+          "refused_or_no_data": false,
+          "empty_output": false,
+          "expected_text_facts": 24,
+          "matched_text_facts": 0,
+          "expected_numeric_facts": 32,
+          "matched_numeric_facts": 0,
+          "claimed_numeric_values": 0,
+          "unsupported_numeric_values": 0
+        }
+      },
+      "tool_selection": {
+        "scorable": true,
+        "expected_tools": [
+          "execute_sql",
+          "search_support_tickets"
+        ],
+        "total_tool_calls": 2,
+        "tool_recall": 0.0,
+        "tool_precision": 1.0,
+        "distractor_call_count": 0,
+        "distractor_calls": [],
+        "any_distractor_called": false,
+        "distractor_call_rate": 0.0,
+        "fabricated_call_count": 0,
+        "fabricated_calls": [],
+        "any_fabricated_called": false,
+        "fabricated_call_rate": 0.0
+      }
+    },
+    {
+      "harness": "pydantic-ai",
+      "architecture": "enterprise-codemode-toolsearch",
+      "task": "support-search-urgent-open",
+      "prompt": "List up to 20 open support tickets with urgent priority.",
+      "output": "",
+      "started_at": "2026-07-08T21:13:26.546912+00:00",
+      "elapsed_seconds": 94.0560517910053,
+      "metadata": {
+        "langfuse_session_id": "agent-bench:run-all:pydantic-ai:support-search-urgent-open:20260708T211128Z:batch"
+      },
+      "error": "UsageLimitExceeded: The next request would exceed the request_limit of 50",
+      "ok": false,
+      "scores": {
+        "scorable": true,
+        "correctness": 0.0,
+        "groundedness": 0.0,
+        "hallucination_rate": 1.0,
+        "overall_score": 0.0,
+        "details": {
+          "refused_or_no_data": true,
+          "empty_output": true,
+          "expected_text_facts": 24,
+          "matched_text_facts": 0,
+          "expected_numeric_facts": 32,
+          "matched_numeric_facts": 0,
+          "claimed_numeric_values": 0,
+          "unsupported_numeric_values": 0
+        }
+      },
+      "tool_selection": {
+        "scorable": true,
+        "expected_tools": [
+          "execute_sql",
+          "search_support_tickets"
+        ],
+        "total_tool_calls": 0,
+        "tool_recall": 0.0,
+        "tool_precision": 0.0,
+        "distractor_call_count": 0,
+        "distractor_calls": [],
+        "any_distractor_called": false,
+        "distractor_call_rate": 0.0,
+        "fabricated_call_count": 0,
+        "fabricated_calls": [],
+        "any_fabricated_called": false,
+        "fabricated_call_rate": 0.0
+      }
+    },
+    {
+      "harness": "pydantic-ai",
+      "architecture": "enterprise-react-thinking",
+      "task": "support-search-urgent-open",
+      "prompt": "List up to 20 open support tickets with urgent priority.",
+      "output": "\n\n| id | customer_id | product_id | agent_id | subject | priority | status | created_at | resolved_at | satisfaction_rating |\n|----|-------------|------------|----------|---------|----------|--------|------------|-------------|---------------------|\n| 48 | 53 | 16 | 14 | Data refresh delayed | urgent | open | 2025-12-02T11:19:43 | null | null |\n| 63 | 166 | 1 | 10 | Dashboard not loading latest data | urgent | open | 2026-03-11T08:29:14 | null | null |\n| 121 | 142 | 12 | 1 | API rate limit question | urgent | open | 2025-09-19T10:48:29 | null | null |\n| 135 | 192 | 30 | 8 | Incorrect revenue totals | urgent | open | 2026-01-24T23:48:48 | null | null |\n| 148 | 106 | 20 | 13 | API rate limit question | urgent | open | 2025-10-08T18:34:30 | null | null |\n| 169 | 189 | 16 | 4 | Permission error viewing module | urgent | open | 2026-02-24T02:43:30 | null | null |\n| 193 | 137 | 41 | 12 | Data refresh delayed | urgent | open | 2026-05-23T01:46:44 | null | null |\n| 257 | 57 | 22 | 7 | Question about seat count on invoice | urgent | open | 2026-02-28T19:54:29 | null | null |",
+      "started_at": "2026-07-08T21:15:00.604099+00:00",
+      "elapsed_seconds": 12.823921834002249,
+      "metadata": {
+        "langfuse_session_id": "agent-bench:run-all:pydantic-ai:support-search-urgent-open:20260708T211128Z:batch",
+        "tool_calls": [
+          {
+            "tool_name": "list_tables",
+            "via": "native"
+          },
+          {
+            "tool_name": "execute_sql",
+            "via": "native"
+          }
+        ],
+        "langfuse_trace_id": "19e80a5c6267a20730462a9aa36c8ac7",
+        "langfuse_observation_id": "ccfcedad5684ffa0",
+        "langfuse_trace_url": "https://cloud.langfuse.com/project/cmr1ywsf000d5ad0cex3dm2ha/traces/19e80a5c6267a20730462a9aa36c8ac7"
+      },
+      "error": null,
+      "ok": true,
+      "scores": {
+        "scorable": true,
+        "correctness": 1.0,
+        "groundedness": 0.617,
+        "hallucination_rate": 0.383,
+        "overall_score": 0.7631,
+        "details": {
+          "refused_or_no_data": false,
+          "empty_output": false,
+          "expected_text_facts": 24,
+          "matched_text_facts": 24,
+          "expected_numeric_facts": 32,
+          "matched_numeric_facts": 32,
+          "claimed_numeric_values": 47,
+          "unsupported_numeric_values": 18
+        }
+      },
+      "tool_selection": {
+        "scorable": true,
+        "expected_tools": [
+          "execute_sql",
+          "search_support_tickets"
+        ],
+        "total_tool_calls": 2,
+        "tool_recall": 1.0,
+        "tool_precision": 1.0,
+        "distractor_call_count": 0,
+        "distractor_calls": [],
+        "any_distractor_called": false,
+        "distractor_call_rate": 0.0,
+        "fabricated_call_count": 0,
+        "fabricated_calls": [],
+        "any_fabricated_called": false,
+        "fabricated_call_rate": 0.0
+      }
+    },
+    {
+      "harness": "pydantic-ai",
+      "architecture": "enterprise-codemode-thinking",
+      "task": "support-search-urgent-open",
+      "prompt": "List up to 20 open support tickets with urgent priority.",
+      "output": "\n\n| id | customer_id | product_id | agent_id | subject | priority | status | created_at | resolved_at | satisfaction_rating |\n|----|-------------|------------|----------|---------|----------|--------|------------|-------------|---------------------|\n| 48 | 53 | 16 | 14 | Data refresh delayed | urgent | open | 2025-12-02T11:19:43 | null | null |\n| 63 | 166 | 1 | 10 | Dashboard not loading latest data | urgent | open | 2026-03-11T08:29:14 | null | null |\n| 121 | 142 | 12 | 1 | API rate limit question | urgent | open | 2025-09-19T10:48:29 | null | null |\n| 135 | 192 | 30 | 8 | Incorrect revenue totals | urgent | open | 2026-01-24T23:48:48 | null | null |\n| 148 | 106 | 20 | 13 | API rate limit question | urgent | open | 2025-10-08T18:34:30 | null | null |\n| 169 | 189 | 16 | 4 | Permission error viewing module | urgent | open | 2026-02-24T02:43:30 | null | null |\n| 193 | 137 | 41 | 12 | Data refresh delayed | urgent | open | 2026-05-23T01:46:44 | null | null |\n| 257 | 57 | 22 | 7 | Question about seat count on invoice | urgent | open | 2026-02-28T19:54:29 | null | null |",
+      "started_at": "2026-07-08T21:15:13.428317+00:00",
+      "elapsed_seconds": 12.142782709008316,
+      "metadata": {
+        "langfuse_session_id": "agent-bench:run-all:pydantic-ai:support-search-urgent-open:20260708T211128Z:batch",
+        "tool_calls": [
+          {
+            "tool_name": "list_tables",
+            "via": "native"
+          },
+          {
+            "tool_name": "run_code",
+            "via": "native"
+          },
+          {
+            "tool_name": "run_code",
+            "via": "native"
+          },
+          {
+            "tool_name": "list_tables",
+            "via": "code_mode"
+          },
+          {
+            "tool_name": "run_code",
+            "via": "native"
+          },
+          {
+            "tool_name": "execute_sql",
+            "via": "code_mode"
+          }
+        ],
+        "langfuse_trace_id": "1b3f55e86eb86943c7e6a1f28f4e347b",
+        "langfuse_observation_id": "a195a6477a7ae3fa",
+        "langfuse_trace_url": "https://cloud.langfuse.com/project/cmr1ywsf000d5ad0cex3dm2ha/traces/1b3f55e86eb86943c7e6a1f28f4e347b"
+      },
+      "error": null,
+      "ok": true,
+      "scores": {
+        "scorable": true,
+        "correctness": 1.0,
+        "groundedness": 0.617,
+        "hallucination_rate": 0.383,
+        "overall_score": 0.7631,
+        "details": {
+          "refused_or_no_data": false,
+          "empty_output": false,
+          "expected_text_facts": 24,
+          "matched_text_facts": 24,
+          "expected_numeric_facts": 32,
+          "matched_numeric_facts": 32,
+          "claimed_numeric_values": 47,
+          "unsupported_numeric_values": 18
+        }
+      },
+      "tool_selection": {
+        "scorable": true,
+        "expected_tools": [
+          "execute_sql",
+          "search_support_tickets"
+        ],
+        "total_tool_calls": 6,
+        "tool_recall": 1.0,
+        "tool_precision": 0.5,
+        "distractor_call_count": 0,
+        "distractor_calls": [],
+        "any_distractor_called": false,
+        "distractor_call_rate": 0.0,
+        "fabricated_call_count": 3,
+        "fabricated_calls": [
+          "run_code",
+          "run_code",
+          "run_code"
+        ],
+        "any_fabricated_called": true,
+        "fabricated_call_rate": 0.5
+      }
+    },
+    {
+      "harness": "pydantic-ai",
+      "architecture": "enterprise-react-toolsearch-120",
+      "task": "support-search-urgent-open",
+      "prompt": "List up to 20 open support tickets with urgent priority.",
+      "output": "\n\n| id | customer_id | product_id | agent_id | subject | priority | status | created_at | resolved_at | satisfaction_rating |\n|---|---|---|---|---|---|---|---|---|---|\n| 193 | 137 | 41 | 12 | Data refresh delayed | urgent | open | 2026-05-23T01:46:44 | null | null |\n| 63 | 166 | 1 | 10 | Dashboard not loading latest data | urgent | open | 2026-03-11T08:29:14 | null | null |\n| 257 | 57 | 22 | 7 | Question about seat count on invoice | urgent | open | 2026-02-28T19:54:29 | null | null |\n| 169 | 189 | 16 | 4 | Permission error viewing module | urgent | open | 2026-02-24T02:43:30 | null | null |\n| 135 | 192 | 30 | 8 | Incorrect revenue totals | urgent | open | 2026-01-24T23:48:48 | null | null |\n| 48 | 53 | 16 | 14 | Data refresh delayed | urgent | open | 2025-12-02T11:19:43 | null | null |\n| 148 | 106 | 20 | 13 | API rate limit question | urgent | open | 2025-10-08T18:34:30 | null | null |\n| 121 | 142 | 12 | 1 | API rate limit question | urgent | open | 2025-09-19T10:48:29 | null | null |",
+      "started_at": "2026-07-08T21:15:25.571303+00:00",
+      "elapsed_seconds": 10.046699915998033,
+      "metadata": {
+        "langfuse_session_id": "agent-bench:run-all:pydantic-ai:support-search-urgent-open:20260708T211128Z:batch",
+        "tool_calls": [
+          {
+            "tool_name": "search_tools",
+            "via": "native"
+          },
+          {
+            "tool_name": "search_support_tickets",
+            "via": "native"
+          }
+        ],
+        "langfuse_trace_id": "8b5db10d6821f766531ed7f88d3403d8",
+        "langfuse_observation_id": "263f846f673d152b",
+        "langfuse_trace_url": "https://cloud.langfuse.com/project/cmr1ywsf000d5ad0cex3dm2ha/traces/8b5db10d6821f766531ed7f88d3403d8"
+      },
+      "error": null,
+      "ok": true,
+      "scores": {
+        "scorable": true,
+        "correctness": 1.0,
+        "groundedness": 0.617,
+        "hallucination_rate": 0.383,
+        "overall_score": 0.7631,
+        "details": {
+          "refused_or_no_data": false,
+          "empty_output": false,
+          "expected_text_facts": 24,
+          "matched_text_facts": 24,
+          "expected_numeric_facts": 32,
+          "matched_numeric_facts": 32,
+          "claimed_numeric_values": 47,
+          "unsupported_numeric_values": 18
+        }
+      },
+      "tool_selection": {
+        "scorable": true,
+        "expected_tools": [
+          "execute_sql",
+          "search_support_tickets"
+        ],
+        "total_tool_calls": 2,
+        "tool_recall": 1.0,
+        "tool_precision": 1.0,
+        "distractor_call_count": 0,
+        "distractor_calls": [],
+        "any_distractor_called": false,
+        "distractor_call_rate": 0.0,
+        "fabricated_call_count": 0,
+        "fabricated_calls": [],
+        "any_fabricated_called": false,
+        "fabricated_call_rate": 0.0
+      }
+    },
+    {
+      "harness": "pydantic-ai",
+      "architecture": "enterprise-categorized-search",
+      "task": "support-search-urgent-open",
+      "prompt": "List up to 20 open support tickets with urgent priority.",
+      "output": "\n\n| id | customer_id | product_id | agent_id | subject | priority | status | created_at | resolved_at | satisfaction_rating |\n|---|---|---|---|---|---|---|---|---|---|\n| 193 | 137 | 41 | 12 | Data refresh delayed | urgent | open | 2026-05-23T01:46:44 | null | null |\n| 63 | 166 | 1 | 10 | Dashboard not loading latest data | urgent | open | 2026-03-11T08:29:14 | null | null |\n| 257 | 57 | 22 | 7 | Question about seat count on invoice | urgent | open | 2026-02-28T19:54:29 | null | null |\n| 169 | 189 | 16 | 4 | Permission error viewing module | urgent | open | 2026-02-24T02:43:30 | null | null |\n| 135 | 192 | 30 | 8 | Incorrect revenue totals | urgent | open | 2026-01-24T23:48:48 | null | null |\n| 48 | 53 | 16 | 14 | Data refresh delayed | urgent | open | 2025-12-02T11:19:43 | null | null |\n| 148 | 106 | 20 | 13 | API rate limit question | urgent | open | 2025-10-08T18:34:30 | null | null |\n| 121 | 142 | 12 | 1 | API rate limit question | urgent | open | 2025-09-19T10:48:29 | null | null |",
+      "started_at": "2026-07-08T21:15:35.618277+00:00",
+      "elapsed_seconds": 9.80675025000528,
+      "metadata": {
+        "langfuse_session_id": "agent-bench:run-all:pydantic-ai:support-search-urgent-open:20260708T211128Z:batch",
+        "tool_calls": [
+          {
+            "tool_name": "list_tool_categories",
+            "via": "native"
+          },
+          {
+            "tool_name": "search_tools_in_category",
+            "via": "native"
+          },
+          {
+            "tool_name": "call_tool",
+            "via": "native"
+          },
+          {
+            "tool_name": "search_support_tickets",
+            "via": "categorized_search"
+          }
+        ],
+        "langfuse_trace_id": "f5d57053e4429fb8d4cb88c9d1793908",
+        "langfuse_observation_id": "6ea725ca7dc90b84",
+        "langfuse_trace_url": "https://cloud.langfuse.com/project/cmr1ywsf000d5ad0cex3dm2ha/traces/f5d57053e4429fb8d4cb88c9d1793908"
+      },
+      "error": null,
+      "ok": true,
+      "scores": {
+        "scorable": true,
+        "correctness": 1.0,
+        "groundedness": 0.617,
+        "hallucination_rate": 0.383,
+        "overall_score": 0.7631,
+        "details": {
+          "refused_or_no_data": false,
+          "empty_output": false,
+          "expected_text_facts": 24,
+          "matched_text_facts": 24,
+          "expected_numeric_facts": 32,
+          "matched_numeric_facts": 32,
+          "claimed_numeric_values": 47,
+          "unsupported_numeric_values": 18
+        }
+      },
+      "tool_selection": {
+        "scorable": true,
+        "expected_tools": [
+          "execute_sql",
+          "search_support_tickets"
+        ],
+        "total_tool_calls": 4,
+        "tool_recall": 1.0,
+        "tool_precision": 1.0,
+        "distractor_call_count": 0,
+        "distractor_calls": [],
+        "any_distractor_called": false,
+        "distractor_call_rate": 0.0,
+        "fabricated_call_count": 0,
+        "fabricated_calls": [],
+        "any_fabricated_called": false,
+        "fabricated_call_rate": 0.0
+      }
+    }
+  ],
+  "scored_at": "2026-07-08T22:25:20.527989+00:00",
+  "ground_truth_generated_at": "2026-07-08T20:08:57.272260+00:00",
+  "score_summary": {
+    "scored_results": 13,
+    "overall_score_formula": "harmonic_mean(correctness, groundedness)",
+    "avg_overall_score": 0.5931,
+    "best_architecture": "enterprise-react",
+    "best_overall_score": 0.7631,
+    "avg_correctness": 0.7926,
+    "avg_groundedness": 0.555,
+    "avg_hallucination_rate": 0.445,
+    "tool_selection": {
+      "scored_tasks": 13,
+      "avg_tool_precision": 0.6923,
+      "avg_tool_recall": 0.7692,
+      "total_tool_calls": 46,
+      "total_distractor_calls": 0,
+      "distractor_call_rate": 0.0,
+      "tasks_with_any_distractor_call": 0,
+      "tasks_with_any_distractor_call_pct": 0.0,
+      "total_fabricated_calls": 14,
+      "fabricated_call_rate": 0.3043,
+      "tasks_with_any_fabricated_call": 4,
+      "tasks_with_any_fabricated_call_pct": 30.77
+    }
+  }
+}

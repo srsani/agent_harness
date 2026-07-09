@@ -1,0 +1,482 @@
+{
+  "mode": "run-all",
+  "session_id": "agent-bench:run-all:pydantic-ai:support-agent-profile-5:20260708T200438Z:5320a9f8",
+  "harness": "pydantic-ai",
+  "task": "support-agent-profile-5",
+  "repeat": 1,
+  "results": [
+    {
+      "harness": "pydantic-ai",
+      "architecture": "minimal",
+      "task": "support-agent-profile-5",
+      "prompt": "Look up support agent ID 5. Show their name, region, and hire date.",
+      "output": "\n\n```sql\nSELECT name, region, hire_date\nFROM support_agents\nWHERE id = 5;\n```",
+      "started_at": "2026-07-08T20:04:38.043420+00:00",
+      "elapsed_seconds": 17.08435558300698,
+      "metadata": {
+        "langfuse_session_id": "agent-bench:run-all:pydantic-ai:support-agent-profile-5:20260708T200438Z:5320a9f8",
+        "tool_calls": [],
+        "langfuse_trace_id": "cc016b26ea39c09b9c78313200f9da61",
+        "langfuse_observation_id": "7edc134869b7d931",
+        "langfuse_trace_url": "https://cloud.langfuse.com/project/cmr1ywsf000d5ad0cex3dm2ha/traces/cc016b26ea39c09b9c78313200f9da61"
+      },
+      "error": null,
+      "ok": true
+    },
+    {
+      "harness": "pydantic-ai",
+      "architecture": "enterprise-react",
+      "task": "support-agent-profile-5",
+      "prompt": "Look up support agent ID 5. Show their name, region, and hire date.",
+      "output": "\n\n| id | full_name | region | hired_at |\n|----|-----------|--------|----------|\n| 5 | Grace Jackson | EMEA | 2025-01-28T22:13:48 |",
+      "started_at": "2026-07-08T20:04:55.128412+00:00",
+      "elapsed_seconds": 7.875649959009024,
+      "metadata": {
+        "langfuse_session_id": "agent-bench:run-all:pydantic-ai:support-agent-profile-5:20260708T200438Z:5320a9f8",
+        "tool_calls": [
+          {
+            "tool_name": "get_customer",
+            "via": "native"
+          },
+          {
+            "tool_name": "list_tables",
+            "via": "native"
+          },
+          {
+            "tool_name": "execute_sql",
+            "via": "native"
+          }
+        ],
+        "langfuse_trace_id": "a48c02041b778e15fdd4a1efcf1e32f8",
+        "langfuse_observation_id": "845608f18f07db95",
+        "langfuse_trace_url": "https://cloud.langfuse.com/project/cmr1ywsf000d5ad0cex3dm2ha/traces/a48c02041b778e15fdd4a1efcf1e32f8"
+      },
+      "error": null,
+      "ok": true
+    },
+    {
+      "harness": "pydantic-ai",
+      "architecture": "enterprise-codemode",
+      "task": "support-agent-profile-5",
+      "prompt": "Look up support agent ID 5. Show their name, region, and hire date.",
+      "output": "\n\n| Name | Region | Hire Date |\n|------|--------|-----------|\n| Grace Jackson | EMEA | 2025-01-28T22:13:48 |",
+      "started_at": "2026-07-08T20:05:03.004900+00:00",
+      "elapsed_seconds": 12.773294500002521,
+      "metadata": {
+        "langfuse_session_id": "agent-bench:run-all:pydantic-ai:support-agent-profile-5:20260708T200438Z:5320a9f8",
+        "tool_calls": [
+          {
+            "tool_name": "get_customer",
+            "via": "native"
+          },
+          {
+            "tool_name": "run_code",
+            "via": "native"
+          },
+          {
+            "tool_name": "get_customer",
+            "via": "code_mode"
+          },
+          {
+            "tool_name": "run_code",
+            "via": "native"
+          },
+          {
+            "tool_name": "list_tables",
+            "via": "code_mode"
+          },
+          {
+            "tool_name": "run_code",
+            "via": "native"
+          },
+          {
+            "tool_name": "execute_sql",
+            "via": "code_mode"
+          }
+        ],
+        "langfuse_trace_id": "11a9261aa71dfe1c1c42750ff7580c4c",
+        "langfuse_observation_id": "fd49aba54a5722cb",
+        "langfuse_trace_url": "https://cloud.langfuse.com/project/cmr1ywsf000d5ad0cex3dm2ha/traces/11a9261aa71dfe1c1c42750ff7580c4c"
+      },
+      "error": null,
+      "ok": true
+    },
+    {
+      "harness": "pydantic-ai",
+      "architecture": "enterprise-mcp-react",
+      "task": "support-agent-profile-5",
+      "prompt": "Look up support agent ID 5. Show their name, region, and hire date.",
+      "output": "\n\n| name | region | hire_date |\n|------|--------|-----------|\n| Grace Jackson | EMEA | 2025-01-28T22:13:48 |",
+      "started_at": "2026-07-08T20:05:15.779009+00:00",
+      "elapsed_seconds": 12.047709249993204,
+      "metadata": {
+        "langfuse_session_id": "agent-bench:run-all:pydantic-ai:support-agent-profile-5:20260708T200438Z:5320a9f8",
+        "tool_calls": [
+          {
+            "tool_name": "tool_get_customer",
+            "via": "native"
+          },
+          {
+            "tool_name": "tool_list_tables",
+            "via": "native"
+          },
+          {
+            "tool_name": "tool_execute_sql",
+            "via": "native"
+          }
+        ],
+        "langfuse_trace_id": "9e6465da13835d247b7fdf0a247ff462",
+        "langfuse_observation_id": "d539328656653bd5",
+        "langfuse_trace_url": "https://cloud.langfuse.com/project/cmr1ywsf000d5ad0cex3dm2ha/traces/9e6465da13835d247b7fdf0a247ff462"
+      },
+      "error": null,
+      "ok": true
+    },
+    {
+      "harness": "pydantic-ai",
+      "architecture": "enterprise-mcp-codemode",
+      "task": "support-agent-profile-5",
+      "prompt": "Look up support agent ID 5. Show their name, region, and hire date.",
+      "output": "\n\n| id | name | region | hire_date |\n|----|------|--------|-----------|\n| 5 | Grace Jackson | EMEA | 2025-01-28T22:13:48 |",
+      "started_at": "2026-07-08T20:05:27.827745+00:00",
+      "elapsed_seconds": 6.418870417008293,
+      "metadata": {
+        "langfuse_session_id": "agent-bench:run-all:pydantic-ai:support-agent-profile-5:20260708T200438Z:5320a9f8",
+        "tool_calls": [
+          {
+            "tool_name": "tool_list_tables",
+            "via": "native"
+          },
+          {
+            "tool_name": "run_code",
+            "via": "native"
+          },
+          {
+            "tool_name": "tool_list_tables",
+            "via": "code_mode"
+          },
+          {
+            "tool_name": "run_code",
+            "via": "native"
+          },
+          {
+            "tool_name": "tool_execute_sql",
+            "via": "code_mode"
+          }
+        ],
+        "langfuse_trace_id": "ac89feefaa74a7e18874a4b31b9f7426",
+        "langfuse_observation_id": "8baf2c13712e5082",
+        "langfuse_trace_url": "https://cloud.langfuse.com/project/cmr1ywsf000d5ad0cex3dm2ha/traces/ac89feefaa74a7e18874a4b31b9f7426"
+      },
+      "error": null,
+      "ok": true
+    },
+    {
+      "harness": "pydantic-ai",
+      "architecture": "enterprise-sql-react",
+      "task": "support-agent-profile-5",
+      "prompt": "Look up support agent ID 5. Show their name, region, and hire date.",
+      "output": "\n\n| full_name | region | hired_at |\n| :--- | :--- | :--- |\n| Grace Jackson | EMEA | 2025-01-28T22:13:48 |",
+      "started_at": "2026-07-08T20:05:34.247359+00:00",
+      "elapsed_seconds": 4.50500220899994,
+      "metadata": {
+        "langfuse_session_id": "agent-bench:run-all:pydantic-ai:support-agent-profile-5:20260708T200438Z:5320a9f8",
+        "tool_calls": [
+          {
+            "tool_name": "list_tables",
+            "via": "native"
+          },
+          {
+            "tool_name": "execute_sql",
+            "via": "native"
+          }
+        ],
+        "langfuse_trace_id": "28619523a12d4d42c95014c9c08ae017",
+        "langfuse_observation_id": "d671af82d276616b",
+        "langfuse_trace_url": "https://cloud.langfuse.com/project/cmr1ywsf000d5ad0cex3dm2ha/traces/28619523a12d4d42c95014c9c08ae017"
+      },
+      "error": null,
+      "ok": true
+    },
+    {
+      "harness": "pydantic-ai",
+      "architecture": "enterprise-sql-codemode",
+      "task": "support-agent-profile-5",
+      "prompt": "Look up support agent ID 5. Show their name, region, and hire date.",
+      "output": "\n\n| id | full_name | region | hired_at |\n|----|-----------|--------|----------|\n| 5 | Grace Jackson | EMEA | 2025-01-28T22:13:48 |",
+      "started_at": "2026-07-08T20:05:38.753401+00:00",
+      "elapsed_seconds": 8.839729500003159,
+      "metadata": {
+        "langfuse_session_id": "agent-bench:run-all:pydantic-ai:support-agent-profile-5:20260708T200438Z:5320a9f8",
+        "tool_calls": [
+          {
+            "tool_name": "list_tables",
+            "via": "native"
+          },
+          {
+            "tool_name": "run_code",
+            "via": "native"
+          },
+          {
+            "tool_name": "list_tables",
+            "via": "native"
+          },
+          {
+            "tool_name": "run_code",
+            "via": "native"
+          },
+          {
+            "tool_name": "list_tables",
+            "via": "code_mode"
+          },
+          {
+            "tool_name": "execute_sql",
+            "via": "native"
+          },
+          {
+            "tool_name": "run_code",
+            "via": "native"
+          },
+          {
+            "tool_name": "execute_sql",
+            "via": "code_mode"
+          }
+        ],
+        "langfuse_trace_id": "420d3ffa0c2764aeac11b3e28dcc386b",
+        "langfuse_observation_id": "4b464abe92d1169e",
+        "langfuse_trace_url": "https://cloud.langfuse.com/project/cmr1ywsf000d5ad0cex3dm2ha/traces/420d3ffa0c2764aeac11b3e28dcc386b"
+      },
+      "error": null,
+      "ok": true
+    },
+    {
+      "harness": "pydantic-ai",
+      "architecture": "enterprise-react-toolsearch",
+      "task": "support-agent-profile-5",
+      "prompt": "Look up support agent ID 5. Show their name, region, and hire date.",
+      "output": "\n\n| Name | Region | Hire Date |\n|---|---|---|\n| full_name | region | hired_at |",
+      "started_at": "2026-07-08T20:05:47.594135+00:00",
+      "elapsed_seconds": 21.318058707998716,
+      "metadata": {
+        "langfuse_session_id": "agent-bench:run-all:pydantic-ai:support-agent-profile-5:20260708T200438Z:5320a9f8",
+        "tool_calls": [
+          {
+            "tool_name": "search_tools",
+            "via": "native"
+          },
+          {
+            "tool_name": "search_tools",
+            "via": "native"
+          },
+          {
+            "tool_name": "get_schema_context",
+            "via": "native"
+          }
+        ],
+        "langfuse_trace_id": "4476d9b9faf9eac911d699a061850723",
+        "langfuse_observation_id": "273d1a57a5dd1123",
+        "langfuse_trace_url": "https://cloud.langfuse.com/project/cmr1ywsf000d5ad0cex3dm2ha/traces/4476d9b9faf9eac911d699a061850723"
+      },
+      "error": null,
+      "ok": true
+    },
+    {
+      "harness": "pydantic-ai",
+      "architecture": "enterprise-codemode-toolsearch",
+      "task": "support-agent-profile-5",
+      "prompt": "Look up support agent ID 5. Show their name, region, and hire date.",
+      "output": "",
+      "started_at": "2026-07-08T20:06:08.912947+00:00",
+      "elapsed_seconds": 22.101904167007888,
+      "metadata": {
+        "langfuse_session_id": "agent-bench:run-all:pydantic-ai:support-agent-profile-5:20260708T200438Z:5320a9f8"
+      },
+      "error": "UnexpectedModelBehavior: Tool 'search_tools' exceeded max retries count of 1",
+      "ok": false
+    },
+    {
+      "harness": "pydantic-ai",
+      "architecture": "enterprise-mcp-react-native",
+      "task": "support-agent-profile-5",
+      "prompt": "Look up support agent ID 5. Show their name, region, and hire date.",
+      "output": "",
+      "started_at": "2026-07-08T20:06:31.015188+00:00",
+      "elapsed_seconds": 0.006265833988436498,
+      "metadata": {
+        "langfuse_session_id": "agent-bench:run-all:pydantic-ai:support-agent-profile-5:20260708T200438Z:5320a9f8"
+      },
+      "error": "RuntimeError: enterprise-mcp-react-native requires ENTERPRISE_MCP_PUBLIC_URL to be set. Native MCP tool calls are made server-side by the model provider (Anthropic / OpenAI / xAI) -- localhost is not reachable from their servers. Run `uv run python -m agent_harness.mcp_server` with a streamable-HTTP transport behind a public tunnel (e.g. ngrok) and point ENTERPRISE_MCP_PUBLIC_URL at it. See README 'MCP server' section.",
+      "ok": false
+    },
+    {
+      "harness": "pydantic-ai",
+      "architecture": "enterprise-react-thinking",
+      "task": "support-agent-profile-5",
+      "prompt": "Look up support agent ID 5. Show their name, region, and hire date.",
+      "output": "\n\n| name | region | hire date |\n|------|--------|-----------|\n| Grace Jackson | EMEA | 2025-01-28T22:13:48 |",
+      "started_at": "2026-07-08T20:06:31.022264+00:00",
+      "elapsed_seconds": 12.215688665994094,
+      "metadata": {
+        "langfuse_session_id": "agent-bench:run-all:pydantic-ai:support-agent-profile-5:20260708T200438Z:5320a9f8",
+        "tool_calls": [
+          {
+            "tool_name": "get_customer",
+            "via": "native"
+          },
+          {
+            "tool_name": "get_schema_context",
+            "via": "native"
+          },
+          {
+            "tool_name": "execute_sql",
+            "via": "native"
+          }
+        ],
+        "langfuse_trace_id": "cef51e3925cafb8f278e30faf5e49742",
+        "langfuse_observation_id": "71af1d5eed641cc2",
+        "langfuse_trace_url": "https://cloud.langfuse.com/project/cmr1ywsf000d5ad0cex3dm2ha/traces/cef51e3925cafb8f278e30faf5e49742"
+      },
+      "error": null,
+      "ok": true
+    },
+    {
+      "harness": "pydantic-ai",
+      "architecture": "enterprise-codemode-thinking",
+      "task": "support-agent-profile-5",
+      "prompt": "Look up support agent ID 5. Show their name, region, and hire date.",
+      "output": "\n\n| Name | Region | Hire Date |\n|---|---|---|\n| Kim Lewis | Sydney, AU | 2026-02-06T00:04:50 |",
+      "started_at": "2026-07-08T20:06:43.238393+00:00",
+      "elapsed_seconds": 11.872574374996475,
+      "metadata": {
+        "langfuse_session_id": "agent-bench:run-all:pydantic-ai:support-agent-profile-5:20260708T200438Z:5320a9f8",
+        "tool_calls": [
+          {
+            "tool_name": "get_customer",
+            "via": "native"
+          },
+          {
+            "tool_name": "list_tables",
+            "via": "native"
+          },
+          {
+            "tool_name": "run_code",
+            "via": "native"
+          },
+          {
+            "tool_name": "get_customer",
+            "via": "code_mode"
+          }
+        ],
+        "langfuse_trace_id": "2378050147383c6335e18c6538d07b09",
+        "langfuse_observation_id": "90d565fea3151fa2",
+        "langfuse_trace_url": "https://cloud.langfuse.com/project/cmr1ywsf000d5ad0cex3dm2ha/traces/2378050147383c6335e18c6538d07b09"
+      },
+      "error": null,
+      "ok": true
+    },
+    {
+      "harness": "pydantic-ai",
+      "architecture": "enterprise-react-120",
+      "task": "support-agent-profile-5",
+      "prompt": "Look up support agent ID 5. Show their name, region, and hire date.",
+      "output": "",
+      "started_at": "2026-07-08T20:06:55.111500+00:00",
+      "elapsed_seconds": 0.09857695800019428,
+      "metadata": {
+        "langfuse_session_id": "agent-bench:run-all:pydantic-ai:support-agent-profile-5:20260708T200438Z:5320a9f8"
+      },
+      "error": "ModelHTTPError: status_code: 400, model_name: qwen/qwen3.6-35b-a3b, body: The number of tokens to keep from the initial prompt is greater than the context length. Try to load the model with a larger context length, or provide a shorter input",
+      "ok": false
+    },
+    {
+      "harness": "pydantic-ai",
+      "architecture": "enterprise-codemode-120",
+      "task": "support-agent-profile-5",
+      "prompt": "Look up support agent ID 5. Show their name, region, and hire date.",
+      "output": "",
+      "started_at": "2026-07-08T20:06:55.210496+00:00",
+      "elapsed_seconds": 18.26455837499816,
+      "metadata": {
+        "langfuse_session_id": "agent-bench:run-all:pydantic-ai:support-agent-profile-5:20260708T200438Z:5320a9f8"
+      },
+      "error": "UnexpectedModelBehavior: Tool 'get_support_agent' exceeded max retries count of 3",
+      "ok": false
+    },
+    {
+      "harness": "pydantic-ai",
+      "architecture": "enterprise-mcp-react-120",
+      "task": "support-agent-profile-5",
+      "prompt": "Look up support agent ID 5. Show their name, region, and hire date.",
+      "output": "",
+      "started_at": "2026-07-08T20:07:13.475347+00:00",
+      "elapsed_seconds": 0.06216875000973232,
+      "metadata": {
+        "langfuse_session_id": "agent-bench:run-all:pydantic-ai:support-agent-profile-5:20260708T200438Z:5320a9f8"
+      },
+      "error": "ModelHTTPError: status_code: 400, model_name: qwen/qwen3.6-35b-a3b, body: The number of tokens to keep from the initial prompt is greater than the context length. Try to load the model with a larger context length, or provide a shorter input",
+      "ok": false
+    },
+    {
+      "harness": "pydantic-ai",
+      "architecture": "enterprise-react-toolsearch-120",
+      "task": "support-agent-profile-5",
+      "prompt": "Look up support agent ID 5. Show their name, region, and hire date.",
+      "output": "\n\n| Name | Region | Hire Date |\n|---|---|---|\n| Grace Jackson | EMEA | 2025-01-28T22:13:48 |",
+      "started_at": "2026-07-08T20:07:13.538172+00:00",
+      "elapsed_seconds": 5.549385457998142,
+      "metadata": {
+        "langfuse_session_id": "agent-bench:run-all:pydantic-ai:support-agent-profile-5:20260708T200438Z:5320a9f8",
+        "tool_calls": [
+          {
+            "tool_name": "search_tools",
+            "via": "native"
+          },
+          {
+            "tool_name": "get_support_agent",
+            "via": "native"
+          }
+        ],
+        "langfuse_trace_id": "a6d141c0e089f4f66496a0c95c70827a",
+        "langfuse_observation_id": "72347c8ec1738118",
+        "langfuse_trace_url": "https://cloud.langfuse.com/project/cmr1ywsf000d5ad0cex3dm2ha/traces/a6d141c0e089f4f66496a0c95c70827a"
+      },
+      "error": null,
+      "ok": true
+    },
+    {
+      "harness": "pydantic-ai",
+      "architecture": "enterprise-categorized-search",
+      "task": "support-agent-profile-5",
+      "prompt": "Look up support agent ID 5. Show their name, region, and hire date.",
+      "output": "\n\n| Name | Region | Hire Date |\n|---|---|---|\n| Grace Jackson | EMEA | 2025-01-28T22:13:48 |",
+      "started_at": "2026-07-08T20:07:19.088154+00:00",
+      "elapsed_seconds": 5.481807125004707,
+      "metadata": {
+        "langfuse_session_id": "agent-bench:run-all:pydantic-ai:support-agent-profile-5:20260708T200438Z:5320a9f8",
+        "tool_calls": [
+          {
+            "tool_name": "list_tool_categories",
+            "via": "native"
+          },
+          {
+            "tool_name": "search_tools_in_category",
+            "via": "native"
+          },
+          {
+            "tool_name": "call_tool",
+            "via": "native"
+          },
+          {
+            "tool_name": "get_support_agent",
+            "via": "categorized_search"
+          }
+        ],
+        "langfuse_trace_id": "babfba0d123cbdedac0c8caaaf2d8c33",
+        "langfuse_observation_id": "fbe96771f7ad907e",
+        "langfuse_trace_url": "https://cloud.langfuse.com/project/cmr1ywsf000d5ad0cex3dm2ha/traces/babfba0d123cbdedac0c8caaaf2d8c33"
+      },
+      "error": null,
+      "ok": true
+    }
+  ]
+}

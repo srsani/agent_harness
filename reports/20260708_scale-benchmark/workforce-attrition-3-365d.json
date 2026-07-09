@@ -1,0 +1,639 @@
+{
+  "mode": "run-all",
+  "session_id": "agent-bench:run-all:pydantic-ai:workforce-attrition-3-365d:20260708T204436Z:6763f3ed",
+  "harness": "pydantic-ai",
+  "task": "workforce-attrition-3-365d",
+  "repeat": 1,
+  "results": [
+    {
+      "harness": "pydantic-ai",
+      "architecture": "minimal",
+      "task": "workforce-attrition-3-365d",
+      "prompt": "Compute department ID 3's attrition rate over the last 365 days.",
+      "output": "\n\n```sql\nSELECT\n  ROUND(\n    COUNT(CASE WHEN status = 'Terminated' THEN 1 END) * 100.0 / COUNT(*),\n    2\n  ) AS attrition_rate\nFROM employees\nWHERE department_id = 3\n  AND (termination_date IS NULL OR termination_date >= CURRENT_DATE - INTERVAL '365 days')\n  AND (hire_date <= CURRENT_DATE - INTERVAL '365 days' OR hire_date >= CURRENT_DATE - INTERVAL '365 days');\n```\n\n| attrition_rate |\n|----------------|\n| 14.28          |",
+      "started_at": "2026-07-08T20:44:36.035453+00:00",
+      "elapsed_seconds": 32.85053570900345,
+      "metadata": {
+        "langfuse_session_id": "agent-bench:run-all:pydantic-ai:workforce-attrition-3-365d:20260708T204436Z:6763f3ed",
+        "tool_calls": [],
+        "langfuse_trace_id": "c12f12ac54865bc7e937acd1fe455114",
+        "langfuse_observation_id": "9cb8568d530f5635",
+        "langfuse_trace_url": "https://cloud.langfuse.com/project/cmr1ywsf000d5ad0cex3dm2ha/traces/c12f12ac54865bc7e937acd1fe455114"
+      },
+      "error": null,
+      "ok": true
+    },
+    {
+      "harness": "pydantic-ai",
+      "architecture": "enterprise-react",
+      "task": "workforce-attrition-3-365d",
+      "prompt": "Compute department ID 3's attrition rate over the last 365 days.",
+      "output": "\n\n| attrition_rate |\n|----------------|\n| 0.2222222222222222 |",
+      "started_at": "2026-07-08T20:45:08.886825+00:00",
+      "elapsed_seconds": 17.916291500005173,
+      "metadata": {
+        "langfuse_session_id": "agent-bench:run-all:pydantic-ai:workforce-attrition-3-365d:20260708T204436Z:6763f3ed",
+        "tool_calls": [
+          {
+            "tool_name": "get_schema_context",
+            "via": "native"
+          },
+          {
+            "tool_name": "execute_sql",
+            "via": "native"
+          }
+        ],
+        "langfuse_trace_id": "72d78e33e776670f971a8bf941dbdeb1",
+        "langfuse_observation_id": "1ca7534b47f003b4",
+        "langfuse_trace_url": "https://cloud.langfuse.com/project/cmr1ywsf000d5ad0cex3dm2ha/traces/72d78e33e776670f971a8bf941dbdeb1"
+      },
+      "error": null,
+      "ok": true
+    },
+    {
+      "harness": "pydantic-ai",
+      "architecture": "enterprise-codemode",
+      "task": "workforce-attrition-3-365d",
+      "prompt": "Compute department ID 3's attrition rate over the last 365 days.",
+      "output": "\n\n| total | departed | attrition_rate |\n|-------|----------|----------------|\n| 16    | 2        | 12.5           |",
+      "started_at": "2026-07-08T20:45:26.804007+00:00",
+      "elapsed_seconds": 39.19314500001201,
+      "metadata": {
+        "langfuse_session_id": "agent-bench:run-all:pydantic-ai:workforce-attrition-3-365d:20260708T204436Z:6763f3ed",
+        "tool_calls": [
+          {
+            "tool_name": "list_tables",
+            "via": "native"
+          },
+          {
+            "tool_name": "run_code",
+            "via": "native"
+          },
+          {
+            "tool_name": "run_code",
+            "via": "native"
+          },
+          {
+            "tool_name": "get_schema_context",
+            "via": "code_mode"
+          },
+          {
+            "tool_name": "run_code",
+            "via": "native"
+          },
+          {
+            "tool_name": "execute_sql",
+            "via": "code_mode"
+          },
+          {
+            "tool_name": "describe_table",
+            "via": "native"
+          },
+          {
+            "tool_name": "describe_table",
+            "via": "native"
+          },
+          {
+            "tool_name": "execute_sql",
+            "via": "native"
+          },
+          {
+            "tool_name": "run_code",
+            "via": "native"
+          },
+          {
+            "tool_name": "execute_sql",
+            "via": "code_mode"
+          },
+          {
+            "tool_name": "run_code",
+            "via": "native"
+          },
+          {
+            "tool_name": "describe_table",
+            "via": "code_mode"
+          },
+          {
+            "tool_name": "run_code",
+            "via": "native"
+          },
+          {
+            "tool_name": "execute_sql",
+            "via": "code_mode"
+          }
+        ],
+        "langfuse_trace_id": "f6425c78876f2e61cdea39d7fa96f8fb",
+        "langfuse_observation_id": "27f5016c33df5a7a",
+        "langfuse_trace_url": "https://cloud.langfuse.com/project/cmr1ywsf000d5ad0cex3dm2ha/traces/f6425c78876f2e61cdea39d7fa96f8fb"
+      },
+      "error": null,
+      "ok": true
+    },
+    {
+      "harness": "pydantic-ai",
+      "architecture": "enterprise-mcp-react",
+      "task": "workforce-attrition-3-365d",
+      "prompt": "Compute department ID 3's attrition rate over the last 365 days.",
+      "output": "\n\n| attrition_rate |\n|----------------|\n| 12.5 |",
+      "started_at": "2026-07-08T20:46:05.997632+00:00",
+      "elapsed_seconds": 27.32633850000275,
+      "metadata": {
+        "langfuse_session_id": "agent-bench:run-all:pydantic-ai:workforce-attrition-3-365d:20260708T204436Z:6763f3ed",
+        "tool_calls": [
+          {
+            "tool_name": "tool_list_tables",
+            "via": "native"
+          },
+          {
+            "tool_name": "tool_describe_table",
+            "via": "native"
+          },
+          {
+            "tool_name": "tool_execute_sql",
+            "via": "native"
+          },
+          {
+            "tool_name": "tool_execute_sql",
+            "via": "native"
+          }
+        ],
+        "langfuse_trace_id": "c8395b504d87410a58d7f48802e70aa9",
+        "langfuse_observation_id": "9310e51ee8e74758",
+        "langfuse_trace_url": "https://cloud.langfuse.com/project/cmr1ywsf000d5ad0cex3dm2ha/traces/c8395b504d87410a58d7f48802e70aa9"
+      },
+      "error": null,
+      "ok": true
+    },
+    {
+      "harness": "pydantic-ai",
+      "architecture": "enterprise-mcp-codemode",
+      "task": "workforce-attrition-3-365d",
+      "prompt": "Compute department ID 3's attrition rate over the last 365 days.",
+      "output": "\n\n| attrition_rate |\n|----------------|\n| 12.5 |",
+      "started_at": "2026-07-08T20:46:33.326603+00:00",
+      "elapsed_seconds": 32.972754791000625,
+      "metadata": {
+        "langfuse_session_id": "agent-bench:run-all:pydantic-ai:workforce-attrition-3-365d:20260708T204436Z:6763f3ed",
+        "tool_calls": [
+          {
+            "tool_name": "run_code",
+            "via": "native"
+          },
+          {
+            "tool_name": "tool_list_tables",
+            "via": "code_mode"
+          },
+          {
+            "tool_name": "run_code",
+            "via": "native"
+          },
+          {
+            "tool_name": "tool_describe_table",
+            "via": "code_mode"
+          },
+          {
+            "tool_name": "run_code",
+            "via": "native"
+          },
+          {
+            "tool_name": "tool_execute_sql",
+            "via": "code_mode"
+          }
+        ],
+        "langfuse_trace_id": "8e8fa9b40ec43560277a90e674726899",
+        "langfuse_observation_id": "ba0957c0b62d8aaf",
+        "langfuse_trace_url": "https://cloud.langfuse.com/project/cmr1ywsf000d5ad0cex3dm2ha/traces/8e8fa9b40ec43560277a90e674726899"
+      },
+      "error": null,
+      "ok": true
+    },
+    {
+      "harness": "pydantic-ai",
+      "architecture": "enterprise-sql-react",
+      "task": "workforce-attrition-3-365d",
+      "prompt": "Compute department ID 3's attrition rate over the last 365 days.",
+      "output": "\n\n| department_id | attrition_rate |\n|---------------|----------------|\n| 3             | 12.5           |",
+      "started_at": "2026-07-08T20:47:06.299927+00:00",
+      "elapsed_seconds": 27.87950029100466,
+      "metadata": {
+        "langfuse_session_id": "agent-bench:run-all:pydantic-ai:workforce-attrition-3-365d:20260708T204436Z:6763f3ed",
+        "tool_calls": [
+          {
+            "tool_name": "list_tables",
+            "via": "native"
+          },
+          {
+            "tool_name": "describe_table",
+            "via": "native"
+          },
+          {
+            "tool_name": "execute_sql",
+            "via": "native"
+          },
+          {
+            "tool_name": "execute_sql",
+            "via": "native"
+          }
+        ],
+        "langfuse_trace_id": "8417719500137a5dd71f6607ea430a46",
+        "langfuse_observation_id": "b1bfdb8a5dc111dd",
+        "langfuse_trace_url": "https://cloud.langfuse.com/project/cmr1ywsf000d5ad0cex3dm2ha/traces/8417719500137a5dd71f6607ea430a46"
+      },
+      "error": null,
+      "ok": true
+    },
+    {
+      "harness": "pydantic-ai",
+      "architecture": "enterprise-sql-codemode",
+      "task": "workforce-attrition-3-365d",
+      "prompt": "Compute department ID 3's attrition rate over the last 365 days.",
+      "output": "\n\n| attrition_rate |\n|----------------|\n| 12.5 |",
+      "started_at": "2026-07-08T20:47:34.179846+00:00",
+      "elapsed_seconds": 37.69095291699341,
+      "metadata": {
+        "langfuse_session_id": "agent-bench:run-all:pydantic-ai:workforce-attrition-3-365d:20260708T204436Z:6763f3ed",
+        "tool_calls": [
+          {
+            "tool_name": "list_tables",
+            "via": "native"
+          },
+          {
+            "tool_name": "run_code",
+            "via": "native"
+          },
+          {
+            "tool_name": "list_tables",
+            "via": "code_mode"
+          },
+          {
+            "tool_name": "describe_table",
+            "via": "native"
+          },
+          {
+            "tool_name": "run_code",
+            "via": "native"
+          },
+          {
+            "tool_name": "describe_table",
+            "via": "code_mode"
+          },
+          {
+            "tool_name": "run_code",
+            "via": "native"
+          },
+          {
+            "tool_name": "execute_sql",
+            "via": "code_mode"
+          },
+          {
+            "tool_name": "run_code",
+            "via": "native"
+          },
+          {
+            "tool_name": "execute_sql",
+            "via": "code_mode"
+          },
+          {
+            "tool_name": "run_code",
+            "via": "native"
+          },
+          {
+            "tool_name": "execute_sql",
+            "via": "code_mode"
+          },
+          {
+            "tool_name": "run_code",
+            "via": "native"
+          },
+          {
+            "tool_name": "run_code",
+            "via": "native"
+          },
+          {
+            "tool_name": "execute_sql",
+            "via": "code_mode"
+          }
+        ],
+        "langfuse_trace_id": "d06df001d1666fbb473d528521c8ce9f",
+        "langfuse_observation_id": "e0d4c60628cd29de",
+        "langfuse_trace_url": "https://cloud.langfuse.com/project/cmr1ywsf000d5ad0cex3dm2ha/traces/d06df001d1666fbb473d528521c8ce9f"
+      },
+      "error": null,
+      "ok": true
+    },
+    {
+      "harness": "pydantic-ai",
+      "architecture": "enterprise-react-toolsearch",
+      "task": "workforce-attrition-3-365d",
+      "prompt": "Compute department ID 3's attrition rate over the last 365 days.",
+      "output": "\n\n```sql\nSELECT \n  COUNT(CASE WHEN is_active = 0 AND departed_at >= DATE_SUB(CURRENT_DATE, INTERVAL 365 DAY) THEN 1 END) * 1.0 / \n  COUNT(CASE WHEN hired_at <= DATE_SUB(CURRENT_DATE, INTERVAL 365 DAY) THEN 1 END) AS attrition_rate\nFROM employees\nWHERE department_id = 3\n```",
+      "started_at": "2026-07-08T20:48:11.871251+00:00",
+      "elapsed_seconds": 28.244549166003708,
+      "metadata": {
+        "langfuse_session_id": "agent-bench:run-all:pydantic-ai:workforce-attrition-3-365d:20260708T204436Z:6763f3ed",
+        "tool_calls": [
+          {
+            "tool_name": "search_tools",
+            "via": "native"
+          },
+          {
+            "tool_name": "get_schema_context",
+            "via": "native"
+          }
+        ],
+        "langfuse_trace_id": "c335f435778a93df79d5730c9947b839",
+        "langfuse_observation_id": "de0ba803f1d31155",
+        "langfuse_trace_url": "https://cloud.langfuse.com/project/cmr1ywsf000d5ad0cex3dm2ha/traces/c335f435778a93df79d5730c9947b839"
+      },
+      "error": null,
+      "ok": true
+    },
+    {
+      "harness": "pydantic-ai",
+      "architecture": "enterprise-codemode-toolsearch",
+      "task": "workforce-attrition-3-365d",
+      "prompt": "Compute department ID 3's attrition rate over the last 365 days.",
+      "output": "\n\n| department_id | total_employees | recent_attrition | attrition_rate |\n|---------------|-----------------|------------------|----------------|\n| 3             | 16              | 2                | 0.125          |",
+      "started_at": "2026-07-08T20:48:40.117170+00:00",
+      "elapsed_seconds": 34.99214529200981,
+      "metadata": {
+        "langfuse_session_id": "agent-bench:run-all:pydantic-ai:workforce-attrition-3-365d:20260708T204436Z:6763f3ed",
+        "tool_calls": [
+          {
+            "tool_name": "search_tools",
+            "via": "native"
+          },
+          {
+            "tool_name": "get_schema_context",
+            "via": "native"
+          },
+          {
+            "tool_name": "list_tables",
+            "via": "native"
+          },
+          {
+            "tool_name": "execute_sql",
+            "via": "native"
+          },
+          {
+            "tool_name": "execute_sql",
+            "via": "native"
+          },
+          {
+            "tool_name": "execute_sql",
+            "via": "native"
+          },
+          {
+            "tool_name": "execute_sql",
+            "via": "native"
+          },
+          {
+            "tool_name": "execute_sql",
+            "via": "native"
+          }
+        ],
+        "langfuse_trace_id": "4befad371ed24f562263ee68687f639d",
+        "langfuse_observation_id": "acbe30f173058e04",
+        "langfuse_trace_url": "https://cloud.langfuse.com/project/cmr1ywsf000d5ad0cex3dm2ha/traces/4befad371ed24f562263ee68687f639d"
+      },
+      "error": null,
+      "ok": true
+    },
+    {
+      "harness": "pydantic-ai",
+      "architecture": "enterprise-mcp-react-native",
+      "task": "workforce-attrition-3-365d",
+      "prompt": "Compute department ID 3's attrition rate over the last 365 days.",
+      "output": "",
+      "started_at": "2026-07-08T20:49:15.115444+00:00",
+      "elapsed_seconds": 0.003532291011651978,
+      "metadata": {
+        "langfuse_session_id": "agent-bench:run-all:pydantic-ai:workforce-attrition-3-365d:20260708T204436Z:6763f3ed"
+      },
+      "error": "RuntimeError: enterprise-mcp-react-native requires ENTERPRISE_MCP_PUBLIC_URL to be set. Native MCP tool calls are made server-side by the model provider (Anthropic / OpenAI / xAI) -- localhost is not reachable from their servers. Run `uv run python -m agent_harness.mcp_server` with a streamable-HTTP transport behind a public tunnel (e.g. ngrok) and point ENTERPRISE_MCP_PUBLIC_URL at it. See README 'MCP server' section.",
+      "ok": false
+    },
+    {
+      "harness": "pydantic-ai",
+      "architecture": "enterprise-react-thinking",
+      "task": "workforce-attrition-3-365d",
+      "prompt": "Compute department ID 3's attrition rate over the last 365 days.",
+      "output": "\n\n| attrition_rate |\n|----------------|\n| 0.2222222222222222 |",
+      "started_at": "2026-07-08T20:49:15.119465+00:00",
+      "elapsed_seconds": 35.16772483399836,
+      "metadata": {
+        "langfuse_session_id": "agent-bench:run-all:pydantic-ai:workforce-attrition-3-365d:20260708T204436Z:6763f3ed",
+        "tool_calls": [
+          {
+            "tool_name": "get_schema_context",
+            "via": "native"
+          },
+          {
+            "tool_name": "execute_sql",
+            "via": "native"
+          }
+        ],
+        "langfuse_trace_id": "6bf37c0c41ce675955af8a04c3db27a0",
+        "langfuse_observation_id": "076cfef18a3f8f92",
+        "langfuse_trace_url": "https://cloud.langfuse.com/project/cmr1ywsf000d5ad0cex3dm2ha/traces/6bf37c0c41ce675955af8a04c3db27a0"
+      },
+      "error": null,
+      "ok": true
+    },
+    {
+      "harness": "pydantic-ai",
+      "architecture": "enterprise-codemode-thinking",
+      "task": "workforce-attrition-3-365d",
+      "prompt": "Compute department ID 3's attrition rate over the last 365 days.",
+      "output": "\n\n| department_id | attrition_rate |\n|---------------|----------------|\n| 3             | 0.125          |",
+      "started_at": "2026-07-08T20:49:50.300215+00:00",
+      "elapsed_seconds": 61.5327010829933,
+      "metadata": {
+        "langfuse_session_id": "agent-bench:run-all:pydantic-ai:workforce-attrition-3-365d:20260708T204436Z:6763f3ed",
+        "tool_calls": [
+          {
+            "tool_name": "list_tables",
+            "via": "native"
+          },
+          {
+            "tool_name": "run_code",
+            "via": "native"
+          },
+          {
+            "tool_name": "get_schema_context",
+            "via": "code_mode"
+          },
+          {
+            "tool_name": "describe_table",
+            "via": "native"
+          },
+          {
+            "tool_name": "describe_table",
+            "via": "native"
+          },
+          {
+            "tool_name": "run_code",
+            "via": "native"
+          },
+          {
+            "tool_name": "describe_table",
+            "via": "code_mode"
+          },
+          {
+            "tool_name": "describe_table",
+            "via": "code_mode"
+          },
+          {
+            "tool_name": "run_code",
+            "via": "native"
+          },
+          {
+            "tool_name": "run_code",
+            "via": "native"
+          },
+          {
+            "tool_name": "run_code",
+            "via": "native"
+          },
+          {
+            "tool_name": "execute_sql",
+            "via": "code_mode"
+          },
+          {
+            "tool_name": "run_code",
+            "via": "native"
+          },
+          {
+            "tool_name": "execute_sql",
+            "via": "code_mode"
+          },
+          {
+            "tool_name": "run_code",
+            "via": "native"
+          },
+          {
+            "tool_name": "execute_sql",
+            "via": "code_mode"
+          },
+          {
+            "tool_name": "run_code",
+            "via": "native"
+          },
+          {
+            "tool_name": "execute_sql",
+            "via": "code_mode"
+          }
+        ],
+        "langfuse_trace_id": "7bdf5a0499dde30e50f90686de0b10ce",
+        "langfuse_observation_id": "4645675abeaf1d1d",
+        "langfuse_trace_url": "https://cloud.langfuse.com/project/cmr1ywsf000d5ad0cex3dm2ha/traces/7bdf5a0499dde30e50f90686de0b10ce"
+      },
+      "error": null,
+      "ok": true
+    },
+    {
+      "harness": "pydantic-ai",
+      "architecture": "enterprise-react-120",
+      "task": "workforce-attrition-3-365d",
+      "prompt": "Compute department ID 3's attrition rate over the last 365 days.",
+      "output": "",
+      "started_at": "2026-07-08T20:50:51.835196+00:00",
+      "elapsed_seconds": 0.09579179099819157,
+      "metadata": {
+        "langfuse_session_id": "agent-bench:run-all:pydantic-ai:workforce-attrition-3-365d:20260708T204436Z:6763f3ed"
+      },
+      "error": "ModelHTTPError: status_code: 400, model_name: qwen/qwen3.6-35b-a3b, body: The number of tokens to keep from the initial prompt is greater than the context length. Try to load the model with a larger context length, or provide a shorter input",
+      "ok": false
+    },
+    {
+      "harness": "pydantic-ai",
+      "architecture": "enterprise-codemode-120",
+      "task": "workforce-attrition-3-365d",
+      "prompt": "Compute department ID 3's attrition rate over the last 365 days.",
+      "output": "",
+      "started_at": "2026-07-08T20:50:51.931471+00:00",
+      "elapsed_seconds": 37.45154562499374,
+      "metadata": {
+        "langfuse_session_id": "agent-bench:run-all:pydantic-ai:workforce-attrition-3-365d:20260708T204436Z:6763f3ed"
+      },
+      "error": "UnexpectedModelBehavior: Tool 'get_attrition_rate' exceeded max retries count of 3",
+      "ok": false
+    },
+    {
+      "harness": "pydantic-ai",
+      "architecture": "enterprise-mcp-react-120",
+      "task": "workforce-attrition-3-365d",
+      "prompt": "Compute department ID 3's attrition rate over the last 365 days.",
+      "output": "",
+      "started_at": "2026-07-08T20:51:29.384330+00:00",
+      "elapsed_seconds": 0.06293320799886715,
+      "metadata": {
+        "langfuse_session_id": "agent-bench:run-all:pydantic-ai:workforce-attrition-3-365d:20260708T204436Z:6763f3ed"
+      },
+      "error": "ModelHTTPError: status_code: 400, model_name: qwen/qwen3.6-35b-a3b, body: The number of tokens to keep from the initial prompt is greater than the context length. Try to load the model with a larger context length, or provide a shorter input",
+      "ok": false
+    },
+    {
+      "harness": "pydantic-ai",
+      "architecture": "enterprise-react-toolsearch-120",
+      "task": "workforce-attrition-3-365d",
+      "prompt": "Compute department ID 3's attrition rate over the last 365 days.",
+      "output": "\n\n| id | name | total_ever_employed | departed_count | attrition_rate_pct |\n|----|----------------------|----------------------|----------------|--------------------|\n| 3  | Supply Chain Operations | 16                 | 2              | 12.5               |",
+      "started_at": "2026-07-08T20:51:29.447723+00:00",
+      "elapsed_seconds": 9.95891654198931,
+      "metadata": {
+        "langfuse_session_id": "agent-bench:run-all:pydantic-ai:workforce-attrition-3-365d:20260708T204436Z:6763f3ed",
+        "tool_calls": [
+          {
+            "tool_name": "search_tools",
+            "via": "native"
+          },
+          {
+            "tool_name": "get_attrition_rate",
+            "via": "native"
+          }
+        ],
+        "langfuse_trace_id": "f8fde83a4eb6f7f8538eb537e8d6de7d",
+        "langfuse_observation_id": "c65d4713d54d006e",
+        "langfuse_trace_url": "https://cloud.langfuse.com/project/cmr1ywsf000d5ad0cex3dm2ha/traces/f8fde83a4eb6f7f8538eb537e8d6de7d"
+      },
+      "error": null,
+      "ok": true
+    },
+    {
+      "harness": "pydantic-ai",
+      "architecture": "enterprise-categorized-search",
+      "task": "workforce-attrition-3-365d",
+      "prompt": "Compute department ID 3's attrition rate over the last 365 days.",
+      "output": "\n\n| id | name | total_ever_employed | departed_count | attrition_rate_pct |\n|---|---|---|---|---|\n| 3 | Supply Chain Operations | 16 | 2 | 12.5 |",
+      "started_at": "2026-07-08T20:51:39.407783+00:00",
+      "elapsed_seconds": 8.625896166995517,
+      "metadata": {
+        "langfuse_session_id": "agent-bench:run-all:pydantic-ai:workforce-attrition-3-365d:20260708T204436Z:6763f3ed",
+        "tool_calls": [
+          {
+            "tool_name": "list_tool_categories",
+            "via": "native"
+          },
+          {
+            "tool_name": "search_tools_in_category",
+            "via": "native"
+          },
+          {
+            "tool_name": "call_tool",
+            "via": "native"
+          },
+          {
+            "tool_name": "get_attrition_rate",
+            "via": "categorized_search"
+          }
+        ],
+        "langfuse_trace_id": "900bb7d9558e1901352a1db7ae5d1cd6",
+        "langfuse_observation_id": "4381c2c21cb4b349",
+        "langfuse_trace_url": "https://cloud.langfuse.com/project/cmr1ywsf000d5ad0cex3dm2ha/traces/900bb7d9558e1901352a1db7ae5d1cd6"
+      },
+      "error": null,
+      "ok": true
+    }
+  ]
+}
