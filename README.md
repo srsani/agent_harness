@@ -90,9 +90,13 @@ uv run python scripts/generate_ground_truth.py --output reports/ground-truth-v1.
 The JSON includes expected answers for each benchmark task so you can compute:
 - correctness (match against expected fields/rows),
 - groundedness (claims traceable to DB-backed expected facts),
-- hallucination rate (claims not supported by expected facts).
+- hallucination rate (claims not supported by expected facts),
+- tool selection (did the agent call the right tool(s), and did it avoid distractor or
+  fabricated calls?) — see [`tasks/tool_selection_benchmark.py`](src/agent_harness/tasks/tool_selection_benchmark.py).
 
 `hn-research` is marked external-dynamic and excluded from strict deterministic scoring.
+Scored reports include a `tool_selection` block per result (and aggregated in the summary) whenever
+the task has an entry in `TOOL_SELECTION_BENCHMARK` and the run captured a tool-call trace.
 
 Score any benchmark report against ground truth:
 
@@ -155,7 +159,7 @@ The `local:` prefix tells the runner to create an `OpenAIChatModel` pointed at y
 |---|---|
 | 1 · Plain chat | Talk to the model with no tools |
 | 2 · Multi-turn | Continue a conversation using `message_history` |
-| 3 · Enterprise agent | Agent with all 16 database tools wired up |
+| 3 · Enterprise agent | Agent with all 17 database tools wired up |
 | 4 · Inspect tool calls | See exactly which tools fired and what they returned |
 | 5 · Raw SQL | Write SQLite queries; results rendered as a pandas DataFrame + chart |
 | 6 · Quick benchmark | Run the same question through ReAct vs CodeMode and compare elapsed time |
@@ -228,7 +232,7 @@ These six architectures all answer the same tasks against the same SQLite databa
 
 ### 120-tool scale benchmark
 
-These architectures swap the 17-tool registry for `_enterprise_tools_120()` — 62 real tools across 10 business domains (the original 17 plus 45 new: support, marketing, procurement, workforce, finance) alongside 58 plausible-but-wrong "distractor" tools (see [`tools/distractors.py`](src/agent_harness/tools/distractors.py)) — to measure how tool-selection accuracy and hallucination hold up as the tool surface grows an order of magnitude. See [`reports/20260708_scale-benchmark/RECOMMENDATION.md`](reports/20260708_scale-benchmark/RECOMMENDATION.md) for the full writeup and results.
+These architectures swap the 17-tool registry for `_enterprise_tools_120()` — 62 real tools across 10 business domains (the original 17 plus 45 new: support, marketing, procurement, workforce, finance) alongside 58 plausible-but-wrong "distractor" tools (see [`tools/distractors.py`](src/agent_harness/tools/distractors.py)) — to measure how tool-selection accuracy and hallucination hold up as the tool surface grows an order of magnitude.
 
 | Name | Tools registered via | What's different |
 |---|---|---|
@@ -240,7 +244,26 @@ These architectures swap the 17-tool registry for `_enterprise_tools_120()` — 
 | `enterprise-categorized-search` | 3 meta-tools only (`list_tool_categories` → `search_tools_in_category` → `call_tool`) | Hand-rolled, non-semantic hierarchical discovery — see [`categorized_search.py`](src/agent_harness/harnesses/pydantic_ai/categorized_search.py) — a portable fallback for frameworks without a built-in tool-search capability |
 | `enterprise-codemode-categorized-search` | 3 meta-tools, wrapped in CodeMode | Same hierarchical discovery flow, but the discovery/dispatch calls are batched inside one sandboxed `run_code` call instead of 3 separate native calls |
 
-**Why CodeMode + discovery still matters to test.** `enterprise-codemode-120` (no discovery) is a hard reliability cliff at this scale (1/30 ok-rate). `enterprise-codemode-toolsearch-120` and `enterprise-codemode-categorized-search` isolate whether pairing CodeMode with the *same* discovery mechanisms that make `enterprise-react-toolsearch-120`/`enterprise-categorized-search` work — semantic search and hierarchical category search, respectively — is enough to fix CodeMode's fabricated-call problem, or whether batching itself (writing code against tools it half-remembers) is the deeper issue. At 17-tool scale, `enterprise-codemode-toolsearch` already shows discovery alone doesn't fully fix it (6.8% fabrication vs. 0% for the ReAct+ToolSearch equivalent).
+**Recommendation (490 runs, 30 tasks × 18 architectures, local `qwen3.6-35b-a3b`).** Full writeup:
+[`reports/20260708_scale-benchmark/RECOMMENDATION.md`](reports/20260708_scale-benchmark/RECOMMENDATION.md).
+
+| Priority | Architecture | Why |
+|---|---|---|
+| **Primary** | `enterprise-react-toolsearch-120` | Best reliability-adjusted score (0.687), 30/30 ok-rate, 96.7% tool recall, 98.3% precision, 0% fabrication |
+| **Portable fallback** | `enterprise-categorized-search` | Close second (0.664), 100% tool precision, no distractor or fabricated calls — works without a framework-native ToolSearch |
+| **Avoid** | `enterprise-react-120`, `enterprise-mcp-react-120`, `enterprise-codemode-120` | Sending all 120 schemas up front is a hard reliability cliff (0–10% ok-rate) — context overflow or retry exhaustion |
+| **Avoid** | Any CodeMode variant at 120-tool scale | 40%+ fabricated-call rate at 17 tools; pairing CodeMode with discovery doesn't rescue it (see RECOMMENDATION.md) |
+
+The core lesson: **the model must never see more than a handful of tool schemas at once.** Both winning architectures keep prompts short (~7s average latency) and candidate sets small enough that the model picks the right tool instead of a distractor or an invented name.
+
+**Scale-benchmark tasks.** Run any `support-*`, `marketing-*`, `procurement-*`, `workforce-*`, or `finance-*` task (10 per domain, 50 total) against a `-120` or `enterprise-categorized-search` architecture. The 30-task scale sample also reuses 10 original `adi-*` tasks against the 120-tool registries. See "Tasks" below.
+
+**Aggregating results.** After scoring a directory of `*_scored.json` reports:
+
+```bash
+uv run python notebooks/generate_report_csvs.py reports/20260708_scale-benchmark
+# writes: full_matrix_summary.csv, architecture_summary.csv
+```
 
 **A note on run-to-run stability:** every architecture is built with `model_settings={"temperature": 0}` (see `runners.py`) to minimize output variance, and CodeMode's `run_code` retry budget is raised from its library default of 3 to 6 so an unlucky generation streak is less likely to exhaust retries and fail the whole run. Neither eliminates variance entirely — per pydantic-ai's own docs, `temperature=0` does not guarantee fully deterministic output, and `seed` is only honored by OpenAI/Groq/Cohere/Mistral/Gemini/xAI, not Anthropic (the default `agent_bench_model`). Use `agent-bench run --repeat N` / `run-all --repeat N` to directly measure how much a given architecture's answers vary across repeated runs of the same task — the scored report includes an `ok_rate`, `distinct_outputs`, and `score_stdev` per architecture.
 
@@ -296,6 +319,15 @@ uv run python scripts/seed_db.py --reset
 The full enterprise architectures get all 17 tools. The SQL-only architectures intentionally expose
 only `list_tables`, `describe_table`, and `execute_sql`.
 
+**120-tool scale registries** add domain-specific typed tools in
+[`tools/support.py`](src/agent_harness/tools/support.py),
+[`tools/marketing.py`](src/agent_harness/tools/marketing.py),
+[`tools/procurement.py`](src/agent_harness/tools/procurement.py),
+[`tools/workforce.py`](src/agent_harness/tools/workforce.py), and
+[`tools/finance_ops.py`](src/agent_harness/tools/finance_ops.py), plus 58 decoy tools in
+[`tools/distractors.py`](src/agent_harness/tools/distractors.py) (legacy duplicates, external
+actions, near-miss lookups, and synthetic analytics).
+
 ### MCP server
 
 All 17 tools are also exposed over the [MCP protocol](https://modelcontextprotocol.io/) via FastMCP:
@@ -345,6 +377,7 @@ Tasks are shared prompts used across all harnesses and architectures.
 | Name | Tests |
 |---|---|
 | `adi-function-analysis` | Revenue + unique users + best module per business function |
+| `adi-function-opportunity` | Top-3 business functions by revenue with ratings and low-adoption counts |
 | `adi-executive-users` | Gold tier profile + best subscription + city aggregation |
 | `adi-module-ratings` | Best and worst rated modules with sample review |
 | `adi-monthly-trend` | Monthly revenue trend + MoM growth calculation |
@@ -384,6 +417,29 @@ Use `ROUTING_BENCHMARK` when building an automatic router; it is intentionally s
 deterministic answer ground truth because the target label is the architecture choice, not the
 final numeric answer.
 
+### 120-tool scale benchmark (5 new domains)
+
+These 50 tasks (10 per domain) require the expanded tool surface in `_enterprise_tools_120()`.
+Each has an exact `expected_tools` mapping in `tool_selection_benchmark.py` — ground truth is
+computed by calling that tool directly.
+
+| Prefix | Domain | Example tasks |
+|---|---|---|
+| `support-*` | Support & Success | `support-csat-90d`, `support-open-tickets-priority`, `support-search-urgent-open` |
+| `marketing-*` | Marketing Campaigns | `marketing-campaign-roi-5`, `marketing-search-webinar`, `marketing-channel-spend-365d` |
+| `procurement-*` | Procurement | `procurement-supplier-performance-10`, `procurement-late-deliveries-365d`, `procurement-spend-summary-2025` |
+| `workforce-*` | Workforce / HR | `workforce-attrition-3-365d`, `workforce-compensation-band-manager`, `workforce-search-tenure-3y` |
+| `finance-*` | Finance / Budgets | `finance-budget-variance-10`, `finance-expense-breakdown-2025`, `finance-forecast-vs-actual-rd-2025` |
+
+Example run against the recommended architecture:
+
+```bash
+uv run agent-bench run \
+  --harness pydantic-ai \
+  --architecture enterprise-react-toolsearch-120 \
+  --task marketing-search-webinar
+```
+
 ---
 
 ## Project layout
@@ -398,21 +454,39 @@ src/agent_harness/
   harnesses/
     pydantic_ai/
       runners.py          # All architecture builders + PydanticAIRunner
+      categorized_search.py  # list_tool_categories / search_tools_in_category / call_tool
+      traced_agent.py     # Tool-call trace capture for scoring
   tools/
-    enterprise.py         # 13 semantic tool functions
+    enterprise.py         # 13 semantic tool functions (core ADI domain)
     sql.py                # list_tables, describe_table, execute_sql, get_schema_context
+    support.py            # Support & Success tools (120-tool scale)
+    marketing.py          # Marketing Campaign tools
+    procurement.py        # Procurement tools
+    workforce.py          # Workforce / HR tools
+    finance_ops.py        # Finance / Budget tools
+    distractors.py        # 58 plausible-but-wrong decoy tools
   tasks/
     builtins.py           # All benchmark prompts
     routing_benchmark.py  # Architecture routing benchmark + decision-boundary analysis
+    tool_selection_benchmark.py  # Expected-tool map + tool recall/precision scoring
   db/
     schema.py             # SQLite DDL + get_connection() + init_db()
     seed.py               # Deterministic fake-data generator
 
 notebooks/
   explore.ipynb           # Interactive notebook
+  generate_report_csvs.py # Aggregate *_scored.json → CSV summaries
+  benchmark_analysis.ipynb
+  new_architectures_validation.ipynb
 
 scripts/
   seed_db.py              # CLI: seed or reset the database
+  generate_ground_truth.py
+  score_report.py         # Score reports (correctness + tool selection)
+  run_benchmark.sh        # Setup + benchmark helper
+
+reports/
+  20260708_scale-benchmark/  # 490-run scale benchmark (RECOMMENDATION.md, CSVs, JSON)
 
 data/
   enterprise.db           # Generated — not committed to git
