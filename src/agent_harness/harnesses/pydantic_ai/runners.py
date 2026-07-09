@@ -501,6 +501,28 @@ def _build_enterprise_react_toolsearch_120_agent():
     return agent
 
 
+def _build_enterprise_codemode_toolsearch_120_agent():
+    """CodeMode + ToolSearch at 120-tool scale: same semantic on-demand discovery as
+    enterprise-react-toolsearch-120 (all 120 tools defer_loading=True), but whatever the
+    model discovers is batched into the sandboxed run_code call like plain CodeMode. Exists
+    to isolate whether CodeMode's fabrication problem (see enterprise-codemode-120) persists
+    once it's paired with the same discovery mechanism that makes ReAct work at this scale."""
+    from pydantic_ai import Agent
+    from pydantic_ai.capabilities import ToolSearch
+    from pydantic_ai_harness import CodeMode
+
+    agent = Agent(
+        _model(),
+        system_prompt=ENTERPRISE_SYSTEM_PROMPT_120,
+        capabilities=[CodeMode(max_retries=_CODE_MODE_MAX_RETRIES), ToolSearch()],
+        model_settings=_MODEL_SETTINGS,
+        retries=_TOOL_RETRIES,
+    )
+    for fn in _enterprise_tools_120():
+        agent.tool_plain(fn, defer_loading=True)
+    return agent
+
+
 ENTERPRISE_CATEGORIZED_SEARCH_PROMPT = (
     ENTERPRISE_SYSTEM_PROMPT_120
     + " You do not see all 120 tools directly. Instead, follow this three-step protocol: "
@@ -526,6 +548,33 @@ def _build_enterprise_categorized_search_agent():
     agent = Agent(
         _model(),
         system_prompt=ENTERPRISE_CATEGORIZED_SEARCH_PROMPT,
+        model_settings=_MODEL_SETTINGS,
+        retries=_TOOL_RETRIES,
+    )
+    for fn in build_categorized_search_tools(_enterprise_tools_120()):
+        agent.tool_plain(fn)
+    return agent
+
+
+def _build_enterprise_codemode_categorized_search_agent():
+    """Harness/CodeMode + categorized search at 120-tool scale: the same hierarchical
+    category -> tool discovery flow as enterprise-categorized-search, but the 3 meta-tools
+    (list_tool_categories / search_tools_in_category / call_tool) are wrapped in CodeMode
+    instead of registered as plain native tools -- the model writes Python that calls them
+    itself, batched into one sandboxed run_code call, rather than 3 separate native calls
+    per lookup. A second isolation of CodeMode's fabrication problem, this time against a
+    deterministic (non-semantic) discovery mechanism instead of ToolSearch."""
+    from pydantic_ai import Agent
+    from pydantic_ai_harness import CodeMode
+
+    from agent_harness.harnesses.pydantic_ai.categorized_search import (
+        build_categorized_search_tools,
+    )
+
+    agent = Agent(
+        _model(),
+        system_prompt=ENTERPRISE_CATEGORIZED_SEARCH_PROMPT,
+        capabilities=[CodeMode(max_retries=_CODE_MODE_MAX_RETRIES)],
         model_settings=_MODEL_SETTINGS,
         retries=_TOOL_RETRIES,
     )
@@ -689,10 +738,22 @@ ARCHITECTURE_BUILDERS: dict[str, tuple[str, Callable[[], object]]] = {
         "discovered a handful at a time via semantic search instead of sent up front.",
         _build_enterprise_react_toolsearch_120_agent,
     ),
+    "enterprise-codemode-toolsearch-120": (
+        "Harness/CodeMode + ToolSearch at 120-tool scale: same semantic on-demand "
+        "discovery as enterprise-react-toolsearch-120, but discovered calls are batched "
+        "into run_code like plain enterprise-codemode-120.",
+        _build_enterprise_codemode_toolsearch_120_agent,
+    ),
     "enterprise-categorized-search": (
         "Hierarchical/categorized tool search at 120-tool scale: list_tool_categories -> "
         "search_tools_in_category two-step discovery purpose-built for large tool counts.",
         _build_enterprise_categorized_search_agent,
+    ),
+    "enterprise-codemode-categorized-search": (
+        "Harness/CodeMode + categorized search at 120-tool scale: same hierarchical "
+        "category -> tool discovery flow as enterprise-categorized-search, but the "
+        "discovery/dispatch meta-tools are batched inside one sandboxed run_code call.",
+        _build_enterprise_codemode_categorized_search_agent,
     ),
 }
 

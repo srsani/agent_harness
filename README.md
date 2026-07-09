@@ -226,6 +226,22 @@ These six architectures all answer the same tasks against the same SQLite databa
 
 **Thinking variants drop the `temperature=0` pin.** Anthropic's extended thinking (and most reasoning-effort APIs) reject a pinned temperature, so `enterprise-react-thinking`/`enterprise-codemode-thinking` fall back to the provider's own sampling behavior — expect somewhat more run-to-run variance than the other architectures.
 
+### 120-tool scale benchmark
+
+These architectures swap the 17-tool registry for `_enterprise_tools_120()` — 62 real tools across 10 business domains (the original 17 plus 45 new: support, marketing, procurement, workforce, finance) alongside 58 plausible-but-wrong "distractor" tools (see [`tools/distractors.py`](src/agent_harness/tools/distractors.py)) — to measure how tool-selection accuracy and hallucination hold up as the tool surface grows an order of magnitude. See [`reports/20260708_scale-benchmark/RECOMMENDATION.md`](reports/20260708_scale-benchmark/RECOMMENDATION.md) for the full writeup and results.
+
+| Name | Tools registered via | What's different |
+|---|---|---|
+| `enterprise-react-120` | Direct, all 120 up front | Naive baseline: same ReAct pattern as `enterprise-react`, but every schema is sent every turn — blows the context window on this scale |
+| `enterprise-codemode-120` | Direct, all 120 up front | Same naive scale-up for CodeMode — 100 real callables + 58 distractors as bare Python signatures in one sandbox |
+| `enterprise-mcp-react-120` | Local FastMCP server, all 120 | Same naive scale-up served over MCP instead of direct registration |
+| `enterprise-react-toolsearch-120` | Direct, `defer_loading=True` | [`ToolSearch`](https://ai.pydantic.dev) semantic discovery over all 120 tools — the model only ever sees a handful of candidate schemas per turn |
+| `enterprise-codemode-toolsearch-120` | Direct, `defer_loading=True` | Same semantic `ToolSearch` discovery as above, but discovered calls are batched into `run_code` like `enterprise-codemode-120` |
+| `enterprise-categorized-search` | 3 meta-tools only (`list_tool_categories` → `search_tools_in_category` → `call_tool`) | Hand-rolled, non-semantic hierarchical discovery — see [`categorized_search.py`](src/agent_harness/harnesses/pydantic_ai/categorized_search.py) — a portable fallback for frameworks without a built-in tool-search capability |
+| `enterprise-codemode-categorized-search` | 3 meta-tools, wrapped in CodeMode | Same hierarchical discovery flow, but the discovery/dispatch calls are batched inside one sandboxed `run_code` call instead of 3 separate native calls |
+
+**Why CodeMode + discovery still matters to test.** `enterprise-codemode-120` (no discovery) is a hard reliability cliff at this scale (1/30 ok-rate). `enterprise-codemode-toolsearch-120` and `enterprise-codemode-categorized-search` isolate whether pairing CodeMode with the *same* discovery mechanisms that make `enterprise-react-toolsearch-120`/`enterprise-categorized-search` work — semantic search and hierarchical category search, respectively — is enough to fix CodeMode's fabricated-call problem, or whether batching itself (writing code against tools it half-remembers) is the deeper issue. At 17-tool scale, `enterprise-codemode-toolsearch` already shows discovery alone doesn't fully fix it (6.8% fabrication vs. 0% for the ReAct+ToolSearch equivalent).
+
 **A note on run-to-run stability:** every architecture is built with `model_settings={"temperature": 0}` (see `runners.py`) to minimize output variance, and CodeMode's `run_code` retry budget is raised from its library default of 3 to 6 so an unlucky generation streak is less likely to exhaust retries and fail the whole run. Neither eliminates variance entirely — per pydantic-ai's own docs, `temperature=0` does not guarantee fully deterministic output, and `seed` is only honored by OpenAI/Groq/Cohere/Mistral/Gemini/xAI, not Anthropic (the default `agent_bench_model`). Use `agent-bench run --repeat N` / `run-all --repeat N` to directly measure how much a given architecture's answers vary across repeated runs of the same task — the scored report includes an `ok_rate`, `distinct_outputs`, and `score_stdev` per architecture.
 
 ---
