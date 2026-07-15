@@ -57,4 +57,44 @@ class Settings(BaseSettings):
         # Cloud providers — pydantic-ai resolves "anthropic:…" / "openai:…" natively
         return self.agent_bench_model
 
+    def build_smolagents_model(self):
+        """Return a smolagents `Model` object configured for the active provider.
+
+        Mirrors `build_pydantic_ai_model()` above but returns a smolagents-native model
+        instance (smolagents has no bare-string model shorthand): `OpenAIServerModel` for
+        local OpenAI-compatible servers (LM Studio, Ollama, …), `LiteLLMModel` for the same
+        cloud providers pydantic-ai supports via the `anthropic:`/`openai:` prefixes.
+        """
+        if self.is_local:
+            from smolagents import OpenAIServerModel
+
+            base_url = self.agent_bench_local_base_url or "http://localhost:1234/v1"
+            return OpenAIServerModel(
+                model_id=self.local_model_name,
+                api_base=base_url,
+                api_key=self.agent_bench_local_api_key,
+                temperature=0.0,
+            )
+
+        from smolagents import LiteLLMModel
+
+        provider, _, model_name = self.agent_bench_model.partition(":")
+        if provider == "anthropic":
+            return LiteLLMModel(
+                model_id=f"anthropic/{model_name}",
+                api_key=self.anthropic_api_key,
+                temperature=0.0,
+            )
+        if provider == "openai":
+            return LiteLLMModel(
+                model_id=f"openai/{model_name}",
+                api_key=self.openai_api_key,
+                temperature=0.0,
+            )
+        raise ValueError(
+            f"Unsupported AGENT_BENCH_MODEL provider for smolagents: {self.agent_bench_model!r}. "
+            "Use 'local:<model-name>', 'anthropic:<model-name>', or 'openai:<model-name>'."
+        )
+
+
 settings = Settings()

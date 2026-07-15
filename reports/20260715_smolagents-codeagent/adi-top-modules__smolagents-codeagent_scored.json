@@ -1,0 +1,62 @@
+{
+  "session_id": "agent-bench:run:smolagents:adi-top-modules:20260715T122821Z:6b718413",
+  "harness": "smolagents",
+  "architecture": "smolagents-codeagent",
+  "task": "adi-top-modules",
+  "prompt": "What are the top 5 most-activated analytics modules in the last 90 days? List each module's name, business function, activation count, and subscription revenue.",
+  "output": "[{'module_name': 'Territory Performance Analyzer', 'business_function': 'Sales & Marketing', 'activation_count': 13, 'subscription_revenue': 217500.0}, {'module_name': 'Talent Retention Predictor', 'business_function': 'HR & People', 'activation_count': 12, 'subscription_revenue': 297000.0}, {'module_name': 'Order Fulfilment Tracker', 'business_function': 'Supply Chain', 'activation_count': 11, 'subscription_revenue': 126500.0}, {'module_name': 'IP Portfolio Analyzer', 'business_function': 'Research & Development', 'activation_count': 10, 'subscription_revenue': 250000.0}, {'module_name': 'Trial Success Probability Model', 'business_function': 'Research & Development', 'activation_count': 9, 'subscription_revenue': 368000.0}]",
+  "started_at": "2026-07-15T12:28:21.464117+00:00",
+  "elapsed_seconds": 21.096143707996816,
+  "metadata": {
+    "langfuse_session_id": "agent-bench:run:smolagents:adi-top-modules:20260715T122821Z:6b718413",
+    "tool_calls": [
+      {
+        "tool_name": "get_top_selling_products",
+        "via": "code"
+      }
+    ],
+    "step_count": 3,
+    "token_usage": {
+      "input_tokens": 12823,
+      "output_tokens": 1648
+    }
+  },
+  "error": null,
+  "ok": true,
+  "scores": {
+    "scorable": true,
+    "correctness": 1.0,
+    "groundedness": 1.0,
+    "hallucination_rate": 0.0,
+    "overall_score": 1.0,
+    "details": {
+      "refused_or_no_data": false,
+      "empty_output": false,
+      "expected_text_facts": 10,
+      "matched_text_facts": 10,
+      "expected_numeric_facts": 10,
+      "matched_numeric_facts": 10,
+      "claimed_numeric_values": 10,
+      "unsupported_numeric_values": 0
+    }
+  },
+  "tool_selection": {
+    "scorable": true,
+    "expected_tools": [
+      "get_top_selling_products"
+    ],
+    "total_tool_calls": 1,
+    "tool_recall": 1.0,
+    "tool_precision": 1.0,
+    "distractor_call_count": 0,
+    "distractor_calls": [],
+    "any_distractor_called": false,
+    "distractor_call_rate": 0.0,
+    "fabricated_call_count": 0,
+    "fabricated_calls": [],
+    "any_fabricated_called": false,
+    "fabricated_call_rate": 0.0
+  },
+  "scored_at": "2026-07-15T12:35:48.716827+00:00",
+  "ground_truth_generated_at": "2026-07-15T12:27:53.866973+00:00"
+}

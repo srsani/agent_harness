@@ -1,0 +1,26 @@
+{
+  "session_id": "agent-bench:run:smolagents:adi-low-adoption:20260715T122842Z:a9a34e22",
+  "harness": "smolagents",
+  "architecture": "smolagents-codeagent",
+  "task": "adi-low-adoption",
+  "prompt": "Which analytics modules have 25 or fewer active deployments (low adoption alert)? List their names, business functions, and current deployment counts.",
+  "output": "Shareholder Value Scorecard (Finance): 18\\ Trial Success Probability Model (Research & Development): 19\nClinical Trial Optimizer (Research & Development): 22\nIP Portfolio Analyzer (Research & Development): 25",
+  "started_at": "2026-07-15T12:28:42.960369+00:00",
+  "elapsed_seconds": 10.177962124998885,
+  "metadata": {
+    "langfuse_session_id": "agent-bench:run:smolagents:adi-low-adoption:20260715T122842Z:a9a34e22",
+    "tool_calls": [
+      {
+        "tool_name": "get_low_stock_products",
+        "via": "code"
+      }
+    ],
+    "step_count": 2,
+    "token_usage": {
+      "input_tokens": 8351,
+      "output_tokens": 518
+    }
+  },
+  "error": null,
+  "ok": true
+}

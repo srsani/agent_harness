@@ -1,0 +1,78 @@
+{
+  "session_id": "agent-bench:run:smolagents:adi-disengagement-risk:20260715T123221Z:d1b02ee1",
+  "harness": "smolagents",
+  "architecture": "smolagents-codeagent",
+  "task": "adi-disengagement-risk",
+  "prompt": "Identify users who activated at least 2 subscriptions but have had NO new subscription in the last 180 days. List up to 10 such users with their name, engagement tier, last subscription date, and total lifetime value, sorted by lifetime value descending.",
+  "output": "Name                 Tier       Last Subscription Date     Lifetime Value\n----------------------------------------------------------------------\nJake Smith           gold       2026-01-13T09:16:03             143000.00\nHugo Anderson        standard   2025-11-30T17:41:10             135000.00\nYara Nguyen          standard   2025-12-03T14:46:36             132000.00\nElena Moore          silver     2026-01-07T14:52:44             126500.00\nDan Anderson         silver     2025-11-29T19:55:28             122000.00\nSam Garcia           standard   2025-12-31T07:41:57             110500.00\nPete Thomas          silver     2026-01-02T22:48:27             107000.00\nQuinn Williams       standard   2025-11-18T23:07:59             104500.00\nCarol Jackson        standard   2025-11-16T14:33:45             103000.00\nHank Anderson        silver     2026-01-05T08:15:11             100000.00",
+  "started_at": "2026-07-15T12:32:21.383279+00:00",
+  "elapsed_seconds": 35.0163519159978,
+  "metadata": {
+    "langfuse_session_id": "agent-bench:run:smolagents:adi-disengagement-risk:20260715T123221Z:d1b02ee1",
+    "tool_calls": [
+      {
+        "tool_name": "get_schema_context",
+        "via": "code"
+      },
+      {
+        "tool_name": "describe_table",
+        "via": "code"
+      },
+      {
+        "tool_name": "describe_table",
+        "via": "code"
+      },
+      {
+        "tool_name": "execute_sql",
+        "via": "code"
+      },
+      {
+        "tool_name": "execute_sql",
+        "via": "code"
+      }
+    ],
+    "step_count": 5,
+    "token_usage": {
+      "input_tokens": 30728,
+      "output_tokens": 2539
+    }
+  },
+  "error": null,
+  "ok": true,
+  "scores": {
+    "scorable": true,
+    "correctness": 0.7,
+    "groundedness": 0.1915,
+    "hallucination_rate": 0.8085,
+    "overall_score": 0.3007,
+    "details": {
+      "refused_or_no_data": false,
+      "empty_output": false,
+      "expected_text_facts": 20,
+      "matched_text_facts": 18,
+      "expected_numeric_facts": 20,
+      "matched_numeric_facts": 10,
+      "claimed_numeric_values": 47,
+      "unsupported_numeric_values": 38
+    }
+  },
+  "tool_selection": {
+    "scorable": true,
+    "expected_tools": [
+      "execute_sql"
+    ],
+    "total_tool_calls": 5,
+    "tool_recall": 1.0,
+    "tool_precision": 1.0,
+    "distractor_call_count": 0,
+    "distractor_calls": [],
+    "any_distractor_called": false,
+    "distractor_call_rate": 0.0,
+    "fabricated_call_count": 0,
+    "fabricated_calls": [],
+    "any_fabricated_called": false,
+    "fabricated_call_rate": 0.0
+  },
+  "scored_at": "2026-07-15T12:35:48.281023+00:00",
+  "ground_truth_generated_at": "2026-07-15T12:27:53.866973+00:00"
+}

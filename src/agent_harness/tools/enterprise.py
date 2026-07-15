@@ -80,7 +80,11 @@ def search_products(
 
 
 def get_product(product_id: int) -> dict[str, Any] | None:
-    """Get full details for a single analytics module: business function, price, and avg rating."""
+    """Get full details for a single analytics module: business function, price, and avg rating.
+
+    Args:
+        product_id: Analytics module ID to look up.
+    """
     return _row(
         """
         SELECT p.id, p.name, p.description, p.annual_license_usd, p.active_deployments,
@@ -176,7 +180,11 @@ def get_low_stock_products(threshold: int = 30) -> list[dict[str, Any]]:
 # ── users (enterprise business users and decision-makers) ────────────────────
 
 def get_customer(customer_id: int) -> dict[str, Any] | None:
-    """Get a business user's profile including lifetime subscription stats."""
+    """Get a business user's profile including lifetime subscription stats.
+
+    Args:
+        customer_id: Business user ID to look up.
+    """
     return _row(
         """
         SELECT c.id, c.full_name, c.email, c.city, c.country, c.tier, c.created_at,
@@ -254,7 +262,11 @@ def get_customer_orders(customer_id: int, limit: int = 20) -> list[dict[str, Any
 
 
 def get_customer_lifetime_value(customer_id: int) -> dict[str, Any] | None:
-    """Lifetime-value breakdown for a business user: subscriptions, total spend, top function."""
+    """Lifetime-value breakdown for a business user: subscriptions, total spend, top function.
+
+    Args:
+        customer_id: Business user ID to look up.
+    """
     return _row(
         """
         SELECT c.id, c.full_name, c.tier,
@@ -284,7 +296,11 @@ def get_customer_lifetime_value(customer_id: int) -> dict[str, Any] | None:
 # ── subscriptions ─────────────────────────────────────────────────────────────
 
 def get_order(order_id: int) -> dict[str, Any] | None:
-    """Get subscription header (status, total annual value, dates) plus its analytics modules."""
+    """Get subscription header (status, total annual value, dates) plus its analytics modules.
+
+    Args:
+        order_id: Subscription (order) ID to look up.
+    """
     header = _row(
         """
         SELECT o.id, o.status, o.total_amount, o.created_at, o.shipped_at,

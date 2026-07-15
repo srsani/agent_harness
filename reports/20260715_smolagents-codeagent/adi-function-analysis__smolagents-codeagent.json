@@ -1,0 +1,30 @@
+{
+  "session_id": "agent-bench:run:smolagents:adi-function-analysis:20260715T122903Z:e1f07150",
+  "harness": "smolagents",
+  "architecture": "smolagents-codeagent",
+  "task": "adi-function-analysis",
+  "prompt": "For each business function, calculate: total subscription revenue in the last 6 months, number of unique users who subscribed to at least one module from that function, and the single highest-revenue module. Present the results sorted by revenue descending.",
+  "output": "Business Function | Total Revenue (6mo) | Unique Users | Highest-Revenue Module\nResearch & Development | $3,179,000 | 80 | Trial Success Probability Model ($496,000)\nSupply Chain | $2,412,500 | 87 | Demand Forecast Engine ($350,000)\nSales & Marketing | $2,378,500 | 77 | Market Share Monitor ($418,000)\nHR & People | $2,251,000 | 83 | Talent Retention Predictor ($374,000)\nFinance | $2,041,000 | 78 | Revenue Forecast Model ($324,000)",
+  "started_at": "2026-07-15T12:29:03.206600+00:00",
+  "elapsed_seconds": 33.59350904200255,
+  "metadata": {
+    "langfuse_session_id": "agent-bench:run:smolagents:adi-function-analysis:20260715T122903Z:e1f07150",
+    "tool_calls": [
+      {
+        "tool_name": "get_schema_context",
+        "via": "code"
+      },
+      {
+        "tool_name": "execute_sql",
+        "via": "code"
+      }
+    ],
+    "step_count": 3,
+    "token_usage": {
+      "input_tokens": 21426,
+      "output_tokens": 2714
+    }
+  },
+  "error": null,
+  "ok": true
+}

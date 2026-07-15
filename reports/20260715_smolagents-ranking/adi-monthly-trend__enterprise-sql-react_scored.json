@@ -1,0 +1,37 @@
+{
+  "session_id": "agent-bench:run:pydantic-ai:adi-monthly-trend:20260707T203435Z:1306dcc4",
+  "harness": "pydantic-ai",
+  "architecture": "enterprise-sql-react",
+  "task": "adi-monthly-trend",
+  "prompt": "Show monthly subscription revenue and activation count for the last calendar year in the database. In which month was revenue highest? What was the month-over-month growth from the lowest to the highest month?",
+  "output": "\n\n| month | revenue | activation_count |\n|-------|---------|------------------|\n| 2025-07 | 1321000.0 | 32 |\n| 2025-08 | 2174500.0 | 48 |\n| 2025-09 | 1886000.0 | 40 |\n| 2025-10 | 1772000.0 | 39 |\n| 2025-11 | 2037500.0 | 41 |\n| 2025-12 | 1939500.0 | 40 |\n| 2026-01 | 2501000.0 | 51 |\n| 2026-02 | 1619000.0 | 35 |\n| 2026-03 | 2052500.0 | 45 |\n| 2026-04 | 2120500.0 | 42 |\n| 2026-05 | 1993000.0 | 41 |\n| 2026-06 | 1885500.0 | 34 |\n| 2026-07 | 473500.0 | 9 |\n\n**Highest revenue month:** 2026-01  \n**Month-over-month growth from lowest (2026-07) to highest (2026-01):** 428.22%",
+  "started_at": "2026-07-07T20:34:35.941460+00:00",
+  "elapsed_seconds": 36.55190841699368,
+  "metadata": {
+    "langfuse_session_id": "agent-bench:run:pydantic-ai:adi-monthly-trend:20260707T203435Z:1306dcc4",
+    "langfuse_trace_id": "45910c44c20e61eb059d6357fcdda628",
+    "langfuse_observation_id": "35b5a2971b52cd5f",
+    "langfuse_trace_url": "https://cloud.langfuse.com/project/cmr1ywsf000d5ad0cex3dm2ha/traces/45910c44c20e61eb059d6357fcdda628"
+  },
+  "error": null,
+  "ok": true,
+  "scores": {
+    "scorable": true,
+    "correctness": 0.9615,
+    "groundedness": 0.3947,
+    "hallucination_rate": 0.6053,
+    "overall_score": 0.5597,
+    "details": {
+      "refused_or_no_data": false,
+      "empty_output": false,
+      "expected_text_facts": 8,
+      "matched_text_facts": 8,
+      "expected_numeric_facts": 18,
+      "matched_numeric_facts": 17,
+      "claimed_numeric_values": 38,
+      "unsupported_numeric_values": 23
+    }
+  },
+  "scored_at": "2026-07-07T20:52:27.066764+00:00",
+  "ground_truth_generated_at": "2026-07-07T19:14:38.214588+00:00"
+}

@@ -1,0 +1,34 @@
+{
+  "session_id": "agent-bench:run:smolagents:adi-user-lookup:20260715T122853Z:06dbd92d",
+  "harness": "smolagents",
+  "architecture": "smolagents-codeagent",
+  "task": "adi-user-lookup",
+  "prompt": "Look up business user with ID 42. Show their full profile, total lifetime spend, and their last 5 subscriptions with status and total value.",
+  "output": "Business User ID 42: Wendy Taylor (wendy.taylor41@yahoo.com, Paris, FR, standard tier)\n\nTotal Lifetime Spend: 100000.0\n\nLast Subscriptions:\n| Order ID | Status | Total Value |\n|----------|--------|-------------|\n| 401      | shipped| 36000.0     |\n| 534      | shipped| 64000.0     |",
+  "started_at": "2026-07-15T12:28:53.511824+00:00",
+  "elapsed_seconds": 9.339352499999222,
+  "metadata": {
+    "langfuse_session_id": "agent-bench:run:smolagents:adi-user-lookup:20260715T122853Z:06dbd92d",
+    "tool_calls": [
+      {
+        "tool_name": "get_customer",
+        "via": "code"
+      },
+      {
+        "tool_name": "get_customer_lifetime_value",
+        "via": "code"
+      },
+      {
+        "tool_name": "get_customer_orders",
+        "via": "code"
+      }
+    ],
+    "step_count": 2,
+    "token_usage": {
+      "input_tokens": 8528,
+      "output_tokens": 783
+    }
+  },
+  "error": null,
+  "ok": true
+}

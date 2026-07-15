@@ -1,0 +1,37 @@
+{
+  "session_id": "agent-bench:run:pydantic-ai:adi-monthly-trend:20260707T203513Z:9d99e881",
+  "harness": "pydantic-ai",
+  "architecture": "enterprise-sql-codemode",
+  "task": "adi-monthly-trend",
+  "prompt": "Show monthly subscription revenue and activation count for the last calendar year in the database. In which month was revenue highest? What was the month-over-month growth from the lowest to the highest month?",
+  "output": "\n\n**Monthly Subscription Revenue & Activation Count (Last Calendar Year)**\n\n| month | monthly_revenue | activation_count |\n|-------|----------------|------------------|\n| 2025-07 | 1321000.0 | 32 |\n| 2025-08 | 2174500.0 | 48 |\n| 2025-09 | 1886000.0 | 40 |\n| 2025-10 | 1772000.0 | 39 |\n| 2025-11 | 2037500.0 | 41 |\n| 2025-12 | 1939500.0 | 40 |\n\n**Highest revenue month:** August 2025 ($2,174,500)\n\n**Month-over-month growth from lowest (July 2025: $1,321,000) to highest (August 2025: $2,174,500):** 64.61%",
+  "started_at": "2026-07-07T20:35:13.273839+00:00",
+  "elapsed_seconds": 21.238732292003988,
+  "metadata": {
+    "langfuse_session_id": "agent-bench:run:pydantic-ai:adi-monthly-trend:20260707T203513Z:9d99e881",
+    "langfuse_trace_id": "85161d2b38aeff34da04740346bf2031",
+    "langfuse_observation_id": "b8f7005eeb2af64e",
+    "langfuse_trace_url": "https://cloud.langfuse.com/project/cmr1ywsf000d5ad0cex3dm2ha/traces/85161d2b38aeff34da04740346bf2031"
+  },
+  "error": null,
+  "ok": true,
+  "scores": {
+    "scorable": true,
+    "correctness": 1.0,
+    "groundedness": 0.6842,
+    "hallucination_rate": 0.3158,
+    "overall_score": 0.8125,
+    "details": {
+      "refused_or_no_data": false,
+      "empty_output": false,
+      "expected_text_facts": 8,
+      "matched_text_facts": 8,
+      "expected_numeric_facts": 18,
+      "matched_numeric_facts": 18,
+      "claimed_numeric_values": 19,
+      "unsupported_numeric_values": 6
+    }
+  },
+  "scored_at": "2026-07-07T20:52:27.018161+00:00",
+  "ground_truth_generated_at": "2026-07-07T19:14:38.214588+00:00"
+}

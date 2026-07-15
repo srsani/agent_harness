@@ -2,7 +2,9 @@
 
 Compare **agent harnesses** (capability libraries) against **agentic architectures** (orchestration patterns) using shared tasks and a realistic enterprise Decision Intelligence database.
 
-Current harness: [pydantic-ai-harness](https://github.com/pydantic/pydantic-ai-harness) on top of [Pydantic AI](https://ai.pydantic.dev/).
+Harnesses:
+- [pydantic-ai-harness](https://github.com/pydantic/pydantic-ai-harness) on top of [Pydantic AI](https://ai.pydantic.dev/) — 18 architectures spanning ReAct/CodeMode/MCP/ToolSearch/thinking/categorized-search variants (see "Architectures (pydantic-ai)" below).
+- [smolagents](https://github.com/huggingface/smolagents) (Hugging Face) — one tuned `CodeAgent` architecture, `smolagents-codeagent` (see "Architectures (smolagents)" below).
 
 ---
 
@@ -11,7 +13,7 @@ Current harness: [pydantic-ai-harness](https://github.com/pydantic/pydantic-ai-h
 Requires [uv](https://docs.astral.sh/uv/) and Python 3.10+.
 
 ```bash
-# 1. Install everything
+# 1. Install everything (add --extra smolagents too if you want the smolagents harness)
 uv sync --extra pydantic-ai --extra dev
 
 # 2. Configure your model provider
@@ -269,6 +271,52 @@ uv run python notebooks/generate_report_csvs.py reports/20260708_scale-benchmark
 
 ---
 
+## Architectures (smolagents)
+
+[smolagents](https://github.com/huggingface/smolagents) is Hugging Face's "agents that think in code" library. Its `CodeAgent` writes every action as a Python code blob instead of one discrete tool call per turn, so — unlike the `pydantic-ai` harness — there's no separate ReAct/CodeMode split needed: batching multiple tool calls into one step is the framework's native behavior, not an opt-in capability. That collapses what would otherwise be several architectures into one:
+
+| Name | Tools registered via | What's different |
+|---|---|---|
+| `smolagents-codeagent` | Direct, `@tool`-wrapped functions | The library's `CodeAgent`, given the same 17 typed enterprise tools as `enterprise-react`/`enterprise-codemode`, tuned for this benchmark (see below) |
+
+**Tuning ("the best CodeAgent smolagents can build" for this benchmark)** — see `src/agent_harness/harnesses/smolagents/runners.py`:
+- All 17 core enterprise tools (`tools/enterprise.py` + `tools/sql.py`) registered directly via smolagents' `tool()` factory, which derives each JSON schema from type hints + the docstring's `Args:` section — the same functions the `pydantic-ai` harness uses, unmodified except for four docstrings that needed an explicit `Args:` entry (`get_customer`, `get_customer_lifetime_value`, `get_order`, `get_product` — a strict improvement, not smolagents-specific).
+- A system-prompt (`instructions=`) block matching `enterprise-react`'s persona and benchmark-formatting rules, plus an explicit instruction to batch multi-entity lookups into one code block and to always finish with `final_answer(...)`.
+- `max_steps=24` — smolagents' framework default (20) is already generous for a benchmark this size; a little headroom helps a smaller local model self-correct a bad code block on the harder multi-step `adi-*` joins.
+- `additional_authorized_imports=["json"]` on top of smolagents' own generous `BASE_BUILTIN_MODULES` default, which already covers `statistics`, `math`, `itertools`, `collections`, `datetime`, and `re` — everything the client-side aggregation these tasks need.
+- `executor_type="local"` (smolagents' `LocalPythonExecutor`) — like CodeMode's Monty sandbox, this is best-effort isolation, **not a security boundary**; smolagents also supports `e2b`/`modal`/`docker`/`blaxel` sandboxed executors for untrusted-code use cases.
+- `temperature=0` pinned via `Settings.build_smolagents_model()` (mirrors `build_pydantic_ai_model()`), for the same run-to-run stability reasons as the pydantic-ai harness.
+
+```bash
+uv sync --extra smolagents --extra dev
+uv run agent-bench run --harness smolagents --architecture smolagents-codeagent --task adi-top-modules
+```
+
+### Benchmark result: where does it rank?
+
+10/10 core `adi-*` tasks (the same set behind `reports/20260707_full-matrix/architecture_summary.csv`), local `qwen3.6-35b-a3b`, scored against `reports/ground-truth.json`. Raw results: [`reports/20260715_smolagents-codeagent/`](reports/20260715_smolagents-codeagent/); merged ranking: [`reports/20260715_smolagents-ranking/architecture_summary.csv`](reports/20260715_smolagents-ranking/architecture_summary.csv).
+
+| Rank | Architecture | Harness | Reliability-adjusted score | ok-rate | Avg tool recall / precision | Fabricated-call rate |
+|---|---|---|---|---|---|---|
+| 1 | `enterprise-react` | pydantic-ai | 0.7596 | 9/10 | — | — |
+| **2** | **`smolagents-codeagent`** | **smolagents** | **0.7058** | **10/10** | **1.0 / 0.888** | **0.0** |
+| 3 | `enterprise-sql-codemode` | pydantic-ai | 0.6326 | 10/10 | — | — |
+| 4 | `enterprise-mcp-react` | pydantic-ai | 0.6237 | 8/10 | — | — |
+| 5 | `enterprise-sql-react` | pydantic-ai | 0.5585 | 8/10 | — | — |
+| 6 | `enterprise-mcp-codemode` | pydantic-ai | 0.5135 | 7/10 | — | — |
+| 7 | `enterprise-codemode` | pydantic-ai | 0.4672 | 7/10 | — | — |
+
+**smolagents' `CodeAgent` ranks 2nd out of 7 architectures** — behind `enterprise-react` but ahead of every pydantic-ai CodeMode/MCP/SQL variant — with a *perfect* 10/10 ok-rate (tied with `enterprise-sql-codemode`, better than `enterprise-react`'s 9/10), perfect tool recall, no distractor or fabricated tool calls, and 0.888 average tool precision. (The `avg_tool_recall`/`avg_tool_precision`/`fabricated_call_rate` columns are blank for the pydantic-ai rows above because `reports/20260707_full-matrix/` predates this repo's tool-call-trace capture — those old raw reports have no `metadata.tool_calls` to score; re-running them would populate the same columns.)
+
+Where it won and lost against `enterprise-react` head-to-head (full breakdown in `full_matrix_summary.csv`):
+- **Won:** `adi-function-analysis` (0.968 vs 0.889), `adi-user-lookup` (0.923 vs 0.600), `adi-monthly-trend` (0.111 vs 0.0).
+- **Tied:** `adi-function-opportunity`, `adi-low-adoption`, `adi-top-modules` (all 1.0 or equal).
+- **Lost:** `adi-portfolio-depth` (0.244 vs 1.0 — the local model's generated SQL hit "one statement at a time" / aggregate-function errors it didn't fully recover from), `adi-executive-users` (0.814 vs 0.892), `adi-module-ratings` (0.741 vs 0.845), `adi-disengagement-risk` (0.301 vs 0.414).
+
+Takeaway: a stock-tuned `CodeAgent` is already competitive with a purpose-built harness on this benchmark, and its code-blob-native batching gives it the best reliability (ok-rate, tool precision, zero fabrication) of any architecture *except* the hand-tuned `enterprise-react`. The gap is concentrated in the hardest custom-aggregate tasks (`adi-portfolio-depth`, `adi-disengagement-risk`), where the smaller local model's own SQL/arithmetic mistakes — not the harness — are the limiting factor.
+
+---
+
 ## Test database
 
 A SQLite enterprise Decision Intelligence database lives at `data/enterprise.db` after seeding.
@@ -456,6 +504,8 @@ src/agent_harness/
       runners.py          # All architecture builders + PydanticAIRunner
       categorized_search.py  # list_tool_categories / search_tools_in_category / call_tool
       traced_agent.py     # Tool-call trace capture for scoring
+    smolagents/
+      runners.py          # smolagents-codeagent CodeAgent builder + SmolagentsRunner
   tools/
     enterprise.py         # 13 semantic tool functions (core ADI domain)
     sql.py                # list_tables, describe_table, execute_sql, get_schema_context
@@ -487,6 +537,8 @@ scripts/
 
 reports/
   20260708_scale-benchmark/  # 490-run scale benchmark (RECOMMENDATION.md, CSVs, JSON)
+  20260715_smolagents-codeagent/  # 10-task adi-* run for smolagents-codeagent
+  20260715_smolagents-ranking/    # Merged with 20260707_full-matrix for a 7-architecture ranking
 
 data/
   enterprise.db           # Generated — not committed to git

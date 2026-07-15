@@ -45,8 +45,25 @@ def _load_pydantic_ai() -> HarnessSpec:
     )
 
 
+def _load_smolagents() -> HarnessSpec:
+    from agent_harness.harnesses.smolagents.runners import (
+        ARCHITECTURE_BUILDERS,
+        architectures_for_task,
+        make_runner,
+    )
+
+    return HarnessSpec(
+        name="smolagents",
+        description="Hugging Face smolagents CodeAgent (https://github.com/huggingface/smolagents)",
+        architectures={name: desc for name, (desc, _) in ARCHITECTURE_BUILDERS.items()},
+        factory=make_runner,
+        optional_deps="smolagents",
+        architecture_selector=architectures_for_task,
+    )
+
+
 def _harness_loaders() -> dict[str, Callable[[], HarnessSpec]]:
-    return {"pydantic-ai": _load_pydantic_ai}
+    return {"pydantic-ai": _load_pydantic_ai, "smolagents": _load_smolagents}
 
 
 def get_harness(name: str) -> HarnessSpec:
@@ -58,7 +75,17 @@ def get_harness(name: str) -> HarnessSpec:
 
 
 def list_harnesses() -> dict[str, HarnessSpec]:
-    return {name: loader() for name, loader in _harness_loaders().items()}
+    """Eagerly load every registered harness, skipping ones whose optional dependency group
+    (see each loader's `import` and `optional_deps`) isn't installed -- so `agent-bench list`
+    still works if e.g. only `--extra pydantic-ai` (not `--extra smolagents`) was synced.
+    """
+    specs: dict[str, HarnessSpec] = {}
+    for name, loader in _harness_loaders().items():
+        try:
+            specs[name] = loader()
+        except ImportError:
+            continue
+    return specs
 
 
 def get_task(name: str) -> str:

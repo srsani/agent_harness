@@ -1,0 +1,66 @@
+{
+  "session_id": "agent-bench:run:smolagents:adi-executive-users:20260715T123015Z:a51591dc",
+  "harness": "smolagents",
+  "architecture": "smolagents-codeagent",
+  "task": "adi-executive-users",
+  "prompt": "Find all gold-tier users. For each one, show their name, city, lifetime subscription value, and their single highest-value subscription (ID + amount). Which city has the most gold-tier users?",
+  "output": "Gold-tier users:\n\nName                 City             Lifetime Value  Highest Sub ID  Highest Amount\n----------------------------------------------------------------------------------------------------\nAlice Wilson         Berlin                 39000.00             393        59000.00\nBob Lewis            Bristol               165500.00             127        80000.00\nBob Turner           Lyon                       0.00             N/A            0.00\nClaire Edwards       Toronto                28000.00             224        28000.00\nDan Roberts          Manchester                 0.00             N/A            0.00\nDan Smith            Toronto                91000.00             469        64500.00\nDavid Evans          Lyon                   22500.00             271        22500.00\nFelix Anderson       Los Angeles                0.00             N/A            0.00\nFrank Davies         Austin                113500.00             134        59000.00\nGina Edwards         Hamburg                67000.00             353        54000.00\nGrace Johnson        Toronto                30000.00             402        30000.00\nHank Martin          New York               60000.00             250        33000.00\nHank Martinez        Edinburgh              34000.00             166        36000.00\nIris Brown           Munich                100500.00             284        84000.00\nIvy Brown            Bristol                60000.00             145        60000.00\nJack Nguyen          Melbourne             118500.00             350        46500.00\nJake Smith           Chicago                54500.00              80        88500.00\nKim Wright           Los Angeles            72000.00             337        54000.00\nLeo Lewis            Edinburgh                  0.00             538        10500.00\nMaya Jackson         Edinburgh              18000.00             259        18000.00\nMaya Jackson         Austin                 26000.00             309        27000.00\nNate Harris          Bristol                30000.00             223        30000.00\nNate Taylor          Toronto                    0.00             N/A            0.00\nPete Edwards         Sydney                 50500.00             126       126500.00\nPete Hughes          London                     0.00             283        24000.00\nQuinn Turner         Austin                     0.00               9        77000.00\nQuinn Walker         Austin                     0.00             326        11000.00\nRosa Clarke          Lyon                   26500.00              33        39000.00\nRosa Moore           Toronto                 7000.00             272         7000.00\nWendy Green          New York              144000.00             306        81000.00\nXander Clarke        Berlin                     0.00             340       104000.00\nZach Jackson         Sydney                176500.00             196       109000.00\n\nCity with the most gold-tier users: Toronto (5 users)",
+  "started_at": "2026-07-15T12:30:15.990606+00:00",
+  "elapsed_seconds": 68.70133245899706,
+  "metadata": {
+    "langfuse_session_id": "agent-bench:run:smolagents:adi-executive-users:20260715T123015Z:a51591dc",
+    "tool_calls": [
+      {
+        "tool_name": "search_customers",
+        "via": "code"
+      },
+      {
+        "tool_name": "get_customer_lifetime_value",
+        "via": "code"
+      },
+      {
+        "tool_name": "get_customer_orders",
+        "via": "code"
+      },
+      {
+        "tool_name": "get_customer_lifetime_value",
+        "via": "code"
+      },
+      {
+        "tool_name": "get_customer_orders",
+        "via": "code"
+      },
+      {
+        "tool_name": "get_customer_lifetime_value",
+        "via": "code"
+      },
+      {
+        "tool_name": "get_customer_orders",
+        "via": "code"
+      },
+      {
+        "tool_name": "get_customer_lifetime_value",
+        "via": "code"
+      },
+      {
+        "tool_name": "get_customer_orders",
+        "via": "code"
+      },
+      {
+        "tool_name": "get_customer_lifetime_value",
+        "via": "code"
+      },
+      {
+        "tool_name": "get_customer_orders",
+        "via": "code"
+      }
+    ],
+    "step_count": 8,
+    "token_usage": {
+      "input_tokens": 72564,
+      "output_tokens": 3595
+    }
+  },
+  "error": null,
+  "ok": true
+}

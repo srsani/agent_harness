@@ -1,0 +1,37 @@
+{
+  "session_id": "agent-bench:run:pydantic-ai:adi-portfolio-depth:20260707T204215Z:54f64414",
+  "harness": "pydantic-ai",
+  "architecture": "enterprise-sql-codemode",
+  "task": "adi-portfolio-depth",
+  "prompt": "What is the average number of modules per subscription and average subscription value, broken down by engagement tier (standard, silver, gold)? Which tier has the deepest average analytics portfolio?",
+  "output": "\n\nBased on the database analysis, here are the results broken down by engagement tier:\n\n| tier | avg_modules_per_subscription | avg_subscription_value |\n|------|------------------------------|------------------------|\n| gold | 2.15 | 40623.08 |\n| silver | 2.52 | 48591.67 |\n| standard | 2.56 | 49160.71 |\n\n**Standard** has the deepest average analytics portfolio with 2.56 modules per subscription (vs. 2.52 for silver and 2.15 for gold).\n\n*Data source: 65 gold, 180 silver, and 252 standard subscriptions (non-cancelled), with 140, 453, and 646 total modules respectively.*",
+  "started_at": "2026-07-07T20:42:15.034628+00:00",
+  "elapsed_seconds": 84.60551179100003,
+  "metadata": {
+    "langfuse_session_id": "agent-bench:run:pydantic-ai:adi-portfolio-depth:20260707T204215Z:54f64414",
+    "langfuse_trace_id": "2ee2451f9ebc39d2bf5690d35b16c317",
+    "langfuse_observation_id": "70c207ad23277a05",
+    "langfuse_trace_url": "https://cloud.langfuse.com/project/cmr1ywsf000d5ad0cex3dm2ha/traces/2ee2451f9ebc39d2bf5690d35b16c317"
+  },
+  "error": null,
+  "ok": true,
+  "scores": {
+    "scorable": true,
+    "correctness": 1.0,
+    "groundedness": 0.5,
+    "hallucination_rate": 0.5,
+    "overall_score": 0.6667,
+    "details": {
+      "refused_or_no_data": false,
+      "empty_output": false,
+      "expected_text_facts": 4,
+      "matched_text_facts": 4,
+      "expected_numeric_facts": 7,
+      "matched_numeric_facts": 7,
+      "claimed_numeric_values": 12,
+      "unsupported_numeric_values": 6
+    }
+  },
+  "scored_at": "2026-07-07T20:52:27.360554+00:00",
+  "ground_truth_generated_at": "2026-07-07T19:14:38.214588+00:00"
+}

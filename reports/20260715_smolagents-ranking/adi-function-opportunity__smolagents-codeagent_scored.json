@@ -1,0 +1,90 @@
+{
+  "session_id": "agent-bench:run:smolagents:adi-function-opportunity:20260715T122937Z:29cc8024",
+  "harness": "smolagents",
+  "architecture": "smolagents-codeagent",
+  "task": "adi-function-opportunity",
+  "prompt": "For each business function, calculate total subscription revenue in the last 6 months, unique users in the last 6 months, highest-revenue module, average module rating across reviewed modules, and number of low-adoption modules with 25 or fewer active deployments. Return only the top 3 business functions by revenue, sorted by revenue descending, with columns: business_function, revenue_6m, unique_users_6m, highest_revenue_module, avg_module_rating, low_adoption_modules.",
+  "output": "[{'business_function': 'Research & Development', 'revenue_6m': 3179000.0, 'unique_users_6m': 80, 'highest_revenue_module': 'Trial Success Probability Model', 'avg_module_rating': 3.75, 'low_adoption_modules': 3}, {'business_function': 'Supply Chain', 'revenue_6m': 2412500.0, 'unique_users_6m': 87, 'highest_revenue_module': 'Demand Forecast Engine', 'avg_module_rating': 4.06, 'low_adoption_modules': 0}, {'business_function': 'Sales & Marketing', 'revenue_6m': 2378500.0, 'unique_users_6m': 77, 'highest_revenue_module': 'Market Share Monitor', 'avg_module_rating': 4.0, 'low_adoption_modules': 0}]",
+  "started_at": "2026-07-15T12:29:37.161165+00:00",
+  "elapsed_seconds": 38.37787341600051,
+  "metadata": {
+    "langfuse_session_id": "agent-bench:run:smolagents:adi-function-opportunity:20260715T122937Z:29cc8024",
+    "tool_calls": [
+      {
+        "tool_name": "get_schema_context",
+        "via": "code"
+      },
+      {
+        "tool_name": "describe_table",
+        "via": "code"
+      },
+      {
+        "tool_name": "describe_table",
+        "via": "code"
+      },
+      {
+        "tool_name": "describe_table",
+        "via": "code"
+      },
+      {
+        "tool_name": "describe_table",
+        "via": "code"
+      },
+      {
+        "tool_name": "describe_table",
+        "via": "code"
+      },
+      {
+        "tool_name": "execute_sql",
+        "via": "code"
+      },
+      {
+        "tool_name": "execute_sql",
+        "via": "code"
+      }
+    ],
+    "step_count": 5,
+    "token_usage": {
+      "input_tokens": 33024,
+      "output_tokens": 2737
+    }
+  },
+  "error": null,
+  "ok": true,
+  "scores": {
+    "scorable": true,
+    "correctness": 1.0,
+    "groundedness": 0.9167,
+    "hallucination_rate": 0.0833,
+    "overall_score": 0.9565,
+    "details": {
+      "refused_or_no_data": false,
+      "empty_output": false,
+      "expected_text_facts": 6,
+      "matched_text_facts": 6,
+      "expected_numeric_facts": 12,
+      "matched_numeric_facts": 12,
+      "claimed_numeric_values": 12,
+      "unsupported_numeric_values": 1
+    }
+  },
+  "tool_selection": {
+    "scorable": true,
+    "expected_tools": [
+      "execute_sql"
+    ],
+    "total_tool_calls": 8,
+    "tool_recall": 1.0,
+    "tool_precision": 1.0,
+    "distractor_call_count": 0,
+    "distractor_calls": [],
+    "any_distractor_called": false,
+    "distractor_call_rate": 0.0,
+    "fabricated_call_count": 0,
+    "fabricated_calls": [],
+    "any_fabricated_called": false,
+    "fabricated_call_rate": 0.0
+  },
+  "scored_at": "2026-07-15T12:35:48.443451+00:00",
+  "ground_truth_generated_at": "2026-07-15T12:27:53.866973+00:00"
+}

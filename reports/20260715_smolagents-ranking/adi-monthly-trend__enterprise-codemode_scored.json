@@ -1,0 +1,37 @@
+{
+  "session_id": "agent-bench:run:pydantic-ai:adi-monthly-trend:20260707T203107Z:0f0c5b6e",
+  "harness": "pydantic-ai",
+  "architecture": "enterprise-codemode",
+  "task": "adi-monthly-trend",
+  "prompt": "Show monthly subscription revenue and activation count for the last calendar year in the database. In which month was revenue highest? What was the month-over-month growth from the lowest to the highest month?",
+  "output": "\n\nBased on the available data, here is the monthly subscription revenue and activation count for the last calendar year (2025):\n\n| month | subscriptions | revenue |\n|-------|--------------|---------|\n| 2025-07 | 32 | 1321000.0 |\n| 2025-08 | 48 | 2174500.0 |\n| 2025-09 | 40 | 1886000.0 |\n| 2025-10 | 39 | 1772000.0 |\n| 2025-11 | 41 | 2037500.0 |\n| 2025-12 | 40 | 1939500.0 |\n\n**Highest revenue month:** 2025-08 ($2,174,500)\n\n**Month-over-month growth from lowest to highest month:** 64.61% (from 2025-07 at $1,321,000 to 2025-08 at $2,174,500)",
+  "started_at": "2026-07-07T20:31:07.676188+00:00",
+  "elapsed_seconds": 22.299644375001662,
+  "metadata": {
+    "langfuse_session_id": "agent-bench:run:pydantic-ai:adi-monthly-trend:20260707T203107Z:0f0c5b6e",
+    "langfuse_trace_id": "088cbc0eb6dce8eee1c25a3cc85e6f39",
+    "langfuse_observation_id": "1a3bb881e1850297",
+    "langfuse_trace_url": "https://cloud.langfuse.com/project/cmr1ywsf000d5ad0cex3dm2ha/traces/088cbc0eb6dce8eee1c25a3cc85e6f39"
+  },
+  "error": null,
+  "ok": true,
+  "scores": {
+    "scorable": true,
+    "correctness": 1.0,
+    "groundedness": 0.6842,
+    "hallucination_rate": 0.3158,
+    "overall_score": 0.8125,
+    "details": {
+      "refused_or_no_data": false,
+      "empty_output": false,
+      "expected_text_facts": 8,
+      "matched_text_facts": 8,
+      "expected_numeric_facts": 18,
+      "matched_numeric_facts": 18,
+      "claimed_numeric_values": 19,
+      "unsupported_numeric_values": 6
+    }
+  },
+  "scored_at": "2026-07-07T20:52:26.821955+00:00",
+  "ground_truth_generated_at": "2026-07-07T19:14:38.214588+00:00"
+}

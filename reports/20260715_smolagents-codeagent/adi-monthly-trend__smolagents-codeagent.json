@@ -1,0 +1,34 @@
+{
+  "session_id": "agent-bench:run:smolagents:adi-monthly-trend:20260715T123149Z:40d1b403",
+  "harness": "smolagents",
+  "architecture": "smolagents-codeagent",
+  "task": "adi-monthly-trend",
+  "prompt": "Show monthly subscription revenue and activation count for the last calendar year in the database. In which month was revenue highest? What was the month-over-month growth from the lowest to the highest month?",
+  "output": "Monthly subscription revenue and activation count for 2026:\n- 2026-01: 50 subscriptions, $2,555,500.00\n- 2026-02: 41 subscriptions, $1,957,000.00\n- 2026-03: 44 subscriptions, $2,049,000.00\n- 2026-04: 38 subscriptions, $1,892,500.00\n- 2026-05: 49 subscriptions, $2,229,000.00\n- 2026-06: 30 subscriptions, $1,783,500.00\n- 2026-07: 20 subscriptions, $1,038,500.00\n\nHighest revenue month: 2026-01 (January 2026) with $2,555,500.00\nMonth-over-month growth from lowest (2026-07: $1,038,500.00) to highest (2026-01): 146.08%",
+  "started_at": "2026-07-15T12:31:49.034129+00:00",
+  "elapsed_seconds": 31.98525804199744,
+  "metadata": {
+    "langfuse_session_id": "agent-bench:run:smolagents:adi-monthly-trend:20260715T123149Z:40d1b403",
+    "tool_calls": [
+      {
+        "tool_name": "get_schema_context",
+        "via": "code"
+      },
+      {
+        "tool_name": "execute_sql",
+        "via": "code"
+      },
+      {
+        "tool_name": "get_revenue_by_month",
+        "via": "code"
+      }
+    ],
+    "step_count": 6,
+    "token_usage": {
+      "input_tokens": 42443,
+      "output_tokens": 2083
+    }
+  },
+  "error": null,
+  "ok": true
+}

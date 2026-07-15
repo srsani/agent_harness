@@ -1,0 +1,259 @@
+{
+  "mode": "run-all",
+  "session_id": "agent-bench:run-all:pydantic-ai:adi-user-lookup:20260707T195041Z:2bbd569e",
+  "harness": "pydantic-ai",
+  "task": "adi-user-lookup",
+  "repeat": 1,
+  "results": [
+    {
+      "harness": "pydantic-ai",
+      "architecture": "minimal",
+      "task": "adi-user-lookup",
+      "prompt": "Look up business user with ID 42. Show their full profile, total lifetime spend, and their last 5 subscriptions with status and total value.",
+      "output": "\n\n| user_id | full_name | email | company | role | account_status | total_lifetime_spend | subscription_status | subscription_total_value |\n|---|---|---|---|---|---|---|---|---|\n| 42 | Alex Morgan | alex.morgan@techcorp.com | TechCorp Inc. | Admin | Active | 14250.00 | Active | 2400.00 |\n| 42 | Alex Morgan | alex.morgan@techcorp.com | TechCorp Inc. | Admin | Active | 14250.00 | Expired | 1800.00 |\n| 42 | Alex Morgan | alex.morgan@techcorp.com | TechCorp Inc. | Admin | Active | 14250.00 | Cancelled | 950.00 |\n| 42 | Alex Morgan | alex.morgan@techcorp.com | TechCorp Inc. | Admin | Active | 14250.00 | Active | 3200.00 |\n| 42 | Alex Morgan | alex.morgan@techcorp.com | TechCorp Inc. | Admin | Active | 14250.00 | Trial | 490.00 |",
+      "started_at": "2026-07-07T19:50:41.706090+00:00",
+      "elapsed_seconds": 41.12306341700605,
+      "metadata": {
+        "langfuse_session_id": "agent-bench:run-all:pydantic-ai:adi-user-lookup:20260707T195041Z:2bbd569e",
+        "langfuse_trace_id": "0d2fe1528087f64a906499714e0479a4",
+        "langfuse_observation_id": "a9ef2f819f629440",
+        "langfuse_trace_url": "https://cloud.langfuse.com/project/cmr1ywsf000d5ad0cex3dm2ha/traces/0d2fe1528087f64a906499714e0479a4"
+      },
+      "error": null,
+      "ok": true,
+      "scores": {
+        "scorable": true,
+        "correctness": 0.0833,
+        "groundedness": 0.1429,
+        "hallucination_rate": 0.8571,
+        "overall_score": 0.1052,
+        "details": {
+          "refused_or_no_data": false,
+          "empty_output": false,
+          "expected_text_facts": 6,
+          "matched_text_facts": 0,
+          "expected_numeric_facts": 6,
+          "matched_numeric_facts": 1,
+          "claimed_numeric_values": 7,
+          "unsupported_numeric_values": 6
+        }
+      }
+    },
+    {
+      "harness": "pydantic-ai",
+      "architecture": "enterprise-react",
+      "task": "adi-user-lookup",
+      "prompt": "Look up business user with ID 42. Show their full profile, total lifetime spend, and their last 5 subscriptions with status and total value.",
+      "output": "\n\n| id | full_name | email | city | country | tier | created_at | total_subscriptions | lifetime_value |\n|---|---|---|---|---|---|---|---|---|\n| 42 | Wendy Taylor | wendy.taylor41@yahoo.com | Paris | FR | standard | 2023-12-23T19:14:57 | 2 | 100000.0 |\n\n| id | status | total_amount |\n|---|---|---|\n| 401 | shipped | 36000.0 |\n| 534 | shipped | 64000.0 |",
+      "started_at": "2026-07-07T19:51:22.831628+00:00",
+      "elapsed_seconds": 9.924198916000023,
+      "metadata": {
+        "langfuse_session_id": "agent-bench:run-all:pydantic-ai:adi-user-lookup:20260707T195041Z:2bbd569e",
+        "langfuse_trace_id": "d75a99d427a823184929f6c93c1235ce",
+        "langfuse_observation_id": "1a7fa090857b332f",
+        "langfuse_trace_url": "https://cloud.langfuse.com/project/cmr1ywsf000d5ad0cex3dm2ha/traces/d75a99d427a823184929f6c93c1235ce"
+      },
+      "error": null,
+      "ok": true,
+      "scores": {
+        "scorable": true,
+        "correctness": 1.0,
+        "groundedness": 0.4286,
+        "hallucination_rate": 0.5714,
+        "overall_score": 0.6,
+        "details": {
+          "refused_or_no_data": false,
+          "empty_output": false,
+          "expected_text_facts": 6,
+          "matched_text_facts": 6,
+          "expected_numeric_facts": 6,
+          "matched_numeric_facts": 6,
+          "claimed_numeric_values": 14,
+          "unsupported_numeric_values": 8
+        }
+      }
+    },
+    {
+      "harness": "pydantic-ai",
+      "architecture": "enterprise-codemode",
+      "task": "adi-user-lookup",
+      "prompt": "Look up business user with ID 42. Show their full profile, total lifetime spend, and their last 5 subscriptions with status and total value.",
+      "output": "\n\n**Business User Profile (ID 42)**\n\n| Field | Value |\n|-------|-------|\n| ID | 42 |\n| Full Name | Wendy Taylor |\n| Email | wendy.taylor41@yahoo.com |\n| City | Paris |\n| Country | FR |\n| Tier | standard |\n| Total Subscriptions | 2 |\n| Lifetime Value | 100000.0 |\n\n**Last Subscriptions**\n\n| Order ID | Status | Total Amount |\n|----------|--------|--------------|\n| 401 | shipped | 36000.0 |\n| 534 | shipped | 64000.0 |",
+      "started_at": "2026-07-07T19:51:32.756754+00:00",
+      "elapsed_seconds": 10.738572833004582,
+      "metadata": {
+        "langfuse_session_id": "agent-bench:run-all:pydantic-ai:adi-user-lookup:20260707T195041Z:2bbd569e",
+        "langfuse_trace_id": "ec87a9b2c311882e0b6a26ca6c509264",
+        "langfuse_observation_id": "8b113ded79dcb92d",
+        "langfuse_trace_url": "https://cloud.langfuse.com/project/cmr1ywsf000d5ad0cex3dm2ha/traces/ec87a9b2c311882e0b6a26ca6c509264"
+      },
+      "error": null,
+      "ok": true,
+      "scores": {
+        "scorable": true,
+        "correctness": 1.0,
+        "groundedness": 0.75,
+        "hallucination_rate": 0.25,
+        "overall_score": 0.8571,
+        "details": {
+          "refused_or_no_data": false,
+          "empty_output": false,
+          "expected_text_facts": 6,
+          "matched_text_facts": 6,
+          "expected_numeric_facts": 6,
+          "matched_numeric_facts": 6,
+          "claimed_numeric_values": 8,
+          "unsupported_numeric_values": 2
+        }
+      }
+    },
+    {
+      "harness": "pydantic-ai",
+      "architecture": "enterprise-mcp-react",
+      "task": "adi-user-lookup",
+      "prompt": "Look up business user with ID 42. Show their full profile, total lifetime spend, and their last 5 subscriptions with status and total value.",
+      "output": "\n\n| Field | Value |\n|-------|-------|\n| **Customer Profile** | |\n| ID | 42 |\n| Full Name | Wendy Taylor |\n| Email | wendy.taylor41@yahoo.com |\n| City | Paris |\n| Country | FR |\n| Tier | standard |\n| **Lifetime Spend** | 100000.0 |\n| **Last Subscriptions** | |\n| Order ID | 401 |\n| Status | shipped |\n| Total Value | 36000.0 |\n| Order ID | 534 |\n| Status | shipped |\n| Total Value | 64000.0 |",
+      "started_at": "2026-07-07T19:51:43.498181+00:00",
+      "elapsed_seconds": 7.324398292003025,
+      "metadata": {
+        "langfuse_session_id": "agent-bench:run-all:pydantic-ai:adi-user-lookup:20260707T195041Z:2bbd569e",
+        "langfuse_trace_id": "f9a4bdd71dbf6cb9d83e5c7344deb4f4",
+        "langfuse_observation_id": "21a9626ee783a532",
+        "langfuse_trace_url": "https://cloud.langfuse.com/project/cmr1ywsf000d5ad0cex3dm2ha/traces/f9a4bdd71dbf6cb9d83e5c7344deb4f4"
+      },
+      "error": null,
+      "ok": true,
+      "scores": {
+        "scorable": true,
+        "correctness": 1.0,
+        "groundedness": 0.8571,
+        "hallucination_rate": 0.1429,
+        "overall_score": 0.9231,
+        "details": {
+          "refused_or_no_data": false,
+          "empty_output": false,
+          "expected_text_facts": 6,
+          "matched_text_facts": 6,
+          "expected_numeric_facts": 6,
+          "matched_numeric_facts": 6,
+          "claimed_numeric_values": 7,
+          "unsupported_numeric_values": 1
+        }
+      }
+    },
+    {
+      "harness": "pydantic-ai",
+      "architecture": "enterprise-mcp-codemode",
+      "task": "adi-user-lookup",
+      "prompt": "Look up business user with ID 42. Show their full profile, total lifetime spend, and their last 5 subscriptions with status and total value.",
+      "output": "\n\n**Business User Profile (ID 42)**\n\n| Field | Value |\n|-------|-------|\n| Full Name | Wendy Taylor |\n| Email | wendy.taylor41@yahoo.com |\n| City | Paris |\n| Country | FR |\n| Tier | standard |\n| Total Subscriptions | 2 |\n| Lifetime Spend | 100000.0 |\n\n**Last Subscriptions**\n\n| Order ID | Status | Total Amount |\n|----------|--------|--------------|\n| 401 | shipped | 36000.0 |\n| 534 | shipped | 64000.0 |",
+      "started_at": "2026-07-07T19:51:50.823754+00:00",
+      "elapsed_seconds": 8.703320084001462,
+      "metadata": {
+        "langfuse_session_id": "agent-bench:run-all:pydantic-ai:adi-user-lookup:20260707T195041Z:2bbd569e",
+        "langfuse_trace_id": "0176808073c6ec2c88546f200183ff85",
+        "langfuse_observation_id": "25cee1030904c80c",
+        "langfuse_trace_url": "https://cloud.langfuse.com/project/cmr1ywsf000d5ad0cex3dm2ha/traces/0176808073c6ec2c88546f200183ff85"
+      },
+      "error": null,
+      "ok": true,
+      "scores": {
+        "scorable": true,
+        "correctness": 1.0,
+        "groundedness": 0.75,
+        "hallucination_rate": 0.25,
+        "overall_score": 0.8571,
+        "details": {
+          "refused_or_no_data": false,
+          "empty_output": false,
+          "expected_text_facts": 6,
+          "matched_text_facts": 6,
+          "expected_numeric_facts": 6,
+          "matched_numeric_facts": 6,
+          "claimed_numeric_values": 8,
+          "unsupported_numeric_values": 2
+        }
+      }
+    },
+    {
+      "harness": "pydantic-ai",
+      "architecture": "enterprise-sql-react",
+      "task": "adi-user-lookup",
+      "prompt": "Look up business user with ID 42. Show their full profile, total lifetime spend, and their last 5 subscriptions with status and total value.",
+      "output": "\n\n| id | email | full_name | city | country | tier | created_at | total_lifetime_spend | subscription_id | status | total_amount | created_at |\n|---|---|---|---|---|---|---|---|---|---|---|---|\n| 42 | wendy.taylor41@yahoo.com | Wendy Taylor | Paris | FR | standard | 2026-02-22T14:00:51 | 100000.0 | 401 | shipped | 36000.0 | 2025-09-11T02:06:47 |\n| 42 | wendy.taylor41@yahoo.com | Wendy Taylor | Paris | FR | standard | 2026-02-22T14:00:51 | 100000.0 | 534 | shipped | 64000.0 | 2025-09-11T02:06:47 |",
+      "started_at": "2026-07-07T19:51:59.528238+00:00",
+      "elapsed_seconds": 26.15287037500093,
+      "metadata": {
+        "langfuse_session_id": "agent-bench:run-all:pydantic-ai:adi-user-lookup:20260707T195041Z:2bbd569e",
+        "langfuse_trace_id": "7cf564e919c051c828577dd8904428cc",
+        "langfuse_observation_id": "9723de67864dadeb",
+        "langfuse_trace_url": "https://cloud.langfuse.com/project/cmr1ywsf000d5ad0cex3dm2ha/traces/7cf564e919c051c828577dd8904428cc"
+      },
+      "error": null,
+      "ok": true,
+      "scores": {
+        "scorable": true,
+        "correctness": 1.0,
+        "groundedness": 0.3333,
+        "hallucination_rate": 0.6667,
+        "overall_score": 0.5,
+        "details": {
+          "refused_or_no_data": false,
+          "empty_output": false,
+          "expected_text_facts": 6,
+          "matched_text_facts": 6,
+          "expected_numeric_facts": 6,
+          "matched_numeric_facts": 6,
+          "claimed_numeric_values": 18,
+          "unsupported_numeric_values": 12
+        }
+      }
+    },
+    {
+      "harness": "pydantic-ai",
+      "architecture": "enterprise-sql-codemode",
+      "task": "adi-user-lookup",
+      "prompt": "Look up business user with ID 42. Show their full profile, total lifetime spend, and their last 5 subscriptions with status and total value.",
+      "output": "\n\n**Business User Profile (ID 42)**\n\n| id | email | full_name | city | country | tier | created_at |\n|---|---|---|---|---|---|---|\n| 42 | wendy.taylor41@yahoo.com | Wendy Taylor | Paris | FR | standard | 2023-12-23T19:14:57 |\n\n**Total Lifetime Spend:** 100000.0\n\n**Last Subscriptions (status and total value)**\n\n| status | total_amount |\n|---|---|\n| shipped | 36000.0 |\n| shipped | 64000.0 |\n\n*Note: Only 2 subscriptions exist for this user.*",
+      "started_at": "2026-07-07T19:52:25.682132+00:00",
+      "elapsed_seconds": 17.69548983399727,
+      "metadata": {
+        "langfuse_session_id": "agent-bench:run-all:pydantic-ai:adi-user-lookup:20260707T195041Z:2bbd569e",
+        "langfuse_trace_id": "5f641d24d6a8c81a5e257f60ed5d3c37",
+        "langfuse_observation_id": "ac60b4ad64973d62",
+        "langfuse_trace_url": "https://cloud.langfuse.com/project/cmr1ywsf000d5ad0cex3dm2ha/traces/5f641d24d6a8c81a5e257f60ed5d3c37"
+      },
+      "error": null,
+      "ok": true,
+      "scores": {
+        "scorable": true,
+        "correctness": 0.8333,
+        "groundedness": 0.3333,
+        "hallucination_rate": 0.6667,
+        "overall_score": 0.4762,
+        "details": {
+          "refused_or_no_data": false,
+          "empty_output": false,
+          "expected_text_facts": 6,
+          "matched_text_facts": 6,
+          "expected_numeric_facts": 6,
+          "matched_numeric_facts": 4,
+          "claimed_numeric_values": 12,
+          "unsupported_numeric_values": 8
+        }
+      }
+    }
+  ],
+  "scored_at": "2026-07-07T19:52:44.047179+00:00",
+  "ground_truth_generated_at": "2026-07-07T19:14:38.214588+00:00",
+  "score_summary": {
+    "scored_results": 7,
+    "overall_score_formula": "harmonic_mean(correctness, groundedness)",
+    "avg_overall_score": 0.617,
+    "best_architecture": "enterprise-mcp-react",
+    "best_overall_score": 0.9231,
+    "avg_correctness": 0.8452,
+    "avg_groundedness": 0.5136,
+    "avg_hallucination_rate": 0.4864
+  }
+}

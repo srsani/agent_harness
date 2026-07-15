@@ -1,0 +1,74 @@
+{
+  "session_id": "agent-bench:run:smolagents:adi-portfolio-depth:20260715T123256Z:1b17c7a3",
+  "harness": "smolagents",
+  "architecture": "smolagents-codeagent",
+  "task": "adi-portfolio-depth",
+  "prompt": "What is the average number of modules per subscription and average subscription value, broken down by engagement tier (standard, silver, gold)? Which tier has the deepest average analytics portfolio?",
+  "output": "Standard: 2.50 modules, $47,786.42 | Silver: 2.44 modules, $47,385.51 | Gold: 2.29 modules, $42,839.29 | Deepest portfolio: standard",
+  "started_at": "2026-07-15T12:32:56.800390+00:00",
+  "elapsed_seconds": 81.13032991699947,
+  "metadata": {
+    "langfuse_session_id": "agent-bench:run:smolagents:adi-portfolio-depth:20260715T123256Z:1b17c7a3",
+    "tool_calls": [
+      {
+        "tool_name": "list_tables",
+        "via": "code"
+      },
+      {
+        "tool_name": "execute_sql",
+        "via": "code"
+      },
+      {
+        "tool_name": "execute_sql",
+        "via": "code"
+      },
+      {
+        "tool_name": "execute_sql",
+        "via": "code"
+      },
+      {
+        "tool_name": "execute_sql",
+        "via": "code"
+      },
+      {
+        "tool_name": "execute_sql",
+        "via": "code"
+      },
+      {
+        "tool_name": "execute_sql",
+        "via": "code"
+      },
+      {
+        "tool_name": "execute_sql",
+        "via": "code"
+      },
+      {
+        "tool_name": "execute_sql",
+        "via": "code"
+      },
+      {
+        "tool_name": "execute_sql",
+        "via": "code"
+      },
+      {
+        "tool_name": "execute_sql",
+        "via": "code"
+      },
+      {
+        "tool_name": "execute_sql",
+        "via": "code"
+      },
+      {
+        "tool_name": "execute_sql",
+        "via": "code"
+      }
+    ],
+    "step_count": 12,
+    "token_usage": {
+      "input_tokens": 143810,
+      "output_tokens": 4079
+    }
+  },
+  "error": null,
+  "ok": true
+}

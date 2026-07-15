@@ -1,0 +1,26 @@
+{
+  "session_id": "agent-bench:run:smolagents:adi-top-modules:20260715T122821Z:6b718413",
+  "harness": "smolagents",
+  "architecture": "smolagents-codeagent",
+  "task": "adi-top-modules",
+  "prompt": "What are the top 5 most-activated analytics modules in the last 90 days? List each module's name, business function, activation count, and subscription revenue.",
+  "output": "[{'module_name': 'Territory Performance Analyzer', 'business_function': 'Sales & Marketing', 'activation_count': 13, 'subscription_revenue': 217500.0}, {'module_name': 'Talent Retention Predictor', 'business_function': 'HR & People', 'activation_count': 12, 'subscription_revenue': 297000.0}, {'module_name': 'Order Fulfilment Tracker', 'business_function': 'Supply Chain', 'activation_count': 11, 'subscription_revenue': 126500.0}, {'module_name': 'IP Portfolio Analyzer', 'business_function': 'Research & Development', 'activation_count': 10, 'subscription_revenue': 250000.0}, {'module_name': 'Trial Success Probability Model', 'business_function': 'Research & Development', 'activation_count': 9, 'subscription_revenue': 368000.0}]",
+  "started_at": "2026-07-15T12:28:21.464117+00:00",
+  "elapsed_seconds": 21.096143707996816,
+  "metadata": {
+    "langfuse_session_id": "agent-bench:run:smolagents:adi-top-modules:20260715T122821Z:6b718413",
+    "tool_calls": [
+      {
+        "tool_name": "get_top_selling_products",
+        "via": "code"
+      }
+    ],
+    "step_count": 3,
+    "token_usage": {
+      "input_tokens": 12823,
+      "output_tokens": 1648
+    }
+  },
+  "error": null,
+  "ok": true
+}

@@ -1,0 +1,87 @@
+{
+  "session_id": "agent-bench:run:smolagents:adi-module-ratings:20260715T123125Z:8cdaacfb",
+  "harness": "smolagents",
+  "architecture": "smolagents-codeagent",
+  "task": "adi-module-ratings",
+  "prompt": "Which 3 analytics modules have the highest average user rating (with at least 5 ratings)? And which 3 modules have the lowest average rating (with at least 3 ratings)? For each, show the module name, average rating, and a sample review title.",
+  "output": "Top 3 modules by average rating (\u2265 5 ratings):\n1. Talent Retention Predictor \u2014 5.0 \u2014 \"Finally, data-driven forecasting\"\n2. Order Fulfilment Tracker \u2014 4.67 \u2014 \"Exceeded our accuracy targets\"\n3. Cash Flow Predictor \u2014 4.6 \u2014 \"Cut our analysis time by 80%\"\n\nBottom 3 modules by average rating (\u2265 3 ratings):\n1. Transportation Network Optimizer \u2014 3.0 \u2014 \"Model needs more training data\"\n2. GTM Readiness Planner \u2014 3.2 \u2014 \"Data freshness issues\"\n3. Innovation Pipeline Dashboard \u2014 3.33 \u2014 \"Useful but needs calibration\"",
+  "started_at": "2026-07-15T12:31:25.058659+00:00",
+  "elapsed_seconds": 23.65010670799893,
+  "metadata": {
+    "langfuse_session_id": "agent-bench:run:smolagents:adi-module-ratings:20260715T123125Z:8cdaacfb",
+    "tool_calls": [
+      {
+        "tool_name": "get_schema_context",
+        "via": "code"
+      },
+      {
+        "tool_name": "describe_table",
+        "via": "code"
+      },
+      {
+        "tool_name": "describe_table",
+        "via": "code"
+      },
+      {
+        "tool_name": "execute_sql",
+        "via": "code"
+      },
+      {
+        "tool_name": "execute_sql",
+        "via": "code"
+      },
+      {
+        "tool_name": "execute_sql",
+        "via": "code"
+      },
+      {
+        "tool_name": "execute_sql",
+        "via": "code"
+      }
+    ],
+    "step_count": 6,
+    "token_usage": {
+      "input_tokens": 30960,
+      "output_tokens": 1626
+    }
+  },
+  "error": null,
+  "ok": true,
+  "scores": {
+    "scorable": true,
+    "correctness": 0.8333,
+    "groundedness": 0.6667,
+    "hallucination_rate": 0.3333,
+    "overall_score": 0.7407,
+    "details": {
+      "refused_or_no_data": false,
+      "empty_output": false,
+      "expected_text_facts": 12,
+      "matched_text_facts": 9,
+      "expected_numeric_facts": 12,
+      "matched_numeric_facts": 11,
+      "claimed_numeric_values": 9,
+      "unsupported_numeric_values": 3
+    }
+  },
+  "tool_selection": {
+    "scorable": true,
+    "expected_tools": [
+      "execute_sql",
+      "get_product_reviews"
+    ],
+    "total_tool_calls": 7,
+    "tool_recall": 1.0,
+    "tool_precision": 1.0,
+    "distractor_call_count": 0,
+    "distractor_calls": [],
+    "any_distractor_called": false,
+    "distractor_call_rate": 0.0,
+    "fabricated_call_count": 0,
+    "fabricated_calls": [],
+    "any_fabricated_called": false,
+    "fabricated_call_rate": 0.0
+  },
+  "scored_at": "2026-07-15T12:35:48.553013+00:00",
+  "ground_truth_generated_at": "2026-07-15T12:27:53.866973+00:00"
+}

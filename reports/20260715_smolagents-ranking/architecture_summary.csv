@@ -1,0 +1,8 @@
+architecture,reliability_adjusted_score,raw_score_when_ok,ok_rate,avg_elapsed_seconds,median_elapsed_seconds,tasks_won,avg_tool_recall,avg_tool_precision,distractor_call_rate,fabricated_call_rate
+enterprise-react,0.7596,0.844,9/10,34.0,29.0,5,,,,
+smolagents-codeagent,0.7058,0.7058,10/10,35.3,32.8,0,1.0,0.8879,0.0,0.0
+enterprise-sql-codemode,0.6326,0.6326,10/10,35.8,24.4,0,,,,
+enterprise-mcp-react,0.6237,0.7796,8/10,36.4,22.3,3,,,,
+enterprise-sql-react,0.5585,0.6981,8/10,28.2,28.9,0,,,,
+enterprise-mcp-codemode,0.5135,0.7335,7/10,36.2,27.1,1,,,,
+enterprise-codemode,0.4672,0.6675,7/10,40.2,32.7,1,,,,

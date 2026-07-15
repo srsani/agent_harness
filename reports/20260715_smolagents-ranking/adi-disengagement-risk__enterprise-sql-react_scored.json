@@ -1,0 +1,34 @@
+{
+  "session_id": "agent-bench:run:pydantic-ai:adi-disengagement-risk:20260707T203837Z:7f321022",
+  "harness": "pydantic-ai",
+  "architecture": "enterprise-sql-react",
+  "task": "adi-disengagement-risk",
+  "prompt": "Identify users who activated at least 2 subscriptions but have had NO new subscription in the last 180 days. List up to 10 such users with their name, engagement tier, last subscription date, and total lifetime value, sorted by lifetime value descending.",
+  "output": "",
+  "started_at": "2026-07-07T20:38:37.681383+00:00",
+  "elapsed_seconds": 12.726998582998931,
+  "metadata": {
+    "langfuse_session_id": "agent-bench:run:pydantic-ai:adi-disengagement-risk:20260707T203837Z:7f321022"
+  },
+  "error": "SQLError: near \"FROM\": syntax error",
+  "ok": false,
+  "scores": {
+    "scorable": true,
+    "correctness": 0.0,
+    "groundedness": 0.0,
+    "hallucination_rate": 1.0,
+    "overall_score": 0.0,
+    "details": {
+      "refused_or_no_data": true,
+      "empty_output": true,
+      "expected_text_facts": 20,
+      "matched_text_facts": 0,
+      "expected_numeric_facts": 20,
+      "matched_numeric_facts": 0,
+      "claimed_numeric_values": 0,
+      "unsupported_numeric_values": 0
+    }
+  },
+  "scored_at": "2026-07-07T20:52:25.349894+00:00",
+  "ground_truth_generated_at": "2026-07-07T19:14:38.214588+00:00"
+}

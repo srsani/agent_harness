@@ -1,0 +1,37 @@
+{
+  "session_id": "agent-bench:run:pydantic-ai:adi-module-ratings:20260707T202737Z:d5cccf49",
+  "harness": "pydantic-ai",
+  "architecture": "enterprise-mcp-react",
+  "task": "adi-module-ratings",
+  "prompt": "Which 3 analytics modules have the highest average user rating (with at least 5 ratings)? And which 3 modules have the lowest average rating (with at least 3 ratings)? For each, show the module name, average rating, and a sample review title.",
+  "output": "\n\n| name | avg_rating | sample_title |\n|------|------------|--------------|\n| Talent Retention Predictor | 5.0 | Transformed our decision-making |\n| Order Fulfilment Tracker | 4.666666666666667 | Exceeded our accuracy targets |\n| Cash Flow Predictor | 4.6 | Cut our analysis time by 80% |\n| Transportation Network Optimizer | 3.0 | Our leadership team relies on this daily |\n| GTM Readiness Planner | 3.2 | Cut our analysis time by 80% |\n| Innovation Pipeline Dashboard | 3.3333333333333335 | Saved weeks of manual work |",
+  "started_at": "2026-07-07T20:27:37.538839+00:00",
+  "elapsed_seconds": 77.3360185000056,
+  "metadata": {
+    "langfuse_session_id": "agent-bench:run:pydantic-ai:adi-module-ratings:20260707T202737Z:d5cccf49",
+    "langfuse_trace_id": "d2c664f2c1495d57bdecd6ab86125031",
+    "langfuse_observation_id": "bb6167964ee2abbb",
+    "langfuse_trace_url": "https://cloud.langfuse.com/project/cmr1ywsf000d5ad0cex3dm2ha/traces/d2c664f2c1495d57bdecd6ab86125031"
+  },
+  "error": null,
+  "ok": true,
+  "scores": {
+    "scorable": true,
+    "correctness": 0.9583,
+    "groundedness": 0.8571,
+    "hallucination_rate": 0.1429,
+    "overall_score": 0.9049,
+    "details": {
+      "refused_or_no_data": false,
+      "empty_output": false,
+      "expected_text_facts": 12,
+      "matched_text_facts": 12,
+      "expected_numeric_facts": 12,
+      "matched_numeric_facts": 11,
+      "claimed_numeric_values": 7,
+      "unsupported_numeric_values": 1
+    }
+  },
+  "scored_at": "2026-07-07T20:52:26.576911+00:00",
+  "ground_truth_generated_at": "2026-07-07T19:14:38.214588+00:00"
+}

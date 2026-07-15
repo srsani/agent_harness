@@ -6,10 +6,21 @@ def test_list_harnesses_includes_pydantic_ai():
     assert "pydantic-ai" in names
 
 
+def test_list_harnesses_includes_smolagents():
+    names = list(list_harnesses())
+    assert "smolagents" in names
+
+
 def test_pydantic_ai_architectures():
     spec = get_harness("pydantic-ai")
     assert "minimal" in spec.architectures
     assert "codemode" in spec.architectures
+
+
+def test_smolagents_architectures():
+    spec = get_harness("smolagents")
+    assert "smolagents-codeagent" in spec.architectures
+    assert "smolagents-codeagent" in spec.architectures_for_task("adi-top-modules")
 
 
 def test_tasks():
