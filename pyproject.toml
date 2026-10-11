@@ -52,9 +52,13 @@ select = ["E", "F", "I", "UP"]
 
 [dependency-groups]
 dev = [
+    "accelerate>=1.15.0",
     "ipywidgets>=8.1.8",
     "jupyter>=1.1.1",
+    "laya>=0.4.2",
     "matplotlib>=3.10.9",
     "nest-asyncio>=1.6.0",
     "pandas>=2.3.3",
+    "torch>=2.14.1",
+    "transformers[sentencepiece]>=5.19.0",
 ]
